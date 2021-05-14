@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Editor, { editor as editorState } from "./Editor"
+import "./index.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  ref = React.createRef();
+  
+  getHTML = () => {
+    return this.ref.current.editor.getHTML();
+  }
+
+  render() {
+    return (
+      <div style={{width: 720, margin: "48px auto"}}>
+        <button onClick={() => console.log(this.getHTML())}>Print output</button>
+       <Editor ref={this.ref}/>
+      </div>
+    )
+  }
 }
-
-export default App;
