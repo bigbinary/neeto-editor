@@ -19,7 +19,7 @@ const Tiptap = (props, ref) => {
 		injectCSS: false,
 		editorProps: {
 			attributes: {
-				class: "prose m-5 focus:outline-none whitespace-pre",
+				class: "prose focus:outline-none whitespace-pre",
 			},
 		},
 	});
