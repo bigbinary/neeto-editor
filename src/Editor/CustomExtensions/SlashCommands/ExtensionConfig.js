@@ -2,6 +2,13 @@ import Commands from "./Commands";
 import CommandsList from "./CommandsList";
 import tippy from "tippy.js";
 import { useEditor, EditorContent, ReactRenderer } from "@tiptap/react";
+import {
+	BsCardText,
+	BsTypeH1,
+	BsTypeH2,
+	BsListOl,
+	BsListUl,
+} from "react-icons/bs";
 
 export default Commands.configure({
 	HTMLAttributes: {
@@ -11,7 +18,22 @@ export default Commands.configure({
 		items: (query) => {
 			return [
 				{
+					title: "Paragraph",
+					description: "Add a plain text block",
+					Icon: BsCardText,
+					command: ({ editor, range }) => {
+						editor
+							.chain()
+							.focus()
+							.deleteRange(range)
+							.setNode("paragraph")
+							.run();
+					},
+				},
+				{
 					title: "H1",
+					description: "Add a big heading",
+					Icon: BsTypeH1,
 					command: ({ editor, range }) => {
 						editor
 							.chain()
@@ -23,6 +45,8 @@ export default Commands.configure({
 				},
 				{
 					title: "H2",
+					description: "Add a sub-heading",
+					Icon: BsTypeH2,
 					command: ({ editor, range }) => {
 						editor
 							.chain()
@@ -33,15 +57,29 @@ export default Commands.configure({
 					},
 				},
 				{
-					title: "bold",
+					title: "Numbered list",
+					description: "Add a list with numbering",
+					Icon: BsListOl,
 					command: ({ editor, range }) => {
-						editor.chain().focus().deleteRange(range).setMark("bold").run();
+						editor
+							.chain()
+							.focus()
+							.deleteRange(range)
+							.setNode("orderedList")
+							.run();
 					},
 				},
 				{
-					title: "italic",
+					title: "Bulleted list",
+					description: "Add an list bullets",
+					Icon: BsListUl,
 					command: ({ editor, range }) => {
-						editor.chain().focus().deleteRange(range).setMark("italic").run();
+						editor
+							.chain()
+							.focus()
+							.deleteRange(range)
+							.setNode("orderedList")
+							.run();
 					},
 				},
 			]

@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from "classnames";
 import "./CommandsList.css";
 
 class CommandsList extends React.Component {
@@ -66,21 +67,41 @@ class CommandsList extends React.Component {
 
 	render() {
 		return (
-			<div className="items">
+			<div className="relative overflow-hidden rounded shadow">
 				{this.props.items.map((item, index) => (
-					<button
-						className={`item ${
-							index === this.state.selectedIndex ? "is-selected" : ""
-						}`}
-						key={index}
-						onClick={() => this.selectItem(index)}
-					>
-						{item.title}
-					</button>
+					<Item
+						item={item}
+						index={index}
+						selectedIndex={this.state.selectedIndex}
+						selectItem={this.selectItem}
+					/>
 				))}
 			</div>
 		);
 	}
 }
+
+const Item = ({ item, index, selectedIndex, selectItem }) => {
+	const Icon = item.Icon;
+	return (
+		<div
+			className={classnames("flex items-center w-full px-4 py-2 space-x-4", {
+				"bg-gray-100 ": index === selectedIndex,
+			})}
+			key={index}
+			onClick={() => selectItem(index)}
+		>
+			{Icon && (
+				<div className="p-1 text-gray-900 bg-gray-100 rounded-sm">
+					<Icon size={18} />
+				</div>
+			)}
+			<div className="flex flex-col">
+				<span className="text-sm font-semibold">{item.title}</span>
+				<span className="text-xs text-gray-600">{item.description}</span>
+			</div>
+		</div>
+	);
+};
 
 export default CommandsList;
