@@ -70,6 +70,7 @@ class CommandsList extends React.Component {
 			<div className="relative overflow-hidden rounded shadow">
 				{this.props.items.map((item, index) => (
 					<Item
+						key={index}
 						item={item}
 						index={index}
 						selectedIndex={this.state.selectedIndex}

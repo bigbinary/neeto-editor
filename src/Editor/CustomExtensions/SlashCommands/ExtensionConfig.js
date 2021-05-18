@@ -8,6 +8,8 @@ import {
 	BsTypeH2,
 	BsListOl,
 	BsListUl,
+	BsCodeSlash,
+	BsBlockquoteLeft,
 } from "react-icons/bs";
 
 export default Commands.configure({
@@ -73,9 +75,17 @@ export default Commands.configure({
 					},
 				},
 				{
+					title: "Blockquote",
+					description: "Add a quote",
+					Icon: BsBlockquoteLeft,
+					command: ({ editor, range }) => {
+						editor.chain().focus().deleteRange(range).toggleBlockquote().run();
+					},
+				},
+				{
 					title: "Code block",
 					description: "Add a code block with syntax highlighting",
-					Icon: BsListUl,
+					Icon: BsCodeSlash,
 					command: ({ editor, range }) => {
 						editor.chain().focus().deleteRange(range).toggleCodeBlock().run();
 					},
