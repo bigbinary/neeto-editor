@@ -61,12 +61,7 @@ export default Commands.configure({
 					description: "Add a list with numbering",
 					Icon: BsListOl,
 					command: ({ editor, range }) => {
-						editor
-							.chain()
-							.focus()
-							.deleteRange(range)
-							.setNode("orderedList")
-							.run();
+						editor.chain().focus().deleteRange(range).toggleOrderedList().run();
 					},
 				},
 				{
@@ -74,12 +69,15 @@ export default Commands.configure({
 					description: "Add an list bullets",
 					Icon: BsListUl,
 					command: ({ editor, range }) => {
-						editor
-							.chain()
-							.focus()
-							.deleteRange(range)
-							.setNode("orderedList")
-							.run();
+						editor.chain().focus().deleteRange(range).toggleBulletList().run();
+					},
+				},
+				{
+					title: "Code block",
+					description: "Add a code block with syntax highlighting",
+					Icon: BsListUl,
+					command: ({ editor, range }) => {
+						editor.chain().focus().deleteRange(range).toggleCodeBlock().run();
 					},
 				},
 			]
