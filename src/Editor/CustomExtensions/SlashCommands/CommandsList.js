@@ -93,13 +93,13 @@ const Item = ({ item, index, selectedIndex, selectItem }) => {
 			onClick={() => selectItem(index)}
 		>
 			{Icon && (
-				<div className="p-1 text-gray-900 rounded-sm bg-gray-50">
+				<div className="p-1 text-gray-900 bg-gray-100 rounded-sm">
 					<Icon size={18} />
 				</div>
 			)}
-			<div className="flex flex-col transition-all duration-200">
+			<div className="flex flex-col text-gray-900 transition-all duration-200">
 				<span className="text-sm font-semibold">{item.title}</span>
-				<span className="text-xs text-gray-600">{item.description}</span>
+				<span className="text-xs text-gray-700">{item.description}</span>
 			</div>
 		</div>
 	);
