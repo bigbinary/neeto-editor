@@ -1724,10 +1724,29 @@
   dependencies:
     prosemirror-inputrules "^1.1.3"
 
+"@tiptap/extension-code-block-lowlight@^2.0.0-beta.24":
+  version "2.0.0-beta.24"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-code-block-lowlight/-/extension-code-block-lowlight-2.0.0-beta.24.tgz#9d17681bb52b2505546ba9fbfd538f3d6b2d3196"
+  integrity sha512-OhIMm5ByHO0bnVOpQ353WxRpVibtK3yGmR0aGRDYZxa3wBgvULFMEtf9Kf+uxYYgBucspG9SRFZaz8aWqs0gxQ==
+  dependencies:
+    "@tiptap/extension-code-block" "^2.0.0-beta.15"
+    "@types/lowlight" "^0.0.2"
+    lowlight "^1.20.0"
+    prosemirror-model "^1.14.1"
+    prosemirror-state "^1.3.4"
+    prosemirror-view "^1.18.6"
+
 "@tiptap/extension-code-block@^2.0.0-beta.14":
   version "2.0.0-beta.14"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-code-block/-/extension-code-block-2.0.0-beta.14.tgz#b1476ac0fa77d2d3d05918b435d0d1d2d17cbab3"
   integrity sha512-uhgoEtFhOwsl/KeKcytLexsTKfaHhrS9wbrzOwNIYt5lm23pjNkSwmQHZzcsFGv9x7hD+ByL94HQOulwn/CD8w==
+  dependencies:
+    prosemirror-inputrules "^1.1.3"
+
+"@tiptap/extension-code-block@^2.0.0-beta.15":
+  version "2.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-code-block/-/extension-code-block-2.0.0-beta.15.tgz#3fb0f04c38f8276195a1a958cc7d3399b52dc46a"
+  integrity sha512-iBuK/nnUw37O9mZVnuZu+viSNzLz7SRktjDtFhp6RM3ZVSOYIYjt6pJ05EVJ263QEeXB4Q1Qae8/xJOPPHN9hw==
   dependencies:
     prosemirror-inputrules "^1.1.3"
 
@@ -2006,6 +2025,11 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+
+"@types/lowlight@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@types/lowlight/-/lowlight-0.0.2.tgz#bb517f1486477a8c59dea11be0dfaf96d629d35d"
+  integrity sha512-37DldsUs2l4rXI2YQgVn+NKVEaaUbBIzJg3eYzAXimGrtre8vxqE65wAGqYs9W6IsoOfgj74se/rBc9yoRXOHQ==
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -5263,6 +5287,13 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
+fault@^1.0.0:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/fault/-/fault-1.0.4.tgz#eafcfc0a6d214fc94601e170df29954a4f842f13"
+  integrity sha512-CJ0HCB5tL5fYTEA7ToAq5+kTwd++Borf1/bifxd9iT70QcXr4MRrO3Llf8Ifs70q+SJcGHFtnIE/Nw6giCtECA==
+  dependencies:
+    format "^0.2.0"
+
 faye-websocket@^0.11.3:
   version "0.11.3"
   resolved "https://registry.yarnpkg.com/faye-websocket/-/faye-websocket-0.11.3.tgz#5c0e9a8968e8912c286639fde977a8b209f2508e"
@@ -5439,6 +5470,11 @@ form-data@~2.3.2:
     asynckit "^0.4.0"
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
+
+format@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"
+  integrity sha1-1hcBB+nv3E7TDJ3DkBbflCtctYs=
 
 forwarded@~0.1.2:
   version "0.1.2"
@@ -5830,6 +5866,11 @@ hex-color-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
+
+highlight.js@~10.7.0:
+  version "10.7.2"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.7.2.tgz#89319b861edc66c48854ed1e6da21ea89f847360"
+  integrity sha512-oFLl873u4usRM9K63j4ME9u3etNF0PLiJhSQ8rdfuL51Wn3zkD6drf9ZW0dOzjnZI22YYG24z30JcmfCZjMgYg==
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
@@ -7416,6 +7457,14 @@ lower-case@^2.0.2:
   integrity sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==
   dependencies:
     tslib "^2.0.3"
+
+lowlight@^1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/lowlight/-/lowlight-1.20.0.tgz#ddb197d33462ad0d93bf19d17b6c301aa3941888"
+  integrity sha512-8Ktj+prEb1RoCPkEOrPMYUN/nCggB7qAWe3a7OpMjWQkh3l2RD5wKRQ+o8Q8YuI9RG/xs95waaI/E6ym/7NsTw==
+  dependencies:
+    fault "^1.0.0"
+    highlight.js "~10.7.0"
 
 lru-cache@^5.1.1:
   version "5.1.1"
