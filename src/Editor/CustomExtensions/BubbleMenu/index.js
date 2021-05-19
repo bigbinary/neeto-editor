@@ -50,8 +50,8 @@ export default function index({ editor, formatterOptions }) {
 			<div className="relative flex items-center overflow-hidden bg-white border border-gray-200 rounded shadow-sm">
 				{options
 					.filter(({ optionName }) => formatterOptions.includes(optionName))
-					.map((option, index) => (
-						<Option {...option} key={index} />
+					.map((option) => (
+						<Option {...option} key={option.optionName} />
 					))}
 			</div>
 		</BubbleMenu>
