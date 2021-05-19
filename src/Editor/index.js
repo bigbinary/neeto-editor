@@ -34,7 +34,7 @@ const Tiptap = (
 		injectCSS: false,
 		editorProps: {
 			attributes: {
-				class: "prose focus:outline-none whitespace-pre",
+				class: "prose focus:outline-none whitespace-pre-wrap",
 			},
 		},
 	});
