@@ -8,17 +8,23 @@ import SlashCommands from "./CustomExtensions/SlashCommands/ExtensionConfig";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import "./EditorStyles.css";
 
-const Tiptap = (props, ref) => {
+const Tiptap = (
+	{ hideBlockSelector = false, hideBubbleMenu = false, ...otherProps },
+	ref
+) => {
+	let extensions;
+	if (otherProps.extensions) {
+		extensions = otherProps.extensions;
+	} else {
+		extensions = [StarterKit, Typography, Highlight, Placeholder];
+	}
+
+	if (!hideBlockSelector) {
+		extensions = [...extensions, SlashCommands];
+	}
+
 	const editor = useEditor({
-		extensions: props.extensions || [
-			StarterKit,
-			Typography,
-			Highlight,
-			Placeholder.configure({
-				placeholder: "Type '/' to choose a block type",
-			}),
-			SlashCommands,
-		],
+		extensions,
 		content: "Select me man!",
 		injectCSS: false,
 		editorProps: {
@@ -35,7 +41,7 @@ const Tiptap = (props, ref) => {
 
 	return (
 		<>
-			<BubbleMenu editor={editor} />
+			{!hideBubbleMenu && <BubbleMenu editor={editor} />}
 			<EditorContent editor={editor} />
 		</>
 	);
