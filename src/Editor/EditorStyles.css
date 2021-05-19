@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/night-owl.min.css");
 .ProseMirror code {
 	color: #000000;
 	padding: 2px 5px;
@@ -45,4 +46,9 @@
 
 .ProseMirror ul > li::before {
 	background-color: #1a141f;
+}
+
+.prose pre code {
+	font-weight: 500;
+	font-family: "JetBrains Mono", monospace;
 }

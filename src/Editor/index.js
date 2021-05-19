@@ -5,6 +5,7 @@ import Typography from "@tiptap/extension-typography";
 import Placeholder from "@tiptap/extension-placeholder";
 import Highlight from "@tiptap/extension-highlight";
 import SlashCommands from "./CustomExtensions/SlashCommands/ExtensionConfig";
+import CodeBlock from "./CustomExtensions/CodeBlock/ExtensionConfig";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import "./EditorStyles.css";
 
@@ -21,7 +22,7 @@ const Tiptap = (
 	if (otherProps.extensions) {
 		extensions = otherProps.extensions;
 	} else {
-		extensions = [StarterKit, Typography, Highlight, Placeholder];
+		extensions = [StarterKit, Typography, Highlight, Placeholder, CodeBlock];
 	}
 
 	if (!hideBlockSelector) {
