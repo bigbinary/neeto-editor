@@ -31,7 +31,8 @@ const Tiptap = (
 
   const editor = useEditor({
     extensions,
-    content: "Select me man!",
+    content:
+      "Select me to see the toolbar!<br />Press <code>cmd+b</code> for bold.",
     injectCSS: false,
     editorProps: {
       attributes: {
