@@ -1,0 +1,108 @@
+import React from "react";
+import classnames from "classnames";
+import "./CommandsList.css";
+
+class CommandsList extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			selectedIndex: 0,
+		};
+	}
+
+	componentDidUpdate(oldProps) {
+		if (this.props.items !== oldProps.items) {
+			this.setState({
+				selectedIndex: 0,
+			});
+		}
+	}
+
+	onKeyDown({ event }) {
+		if (event.key === "ArrowUp") {
+			this.upHandler();
+			return true;
+		}
+
+		if (event.key === "ArrowDown") {
+			this.downHandler();
+			return true;
+		}
+
+		if (event.key === "Enter") {
+			this.enterHandler();
+			return true;
+		}
+
+		return false;
+	}
+
+	upHandler() {
+		this.setState({
+			selectedIndex:
+				(this.state.selectedIndex + this.props.items.length - 1) %
+				this.props.items.length,
+		});
+	}
+
+	downHandler() {
+		this.setState({
+			selectedIndex: (this.state.selectedIndex + 1) % this.props.items.length,
+		});
+	}
+
+	enterHandler() {
+		this.selectItem(this.state.selectedIndex);
+	}
+
+	selectItem(index) {
+		const item = this.props.items[index];
+
+		if (item) {
+			const { editor, range } = this.props;
+			item.command({ editor, range });
+		}
+	}
+
+	render() {
+		return (
+			<div className="relative overflow-hidden rounded shadow">
+				{this.props.items.map((item, index) => (
+					<Item
+						key={index}
+						item={item}
+						index={index}
+						selectedIndex={this.state.selectedIndex}
+						selectItem={this.selectItem}
+					/>
+				))}
+			</div>
+		);
+	}
+}
+
+const Item = ({ item, index, selectedIndex, selectItem }) => {
+	const Icon = item.Icon;
+	return (
+		<div
+			className={classnames("flex items-center w-full px-4 py-2 space-x-4", {
+				"bg-gray-100 ": index === selectedIndex,
+			})}
+			key={index}
+			onClick={() => selectItem(index)}
+		>
+			{Icon && (
+				<div className="p-1 text-gray-900 bg-gray-100 rounded-sm">
+					<Icon size={18} />
+				</div>
+			)}
+			<div className="flex flex-col">
+				<span className="text-sm font-semibold">{item.title}</span>
+				<span className="text-xs text-gray-600">{item.description}</span>
+			</div>
+		</div>
+	);
+};
+
+export default CommandsList;
