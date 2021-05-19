@@ -1,7 +1,7 @@
 import Commands from "./Commands";
 import CommandsList from "./CommandsList";
 import tippy from "tippy.js";
-import { useEditor, EditorContent, ReactRenderer } from "@tiptap/react";
+import { ReactRenderer } from "@tiptap/react";
 import {
   BsCardText,
   BsTypeH1,
