@@ -1,0 +1,16 @@
+.ProseMirror p code {
+	color: #000000;
+	padding: 2px 5px;
+	background: #00000010;
+	border-radius: 4px;
+	font-weight: 500;
+	font-family: "JetBrains Mono", monospace;
+}
+
+.ProseMirror code::before {
+	content: "";
+}
+
+.ProseMirror code::after {
+	content: "";
+}

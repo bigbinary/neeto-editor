@@ -67,7 +67,7 @@ class CommandsList extends React.Component {
 
 	render() {
 		return (
-			<div className="relative overflow-hidden rounded shadow">
+			<div className="relative overflow-hidden bg-white border border-gray-200 rounded shadow-sm">
 				{this.props.items.map((item, index) => (
 					<Item
 						key={index}
@@ -93,11 +93,11 @@ const Item = ({ item, index, selectedIndex, selectItem }) => {
 			onClick={() => selectItem(index)}
 		>
 			{Icon && (
-				<div className="p-1 text-gray-900 bg-gray-100 rounded-sm">
+				<div className="p-1 text-gray-900 rounded-sm bg-gray-50">
 					<Icon size={18} />
 				</div>
 			)}
-			<div className="flex flex-col">
+			<div className="flex flex-col transition-all duration-200">
 				<span className="text-sm font-semibold">{item.title}</span>
 				<span className="text-xs text-gray-600">{item.description}</span>
 			</div>

@@ -3,19 +3,23 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Typography from "@tiptap/extension-typography";
 import Placeholder from "@tiptap/extension-placeholder";
+import Highlight from "@tiptap/extension-highlight";
 import SlashCommands from "./CustomExtensions/SlashCommands/ExtensionConfig";
+import BubbleMenu from "./CustomExtensions/BubbleMenu";
+import "./EditorStyles.css";
 
 const Tiptap = (props, ref) => {
 	const editor = useEditor({
 		extensions: props.extensions || [
 			StarterKit,
 			Typography,
+			Highlight,
 			Placeholder.configure({
 				placeholder: "Type '/' to choose a block type",
 			}),
 			SlashCommands,
 		],
-		content: null,
+		content: "Select me man!",
 		injectCSS: false,
 		editorProps: {
 			attributes: {
@@ -31,6 +35,7 @@ const Tiptap = (props, ref) => {
 
 	return (
 		<>
+			<BubbleMenu editor={editor} />
 			<EditorContent editor={editor} />
 		</>
 	);
