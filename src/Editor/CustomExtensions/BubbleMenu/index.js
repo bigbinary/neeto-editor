@@ -8,7 +8,6 @@ import {
 	FaHighlighter,
 	FaCode,
 } from "react-icons/fa";
-import { HiCode } from "react-icons/hi";
 
 export default function index({ editor, formatterOptions }) {
 	if (!editor) {
@@ -63,7 +62,7 @@ const Option = ({ Icon, command, active, iconSize }) => (
 	<div
 		className={classnames("p-2 px-3 cursor-pointer hover:bg-gray-50", {
 			"text-gray-700": !active,
-			"text-blue-600": active,
+			"text-indigo-500": active,
 		})}
 		onClick={command}
 	>
