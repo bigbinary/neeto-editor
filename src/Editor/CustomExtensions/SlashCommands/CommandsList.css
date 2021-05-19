@@ -6,3 +6,7 @@
   height: 0;
   margin-left: 4px;
 }
+
+.scale-102 {
+  transform: scale(1.02);
+}

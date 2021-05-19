@@ -47,7 +47,7 @@ export default function index({ editor, formatterOptions }) {
   ];
   return (
     <BubbleMenu editor={editor}>
-      <div className="relative flex items-center overflow-hidden bg-white border border-gray-200 rounded shadow-sm">
+      <div className="relative flex items-center overflow-hidden bg-gray-900 rounded shadow">
         {options
           .filter(({ optionName }) => formatterOptions.includes(optionName))
           .map((option) => (
@@ -60,9 +60,9 @@ export default function index({ editor, formatterOptions }) {
 
 const Option = ({ Icon, command, active, iconSize }) => (
   <div
-    className={classnames("p-2 px-3 cursor-pointer hover:bg-gray-50", {
-      "text-gray-700": !active,
-      "text-indigo-500": active,
+    className={classnames("p-3 cursor-pointer hover:bg-gray-800", {
+      "text-gray-400": !active,
+      "text-white": active,
     })}
     onClick={command}
   >

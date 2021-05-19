@@ -67,10 +67,10 @@ class CommandsList extends React.Component {
 
   render() {
     return (
-      <div className="relative overflow-hidden bg-white border border-gray-200 rounded shadow-sm">
+      <div className="relative py-2 overflow-hidden bg-gray-900 rounded shadow">
         {this.props.items.map((item, index) => (
           <Item
-            key={index}
+            key={item.title}
             item={item}
             index={index}
             selectedIndex={this.state.selectedIndex}
@@ -82,24 +82,26 @@ class CommandsList extends React.Component {
   }
 }
 
-const Item = ({ item, index, selectedIndex, selectItem }) => {
+const Item = ({ item, selectedIndex, index, selectItem }) => {
   const Icon = item.Icon;
   return (
     <div
-      className={classnames("flex items-center w-full px-4 py-2 space-x-4", {
-        "bg-gray-100 ": index === selectedIndex,
-      })}
-      key={index}
+      className={classnames(
+        "flex items-center w-full px-4 py-2 space-x-4  transition-all duration-100",
+        {
+          "bg-gray-800 scale-102": index === selectedIndex,
+        }
+      )}
       onClick={() => selectItem(index)}
     >
       {Icon && (
-        <div className="p-1 text-gray-900 bg-gray-100 rounded-sm">
+        <div className="p-1 text-gray-100 bg-gray-800 rounded-sm">
           <Icon size={18} />
         </div>
       )}
-      <div className="flex flex-col text-gray-900 transition-all duration-200">
+      <div className="flex flex-col text-gray-100">
         <span className="text-sm font-semibold">{item.title}</span>
-        <span className="text-xs text-gray-700">{item.description}</span>
+        <span className="text-xs text-gray-300">{item.description}</span>
       </div>
     </div>
   );
