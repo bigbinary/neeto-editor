@@ -15,9 +15,12 @@ export default class App extends Component {
         <div className="flex justify-end">
           <button
             className="px-3 py-1 text-sm font-medium border border-gray-200 rounded shadow-sm"
-            onClick={() => console.log(this.getHTML())}
+            onClick={() => {
+              // eslint-disable-next-line no-console
+              console.log(this.getHTML());
+            }}
           >
-            Print output
+            Print output to console
           </button>
         </div>
         <hr className="my-2 border-gray-100" />
