@@ -9,7 +9,12 @@ import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import "./EditorStyles.css";
 
 const Tiptap = (
-	{ hideBlockSelector = false, hideBubbleMenu = false, ...otherProps },
+	{
+		hideBlockSelector = false,
+		hideBubbleMenu = false,
+		formatterOptions = ["bold", "italic", "code", "highlight", "strike"],
+		...otherProps
+	},
 	ref
 ) => {
 	let extensions;
@@ -41,7 +46,9 @@ const Tiptap = (
 
 	return (
 		<>
-			{!hideBubbleMenu && <BubbleMenu editor={editor} />}
+			{!hideBubbleMenu && (
+				<BubbleMenu editor={editor} formatterOptions={formatterOptions} />
+			)}
 			<EditorContent editor={editor} />
 		</>
 	);

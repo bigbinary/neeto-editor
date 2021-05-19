@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import { HiCode } from "react-icons/hi";
 
-export default function index({ editor }) {
+export default function index({ editor, formatterOptions }) {
 	if (!editor) {
 		return null;
 	}
@@ -19,34 +19,41 @@ export default function index({ editor }) {
 			Icon: FaBold,
 			command: () => editor.chain().focus().toggleBold().run(),
 			active: editor.isActive("bold"),
+			optionName: "bold",
 		},
 		{
 			Icon: FaItalic,
 			command: () => editor.chain().focus().toggleItalic().run(),
 			active: editor.isActive("italic"),
+			optionName: "italic",
 		},
 		{
 			Icon: FaStrikethrough,
 			command: () => editor.chain().focus().toggleStrike().run(),
 			active: editor.isActive("strike"),
+			optionName: "strike",
 		},
 		{
 			Icon: FaCode,
 			command: () => editor.chain().focus().toggleCode().run(),
 			active: editor.isActive("code"),
+			optionName: "code",
 		},
 		{
 			Icon: FaHighlighter,
 			command: () => editor.chain().focus().toggleHighlight().run(),
 			active: editor.isActive("highlight"),
+			optionName: "highlight",
 		},
 	];
 	return (
 		<BubbleMenu editor={editor}>
 			<div className="relative flex items-center overflow-hidden bg-white border border-gray-200 rounded shadow-sm">
-				{options.map((option, index) => (
-					<Option {...option} key={index} />
-				))}
+				{options
+					.filter(({ optionName }) => formatterOptions.includes(optionName))
+					.map((option, index) => (
+						<Option {...option} key={index} />
+					))}
 			</div>
 		</BubbleMenu>
 	);

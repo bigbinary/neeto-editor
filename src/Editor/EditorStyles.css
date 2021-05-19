@@ -14,3 +14,9 @@
 .ProseMirror code::after {
 	content: "";
 }
+
+.ProseMirror mark {
+	background: #ff000020;
+	border-radius: 2px;
+	padding: 1px 4px;
+}
