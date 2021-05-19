@@ -10,49 +10,49 @@ import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import "./EditorStyles.css";
 
 const Tiptap = (
-	{
-		hideBlockSelector = false,
-		hideBubbleMenu = false,
-		formatterOptions = ["bold", "italic", "code", "highlight", "strike"],
-		...otherProps
-	},
-	ref
+  {
+    hideBlockSelector = false,
+    hideBubbleMenu = false,
+    formatterOptions = ["bold", "italic", "code", "highlight", "strike"],
+    ...otherProps
+  },
+  ref
 ) => {
-	let extensions;
-	if (otherProps.extensions) {
-		extensions = otherProps.extensions;
-	} else {
-		extensions = [StarterKit, Typography, Highlight, Placeholder, CodeBlock];
-	}
+  let extensions;
+  if (otherProps.extensions) {
+    extensions = otherProps.extensions;
+  } else {
+    extensions = [StarterKit, Typography, Highlight, Placeholder, CodeBlock];
+  }
 
-	if (!hideBlockSelector) {
-		extensions = [...extensions, SlashCommands];
-	}
+  if (!hideBlockSelector) {
+    extensions = [...extensions, SlashCommands];
+  }
 
-	const editor = useEditor({
-		extensions,
-		content: "Select me man!",
-		injectCSS: false,
-		editorProps: {
-			attributes: {
-				class: "prose focus:outline-none whitespace-pre-wrap",
-			},
-		},
-	});
+  const editor = useEditor({
+    extensions,
+    content: "Select me man!",
+    injectCSS: false,
+    editorProps: {
+      attributes: {
+        class: "prose focus:outline-none whitespace-pre-wrap",
+      },
+    },
+  });
 
-	/* Make editor object available to the parent */
-	React.useImperativeHandle(ref, () => ({
-		editor: editor,
-	}));
+  /* Make editor object available to the parent */
+  React.useImperativeHandle(ref, () => ({
+    editor: editor,
+  }));
 
-	return (
-		<>
-			{!hideBubbleMenu && (
-				<BubbleMenu editor={editor} formatterOptions={formatterOptions} />
-			)}
-			<EditorContent editor={editor} />
-		</>
-	);
+  return (
+    <>
+      {!hideBubbleMenu && (
+        <BubbleMenu editor={editor} formatterOptions={formatterOptions} />
+      )}
+      <EditorContent editor={editor} />
+    </>
+  );
 };
 
 export default React.forwardRef(Tiptap);
