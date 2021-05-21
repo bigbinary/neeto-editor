@@ -2,7 +2,7 @@ import Image from "@tiptap/extension-image";
 import { mergeAttributes } from "@tiptap/core";
 
 export default Image.extend({
-  name: "custom-image",
+  name: "image",
 
   addAttributes() {
     return {
@@ -23,8 +23,8 @@ export default Image.extend({
       setImage:
         (options) =>
         ({ tr, commands }) => {
-          if (tr.selection?.node?.type?.name == "custom-image") {
-            return commands.updateAttributes("custom-image", options);
+          if (tr.selection?.node?.type?.name == "image") {
+            return commands.updateAttributes("image", options);
           } else {
             return commands.insertContent({
               type: this.name,
@@ -36,8 +36,8 @@ export default Image.extend({
   },
 
   renderHTML({ node, HTMLAttributes }) {
-    HTMLAttributes.class = " custom-image-" + node.attrs.size;
-    HTMLAttributes.class += " custom-image-float-" + node.attrs.float;
+    HTMLAttributes.class = " image-" + node.attrs.size;
+    HTMLAttributes.class += " image-float-" + node.attrs.float;
 
     return [
       "img",
