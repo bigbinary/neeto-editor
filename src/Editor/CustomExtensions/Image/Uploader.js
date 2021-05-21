@@ -20,7 +20,6 @@ const ImageUpload = ({ editor }) => {
 
   uppy.on("upload-success", (file, response) => {
     const url = response.body.imageURL;
-    console.l;
     editor.chain().focus().setImage({ src: url }).run();
   });
 
