@@ -1,3 +1,4 @@
+import sharedState from "../../sharedState";
 import Commands from "./Commands";
 import CommandsList from "./CommandsList";
 import tippy from "tippy.js";
@@ -9,6 +10,7 @@ import {
   BsListOl,
   BsListUl,
   BsCodeSlash,
+  BsCardImage,
   BsBlockquoteLeft,
 } from "react-icons/bs";
 
@@ -80,6 +82,16 @@ export default Commands.configure({
           Icon: BsBlockquoteLeft,
           command: ({ editor, range }) => {
             editor.chain().focus().deleteRange(range).toggleBlockquote().run();
+          },
+        },
+        {
+          title: "Image",
+          description: "Add an image",
+          Icon: BsCardImage,
+          command: ({ editor, range }) => {
+            sharedState.showImageUpload = true;
+            sharedState.range = range;
+            editor.chain().focus().deleteRange(range).run();
           },
         },
         {
