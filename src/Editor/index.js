@@ -4,8 +4,12 @@ import StarterKit from "@tiptap/starter-kit";
 import Typography from "@tiptap/extension-typography";
 import Placeholder from "@tiptap/extension-placeholder";
 import Highlight from "@tiptap/extension-highlight";
+import Dropcursor from "@tiptap/extension-dropcursor";
+
+import ImageExtension from "./CustomExtensions/Image/ExtensionConfig";
 import SlashCommands from "./CustomExtensions/SlashCommands/ExtensionConfig";
 import CodeBlock from "./CustomExtensions/CodeBlock/ExtensionConfig";
+import ImageUploader from "./CustomExtensions/Image/Uploader";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import "./EditorStyles.css";
 
@@ -22,7 +26,15 @@ const Tiptap = (
   if (otherProps.extensions) {
     extensions = otherProps.extensions;
   } else {
-    extensions = [StarterKit, Typography, Highlight, Placeholder, CodeBlock];
+    extensions = [
+      StarterKit,
+      Typography,
+      Highlight,
+      Placeholder,
+      CodeBlock,
+      ImageExtension,
+      Dropcursor,
+    ];
   }
 
   if (!hideBlockSelector) {
@@ -51,6 +63,7 @@ const Tiptap = (
       {!hideBubbleMenu && (
         <BubbleMenu editor={editor} formatterOptions={formatterOptions} />
       )}
+      <ImageUploader editor={editor} />
       <EditorContent editor={editor} />
     </>
   );

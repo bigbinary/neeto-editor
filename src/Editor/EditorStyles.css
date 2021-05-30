@@ -30,6 +30,10 @@
   padding: 0px 4px;
 }
 
+.ProseMirror-selectednode {
+  outline: 3px solid #68cef8;
+}
+
 .ProseMirror > ul > li > p {
   margin-top: 0 !important;
   margin-bottom: 0.375rem !important;

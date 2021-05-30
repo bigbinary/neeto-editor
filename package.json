@@ -4,18 +4,24 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",
+    "@risingstack/react-easy-state": "^6.3.0",
     "@tailwindcss/typography": "^0.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.18",
     "@tiptap/extension-code-block-lowlight": "^2.0.0-beta.24",
+    "@tiptap/extension-dropcursor": "^2.0.0-beta.13",
     "@tiptap/extension-highlight": "^2.0.0-beta.13",
+    "@tiptap/extension-image": "^2.0.0-beta.13",
     "@tiptap/extension-placeholder": "^2.0.0-beta.18",
     "@tiptap/extension-typography": "^2.0.0-beta.11",
     "@tiptap/react": "^2.0.0-beta.37",
     "@tiptap/starter-kit": "^2.0.0-beta.57",
     "@tiptap/suggestion": "^2.0.0-beta.55",
+    "@uppy/core": "^1.18.1",
+    "@uppy/react": "^1.11.8",
+    "@uppy/xhr-upload": "^1.7.2",
     "classnames": "^2.3.1",
     "lowlight": "^1.20.0",
     "react": "^17.0.2",
@@ -53,5 +59,6 @@
     "autoprefixer": "^9",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-  }
+  },
+  "proxy": "http://localhost:3000"
 }
