@@ -89,7 +89,7 @@ const Item = ({ item, selectedIndex, index, selectItem }) => {
       className={classnames(
         "flex items-center w-full px-4 py-2 space-x-4  transition-all duration-100",
         {
-          "bg-gray-800 scale-102": index === selectedIndex,
+          "bg-gray-800": index === selectedIndex,
         }
       )}
       onClick={() => selectItem(index)}
