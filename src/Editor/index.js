@@ -11,6 +11,7 @@ import SlashCommands from "./CustomExtensions/SlashCommands/ExtensionConfig";
 import CodeBlock from "./CustomExtensions/CodeBlock/ExtensionConfig";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
+import Embeds from "./CustomExtensions/Embeds";
 import "./EditorStyles.css";
 
 const Tiptap = (
@@ -34,6 +35,7 @@ const Tiptap = (
       CodeBlock,
       ImageExtension,
       Dropcursor,
+      Embeds,
     ];
   }
 

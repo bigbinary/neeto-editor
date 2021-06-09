@@ -56,3 +56,13 @@
   font-weight: 500;
   font-family: "JetBrains Mono", monospace;
 }
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.video-wrapper iframe {
+  width: 560px;
+  height: 315px;
+}

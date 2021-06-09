@@ -11,6 +11,7 @@ import {
   BsListUl,
   BsCodeSlash,
   BsCardImage,
+  BsFillCameraVideoFill,
   BsBlockquoteLeft,
 } from "react-icons/bs";
 
@@ -92,6 +93,20 @@ export default Commands.configure({
             sharedState.showImageUpload = true;
             sharedState.range = range;
             editor.chain().focus().deleteRange(range).run();
+          },
+        },
+        {
+          title: "Youtube/Vimeo",
+          description: "Embed a video from major services",
+          Icon: BsFillCameraVideoFill,
+          command: ({ editor, range }) => {
+            const embedURL = prompt("Please enter Youtube/Vimeo embed URL");
+            editor
+              .chain()
+              .focus()
+              .deleteRange(range)
+              .setExternalVideo({ src: embedURL })
+              .run();
           },
         },
         {
