@@ -51,13 +51,10 @@ export default Node.create({
     return [
       "div",
       { class: "video-wrapper" },
-      [
-        "iframe",
-        mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
-        0,
-      ],
+      ["iframe", mergeAttributes(this.options.HTMLAttributes, HTMLAttributes)],
     ];
   },
+
   addCommands() {
     return {
       setExternalVideo:
