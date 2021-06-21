@@ -5,6 +5,7 @@ import Typography from "@tiptap/extension-typography";
 import Placeholder from "@tiptap/extension-placeholder";
 import Highlight from "@tiptap/extension-highlight";
 import Dropcursor from "@tiptap/extension-dropcursor";
+import Link from "@tiptap/extension-link";
 
 import ImageExtension from "./CustomExtensions/Image/ExtensionConfig";
 import SlashCommands from "./CustomExtensions/SlashCommands/ExtensionConfig";
@@ -18,7 +19,14 @@ const Tiptap = (
   {
     hideBlockSelector = false,
     hideBubbleMenu = false,
-    formatterOptions = ["bold", "italic", "code", "highlight", "strike"],
+    formatterOptions = [
+      "bold",
+      "italic",
+      "code",
+      "highlight",
+      "strike",
+      "link",
+    ],
     ...otherProps
   },
   ref
@@ -36,6 +44,7 @@ const Tiptap = (
       ImageExtension,
       Dropcursor,
       Embeds,
+      Link,
     ];
   }
 

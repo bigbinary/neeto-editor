@@ -14,6 +14,7 @@
     "@tiptap/extension-dropcursor": "^2.0.0-beta.13",
     "@tiptap/extension-highlight": "^2.0.0-beta.13",
     "@tiptap/extension-image": "^2.0.0-beta.13",
+    "@tiptap/extension-link": "^2.0.0-beta.18",
     "@tiptap/extension-placeholder": "^2.0.0-beta.18",
     "@tiptap/extension-typography": "^2.0.0-beta.11",
     "@tiptap/react": "^2.0.0-beta.37",

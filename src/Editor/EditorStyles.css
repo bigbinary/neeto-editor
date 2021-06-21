@@ -24,6 +24,10 @@
   content: "" !important;
 }
 
+.ProseMirror a {
+  pointer-events: none;
+}
+
 .ProseMirror mark {
   background: #00ffaa40;
   border-radius: 1px;
