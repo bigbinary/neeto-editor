@@ -7,6 +7,7 @@ import {
   FaStrikethrough,
   FaHighlighter,
   FaCode,
+  FaLink,
 } from "react-icons/fa";
 
 export default function index({ editor, formatterOptions }) {
@@ -31,6 +32,19 @@ export default function index({ editor, formatterOptions }) {
       command: () => editor.chain().focus().toggleStrike().run(),
       active: editor.isActive("strike"),
       optionName: "strike",
+    },
+    {
+      Icon: FaLink,
+      command: () => {
+        if (editor.isActive("link")) {
+          editor.chain().focus().unsetLink().run();
+        } else {
+          const url = window.prompt("Please enter your URL");
+          editor.chain().focus().setLink({ href: url }).run();
+        }
+      },
+      active: editor.isActive("link"),
+      optionName: "link",
     },
     {
       Icon: FaCode,
