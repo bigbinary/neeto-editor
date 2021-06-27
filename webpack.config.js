@@ -27,22 +27,14 @@ module.exports = {
       },
       {
         test: /\.(sass|css|scss)$/,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          "postcss-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
     ],
   },
   output: {
     path: __dirname,
     filename: "index.js",
-    library: "neetoui-editor",
+    library: "neeto-editor",
     libraryTarget: "umd",
   },
   plugins: [],
