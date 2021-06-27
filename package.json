@@ -1,7 +1,7 @@
 {
   "name": "neeto-editor-tiptap",
   "version": "0.1.0",
-  "main": "./editor.js",
+  "main": "./index.js",
   "keywords": [
     "ui",
     "rich-text-editor",

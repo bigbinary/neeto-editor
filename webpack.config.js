@@ -41,7 +41,7 @@ module.exports = {
   },
   output: {
     path: __dirname,
-    filename: "editor.js",
+    filename: "index.js",
     library: "neetoui-editor",
     libraryTarget: "umd",
   },
