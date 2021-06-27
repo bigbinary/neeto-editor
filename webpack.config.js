@@ -1,7 +1,5 @@
-const PeerDepsExternalsPlugin = require("peer-deps-externals-webpack-plugin");
-
 module.exports = {
-  entry: "./lib/index.js",
+  entry: "./src/Editor/index.js",
   module: {
     rules: [
       {
@@ -43,9 +41,9 @@ module.exports = {
   },
   output: {
     path: __dirname,
-    filename: "index.js",
+    filename: "editor.js",
     library: "neetoui-editor",
     libraryTarget: "umd",
   },
-  plugins: [new PeerDepsExternalsPlugin()],
+  plugins: [],
 };

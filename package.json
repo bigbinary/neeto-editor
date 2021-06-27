@@ -1,9 +1,16 @@
 {
   "name": "neeto-editor-tiptap",
   "version": "0.1.0",
-  "private": true,
+  "main": "editor.js",
+  "keywords": [
+    "ui",
+    "rich-text-editor",
+    "editor",
+    "react"
+  ],
+  "author": "BigBinary",
+  "license": "MIT",
   "dependencies": {
-    "@craco/craco": "^6.1.2",
     "@risingstack/react-easy-state": "^6.3.0",
     "@tailwindcss/typography": "^0.4.0",
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.18",
@@ -22,17 +29,40 @@
     "@uppy/xhr-upload": "^1.7.2",
     "classnames": "^2.3.1",
     "lowlight": "^1.20.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
+    "tippy.js": "^6.3.1",
+    "@babel/core": "^7.13.15",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^4.3.0",
+    "file-loader": "^6.1.1",
+    "html-loader": "^1.3.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^4.0.3",
+    "postcss-preset-env": "^6.7.0",
+    "sass": "^1.26.11",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9",
+    "@craco/craco": "^6.1.2",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "react-scripts": "4.0.3",
-    "tippy.js": "^6.3.1"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "webpack-build": "NODE_ENV=production webpack --mode production"
   },
   "eslintConfig": {
     "extends": [
@@ -52,10 +82,12 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "autoprefixer": "^9",
-    "postcss": "^7",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+  "proxy": "http://localhost:3000",
+  "bugs": {
+    "url": "https://github.com/bigbinary/neeto-editor-tiptap/issues"
   },
-  "proxy": "http://localhost:3000"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbinary/neeto-editor-tiptap.git"
+  }
 }
