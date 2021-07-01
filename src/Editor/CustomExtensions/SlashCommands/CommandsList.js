@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames";
-import "./CommandsList.css";
+import "./CommandsList.scss";
 
 class CommandsList extends React.Component {
   constructor(props) {
