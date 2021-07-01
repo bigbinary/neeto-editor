@@ -1,3 +1,5 @@
+const PeerDepsExternalsPlugin = require("peer-deps-externals-webpack-plugin");
+
 module.exports = {
   entry: "./src/Editor/index.js",
   module: {
@@ -37,5 +39,5 @@ module.exports = {
     library: "neeto-editor",
     libraryTarget: "umd",
   },
-  plugins: [],
+  plugins: [new PeerDepsExternalsPlugin()],
 };
