@@ -33,7 +33,7 @@ module.exports = {
   },
   output: {
     path: __dirname,
-    filename: "editor.js",
+    filename: "index.js",
     library: "neeto-editor",
     libraryTarget: "umd",
   },
