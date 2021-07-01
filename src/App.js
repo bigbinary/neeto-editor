@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Editor from "./Editor/index";
-import "./index.css";
+import "./index.scss";
 
 export default class App extends Component {
   ref = React.createRef();
