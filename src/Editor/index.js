@@ -65,7 +65,7 @@ const Tiptap = (
         class: "prose focus:outline-none whitespace-pre-wrap",
       },
     },
-    onUpdate: (editorState) => onChange(editorState.getHTML()),
+    onUpdate: ({ editor }) => onChange(editor.getHTML()),
   });
 
   /* Make editor object available to the parent */
