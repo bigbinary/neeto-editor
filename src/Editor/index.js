@@ -27,7 +27,8 @@ const Tiptap = (
       "strike",
       "link",
     ],
-    content,
+    initialValue,
+    onChange = () => {},
     ...otherProps
   },
   ref
@@ -56,7 +57,7 @@ const Tiptap = (
   const editor = useEditor({
     extensions,
     content:
-      content ||
+      initialValue ||
       "Select me to see the toolbar!<br />Press <code>cmd+b</code> for bold.<br/>Create a new line after this to see the custom blocks in action.",
     injectCSS: false,
     editorProps: {
@@ -64,6 +65,7 @@ const Tiptap = (
         class: "prose focus:outline-none whitespace-pre-wrap",
       },
     },
+    onUpdate: (editorState) => onChange(editorState.getHTML()),
   });
 
   /* Make editor object available to the parent */
