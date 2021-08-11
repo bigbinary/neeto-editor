@@ -27,6 +27,7 @@ const Tiptap = (
       "strike",
       "link",
     ],
+    className,
     initialValue = "",
     onChange = () => {},
     ...otherProps
@@ -60,7 +61,7 @@ const Tiptap = (
     injectCSS: false,
     editorProps: {
       attributes: {
-        class: "prose focus:outline-none whitespace-pre-wrap",
+        class: className || "prose focus:outline-none whitespace-pre-wrap",
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
