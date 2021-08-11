@@ -1,6 +1,6 @@
 {
   "name": "neeto-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "./index.js",
   "keywords": [
     "ui",
