@@ -27,7 +27,7 @@ const Tiptap = (
       "strike",
       "link",
     ],
-    initialValue,
+    initialValue = "",
     onChange = () => {},
     ...otherProps
   },
@@ -56,9 +56,7 @@ const Tiptap = (
 
   const editor = useEditor({
     extensions,
-    content:
-      initialValue ||
-      "Select me to see the toolbar!<br />Press <code>cmd+b</code> for bold.<br/>Create a new line after this to see the custom blocks in action.",
+    content: initialValue,
     injectCSS: false,
     editorProps: {
       attributes: {
