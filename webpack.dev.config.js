@@ -2,7 +2,10 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
-  devtool: "cheap-module-eval-source-map",
+  devtool:
+    process.env.NODE_ENV === "production"
+      ? "source-map"
+      : "cheap-module-eval-source-map",
   module: {
     rules: [
       {
