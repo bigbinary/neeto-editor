@@ -17,7 +17,7 @@ const ImageUpload = ({ editor }) => {
   uppy.use(XHRUpload, {
     endpoint: "/api/v1/direct_uploads",
     formData: true,
-    fieldName: "blob",
+    fieldName: "files",
   });
 
   uppy.on("upload-success", (file, response) => {
