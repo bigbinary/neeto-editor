@@ -61,6 +61,10 @@
   font-family: "JetBrains Mono", monospace;
 }
 
+.prose {
+	max-width: 100% !important;
+}
+
 .video-wrapper {
   display: flex;
   justify-content: center;
