@@ -1,6 +1,6 @@
 {
-  "name": "neeto-editor",
-  "version": "0.1.10",
+  "name": "@bigbinary/neetoui",
+  "version": "0.1.11",
   "main": "./index.js",
   "keywords": [
     "ui",
