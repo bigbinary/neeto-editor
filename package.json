@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neetoui",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "main": "./index.js",
   "description": "Neeto Editor is the library that drives the rich text experience in all Neeto products built at BigBinary",
   "keywords": [
