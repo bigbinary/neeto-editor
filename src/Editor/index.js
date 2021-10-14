@@ -28,6 +28,7 @@ const Tiptap = (
       "link",
     ],
     className,
+    uploadEndpoint,
     initialValue = "",
     onChange = () => {},
     ...otherProps
@@ -77,7 +78,7 @@ const Tiptap = (
       {!hideBubbleMenu && (
         <BubbleMenu editor={editor} formatterOptions={formatterOptions} />
       )}
-      <ImageUploader editor={editor} />
+      <ImageUploader editor={editor} imageUploadUrl={uploadEndpoint} />
       <EditorContent editor={editor} />
     </>
   );

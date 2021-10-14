@@ -7,7 +7,7 @@ import "@uppy/core/dist/style.css";
 import "@uppy/dashboard/dist/style.css";
 import sharedState from "../../sharedState";
 
-const ImageUpload = ({ editor }) => {
+const ImageUpload = ({ editor, imageUploadUrl }) => {
   const uppy = new Uppy({
     allowMultipleUploads: false,
     autoProceed: true,
@@ -15,7 +15,7 @@ const ImageUpload = ({ editor }) => {
   });
 
   uppy.use(XHRUpload, {
-    endpoint: "/api/v1/direct_uploads",
+    endpoint: imageUploadUrl || "/api/v1/direct_uploads",
     formData: true,
     fieldName: "blob",
   });
