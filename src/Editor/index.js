@@ -72,9 +72,12 @@ const Tiptap = (
       attributes: {
         class:
           className ||
-          classNames("prose focus:outline-none whitespace-pre-wrap", {
-            "slash-active": !hideSlashCommands,
-          }),
+          classNames(
+            "prose focus:outline-none whitespace-pre-wrap h-40 border",
+            {
+              "slash-active": !hideSlashCommands,
+            }
+          ),
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),

@@ -121,7 +121,7 @@ const FixedMenu = ({ editor }) => {
   };
 
   return (
-    <div className="flex items-center border">
+    <div className="flex items-center border-t border-l border-r">
       <TextColorOption
         color={editor.getAttributes("textStyle").color}
         onChange={(color) => editor.chain().focus().setColor(color).run()}
