@@ -1,0 +1,16 @@
+.neeto-editor-dropdown {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  .neeto-editor-dropdown__actions {
+    position: absolute;
+    background-color: white;
+    padding: 4px;
+    li {
+      padding: 4px;
+      &:hover {
+        background-color: whitesmoke;
+      }
+    }
+  }
+}
