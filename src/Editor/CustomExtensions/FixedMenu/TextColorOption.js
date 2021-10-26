@@ -6,7 +6,7 @@ const TextColorOption = ({ color = "#000", onChange }) => {
   return (
     <div
       onClick={() => colorInputRef.current?.click()}
-      className="flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-gray-800"
+      className="flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-gray-50 hover:shadow"
     >
       <span
         className="font-bold leading-none text-gray-400 border-b-2"

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 const useOutsideClick = ({ ref, onClick }) => {
   useEffect(() => {
     const listener = ({ target }) => {
-      console.log({ ref, onClick, contain: ref.current.contains(target) });
       if (!ref.current || !onClick) return;
       // Check if event target is inside reference node
       if (ref.current.contains(target)) return;

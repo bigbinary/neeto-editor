@@ -121,7 +121,7 @@ const FixedMenu = ({ editor }) => {
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center border">
       <TextColorOption
         color={editor.getAttributes("textStyle").color}
         onChange={(color) => editor.chain().focus().setColor(color).run()}
@@ -132,10 +132,13 @@ const FixedMenu = ({ editor }) => {
           disabled={disabled}
           onClick={command}
           key={optionName}
-          className={classnames("p-3 cursor-pointer hover:bg-gray-800", {
-            "text-gray-400": !active,
-            "text-black hover:text-white": active,
-          })}
+          className={classnames(
+            "p-3 cursor-pointer hover:bg-gray-50 hover:shadow",
+            {
+              "text-gray-400": !active,
+              "text-black": active,
+            }
+          )}
         >
           <Icon />
         </button>

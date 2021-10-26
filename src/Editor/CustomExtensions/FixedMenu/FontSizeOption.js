@@ -14,7 +14,7 @@ const FontSizeOption = ({ onChange }) => {
     <Dropdown
       Icon={() => <GoTextSize className="text-gray-400" />}
       options={options}
-      className="p-3 cursor-pointer hover:bg-gray-800"
+      className="p-3 cursor-pointer hover:bg-gray-50 hover:shadow"
       onChange={onChange}
     />
   );

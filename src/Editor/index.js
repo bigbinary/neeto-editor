@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Typography from "@tiptap/extension-typography";
@@ -69,7 +70,11 @@ const Tiptap = (
     injectCSS: false,
     editorProps: {
       attributes: {
-        class: className || "prose focus:outline-none whitespace-pre-wrap",
+        class:
+          className ||
+          classNames("prose focus:outline-none whitespace-pre-wrap", {
+            "slash-active": !hideSlashCommands,
+          }),
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
