@@ -99,10 +99,6 @@ const Variable = Node.create({
                 type: this.name,
                 attrs: attributes,
               },
-              // {
-              //   type: "text",
-              //   text: " ",
-              // },
             ])
             .run();
         },
