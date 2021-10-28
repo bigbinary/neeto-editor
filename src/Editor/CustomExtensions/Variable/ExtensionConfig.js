@@ -4,7 +4,7 @@ const Variable = Node.create({
   name: "variable",
 
   defaultOptions: {
-    HTMLAttributes: { class: "variable" },
+    HTMLAttributes: { class: "variable__text" },
     charOpen: "{{",
     charClose: "}}",
     renderLabel({ options, node }) {

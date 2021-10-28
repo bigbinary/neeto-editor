@@ -6,7 +6,7 @@ import Heading from "../Common/Heading";
 import HighlightText from "../Common/HighlightText";
 import ListItems from "../Common/ListItems";
 import Editor from "../Editor";
-import { EDITOR_FEATURES } from "./constants";
+import { EDITOR_FEATURES, SAMPLE_VARIABLES, STRINGS } from "./constants";
 
 const Example = () => {
   const ref = useRef();
@@ -23,7 +23,9 @@ const Example = () => {
           className="px-3 py-1 text-sm font-medium border border-gray-200 rounded shadow-sm"
           onClick={() => {
             // eslint-disable-next-line no-console
-            console.log(getHTML());
+            console.log({
+              html: getHTML(),
+            });
           }}
         >
           Print output to console
@@ -45,7 +47,7 @@ const Example = () => {
         menu controls to interact with the editor
       </Description>
       <div className="flex">
-        <CodeBlock>{"return (\n  ...\n  <Editor />\n  ..."}</CodeBlock>
+        <CodeBlock>{STRINGS.fixedMenuSampleCode}</CodeBlock>
         <SampleEditor />
       </div>
 
@@ -56,9 +58,7 @@ const Example = () => {
         Menu option that appears when user selects part of text.
       </Description>
       <div className="flex">
-        <CodeBlock>
-          {"return (\n  ...\n  <Editor menuType='bubble'/>\n  ..."}
-        </CodeBlock>
+        <CodeBlock>{STRINGS.bubbleMenuSampleCode}</CodeBlock>
         <SampleEditor menuType="bubble" />
       </div>
 
@@ -71,11 +71,27 @@ const Example = () => {
         prop.
       </Description>
       <div className="flex">
-        <CodeBlock>
-          {"return (\n  ...\n  <Editor hideSlashCommands />\n  ..."}
-        </CodeBlock>
+        <CodeBlock>{STRINGS.hideSlashCommandSampleCode}</CodeBlock>
         <SampleEditor hideSlashCommands />
       </div>
+
+      <Heading type="sub">Variable Support</Heading>
+      <Description>
+        Neeto Editor supports variable placement. Pass array of variables as{" "}
+        <HighlightText>variables</HighlightText> prop. Users can choose
+        variables from the <HighlightText>{"{}"}</HighlightText> menu with
+        single click and place inside the editor.
+      </Description>
+      <div className="flex">
+        <CodeBlock>{STRINGS.variableSampleCode}</CodeBlock>
+        <SampleEditor variables={SAMPLE_VARIABLES} />
+      </div>
+      <Description>
+        Variables that belong to a spefic category can be categorised by passing
+        a <HighlightText>category_key</HighlightText> and{" "}
+        <HighlightText>category_label</HighlightText> attributes. All other
+        variables are shown under 'Others'
+      </Description>
     </div>
   );
 };

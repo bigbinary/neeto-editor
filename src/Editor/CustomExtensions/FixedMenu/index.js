@@ -18,8 +18,9 @@ import TextColorOption from "./TextColorOption";
 import FontSizeOption from "./FontSizeOption";
 
 import sharedState from "../../sharedState";
+import Variables from "../Variable";
 
-const FixedMenu = ({ editor }) => {
+const FixedMenu = ({ editor, variables }) => {
   if (!editor) {
     return null;
   }
@@ -122,27 +123,32 @@ const FixedMenu = ({ editor }) => {
 
   return (
     <div className="flex items-center border-t border-l border-r">
-      <TextColorOption
-        color={editor.getAttributes("textStyle").color}
-        onChange={(color) => editor.chain().focus().setColor(color).run()}
-      />
-      <FontSizeOption onChange={handleTextSizeChange} />
-      {options.map(({ Icon, command, active, optionName, disabled }) => (
-        <button
-          disabled={disabled}
-          onClick={command}
-          key={optionName}
-          className={classnames(
-            "p-3 cursor-pointer hover:bg-gray-50 hover:shadow",
-            {
-              "text-gray-400": !active,
-              "text-black": active,
-            }
-          )}
-        >
-          <Icon />
-        </button>
-      ))}
+      <div className="flex">
+        <TextColorOption
+          color={editor.getAttributes("textStyle").color}
+          onChange={(color) => editor.chain().focus().setColor(color).run()}
+        />
+        <FontSizeOption onChange={handleTextSizeChange} />
+        {options.map(({ Icon, command, active, optionName, disabled }) => (
+          <button
+            disabled={disabled}
+            onClick={command}
+            key={optionName}
+            className={classnames(
+              "p-3 cursor-pointer hover:bg-gray-50 hover:shadow",
+              {
+                "text-gray-400": !active,
+                "text-black": active,
+              }
+            )}
+          >
+            <Icon />
+          </button>
+        ))}
+      </div>
+      <div className="flex justify-end flex-1">
+        <Variables editor={editor} variables={variables} />
+      </div>
     </div>
   );
 };
