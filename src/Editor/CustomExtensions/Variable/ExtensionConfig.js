@@ -88,10 +88,7 @@ const Variable = Node.create({
     return {
       setVariable:
         (attributes) =>
-        ({ chain, state, editor }) => {
-          const { selection } = state;
-          const range = { from: selection.$anchor.pos };
-
+        ({ chain }) => {
           chain()
             .focus()
             .insertContent([
