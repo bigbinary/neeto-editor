@@ -6,7 +6,12 @@ import Heading from "../Common/Heading";
 import HighlightText from "../Common/HighlightText";
 import ListItems from "../Common/ListItems";
 import Editor from "../Editor";
-import { EDITOR_FEATURES, SAMPLE_VARIABLES, STRINGS } from "./constants";
+import {
+  EDITOR_FEATURES,
+  SAMPLE_MENTIONS,
+  SAMPLE_VARIABLES,
+  STRINGS,
+} from "./constants";
 
 const Example = () => {
   const ref = useRef();
@@ -92,6 +97,21 @@ const Example = () => {
         <HighlightText>category_label</HighlightText> attributes. All other
         variables are shown under 'Others'
       </Description>
+
+      <Heading type="sub">Support for Mentions</Heading>
+      <Description>
+        Neeto Editor comes with inbuilt support for mentions marking. Editor
+        accepts a list of mention-able values as{" "}
+        <HighlightText>mentions</HighlightText> prop. The list could either be
+        items of shape{" "}
+        <HighlightText>{"{label: 'Mention 1', key: 'mention1'}"}</HighlightText>{" "}
+        or items can be just plain text like{" "}
+        <HighlightText>'Mention1'</HighlightText>.
+      </Description>
+      <div className="flex">
+        <CodeBlock>{STRINGS.mentionsSampleCode}</CodeBlock>
+        <SampleEditor mentions={SAMPLE_MENTIONS} />
+      </div>
     </div>
   );
 };

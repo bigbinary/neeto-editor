@@ -30,6 +30,11 @@ export const SAMPLE_VARIABLES = [
   },
 ];
 
+export const SAMPLE_MENTIONS = [
+  { label: "Oliver Smith", key: "oliver-smith" },
+  "Jaden Smith",
+];
+
 export const STRINGS = {
   fixedMenuSampleCode: `
   <Editor />`,
@@ -63,4 +68,11 @@ export const STRINGS = {
   ]
 
   <Editor variables={variables} />`,
+  mentionsSampleCode: `
+  const mentions = [
+    { label: "Oliver Smith", key: "oliver-smith" },
+    "Jaden Smith",
+  ]
+
+  <Editor mentions={mentions} />`,
 };

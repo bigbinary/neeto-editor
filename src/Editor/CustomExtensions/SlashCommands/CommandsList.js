@@ -19,7 +19,7 @@ class CommandsList extends React.Component {
     }
   }
 
-  onKeyDown({ event }) {
+  onKeyDown = ({ event }) => {
     if (event.key === "ArrowUp") {
       this.upHandler();
       return true;
@@ -36,34 +36,34 @@ class CommandsList extends React.Component {
     }
 
     return false;
-  }
+  };
 
-  upHandler() {
+  upHandler = () => {
     this.setState({
       selectedIndex:
         (this.state.selectedIndex + this.props.items.length - 1) %
         this.props.items.length,
     });
-  }
+  };
 
-  downHandler() {
+  downHandler = () => {
     this.setState({
       selectedIndex: (this.state.selectedIndex + 1) % this.props.items.length,
     });
-  }
+  };
 
-  enterHandler() {
+  enterHandler = () => {
     this.selectItem(this.state.selectedIndex);
-  }
+  };
 
-  selectItem(index) {
+  selectItem = (index) => {
     const item = this.props.items[index];
 
     if (item) {
       const { editor, range } = this.props;
       item.command({ editor, range });
     }
-  }
+  };
 
   render() {
     return (
@@ -89,7 +89,7 @@ const Item = ({ item, selectedIndex, index, selectItem }) => {
       className={classnames(
         "flex items-center w-full px-4 py-2 space-x-4  transition-all duration-100",
         {
-          "bg-gray-800": index === selectedIndex,
+          "bg-gray-600": index === selectedIndex,
         }
       )}
       onClick={() => selectItem(index)}

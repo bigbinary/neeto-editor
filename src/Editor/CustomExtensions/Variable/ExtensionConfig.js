@@ -3,15 +3,17 @@ import { Node, mergeAttributes } from "@tiptap/core";
 const Variable = Node.create({
   name: "variable",
 
-  defaultOptions: {
-    HTMLAttributes: { class: "variable__text" },
-    charOpen: "{{",
-    charClose: "}}",
-    renderLabel({ options, node }) {
-      return `${options.charOpen}${node.attrs.label || node.attrs.id}${
-        options.charClose
-      }`;
-    },
+  addOptions() {
+    return {
+      HTMLAttributes: { class: "variable__text" },
+      charOpen: "{{",
+      charClose: "}}",
+      renderLabel({ options, node }) {
+        return `${options.charOpen}${node.attrs.label || node.attrs.id}${
+          options.charClose
+        }`;
+      },
+    };
   },
 
   group: "inline",
@@ -20,7 +22,7 @@ const Variable = Node.create({
 
   selectable: false,
 
-  content: "text*",
+  atom: true,
 
   addAttributes() {
     return {
@@ -95,6 +97,10 @@ const Variable = Node.create({
               {
                 type: this.name,
                 attrs: attributes,
+              },
+              {
+                type: "text",
+                text: " ",
               },
             ])
             .run();

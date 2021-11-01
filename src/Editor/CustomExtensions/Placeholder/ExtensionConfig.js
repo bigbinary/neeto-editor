@@ -5,14 +5,16 @@ import { Plugin } from "prosemirror-state";
 export default Extension.create({
   name: "placeholder",
 
-  defaultOptions: {
-    excludeNodeTypes: ["variable"],
-    emptyEditorClass: "is-editor-empty",
-    emptyNodeClass: "is-empty",
-    placeholder: "Write something …",
-    showOnlyWhenEditable: true,
-    showOnlyCurrent: true,
-    includeChildren: false,
+  addOptions() {
+    return {
+      excludeNodeTypes: ["variable"],
+      emptyEditorClass: "is-editor-empty",
+      emptyNodeClass: "is-empty",
+      placeholder: "Write something …",
+      showOnlyWhenEditable: true,
+      showOnlyCurrent: true,
+      includeChildren: false,
+    };
   },
 
   addProseMirrorPlugins() {
