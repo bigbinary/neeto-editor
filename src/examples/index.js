@@ -106,7 +106,9 @@ const Example = () => {
         items of shape{" "}
         <HighlightText>{"{label: 'Mention 1', key: 'mention1'}"}</HighlightText>{" "}
         or items can be just plain text like{" "}
-        <HighlightText>'Mention1'</HighlightText>.
+        <HighlightText>'Mention1'</HighlightText>. The available mention
+        suggestions are shown in editor when user types a{" "}
+        <HighlightText>@</HighlightText> character within editor content.
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.mentionsSampleCode}</CodeBlock>
