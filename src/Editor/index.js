@@ -14,12 +14,11 @@ import SlashCommands from "./CustomExtensions/SlashCommands/ExtensionConfig";
 import CodeBlock from "./CustomExtensions/CodeBlock/ExtensionConfig";
 import Variable from "./CustomExtensions/Variable/ExtensionConfig";
 import Placeholder from "./CustomExtensions/Placeholder/ExtensionConfig";
+import Mention from "./CustomExtensions/Mention/ExtensionConfig";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import Embeds from "./CustomExtensions/Embeds";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
-
-import "./styles/EditorStyles.scss";
 
 const Tiptap = (
   {
@@ -39,6 +38,7 @@ const Tiptap = (
     onChange = () => {},
     menuType = "fixed",
     variables,
+    mentions,
     ...otherProps
   },
   ref
@@ -48,12 +48,12 @@ const Tiptap = (
     extensions = otherProps.extensions;
   } else {
     extensions = [
-      Variable,
       StarterKit,
       Typography,
       TextStyle,
       Highlight,
       CodeBlock,
+      Variable,
       ImageExtension,
       Dropcursor,
       Embeds,
@@ -65,6 +65,18 @@ const Tiptap = (
 
   if (!hideSlashCommands) {
     extensions = [...extensions, SlashCommands];
+  }
+
+  if (mentions && mentions.length) {
+    extensions = [
+      ...extensions,
+      Mention.configure({
+        suggestion: {
+          items: Mention.createSuggestionItems(mentions),
+          allow: () => true,
+        },
+      }),
+    ];
   }
 
   const editor = useEditor({

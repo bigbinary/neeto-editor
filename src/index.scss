@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./styles/abstracts/variables";
+
 @import "./styles/components/dropdown";
 @import "./styles/components/codeblock";
-@import "./styles/components/variable";
+@import "./styles/components/editor-variables";
+@import "./styles/components/command-list";
+@import "./styles/components/mention-list";
+@import "./styles/components/editor";
 
 body {
   margin: 0;

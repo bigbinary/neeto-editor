@@ -1,0 +1,27 @@
+$color-mention-text: rgba(0, 0, 0, 0.8);
+
+.items {
+  padding: 0.2rem;
+  position: relative;
+  border-radius: 0.5rem;
+  background: $color-solid-white;
+  color: $color-mention-text;
+  overflow: hidden;
+  font-size: 0.9rem;
+  box-shadow: $box-shadow;
+}
+
+.item {
+  display: block;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border-radius: 0.4rem;
+  border: 1px solid transparent;
+  padding: 0.2rem 0.4rem;
+
+  &.is-selected {
+    border-color: $color-solid-black;
+  }
+}
