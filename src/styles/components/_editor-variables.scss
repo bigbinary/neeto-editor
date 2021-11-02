@@ -1,3 +1,5 @@
+$color-steel-blue: steelblue;
+
 .variable-selection-popup {
   .items-container {
     min-width: 300px;
@@ -7,6 +9,6 @@
 .ProseMirror {
   .variable__text {
     font-weight: 500;
-    color: steelblue;
+    color: $color-steel-blue;
   }
 }

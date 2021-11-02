@@ -20,8 +20,6 @@ import Embeds from "./CustomExtensions/Embeds";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
 
-import "./styles/EditorStyles.scss";
-
 const Tiptap = (
   {
     hideSlashCommands = false,

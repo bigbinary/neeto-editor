@@ -1,8 +1,16 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/night-owl.min.css");
+
+$color-solid-black: #000000;
+$color-translucent-black: #00000010;
+$color-aqua-blue: #68cef8;
+$color-dark-green: #00ffaa40;
+
+$list-item-color: #1a141f;
+
 .ProseMirror code {
-  color: #000000;
+  color: $color-solid-black;
   padding: 2px 5px;
-  background: #00000010;
+  background: $color-translucent-black;
   border-radius: 4px;
   font-weight: 500;
   font-family: "JetBrains Mono", monospace;
@@ -29,13 +37,13 @@
 }
 
 .ProseMirror mark {
-  background: #00ffaa40;
+  background: $color-dark-green;
   border-radius: 1px;
   padding: 0px 4px;
 }
 
 .ProseMirror-selectednode {
-  outline: 3px solid #68cef8;
+  outline: 3px solid $color-aqua-blue;
 }
 
 .ProseMirror > ul > li > p {
@@ -49,11 +57,11 @@
 }
 
 .ProseMirror ol > li::before {
-  color: #1a141f;
+  color: $list-item-color;
 }
 
 .ProseMirror ul > li::before {
-  background-color: #1a141f;
+  background-color: $list-item-color;
 }
 
 .prose pre code {
@@ -62,7 +70,7 @@
 }
 
 .prose {
-	max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 .video-wrapper {

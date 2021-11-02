@@ -1,7 +1,5 @@
 import React from "react";
 
-import "../../styles/MentionList.scss";
-
 import { getItemKey, getItemLabel } from "./helpers";
 
 export class MentionList extends React.Component {
@@ -52,18 +50,14 @@ export class MentionList extends React.Component {
   };
 
   onKeyDown = ({ event }) => {
-    if (event.key === "ArrowUp") {
-      this.upHandler();
-      return true;
-    }
+    const keyDownHandlers = {
+      ArrowUp: this.upHandler,
+      ArrowDown: this.downHandler,
+      Enter: this.enterHandler,
+    };
 
-    if (event.key === "ArrowDown") {
-      this.downHandler();
-      return true;
-    }
-
-    if (event.key === "Enter") {
-      this.enterHandler();
+    if (keyDownHandlers.hasOwnProperty(event.key)) {
+      keyDownHandlers[event.key]();
       return true;
     }
 

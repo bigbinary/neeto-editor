@@ -1,8 +1,10 @@
 import Mention from "@tiptap/extension-mention";
-import { ReactRenderer } from "@tiptap/react";
 import tippy from "tippy.js";
-import { getItemLabel } from "./helpers";
+import { ReactRenderer } from "@tiptap/react";
+
 import { MentionList } from "./MentionList";
+
+import { getItemLabel } from "./helpers";
 
 const suggestion = {
   render: () => {
