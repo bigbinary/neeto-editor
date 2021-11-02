@@ -74,7 +74,7 @@ class CommandsList extends React.Component {
             item={item}
             index={index}
             selectedIndex={this.state.selectedIndex}
-            selectItem={this.selectItem}
+            selectItem={() => this.selectItem(index)}
           />
         ))}
       </div>
@@ -87,7 +87,7 @@ const Item = ({ item, selectedIndex, index, selectItem }) => {
   return (
     <div
       className={classnames(
-        "flex items-center w-full px-4 py-2 space-x-4  transition-all duration-100",
+        "flex items-center w-full px-4 py-2 space-x-4 transition-all duration-100 ease-in-out hover:bg-gray-700 cursor-pointer",
         {
           "bg-gray-800": index === selectedIndex,
         }
