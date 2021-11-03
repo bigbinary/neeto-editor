@@ -1,4 +1,12 @@
+import tippy from "tippy.js";
+import Suggestion from "@tiptap/suggestion";
 import { Node, mergeAttributes } from "@tiptap/core";
+import { ReactRenderer } from "@tiptap/react";
+import { PluginKey } from "prosemirror-state";
+
+import VariableSuggestion from "./VariableSuggestion";
+
+export const VariablePluginKey = new PluginKey("variables");
 
 const Variable = Node.create({
   name: "variable",
@@ -13,6 +21,7 @@ const Variable = Node.create({
           options.charClose
         }`;
       },
+      suggestion: {},
     };
   },
 
@@ -133,6 +142,67 @@ const Variable = Node.create({
         }),
     };
   },
+
+  addProseMirrorPlugins() {
+    return [
+      Suggestion({
+        editor: this.editor,
+        ...this.options.suggestion,
+      }),
+    ];
+  },
 });
 
-export default Variable;
+const suggestionConfig = {
+  char: "{{",
+  startOfLine: false,
+  pluginKey: VariablePluginKey,
+  command: ({ editor, range, props }) => {
+    editor.chain().focus().deleteRange(range).setVariable(props).run();
+  },
+
+  items: () => [],
+  render: () => {
+    let reactRenderer;
+    let popup;
+
+    return {
+      onStart: (props) => {
+        reactRenderer = new ReactRenderer(VariableSuggestion, {
+          props,
+          editor: props.editor,
+        });
+
+        popup = tippy("body", {
+          getReferenceClientRect: props.clientRect,
+          appendTo: () => document.body,
+          content: reactRenderer.element,
+          showOnCreate: true,
+          interactive: true,
+          trigger: "manual",
+          placement: "bottom-start",
+        });
+      },
+      onUpdate(props) {
+        reactRenderer.updateProps(props);
+
+        popup[0].setProps({
+          getReferenceClientRect: props.clientRect,
+        });
+      },
+
+      onExit() {
+        popup[0].destroy();
+        reactRenderer.destroy();
+      },
+    };
+  },
+};
+
+export default {
+  configure: ({ suggestion = {} }) => {
+    return Variable.configure({
+      suggestion: { ...suggestionConfig, ...suggestion },
+    });
+  },
+};

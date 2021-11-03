@@ -83,9 +83,10 @@ const Example = () => {
       <Heading type="sub">Variable Support</Heading>
       <Description>
         Neeto Editor supports variable placement. Pass array of variables as{" "}
-        <HighlightText>variables</HighlightText> prop. Users can choose
-        variables from the <HighlightText>{"{}"}</HighlightText> menu with
-        single click and place inside the editor.
+        <HighlightText>variables</HighlightText> prop. Users can choose from
+        available variables from the <HighlightText>{"{}"}</HighlightText> menu.
+        Alternatively, the available variable options can be displayed by typing{" "}
+        <HighlightText>{"{{"}</HighlightText> within the editor.
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.variableSampleCode}</CodeBlock>
