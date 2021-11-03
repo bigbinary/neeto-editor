@@ -150,8 +150,9 @@ export default Extension.create({
                   .run();
               },
             },
-          ].slice(0, 10);
+          ];
         },
+
         render: () => {
           let reactRenderer;
           let popup;

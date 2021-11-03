@@ -53,7 +53,6 @@ const Tiptap = (
       TextStyle,
       Highlight,
       CodeBlock,
-      Variable,
       ImageExtension,
       Dropcursor,
       Embeds,
@@ -76,6 +75,13 @@ const Tiptap = (
           allow: () => true,
         },
       }),
+    ];
+  }
+
+  if (variables && variables.length) {
+    extensions = [
+      ...extensions,
+      Variable.configure({ suggestion: { items: () => variables } }),
     ];
   }
 
