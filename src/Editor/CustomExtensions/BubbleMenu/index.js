@@ -2,13 +2,13 @@ import React from "react";
 import classnames from "classnames";
 import { BubbleMenu } from "@tiptap/react";
 import {
-  FaBold,
-  FaItalic,
-  FaStrikethrough,
-  FaHighlighter,
-  FaCode,
-  FaLink,
-} from "react-icons/fa";
+  TextBold,
+  TextItalic,
+  TextCross,
+  Link,
+  Code,
+  Highlight,
+} from "@bigbinary/neeto-icons";
 
 export default function index({ editor, formatterOptions }) {
   if (!editor) {
@@ -16,25 +16,25 @@ export default function index({ editor, formatterOptions }) {
   }
   const options = [
     {
-      Icon: FaBold,
+      Icon: TextBold,
       command: () => editor.chain().focus().toggleBold().run(),
       active: editor.isActive("bold"),
       optionName: "bold",
     },
     {
-      Icon: FaItalic,
+      Icon: TextItalic,
       command: () => editor.chain().focus().toggleItalic().run(),
       active: editor.isActive("italic"),
       optionName: "italic",
     },
     {
-      Icon: FaStrikethrough,
+      Icon: TextCross,
       command: () => editor.chain().focus().toggleStrike().run(),
       active: editor.isActive("strike"),
       optionName: "strike",
     },
     {
-      Icon: FaLink,
+      Icon: Link,
       command: () => {
         if (editor.isActive("link")) {
           editor.chain().focus().unsetLink().run();
@@ -47,13 +47,13 @@ export default function index({ editor, formatterOptions }) {
       optionName: "link",
     },
     {
-      Icon: FaCode,
+      Icon: Code,
       command: () => editor.chain().focus().toggleCode().run(),
       active: editor.isActive("code"),
       optionName: "code",
     },
     {
-      Icon: FaHighlighter,
+      Icon: Highlight,
       command: () => editor.chain().focus().toggleHighlight().run(),
       active: editor.isActive("highlight"),
       optionName: "highlight",
@@ -74,12 +74,12 @@ export default function index({ editor, formatterOptions }) {
 
 const Option = ({ Icon, command, active, iconSize }) => (
   <div
-    className={classnames("p-3 cursor-pointer hover:bg-gray-800", {
+    className={classnames("p-3 cursor-pointer hover:bg-gray-700", {
       "text-gray-400": !active,
       "text-white": active,
     })}
     onClick={command}
   >
-    <Icon size={iconSize || 15} />
+    <Icon size={iconSize || 24} />
   </div>
 );
