@@ -1,8 +1,30 @@
+// Colors
 $color-steel-blue: steelblue;
 $color-solid-white: #fff;
 $color-solid-black: #000000;
 $color-translucent-black: #00000010;
 $color-aqua-blue: #68cef8;
 $color-dark-green: #00ffaa40;
+$neeto-ui-gray-600: #68737d;
+$neeto-ui-gray-300: #d8dcde;
+// states
+$neeto-ui-success: #00ba88;
+$neeto-ui-warning: #f3cd82;
 
+// Font Sizes
+$neeto-ui-text-xxs: 10px;
+$neeto-ui-text-xs: 12px;
+$neeto-ui-text-lg: 18px;
+$neeto-ui-text-2xl: 24px;
+
+// Shadow
 $box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0px 10px 20px rgba(0, 0, 0, 0.1);
+
+// Border Radius
+$neeto-ui-rounded-sm: 2px;
+$neeto-ui-rounded-full: 999px;
+
+// Font Weights
+$neeto-ui-font-semibold: 600;
+
+

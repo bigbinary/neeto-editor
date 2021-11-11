@@ -17,8 +17,15 @@ export const parseVariables = (variableArr = []) => {
       });
     } else uncategorized.push(variable);
   });
+
+  /* If there are other categorised variables already present, group all uncategorized variables under title 'Others'.
+   otherwise, if all available variables are uncategorised, do not render 'Others' title */
+
   if (uncategorized.length) {
-    groupedVariables.push({ label: "Others", variables: uncategorized });
+    groupedVariables.push({
+      label: groupedVariables.length ? "Others" : null,
+      variables: uncategorized,
+    });
   }
   return groupedVariables;
 };

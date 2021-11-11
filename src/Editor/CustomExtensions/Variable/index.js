@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
 
 import VariableList from "./VariableList";
+import { HashtagFilled } from "../../../Common/Icons";
 
 import useOutsideClick from "../../../hooks/useOutsideClick";
+import { MENU_ICON_SIZE } from "../FixedMenu/constants";
 
 const Variables = ({ editor, variables }) => {
   const containerRef = useRef();
@@ -26,7 +28,7 @@ const Variables = ({ editor, variables }) => {
       className="relative p-3 cursor-pointer hover:bg-gray-50 hover:shadow variable-selection-popup"
       onClick={() => setIsOpen((isOpen) => !isOpen)}
     >
-      <span className="text-gray-400">{"{}"}</span>
+      <HashtagFilled size={MENU_ICON_SIZE} />
       {isOpen ? (
         <div className="absolute right-2 items-container">
           <VariableList

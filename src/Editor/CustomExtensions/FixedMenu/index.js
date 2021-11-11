@@ -1,22 +1,20 @@
 import React from "react";
-import classnames from "classnames";
 import {
-  FaBold,
-  FaItalic,
-  FaStrikethrough,
-  FaQuoteRight,
-  FaCode,
-  FaLink,
-  FaListUl,
-  FaListOl,
-  FaUndo,
-  FaRedo,
-  FaFileImage,
-} from "react-icons/fa";
+  TextBold,
+  TextItalic,
+  TextCross,
+  Link,
+  Code,
+  ListDot,
+  ListNumber,
+  Image,
+} from "@bigbinary/neeto-icons";
 
+import { QuoteLarge, Undo, Redo } from "../../../Common/Icons";
 import TextColorOption from "./TextColorOption";
 import FontSizeOption from "./FontSizeOption";
 
+import { ICON_COLOR_ACTIVE, ICON_COLOR_INACTIVE } from "./constants";
 import sharedState from "../../sharedState";
 import Variables from "../Variable";
 
@@ -27,25 +25,25 @@ const FixedMenu = ({ editor, variables }) => {
 
   const options = [
     {
-      Icon: FaBold,
+      Icon: TextBold,
       command: () => editor.chain().focus().toggleBold().run(),
       active: editor.isActive("bold"),
       optionName: "bold",
     },
     {
-      Icon: FaItalic,
+      Icon: TextItalic,
       command: () => editor.chain().focus().toggleItalic().run(),
       active: editor.isActive("italic"),
       optionName: "italic",
     },
     {
-      Icon: FaStrikethrough,
+      Icon: TextCross,
       command: () => editor.chain().focus().toggleStrike().run(),
       active: editor.isActive("strike"),
       optionName: "strike",
     },
     {
-      Icon: FaLink,
+      Icon: Link,
       command: () => {
         if (editor.isActive("link")) {
           editor.chain().focus().unsetLink().run();
@@ -58,31 +56,31 @@ const FixedMenu = ({ editor, variables }) => {
       optionName: "link",
     },
     {
-      Icon: FaQuoteRight,
+      Icon: QuoteLarge,
       command: () => editor.chain().focus().toggleBlockquote().run(),
       active: editor.isActive("blockquote"),
       optionName: "block-quote",
     },
     {
-      Icon: FaCode,
+      Icon: Code,
       command: () => editor.chain().focus().toggleCode().run(),
       active: editor.isActive("code"),
       optionName: "code",
     },
     {
-      Icon: FaListUl,
+      Icon: ListDot,
       command: () => editor.chain().focus().toggleBulletList().run(),
       active: editor.isActive("bulletList"),
       optionName: "bullet-list",
     },
     {
-      Icon: FaListOl,
+      Icon: ListNumber,
       command: () => editor.chain().focus().toggleOrderedList().run(),
       active: editor.isActive("orderedList"),
       optionName: "ordered-list",
     },
     {
-      Icon: FaFileImage,
+      Icon: Image,
       command: ({ editor, range }) => {
         sharedState.showImageUpload = true;
         sharedState.range = range;
@@ -91,16 +89,18 @@ const FixedMenu = ({ editor, variables }) => {
       optionName: "image-upload",
     },
     {
-      Icon: FaUndo,
+      Icon: Undo,
       command: () => editor.chain().focus().undo().run(),
       optionName: "undo",
       disabled: !editor.can().undo(),
+      active: editor.can().undo(),
     },
     {
-      Icon: FaRedo,
+      Icon: Redo,
       command: () => editor.chain().focus().redo().run(),
       optionName: "redo",
       disabled: !editor.can().redo(),
+      active: editor.can().redo(),
     },
   ];
 
@@ -134,15 +134,9 @@ const FixedMenu = ({ editor, variables }) => {
             disabled={disabled}
             onClick={command}
             key={optionName}
-            className={classnames(
-              "p-3 cursor-pointer hover:bg-gray-50 hover:shadow",
-              {
-                "text-gray-400": !active,
-                "text-black": active,
-              }
-            )}
+            className="p-3 cursor-pointer hover:bg-gray-50 hover:shadow"
           >
-            <Icon />
+            <Icon color={active ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE} />
           </button>
         ))}
       </div>

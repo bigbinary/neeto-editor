@@ -1,7 +1,8 @@
 import React from "react";
-import { GoTextSize } from "react-icons/go";
 
+import { ICON_COLOR_ACTIVE, MENU_ICON_SIZE } from "./constants";
 import Dropdown from "../../../Common/Dropdown";
+import { TextSize } from "../../../Common/Icons";
 
 const FontSizeOption = ({ onChange }) => {
   const options = [
@@ -12,7 +13,7 @@ const FontSizeOption = ({ onChange }) => {
 
   return (
     <Dropdown
-      Icon={() => <GoTextSize className="text-gray-400" />}
+      Icon={() => <TextSize size={MENU_ICON_SIZE} color={ICON_COLOR_ACTIVE} />}
       options={options}
       className="p-3 cursor-pointer hover:bg-gray-50 hover:shadow"
       onChange={onChange}

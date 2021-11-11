@@ -39,6 +39,7 @@ const Tiptap = (
     menuType = "fixed",
     variables,
     mentions,
+    showImageInMention = false,
     ...otherProps
   },
   ref
@@ -71,7 +72,9 @@ const Tiptap = (
       ...extensions,
       Mention.configure({
         suggestion: {
-          items: Mention.createSuggestionItems(mentions),
+          items: Mention.createSuggestionItems(mentions, {
+            showImage: showImageInMention,
+          }),
           allow: () => true,
         },
       }),
@@ -93,12 +96,9 @@ const Tiptap = (
       attributes: {
         class:
           className ||
-          classNames(
-            "prose focus:outline-none whitespace-pre-wrap h-40 border",
-            {
-              "slash-active": !hideSlashCommands,
-            }
-          ),
+          classNames("prose focus:outline-none whitespace-pre-wrap border", {
+            "slash-active": !hideSlashCommands,
+          }),
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),

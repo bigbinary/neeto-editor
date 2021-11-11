@@ -1,19 +1,21 @@
 import React, { useRef } from "react";
 
+import { TextColor } from "../../../Common/Icons";
+import { ICON_COLOR_ACTIVE, MENU_ICON_SIZE } from "./constants";
+
 const TextColorOption = ({ color = "#000", onChange }) => {
   const colorInputRef = useRef();
 
   return (
     <div
       onClick={() => colorInputRef.current?.click()}
-      className="flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-gray-50 hover:shadow"
+      className="flex items-center justify-center p-3 cursor-pointer hover:bg-gray-50 hover:shadow"
     >
-      <span
-        className="font-bold leading-none text-gray-400 border-b-2"
-        style={{ borderColor: color }}
-      >
-        A
-      </span>
+      <TextColor
+        size={MENU_ICON_SIZE}
+        underlineColor={color}
+        color={ICON_COLOR_ACTIVE}
+      />
       <input
         ref={colorInputRef}
         type="color"

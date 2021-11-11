@@ -12,6 +12,7 @@
   "author": "BigBinary",
   "license": "MIT",
   "dependencies": {
+    "@bigbinary/neeto-icons": "^1.8.2",
     "@risingstack/react-easy-state": "^6.3.0",
     "@tailwindcss/typography": "^0.4.0",
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.18",

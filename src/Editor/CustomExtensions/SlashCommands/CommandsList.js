@@ -88,7 +88,7 @@ const Item = ({ item, selectedIndex, index, selectItem }) => {
       className={classnames(
         "flex items-center w-full px-4 py-2 space-x-4 transition-all duration-100 ease-in-out hover:bg-gray-700 cursor-pointer",
         {
-          "bg-gray-600": index === selectedIndex,
+          "bg-gray-700": index === selectedIndex,
         }
       )}
       onClick={() => selectItem(index)}

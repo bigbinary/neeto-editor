@@ -8,8 +8,8 @@
 @import "./styles/components/codeblock";
 @import "./styles/components/editor-variables";
 @import "./styles/components/command-list";
-@import "./styles/components/mention-list";
 @import "./styles/components/editor";
+@import './styles/components/avatar';
 
 body {
   margin: 0;
@@ -27,6 +27,9 @@ code {
 
 .ProseMirror {
   padding: 4px;
+  min-height: 150px;
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 .ProseMirror:focus {

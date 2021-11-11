@@ -1,6 +1,7 @@
 import React from "react";
+import classNames from "classnames";
 
-import { getItemKey, getItemLabel } from "./helpers";
+import Avatar from "../../../Common/Avatar";
 
 export class MentionList extends React.Component {
   state = { selectedIndex: 0 };
@@ -68,15 +69,25 @@ export class MentionList extends React.Component {
     const { selectedIndex } = this.state;
     const { items } = this.props;
 
+    const containerClassName =
+      "relative p-2 overflow-hidden bg-gray-900 rounded shadow";
+    const itemClassName =
+      "flex items-center w-full px-4 py-2 transition-all duration-100 ease-in-out hover:bg-gray-700 cursor-pointer text-xs text-white rounded";
+
     return (
-      <div className="items">
-        {items.map((item, index) => (
+      <div className={containerClassName}>
+        {items.map(({ label, imageUrl, showImage }, index) => (
           <button
-            className={`item ${index === selectedIndex ? "is-selected" : ""}`}
-            key={index}
+            className={classNames(itemClassName, {
+              "bg-gray-700": index === selectedIndex,
+            })}
+            key={label}
             onClick={() => this.selectItem(index)}
           >
-            {getItemLabel(item)}
+            {showImage ? (
+              <Avatar user={{ name: label, imageUrl }} className="mr-2" />
+            ) : null}
+            <span>{label}</span>
           </button>
         ))}
       </div>
