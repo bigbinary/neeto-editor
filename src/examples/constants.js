@@ -83,7 +83,7 @@ export const STRINGS = {
     "Jaden Smith",
   ]
 
-  <Editor mentions={mentions} />`,
+  <Editor mentions={mentions} showImageInMention />`,
 
   placeholderSampleCode: `
   <Editor placeholder="Input text here" />`,
