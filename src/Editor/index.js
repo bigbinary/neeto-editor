@@ -46,7 +46,7 @@ const Tiptap = (
 
   const editor = useEditor({
     extensions: customExtensions,
-    content: forceTitle ? "<h1></h1>" + initialValue : initialValue,
+    content: initialValue,
     injectCSS: false,
     editorProps: {
       attributes: {

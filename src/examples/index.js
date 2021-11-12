@@ -157,6 +157,7 @@ const Example = () => {
       <div className="flex">
         <CodeBlock>{STRINGS.forceTitleSampleCode}</CodeBlock>
         <SampleEditor
+          initialValue="Title Text"
           placeholder={{ heading: "Input title here" }}
           forceTitle
         />

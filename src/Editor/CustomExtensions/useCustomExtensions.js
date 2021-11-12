@@ -33,11 +33,8 @@ export default function useCustomExtensions({
     customExtensions = [...extensions];
   } else {
     customExtensions = [
-      Document.configure({
-        content: forceTitle ? "heading block*" : "block+",
-      }),
       StarterKit.configure({
-        document: false,
+        document: !forceTitle,
       }),
       Typography,
       TextStyle,
@@ -52,6 +49,14 @@ export default function useCustomExtensions({
         placeholder: placeholderGenerator(placeholder),
       }),
     ];
+  }
+
+  if (forceTitle) {
+    customExtensions.unshift(
+      Document.extend({
+        content: "heading block*",
+      })
+    );
   }
 
   if (!hideSlashCommands) {
