@@ -18,7 +18,7 @@ export class MentionList extends React.Component {
     const item = items[index];
 
     if (item) {
-      command({ label: getItemLabel(item), id: getItemKey(item) });
+      command({ label: item.label, id: item.key });
     }
   };
 

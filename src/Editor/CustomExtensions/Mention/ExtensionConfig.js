@@ -4,7 +4,6 @@ import { ReactRenderer } from "@tiptap/react";
 
 import { MentionList } from "./MentionList";
 
-
 const suggestion = {
   render: () => {
     let reactRenderer;
@@ -62,6 +61,7 @@ export default {
       suggestion: { ...suggestion, ...suggestionConfig },
     });
   },
+
   createSuggestionItems: (
     items = [],
     { limit = 5, showImage = false } = {}
