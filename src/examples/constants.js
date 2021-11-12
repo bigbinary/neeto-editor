@@ -31,7 +31,11 @@ export const SAMPLE_VARIABLES = [
 ];
 
 export const SAMPLE_MENTIONS = [
-  { label: "Oliver Smith", key: "oliver-smith" },
+  {
+    label: "Oliver Smith",
+    key: "oliver-smith",
+    imageUrl: "https://via.placeholder.com/150/0000FF/808080",
+  },
   "Jaden Smith",
 ];
 
@@ -71,7 +75,11 @@ export const STRINGS = {
 
   mentionsSampleCode: `
   const mentions = [
-    { label: "Oliver Smith", key: "oliver-smith" },
+    { 
+      label: "Oliver Smith",
+      key: "oliver-smith",
+      imageUrl: "https://via.placeholder.com/150/0000FF/808080"
+    },
     "Jaden Smith",
   ]
 

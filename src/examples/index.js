@@ -105,7 +105,11 @@ const Example = () => {
         accepts a list of mention-able values as{" "}
         <HighlightText>mentions</HighlightText> prop. The list could either be
         items of shape{" "}
-        <HighlightText>{"{label: 'Mention 1', key: 'mention1'}"}</HighlightText>{" "}
+        <HighlightText>
+          {
+            "{label: 'Mention 1', key: 'mention1', imageUrl: 'optional_image_url.jpg'}"
+          }
+        </HighlightText>{" "}
         or items can be just plain text like{" "}
         <HighlightText>'Mention1'</HighlightText>. The available mention
         suggestions are shown in editor when user types a{" "}
@@ -113,7 +117,7 @@ const Example = () => {
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.mentionsSampleCode}</CodeBlock>
-        <SampleEditor mentions={SAMPLE_MENTIONS} />
+        <SampleEditor mentions={SAMPLE_MENTIONS} showImageInMention />
       </div>
 
       <Heading type="sub">Support for placeholder</Heading>
