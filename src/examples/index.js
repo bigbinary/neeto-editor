@@ -115,6 +115,52 @@ const Example = () => {
         <CodeBlock>{STRINGS.mentionsSampleCode}</CodeBlock>
         <SampleEditor mentions={SAMPLE_MENTIONS} />
       </div>
+
+      <Heading type="sub">Support for placeholder</Heading>
+      <Description>
+        The editor can have placeholder texts for different nodes. These value
+        is accepted as <HighlightText>placeholder</HighlightText> prop.
+        <ul className="list-disc list-inside">
+          <li>
+            Value as object: Each type of node can have corresponding
+            placeholder, in which case the value should be of type{" "}
+            <HighlightText>{"{node_name: placeholder_text}"}</HighlightText>.
+          </li>
+          <li>
+            Value as string: When plain string is provided as value for
+            placeholder, all the nodes will be using the same placeholder text
+            irrespective of their type in which case the value should be of type{" "}
+          </li>
+          <li>
+            Value as function: the <HighlightText>placeholder</HighlightText>{" "}
+            prop can also accepts a function. For each node in the document, the
+            function receives node as argument and return the corresponding
+            placeholder string. eg:{" "}
+            <HighlightText>{"({node}) => placeholder_text"}</HighlightText>
+          </li>
+        </ul>
+      </Description>
+
+      <div className="flex">
+        <CodeBlock>{STRINGS.placeholderSampleCode}</CodeBlock>
+        <SampleEditor placeholder="Input text here" />
+      </div>
+
+      <Heading type="sub">Force a title</Heading>
+      <Description>
+        Neeto editor can be configured to force user to include a document title
+        . This can be achieved by providing a truthy value to the{" "}
+        <HighlightText>forceTitle</HighlightText> prop. Along with that, inorder
+        to show the placeholder text on the title, the{" "}
+        <HighlightText>placeholder</HighlightText> prop should also be provided.
+      </Description>
+      <div className="flex">
+        <CodeBlock>{STRINGS.forceTitleSampleCode}</CodeBlock>
+        <SampleEditor
+          placeholder={{ heading: "Input title here" }}
+          forceTitle
+        />
+      </div>
     </div>
   );
 };
@@ -126,7 +172,7 @@ const SampleEditor = (props) => {
 
   return (
     <div className="flex-1 mx-3 my-2 h-60">
-      <Editor ref={ref} {...props} initialValue="Sample Text" />
+      <Editor ref={ref} initialValue="Edit Text Content" {...props} />
     </div>
   );
 };

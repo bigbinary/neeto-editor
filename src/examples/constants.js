@@ -68,6 +68,7 @@ export const STRINGS = {
   ]
 
   <Editor variables={variables} />`,
+
   mentionsSampleCode: `
   const mentions = [
     { label: "Oliver Smith", key: "oliver-smith" },
@@ -75,4 +76,12 @@ export const STRINGS = {
   ]
 
   <Editor mentions={mentions} />`,
+
+  placeholderSampleCode: `
+  <Editor placeholder="Input text here" />`,
+
+  forceTitleSampleCode: `
+  const placeholder = { header: 'Input title here' };
+ 
+  <Editor placeholder={placeholder} forceTitle />`,
 };
