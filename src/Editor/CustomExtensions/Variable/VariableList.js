@@ -10,7 +10,7 @@ const VariableList = ({ onClickVariable, variables }) => {
   }
 
   return (
-    <div className="p-3 bg-white shadow-md">
+    <div className="p-3 bg-white">
       {parsedVariables.map(({ label, variables }) => (
         <VariableCategory
           key={label}
