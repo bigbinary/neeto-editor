@@ -9,6 +9,8 @@ import {
   Code,
   Highlight,
 } from "@bigbinary/neeto-icons";
+import { roundArrow } from "tippy.js";
+import "tippy.js/dist/svg-arrow.css";
 
 export default function index({ editor, formatterOptions }) {
   if (!editor) {
@@ -60,21 +62,23 @@ export default function index({ editor, formatterOptions }) {
     },
   ];
   return (
-    <BubbleMenu editor={editor}>
-      <div className="relative flex items-center overflow-hidden bg-gray-900 rounded shadow">
-        {options
-          .filter(({ optionName }) => formatterOptions.includes(optionName))
-          .map((option) => (
-            <Option {...option} key={option.optionName} />
-          ))}
-      </div>
+    <BubbleMenu
+      editor={editor}
+      tippyOptions={{ arrow: roundArrow }}
+      className="bg-gray-900 rounded shadow"
+    >
+      {options
+        .filter(({ optionName }) => formatterOptions.includes(optionName))
+        .map((option) => (
+          <Option {...option} key={option.optionName} />
+        ))}
     </BubbleMenu>
   );
 }
 
 const Option = ({ Icon, command, active, iconSize }) => (
   <div
-    className={classnames("p-3 cursor-pointer hover:bg-gray-700", {
+    className={classnames("p-3 cursor-pointer hover:bg-gray-700 inline-block", {
       "text-gray-400": !active,
       "text-white": active,
     })}

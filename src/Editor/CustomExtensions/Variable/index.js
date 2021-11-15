@@ -25,7 +25,7 @@ const Variables = ({ editor, variables }) => {
   return (
     <div
       ref={containerRef}
-      className="relative p-3 cursor-pointer hover:bg-gray-50 hover:shadow variable-selection-popup"
+      className="relative p-3 cursor-pointer editor-fixed-menu--item variable-selection-popup"
       onClick={() => setIsOpen((isOpen) => !isOpen)}
     >
       <HashtagFilled size={MENU_ICON_SIZE} />

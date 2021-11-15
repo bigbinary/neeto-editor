@@ -1,0 +1,9 @@
+.editor-fixed-menu--root {
+  background: $neeto-ui-gray-200;
+
+  .editor-fixed-menu--item {
+    &:hover {
+      background: $neeto-ui-gray-300;
+    }
+  }
+}

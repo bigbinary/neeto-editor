@@ -70,16 +70,16 @@ export class MentionList extends React.Component {
     const { items } = this.props;
 
     const containerClassName =
-      "relative p-2 overflow-hidden bg-gray-900 rounded shadow";
+      "relative p-2 space-y-1 overflow-hidden rounded shadow editor-command-list--root";
     const itemClassName =
-      "flex items-center w-full px-4 py-2 transition-all duration-100 ease-in-out hover:bg-gray-700 cursor-pointer text-xs text-white rounded";
+      "flex items-center w-full px-4 py-2 transition-all duration-100 ease-in-out cursor-pointer text-xs text-white rounded editor-command-list--item";
 
     return (
       <div className={containerClassName}>
         {items.map(({ label, imageUrl, showImage }, index) => (
           <button
             className={classNames(itemClassName, {
-              "bg-gray-700": index === selectedIndex,
+              selected_item: index === selectedIndex,
             })}
             key={label}
             onClick={() => this.selectItem(index)}

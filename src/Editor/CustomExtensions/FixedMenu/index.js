@@ -23,7 +23,7 @@ const FixedMenu = ({ editor, variables }) => {
     return null;
   }
 
-  const options = [
+  const fontStyleOptions = [
     {
       Icon: TextBold,
       command: () => editor.chain().focus().toggleBold().run(),
@@ -42,6 +42,9 @@ const FixedMenu = ({ editor, variables }) => {
       active: editor.isActive("strike"),
       optionName: "strike",
     },
+  ];
+
+  const blockStyleOptions = [
     {
       Icon: Link,
       command: () => {
@@ -68,6 +71,18 @@ const FixedMenu = ({ editor, variables }) => {
       optionName: "code",
     },
     {
+      Icon: Image,
+      command: ({ editor, range }) => {
+        sharedState.showImageUpload = true;
+        sharedState.range = range;
+        editor.chain().focus().deleteRange(range).run();
+      },
+      optionName: "image-upload",
+    },
+  ];
+
+  const listStyleOptions = [
+    {
       Icon: ListDot,
       command: () => editor.chain().focus().toggleBulletList().run(),
       active: editor.isActive("bulletList"),
@@ -79,15 +94,9 @@ const FixedMenu = ({ editor, variables }) => {
       active: editor.isActive("orderedList"),
       optionName: "ordered-list",
     },
-    {
-      Icon: Image,
-      command: ({ editor, range }) => {
-        sharedState.showImageUpload = true;
-        sharedState.range = range;
-        editor.chain().focus().deleteRange(range).run();
-      },
-      optionName: "image-upload",
-    },
+  ];
+
+  const editorOptions = [
     {
       Icon: Undo,
       command: () => editor.chain().focus().undo().run(),
@@ -121,25 +130,38 @@ const FixedMenu = ({ editor, variables }) => {
     }
   };
 
+  const renderOptionButton = ({
+    Icon,
+    command,
+    active,
+    optionName,
+    disabled,
+  }) => (
+    <button
+      disabled={disabled}
+      onClick={command}
+      key={optionName}
+      className="p-3 cursor-pointer editor-fixed-menu--item"
+    >
+      <Icon color={active ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE} />
+    </button>
+  );
+
   return (
-    <div className="flex items-center border-t border-l border-r">
+    <div className="flex items-center space-x-6 border-t border-l border-r editor-fixed-menu--root">
       <div className="flex">
         <TextColorOption
           color={editor.getAttributes("textStyle").color}
           onChange={(color) => editor.chain().focus().setColor(color).run()}
         />
         <FontSizeOption onChange={handleTextSizeChange} />
-        {options.map(({ Icon, command, active, optionName, disabled }) => (
-          <button
-            disabled={disabled}
-            onClick={command}
-            key={optionName}
-            className="p-3 cursor-pointer hover:bg-gray-50 hover:shadow"
-          >
-            <Icon color={active ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE} />
-          </button>
-        ))}
+        {fontStyleOptions.map(renderOptionButton)}
       </div>
+      {[blockStyleOptions, listStyleOptions, editorOptions].map(
+        (optionGroup) => (
+          <div className="flex">{optionGroup.map(renderOptionButton)}</div>
+        )
+      )}
       <div className="flex justify-end flex-1">
         <Variables editor={editor} variables={variables} />
       </div>

@@ -66,7 +66,7 @@ class CommandsList extends React.Component {
 
   render() {
     return (
-      <div className="relative p-3 overflow-hidden bg-gray-900 rounded shadow">
+      <div className="relative p-3 space-y-2 overflow-hidden rounded shadow editor-command-list--root">
         {this.props.items.map((item, index) => (
           <Item
             key={item.title}
@@ -86,15 +86,15 @@ const Item = ({ item, selectedIndex, index, selectItem }) => {
   return (
     <div
       className={classnames(
-        "flex items-center w-full px-4 py-2 space-x-4 transition-all duration-100 ease-in-out hover:bg-gray-700 cursor-pointer rounded",
+        "flex items-center w-full px-4 py-2 space-x-4 transition-all duration-100 ease-in-out editor-command-list--item cursor-pointer rounded",
         {
-          "bg-gray-700": index === selectedIndex,
+          selected_item: index === selectedIndex,
         }
       )}
       onClick={() => selectItem(index)}
     >
       {Icon && (
-        <div className="p-1 text-gray-100 bg-gray-800 rounded-sm">
+        <div className="p-1 text-gray-100 rounded-sm">
           <Icon size={18} />
         </div>
       )}
