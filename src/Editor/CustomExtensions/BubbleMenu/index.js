@@ -65,7 +65,7 @@ export default function index({ editor, formatterOptions }) {
     <BubbleMenu
       editor={editor}
       tippyOptions={{ arrow: roundArrow }}
-      className="bg-gray-900 rounded shadow"
+      className="flex rounded shadow editor-command-list--root"
     >
       {options
         .filter(({ optionName }) => formatterOptions.includes(optionName))
@@ -78,10 +78,13 @@ export default function index({ editor, formatterOptions }) {
 
 const Option = ({ Icon, command, active, iconSize }) => (
   <div
-    className={classnames("p-3 cursor-pointer hover:bg-gray-700 inline-block", {
-      "text-gray-400": !active,
-      "text-white": active,
-    })}
+    className={classnames(
+      "p-3 cursor-pointer editor-command-list--item transition-colors",
+      {
+        "text-gray-400": !active,
+        "text-white": active,
+      }
+    )}
     onClick={command}
   >
     <Icon size={iconSize || 24} />

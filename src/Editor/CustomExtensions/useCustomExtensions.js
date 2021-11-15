@@ -24,7 +24,7 @@ export default function useCustomExtensions({
   extensions,
   mentions,
   variables,
-  hideSlashCommands,
+  isSlashCommandsActive,
   showImageInMention,
 }) {
   let customExtensions;
@@ -59,7 +59,7 @@ export default function useCustomExtensions({
     );
   }
 
-  if (!hideSlashCommands) {
+  if (isSlashCommandsActive) {
     customExtensions.push(SlashCommands);
   }
 

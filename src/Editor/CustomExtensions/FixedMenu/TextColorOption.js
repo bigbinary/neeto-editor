@@ -9,7 +9,7 @@ const TextColorOption = ({ color = "#000", onChange }) => {
   return (
     <div
       onClick={() => colorInputRef.current?.click()}
-      className="flex items-center justify-center p-3 cursor-pointer editor-fixed-menu--item"
+      className="flex items-center justify-center p-3 transition-colors cursor-pointer editor-fixed-menu--item"
     >
       <TextColor
         size={MENU_ICON_SIZE}

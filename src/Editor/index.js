@@ -34,13 +34,18 @@ const Tiptap = (
   },
   ref
 ) => {
+  const isFixedMenuActive = menuType === "fixed";
+  const isBubbleMenuActive = menuType === "bubble";
+  const isSlashCommandsActive = !hideSlashCommands;
+  const showSlashCommandPlaceholder = !placeholder && isSlashCommandsActive;
+
   const customExtensions = useCustomExtensions({
     forceTitle,
     placeholder,
     extensions,
     mentions,
     variables,
-    hideSlashCommands,
+    isSlashCommandsActive,
     showImageInMention,
   });
 
@@ -52,9 +57,14 @@ const Tiptap = (
       attributes: {
         class:
           className ||
-          classNames("prose focus:outline-none whitespace-pre-wrap border", {
-            "slash-active": !placeholder && !hideSlashCommands,
-          }),
+          classNames(
+            "prose focus:outline-none whitespace-pre-wrap border p-3",
+            {
+              "slash-active": showSlashCommandPlaceholder,
+              "fixed-menu-active": isFixedMenuActive,
+              "bubble-menu-active": isBubbleMenuActive,
+            }
+          ),
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
@@ -67,13 +77,12 @@ const Tiptap = (
 
   return (
     <>
-      {menuType === "fixed" ? (
+      {isFixedMenuActive ? (
         <FixedMenu editor={editor} variables={variables} />
       ) : null}
-      {menuType === "bubble" ? (
+      {isBubbleMenuActive ? (
         <BubbleMenu editor={editor} formatterOptions={formatterOptions} />
       ) : null}
-
       <ImageUploader editor={editor} imageUploadUrl={uploadEndpoint} />
       <EditorContent editor={editor} {...otherProps} />
     </>

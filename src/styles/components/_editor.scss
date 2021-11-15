@@ -76,6 +76,13 @@ $list-item-color: #1a141f;
   max-width: 100% !important;
 }
 
+.prose {
+  border-radius: $neeto-ui-rounded-sm;
+  &.fixed-menu-active {
+    border-radius: 0px 0px $neeto-ui-rounded-sm $neeto-ui-rounded-sm;
+  }
+}
+
 .video-wrapper {
   display: flex;
   justify-content: center;
@@ -84,4 +91,8 @@ $list-item-color: #1a141f;
 .video-wrapper iframe {
   width: 560px;
   height: 315px;
+}
+
+.tippy-svg-arrow svg {
+  fill: $neeto-ui-gray-800;
 }

@@ -28,10 +28,9 @@ code {
 }
 
 .ProseMirror {
-  padding: 4px;
   min-height: 150px;
   max-height: 500px;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .ProseMirror:focus {

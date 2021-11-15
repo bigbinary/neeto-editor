@@ -141,7 +141,7 @@ const FixedMenu = ({ editor, variables }) => {
       disabled={disabled}
       onClick={command}
       key={optionName}
-      className="p-3 cursor-pointer editor-fixed-menu--item"
+      className="p-3 transition-colors cursor-pointer editor-fixed-menu--item"
     >
       <Icon color={active ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE} />
     </button>

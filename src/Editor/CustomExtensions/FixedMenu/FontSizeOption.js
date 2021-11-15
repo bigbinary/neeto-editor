@@ -15,7 +15,7 @@ const FontSizeOption = ({ onChange }) => {
     <Dropdown
       Icon={() => <TextSize size={MENU_ICON_SIZE} color={ICON_COLOR_ACTIVE} />}
       options={options}
-      className="p-3 cursor-pointer editor-fixed-menu--item"
+      className="p-3 transition-colors cursor-pointer editor-fixed-menu--item"
       onChange={onChange}
     />
   );
