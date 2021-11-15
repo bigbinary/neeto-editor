@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./styles/abstracts/mixins";
 @import "./styles/abstracts/variables";
 @import "./styles/abstracts/neeto-ui-variables";
 
@@ -28,9 +29,11 @@ code {
 }
 
 .ProseMirror {
+  @include scrollbars(4px);
+
+  overflow-y: auto;
   min-height: 150px;
   max-height: 500px;
-  overflow: auto;
 }
 
 .ProseMirror:focus {
