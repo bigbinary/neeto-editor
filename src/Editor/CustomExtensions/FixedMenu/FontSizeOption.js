@@ -13,11 +13,18 @@ const FontSizeOption = ({ onChange }) => {
 
   return (
     <Dropdown
-      Icon={() => <TextSize size={MENU_ICON_SIZE} color={ICON_COLOR_ACTIVE} />}
-      options={options}
-      className="p-3 transition-colors cursor-pointer editor-fixed-menu--item"
-      onChange={onChange}
-    />
+      customTarget={() => (
+        <button className="p-3 transition-colors editor-fixed-menu--item">
+          <TextSize size={MENU_ICON_SIZE} color={ICON_COLOR_ACTIVE} />
+        </button>
+      )}
+    >
+      {options.map(({ label, className, value }) => (
+        <li className={className} onClick={() => onChange(value)}>
+          {label}
+        </li>
+      ))}
+    </Dropdown>
   );
 };
 
