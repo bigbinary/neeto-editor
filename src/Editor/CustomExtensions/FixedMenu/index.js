@@ -8,9 +8,11 @@ import {
   ListDot,
   ListNumber,
   Image,
+  QuoteLarge,
+  Undo,
+  Redo,
 } from "@bigbinary/neeto-icons";
 
-import { QuoteLarge, Undo, Redo } from "../../../Common/Icons";
 import TextColorOption from "./TextColorOption";
 import FontSizeOption from "./FontSizeOption";
 
