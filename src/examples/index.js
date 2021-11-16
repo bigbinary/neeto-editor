@@ -127,26 +127,26 @@ const Example = () => {
       <Description>
         The editor can have placeholder texts for different nodes. These value
         is accepted as <HighlightText>placeholder</HighlightText> prop.
-        <ul className="list-disc list-inside">
-          <li>
-            Value as object: Each type of node can have corresponding
-            placeholder, in which case the value should be of type{" "}
-            <HighlightText>{"{node_name: placeholder_text}"}</HighlightText>.
-          </li>
-          <li>
-            Value as string: When plain string is provided as value for
-            placeholder, all the nodes will be using the same placeholder text
-            irrespective of their type in which case the value should be of type{" "}
-          </li>
-          <li>
-            Value as function: the <HighlightText>placeholder</HighlightText>{" "}
-            prop can also accepts a function. For each node in the document, the
-            function receives node as argument and return the corresponding
-            placeholder string. eg:{" "}
-            <HighlightText>{"({node}) => placeholder_text"}</HighlightText>
-          </li>
-        </ul>
       </Description>
+      <ul className="list-disc list-inside">
+        <li>
+          Value as object: Each type of node can have corresponding placeholder,
+          in which case the value should be of type{" "}
+          <HighlightText>{"{node_name: placeholder_text}"}</HighlightText>.
+        </li>
+        <li>
+          Value as string: When plain string is provided as value for
+          placeholder, all the nodes will be using the same placeholder text
+          irrespective of their type in which case the value should be of type{" "}
+        </li>
+        <li>
+          Value as function: the <HighlightText>placeholder</HighlightText> prop
+          can also accepts a function. For each node in the document, the
+          function receives node as argument and return the corresponding
+          placeholder string. eg:{" "}
+          <HighlightText>{"({node}) => placeholder_text"}</HighlightText>
+        </li>
+      </ul>
 
       <div className="flex">
         <CodeBlock>{STRINGS.placeholderSampleCode}</CodeBlock>

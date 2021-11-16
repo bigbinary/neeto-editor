@@ -160,8 +160,10 @@ const FixedMenu = ({ editor, variables }) => {
         {fontStyleOptions.map(renderOptionButton)}
       </div>
       {[blockStyleOptions, listStyleOptions, editorOptions].map(
-        (optionGroup) => (
-          <div className="flex">{optionGroup.map(renderOptionButton)}</div>
+        (optionGroup, index) => (
+          <div className="flex" key={index}>
+            {optionGroup.map(renderOptionButton)}
+          </div>
         )
       )}
       <div className="flex justify-end flex-1">

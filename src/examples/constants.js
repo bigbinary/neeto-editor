@@ -89,7 +89,7 @@ export const STRINGS = {
   <Editor placeholder="Input text here" />`,
 
   forceTitleSampleCode: `
-  const placeholder = { header: 'Input title here' };
+  const placeholder = { heading: 'Input title here' };
  
   <Editor placeholder={placeholder} forceTitle />`,
 };

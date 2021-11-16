@@ -21,7 +21,7 @@ const FontSizeOption = ({ onChange }) => {
       )}
     >
       {options.map(({ label, className, value }) => (
-        <li className={className} onClick={() => onChange(value)}>
+        <li className={className} onClick={() => onChange(value)} key={value}>
           {label}
         </li>
       ))}
