@@ -1,15 +1,12 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 
 import VariableList from "./VariableList";
+import Dropdown from "../../../Common/Dropdown";
+import { HashtagFilled } from "../../../Common/Icons";
 
-import useOutsideClick from "../../../hooks/useOutsideClick";
+import { MENU_ICON_SIZE } from "../FixedMenu/constants";
 
 const Variables = ({ editor, variables }) => {
-  const containerRef = useRef();
-  const [isOpen, setIsOpen] = useState(false);
-
-  useOutsideClick({ ref: containerRef, onClick: () => setIsOpen(false) });
-
   const handleClickItem = (item) => {
     const { category_key, key } = item;
     const variableName = category_key ? `${category_key}.${key}` : key;
@@ -21,21 +18,17 @@ const Variables = ({ editor, variables }) => {
   }
 
   return (
-    <div
-      ref={containerRef}
-      className="relative p-3 cursor-pointer hover:bg-gray-50 hover:shadow variable-selection-popup"
-      onClick={() => setIsOpen((isOpen) => !isOpen)}
+    <Dropdown
+      customTarget={() => (
+        <button className="relative p-3 editor-fixed-menu--item variable-selection-popup">
+          <HashtagFilled size={MENU_ICON_SIZE} />
+        </button>
+      )}
     >
-      <span className="text-gray-400">{"{}"}</span>
-      {isOpen ? (
-        <div className="absolute right-2 items-container">
-          <VariableList
-            onClickVariable={handleClickItem}
-            variables={variables}
-          />
-        </div>
-      ) : null}
-    </div>
+      <div className="items-container">
+        <VariableList onClickVariable={handleClickItem} variables={variables} />
+      </div>
+    </Dropdown>
   );
 };
 

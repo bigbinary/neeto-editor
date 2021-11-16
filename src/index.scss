@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./styles/abstracts/mixins";
 @import "./styles/abstracts/variables";
+@import "./styles/abstracts/neeto-ui-variables";
 
 @import "./styles/components/dropdown";
 @import "./styles/components/codeblock";
 @import "./styles/components/editor-variables";
 @import "./styles/components/command-list";
-@import "./styles/components/mention-list";
 @import "./styles/components/editor";
+@import "./styles/components/avatar";
+@import "./styles/components/fixed-menu";
 
 body {
   margin: 0;
@@ -26,7 +29,11 @@ code {
 }
 
 .ProseMirror {
-  padding: 4px;
+  @include scrollbars(4px);
+
+  overflow-y: auto;
+  min-height: 150px;
+  max-height: 500px;
 }
 
 .ProseMirror:focus {

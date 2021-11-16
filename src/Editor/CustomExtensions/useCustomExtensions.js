@@ -1,0 +1,85 @@
+import StarterKit from "@tiptap/starter-kit";
+import Document from "@tiptap/extension-document";
+import Typography from "@tiptap/extension-typography";
+import Highlight from "@tiptap/extension-highlight";
+import Dropcursor from "@tiptap/extension-dropcursor";
+import Link from "@tiptap/extension-link";
+import Color from "@tiptap/extension-color";
+import TextStyle from "@tiptap/extension-text-style";
+import isEmpty from "lodash.isempty";
+
+import ImageExtension from "./Image/ExtensionConfig";
+import SlashCommands from "./SlashCommands/ExtensionConfig";
+import CodeBlock from "./CodeBlock/ExtensionConfig";
+import Variable from "./Variable/ExtensionConfig";
+import Placeholder, {
+  placeholderGenerator,
+} from "./Placeholder/ExtensionConfig";
+import Mention, { createMentionSuggestions } from "./Mention/ExtensionConfig";
+import Embeds from "./Embeds";
+
+export default function useCustomExtensions({
+  forceTitle,
+  placeholder,
+  extensions,
+  mentions,
+  variables,
+  isSlashCommandsActive,
+  showImageInMention,
+}) {
+  let customExtensions;
+
+  if (extensions) {
+    customExtensions = [...extensions];
+  } else {
+    customExtensions = [
+      StarterKit.configure({
+        document: !forceTitle,
+      }),
+      Typography,
+      TextStyle,
+      Highlight,
+      CodeBlock,
+      ImageExtension,
+      Dropcursor,
+      Embeds,
+      Link,
+      Color,
+      Placeholder.configure({
+        placeholder: placeholderGenerator(placeholder),
+      }),
+    ];
+  }
+
+  if (forceTitle) {
+    customExtensions.unshift(
+      Document.extend({
+        content: "heading block*",
+      })
+    );
+  }
+
+  if (isSlashCommandsActive) {
+    customExtensions.push(SlashCommands);
+  }
+
+  if (!isEmpty(mentions)) {
+    customExtensions.push(
+      Mention.configure({
+        suggestion: {
+          items: createMentionSuggestions(mentions, {
+            showImage: showImageInMention,
+          }),
+        },
+      })
+    );
+  }
+
+  if (!isEmpty(variables)) {
+    customExtensions.push(
+      Variable.configure({ suggestion: { items: () => variables } })
+    );
+  }
+
+  return customExtensions;
+}

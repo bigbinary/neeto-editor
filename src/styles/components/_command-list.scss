@@ -6,3 +6,14 @@
   height: 0;
   margin-left: 4px;
 }
+
+.editor-command-list--root {
+  background: $neeto-ui-gray-800;
+
+  .editor-command-list--item {
+    &:hover,
+    &.selected_item {
+      background-color: $neeto-ui-gray-700;
+    }
+  }
+}

@@ -6,16 +6,16 @@ import Suggestion from "@tiptap/suggestion";
 import tippy from "tippy.js";
 import { ReactRenderer } from "@tiptap/react";
 import {
-  BsCardText,
-  BsTypeH1,
-  BsTypeH2,
-  BsListOl,
-  BsListUl,
-  BsCodeSlash,
-  BsCardImage,
-  BsFillCameraVideoFill,
-  BsBlockquoteLeft,
-} from "react-icons/bs";
+  Paragraph,
+  TextH1,
+  TextH2,
+  ListDot,
+  ListNumber,
+  Blockquote,
+  Image,
+  Video,
+  Code,
+} from "@bigbinary/neeto-icons";
 
 export const CommandsPluginKey = new PluginKey("commands");
 
@@ -38,7 +38,7 @@ export default Extension.create({
             {
               title: "Paragraph",
               description: "Add a plain text block",
-              Icon: BsCardText,
+              Icon: Paragraph,
               command: ({ editor, range }) => {
                 editor
                   .chain()
@@ -51,7 +51,7 @@ export default Extension.create({
             {
               title: "H1",
               description: "Add a big heading",
-              Icon: BsTypeH1,
+              Icon: TextH1,
               command: ({ editor, range }) => {
                 editor
                   .chain()
@@ -64,7 +64,7 @@ export default Extension.create({
             {
               title: "H2",
               description: "Add a sub-heading",
-              Icon: BsTypeH2,
+              Icon: TextH2,
               command: ({ editor, range }) => {
                 editor
                   .chain()
@@ -77,7 +77,7 @@ export default Extension.create({
             {
               title: "Numbered list",
               description: "Add a list with numbering",
-              Icon: BsListOl,
+              Icon: ListNumber,
               command: ({ editor, range }) => {
                 editor
                   .chain()
@@ -90,7 +90,7 @@ export default Extension.create({
             {
               title: "Bulleted list",
               description: "Add an list bullets",
-              Icon: BsListUl,
+              Icon: ListDot,
               command: ({ editor, range }) => {
                 editor
                   .chain()
@@ -103,7 +103,7 @@ export default Extension.create({
             {
               title: "Blockquote",
               description: "Add a quote",
-              Icon: BsBlockquoteLeft,
+              Icon: Blockquote,
               command: ({ editor, range }) => {
                 editor
                   .chain()
@@ -116,7 +116,7 @@ export default Extension.create({
             {
               title: "Image",
               description: "Add an image",
-              Icon: BsCardImage,
+              Icon: Image,
               command: ({ editor, range }) => {
                 sharedState.showImageUpload = true;
                 sharedState.range = range;
@@ -126,7 +126,7 @@ export default Extension.create({
             {
               title: "Youtube/Vimeo",
               description: "Embed a video from major services",
-              Icon: BsFillCameraVideoFill,
+              Icon: Video,
               command: ({ editor, range }) => {
                 const embedURL = prompt("Please enter Youtube/Vimeo embed URL");
                 editor
@@ -140,7 +140,7 @@ export default Extension.create({
             {
               title: "Code block",
               description: "Add a code block with syntax highlighting",
-              Icon: BsCodeSlash,
+              Icon: Code,
               command: ({ editor, range }) => {
                 editor
                   .chain()

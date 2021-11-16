@@ -31,7 +31,11 @@ export const SAMPLE_VARIABLES = [
 ];
 
 export const SAMPLE_MENTIONS = [
-  { label: "Oliver Smith", key: "oliver-smith" },
+  {
+    label: "Oliver Smith",
+    key: "oliver-smith",
+    imageUrl: "https://via.placeholder.com/150/0000FF/808080",
+  },
   "Jaden Smith",
 ];
 
@@ -68,11 +72,24 @@ export const STRINGS = {
   ]
 
   <Editor variables={variables} />`,
+
   mentionsSampleCode: `
   const mentions = [
-    { label: "Oliver Smith", key: "oliver-smith" },
+    { 
+      label: "Oliver Smith",
+      key: "oliver-smith",
+      imageUrl: "https://via.placeholder.com/150/0000FF/808080"
+    },
     "Jaden Smith",
   ]
 
-  <Editor mentions={mentions} />`,
+  <Editor mentions={mentions} showImageInMention />`,
+
+  placeholderSampleCode: `
+  <Editor placeholder="Input text here" />`,
+
+  forceTitleSampleCode: `
+  const placeholder = { header: 'Input title here' };
+ 
+  <Editor placeholder={placeholder} forceTitle />`,
 };

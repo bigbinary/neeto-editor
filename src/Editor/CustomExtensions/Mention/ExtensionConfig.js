@@ -4,7 +4,7 @@ import { ReactRenderer } from "@tiptap/react";
 
 import { MentionList } from "./MentionList";
 
-import { getItemLabel } from "./helpers";
+import { createMentionSuggestions } from "./helpers";
 
 const suggestion = {
   render: () => {
@@ -13,6 +13,7 @@ const suggestion = {
 
     return {
       onStart: (props) => {
+        console.log({ props });
         reactRenderer = new ReactRenderer(MentionList, {
           props,
           editor: props.editor,
@@ -56,18 +57,11 @@ const suggestion = {
 };
 
 export default {
-  configure: ({ suggestion: suggestionConfig = {}, ...otherConfig }) => {
-    return Mention.configure({
+  configure: ({ suggestion: suggestionConfig = {}, ...otherConfig }) =>
+    Mention.configure({
       ...otherConfig,
       suggestion: { ...suggestion, ...suggestionConfig },
-    });
-  },
-  createSuggestionItems:
-    (items = [], limit = 5) =>
-    ({ query }) =>
-      items
-        .filter((item) =>
-          getItemLabel(item).toLowerCase().startsWith(query.toLowerCase())
-        )
-        .slice(0, limit),
+    }),
 };
+
+export { createMentionSuggestions };

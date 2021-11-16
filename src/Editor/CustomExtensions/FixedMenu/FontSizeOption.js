@@ -1,6 +1,8 @@
 import React from "react";
-import { GoTextSize } from "react-icons/go";
 
+import { TextSize } from "@bigbinary/neeto-icons";
+
+import { ICON_COLOR_ACTIVE, MENU_ICON_SIZE } from "./constants";
 import Dropdown from "../../../Common/Dropdown";
 
 const FontSizeOption = ({ onChange }) => {
@@ -12,11 +14,18 @@ const FontSizeOption = ({ onChange }) => {
 
   return (
     <Dropdown
-      Icon={() => <GoTextSize className="text-gray-400" />}
-      options={options}
-      className="p-3 cursor-pointer hover:bg-gray-50 hover:shadow"
-      onChange={onChange}
-    />
+      customTarget={() => (
+        <button className="p-3 transition-colors editor-fixed-menu--item">
+          <TextSize size={MENU_ICON_SIZE} color={ICON_COLOR_ACTIVE} />
+        </button>
+      )}
+    >
+      {options.map(({ label, className, value }) => (
+        <li className={className} onClick={() => onChange(value)}>
+          {label}
+        </li>
+      ))}
+    </Dropdown>
   );
 };
 

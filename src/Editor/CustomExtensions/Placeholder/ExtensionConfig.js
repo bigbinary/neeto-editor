@@ -2,6 +2,8 @@ import { Extension } from "@tiptap/core";
 import { Decoration, DecorationSet } from "prosemirror-view";
 import { Plugin } from "prosemirror-state";
 
+import { placeholderGenerator } from "./helpers";
+
 export default Extension.create({
   name: "placeholder",
 
@@ -75,3 +77,5 @@ export default Extension.create({
     ];
   },
 });
+
+export { placeholderGenerator };
