@@ -14,7 +14,7 @@ import { tabBarOptions } from "./constants";
 import sharedState from "../../sharedState";
 
 const ImageUpload = ({ editor, imageUploadUrl }) => {
-  const [isUploading, setIsUploading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
 
   const [activeTab, setActiveTab] = useTabBar(tabBarOptions);
 
