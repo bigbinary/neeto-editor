@@ -37,29 +37,31 @@ const Modal = ({
         </span>
 
         <div
-          className="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+          className="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded shadow-xl sm:my-8 sm:align-middle sm:max-w-lg"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
-            <div className="sm:flex sm:items-start">
-              <div className="mt-3 text-center sm:mt-0 sm:text-left">
-                {title ? (
-                  <h3
-                    className="text-lg font-medium leading-6 text-gray-900"
-                    id="modal-title"
-                  >
-                    {title}
-                  </h3>
-                ) : null}
-                {content ? (
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">{content}</p>
-                  </div>
-                ) : null}
+          {title || content ? (
+            <div className="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+              <div className="sm:flex sm:items-start">
+                <div className="mt-3 text-center sm:mt-0 sm:text-left">
+                  {title ? (
+                    <h3
+                      className="text-lg font-medium leading-6 text-gray-900"
+                      id="modal-title"
+                    >
+                      {title}
+                    </h3>
+                  ) : null}
+                  {content ? (
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500">{content}</p>
+                    </div>
+                  ) : null}
+                </div>
               </div>
-              {children}
             </div>
-          </div>
+          ) : null}
+          {children}
           {buttonTextPrimary || buttonTextSecondary ? (
             <div className="px-4 py-3 bg-gray-50 sm:px-6 sm:flex sm:flex-row-reverse">
               {buttonTextPrimary ? (

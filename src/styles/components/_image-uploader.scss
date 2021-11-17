@@ -13,10 +13,13 @@
     font-size: $neeto-ui-text-xs;
   }
 
+  margin: 8px;
   display: flex;
   flex-direction: column;
-  height: 146px;
+  height: 176px;
   width: 488px;
+  border-radius: 2px;
+  border: 1px solid $neeto-ui-gray-300;
 
   // ProgressBar
   .progress-bar__root {
