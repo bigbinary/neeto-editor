@@ -15,7 +15,6 @@ import sharedState from "../../sharedState";
 
 const ImageUpload = ({ editor, imageUploadUrl }) => {
   const [isUploading, setIsUploading] = useState(false);
-
   const [activeTab, setActiveTab] = useTabBar(tabBarOptions);
 
   const uppy = useUppy(() =>
@@ -45,30 +44,26 @@ const ImageUpload = ({ editor, imageUploadUrl }) => {
       onClose={() => (sharedState.showImageUpload = false)}
     >
       <div className="image-uploader__root">
-        <>
-          <Tab>
-            {tabBarOptions.map((option) => (
-              <Tab.Item
-                active={activeTab === option.key}
-                onClick={() => setActiveTab(option)}
-              >
-                {option.title}
-              </Tab.Item>
-            ))}
-          </Tab>
+        <Tab>
+          {tabBarOptions.map((option) => (
+            <Tab.Item
+              active={activeTab === option.key}
+              onClick={() => setActiveTab(option)}
+            >
+              {option.title}
+            </Tab.Item>
+          ))}
+        </Tab>
 
-          {isUploading ? (
-            <div className="flex flex-col items-center justify-center flex-1 text-center">
-              <span className="label--primary">Uploading...</span>
-              <span className="label--secondary">
-                {uppy.getFiles()[0]?.name}
-              </span>
-              <ProgressBar uppy={uppy} />
-            </div>
-          ) : activeTab === "local" ? (
-            <LocalUploader uppy={uppy} />
-          ) : null}
-        </>
+        {isUploading ? (
+          <div className="flex flex-col items-center justify-center flex-1 text-center">
+            <span className="label--primary">Uploading...</span>
+            <span className="label--secondary">{uppy.getFiles()[0]?.name}</span>
+            <ProgressBar uppy={uppy} />
+          </div>
+        ) : activeTab === "local" ? (
+          <LocalUploader uppy={uppy} />
+        ) : null}
       </div>
     </Modal>
   );
