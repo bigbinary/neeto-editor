@@ -1919,6 +1919,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-typography/-/extension-typography-2.0.0-beta.17.tgz#cc8c317997da580d4771ee2465f552d52fd078af"
   integrity sha512-w98KiifXdK9I+/vTKap2DJdEGvG72Sg02t93kpzyw5P7pYG0ZzCpFgdF7Vh8+Xp4JqffBayYh81mKEB+rxeu3w==
 
+"@tiptap/extension-underline@^2.0.0-beta.21":
+  version "2.0.0-beta.21"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-underline/-/extension-underline-2.0.0-beta.21.tgz#42cda46097da32302366e9deefc50336c5f64bc3"
+  integrity sha512-ZiKD2INkLsnIj0psHHO8A5bk6etjO+U1c0NdZu/m8w/3ef6MZYBxynRoXFHOY7to4Mrz06HBXa0ELZNep/SR6g==
+
 "@tiptap/react@^2.0.0-beta.37":
   version "2.0.0-beta.86"
   resolved "https://registry.yarnpkg.com/@tiptap/react/-/react-2.0.0-beta.86.tgz#58f7582ba9fc3f737c5b3afd81cb7d5c92f332aa"
