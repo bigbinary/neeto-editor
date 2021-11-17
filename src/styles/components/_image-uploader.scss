@@ -1,0 +1,99 @@
+.image-uploader__root {
+  $color-primary: $color-indigo;
+
+  .label--primary {
+    color: $neeto-ui-gray-700;
+    display: block;
+    margin-bottom: 5px;
+    font-size: $neeto-ui-text-sm;
+  }
+
+  .label--secondary {
+    color: $neeto-ui-gray-400;
+    font-size: $neeto-ui-text-xs;
+  }
+
+  display: flex;
+  flex-direction: column;
+  height: 146px;
+  width: 488px;
+
+  // ProgressBar
+  .progress-bar__root {
+    width: 100%;
+    max-width: 256px;
+    margin-top: 11px;
+    .progress-bar__indicator {
+      position: relative;
+      width: 100%;
+      height: 6px;
+      border-radius: 100px;
+      overflow: hidden;
+      background: rgba($color-primary, 0.2);
+      margin-top: 5px;
+    }
+
+    .progress-bar__indicator-inner {
+      background: $color-primary;
+    }
+
+    .progress-bar__percent-text {
+      font-size: $neeto-ui-text-xs;
+      color: $neeto-ui-gray-800;
+    }
+  }
+
+  // Local upload component related styles
+  .local-upload__root {
+    display: flex;
+    height: 100%;
+
+    // DragDrop
+    .uppy-DragDrop-container {
+      width: 100%;
+      height: 100%;
+      background-color: $color-solid-white;
+      cursor: pointer;
+
+      // firefox fix: removes thin dotted outline
+      &::-moz-focus-inner {
+        border: 0;
+      }
+    }
+
+    .uppy-DragDrop-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0;
+      line-height: 1.4;
+      text-align: center;
+      font-weight: $neeto-ui-font-normal;
+    }
+
+    .uppy-DragDrop-arrow {
+      visibility: hidden;
+      display: none;
+    }
+
+    .uppy-DragDrop--isDraggingOver {
+      background: $neeto-ui-gray-200;
+      border: 2px dashed $color-primary;
+    }
+
+    .uppy-DragDrop-label {
+      @extend .label--primary;
+    }
+
+    .uppy-DragDrop-browse {
+      color: $color-primary;
+      font-size: $font-size-lg;
+      font-weight: $neeto-ui-font-semibold;
+      cursor: pointer;
+    }
+
+    .uppy-DragDrop-note {
+      @extend .label--secondary;
+    }
+  }
+}

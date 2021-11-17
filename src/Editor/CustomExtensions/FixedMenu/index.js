@@ -25,6 +25,8 @@ const FixedMenu = ({ editor, variables }) => {
     return null;
   }
 
+  console.log({ editor });
+
   const fontStyleOptions = [
     {
       Icon: TextBold,
@@ -77,7 +79,8 @@ const FixedMenu = ({ editor, variables }) => {
       command: ({ editor, range }) => {
         sharedState.showImageUpload = true;
         sharedState.range = range;
-        editor.chain().focus().deleteRange(range).run();
+        console.log({ editor });
+        // editor.chain().focus().deleteRange(range).run();
       },
       optionName: "image-upload",
     },
