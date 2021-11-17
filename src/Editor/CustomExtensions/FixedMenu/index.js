@@ -8,7 +8,7 @@ import {
   ListDot,
   ListNumber,
   Image,
-  QuoteLarge,
+  Quote,
   Undo,
   Redo,
 } from "@bigbinary/neeto-icons";
@@ -24,8 +24,6 @@ const FixedMenu = ({ editor, variables }) => {
   if (!editor) {
     return null;
   }
-
-  console.log({ editor });
 
   const fontStyleOptions = [
     {
@@ -63,7 +61,7 @@ const FixedMenu = ({ editor, variables }) => {
       optionName: "link",
     },
     {
-      Icon: QuoteLarge,
+      Icon: Quote,
       command: () => editor.chain().focus().toggleBlockquote().run(),
       active: editor.isActive("blockquote"),
       optionName: "block-quote",

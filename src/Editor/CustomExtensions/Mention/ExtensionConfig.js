@@ -13,7 +13,6 @@ const suggestion = {
 
     return {
       onStart: (props) => {
-        console.log({ props });
         reactRenderer = new ReactRenderer(MentionList, {
           props,
           editor: props.editor,
