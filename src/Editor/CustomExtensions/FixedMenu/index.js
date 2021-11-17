@@ -76,11 +76,9 @@ const FixedMenu = ({ editor, variables }) => {
     },
     {
       Icon: Image,
-      command: ({ editor, range }) => {
+      command: ({ range }) => {
         sharedState.showImageUpload = true;
         sharedState.range = range;
-        console.log({ editor });
-        // editor.chain().focus().deleteRange(range).run();
       },
       optionName: "image-upload",
     },

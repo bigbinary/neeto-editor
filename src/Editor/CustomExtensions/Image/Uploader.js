@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { view } from "@risingstack/react-easy-state";
 import Uppy from "@uppy/core";
-import { useUppy } from "@uppy/react";
 import XHRUpload from "@uppy/xhr-upload";
 
 import LocalUploader from "./LocalUploader";
@@ -17,25 +16,27 @@ const ImageUpload = ({ editor, imageUploadUrl }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [activeTab, setActiveTab] = useTabBar(tabBarOptions);
 
-  const uppy = useUppy(() =>
-    new Uppy({
-      allowMultipleUploads: false,
-      autoProceed: true,
-      debug: true,
-    })
-      .use(XHRUpload, {
-        endpoint: imageUploadUrl || "/api/v1/direct_uploads",
-        formData: true,
-        fieldName: "blob",
+  const uppy = useMemo(
+    () =>
+      new Uppy({
+        allowMultipleUploads: false,
+        autoProceed: true,
+        debug: true,
       })
-      .on("upload", () => setIsUploading(true))
-      .on("upload-success", (file, response) => {
-        const url = response.body.imageURL;
-        editor.chain().focus().setImage({ src: url }).run();
-        sharedState.showImageUpload = false;
-      })
-      .on("cancel-all", () => setIsUploading(false))
-      .on("complete", () => setIsUploading(false))
+        .use(XHRUpload, {
+          endpoint: imageUploadUrl || "/api/v1/direct_uploads",
+          formData: true,
+          fieldName: "blob",
+        })
+        .on("upload", () => setIsUploading(true))
+        .on("upload-success", (file, response) => {
+          const url = response.body.imageURL;
+          editor.chain().focus().setImage({ src: url }).run();
+          sharedState.showImageUpload = false;
+        })
+        .on("cancel-all", () => setIsUploading(false))
+        .on("complete", () => setIsUploading(false)),
+    [editor]
   );
 
   return (
