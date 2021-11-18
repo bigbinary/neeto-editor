@@ -1,7 +1,7 @@
 import React from "react";
 
 const Modal = ({
-  visible,
+  isVisible,
   onClose,
   title,
   buttonTextPrimary,
@@ -9,7 +9,7 @@ const Modal = ({
   content,
   children = null,
 }) => {
-  if (!visible) {
+  if (!isVisible) {
     return null;
   }
 
@@ -25,7 +25,7 @@ const Modal = ({
         onClick={onClose}
       >
         <div
-          className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-10"
+          className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-50"
           aria-hidden="true"
         ></div>
 

@@ -37,7 +37,7 @@ const Example = () => {
         </button>
       </div>
       <hr className="my-2 border-gray-100" />
-      <Editor ref={ref} variables={SAMPLE_VARIABLES} />
+      <Editor ref={ref} />
       <Heading type="sub">Features</Heading>
       <ListItems items={EDITOR_FEATURES} ordered />
 

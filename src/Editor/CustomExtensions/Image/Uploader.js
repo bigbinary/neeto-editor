@@ -6,13 +6,14 @@ import XHRUpload from "@uppy/xhr-upload";
 import LocalUploader from "./LocalUploader";
 import ProgressBar from "./ProgressBar";
 import Modal from "../../../Common/Modal";
-import useTabBar from "../../../hooks/useTabBar";
+import URLForm from "./LinkUploader/URLForm";
 import Tab from "../../../Common/Tab";
 
-import { tabBarOptions } from "./constants";
-import sharedState from "../../sharedState";
+import useTabBar from "../../../hooks/useTabBar";
 
-const ImageUpload = ({ editor, imageUploadUrl }) => {
+import { tabBarOptions } from "./constants";
+
+const ImageUpload = ({ editor, imageUploadUrl, isVisible, setIsVisible }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [activeTab, setActiveTab] = useTabBar(tabBarOptions);
 
@@ -32,18 +33,20 @@ const ImageUpload = ({ editor, imageUploadUrl }) => {
         .on("upload-success", (file, response) => {
           const url = response.body.imageURL;
           editor.chain().focus().setImage({ src: url }).run();
-          sharedState.showImageUpload = false;
+          setIsVisible(false);
         })
         .on("cancel-all", () => setIsUploading(false))
         .on("complete", () => setIsUploading(false)),
     [editor]
   );
 
+  const handleUrlFormSubmit = (url) => {
+    editor.chain().focus().setImage({ src: url }).run();
+    setIsVisible(false);
+  };
+
   return (
-    <Modal
-      visible={sharedState.showImageUpload}
-      onClose={() => (sharedState.showImageUpload = false)}
-    >
+    <Modal isVisible={isVisible} onClose={() => setIsVisible(false)}>
       <div className="image-uploader__root">
         <Tab>
           {tabBarOptions.map((option) => (
@@ -64,6 +67,8 @@ const ImageUpload = ({ editor, imageUploadUrl }) => {
           </div>
         ) : activeTab === "local" ? (
           <LocalUploader uppy={uppy} />
+        ) : activeTab === "link" ? (
+          <URLForm onSubmit={handleUrlFormSubmit} />
         ) : null}
       </div>
     </Modal>

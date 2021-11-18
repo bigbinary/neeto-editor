@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
 
@@ -34,6 +34,8 @@ const Tiptap = (
   },
   ref
 ) => {
+  const [isImageUploadVisible, setImageUploadVisible] = useState(false);
+
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
@@ -47,6 +49,7 @@ const Tiptap = (
     variables,
     isSlashCommandsActive,
     showImageInMention,
+    setImageUploadVisible,
   });
 
   const editor = useEditor({
@@ -78,12 +81,21 @@ const Tiptap = (
   return (
     <>
       {isFixedMenuActive ? (
-        <FixedMenu editor={editor} variables={variables} />
+        <FixedMenu
+          editor={editor}
+          variables={variables}
+          setImageUploadVisible={setImageUploadVisible}
+        />
       ) : null}
       {isBubbleMenuActive ? (
         <BubbleMenu editor={editor} formatterOptions={formatterOptions} />
       ) : null}
-      <ImageUploader editor={editor} imageUploadUrl={uploadEndpoint} />
+      <ImageUploader
+        isVisible={isImageUploadVisible}
+        setIsVisible={setImageUploadVisible}
+        editor={editor}
+        imageUploadUrl={uploadEndpoint}
+      />
       <EditorContent editor={editor} {...otherProps} />
     </>
   );
