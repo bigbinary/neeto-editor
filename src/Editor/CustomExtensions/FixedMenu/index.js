@@ -2,13 +2,14 @@ import React from "react";
 import {
   TextBold,
   TextItalic,
+  Underline,
   TextCross,
   Link,
   Code,
   ListDot,
   ListNumber,
   Image,
-  QuoteLarge,
+  Quote,
   Undo,
   Redo,
 } from "@bigbinary/neeto-icons";
@@ -39,6 +40,13 @@ const FixedMenu = ({ editor, variables }) => {
       optionName: "italic",
     },
     {
+      Icon: Underline,
+      command: () => editor.chain().focus().toggleUnderline().run(),
+      active: editor.isActive("underline"),
+      optionName: "underline",
+      size: 27,
+    },
+    {
       Icon: TextCross,
       command: () => editor.chain().focus().toggleStrike().run(),
       active: editor.isActive("strike"),
@@ -61,7 +69,7 @@ const FixedMenu = ({ editor, variables }) => {
       optionName: "link",
     },
     {
-      Icon: QuoteLarge,
+      Icon: Quote,
       command: () => editor.chain().focus().toggleBlockquote().run(),
       active: editor.isActive("blockquote"),
       optionName: "block-quote",
@@ -138,6 +146,7 @@ const FixedMenu = ({ editor, variables }) => {
     active,
     optionName,
     disabled,
+    ...rest
   }) => (
     <button
       disabled={disabled}
@@ -145,7 +154,10 @@ const FixedMenu = ({ editor, variables }) => {
       key={optionName}
       className="p-3 transition-colors cursor-pointer editor-fixed-menu--item"
     >
-      <Icon color={active ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE} />
+      <Icon
+        color={active ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE}
+        {...rest}
+      />
     </button>
   );
 
