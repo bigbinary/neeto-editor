@@ -20,10 +20,8 @@
   width: 488px;
 
   .image-uploader__content {
-    border: 1px dashed $neeto-ui-gray-400;
-    box-sizing: border-box;
-    border-radius: 2px;
     flex: 1;
+    display: flex;
     margin-top: 10px;
   }
 
@@ -55,7 +53,11 @@
   // Local upload component related styles
   .local-upload__root {
     display: flex;
+    flex: 1;
     height: 100%;
+    border: 1px dashed $neeto-ui-gray-400;
+    box-sizing: border-box;
+    border-radius: 2px;
 
     // DragDrop
     .uppy-DragDrop-container {
