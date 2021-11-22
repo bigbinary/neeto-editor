@@ -1,4 +1,5 @@
 const PeerDepsExternalsPlugin = require("peer-deps-externals-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   entry: "./src/Editor/index.js",
@@ -40,4 +41,10 @@ module.exports = {
     libraryTarget: "umd",
   },
   plugins: [new PeerDepsExternalsPlugin()],
+  resolve: {
+    alias: {
+      common: path.resolve(__dirname, "/src/Common"),
+      hooks: path.resolve(__dirname, "/src/hooks"),
+    },
+  },
 };

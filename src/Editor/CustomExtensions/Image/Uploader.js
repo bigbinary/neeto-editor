@@ -5,9 +5,9 @@ import XHRUpload from "@uppy/xhr-upload";
 
 import LocalUploader from "./LocalUploader";
 import ProgressBar from "./ProgressBar";
-import Modal from "../../../Common/Modal";
-import useTabBar from "../../../hooks/useTabBar";
-import Tab from "../../../Common/Tab";
+import Modal from "common/Modal";
+import Tab from "common/Tab";
+import useTabBar from "hooks/useTabBar";
 
 import { tabBarOptions } from "./constants";
 import sharedState from "../../sharedState";

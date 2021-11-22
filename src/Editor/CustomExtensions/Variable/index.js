@@ -1,8 +1,8 @@
 import React from "react";
 
 import VariableList from "./VariableList";
-import Dropdown from "../../../Common/Dropdown";
-import { HashtagFilled } from "../../../Common/Icons";
+import Dropdown from "common/Dropdown";
+import { HashtagFilled } from "common/Icons";
 
 import { MENU_ICON_SIZE } from "../FixedMenu/constants";
 

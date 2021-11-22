@@ -3,7 +3,7 @@ import React from "react";
 import { TextSize } from "@bigbinary/neeto-icons";
 
 import { ICON_COLOR_ACTIVE, MENU_ICON_SIZE } from "./constants";
-import Dropdown from "../../../Common/Dropdown";
+import Dropdown from "common/Dropdown";
 
 const FontSizeOption = ({ onChange }) => {
   const options = [

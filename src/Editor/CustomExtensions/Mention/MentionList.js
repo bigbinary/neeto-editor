@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import Avatar from "../../../Common/Avatar";
+import Avatar from "common/Avatar";
 
 export class MentionList extends React.Component {
   state = { selectedIndex: 0 };
