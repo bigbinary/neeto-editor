@@ -9,6 +9,7 @@ import TextStyle from "@tiptap/extension-text-style";
 import isEmpty from "lodash.isempty";
 
 import ImageExtension from "./Image/ExtensionConfig";
+import Underline from "@tiptap/extension-underline";
 import SlashCommands from "./SlashCommands/ExtensionConfig";
 import CodeBlock from "./CodeBlock/ExtensionConfig";
 import Variable from "./Variable/ExtensionConfig";
@@ -37,6 +38,7 @@ export default function useCustomExtensions({
       StarterKit.configure({
         document: !forceTitle,
       }),
+      Underline,
       Typography,
       TextStyle,
       Highlight,
