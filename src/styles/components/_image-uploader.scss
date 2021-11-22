@@ -18,8 +18,14 @@
   flex-direction: column;
   height: 176px;
   width: 488px;
-  border-radius: 2px;
-  border: 1px solid $neeto-ui-gray-300;
+
+  .image-uploader__content {
+    border: 1px dashed $neeto-ui-gray-400;
+    box-sizing: border-box;
+    border-radius: 2px;
+    flex: 1;
+    margin-top: 10px;
+  }
 
   // ProgressBar
   .progress-bar__root {

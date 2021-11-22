@@ -57,15 +57,19 @@ const ImageUpload = ({ editor, imageUploadUrl }) => {
           ))}
         </Tab>
 
-        {isUploading ? (
-          <div className="flex flex-col items-center justify-center flex-1 text-center">
-            <span className="label--primary">Uploading...</span>
-            <span className="label--secondary">{uppy.getFiles()[0]?.name}</span>
-            <ProgressBar uppy={uppy} />
-          </div>
-        ) : activeTab === "local" ? (
-          <LocalUploader uppy={uppy} />
-        ) : null}
+        <div className="image-uploader__content">
+          {isUploading ? (
+            <div className="flex flex-col items-center justify-center flex-1 text-center">
+              <span className="label--primary">Uploading...</span>
+              <span className="label--secondary">
+                {uppy.getFiles()[0]?.name}
+              </span>
+              <ProgressBar uppy={uppy} />
+            </div>
+          ) : activeTab === "local" ? (
+            <LocalUploader uppy={uppy} />
+          ) : null}
+        </div>
       </div>
     </Modal>
   );
