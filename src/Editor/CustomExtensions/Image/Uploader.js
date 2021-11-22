@@ -9,12 +9,12 @@ import Modal from "common/Modal";
 import Tab from "common/Tab";
 import useTabBar from "hooks/useTabBar";
 
-import { tabBarOptions } from "./constants";
+import { IMAGE_UPLOAD_OPTIONS } from "./constants";
 import sharedState from "../../sharedState";
 
 const ImageUpload = ({ editor, imageUploadUrl }) => {
   const [isUploading, setIsUploading] = useState(false);
-  const [activeTab, setActiveTab] = useTabBar(tabBarOptions);
+  const [activeTab, setActiveTab] = useTabBar(IMAGE_UPLOAD_OPTIONS);
 
   const uppy = useMemo(
     () =>
@@ -46,8 +46,9 @@ const ImageUpload = ({ editor, imageUploadUrl }) => {
     >
       <div className="image-uploader__root">
         <Tab>
-          {tabBarOptions.map((option) => (
+          {IMAGE_UPLOAD_OPTIONS.map((option) => (
             <Tab.Item
+              key={option.key}
               active={activeTab === option.key}
               onClick={() => setActiveTab(option)}
             >
