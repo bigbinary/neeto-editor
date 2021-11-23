@@ -2,7 +2,7 @@ const PeerDepsExternalsPlugin = require("peer-deps-externals-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./lib/index.js",
+  entry: "./src/Editor/index.js",
   module: {
     rules: [
       {
@@ -43,9 +43,8 @@ module.exports = {
   plugins: [new PeerDepsExternalsPlugin()],
   resolve: {
     alias: {
-      common: path.resolve(__dirname, "/lib/components/Common"),
-      hooks: path.resolve(__dirname, "/lib/hooks"),
-      constants: path.resolve(__dirname, "/lib/constants"),
+      common: path.resolve(__dirname, "/src/Common"),
+      hooks: path.resolve(__dirname, "/src/hooks"),
     },
   },
 };
