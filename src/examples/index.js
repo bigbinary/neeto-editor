@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 
-import CodeBlock from "../Common/CodeBlock";
-import Description from "../Common/Description";
-import Heading from "../Common/Heading";
-import HighlightText from "../Common/HighlightText";
-import ListItems from "../Common/ListItems";
+import CodeBlock from "common/CodeBlock";
+import Description from "common/Description";
+import Heading from "common/Heading";
+import HighlightText from "common/HighlightText";
+import ListItems from "common/ListItems";
 import Editor from "../Editor";
 import {
   EDITOR_FEATURES,

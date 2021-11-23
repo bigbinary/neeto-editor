@@ -1,8 +1,8 @@
 import React from "react";
 
 import VariableList from "./VariableList";
-import Dropdown from "../../../Common/Dropdown";
-import { HashtagFilled } from "../../../Common/Icons";
+import Dropdown from "common/Dropdown";
+import { HashtagFilled } from "common/Icons";
 
 import { MENU_ICON_SIZE } from "../FixedMenu/constants";
 
@@ -20,7 +20,7 @@ const Variables = ({ editor, variables }) => {
   return (
     <Dropdown
       customTarget={() => (
-        <button className="relative p-3 editor-fixed-menu--item variable-selection-popup">
+        <button className="relative h-full p-3 editor-fixed-menu--item variable-selection-popup">
           <HashtagFilled size={MENU_ICON_SIZE} />
         </button>
       )}

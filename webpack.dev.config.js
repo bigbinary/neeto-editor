@@ -1,4 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
   entry: "./src/index.js",
@@ -58,4 +59,10 @@ module.exports = {
       filename: "./index.html",
     }),
   ],
+  resolve: {
+    alias: {
+      common: path.resolve(__dirname, "/src/Common"),
+      hooks: path.resolve(__dirname, "/src/hooks"),
+    },
+  },
 };

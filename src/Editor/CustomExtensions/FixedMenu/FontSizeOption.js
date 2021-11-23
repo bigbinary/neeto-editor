@@ -3,7 +3,7 @@ import React from "react";
 import { TextSize } from "@bigbinary/neeto-icons";
 
 import { ICON_COLOR_ACTIVE, MENU_ICON_SIZE } from "./constants";
-import Dropdown from "../../../Common/Dropdown";
+import Dropdown from "common/Dropdown";
 
 const FontSizeOption = ({ onChange }) => {
   const options = [
@@ -15,7 +15,7 @@ const FontSizeOption = ({ onChange }) => {
   return (
     <Dropdown
       customTarget={() => (
-        <button className="p-3 transition-colors editor-fixed-menu--item">
+        <button className="h-full p-3 transition-colors editor-fixed-menu--item">
           <TextSize size={MENU_ICON_SIZE} color={ICON_COLOR_ACTIVE} />
         </button>
       )}

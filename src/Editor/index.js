@@ -79,7 +79,7 @@ const Tiptap = (
   }));
 
   return (
-    <>
+    <div>
       {isFixedMenuActive ? (
         <FixedMenu
           editor={editor}
@@ -97,7 +97,7 @@ const Tiptap = (
         imageUploadUrl={uploadEndpoint}
       />
       <EditorContent editor={editor} {...otherProps} />
-    </>
+    </div>
   );
 };
 

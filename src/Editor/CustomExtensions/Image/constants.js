@@ -1,6 +1,4 @@
-import { hasOwn } from "../../../utils/common";
-
-export const tabBarOptions = [
+export const IMAGE_UPLOAD_OPTIONS = [
   { title: "Upload", key: "local" },
   { title: "Link", key: "link" },
   { title: "Unsplash", key: "unsplash" },

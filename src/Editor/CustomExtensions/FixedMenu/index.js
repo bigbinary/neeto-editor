@@ -157,7 +157,7 @@ const FixedMenu = ({ editor, variables, setImageUploadVisible }) => {
   );
 
   return (
-    <div className="flex items-center space-x-6 border-t border-l border-r editor-fixed-menu--root">
+    <div className="flex space-x-6 border-t border-l border-r editor-fixed-menu--root">
       <div className="flex">
         <TextColorOption
           color={editor.getAttributes("textStyle").color}

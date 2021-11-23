@@ -77,14 +77,18 @@ const Dropdown = ({
       }}
     >
       <div
-        className={classnames("neeto-ui-dropdown__wrapper", {
+        className={classnames("neeto-ui-dropdown__wrapper h-full", {
           "neeto-ui-dropdown__wrapper--auto-width": autoWidth,
           [className]: className,
         })}
         {...otherProps}
       >
         {customTarget ? (
-          <div ref={setReference} onClick={handleButtonClick}>
+          <div
+            ref={setReference}
+            onClick={handleButtonClick}
+            className="h-full"
+          >
             <Target />
           </div>
         ) : (

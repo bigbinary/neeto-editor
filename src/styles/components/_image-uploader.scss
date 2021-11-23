@@ -18,8 +18,12 @@
   flex-direction: column;
   height: 176px;
   width: 488px;
-  border-radius: 2px;
-  border: 1px solid $neeto-ui-gray-300;
+
+  .image-uploader__content {
+    flex: 1;
+    display: flex;
+    margin-top: 10px;
+  }
 
   // ProgressBar
   .progress-bar__root {
@@ -49,7 +53,11 @@
   // Local upload component related styles
   .local-upload__root {
     display: flex;
+    flex: 1;
     height: 100%;
+    border: 1px dashed $neeto-ui-gray-400;
+    box-sizing: border-box;
+    border-radius: 2px;
 
     // DragDrop
     .uppy-DragDrop-container {
