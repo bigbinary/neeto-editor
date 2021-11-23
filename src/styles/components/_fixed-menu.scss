@@ -5,6 +5,10 @@
   border-radius: $neeto-ui-rounded-sm $neeto-ui-rounded-sm 0px 0px;
   background: $neeto-ui-gray-200;
 
+  button {
+    outline: none;
+  }
+
   .editor-fixed-menu--item {
     &:hover {
       background: $neeto-ui-gray-300;

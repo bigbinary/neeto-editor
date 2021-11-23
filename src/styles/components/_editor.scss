@@ -72,6 +72,10 @@ $list-item-color: #1a141f;
   font-family: "JetBrains Mono", monospace;
 }
 
+.prose a[href] {
+  color: $color-link-blue;
+}
+
 .prose {
   max-width: 100% !important;
 }

@@ -15,7 +15,7 @@ const FontSizeOption = ({ onChange }) => {
   return (
     <Dropdown
       customTarget={() => (
-        <button className="p-3 transition-colors editor-fixed-menu--item">
+        <button className="h-full p-3 transition-colors editor-fixed-menu--item">
           <TextSize size={MENU_ICON_SIZE} color={ICON_COLOR_ACTIVE} />
         </button>
       )}

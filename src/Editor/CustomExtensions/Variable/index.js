@@ -20,7 +20,7 @@ const Variables = ({ editor, variables }) => {
   return (
     <Dropdown
       customTarget={() => (
-        <button className="relative p-3 editor-fixed-menu--item variable-selection-popup">
+        <button className="relative h-full p-3 editor-fixed-menu--item variable-selection-popup">
           <HashtagFilled size={MENU_ICON_SIZE} />
         </button>
       )}
