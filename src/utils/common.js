@@ -11,6 +11,3 @@ export const hyphenize = (string) => {
     return fallbackString;
   }
 };
-
-export const hasOwn = (obj, key) =>
-  Object.prototype.hasOwnProperty.call(obj, key);
