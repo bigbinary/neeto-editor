@@ -2,7 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./example/index.js",
+  entry: "./src/index.js",
   devtool:
     process.env.NODE_ENV === "production"
       ? "source-map"
@@ -61,9 +61,8 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      common: path.resolve(__dirname, "/lib/components/Common"),
-      hooks: path.resolve(__dirname, "/lib/hooks"),
-      constants: path.resolve(__dirname, "/lib/constants"),
+      common: path.resolve(__dirname, "/src/Common"),
+      hooks: path.resolve(__dirname, "/src/hooks"),
     },
   },
 };

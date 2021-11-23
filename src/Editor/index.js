@@ -11,6 +11,7 @@ const Tiptap = (
   {
     forceTitle = false,
     hideSlashCommands = false,
+    hideBubbleMenu = false,
     formatterOptions = [
       "bold",
       "italic",
