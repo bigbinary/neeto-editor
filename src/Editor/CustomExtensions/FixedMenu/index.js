@@ -82,10 +82,9 @@ const FixedMenu = ({ editor, variables }) => {
     },
     {
       Icon: Image,
-      command: ({ editor, range }) => {
+      command: ({ range }) => {
         sharedState.showImageUpload = true;
         sharedState.range = range;
-        editor.chain().focus().deleteRange(range).run();
       },
       optionName: "image-upload",
     },
@@ -162,7 +161,7 @@ const FixedMenu = ({ editor, variables }) => {
   );
 
   return (
-    <div className="flex items-center space-x-6 border-t border-l border-r editor-fixed-menu--root">
+    <div className="flex space-x-6 border-t border-l border-r editor-fixed-menu--root">
       <div className="flex">
         <TextColorOption
           color={editor.getAttributes("textStyle").color}
@@ -172,8 +171,10 @@ const FixedMenu = ({ editor, variables }) => {
         {fontStyleOptions.map(renderOptionButton)}
       </div>
       {[blockStyleOptions, listStyleOptions, editorOptions].map(
-        (optionGroup) => (
-          <div className="flex">{optionGroup.map(renderOptionButton)}</div>
+        (optionGroup, index) => (
+          <div className="flex" key={index}>
+            {optionGroup.map(renderOptionButton)}
+          </div>
         )
       )}
       <div className="flex justify-end flex-1">

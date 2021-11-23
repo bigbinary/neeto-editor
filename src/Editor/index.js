@@ -76,7 +76,7 @@ const Tiptap = (
   }));
 
   return (
-    <>
+    <div>
       {isFixedMenuActive ? (
         <FixedMenu editor={editor} variables={variables} />
       ) : null}
@@ -85,7 +85,7 @@ const Tiptap = (
       ) : null}
       <ImageUploader editor={editor} imageUploadUrl={uploadEndpoint} />
       <EditorContent editor={editor} {...otherProps} />
-    </>
+    </div>
   );
 };
 
