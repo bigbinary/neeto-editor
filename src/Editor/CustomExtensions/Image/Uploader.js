@@ -11,11 +11,11 @@ import Tab from "../../../Common/Tab";
 
 import useTabBar from "../../../hooks/useTabBar";
 
-import { tabBarOptions } from "./constants";
+import { IMAGE_UPLOAD_OPTIONS } from "./constants";
 
 const ImageUpload = ({ editor, imageUploadUrl, isVisible, setIsVisible }) => {
   const [isUploading, setIsUploading] = useState(false);
-  const [activeTab, setActiveTab] = useTabBar(tabBarOptions);
+  const [activeTab, setActiveTab] = useTabBar(IMAGE_UPLOAD_OPTIONS);
 
   const uppy = useMemo(
     () =>
@@ -49,7 +49,7 @@ const ImageUpload = ({ editor, imageUploadUrl, isVisible, setIsVisible }) => {
     <Modal isVisible={isVisible} onClose={() => setIsVisible(false)}>
       <div className="image-uploader__root">
         <Tab>
-          {tabBarOptions.map((option) => (
+          {IMAGE_UPLOAD_OPTIONS.map((option) => (
             <Tab.Item
               active={activeTab === option.key}
               onClick={() => setActiveTab(option)}
