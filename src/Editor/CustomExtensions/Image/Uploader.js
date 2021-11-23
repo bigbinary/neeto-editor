@@ -4,13 +4,12 @@ import Uppy from "@uppy/core";
 import XHRUpload from "@uppy/xhr-upload";
 import Modal from "common/Modal";
 import Tab from "common/Tab";
+import useTabBar from "hooks/useTabBar";
 
 import LocalUploader from "./LocalUploader";
 import ProgressBar from "./ProgressBar";
 
 import URLForm from "./LinkUploader/URLForm";
-
-import useTabBar from "../../../hooks/useTabBar";
 
 import { IMAGE_UPLOAD_OPTIONS } from "./constants";
 
