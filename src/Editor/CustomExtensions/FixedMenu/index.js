@@ -2,6 +2,7 @@ import React from "react";
 import {
   TextBold,
   TextItalic,
+  Underline,
   TextCross,
   Link,
   Code,
@@ -37,6 +38,13 @@ const FixedMenu = ({ editor, variables }) => {
       command: () => editor.chain().focus().toggleItalic().run(),
       active: editor.isActive("italic"),
       optionName: "italic",
+    },
+    {
+      Icon: Underline,
+      command: () => editor.chain().focus().toggleUnderline().run(),
+      active: editor.isActive("underline"),
+      optionName: "underline",
+      size: 27,
     },
     {
       Icon: TextCross,
@@ -137,6 +145,7 @@ const FixedMenu = ({ editor, variables }) => {
     active,
     optionName,
     disabled,
+    ...rest
   }) => (
     <button
       disabled={disabled}
@@ -144,7 +153,10 @@ const FixedMenu = ({ editor, variables }) => {
       key={optionName}
       className="p-3 transition-colors cursor-pointer editor-fixed-menu--item"
     >
-      <Icon color={active ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE} />
+      <Icon
+        color={active ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE}
+        {...rest}
+      />
     </button>
   );
 
