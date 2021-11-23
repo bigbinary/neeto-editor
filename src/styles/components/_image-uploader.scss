@@ -16,7 +16,7 @@
   margin: 8px;
   display: flex;
   flex-direction: column;
-  height: 176px;
+  min-height: 176px;
   width: 488px;
 
   .image-uploader__content {
