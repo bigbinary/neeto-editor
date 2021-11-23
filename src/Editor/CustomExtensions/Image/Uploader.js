@@ -2,12 +2,13 @@ import React, { useState, useMemo } from "react";
 import { view } from "@risingstack/react-easy-state";
 import Uppy from "@uppy/core";
 import XHRUpload from "@uppy/xhr-upload";
+import Modal from "common/Modal";
+import Tab from "common/Tab";
 
 import LocalUploader from "./LocalUploader";
 import ProgressBar from "./ProgressBar";
-import Modal from "../../../Common/Modal";
+
 import URLForm from "./LinkUploader/URLForm";
-import Tab from "../../../Common/Tab";
 
 import useTabBar from "../../../hooks/useTabBar";
 

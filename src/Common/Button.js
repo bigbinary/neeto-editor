@@ -1,8 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
-
-import Tooltip from "./Tooltip";
+import Tooltip from "common/Tooltip";
 
 const noop = () => {};
 const BUTTON_STYLES = {

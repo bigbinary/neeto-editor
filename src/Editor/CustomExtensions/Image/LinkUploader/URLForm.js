@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import Input from "../../../../Common/Input";
-import Button from "../../../../Common/Button";
+import Input from "common/Input";
+import Button from "common/Button";
 
 import { UrlRegExp } from "../../../../constants/regexp";
 
