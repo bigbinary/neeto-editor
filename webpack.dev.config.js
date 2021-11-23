@@ -63,6 +63,7 @@ module.exports = {
     alias: {
       common: path.resolve(__dirname, "/lib/components/Common"),
       hooks: path.resolve(__dirname, "/lib/hooks"),
+      constants: path.resolve(__dirname, "/lib/constants"),
     },
   },
 };
