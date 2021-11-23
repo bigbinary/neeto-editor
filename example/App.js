@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
 
-import CodeBlock from "common/CodeBlock";
-import Description from "common/Description";
-import Heading from "common/Heading";
-import HighlightText from "common/HighlightText";
-import ListItems from "common/ListItems";
-import Editor from "../Editor";
+import CodeBlock from "./components/CodeBlock";
+import Description from "./components/Description";
+import Heading from "./components/Heading";
+import HighlightText from "./components/HighlightText";
+import ListItems from "./components/ListItems";
+
+import Editor from "../lib";
+
 import {
   EDITOR_FEATURES,
   SAMPLE_MENTIONS,
@@ -13,7 +15,7 @@ import {
   STRINGS,
 } from "./constants";
 
-const Example = () => {
+const App = () => {
   const ref = useRef();
 
   const getHTML = () => {
@@ -173,7 +175,7 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default App;
 
 const SampleEditor = (props) => {
   const ref = useRef();
