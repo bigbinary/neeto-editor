@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import { Info } from "@bigbinary/neeto-icons";
 
-import Tooltip from "./Tooltip";
+import Tooltip from "common/ToolTip";
 
 const Label = ({
   children,

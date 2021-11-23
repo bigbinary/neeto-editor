@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
-import Tooltip from "common/Tooltip";
+import ToolTip from "common/ToolTip";
 
 const noop = () => {};
 const BUTTON_STYLES = {
@@ -63,7 +63,7 @@ const Button = React.forwardRef((props, ref) => {
     iconPosition == "left" ? "marginRight" : "marginLeft";
 
   return (
-    <Tooltip {...tooltipProps} disabled={!tooltipProps}>
+    <ToolTip {...tooltipProps} disabled={!tooltipProps}>
       <Parent
         ref={ref}
         onClick={handleClick}
@@ -88,7 +88,7 @@ const Button = React.forwardRef((props, ref) => {
           <Icon key="2" size={iconSize} className="neeto-ui-btn__icon" />
         ) : null}
       </Parent>
-    </Tooltip>
+    </ToolTip>
   );
 });
 
