@@ -18,10 +18,9 @@ import TextColorOption from "./TextColorOption";
 import FontSizeOption from "./FontSizeOption";
 
 import { ICON_COLOR_ACTIVE, ICON_COLOR_INACTIVE } from "./constants";
-import sharedState from "../../sharedState";
 import Variables from "../Variable";
 
-const FixedMenu = ({ editor, variables }) => {
+const FixedMenu = ({ editor, variables, setImageUploadVisible }) => {
   if (!editor) {
     return null;
   }
@@ -82,10 +81,7 @@ const FixedMenu = ({ editor, variables }) => {
     },
     {
       Icon: Image,
-      command: ({ range }) => {
-        sharedState.showImageUpload = true;
-        sharedState.range = range;
-      },
+      command: () => setImageUploadVisible(true),
       optionName: "image-upload",
     },
   ];

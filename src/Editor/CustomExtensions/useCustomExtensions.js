@@ -27,6 +27,7 @@ export default function useCustomExtensions({
   variables,
   isSlashCommandsActive,
   showImageInMention,
+  setImageUploadVisible,
 }) {
   let customExtensions;
 
@@ -62,7 +63,7 @@ export default function useCustomExtensions({
   }
 
   if (isSlashCommandsActive) {
-    customExtensions.push(SlashCommands);
+    customExtensions.push(SlashCommands.configure({ setImageUploadVisible }));
   }
 
   if (!isEmpty(mentions)) {
