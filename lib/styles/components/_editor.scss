@@ -10,15 +10,6 @@ $list-item-color: #1a141f;
   height: 0;
 }
 
-.ProseMirror code {
-  color: $color-solid-black;
-  padding: 2px 5px;
-  background: $color-translucent-black;
-  border-radius: 4px;
-  font-weight: 500;
-  font-family: "JetBrains Mono", monospace;
-}
-
 .ProseMirror code::before {
   content: "";
 }
@@ -33,10 +24,6 @@ $list-item-color: #1a141f;
 
 .ProseMirror blockquote > p::after {
   content: "" !important;
-}
-
-.ProseMirror a {
-  pointer-events: none;
 }
 
 .ProseMirror mark {
@@ -67,15 +54,6 @@ $list-item-color: #1a141f;
   background-color: $list-item-color;
 }
 
-.prose pre code {
-  font-weight: 500;
-  font-family: "JetBrains Mono", monospace;
-}
-
-.prose a[href] {
-  color: $color-link-blue;
-}
-
 .prose {
   max-width: 100% !important;
 }
@@ -90,11 +68,6 @@ $list-item-color: #1a141f;
 .video-wrapper {
   display: flex;
   justify-content: center;
-}
-
-.video-wrapper iframe {
-  width: 560px;
-  height: 315px;
 }
 
 .tippy-svg-arrow svg {
