@@ -54,6 +54,10 @@ $list-item-color: #1a141f;
   background-color: $list-item-color;
 }
 
+.ProseMirror a {
+  pointer-events: none;
+}
+
 .prose {
   max-width: 100% !important;
 }
