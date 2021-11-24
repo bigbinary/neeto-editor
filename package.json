@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-editor",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "./index.js",
   "description": "Neeto Editor is the library that drives the rich text experience in all Neeto products built at BigBinary",
   "keywords": [
@@ -13,7 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "@bigbinary/neeto-icons": "^1.8.6",
-    "@risingstack/react-easy-state": "^6.3.0",
     "@tailwindcss/typography": "^0.4.0",
     "@tippyjs/react": "^4.2.6",
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.18",

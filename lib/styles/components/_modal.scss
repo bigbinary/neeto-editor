@@ -1,0 +1,51 @@
+.neeto-ui-modal__backdrop {
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .neeto-ui-modal__wrapper {
+    width: 50%;
+    max-width: 100%;
+    max-height: 100vh;
+    overflow-y: auto;
+    @include scrollbars(4px);
+    position: relative;
+    background-color: $neeto-ui-white;
+    border-radius: $neeto-ui-rounded-sm;
+
+    .neeto-ui-modal__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+    }
+
+    &.neeto-ui-modal__wrapper--xs {
+      width: 320px;
+    }
+
+    &.neeto-ui-modal__wrapper--sm {
+      width: 480px;
+    }
+
+    &.neeto-ui-modal__wrapper--md {
+      width: 720px;
+    }
+  }
+
+  .neeto-ui-icon__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 10px 0 0 2px;
+  }
+}
