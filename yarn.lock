@@ -1525,11 +1525,6 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@nx-js/observer-util@^4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@nx-js/observer-util/-/observer-util-4.2.2.tgz#faea1bc61936653486d1b5dec7485220991e628d"
-  integrity sha512-9OayX1xkdGjdnsDiO2YdaYJ6aMyCF7/NY4QWVgIgjSAZJ4OX2fD766Ts79hEzBscenQy2DCaSoY8VkguIMB1ZA==
-
 "@pmmmwh/react-refresh-webpack-plugin@0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.4.3.tgz#1eec460596d200c0236bf195b078a5d1df89b766"
@@ -1546,13 +1541,6 @@
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
   integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
-
-"@risingstack/react-easy-state@^6.3.0":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@risingstack/react-easy-state/-/react-easy-state-6.3.0.tgz#3590031f7382c5c6c7866790ba7a72e557a12407"
-  integrity sha512-AGLrzvwloZL7dgagwRkxJaq7bcDsOGdHrCpHZIlMIxcFLdFr5IpD2/kcmTlC34H682pvfIl1lzNxBw72la10aA==
-  dependencies:
-    "@nx-js/observer-util" "^4.2.2"
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
