@@ -10,10 +10,13 @@ import Editor from "../lib";
 
 import {
   EDITOR_FEATURES,
+  PROP_TABLE_COLUMNS,
+  PROP_TABLE_ROWS,
   SAMPLE_MENTIONS,
   SAMPLE_VARIABLES,
   STRINGS,
 } from "./constants";
+import Table from "./components/Table";
 
 const App = () => {
   const ref = useRef();
@@ -44,10 +47,18 @@ const App = () => {
       <ListItems items={EDITOR_FEATURES} ordered />
 
       <Heading>Installation</Heading>
-      <CodeBlock>yarn add https://github.com/bigbinary/neeto-editor</CodeBlock>
+      <CodeBlock>yarn add @bigbinary/neeto-editor</CodeBlock>
 
       <Heading>Usage</Heading>
-      <CodeBlock>import Editor from 'bigbinary/neeto-editor'</CodeBlock>
+      <CodeBlock>import Editor from '@bigbinary/neeto-editor'</CodeBlock>
+
+      <Heading type="sub">All Props</Heading>
+      <Table
+        columns={PROP_TABLE_COLUMNS}
+        rows={PROP_TABLE_ROWS}
+        className="prop-detail-table"
+      />
+
       <Heading type="sub">Fixed Menu</Heading>
       <Description>
         The default Neeto Editor layout comes with a set of always-on-top fixed
