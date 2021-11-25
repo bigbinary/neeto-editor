@@ -69,6 +69,15 @@ $list-item-color: #1a141f;
   }
 }
 
+.prose h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $neeto-ui-font-normal !important;
+}
+
 .video-wrapper {
   display: flex;
   justify-content: center;
