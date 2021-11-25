@@ -15,3 +15,16 @@
     }
   }
 }
+
+.fontsize-dropdown {
+  ul {
+    display: flex;
+    flex-direction: row;
+    padding: 4px;
+
+    li {
+      display: inline;
+      padding: 8px 16px;
+    }
+  }
+}
