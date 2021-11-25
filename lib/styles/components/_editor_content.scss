@@ -1,0 +1,80 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/night-owl.min.css");
+
+$list-item-color: #1a141f;
+
+.tiptap-content {
+  // Paragraph
+  p {
+    &:empty::after {
+      content: "&nbsp";
+    }
+  }
+
+  // Code
+  code {
+    color: $color-solid-black;
+    padding: 2px 5px;
+    background: $color-translucent-black;
+    border-radius: 4px;
+    font-weight: $neeto-ui-font-medium;
+    font-family: "JetBrains Mono", monospace;
+    &::before {
+      content: "";
+    }
+    &::after {
+      content: "";
+    }
+  }
+  pre code {
+    font-weight: $neeto-ui-font-medium;
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  // Blockquote
+  blockquote {
+    & > p::before {
+      content: "" !important;
+    }
+    & > p::after {
+      content: "" !important;
+    }
+  }
+
+  // Unordered List
+  ul {
+    & > li > p {
+      margin-top: 0 !important;
+      margin-bottom: 0.375rem !important;
+    }
+    li::before {
+      background-color: $list-item-color;
+    }
+  }
+
+  // Ordered List
+  ol {
+    & > li > p {
+      margin-top: 0 !important;
+      margin-bottom: 0.375rem !important;
+    }
+
+    li::before {
+      color: $list-item-color;
+    }
+  }
+
+  // Link
+  a[href] {
+    color: $color-link-blue;
+  }
+
+  // Embed
+  .video-wrapper {
+    display: flex;
+    justify-content: center;
+    iframe {
+      width: 560px;
+      height: 315px;
+    }
+  }
+}
