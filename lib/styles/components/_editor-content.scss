@@ -3,10 +3,20 @@
 $list-item-color: #1a141f;
 
 .tiptap-content {
+  // Headers
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: revert;
+  }
+
   // Paragraph
   p {
     &:empty::after {
-      content: "&nbsp";
+      content: "\00a0";
     }
   }
 
@@ -25,13 +35,44 @@ $list-item-color: #1a141f;
       content: "";
     }
   }
-  pre code {
-    font-weight: $neeto-ui-font-medium;
-    font-family: "JetBrains Mono", monospace;
+  pre {
+    color: #e5e7eb;
+    background-color: #1f2937;
+    overflow-x: auto;
+    font-size: 0.875em;
+    line-height: 1.7142857;
+    margin-top: 1.7142857em;
+    margin-bottom: 1.7142857em;
+    border-radius: 0.375rem;
+    padding-top: 0.8571429em;
+    padding-right: 1.1428571em;
+    padding-bottom: 0.8571429em;
+    padding-left: 1.1428571em;
+  }
+  pre > code {
+    background-color: transparent;
+    border-width: 0;
+    border-radius: 0;
+    padding: 0;
+    font-weight: 400;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
   }
 
   // Blockquote
   blockquote {
+    font-weight: $neeto-ui-font-medium;
+    font-style: italic;
+    color: #111827;
+    border-left-width: 0.25rem;
+    border-left-color: #e5e7eb;
+    quotes: "\201C""\201D""\2018""\2019";
+    margin-top: 1.6em;
+    margin-bottom: 1.6em;
+    padding-left: 1em;
+
     & > p::before {
       content: "" !important;
     }
@@ -76,5 +117,12 @@ $list-item-color: #1a141f;
       width: 560px;
       height: 315px;
     }
+  }
+
+  ol,
+  ul {
+    list-style: revert;
+    margin: revert;
+    padding: revert;
   }
 }
