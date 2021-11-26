@@ -17,9 +17,13 @@
 
   .add-link-form {
     align-items: center;
-    flex-direction: row;
-    margin: 0 16px 16px 16px;
-    width: 300px;
+    margin: 0px 10px;
+    width: 440px;
+
+    button {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
   }
 }
 
@@ -27,11 +31,11 @@
   ul {
     display: flex;
     flex-direction: row;
-    padding: 4px;
+    padding: 16px 4px;
 
     li {
       display: inline;
-      padding: 8px 16px;
+      padding: 18px;
     }
   }
 }
