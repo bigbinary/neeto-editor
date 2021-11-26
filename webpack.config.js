@@ -43,7 +43,7 @@ module.exports = {
   plugins: [new PeerDepsExternalsPlugin()],
   resolve: {
     alias: {
-      common: path.resolve(__dirname, "/lib/components/Common"),
+      components: path.resolve(__dirname, "/lib/components"),
       hooks: path.resolve(__dirname, "/lib/hooks"),
       constants: path.resolve(__dirname, "/lib/constants"),
       utils: path.resolve(__dirname, "/lib/utils"),

@@ -14,6 +14,13 @@
       background: $neeto-ui-gray-300;
     }
   }
+
+  .add-link-form {
+    align-items: center;
+    flex-direction: row;
+    margin: 0 16px 16px 16px;
+    width: 300px;
+  }
 }
 
 .fontsize-dropdown {
