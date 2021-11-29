@@ -36,6 +36,7 @@
     "@uppy/url": "^2.0.4",
     "@uppy/xhr-upload": "^2.0.5",
     "classnames": "^2.3.1",
+    "dompurify": "^2.3.3",
     "highlight.js": "^11.3.1",
     "lodash.isempty": "^4.4.0",
     "lodash.isplainobject": "^4.0.6",
