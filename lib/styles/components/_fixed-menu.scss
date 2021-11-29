@@ -19,23 +19,12 @@
     align-items: center;
     margin: 0px 10px;
     width: 440px;
-
-    button {
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
   }
 }
 
 .fontsize-dropdown {
-  ul {
-    display: flex;
-    flex-direction: row;
-    padding: 16px 4px;
-
-    li {
-      display: inline;
-      padding: 18px;
-    }
+  ul li {
+    display: inline;
+    padding: 8px 12px;
   }
 }
