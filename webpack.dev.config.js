@@ -3,10 +3,7 @@ const path = require("path");
 
 module.exports = {
   entry: "./example/index.js",
-  devtool:
-    process.env.NODE_ENV === "production"
-      ? "source-map"
-      : "cheap-module-eval-source-map",
+  devtool: process.env.NODE_ENV === "production" ? false : "source-map",
   module: {
     rules: [
       {

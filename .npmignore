@@ -4,9 +4,10 @@
 /node_modules
 
 # production
-/build
 /lib
 /public
+/dist
+
 
 # misc
 .DS_Store
@@ -24,3 +25,4 @@ yarn-error.log*
 
 #example
 /example
+

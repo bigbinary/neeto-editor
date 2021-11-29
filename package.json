@@ -1,7 +1,7 @@
 {
   "name": "@bigbinary/neeto-editor",
   "version": "0.2.8",
-  "main": "./index.js",
+  "main": "./build/index.js",
   "description": "Neeto Editor is the library that drives the rich text experience in all Neeto products built at BigBinary",
   "keywords": [
     "ui",
@@ -56,9 +56,11 @@
     "autoprefixer": "^9",
     "babel-loader": "^8.2.2",
     "css-loader": "^4.3.0",
+    "css-minimizer-webpack-plugin": "1.3.0",
     "file-loader": "^6.1.1",
     "html-loader": "^1.3.1",
-    "html-webpack-plugin": "4.5.0",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "0.9.0",
     "postcss": "^7",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^4.0.3",
