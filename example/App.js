@@ -6,7 +6,7 @@ import Heading from "./components/Heading";
 import HighlightText from "./components/HighlightText";
 import ListItems from "./components/ListItems";
 
-import Editor from "../lib";
+import { Editor } from "../lib";
 
 import {
   EDITOR_FEATURES,
