@@ -8,6 +8,7 @@
 }
 
 .editor-command-list--root {
+  @include scrollbars(4px);
   background: $neeto-ui-gray-800;
 
   .editor-command-list--item {
