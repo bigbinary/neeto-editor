@@ -39,9 +39,13 @@ export const SAMPLE_MENTIONS = [
   "Jaden Smith",
 ];
 
-export const PROP_TABLE_COLUMNS = ["Prop", "Description", "Sample Value"];
+export const EDITOR_PROP_TABLE_COLUMNS = [
+  "Prop",
+  "Description",
+  "Sample Value",
+];
 
-export const PROP_TABLE_ROWS = [
+export const EDITOR_PROP_TABLE_ROWS = [
   [
     "ref",
     "Accepts a React reference. This reference can be used to access TipTap's inbuilt editor methods, such as getHTML()",
@@ -110,6 +114,19 @@ export const PROP_TABLE_ROWS = [
   [
     "className",
     "Accepts a string value. Can be used for further customisation of the editor content layout.",
+    `"neeto-editor-content"`,
+  ],
+];
+
+export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
+  [
+    "content",
+    "Accepts a valid HTML string. Can pass the output of the editor directly.",
+    `"<p>Hello World</p"`,
+  ],
+  [
+    "className",
+    "Accepts a string value. Can be used for further customisation of the editor content.",
     `"neeto-editor-content"`,
   ],
 ];

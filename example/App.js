@@ -10,11 +10,12 @@ import { Editor } from "../lib";
 
 import {
   EDITOR_FEATURES,
-  PROP_TABLE_COLUMNS,
-  PROP_TABLE_ROWS,
+  EDITOR_PROP_TABLE_COLUMNS,
+  EDITOR_PROP_TABLE_ROWS,
   SAMPLE_MENTIONS,
   SAMPLE_VARIABLES,
   STRINGS,
+  EDITOR_CONTENT_PROP_TABLE_ROWS,
 } from "./constants";
 import Table from "./components/Table";
 
@@ -45,20 +46,41 @@ const App = () => {
       <Editor ref={ref} />
       <Heading type="sub">Features</Heading>
       <ListItems items={EDITOR_FEATURES} ordered />
-
       <Heading>Installation</Heading>
       <CodeBlock>yarn add @bigbinary/neeto-editor</CodeBlock>
-
       <Heading>Usage</Heading>
-      <CodeBlock>import Editor from '@bigbinary/neeto-editor'</CodeBlock>
-
+      <CodeBlock>{`import { Editor } from '@bigbinary/neeto-editor'`}</CodeBlock>
       <Heading type="sub">All Props</Heading>
       <Table
-        columns={PROP_TABLE_COLUMNS}
-        rows={PROP_TABLE_ROWS}
+        columns={EDITOR_PROP_TABLE_COLUMNS}
+        rows={EDITOR_PROP_TABLE_ROWS}
         className="prop-detail-table"
       />
-
+      <Heading type="sub">Output</Heading>
+      <div className="mt-4">
+        <h3 className="mb-2 font-bold">Use EditorOutput component</h3>
+        <CodeBlock>
+          {`import { EditorOutput } from '@bigbinary/neeto-editor'`}
+        </CodeBlock>
+        <Table
+          columns={EDITOR_PROP_TABLE_COLUMNS}
+          rows={EDITOR_CONTENT_PROP_TABLE_ROWS}
+          className="prop-detail-table"
+        />
+      </div>
+      {/* <div className="mt-4">
+        <h3 className="mb-2 font-bold text-gray-700 ">
+          Include CSS in your project
+        </h3>
+        <CodeBlock>
+          {`import { EditorOutput } from '@bigbinary/neeto-editor'`}
+        </CodeBlock>
+        <Description>
+          You can use the above script to include css into your project. Add the
+          class <pre className="inline">neeto-editor-content</pre> to the
+          wrapper of the output content
+        </Description>
+      </div> */}
       <Heading type="sub">Fixed Menu</Heading>
       <Description>
         The default Neeto Editor layout comes with a set of always-on-top fixed
@@ -68,7 +90,6 @@ const App = () => {
         <CodeBlock>{STRINGS.fixedMenuSampleCode}</CodeBlock>
         <SampleEditor />
       </div>
-
       <Heading type="sub">Bubble Menu</Heading>
       <Description>
         If you would like to use an on-demand menu to interact with the editor
@@ -79,7 +100,6 @@ const App = () => {
         <CodeBlock>{STRINGS.bubbleMenuSampleCode}</CodeBlock>
         <SampleEditor menuType="bubble" />
       </div>
-
       <Heading type="sub">Slash Commands</Heading>
       <Description>
         Slash commands are actions that can be applied to block of text. This
@@ -92,7 +112,6 @@ const App = () => {
         <CodeBlock>{STRINGS.hideSlashCommandSampleCode}</CodeBlock>
         <SampleEditor hideSlashCommands />
       </div>
-
       <Heading type="sub">Variable Support</Heading>
       <Description>
         Neeto Editor supports variable placement. Pass array of variables as{" "}
@@ -111,7 +130,6 @@ const App = () => {
         <HighlightText>category_label</HighlightText> attributes. All other
         variables are shown under 'Others'
       </Description>
-
       <Heading type="sub">Support for Mentions</Heading>
       <Description>
         Neeto Editor comes with inbuilt support for mentions marking. Editor
@@ -135,7 +153,6 @@ const App = () => {
         <CodeBlock>{STRINGS.mentionsSampleCode}</CodeBlock>
         <SampleEditor mentions={SAMPLE_MENTIONS} showImageInMention />
       </div>
-
       <Heading type="sub">Support for placeholder</Heading>
       <Description>
         The editor can have placeholder texts for different nodes. These value
@@ -160,12 +177,10 @@ const App = () => {
           <HighlightText>{"({node}) => placeholder_text"}</HighlightText>
         </li>
       </ul>
-
       <div className="flex">
         <CodeBlock>{STRINGS.placeholderSampleCode}</CodeBlock>
         <SampleEditor placeholder="Input text here" />
       </div>
-
       <Heading type="sub">Force a title</Heading>
       <Description>
         Neeto editor can be configured to force user to include a document title
