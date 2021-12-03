@@ -1,7 +1,11 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const path = require("path");
 
+const isDevelopment = process.env.NODE_ENV !== "production";
+
 module.exports = {
+  mode: isDevelopment ? "development" : "production",
   entry: "./example/index.js",
   devtool:
     process.env.NODE_ENV === "production"
@@ -14,6 +18,9 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            plugins: [isDevelopment && "react-refresh/babel"].filter(Boolean),
+          },
         },
       },
       {
@@ -52,13 +59,15 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
+    hot: true,
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",
       filename: "./index.html",
     }),
-  ],
+    isDevelopment && new ReactRefreshWebpackPlugin({ overlay: false }),
+  ].filter(Boolean),
   resolve: {
     alias: {
       components: path.resolve(__dirname, "/lib/components"),
