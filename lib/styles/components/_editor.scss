@@ -1,5 +1,5 @@
 .ProseMirror {
-  @extend .tiptap-content;
+  @extend .neeto-editor-content;
 
   max-width: 100% !important;
   border-radius: $neeto-ui-rounded-sm;
