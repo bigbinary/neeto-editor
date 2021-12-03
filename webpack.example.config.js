@@ -1,10 +1,9 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const path = require("path");
 
 module.exports = {
   entry: "./example/index.js",
-  devtool: "cheap-module-eval-source-map",
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -12,9 +11,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            plugins: ["react-refresh/babel"],
-          },
         },
       },
       {
@@ -53,14 +49,12 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    hot: true,
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./public/index.html",
       filename: "./index.html",
     }),
-    new ReactRefreshWebpackPlugin({ overlay: false }),
   ],
   resolve: {
     alias: {
