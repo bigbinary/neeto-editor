@@ -228,6 +228,12 @@ const App = () => {
         <CodeBlock>{STRINGS.addonsSampleCode}</CodeBlock>
         <SampleEditor addons={SAMPLE_ADDONS} />
       </div>
+      <Heading type="sub">Support for an optional markdown mode</Heading>
+      <Description></Description>
+      <div className="flex">
+        <CodeBlock></CodeBlock>
+        <SampleEditor markdownMode />
+      </div>
     </div>
   );
 };
