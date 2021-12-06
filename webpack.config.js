@@ -38,7 +38,7 @@ module.exports = [
       ],
     },
     output: {
-      path: __dirname + "/dist",
+      path: __dirname + "/build",
       filename: "index.js",
       library: "neeto-editor",
       libraryTarget: "umd",
@@ -78,6 +78,9 @@ module.exports = [
     ],
     optimization: {
       minimizer: [new CssMinimizerPlugin()],
+    },
+    output: {
+      path: __dirname + "/dist",
     },
   },
 ];
