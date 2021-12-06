@@ -68,19 +68,19 @@ const App = () => {
           className="prop-detail-table"
         />
       </div>
-      {/* <div className="mt-4">
+      <div className="mt-4">
         <h3 className="mb-2 font-bold text-gray-700 ">
           Include CSS in your project
         </h3>
         <CodeBlock>
-          {`import { EditorOutput } from '@bigbinary/neeto-editor'`}
+          {`https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css`}
         </CodeBlock>
         <Description>
-          You can use the above script to include css into your project. Add the
-          class <pre className="inline">neeto-editor-content</pre> to the
-          wrapper of the output content
+          Use the above CDN link to include the styles in your project. Add the
+          class <pre className="inline font-semibold">neeto-editor-content</pre>{" "}
+          to the wrapper of the output content.
         </Description>
-      </div> */}
+      </div>
       <Heading type="sub">Fixed Menu</Heading>
       <Description>
         The default Neeto Editor layout comes with a set of always-on-top fixed
