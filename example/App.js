@@ -193,7 +193,10 @@ const App = () => {
         <CodeBlock>{STRINGS.forceTitleSampleCode}</CodeBlock>
         <SampleEditor
           initialValue="Title Text"
-          placeholder={{ heading: "Input title here" }}
+          placeholder={{
+            heading: "Input title here",
+            paragraph: "Enter your content here",
+          }}
           forceTitle
         />
       </div>

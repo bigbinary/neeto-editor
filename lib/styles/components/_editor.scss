@@ -8,13 +8,26 @@
     border-radius: 0px 0px $neeto-ui-rounded-sm $neeto-ui-rounded-sm;
   }
 
-  .is-empty::before {
-    content: attr(data-placeholder);
-    float: left;
-    color: #ced4da;
-    pointer-events: none;
-    height: 0;
+  &:not(.force-title) {
+    .is-empty:first-child::before {
+      content: attr(data-placeholder);
+      float: left;
+      color: #ced4da;
+      pointer-events: none;
+      height: 0;
+    }
   }
+
+  &.force-title {
+    .is-empty:nth-child(-n + 2)::before {
+      content: attr(data-placeholder);
+      float: left;
+      color: #ced4da;
+      pointer-events: none;
+      height: 0;
+    }
+  }
+
   a {
     pointer-events: none;
   }
