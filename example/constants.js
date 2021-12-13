@@ -222,6 +222,9 @@ export const STRINGS = {
     "image-upload",
   ];
 
-  <Editor addons={addons} />
+  <Editor addons={addons} />`,
+
+  markdownModeSampleCode: `
+  <Editor markdownMode />
   `,
 };

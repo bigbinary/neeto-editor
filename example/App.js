@@ -230,8 +230,15 @@ const App = () => {
       </div>
       <Heading type="sub">Support for an optional markdown mode</Heading>
       <Description></Description>
+      <Heading type="sub">Support for markdown mode</Heading>
+      <Description>
+        Neeto Editor comes with a markdown mode where users can type the content
+        in markdown, which gets converted to the default rich text and vice
+        versa. This can be achieved by providing a truthy value to the
+        `markdownMode` prop.
+      </Description>
       <div className="flex">
-        <CodeBlock></CodeBlock>
+        <CodeBlock>{STRINGS.markdownModeSampleCode}</CodeBlock>
         <SampleEditor markdownMode />
       </div>
     </div>
