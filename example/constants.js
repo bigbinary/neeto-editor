@@ -181,7 +181,7 @@ export const STRINGS = {
   <Editor placeholder="Input text here" />`,
 
   forceTitleSampleCode: `
-  const placeholder = { heading: 'Input title here' };
+  const placeholder = { title: 'Input title here', paragraph: 'Enter your content' };
  
   <Editor placeholder={placeholder} forceTitle />`,
 };

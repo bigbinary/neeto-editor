@@ -194,7 +194,7 @@ const App = () => {
         <SampleEditor
           initialValue="Title Text"
           placeholder={{
-            heading: "Input title here",
+            title: "Input title here",
             paragraph: "Enter your content here",
           }}
           forceTitle
