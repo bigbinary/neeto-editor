@@ -1,66 +1,50 @@
-.image-uploader__modal {
-  width: min-content !important;
-}
-
-.image-uploader__root {
-  $color-primary: $color-indigo;
-
-  .label--primary {
-    color: $neeto-ui-gray-700;
-    display: block;
-    margin-bottom: 5px;
-    font-size: $neeto-ui-text-sm;
-  }
-
-  .label--secondary {
-    color: $neeto-ui-gray-400;
-    font-size: $neeto-ui-text-xs;
-  }
-
-  margin: 8px;
+.neeto-editor-image-uploader {
+  padding: 8px;
   display: flex;
   flex-direction: column;
   min-height: 176px;
-  width: 488px;
 
-  .image-uploader__content {
-    flex: 1;
+  .neeto-ui-tab__wrapper {
+    .neeto-ui-tab {
+      min-width: 88px;
+    }
+  }
+
+  .neeto-editor-image-uploader__content {
+    flex-grow: 1;
     display: flex;
     margin-top: 10px;
   }
 
-  // ProgressBar
-  .progress-bar__root {
-    width: 100%;
-    max-width: 256px;
-    margin-top: 11px;
-    .progress-bar__indicator {
-      position: relative;
-      width: 100%;
-      height: 6px;
-      border-radius: 100px;
-      overflow: hidden;
-      background: rgba($color-primary, 0.2);
-      margin-top: 5px;
-    }
-
-    .progress-bar__indicator-inner {
-      background: $color-primary;
-    }
-
-    .progress-bar__percent-text {
-      font-size: $neeto-ui-text-xs;
-      color: $neeto-ui-gray-800;
-    }
+  .neeto-editor-image-uploader__progress {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-align: center;
   }
 
-  // Local upload component related styles
-  .local-upload__root {
+  .neeto-editor-image-uploader__progress-title {
+    color: $neeto-ui-gray-700;
+    font-size: $neeto-ui-text-sm;
+    margin-bottom: 4px;
+  }
+
+  .neeto-editor-image-uploader__progress-file {
+    color: $neeto-ui-gray-400;
+    font-size: $neeto-ui-text-xs;
+  }
+
+  .neeto-editor-image-uploader__dnd {
     display: flex;
-    flex: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1;
     border: 1px dashed $neeto-ui-gray-400;
     box-sizing: border-box;
-    border-radius: 2px;
+    border-radius: $neeto-ui-rounded-sm;
 
     // DragDrop
     .uppy-DragDrop-container {
@@ -79,10 +63,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin: 0;
       line-height: 1.4;
       text-align: center;
       font-weight: $neeto-ui-font-normal;
+      margin: 0;
     }
 
     .uppy-DragDrop-arrow {
@@ -91,23 +75,72 @@
     }
 
     .uppy-DragDrop--isDraggingOver {
-      background: $neeto-ui-gray-200;
-      border: 2px dashed $color-primary;
+      background-color: $neeto-ui-gray-200;
+      border: 2px dashed $neeto-ui-secondary-indigo;
     }
 
     .uppy-DragDrop-label {
-      @extend .label--primary;
+      @extend .neeto-editor-image-uploader__progress-title;
     }
 
     .uppy-DragDrop-browse {
-      color: $color-primary;
-      font-size: $font-size-lg;
+      color: $neeto-ui-secondary-indigo;
+      font-size: $neeto-ui-text-sm;
       font-weight: $neeto-ui-font-semibold;
       cursor: pointer;
     }
 
     .uppy-DragDrop-note {
-      @extend .label--secondary;
+      @extend .neeto-editor-image-uploader__progress-file;
     }
+  }
+}
+
+// ProgressBar
+.neeto-editor-progress-bar__wrapper {
+  width: 100%;
+  max-width: 256px;
+  margin-top: 10px;
+
+  .neeto-editor-progress-bar__percent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: $neeto-ui-text-xs;
+      color: $neeto-ui-gray-800;
+    }
+  }
+
+  .neeto-editor-progress-bar__indicator {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    border-radius: $neeto-ui-rounded-full;
+    overflow: hidden;
+    background-color: rgba($neeto-ui-secondary-indigo, 0.2);
+    margin-top: 4px;
+  }
+
+  .neeto-editor-progress-bar__indicator-inner {
+    background-color: $neeto-ui-secondary-indigo;
+  }
+}
+
+// URL Form
+.neeto-editor-url-form__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 0 40px;
+
+  .neeto-ui-input__wrapper {
+    width: 100%;
+    flex-grow: 0;
+    margin-bottom: 16px;
   }
 }
