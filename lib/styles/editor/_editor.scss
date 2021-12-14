@@ -1,11 +1,35 @@
-.ProseMirror {
-  @extend .neeto-editor-content;
-
+.neeto-editor {
   max-width: 100% !important;
   border-radius: $neeto-ui-rounded-sm;
+  white-space: pre-wrap;
+  padding: 12px;
+
+  &:focus {
+    outline: none;
+  }
+
+  a {
+    pointer-events: none;
+  }
+
+  mark {
+    background: darken($neeto-ui-secondary-green, 10%);
+    border-radius: $neeto-ui-rounded-sm;
+    padding: 0px 4px;
+  }
+
+  .neeto-editor-variable {
+    color: $neeto-ui-info;
+    font-weight: $neeto-ui-font-medium;
+  }
 
   &.fixed-menu-active {
+    border: thin solid $neeto-ui-gray-200;
     border-radius: 0px 0px $neeto-ui-rounded-sm $neeto-ui-rounded-sm;
+  }
+
+  .is-empty {
+    position: relative;
   }
 
   &:not(.force-title) {
@@ -28,30 +52,9 @@
     }
   }
 
-  .is-empty {
-    position: relative;
-  }
-
-  a {
-    pointer-events: none;
-  }
-
-  mark {
-    background: $color-dark-green;
-    border-radius: 1px;
-    padding: 0px 4px;
-  }
-
   .ProseMirror-selectednode {
-    outline: 3px solid $color-aqua-blue;
+    outline: 3px solid $neeto-ui-pastel-blue;
   }
 
-  .variable__text {
-    font-weight: 500;
-    color: $color-steel-blue;
-  }
-}
-
-.tippy-svg-arrow svg {
-  fill: $neeto-ui-gray-800;
+  @extend .neeto-editor-content;
 }
