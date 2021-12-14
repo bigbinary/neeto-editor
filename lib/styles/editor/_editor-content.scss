@@ -22,9 +22,9 @@ $list-item-color: #1a141f;
 
   // Code
   code {
-    color: $color-solid-black;
+    color: $neeto-ui-black;
     padding: 2px 5px;
-    background: $color-translucent-black;
+    background: rgba($neeto-ui-black, 10%);
     border-radius: 4px;
     font-weight: $neeto-ui-font-medium;
     font-family: "JetBrains Mono", monospace;
@@ -106,7 +106,7 @@ $list-item-color: #1a141f;
 
   // Link
   a[href] {
-    color: $color-link-blue;
+    color: $neeto-ui-info;
   }
 
   // Embed
