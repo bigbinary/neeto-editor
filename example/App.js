@@ -185,9 +185,9 @@ const App = () => {
       <Description>
         Neeto editor can be configured to force user to include a document title
         . This can be achieved by providing a truthy value to the{" "}
-        <HighlightText>forceTitle</HighlightText> prop. Along with that, inorder
-        to show the placeholder text on the title, the{" "}
-        <HighlightText>placeholder</HighlightText> prop should also be provided.
+        <HighlightText>forceTitle</HighlightText> prop. To replace the default
+        title placeholder the <HighlightText>placeholder</HighlightText> prop
+        should also be provided.
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.forceTitleSampleCode}</CodeBlock>

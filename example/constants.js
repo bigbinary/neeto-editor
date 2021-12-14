@@ -82,6 +82,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     `true`,
   ],
   [
+    "titleError",
+    "Accepts a boolean value. When true, an error message will be displayed below the title field when it is empty",
+    `true`,
+  ],
+  [
     "uploadEndpoint",
     "Accepts an URL endpoint string. This URL will be used for XHR image uploads",
     `"/api/v1/direct_uploads"`,

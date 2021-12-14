@@ -1,6 +1,14 @@
 .ProseMirror {
   @extend .neeto-editor-content;
 
+  @mixin show-placeholder {
+    content: attr(data-placeholder);
+    float: left;
+    color: #ced4da;
+    pointer-events: none;
+    height: 0;
+  }
+
   max-width: 100% !important;
   border-radius: $neeto-ui-rounded-sm;
 
@@ -8,12 +16,11 @@
     border-radius: 0px 0px $neeto-ui-rounded-sm $neeto-ui-rounded-sm;
   }
 
-  &:not(.force-title) {
-    .is-empty:first-child::before {
-      content: attr(data-placeholder);
-      float: left;
-      color: #ced4da;
-      pointer-events: none;
+  &.placeholder-active {
+    &:not(.force-title) {
+      .is-editor-empty:first-child::before {
+        @include show-placeholder;
+      }
     }
   }
 
@@ -25,29 +32,34 @@
       }
     }
 
-    .is-empty:nth-child(-n + 2)::before {
-      content: attr(data-placeholder);
-      float: left;
-      color: #ced4da;
-      pointer-events: none;
+    .is-empty:first-child::before {
+      @include show-placeholder;
+    }
+    &.placeholder-active {
+      .is-empty:nth-child(2)::before {
+        @include show-placeholder;
+      }
     }
   }
 
-  &.force-title--error {
-    .is-empty {
-      &:first-child {
-        &::after {
-          position: absolute;
-          content: "Title can't be blank";
-          left: 0;
-          bottom: -12px;
-          color: $neeto-ui-error;
-          pointer-events: none;
-          font-size: 12px;
+  &.force-title {
+    &.force-title--error {
+      .is-empty {
+        &:first-child {
+          &::after {
+            position: absolute;
+            content: "Title can't be blank";
+            left: 0;
+            bottom: -12px;
+            color: $neeto-ui-error;
+            pointer-events: none;
+            font-size: 12px;
+          }
         }
       }
     }
   }
+
   a {
     pointer-events: none;
   }
