@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./styles/abstracts/mixins";
 @import "./styles/abstracts/variables";
 @import "./styles/abstracts/neeto-ui-variables";
+@import "./styles/abstracts/normalize";
+@import "./styles/abstracts/base";
+@import "./styles/abstracts/mixins";
 
 @import "./styles/components/dropdown";
 @import "./styles/components/avatar";
