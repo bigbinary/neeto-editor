@@ -1,29 +1,111 @@
-.editor-fixed-menu--root {
-  @include scrollbars(4px);
-
+.neeto-editor-fixed-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   overflow-x: auto;
   border-radius: $neeto-ui-rounded-sm $neeto-ui-rounded-sm 0px 0px;
-  background: $neeto-ui-gray-200;
+  background-color: $neeto-ui-gray-200;
+  @include scrollbars(4px);
 
-  button {
-    outline: none !important;
-  }
+  .neeto-editor-fixed-menu__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 
-  .editor-fixed-menu--item {
-    &:hover {
-      background: $neeto-ui-gray-300;
+    padding: 10px;
+    cursor: pointer;
+    transition: $neeto-ui-transition;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: $neeto-ui-gray-300;
+    }
+
+    input[type="color"] {
+      visibility: hidden;
+      height: 0;
+      width: 0;
     }
   }
 
-  .add-link-form {
-    margin: 0px 10px;
-    width: 440px;
+  .neeto-editor-variables-button {
+    margin-left: auto;
   }
-}
 
-.fontsize-dropdown {
   ul li {
     display: inline;
     padding: 8px 12px;
+  }
+}
+
+.neeto-editor-variables-suggestion {
+  padding: 4px 0;
+}
+
+.neeto-editor-variables-list {
+  padding: 4px 8px;
+  min-width: 184px;
+
+  .neeto-editor-variables-block {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+
+    h6 {
+      font-size: $neeto-ui-text-xs;
+      font-weight: $neeto-ui-font-medium;
+      color: $neeto-ui-gray-600;
+      margin-bottom: 4px;
+    }
+
+    .neeto-editor-variables-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: 1;
+      gap: 8px;
+
+      .neeto-editor-variable {
+        padding: 4px 6px;
+        font-size: $neeto-ui-text-xs;
+        color: $neeto-ui-gray-700;
+        line-height: 1;
+        background-color: $neeto-ui-pastel-blue;
+        border-radius: $neeto-ui-rounded-sm;
+        transition: $neeto-ui-transition;
+
+        &:hover {
+          background-color: darken($neeto-ui-pastel-blue, 5%);
+        }
+      }
+    }
+  }
+}
+
+.neeto-editor-link-wrapper {
+  .neeto-ui-dropdown__popup {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+.neeto-editor-font-size-wrapper {
+  .neeto-ui-dropdown__popup {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
   }
 }
