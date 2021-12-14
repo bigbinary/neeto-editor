@@ -34,7 +34,7 @@ export const SAMPLE_MENTIONS = [
   {
     label: "Oliver Smith",
     key: "oliver-smith",
-    imageUrl: "https://via.placeholder.com/150/0000FF/808080",
+    imageUrl: "https://i.pravatar.cc/300",
   },
   "Jaden Smith",
 ];
@@ -170,7 +170,7 @@ export const STRINGS = {
     { 
       label: "Oliver Smith",
       key: "oliver-smith",
-      imageUrl: "https://via.placeholder.com/150/0000FF/808080"
+      imageUrl: "https://i.pravatar.cc/300"
     },
     "Jaden Smith",
   ]

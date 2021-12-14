@@ -18,3 +18,31 @@
     }
   }
 }
+
+.neeto-editor-mentions__wrapper {
+  padding: 8px;
+  min-width: 184px;
+
+  .neeto-editor-mentions__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 8px;
+    transition: $neeto-ui-transition;
+    cursor: pointer;
+    font-size: $neeto-ui-text-xs;
+    color: $neeto-ui-white;
+    border-radius: $neeto-ui-rounded;
+
+    &:hover,
+    &.active {
+      background-color: $neeto-ui-gray-700;
+    }
+
+    .neeto-ui-avatar--container {
+      margin-right: 8px;
+    }
+  }
+}
