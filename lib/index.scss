@@ -7,18 +7,19 @@
 @import "./styles/abstracts/neeto-ui-variables";
 
 @import "./styles/components/dropdown";
-@import "./styles/components/editor-variables";
-@import "./styles/components/command-list";
-@import "./styles/components/editor";
-@import "./styles/components/editor-content";
 @import "./styles/components/avatar";
-@import "./styles/components/fixed-menu";
-@import "./styles/components/image-uploader";
 @import "./styles/components/tab";
 @import "./styles/components/button";
 @import "./styles/components/tooltip";
 @import "./styles/components/input";
 @import "./styles/components/modal";
+
+@import "./styles/editor/editor-variables";
+@import "./styles/editor/command-list";
+@import "./styles/editor/editor";
+@import "./styles/editor/editor-content";
+@import "./styles/editor/fixed-menu";
+@import "./styles/editor/image-uploader";
 
 body {
   margin: 0;
