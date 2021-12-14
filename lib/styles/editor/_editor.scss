@@ -28,6 +28,10 @@
     }
   }
 
+  .is-empty {
+    position: relative;
+  }
+
   a {
     pointer-events: none;
   }
@@ -40,6 +44,11 @@
 
   .ProseMirror-selectednode {
     outline: 3px solid $color-aqua-blue;
+  }
+
+  .variable__text {
+    font-weight: 500;
+    color: $color-steel-blue;
   }
 }
 
