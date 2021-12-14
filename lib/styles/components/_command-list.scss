@@ -18,3 +18,26 @@
     }
   }
 }
+
+.neeto-editor-bubble-menu {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  border-radius: $neeto-ui-rounded;
+  background: $neeto-ui-gray-800;
+
+  .neeto-editor-bubble-menu__item {
+    padding: 8px;
+    cursor: pointer;
+    transition: $neeto-ui-transition;
+
+    &:hover,
+    &:active,
+    &.active {
+      background-color: $neeto-ui-gray-700;
+    }
+  }
+}
