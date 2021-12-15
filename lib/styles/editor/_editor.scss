@@ -3,6 +3,7 @@
   border-radius: $neeto-ui-rounded-sm;
   white-space: pre-wrap;
   padding: 12px;
+  color: $neeto-ui-gray-800;
 
   &:focus {
     outline: none;
@@ -18,9 +19,17 @@
     padding: 0px 4px;
   }
 
-  .neeto-editor-variable {
-    color: $neeto-ui-info;
-    font-weight: $neeto-ui-font-medium;
+  [data-variable] {
+    display: inline-flex;
+    color: $neeto-ui-gray-700;
+    background-color: rgba($neeto-ui-gray-200, 0.5);
+    border-radius: $neeto-ui-rounded-sm;
+    line-height: 1;
+    padding: 4px 6px;
+  }
+
+  [data-mention] {
+    opacity: 0.6;
   }
 
   &.fixed-menu-active {
