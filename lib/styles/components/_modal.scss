@@ -10,6 +10,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  transition: $neeto-ui-transition;
+  background-color: rgba($neeto-ui-gray-500, 0.5);
 
   .neeto-ui-modal__wrapper {
     width: 50%;

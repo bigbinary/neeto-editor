@@ -1,0 +1,69 @@
+.neeto-editor {
+  max-width: 100% !important;
+  border-radius: $neeto-ui-rounded-sm;
+  white-space: pre-wrap;
+  padding: 12px;
+  color: $neeto-ui-gray-800;
+
+  &:focus {
+    outline: none;
+  }
+
+  a {
+    pointer-events: none;
+  }
+
+  mark {
+    background: darken($neeto-ui-secondary-green, 10%);
+    border-radius: $neeto-ui-rounded-sm;
+    padding: 0px 4px;
+  }
+
+  [data-variable] {
+    display: inline-flex;
+    color: $neeto-ui-gray-700;
+    background-color: rgba($neeto-ui-gray-200, 0.5);
+    border-radius: $neeto-ui-rounded-sm;
+    line-height: 1;
+    padding: 4px 6px;
+  }
+
+  [data-mention] {
+    opacity: 0.6;
+  }
+
+  &.fixed-menu-active {
+    border: thin solid $neeto-ui-gray-200;
+    border-radius: 0px 0px $neeto-ui-rounded-sm $neeto-ui-rounded-sm;
+  }
+
+  .is-empty {
+    position: relative;
+  }
+
+  &:not(.force-title) {
+    .is-empty:first-child::before {
+      content: attr(data-placeholder);
+      float: left;
+      color: #ced4da;
+      pointer-events: none;
+      height: 0;
+    }
+  }
+
+  &.force-title {
+    .is-empty:nth-child(-n + 2)::before {
+      content: attr(data-placeholder);
+      float: left;
+      color: #ced4da;
+      pointer-events: none;
+      height: 0;
+    }
+  }
+
+  .ProseMirror-selectednode {
+    outline: 3px solid $neeto-ui-pastel-blue;
+  }
+
+  @extend .neeto-editor-content;
+}
