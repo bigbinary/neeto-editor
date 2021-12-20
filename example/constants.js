@@ -126,6 +126,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "Accepts an array of strings, each corresponding to the name of an addon.",
     `["highlight", "emoji", "code-block", "block-quote", "image-upload"]`,
   ],
+  [
+    "markdownMode",
+    "Accepts a boolean value. When true, a markdown editor will be made available in addition to rich text editor.",
+    "true",
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
