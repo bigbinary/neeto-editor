@@ -198,7 +198,6 @@ const App = () => {
             paragraph: "Enter your content here",
           }}
           forceTitle
-          titleError
         />
       </div>
     </div>
