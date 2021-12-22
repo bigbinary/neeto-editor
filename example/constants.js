@@ -141,6 +141,14 @@ export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
   ],
 ];
 
+export const SAMPLE_ADDONS = [
+  "highlight",
+  "emoji",
+  "code-block",
+  "block-quote",
+  "image-upload",
+];
+
 export const STRINGS = {
   fixedMenuSampleCode: `
   <Editor />`,
@@ -196,13 +204,14 @@ export const STRINGS = {
   <Editor placeholder={placeholder} forceTitle />`,
 
   addonsSampleCode: `
-  <Editor
-    addons={[
-      "highlight",
-      "emoji",
-      "code-block",
-      "block-quote",
-      "image-upload",
-    ]}
-  />`,
+  const addons = [
+    "highlight",
+    "emoji",
+    "code-block",
+    "block-quote",
+    "image-upload",
+  ];
+
+  <Editor addons={addons} />
+  `,
 };

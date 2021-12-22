@@ -16,6 +16,7 @@ import {
   SAMPLE_VARIABLES,
   STRINGS,
   EDITOR_CONTENT_PROP_TABLE_ROWS,
+  SAMPLE_ADDONS,
 } from "./constants";
 import Table from "./components/Table";
 
@@ -222,15 +223,7 @@ const App = () => {
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.addonsSampleCode}</CodeBlock>
-        <SampleEditor
-          addons={[
-            "highlight",
-            "emoji",
-            "code-block",
-            "block-quote",
-            "image-upload",
-          ]}
-        />
+        <SampleEditor addons={SAMPLE_ADDONS} />
       </div>
     </div>
   );
