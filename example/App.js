@@ -16,6 +16,9 @@ import {
   SAMPLE_VARIABLES,
   STRINGS,
   EDITOR_CONTENT_PROP_TABLE_ROWS,
+  SAMPLE_ADDONS,
+  EDITOR_ADDONS_TABLE_ROWS,
+  EDITOR_ADDONS_TABLE_COLUMNS,
 } from "./constants";
 import Table from "./components/Table";
 
@@ -199,6 +202,31 @@ const App = () => {
           }}
           forceTitle
         />
+      </div>
+      <Heading type="sub">Support for addons</Heading>
+      <Description>
+        Neeto editor enables the options{" "}
+        <HighlightText>font size</HighlightText>,{" "}
+        <HighlightText>font color</HighlightText>,{" "}
+        <HighlightText>bold</HighlightText>,{" "}
+        <HighlightText>italics</HighlightText>,{" "}
+        <HighlightText>underline</HighlightText>,{" "}
+        <HighlightText>strike through</HighlightText>,{" "}
+        <HighlightText>link</HighlightText>,{" "}
+        <HighlightText>bulleted list</HighlightText> and{" "}
+        <HighlightText>numbered list</HighlightText> by default. Additional
+        options can be enabled by passing an array of strings to the{" "}
+        <HighlightText>addons</HighlightText> prop.
+      </Description>
+      <h3 className="mt-4 mb-2 font-bold">Available addons</h3>
+      <Table
+        columns={EDITOR_ADDONS_TABLE_COLUMNS}
+        rows={EDITOR_ADDONS_TABLE_ROWS}
+        className="prop-detail-table"
+      />
+      <div className="flex mt-4">
+        <CodeBlock>{STRINGS.addonsSampleCode}</CodeBlock>
+        <SampleEditor addons={SAMPLE_ADDONS} />
       </div>
     </div>
   );

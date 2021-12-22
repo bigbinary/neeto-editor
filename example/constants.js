@@ -121,6 +121,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "Accepts a string value. Can be used for further customisation of the editor content layout.",
     `"neeto-editor-content"`,
   ],
+  [
+    "addons",
+    "Accepts an array of strings, each corresponding to the name of an addon.",
+    `["highlight", "emoji", "code-block", "block-quote", "image-upload"]`,
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
@@ -134,6 +139,24 @@ export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
     "Accepts a string value. Can be used for further customisation of the editor content.",
     `"neeto-editor-content"`,
   ],
+];
+
+export const SAMPLE_ADDONS = [
+  "highlight",
+  "emoji",
+  "code-block",
+  "block-quote",
+  "image-upload",
+];
+
+export const EDITOR_ADDONS_TABLE_COLUMNS = ["Prop", "Description"];
+
+export const EDITOR_ADDONS_TABLE_ROWS = [
+  ["highlight", "Emphasize important texts by marking it with a color."],
+  ["emoji", "Add emojis to your content using an emoji picker."],
+  ["code-block", "Provide syntax highlighting for code snippets."],
+  ["block-quote", "Highlight a block of text as a quote."],
+  ["image-upload", "Upload images to the editor."],
 ];
 
 export const STRINGS = {
@@ -172,7 +195,7 @@ export const STRINGS = {
 
   mentionsSampleCode: `
   const mentions = [
-    { 
+    {
       label: "Oliver Smith",
       key: "oliver-smith",
       imageUrl: "https://i.pravatar.cc/300"
@@ -187,6 +210,18 @@ export const STRINGS = {
 
   forceTitleSampleCode: `
   const placeholder = { title: 'Input title here', paragraph: 'Enter your content' };
- 
+
   <Editor placeholder={placeholder} forceTitle />`,
+
+  addonsSampleCode: `
+  const addons = [
+    "highlight",
+    "emoji",
+    "code-block",
+    "block-quote",
+    "image-upload",
+  ];
+
+  <Editor addons={addons} />
+  `,
 };
