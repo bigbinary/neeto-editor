@@ -121,6 +121,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "Accepts a string value. Can be used for further customisation of the editor content layout.",
     `"neeto-editor-content"`,
   ],
+  [
+    "addons",
+    "Accepts an array of strings, each corresponding to the name of an addon.",
+    `["highlight", "emoji", "code-block", "block-quote", "image-upload"]`,
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
@@ -172,7 +177,7 @@ export const STRINGS = {
 
   mentionsSampleCode: `
   const mentions = [
-    { 
+    {
       label: "Oliver Smith",
       key: "oliver-smith",
       imageUrl: "https://i.pravatar.cc/300"
@@ -187,6 +192,17 @@ export const STRINGS = {
 
   forceTitleSampleCode: `
   const placeholder = { title: 'Input title here', paragraph: 'Enter your content' };
- 
+
   <Editor placeholder={placeholder} forceTitle />`,
+
+  addonsSampleCode: `
+  <Editor
+    addons={[
+      "highlight",
+      "emoji",
+      "code-block",
+      "block-quote",
+      "image-upload",
+    ]}
+  />`,
 };

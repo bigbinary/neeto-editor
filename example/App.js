@@ -200,6 +200,38 @@ const App = () => {
           forceTitle
         />
       </div>
+      <Heading type="sub">Support for addons</Heading>
+      <Description>
+        Neeto editor enables the options{" "}
+        <HighlightText>font size</HighlightText>,{" "}
+        <HighlightText>font color</HighlightText>,{" "}
+        <HighlightText>bold</HighlightText>,{" "}
+        <HighlightText>italics</HighlightText>,{" "}
+        <HighlightText>underline</HighlightText>,{" "}
+        <HighlightText>strike through</HighlightText>,{" "}
+        <HighlightText>link</HighlightText>,{" "}
+        <HighlightText>bulleted list</HighlightText> and{" "}
+        <HighlightText>numbered list</HighlightText> by default. Additional
+        options can be enabled by passing an array of strings to the{" "}
+        <HighlightText>addons</HighlightText> prop. The list of available addons
+        is <HighlightText>hightlight</HighlightText>,{" "}
+        <HighlightText>emoji</HighlightText>,{" "}
+        <HighlightText>code-block</HighlightText>,{" "}
+        <HighlightText>block-quote</HighlightText>, and{" "}
+        <HighlightText>image-upload</HighlightText>.
+      </Description>
+      <div className="flex">
+        <CodeBlock>{STRINGS.addonsSampleCode}</CodeBlock>
+        <SampleEditor
+          addons={[
+            "highlight",
+            "emoji",
+            "code-block",
+            "block-quote",
+            "image-upload",
+          ]}
+        />
+      </div>
     </div>
   );
 };
