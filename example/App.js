@@ -17,6 +17,8 @@ import {
   STRINGS,
   EDITOR_CONTENT_PROP_TABLE_ROWS,
   SAMPLE_ADDONS,
+  EDITOR_ADDONS_TABLE_ROWS,
+  EDITOR_ADDONS_TABLE_COLUMNS,
 } from "./constants";
 import Table from "./components/Table";
 
@@ -214,14 +216,15 @@ const App = () => {
         <HighlightText>bulleted list</HighlightText> and{" "}
         <HighlightText>numbered list</HighlightText> by default. Additional
         options can be enabled by passing an array of strings to the{" "}
-        <HighlightText>addons</HighlightText> prop. The list of available addons
-        is <HighlightText>hightlight</HighlightText>,{" "}
-        <HighlightText>emoji</HighlightText>,{" "}
-        <HighlightText>code-block</HighlightText>,{" "}
-        <HighlightText>block-quote</HighlightText>, and{" "}
-        <HighlightText>image-upload</HighlightText>.
+        <HighlightText>addons</HighlightText> prop.
       </Description>
-      <div className="flex">
+      <h3 className="mt-4 mb-2 font-bold">Available addons</h3>
+      <Table
+        columns={EDITOR_ADDONS_TABLE_COLUMNS}
+        rows={EDITOR_ADDONS_TABLE_ROWS}
+        className="prop-detail-table"
+      />
+      <div className="flex mt-4">
         <CodeBlock>{STRINGS.addonsSampleCode}</CodeBlock>
         <SampleEditor addons={SAMPLE_ADDONS} />
       </div>
