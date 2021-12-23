@@ -47,7 +47,11 @@
 
 .neeto-editor-mentions__wrapper {
   padding: 8px;
-  min-width: 184px;
+  width: 208px;
+  max-height: 256px;
+  overflow-y: auto;
+
+  @include scrollbars(4px);
 
   .neeto-editor-mentions__item {
     display: flex;
@@ -61,6 +65,12 @@
     font-size: $neeto-ui-text-xs;
     color: $neeto-ui-white;
     border-radius: $neeto-ui-rounded;
+
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
     &:hover,
     &.active {
