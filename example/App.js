@@ -228,8 +228,6 @@ const App = () => {
         <CodeBlock>{STRINGS.addonsSampleCode}</CodeBlock>
         <SampleEditor addons={SAMPLE_ADDONS} />
       </div>
-      <Heading type="sub">Support for an optional markdown mode</Heading>
-      <Description></Description>
       <Heading type="sub">Support for markdown mode</Heading>
       <Description>
         Neeto Editor comes with a markdown mode where users can type the content
