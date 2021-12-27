@@ -131,6 +131,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "Accepts a boolean value. When true, a markdown editor will be made available in addition to rich text editor.",
     "true",
   ],
+  [
+    "characterLimit",
+    "Accepts an integer value. When provided, the editor will be limited to a certain number of characters.",
+    "1000",
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
@@ -231,5 +236,9 @@ export const STRINGS = {
 
   markdownModeSampleCode: `
   <Editor markdownMode />
+  `,
+
+  characterLimitSampleCode: `
+  <Editor characterLimit={100} />
   `,
 };

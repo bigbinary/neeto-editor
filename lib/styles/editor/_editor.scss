@@ -99,3 +99,10 @@
 
   @extend .neeto-editor-content;
 }
+
+.neeto-editor-character-count {
+  padding: 4px;
+  color: $neeto-ui-gray-600;
+  font-size: 12px;
+  text-align: right;
+}
