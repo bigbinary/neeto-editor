@@ -124,7 +124,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
   [
     "addons",
     "Accepts an array of strings, each corresponding to the name of an addon.",
-    `["highlight", "emoji", "code-block", "block-quote", "image-upload"]`,
+    `["highlight", "emoji", "code-block", "block-quote", "image-upload", "divider"]`,
   ],
   [
     "markdownMode",
@@ -157,6 +157,7 @@ export const SAMPLE_ADDONS = [
   "code-block",
   "block-quote",
   "image-upload",
+  "divider",
 ];
 
 export const EDITOR_ADDONS_TABLE_COLUMNS = ["Prop", "Description"];
@@ -167,6 +168,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["code-block", "Provide syntax highlighting for code snippets."],
   ["block-quote", "Highlight a block of text as a quote."],
   ["image-upload", "Upload images to the editor."],
+  ["divider", "Add a horizontal line to separate different sections."],
 ];
 
 export const STRINGS = {
@@ -230,6 +232,7 @@ export const STRINGS = {
     "code-block",
     "block-quote",
     "image-upload",
+    "divider",
   ];
 
   <Editor addons={addons} />`,
