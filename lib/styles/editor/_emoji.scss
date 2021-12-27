@@ -1,0 +1,38 @@
+.emoji-mart.emoji-mart-light {
+  font-size: 14px;
+  color: $neeto-ui-gray-800;
+  border: none;
+
+  .emoji-mart-bar {
+    .emoji-mart-anchors {
+      .emoji-mart-anchor {
+        color: $neeto-ui-gray-500;
+
+        svg {
+          margin: auto;
+        }
+
+        .emoji-mart-anchor-bar {
+          background-color: $neeto-ui-gray-800 !important;
+        }
+
+        &.emoji-mart-anchor-selected {
+          color: $neeto-ui-gray-800 !important;
+        }
+      }
+    }
+  }
+
+  .emoji-mart-search input {
+    border-radius: $neeto-ui-rounded-sm;
+  }
+
+  .emoji-mart-category-label span {
+    padding-top: 8px;
+  }
+
+  .emoji-mart-scroll {
+    height: 264px;
+    padding-bottom: 0px;
+  }
+}
