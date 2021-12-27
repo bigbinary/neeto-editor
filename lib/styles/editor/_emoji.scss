@@ -1,0 +1,82 @@
+.emoji-mart.emoji-mart-light {
+  font-size: 14px;
+  color: $neeto-ui-gray-800;
+  border: none;
+
+  .emoji-mart-bar {
+    .emoji-mart-anchors {
+      .emoji-mart-anchor {
+        color: $neeto-ui-gray-500;
+
+        svg {
+          margin: auto;
+        }
+
+        .emoji-mart-anchor-bar {
+          background-color: $neeto-ui-gray-800 !important;
+        }
+
+        &.emoji-mart-anchor-selected {
+          color: $neeto-ui-gray-800 !important;
+        }
+      }
+    }
+  }
+
+  .emoji-mart-search input {
+    border-radius: $neeto-ui-rounded-sm;
+  }
+
+  .emoji-mart-category {
+    .emoji-mart-category-label span {
+      padding-top: 8px;
+    }
+
+    .emoji-mart-emoji {
+      span {
+        cursor: pointer;
+      }
+
+      &:hover {
+        &::before {
+          background-color: $neeto-ui-gray-200;
+          border-radius: $neeto-ui-rounded-sm;
+        }
+      }
+    }
+  }
+
+  .emoji-mart-scroll {
+    height: 264px;
+    padding-bottom: 0px;
+  }
+}
+
+// Emoji Suggestion
+
+.neeto-editor-emoji-suggestion {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 4px;
+  gap: 2px;
+
+  p {
+    font-size: $neeto-ui-text-xs;
+    color: $neeto-ui-gray-800;
+  }
+
+  .neeto-editor-emoji-suggestion__item {
+    padding: 6px;
+    font-size: $neeto-ui-text-2xl;
+    transition: $neeto-ui-transition;
+    border-radius: $neeto-ui-rounded-sm;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $neeto-ui-gray-200;
+    }
+  }
+}
