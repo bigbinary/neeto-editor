@@ -1771,6 +1771,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-bullet-list/-/extension-bullet-list-2.0.0-beta.19.tgz#009ce5a1fc5c73a426ce3749f57983d12d73cbde"
   integrity sha512-eca7JeP3E3K5xgM5peX+rp0ssOtBVzjA8yDeRYzV97McGPzLE/mMzRdawHK2Z1AseTJtpBmbHF/27r+FJqzVzg==
 
+"@tiptap/extension-character-count@^2.0.0-beta.24":
+  version "2.0.0-beta.24"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-character-count/-/extension-character-count-2.0.0-beta.24.tgz#8b5dba59be75343b0d660c59656acbb0a0eb4c4b"
+  integrity sha512-zMe+iNmHypvGQop5yV6xLetXvgEx7oMXJUvX+WwvtjZwx+/jJKLOzsR5EVt0vY/T5P5VCC8hkTseQhgrv4p72w==
+
 "@tiptap/extension-code-block-lowlight@^2.0.0-beta.24":
   version "2.0.0-beta.49"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-code-block-lowlight/-/extension-code-block-lowlight-2.0.0-beta.49.tgz#8432b8af4ca3f9cfdf173797c738da0021985fc6"
