@@ -40,6 +40,10 @@
     opacity: 0.6;
   }
 
+  .ProseMirror-separator {
+    display: none;
+  }
+
   &.fixed-menu-active {
     border: thin solid $neeto-ui-gray-200;
     border-radius: 0px 0px $neeto-ui-rounded-sm $neeto-ui-rounded-sm;
