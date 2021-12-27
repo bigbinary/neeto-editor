@@ -239,6 +239,16 @@ const App = () => {
         <CodeBlock>{STRINGS.markdownModeSampleCode}</CodeBlock>
         <SampleEditor markdownMode />
       </div>
+      <Heading type="sub">Support for character limit</Heading>
+      <Description>
+        Neeto Editor can be configured to enforce a character limit. This can be
+        done by providing an integer value to the{" "}
+        <HighlightText>characterLimit</HighlightText> prop.
+      </Description>
+      <div className="flex">
+        <CodeBlock>{STRINGS.characterLimitSampleCode}</CodeBlock>
+        <SampleEditor characterLimit={100} />
+      </div>
     </div>
   );
 };
