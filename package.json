@@ -42,12 +42,14 @@
     "lodash.isempty": "^4.4.0",
     "lodash.isplainobject": "^4.0.6",
     "lowlight": "^1.20.0",
+    "marked": "^4.0.7",
     "peer-deps-externals-webpack-plugin": "1.0.4",
     "react-hotkeys-hook": "^3.4.4",
     "react-icons": "^4.2.0",
     "react-popper": "^2.2.5",
     "react-router-dom": "^6.0.2",
-    "tippy.js": "^6.3.1"
+    "tippy.js": "^6.3.1",
+    "turndown": "^7.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
