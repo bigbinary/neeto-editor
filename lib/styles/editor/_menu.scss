@@ -134,4 +134,35 @@
       background-color: $neeto-ui-gray-700;
     }
   }
+
+  .neeto-editor-bubble-menu__form {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    gap: 8px;
+
+    .neeto-editor-bubble-menu-form__input {
+      background-color: transparent;
+      outline: none;
+      line-height: 20px;
+
+      &::placeholder {
+        color: rgba($neeto-ui-white, 0.4);
+      }
+    }
+
+    .neeto-ui-btn--icon-only {
+      padding: 0;
+      min-height: 0;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.neeto-editor-bubble-menu-animate-shake {
+  animation: 1s linear infinite alternate both shake;
 }
