@@ -134,6 +134,17 @@
       background-color: $neeto-ui-gray-700;
     }
   }
+
+  .neeto-editor-bubble-menu__form {
+    display: flex;
+    align-items: center;
+
+    .neeto-editor-bubble-menu-form__input {
+      background-color: transparent;
+      outline: none;
+      line-height: 20px;
+    }
+  }
 }
 
 .neeto-editor-bubble-menu-animate-shake {
