@@ -1,4 +1,4 @@
-.neeto-ui-btn {
+.ne-btn {
   display: inline-flex;
   align-items: center;
   font-size: $neeto-ui-text-sm;
@@ -34,24 +34,24 @@
     opacity: 0.4;
   }
 
-  .neeto-ui-btn__icon:last-child:not(:first-child),
-  .neeto-ui-btn__spinner:last-child:not(:first-child) {
+  .ne-btn__icon:last-child:not(:first-child),
+  .ne-btn__spinner:last-child:not(:first-child) {
     margin-left: 8px;
   }
 }
 
-.neeto-ui-btn--icon-left {
+.ne-btn--icon-left {
   flex-direction: row-reverse;
-  .neeto-ui-btn__icon:last-child:not(:first-child),
-  .neeto-ui-btn__spinner:last-child:not(:first-child) {
+  .ne-btn__icon:last-child:not(:first-child),
+  .ne-btn__spinner:last-child:not(:first-child) {
     margin-right: 8px;
     margin-left: 0;
   }
 }
 
-.neeto-ui-btn__icon,
-.neeto-ui-btn__spinner,
-.neeto-ui-btn__spinner-wrapper {
+.ne-btn__icon,
+.ne-btn__spinner,
+.ne-btn__spinner-wrapper {
   color: inherit;
   svg {
     color: inherit !important;
@@ -59,25 +59,25 @@
 }
 
 // width
-.neeto-ui-btn--width-full {
+.ne-btn--width-full {
   width: 100% !important;
   justify-content: center;
 }
 
 // size
-.neeto-ui-btn--size-large {
+.ne-btn--size-large {
   font-size: $neeto-ui-text-base;
   padding: 6px 12px;
   min-height: 32px;
 
-  &.neeto-ui-btn--icon-only {
+  &.ne-btn--icon-only {
     padding-left: 8px;
     padding-right: 8px;
   }
 }
 
 // styles
-.neeto-ui-btn--style {
+.ne-btn--style {
   &-primary {
     color: $neeto-ui-white;
     background-color: $neeto-ui-gray-800;

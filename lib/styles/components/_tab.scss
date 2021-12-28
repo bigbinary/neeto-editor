@@ -1,4 +1,4 @@
-.neeto-ui-tab__wrapper {
+.ne-tab__wrapper {
   width: 100%;
   border-bottom: 1px solid $neeto-ui-gray-300;
   display: flex;
@@ -7,7 +7,7 @@
   align-items: center;
 
   &--size-large {
-    .neeto-ui-tab {
+    .ne-tab {
       font-size: $neeto-ui-text-xl;
       padding-left: 12px;
       padding-right: 12px;
@@ -15,7 +15,7 @@
   }
   &--underline-none {
     border-bottom: none;
-    .neeto-ui-tab {
+    .ne-tab {
       &::before {
         display: none;
       }
@@ -23,7 +23,7 @@
   }
 }
 
-.neeto-ui-tab {
+.ne-tab {
   color: $neeto-ui-gray-500;
   font-weight: $neeto-ui-font-semibold;
   font-size: $neeto-ui-text-sm;

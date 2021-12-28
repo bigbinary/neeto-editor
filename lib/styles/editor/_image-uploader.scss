@@ -4,8 +4,8 @@
   flex-direction: column;
   min-height: 176px;
 
-  .neeto-ui-tab__wrapper {
-    .neeto-ui-tab {
+  .ne-tab__wrapper {
+    .ne-tab {
       min-width: 88px;
     }
   }
@@ -138,7 +138,7 @@
   flex-grow: 1;
   padding: 0 40px;
 
-  .neeto-ui-input__wrapper {
+  .ne-input__wrapper {
     width: 100%;
     flex-grow: 0;
     margin-bottom: 16px;
