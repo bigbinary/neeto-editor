@@ -1,15 +1,15 @@
-.neeto-ui-input__wrapper {
+.ne-input__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   flex-grow: 1;
 
-  .neeto-ui-label {
+  .ne-label {
     margin-bottom: 4px;
   }
 
-  .neeto-ui-input {
+  .ne-input {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -24,7 +24,7 @@
     color: $neeto-ui-gray-800;
     overflow: hidden;
 
-    &.neeto-ui-input--textarea {
+    &.ne-input--textarea {
       padding: 8px;
     }
 
@@ -58,19 +58,19 @@
       overflow-y: auto;
     }
 
-    &:focus-within:not(.neeto-ui-input--naked, .neeto-ui-input--error) {
+    &:focus-within:not(.ne-input--naked, .ne-input--error) {
       border-color: $neeto-ui-gray-800;
       box-shadow: $neeto-ui-shadow;
     }
 
-    &:hover:not(.neeto-ui-input--naked, .neeto-ui-input--error, .neeto-ui-input--disabled) {
+    &:hover:not(.ne-input--naked, .ne-input--error, .ne-input--disabled) {
       border-color: $neeto-ui-gray-700;
     }
 
-    &.neeto-ui-input--error {
+    &.ne-input--error {
       border-color: $neeto-ui-error;
 
-      &:focus-within:not(.neeto-ui-input--naked) {
+      &:focus-within:not(.ne-input--naked) {
         box-shadow: 0 0 0 3px $neeto-ui-pastel-red;
       }
 
@@ -79,7 +79,7 @@
       }
     }
 
-    &.neeto-ui-input--disabled {
+    &.ne-input--disabled {
       background-color: $neeto-ui-gray-100;
       cursor: not-allowed;
 
@@ -92,30 +92,30 @@
       }
     }
 
-    &.neeto-ui-input--small {
+    &.ne-input--small {
       input {
         padding: 6px 8px;
         line-height: 1.3;
       }
     }
 
-    &.neeto-ui-input--naked {
+    &.ne-input--naked {
       padding: 0;
       border: none;
       box-shadow: none;
 
-      .neeto-ui-input__prefix {
+      .ne-input__prefix {
         margin-left: 0;
       }
 
-      .neeto-ui-input__suffix {
+      .ne-input__suffix {
         margin-right: 0;
       }
     }
   }
 
-  .neeto-ui-input__prefix,
-  .neeto-ui-input__suffix {
+  .ne-input__prefix,
+  .ne-input__suffix {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -128,37 +128,37 @@
     }
   }
 
-  .neeto-ui-input__prefix {
+  .ne-input__prefix {
     margin-left: 10px;
   }
-  .neeto-ui-input__suffix {
+  .ne-input__suffix {
     margin-right: 10px;
   }
 
-  .neeto-ui-input--block-add-on {
-    .neeto-ui-input__prefix,
-    .neeto-ui-input__suffix {
+  .ne-input--block-add-on {
+    .ne-input__prefix,
+    .ne-input__suffix {
       margin: 0;
       padding: 8px 10px;
       background-color: $neeto-ui-gray-100;
     }
-    .neeto-ui-input__prefix {
+    .ne-input__prefix {
       border-right: thin solid $neeto-ui-gray-300;
     }
-    .neeto-ui-input__suffix {
+    .ne-input__suffix {
       border-left: thin solid $neeto-ui-gray-300;
     }
   }
 }
 
-.neeto-ui-input__help-text {
+.ne-input__help-text {
   margin-top: 8px;
   font-size: $neeto-ui-text-xs;
   color: $neeto-ui-gray-500;
   line-height: 1.6;
 }
 
-.neeto-ui-input__error {
+.ne-input__error {
   margin-top: 4px;
   font-size: $neeto-ui-text-xs;
   color: $neeto-ui-error;

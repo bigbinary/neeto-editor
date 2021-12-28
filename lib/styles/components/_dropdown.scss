@@ -1,12 +1,12 @@
-.neeto-ui-dropdown__wrapper {
-  &.neeto-ui-dropdown__wrapper--auto-width {
+.ne-dropdown__wrapper {
+  &.ne-dropdown__wrapper--auto-width {
     ul {
       min-width: auto;
     }
   }
 }
 
-.neeto-ui-dropdown__popup {
+.ne-dropdown__popup {
   width: auto;
   max-height: 360px;
   overflow-y: auto;
@@ -18,7 +18,7 @@
   z-index: 99999;
 
   li,
-  .neeto-ui-dropdown--item {
+  .ne-dropdown--item {
     display: flex;
     cursor: pointer;
     position: relative;

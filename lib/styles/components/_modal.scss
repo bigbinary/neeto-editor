@@ -1,4 +1,4 @@
-.neeto-ui-modal__backdrop {
+.ne-modal__backdrop {
   position: fixed;
   z-index: 99999;
   left: 0;
@@ -13,7 +13,7 @@
   transition: $neeto-ui-transition;
   background-color: rgba($neeto-ui-gray-500, 0.5);
 
-  .neeto-ui-modal__wrapper {
+  .ne-modal__wrapper {
     width: 50%;
     max-width: 100%;
     max-height: 100vh;
@@ -23,26 +23,26 @@
     background-color: $neeto-ui-white;
     border-radius: $neeto-ui-rounded-sm;
 
-    .neeto-ui-modal__close {
+    .ne-modal__close {
       position: absolute;
       top: 12px;
       right: 12px;
     }
 
-    &.neeto-ui-modal__wrapper--xs {
+    &.ne-modal__wrapper--xs {
       width: 320px;
     }
 
-    &.neeto-ui-modal__wrapper--sm {
+    &.ne-modal__wrapper--sm {
       width: 480px;
     }
 
-    &.neeto-ui-modal__wrapper--md {
+    &.ne-modal__wrapper--md {
       width: 720px;
     }
   }
 
-  .neeto-ui-icon__wrapper {
+  .ne-icon__wrapper {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

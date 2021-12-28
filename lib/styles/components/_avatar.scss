@@ -1,105 +1,105 @@
-.neeto-ui-avatar--container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: $neeto-ui-rounded-sm;
-    position: relative;
-  
-    &.neeto-ui-avatar--container-round {
-      border-radius: $neeto-ui-rounded-full;
+.ne-avatar--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $neeto-ui-rounded-sm;
+  position: relative;
+
+  &.ne-avatar--container-round {
+    border-radius: $neeto-ui-rounded-full;
+  }
+
+  .ne-avatar__text {
+    font-weight: $neeto-ui-font-semibold;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: $neeto-ui-text-xxs;
+    color: $neeto-ui-gray-600;
+
+    &.ne-avatar__text-medium {
+      font-size: $neeto-ui-text-xs;
     }
-  
-    .neeto-ui-avatar__text {
-      font-weight: $neeto-ui-font-semibold;
-      text-align: center;
-      text-transform: capitalize;
-      font-size: $neeto-ui-text-xxs;
-      color: $neeto-ui-gray-600;
-  
-      &.neeto-ui-avatar__text-medium {
-        font-size: $neeto-ui-text-xs;
-      }
-  
-      &.neeto-ui-avatar__text-large {
-        font-size: $neeto-ui-text-lg;
-      }
-  
-      &.neeto-ui-avatar__text-xlarge {
-        font-size: $neeto-ui-text-2xl;
-      }
+
+    &.ne-avatar__text-large {
+      font-size: $neeto-ui-text-lg;
     }
-  
-    .neeto-ui-avatar__status {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 0.4rem;
-      height: 0.4rem;
-      background-color: white;
-      border: 0.5px solid white;
-      border-radius: $neeto-ui-rounded-full;
-      transform: translateX(-40%);
-  
-      &.neeto-ui-avatar__status-medium {
-        width: 0.465rem;
-        height: 0.465rem;
-      }
-  
-      &.neeto-ui-avatar__status-large {
-        width: 0.563rem;
-        height: 0.563rem;
-      }
-  
-      &.neeto-ui-avatar__status-xlarge {
-        width: 0.75rem;
-        height: 0.75rem;
-        transform: translateX(-65%);
-      }
-  
-      &.neeto-ui-avatar__status-square {
-        transform: translate(25%, -25%);
-      }
-  
-      &.online {
-        background-color: $neeto-ui-success;
-      }
-  
-      &.idle {
-        background-color: $neeto-ui-warning;
-      }
-  
-      &.offline {
-        background-color: $neeto-ui-gray-300;
-      }
-    }
-  
-    .neeto-ui-avatar {
-      display: inline-block;
-      border-radius: $neeto-ui-rounded-sm;
-      height: 1.5rem;
-      width: 1.5rem;
-  
-      &.hidden {
-        display: none;
-      }
-  
-      &.neeto-ui-avatar--medium {
-        height: 2rem;
-        width: 2rem;
-      }
-  
-      &.neeto-ui-avatar--large {
-        height: 2.5rem;
-        width: 2.5rem;
-      }
-  
-      &.neeto-ui-avatar--xlarge {
-        height: 4rem;
-        width: 4rem;
-      }
-  
-      &.neeto-ui-avatar--round {
-        border-radius: $neeto-ui-rounded-full;
-      }
+
+    &.ne-avatar__text-xlarge {
+      font-size: $neeto-ui-text-2xl;
     }
   }
+
+  .ne-avatar__status {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0.4rem;
+    height: 0.4rem;
+    background-color: white;
+    border: 0.5px solid white;
+    border-radius: $neeto-ui-rounded-full;
+    transform: translateX(-40%);
+
+    &.ne-avatar__status-medium {
+      width: 0.465rem;
+      height: 0.465rem;
+    }
+
+    &.ne-avatar__status-large {
+      width: 0.563rem;
+      height: 0.563rem;
+    }
+
+    &.ne-avatar__status-xlarge {
+      width: 0.75rem;
+      height: 0.75rem;
+      transform: translateX(-65%);
+    }
+
+    &.ne-avatar__status-square {
+      transform: translate(25%, -25%);
+    }
+
+    &.online {
+      background-color: $neeto-ui-success;
+    }
+
+    &.idle {
+      background-color: $neeto-ui-warning;
+    }
+
+    &.offline {
+      background-color: $neeto-ui-gray-300;
+    }
+  }
+
+  .ne-avatar {
+    display: inline-block;
+    border-radius: $neeto-ui-rounded-sm;
+    height: 1.5rem;
+    width: 1.5rem;
+
+    &.hidden {
+      display: none;
+    }
+
+    &.ne-avatar--medium {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    &.ne-avatar--large {
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+
+    &.ne-avatar--xlarge {
+      height: 4rem;
+      width: 4rem;
+    }
+
+    &.ne-avatar--round {
+      border-radius: $neeto-ui-rounded-full;
+    }
+  }
+}
