@@ -58,6 +58,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
+      apis: path.resolve(__dirname, "/lib/apis"),
       components: path.resolve(__dirname, "/lib/components"),
       hooks: path.resolve(__dirname, "/lib/hooks"),
       constants: path.resolve(__dirname, "/lib/constants"),
