@@ -81,6 +81,20 @@
       margin-right: 8px;
     }
   }
+
+  .neeto-editor-mentions__item-light {
+    color: $neeto-ui-gray-800;
+
+    &:hover,
+    &.active {
+      background-color: $neeto-ui-gray-300;
+    }
+  }
+}
+
+.neeto-editor-mentions__wrapper-small {
+  width: 176px;
+  padding: 4px;
 }
 
 .ProseMirror.slash-active p.is-empty:last-child::before {
