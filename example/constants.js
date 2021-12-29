@@ -124,7 +124,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
   [
     "addons",
     "Accepts an array of strings, each corresponding to the name of an addon.",
-    `["highlight", "emoji", "code-block", "block-quote", "image-upload", "divider"]`,
+    `["highlight", "emoji", "code-block", "block-quote", "image-upload", "divider", "video-embed"]`,
   ],
   [
     "markdownMode",
@@ -158,6 +158,7 @@ export const SAMPLE_ADDONS = [
   "block-quote",
   "image-upload",
   "divider",
+  "video-embed",
 ];
 
 export const EDITOR_ADDONS_TABLE_COLUMNS = ["Prop", "Description"];
@@ -169,6 +170,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["block-quote", "Highlight a block of text as a quote."],
   ["image-upload", "Upload images to the editor."],
   ["divider", "Add a horizontal line to separate different sections."],
+  ["video-embed", "Embed videos from YouTube and Vimeo."],
 ];
 
 export const STRINGS = {
@@ -233,6 +235,7 @@ export const STRINGS = {
     "block-quote",
     "image-upload",
     "divider",
+    "video-embed",
   ];
 
   <Editor addons={addons} />`,
