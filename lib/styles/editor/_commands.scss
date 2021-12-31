@@ -1,7 +1,7 @@
 .neeto-editor-slash-commands__wrapper {
   padding: 12px;
   overflow-y: auto;
-  max-height: 364px;
+  max-height: 384px;
   width: 320px;
   max-width: 100%;
 
@@ -72,14 +72,28 @@
       white-space: nowrap;
     }
 
+    .ne-avatar--container {
+      margin-right: 8px;
+    }
+
     &:hover,
     &.active {
       background-color: $neeto-ui-gray-700;
     }
 
-    .ne-avatar--container {
-      margin-right: 8px;
+    &.neeto-editor-mentions__item--light {
+      color: $neeto-ui-gray-800;
+
+      &:hover,
+      &.active {
+        background-color: $neeto-ui-gray-200;
+      }
     }
+  }
+
+  &.neeto-editor-mentions__wrapper--small {
+    width: 176px;
+    padding: 0 4px;
   }
 }
 
