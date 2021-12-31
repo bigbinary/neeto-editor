@@ -53,9 +53,11 @@
     position: relative;
   }
 
-  &:not(.force-title) {
-    .is-editor-empty:first-child::before {
-      @include show-placeholder;
+  &.placeholder-active {
+    &:not(.force-title) {
+      .is-editor-empty:first-child::before {
+        @include show-placeholder;
+      }
     }
   }
 
