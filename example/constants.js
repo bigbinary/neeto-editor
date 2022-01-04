@@ -136,6 +136,13 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "Accepts an integer value. When provided, the editor will be limited to a certain number of characters.",
     "1000",
   ],
+  [
+    "editorSecrets",
+    "Accepts an object. Use this prop to pass down API keys and other secrets.",
+    `{
+      unsplash: "<unsplash-api-key>"
+     }`,
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
@@ -169,6 +176,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["code-block", "Provide syntax highlighting for code snippets."],
   ["block-quote", "Highlight a block of text as a quote."],
   ["image-upload", "Upload images to the editor."],
+  ["image-upload-unsplash", "Add unsplash integration to the image upload."],
   ["divider", "Add a horizontal line to separate different sections."],
   ["video-embed", "Embed videos from YouTube and Vimeo."],
 ];
@@ -239,6 +247,16 @@ export const STRINGS = {
   ];
 
   <Editor addons={addons} />`,
+
+  unsplashSampleCode: `
+  const editorSecrets = {
+    unsplash: "<unsplash-api-key>"
+  };
+
+  <Editor
+    addons={["image-upload-unsplash"]}
+    editorSecrets={editorSecrets}
+  />`,
 
   markdownModeSampleCode: `
   <Editor markdownMode />

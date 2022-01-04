@@ -1,6 +1,8 @@
+const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const path = require("path");
+require("dotenv").config({ path: "./.env.local" });
 
 module.exports = {
   entry: "./example/index.js",
@@ -56,6 +58,9 @@ module.exports = {
     hot: true,
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),
+    }),
     new HtmlWebPackPlugin({
       template: "./public/index.html",
       filename: "./index.html",
@@ -64,6 +69,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
+      apis: path.resolve(__dirname, "/lib/apis"),
       components: path.resolve(__dirname, "/lib/components"),
       hooks: path.resolve(__dirname, "/lib/hooks"),
       constants: path.resolve(__dirname, "/lib/constants"),

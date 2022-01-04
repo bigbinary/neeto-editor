@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./example/index.js",
@@ -55,9 +56,13 @@ module.exports = {
       template: "./public/index.html",
       filename: "./index.html",
     }),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env),
+    }),
   ],
   resolve: {
     alias: {
+      apis: path.resolve(__dirname, "/lib/apis"),
       components: path.resolve(__dirname, "/lib/components"),
       hooks: path.resolve(__dirname, "/lib/hooks"),
       constants: path.resolve(__dirname, "/lib/constants"),

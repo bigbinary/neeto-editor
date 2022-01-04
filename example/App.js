@@ -228,6 +228,21 @@ const App = () => {
         <CodeBlock>{STRINGS.addonsSampleCode}</CodeBlock>
         <SampleEditor addons={SAMPLE_ADDONS} />
       </div>
+      <h3 className="mt-4 mb-2 font-bold">Unsplash image picker</h3>
+      <Description>
+        Neeto editor provides an option to add images from{" "}
+        <HighlightText>unsplash.com</HighlightText> using an Unsplash image
+        picker. Pass the Unsplash access key to the editor via the
+        <HighlightText>editorSecrets</HighlightText> prop and pass the addon{" "}
+        <HighlightText>image-picker-unsplash</HighlightText> to enable it.
+      </Description>
+      <div className="flex mt-4">
+        <CodeBlock>{STRINGS.unsplashSampleCode}</CodeBlock>
+        <SampleEditor
+          addons={["image-upload-unsplash"]}
+          editorSecrets={{ unsplash: "******" }}
+        />
+      </div>
       <Heading type="sub">Support for markdown mode</Heading>
       <Description>
         Neeto Editor comes with a markdown mode where users can type the content
