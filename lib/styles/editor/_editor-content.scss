@@ -93,4 +93,9 @@
       height: 315px;
     }
   }
+
+  @include scrollbars(4px);
+
+  overflow-y: auto;
+  max-height: 500px;
 }
