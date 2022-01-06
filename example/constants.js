@@ -143,6 +143,16 @@ export const EDITOR_PROP_TABLE_ROWS = [
       unsplash: "<unsplash-api-key>"
      }`,
   ],
+  [
+    "rows",
+    "Accepts an integer value. When provided, the editor height will be limited to a certain number of rows.",
+    "6",
+  ],
+  [
+    "strategy",
+    "Accepts a string value. This decides whether the editor height is fixed or flexible.",
+    "fixed",
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
@@ -264,5 +274,9 @@ export const STRINGS = {
 
   characterLimitSampleCode: `
   <Editor characterLimit={100} />
+  `,
+
+  editorHeightSampleCode: `
+  <Editor rows={3} strategy="flexible" />
   `,
 };

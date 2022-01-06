@@ -264,6 +264,19 @@ const App = () => {
         <CodeBlock>{STRINGS.characterLimitSampleCode}</CodeBlock>
         <SampleEditor characterLimit={100} />
       </div>
+      <Heading type="sub">Control editor height</Heading>
+      <Description>
+        Neeto Editor can be configured to provided a custom initial height using
+        the <HighlightText>rows</HighlightText> prop. It accepts an integer
+        value which represents the number of rows. It uses the{" "}
+        <HighlightText>strategy</HighlightText> prop to control whether the
+        height is <HighlightText>fixed</HighlightText> or{" "}
+        <HighlightText>flexible</HighlightText>.
+      </Description>
+      <div className="flex mt-4">
+        <CodeBlock>{STRINGS.editorHeightSampleCode}</CodeBlock>
+        <SampleEditor rows={3} strategy="flexible" />
+      </div>
     </div>
   );
 };
