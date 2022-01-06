@@ -37,8 +37,7 @@ code {
   @include scrollbars(4px);
 
   overflow-y: auto;
-  min-height: 150px;
-  max-height: 500px;
+  height: 100%;
 }
 
 .ProseMirror:focus {
