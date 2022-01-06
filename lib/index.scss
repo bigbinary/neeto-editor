@@ -33,6 +33,13 @@ code {
     monospace;
 }
 
+.ProseMirror {
+  @include scrollbars(4px);
+
+  overflow-y: auto;
+  height: 100%;
+}
+
 .ProseMirror:focus {
   outline: none;
 }
