@@ -61,9 +61,9 @@ const App = () => {
       />
       <Heading type="sub">Output</Heading>
       <div className="mt-4">
-        <h3 className="mb-2 font-bold">Use EditorOutput component</h3>
+        <h3 className="mb-2 font-bold">Use EditorContent component</h3>
         <CodeBlock>
-          {`import { EditorOutput } from '@bigbinary/neeto-editor'`}
+          {`import { EditorContent } from '@bigbinary/neeto-editor'`}
         </CodeBlock>
         <Table
           columns={EDITOR_PROP_TABLE_COLUMNS}
