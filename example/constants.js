@@ -149,7 +149,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "6",
   ],
   [
-    "strategy",
+    "heightStrategy",
     "Accepts a string value. This decides whether the editor height is fixed or flexible.",
     "fixed",
   ],
@@ -287,7 +287,7 @@ export const STRINGS = {
   `,
 
   editorHeightSampleCode: `
-  <Editor rows={3} strategy="flexible" />
+  <Editor rows={3} heightStrategy="flexible" />
   `,
 
   editorOnSubmitSampleCode: `

@@ -275,7 +275,7 @@ const App = () => {
       </Description>
       <div className="flex mt-4">
         <CodeBlock>{STRINGS.editorHeightSampleCode}</CodeBlock>
-        <SampleEditor rows={3} strategy="flexible" />
+        <SampleEditor rows={3} heightStrategy="flexible" />
       </div>
       <Heading type="sub">
         Submit editor content using keyboard shortcuts
