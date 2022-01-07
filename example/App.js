@@ -277,6 +277,21 @@ const App = () => {
         <CodeBlock>{STRINGS.editorHeightSampleCode}</CodeBlock>
         <SampleEditor rows={3} strategy="flexible" />
       </div>
+      <Heading type="sub">
+        Submit editor content using keyboard shortcuts
+      </Heading>
+      <Description>
+        By default, Neeto Editor submits the content on pressing the{" "}
+        <HighlightText>⌘ + Enter</HighlightText> in Mac or{" "}
+        <HighlightText>Ctrl + Enter</HighlightText> in Windows. An{" "}
+        <HighlightText>onSubmit</HighlightText> prop can be provided to call a
+        function when the content is submitted. It accepts the resulting HTML
+        content as argument.
+      </Description>
+      <div className="flex mt-4">
+        <CodeBlock>{STRINGS.editorOnSubmitSampleCode}</CodeBlock>
+        <SampleEditor onSubmit={(content) => console.log(content)} />
+      </div>
     </div>
   );
 };
