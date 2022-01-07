@@ -46,7 +46,7 @@ const App = () => {
         </button>
       </div>
       <hr className="my-2 border-gray-100" />
-      <Editor ref={ref} />
+      <Editor ref={ref} autoFocus />
       <Heading type="sub">Features</Heading>
       <ListItems items={EDITOR_FEATURES} ordered />
       <Heading>Installation</Heading>

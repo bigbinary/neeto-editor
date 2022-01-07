@@ -153,6 +153,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "Accepts a string value. This decides whether the editor height is fixed or flexible.",
     "fixed",
   ],
+  [
+    "autoFocus",
+    "Accepts a boolean value. When true, the editor will be focused on load.",
+    "true",
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
