@@ -163,6 +163,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "Accepts a function. This function will be invoked when the editor is submitted.",
     "(htmlContent) => {}",
   ],
+  [
+    "characterCountStrategy",
+    "Accepts a string value. This decides on how the character count should be displayed.",
+    "limit",
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
@@ -282,8 +287,15 @@ export const STRINGS = {
   <Editor markdownMode />
   `,
 
+  characterCountSampleCode: `
+  <Editor characterCountStrategy="count" />
+  `,
+
   characterLimitSampleCode: `
-  <Editor characterLimit={100} />
+  <Editor
+    characterCountStrategy="limit"
+    characterLimit={100}
+  />
   `,
 
   editorHeightSampleCode: `

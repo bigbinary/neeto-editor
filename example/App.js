@@ -254,15 +254,28 @@ const App = () => {
         <CodeBlock>{STRINGS.markdownModeSampleCode}</CodeBlock>
         <SampleEditor markdownMode />
       </div>
-      <Heading type="sub">Support for character limit</Heading>
+      <Heading type="sub">Support for character count</Heading>
+      <h3 className="mt-4 mb-2 font-bold">Character count and word count</h3>
       <Description>
-        Neeto Editor can be configured to enforce a character limit. This can be
-        done by providing an integer value to the{" "}
-        <HighlightText>characterLimit</HighlightText> prop.
+        Neeto Editor can be configured to show the character count as and word
+        count. This can be achieved by providing the{" "}
+        <HighlightText>characterCountStrategy</HighlightText> prop with the
+        string value <HighlightText>count</HighlightText>.
       </Description>
       <div className="flex">
+        <CodeBlock>{STRINGS.characterCountSampleCode}</CodeBlock>
+        <SampleEditor characterCountStrategy="count" />
+      </div>
+      <h3 className="mt-4 mb-2 font-bold">Character limit</h3>
+      Neeto Editor can be configured to enforce a character limit. This can be
+      done by providing an integer value to the{" "}
+      <HighlightText>characterLimit</HighlightText> prop. Additionally, provide
+      the <HighlightText>characterCountStrategy</HighlightText> prop with the
+      string value <HighlightText>limit</HighlightText> to display the number of
+      characters remaining.
+      <div className="flex">
         <CodeBlock>{STRINGS.characterLimitSampleCode}</CodeBlock>
-        <SampleEditor characterLimit={100} />
+        <SampleEditor characterCountStrategy="limit" characterLimit={100} />
       </div>
       <Heading type="sub">Control editor height</Heading>
       <Description>
