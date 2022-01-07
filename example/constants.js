@@ -158,6 +158,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "Accepts a boolean value. When true, the editor will be focused on load.",
     "true",
   ],
+  [
+    "onSubmit",
+    "Accepts a function. This function will be invoked when the editor is submitted.",
+    "(htmlContent) => {}",
+  ],
 ];
 
 export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
@@ -283,5 +288,13 @@ export const STRINGS = {
 
   editorHeightSampleCode: `
   <Editor rows={3} strategy="flexible" />
+  `,
+
+  editorOnSubmitSampleCode: `
+    const handleSubmit = (htmlContent) => {
+      console.log(htmlContent);
+    }
+
+    <Editor onSubmit={handleSubmit} />
   `,
 };
