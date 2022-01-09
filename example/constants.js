@@ -149,7 +149,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "6",
   ],
   [
-    "strategy",
+    "heightStrategy",
     "Accepts a string value. This decides whether the editor height is fixed or flexible.",
     "fixed",
   ],
@@ -162,6 +162,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "onSubmit",
     "Accepts a function. This function will be invoked when the editor is submitted.",
     "(htmlContent) => {}",
+  ],
+  [
+    "characterCountStrategy",
+    "Accepts a string value. This decides on how the character count should be displayed.",
+    "limit",
   ],
 ];
 
@@ -282,12 +287,19 @@ export const STRINGS = {
   <Editor markdownMode />
   `,
 
+  characterCountSampleCode: `
+  <Editor characterCountStrategy="count" />
+  `,
+
   characterLimitSampleCode: `
-  <Editor characterLimit={100} />
+  <Editor
+    characterCountStrategy="limit"
+    characterLimit={100}
+  />
   `,
 
   editorHeightSampleCode: `
-  <Editor rows={3} strategy="flexible" />
+  <Editor rows={3} heightStrategy="flexible" />
   `,
 
   editorOnSubmitSampleCode: `
