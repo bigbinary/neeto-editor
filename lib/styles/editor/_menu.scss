@@ -90,7 +90,7 @@
     width: 100%;
     max-width: 400px;
 
-    .neeto-editor-link__form {
+    .neeto-editor-link__item {
       display: flex !important;
       flex-direction: row;
       justify-content: flex-start;
@@ -137,13 +137,13 @@
     }
   }
 
-  .neeto-editor-bubble-menu__form {
+  .neeto-editor-bubble-menu__link {
     display: flex;
     align-items: center;
     padding: 8px;
     gap: 8px;
 
-    .neeto-editor-bubble-menu-form__input {
+    .neeto-editor-bubble-menu-link__input {
       background-color: transparent;
       outline: none;
       line-height: 20px;
