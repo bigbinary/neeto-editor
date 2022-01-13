@@ -255,7 +255,7 @@ const App = () => {
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.markdownModeSampleCode}</CodeBlock>
-        <div className="flex flex-col flex-grow ml-auto">
+        <div className="flex flex-col flex-1 ml-auto">
           <Dropdown
             className="ml-auto"
             customTarget={() => (
