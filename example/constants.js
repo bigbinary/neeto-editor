@@ -128,7 +128,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
   ],
   [
     "markdownMode",
-    "Accepts a boolean value. When true, a markdown editor will be made available in addition to rich text editor.",
+    "Accepts a boolean value. When true, the editor will be rendered in markdown mode.",
     "true",
   ],
   [
@@ -284,7 +284,12 @@ export const STRINGS = {
   />`,
 
   markdownModeSampleCode: `
-  <Editor markdownMode />
+  const [isMarkdownModeActive, setIsMarkdownModeActive] = useState(false);
+
+  <Editor
+    menuType="bubble"
+    markdownMode={isMarkdownModeActive}
+  />
   `,
 
   characterCountSampleCode: `
