@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react";
+
 import { Down } from "neetoicons";
+
+import Dropdown from "components/Common/Dropdown";
 
 import CodeBlock from "./components/CodeBlock";
 import Description from "./components/Description";
@@ -8,7 +11,6 @@ import HighlightText from "./components/HighlightText";
 import ListItems from "./components/ListItems";
 
 import { Editor } from "../lib";
-import Dropdown from "../lib/components/Common/Dropdown";
 
 import {
   EDITOR_FEATURES,
