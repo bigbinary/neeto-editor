@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Down } from "@bigbinary/neeto-icons";
+import { Down } from "neetoicons";
 
 import CodeBlock from "./components/CodeBlock";
 import Description from "./components/Description";
