@@ -195,7 +195,7 @@ const App = () => {
       <div className="flex">
         <CodeBlock>{STRINGS.forceTitleSampleCode}</CodeBlock>
         <SampleEditor
-          initialValue="Title Text"
+          value="Title Text"
           placeholder={{
             title: "Input title here",
             paragraph: "Enter your content here",
@@ -316,7 +316,7 @@ const SampleEditor = (props) => {
 
   return (
     <div className="flex-1 mx-3 my-2 h-60">
-      <Editor ref={ref} initialValue="Edit Text Content" {...props} />
+      <Editor ref={ref} value="Edit Text Content" {...props} />
     </div>
   );
 };
