@@ -1,4 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+
+import { Down } from "neetoicons";
+
+import Dropdown from "components/Common/Dropdown";
 
 import CodeBlock from "./components/CodeBlock";
 import Description from "./components/Description";
@@ -24,6 +28,7 @@ import Table from "./components/Table";
 
 const App = () => {
   const ref = useRef();
+  const [isMarkdownModeActive, setIsMarkdownModeActive] = useState(false);
 
   const getHTML = () => {
     return ref.current.editor.getHTML();
@@ -247,12 +252,26 @@ const App = () => {
       <Description>
         Neeto Editor comes with a markdown mode where users can type the content
         in markdown, which gets converted to the default rich text and vice
-        versa. This can be achieved by providing a truthy value to the
-        `markdownMode` prop.
+        versa. The markdown mode can be enabled by passing a truthy value to the{" "}
+        <HighlightText>markdownMode</HighlightText> prop.
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.markdownModeSampleCode}</CodeBlock>
-        <SampleEditor markdownMode />
+        <div className="flex flex-col flex-1 ml-auto">
+          <Dropdown
+            className="ml-auto"
+            customTarget={() => (
+              <div className="flex items-center px-2 py-1 space-x-2 transition-colors duration-100 bg-gray-200 rounded-sm cursor-pointer hover:bg-gray-300">
+                <p> {isMarkdownModeActive ? "Markdown" : "Rich Text"}</p>
+                <Down size={18} />
+              </div>
+            )}
+          >
+            <li onClick={() => setIsMarkdownModeActive(false)}>Rich Text</li>
+            <li onClick={() => setIsMarkdownModeActive(true)}>Markdown</li>
+          </Dropdown>
+          <SampleEditor markdownMode={isMarkdownModeActive} menuType="bubble" />
+        </div>
       </div>
       <Heading type="sub">Support for character count</Heading>
       <h3 className="mt-4 mb-2 font-bold">Character count and word count</h3>
