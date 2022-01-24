@@ -52,8 +52,8 @@ export const EDITOR_PROP_TABLE_ROWS = [
     `React.createRef()`,
   ],
   [
-    "initialValue",
-    "Accepts a valid HTML string. This string will be parsed to HTML and will be displayed as initial editor content",
+    "value",
+    "Accepts a valid HTML string. This string will be parsed to HTML and will be displayed as the editor content",
     `"<p>Hello World</p"`,
   ],
   [
