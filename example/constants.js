@@ -113,7 +113,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
   ],
   [
     "extensions",
-    "Accepts an array of TipTap extensions. When provided, this will override the default extensions.",
+    "Accepts an array of TipTap extensions. When provided, this will be combined with the default set of extensions.",
     `[Bold, Color]`,
   ],
   [
@@ -125,6 +125,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "addons",
     "Accepts an array of strings, each corresponding to the name of an addon.",
     `["highlight", "emoji", "code-block", "block-quote", "image-upload", "divider", "video-embed"]`,
+  ],
+  [
+    "addonCommands",
+    "Accepts an array of additional custom Slash Command items to be displayed along with pre-defined command items",
+    `[{ title: 'Focus Editor', description: 'Focus the editor', optionName: 'focus-editor', command: ({editor}) => editor.focus() }]`,
   ],
   [
     "markdownMode",
