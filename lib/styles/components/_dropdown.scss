@@ -1,14 +1,7 @@
-.ne-dropdown__wrapper {
-  &.ne-dropdown__wrapper--auto-width {
-    ul {
-      min-width: auto;
-    }
-  }
-}
-
 .ne-dropdown__popup {
   width: auto;
   max-height: 360px;
+  max-width: 360px;
   overflow-y: auto;
   background-color: $neeto-ui-white;
   border-radius: $neeto-ui-rounded-sm;
