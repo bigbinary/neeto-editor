@@ -106,6 +106,13 @@
   [data-mention] {
     opacity: 0.6;
   }
+
+  figure {
+    figcaption {
+      color: $neeto-ui-gray-700;
+      text-align: center;
+    }
+  }
 }
 
 .neeto-editor-content--hidden {
