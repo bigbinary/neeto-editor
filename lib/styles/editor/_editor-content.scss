@@ -113,6 +113,33 @@
       text-align: center;
     }
   }
+
+  .image-float-left {
+    float: left;
+  }
+
+  .image-float-right {
+    float: right;
+  }
+
+  .image-float-none {
+    float: none;
+  }
+
+  .image-size-small {
+    width: 50%;
+    max-width: 500px;
+  }
+
+  .image-size-large {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+  }
+
+  .image-align-center {
+    margin: 0 auto;
+  }
 }
 
 .neeto-editor-content--hidden {
