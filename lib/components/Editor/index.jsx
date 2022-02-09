@@ -17,6 +17,7 @@ import {
   getEditorStyles,
   getIsPlaceholderActive,
 } from "./helpers";
+import ImageBubbleMenu from "./CustomExtensions/Image/BubbleMenu";
 
 const Editor = (
   {
@@ -150,6 +151,7 @@ const Editor = (
       {isBubbleMenuActive && (
         <BubbleMenu editor={editor} options={addonOptions} />
       )}
+      <ImageBubbleMenu editor={editor} />
       <ImageUploader
         isVisible={isImageUploadVisible}
         setIsVisible={setImageUploadVisible}
