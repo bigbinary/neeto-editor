@@ -108,18 +108,26 @@
   }
 
   figure {
+    margin: 8px;
+
     figcaption {
       color: $neeto-ui-gray-700;
       text-align: center;
     }
   }
 
+  figure:focus {
+    display: hidden;
+  }
+
   .image-float-left {
     float: left;
+    margin-left: 0;
   }
 
   .image-float-right {
     float: right;
+    margin-right: 0;
   }
 
   .image-float-none {
@@ -133,13 +141,23 @@
 
   .image-size-large {
     width: 100%;
+  }
+
+  .image-align-center {
+    margin: 0 auto;
+  }
+
+  .image-banner {
+    width: 100%;
     max-height: 300px;
     overflow: hidden;
     object-fit: cover;
   }
 
-  .image-align-center {
-    margin: 0 auto;
+  figure.ProseMirror-selectednode {
+    img {
+      filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+    }
   }
 }
 
