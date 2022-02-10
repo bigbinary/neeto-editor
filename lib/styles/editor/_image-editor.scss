@@ -1,0 +1,10 @@
+.neeto-editor-image-editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  &__input {
+    align-self: stretch;
+  }
+}
