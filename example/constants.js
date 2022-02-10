@@ -16,6 +16,16 @@ export const SAMPLE_VARIABLES = [
     variables: [
       { label: "ID", key: "id" },
       { label: "Number", key: "number" },
+      { label: "Subject", key: "subject" },
+      { label: "Description", key: "description" },
+      { label: "Source/Channel", key: "source" },
+      { label: "Category", key: "category" },
+      { label: "Priority", key: "priority" },
+      { label: "Status", key: "status" },
+      { label: "Customer URL/Link", key: "customer_url" },
+      { label: "Latest Comment", key: "latest_comment" },
+      { label: "Created at", key: "created_at" },
+      { label: "Updated at", key: "updatedt_at" },
     ],
   },
   { label: "Subdomain", key: "subdomain" },
@@ -319,4 +329,16 @@ export const STRINGS = {
 
     <Editor onSubmit={handleSubmit} />
   `,
+  editorControlledSampleCode: `
+    const [editorContent, setEditorContent] = useState("<p>Initial Content</p>");
+
+    const handleSubmit = (htmlContent) => {
+      console.log(htmlContent);
+    }
+
+    <Editor
+      content={editorContent}
+      onChange={setEditorContent}
+      onSubmit={handleSubmit}
+    />`,
 };
