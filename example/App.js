@@ -249,6 +249,47 @@ const App = () => {
           editorSecrets={{ unsplash: "******" }}
         />
       </div>
+      {/* Custom Slash commands */}
+      <Heading type="sub">Custom Slash Commands</Heading>
+      <Description>
+        Neeto Editor allows users to customize their Slash Commands menu by
+        including their own custom commands. Make use of{" "}
+        <HighlightText>addonCommands</HighlightText> prop to pass an array of
+        custom slash command menu items. The expected array should contain items
+        with following properties:
+        <p className="my-1 space-y-1">
+          <p>
+            <HighlightText>title</HighlightText>: The name of the command that
+            needs to be displayed. Accepts <HighlightText>String</HighlightText>{" "}
+            values
+          </p>
+          <p>
+            <HighlightText>description</HighlightText>: The description for the
+            command. Accepts <HighlightText>String</HighlightText> values.
+          </p>
+          <p>
+            <HighlightText>optionName</HighlightText>: Unique key value for each
+            command item. Accepts <HighlightText>String</HighlightText> values.
+          </p>
+          <p>
+            <HighlightText>Icon</HighlightText>: The Icon that should be shown
+            for command. Accepts a valid React component.
+          </p>
+          <p>
+            <HighlightText>command</HighlightText>: A function which takes an
+            object&nbsp;
+            <HighlightText>{`{editor, range}`}</HighlightText> as it&apos;s
+            argument. The function may execute any commands on the editor
+            instance which it receives through argument.
+          </p>
+        </p>
+        One thing we have to keep in mind is that in order to execute any
+        commands other than what Neeto Editor is preconfigured to support, you
+        need to pass those extensions via the&nbsp;
+        <HighlightText>extensions</HighlightText> prop of Neeto Editor so that
+        editor can recognise the command as you execute them.
+      </Description>
+      {/* Markdown mode */}
       <Heading type="sub">Support for markdown mode</Heading>
       <Description>
         Neeto Editor comes with a markdown mode where users can type the content
