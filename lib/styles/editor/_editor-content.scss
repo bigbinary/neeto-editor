@@ -133,7 +133,8 @@
 
   .image-size-large {
     width: 100%;
-    max-height: 500px;
+    max-height: 300px;
+    overflow: hidden;
     object-fit: cover;
   }
 
