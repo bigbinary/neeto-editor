@@ -120,5 +120,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bigbinary/neeto-editor-tiptap.git"
+  },
+  "resolutions": {
+    "prosemirror-model": "1.16.1"
   }
 }
