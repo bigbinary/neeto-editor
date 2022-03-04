@@ -61,6 +61,7 @@ module.exports = {
     }),
   ],
   resolve: {
+    extensions: [".json", ".js", ".jsx"],
     alias: {
       apis: path.resolve(__dirname, "/lib/apis"),
       components: path.resolve(__dirname, "/lib/components"),
