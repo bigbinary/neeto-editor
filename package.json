@@ -24,13 +24,13 @@
     "@tiptap/extension-highlight": "^2.0.0-beta.13",
     "@tiptap/extension-image": "^2.0.0-beta.13",
     "@tiptap/extension-link": "^2.0.0-beta.18",
-    "@tiptap/extension-mention": "^2.0.0-beta.95",
+    "@tiptap/extension-mention": "^2.0.0-beta.80",
     "@tiptap/extension-placeholder": "^2.0.0-beta.18",
     "@tiptap/extension-text-style": "^2.0.0-beta.17",
     "@tiptap/extension-typography": "^2.0.0-beta.11",
     "@tiptap/extension-underline": "^2.0.0-beta.21",
     "@tiptap/react": "^2.0.0-beta.37",
-    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "@tiptap/starter-kit": "^2.0.0-beta.57",
     "@tiptap/suggestion": "^2.0.0-beta.55",
     "@uppy/core": "^2.1.2",
     "@uppy/react": "^2.1.1",
@@ -120,8 +120,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bigbinary/neeto-editor-tiptap.git"
-  },
-  "resolutions": {
-    "prosemirror-model": "1.16.1"
   }
 }
