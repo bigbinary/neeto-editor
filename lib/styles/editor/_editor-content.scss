@@ -83,15 +83,9 @@
 
   // Embed
   .video-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-
-    iframe {
-      width: 560px;
-      height: 315px;
-    }
+    width: 560px;
+    height: 315px;
+    margin: auto;
   }
 }
 
