@@ -366,22 +366,6 @@ const App = () => {
         <CodeBlock>{STRINGS.editorOnSubmitSampleCode}</CodeBlock>
         <SampleEditor onSubmit={(content) => console.log(content)} />
       </div>
-      <Heading type="sub">Using the editor as a controlled component</Heading>
-      <Description>
-        By default, the editor acts like an uncontrolled component. It can be{" "}
-        controlled by passing the <HighlightText>value</HighlightText> prop and{" "}
-        an <HighlightText>onChange</HighlightText> prop. The{" "}
-        <HighlightText>onChange</HighlightText> prop accepts the html content as
-        argument.
-      </Description>
-      <div className="flex mt-4">
-        <CodeBlock>{STRINGS.editorControlledSampleCode}</CodeBlock>
-        <SampleEditor
-          value={editorContent}
-          onChange={setEditorContent}
-          onSubmit={(content) => console.log(content)}
-        />
-      </div>
     </div>
   );
 };

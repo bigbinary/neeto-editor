@@ -329,16 +329,4 @@ export const STRINGS = {
 
     <Editor onSubmit={handleSubmit} />
   `,
-  editorControlledSampleCode: `
-    const [editorContent, setEditorContent] = useState("<p>Initial Content</p>");
-
-    const handleSubmit = (htmlContent) => {
-      console.log(htmlContent);
-    }
-
-    <Editor
-      content={editorContent}
-      onChange={setEditorContent}
-      onSubmit={handleSubmit}
-    />`,
 };
