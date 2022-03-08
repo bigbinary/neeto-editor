@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
-
-import {
-  EDITOR_PADDING_SIZE,
-  EDITOR_LINE_HEIGHT,
-  EDITOR_BORDER_SIZE,
-} from "constants/common";
 import { replaceWithNonBreakingSpace } from "utils/common";
 
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
@@ -15,8 +9,13 @@ import ImageUploader from "./CustomExtensions/Image/Uploader";
 import MarkdownEditor from "./CustomExtensions/Markdown";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
 import CharacterCount from "./CustomExtensions/CharacterCount";
+import {
+  generateAddonOptions,
+  getEditorStyles,
+  getIsPlaceholderActive,
+} from "./helpers";
 
-const Tiptap = (
+const Editor = (
   {
     forceTitle = false,
     titleError = false,
@@ -48,37 +47,17 @@ const Tiptap = (
 ) => {
   const [isImageUploadVisible, setImageUploadVisible] = useState(false);
 
-  let isPlaceholderActive = false;
-  if (placeholder) {
-    const placeholderKeysLength = Object.keys(placeholder).length;
-    isPlaceholderActive =
-      typeof placeholder === "string" ||
-      (placeholderKeysLength === 1
-        ? !placeholder.title
-        : !!placeholderKeysLength);
-  }
-
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
+  const isPlaceholderActive = getIsPlaceholderActive(placeholder);
   const showSlashCommandPlaceholder =
     !isPlaceholderActive && isSlashCommandsActive;
   const isUnsplashImageUploadActive = addons.includes("image-upload-unsplash");
 
-  const defaultOptions = [
-    "font-color",
-    "font-size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "link",
-    "bullet-list",
-    "ordered-list",
-  ];
-  const addonOptions = addons.map((option) => option.toLowerCase());
-  isUnsplashImageUploadActive && addonOptions.push("image-upload");
-  const allOptions = defaultOptions.concat(addonOptions);
+  const addonOptions = generateAddonOptions(addons, {
+    includeImageUpload: isUnsplashImageUploadActive,
+  });
 
   const customExtensions = useCustomExtensions({
     contentClassName,
@@ -90,7 +69,7 @@ const Tiptap = (
     isSlashCommandsActive,
     showImageInMention,
     setImageUploadVisible,
-    options: allOptions,
+    options: addonOptions,
     addonCommands,
     characterLimit,
     onSubmit,
@@ -106,14 +85,7 @@ const Tiptap = (
     [className]: className,
   });
 
-  const editorHeightAttrName =
-    heightStrategy === "flexible" ? "min-height" : "height";
-  const editorHeightAttrValue =
-    rows * EDITOR_LINE_HEIGHT + 2 * (EDITOR_PADDING_SIZE + EDITOR_BORDER_SIZE);
-
-  const editorStyles = `
-    ${editorHeightAttrName}: ${editorHeightAttrValue}px;
-  `;
+  const editorStyles = getEditorStyles({ heightStrategy, rows });
 
   const editor = useEditor({
     extensions: customExtensions,
@@ -152,13 +124,13 @@ const Tiptap = (
           editor={editor}
           variables={variables}
           setImageUploadVisible={setImageUploadVisible}
-          options={allOptions}
+          options={addonOptions}
           mentions={mentions}
           showImageInMention={showImageInMention}
         />
       )}
       {isBubbleMenuActive && (
-        <BubbleMenu editor={editor} options={allOptions} />
+        <BubbleMenu editor={editor} options={addonOptions} />
       )}
       <ImageUploader
         isVisible={isImageUploadVisible}
@@ -194,4 +166,4 @@ const Tiptap = (
   );
 };
 
-export default React.forwardRef(Tiptap);
+export default React.forwardRef(Editor);

@@ -45,6 +45,7 @@ module.exports = [
     },
     plugins: [new PeerDepsExternalsPlugin()],
     resolve: {
+      extensions: [".json", ".js", ".jsx"],
       alias: {
         apis: path.resolve(__dirname, "/lib/apis"),
         components: path.resolve(__dirname, "/lib/components"),
