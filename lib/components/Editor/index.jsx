@@ -89,6 +89,7 @@ const Editor = (
     extensions: customExtensions,
     content: initialValue,
     injectCSS: false,
+    autofocus: autoFocus && "end",
     editorProps: {
       attributes: {
         class: editorClasses,
@@ -97,10 +98,6 @@ const Editor = (
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
   });
-
-  useEffect(() => {
-    autoFocus && editor?.commands.focus("end");
-  }, [editor]);
 
   /* Make editor object available to the parent */
   React.useImperativeHandle(ref, () => ({
