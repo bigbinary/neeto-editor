@@ -221,6 +221,37 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["video-embed", "Embed videos from YouTube and Vimeo."],
 ];
 
+export const EDITOR_METHODS_TABLE_COLUMNS = ["Method", "Description"];
+
+export const EDITOR_METHODS_TABLE_ROWS = [
+  ["getHTML()", "Returns the editor content as a valid HTML string."],
+  ["getText()", "Returns the editor content as a plain text."],
+  ["getJSON()", "Returns the editor content as a JSON object."],
+  ["setEditable(bool)", "Controls whether the editor can be editable or not."],
+  [
+    "isEditable",
+    "Returns a boolean value indicating whether the editor is editable or not.",
+  ],
+  [
+    "isEmpty",
+    "Returns a boolean value indicating whether the editor is empty or not.",
+  ],
+];
+
+export const EDITOR_COMMANDS_TABLE_COLUMNS = ["Command", "Description"];
+
+export const EDITOR_COMMANDS_TABLE_ROWS = [
+  ["clearContent()", "Clear the entire editor content."],
+  ["insertContent(content)", "Insert content at the current cursor position."],
+  ["insertContentAt(position, content)", "Insert content at the given index."],
+  [
+    "setContent(content)",
+    "Replace the whole editor content with the given content.",
+  ],
+  ["focus()", "Focus the editor."],
+  ["blur()", "Removes focus from the editor."],
+];
+
 export const STRINGS = {
   fixedMenuSampleCode: `
   <Editor />`,

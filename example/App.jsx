@@ -23,13 +23,16 @@ import {
   SAMPLE_ADDONS,
   EDITOR_ADDONS_TABLE_ROWS,
   EDITOR_ADDONS_TABLE_COLUMNS,
+  EDITOR_METHODS_TABLE_COLUMNS,
+  EDITOR_METHODS_TABLE_ROWS,
+  EDITOR_COMMANDS_TABLE_COLUMNS,
+  EDITOR_COMMANDS_TABLE_ROWS,
 } from "./constants";
 import Table from "./components/Table";
 
 const App = () => {
   const ref = useRef();
   const [isMarkdownModeActive, setIsMarkdownModeActive] = useState(false);
-  const [editorContent, setEditorContent] = useState("<p>Initial Content</p>");
 
   const getHTML = () => {
     return ref.current.editor.getHTML();
@@ -366,6 +369,66 @@ const App = () => {
         <CodeBlock>{STRINGS.editorOnSubmitSampleCode}</CodeBlock>
         <SampleEditor onSubmit={(content) => console.log(content)} />
       </div>
+      <Heading>Editor API</Heading>
+      <Description>
+        The editor API contains a number of methods and commands which can be
+        used to interact with the editor instance. This section will cover the
+        most important ones.
+      </Description>
+      <Heading type="sub">Methods</Heading>
+      <Description>
+        The editor instance will provide a bunch of useful methods. Here is a
+        list of methods that can be access the editor content.
+      </Description>
+      <Table
+        columns={EDITOR_METHODS_TABLE_COLUMNS}
+        rows={EDITOR_METHODS_TABLE_ROWS}
+        className="prop-detail-table"
+      />
+      <h3 className="mt-4 mb-2 font-bold">Usage</h3>
+      <CodeBlock>editorRef.current.editor.methodName</CodeBlock>
+      <Description>
+        Refer{" "}
+        <a
+          className="text-blue-500 font-medium"
+          href="https://tiptap.dev/api/editor"
+          target="_blank"
+          rel="noreferrer"
+        >
+          https://tiptap.dev/api/editor
+        </a>{" "}
+        for the full list of available editor methods.{" "}
+      </Description>
+      <Heading type="sub">Commands</Heading>
+      <Description>
+        The editor instance will provide a bunch of useful commands. Here is a
+        list of commands to control the editor content.
+      </Description>
+      <Table
+        columns={EDITOR_COMMANDS_TABLE_COLUMNS}
+        rows={EDITOR_COMMANDS_TABLE_ROWS}
+        className="prop-detail-table"
+      />
+      <h3 className="mt-4 mb-2 font-bold">Usage</h3>
+      <CodeBlock>editorRef.current.editor.commands.commandName()</CodeBlock>
+      <Description>
+        You can also combine multiple commands in a single call.
+      </Description>
+      <CodeBlock>
+        editorRef.current.editor.chain().command1().command2().run()
+      </CodeBlock>
+      <Description>
+        Refer{" "}
+        <a
+          className="text-blue-500 font-medium"
+          href="https://tiptap.dev/api/commands"
+          target="_blank"
+          rel="noreferrer"
+        >
+          https://tiptap.dev/api/commands
+        </a>{" "}
+        for the full list of available editor commands.{" "}
+      </Description>
     </div>
   );
 };
