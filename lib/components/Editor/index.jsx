@@ -23,7 +23,7 @@ const Editor = (
     markdownMode = false,
     className,
     uploadEndpoint,
-    value = "",
+    initialValue = "",
     onChange = () => {},
     menuType = "fixed",
     variables,
@@ -87,7 +87,7 @@ const Editor = (
 
   const editor = useEditor({
     extensions: customExtensions,
-    content: value,
+    content: initialValue,
     injectCSS: false,
     editorProps: {
       attributes: {
@@ -138,7 +138,7 @@ const Editor = (
           className={editorClasses}
           onChange={onChange}
           onSubmit={onSubmit}
-          value={value}
+          initialValue={initialValue}
           {...otherProps}
         />
       )}

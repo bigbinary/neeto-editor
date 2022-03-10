@@ -440,7 +440,7 @@ const SampleEditor = (props) => {
 
   return (
     <div className="flex-1 mx-3 my-2 h-60">
-      <Editor ref={ref} value="Edit Text Content" {...props} />
+      <Editor ref={ref} initialValue="Edit Text Content" {...props} />
     </div>
   );
 };
