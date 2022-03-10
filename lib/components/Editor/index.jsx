@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
-import { replaceWithNonBreakingSpace } from "utils/common";
-
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
@@ -25,7 +23,7 @@ const Editor = (
     markdownMode = false,
     className,
     uploadEndpoint,
-    value = "",
+    initialValue = "",
     onChange = () => {},
     menuType = "fixed",
     variables,
@@ -89,8 +87,9 @@ const Editor = (
 
   const editor = useEditor({
     extensions: customExtensions,
-    content: value,
+    content: initialValue,
     injectCSS: false,
+    autofocus: autoFocus && "end",
     editorProps: {
       attributes: {
         class: editorClasses,
@@ -99,18 +98,6 @@ const Editor = (
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
   });
-
-  useEffect(() => {
-    autoFocus && editor?.commands.focus("end");
-  }, [editor]);
-
-  useEffect(() => {
-    const cursorPosition = editor?.state.selection.anchor;
-    typeof value === "string"
-      ? editor?.commands.setContent(replaceWithNonBreakingSpace(value))
-      : editor?.commands.setContent("");
-    editor?.commands.setTextSelection(cursorPosition);
-  }, [value]);
 
   /* Make editor object available to the parent */
   React.useImperativeHandle(ref, () => ({
@@ -148,7 +135,7 @@ const Editor = (
           className={editorClasses}
           onChange={onChange}
           onSubmit={onSubmit}
-          value={value}
+          initialValue={initialValue}
           {...otherProps}
         />
       )}
