@@ -46,7 +46,11 @@ export const SAMPLE_MENTIONS = [
     key: "oliver-smith",
     imageUrl: "https://i.pravatar.cc/300",
   },
-  "Jaden Smith",
+  {
+    label: "Eve Smith",
+    key: "eve-smith",
+    imageUrl: "https://i.pravatar.cc/300",
+  },
 ];
 
 export const EDITOR_PROP_TABLE_COLUMNS = [
@@ -293,7 +297,11 @@ export const STRINGS = {
       key: "oliver-smith",
       imageUrl: "https://i.pravatar.cc/300"
     },
-    "Jaden Smith",
+    {
+      label: "Eve Smith",
+      key: "eve-smith",
+      imageUrl: "https://i.pravatar.cc/300",
+    },
   ]
 
   <Editor mentions={mentions} showImageInMention />`,
