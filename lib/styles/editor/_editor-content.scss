@@ -87,6 +87,25 @@
     height: 315px;
     margin: auto;
   }
+
+  mark {
+    background: darken($neeto-ui-secondary-green, 10%);
+    border-radius: $neeto-ui-rounded-sm;
+    padding: 0px 4px;
+  }
+
+  [data-variable] {
+    display: inline-flex;
+    color: $neeto-ui-gray-700;
+    background-color: rgba($neeto-ui-gray-200, 0.5);
+    border-radius: $neeto-ui-rounded-sm;
+    line-height: 1;
+    padding: 4px 6px;
+  }
+
+  [data-mention] {
+    opacity: 0.6;
+  }
 }
 
 .neeto-editor-content--hidden {
