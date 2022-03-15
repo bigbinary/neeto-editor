@@ -150,7 +150,7 @@ const App = () => {
         items of shape{" "}
         <HighlightText>
           {
-            "{label: 'Mention 1', key: 'mention1', imageUrl: 'optional_image_url.jpg'}"
+            "{name: 'Mention 1', key: 'mention1', imageUrl: 'optional_image_url.jpg'}"
           }
         </HighlightText>{" "}
         . Here the key prop is optional. The available mention suggestions are
