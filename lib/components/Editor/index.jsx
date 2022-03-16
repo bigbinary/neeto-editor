@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
+import { stringifyObject } from "utils/common";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
@@ -93,7 +94,7 @@ const Editor = (
     editorProps: {
       attributes: {
         class: editorClasses,
-        style: editorStyles,
+        style: stringifyObject(editorStyles),
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
