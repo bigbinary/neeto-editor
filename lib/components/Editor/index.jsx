@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
+
+import { markdownToHtml } from "utils/markdown";
+import { stringifyObject } from "utils/common";
+
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
 import MarkdownEditor from "./CustomExtensions/Markdown";
-import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
 import CharacterCount from "./CustomExtensions/CharacterCount";
+import useMarkdownEditor from "./CustomExtensions/Markdown/useMarkdownEditor";
+import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
+
 import {
   generateAddonOptions,
   getEditorStyles,
@@ -93,16 +99,33 @@ const Editor = (
     editorProps: {
       attributes: {
         class: editorClasses,
-        style: editorStyles,
+        style: stringifyObject(editorStyles),
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
   });
 
+  const markdownEditor = useMarkdownEditor({
+    content: initialValue,
+    onUpdate: (markdown) => onChange(markdownToHtml(markdown)),
+    onSubmit: (markdown) => onSubmit && onSubmit(markdownToHtml(markdown)),
+  });
+
   /* Make editor object available to the parent */
   React.useImperativeHandle(ref, () => ({
-    editor: editor,
+    editor: markdownMode ? markdownEditor : editor,
   }));
+
+  useEffect(() => {
+    if (!editor) return;
+    const nextContent = markdownMode
+      ? editor.getHTML()
+      : markdownEditor.getHTML();
+    const nextContentUpdater = markdownMode
+      ? markdownEditor.commands.setContent
+      : editor.commands.setContent;
+    nextContentUpdater(nextContent);
+  }, [markdownMode]);
 
   return (
     <div className="neeto-editor-wrapper">
@@ -129,13 +152,10 @@ const Editor = (
       />
       {markdownMode && (
         <MarkdownEditor
-          editor={editor}
+          editor={markdownEditor}
           strategy={heightStrategy}
           style={editorStyles}
           className={editorClasses}
-          onChange={onChange}
-          onSubmit={onSubmit}
-          initialValue={initialValue}
           {...otherProps}
         />
       )}
