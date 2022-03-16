@@ -51,9 +51,9 @@ const Editor = (
 ) => {
   const [isImageUploadVisible, setImageUploadVisible] = useState(false);
 
-  const isFixedMenuActive = menuType === "fixed";
-  const isBubbleMenuActive = menuType === "bubble";
-  const isSlashCommandsActive = !hideSlashCommands;
+  const isFixedMenuActive = !markdownMode && menuType === "fixed";
+  const isBubbleMenuActive = !markdownMode && menuType === "bubble";
+  const isSlashCommandsActive = !markdownMode && !hideSlashCommands;
   const isPlaceholderActive = getIsPlaceholderActive(placeholder);
   const showSlashCommandPlaceholder =
     !isPlaceholderActive && isSlashCommandsActive;
