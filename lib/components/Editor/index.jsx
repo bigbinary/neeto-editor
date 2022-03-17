@@ -57,6 +57,8 @@ const Editor = (
   const showSlashCommandPlaceholder =
     !isPlaceholderActive && isSlashCommandsActive;
   const isUnsplashImageUploadActive = addons.includes("image-upload-unsplash");
+  const isCharacterCountActive =
+    !markdownMode && characterCountStrategy !== "hidden";
 
   const addonOptions = generateAddonOptions(addons, {
     includeImageUpload: isUnsplashImageUploadActive,
@@ -164,15 +166,14 @@ const Editor = (
       >
         <EditorContent editor={editor} {...otherProps} />
       </div>
-      <CharacterCount
-        count={
-          markdownMode
-            ? markdownEditor.state.length
-            : editor?.storage.characterCount.characters()
-        }
-        limit={characterLimit}
-        strategy={characterCountStrategy}
-      />
+
+      {isCharacterCountActive && (
+        <CharacterCount
+          count={editor?.storage.characterCount.characters()}
+          limit={characterLimit}
+          strategy={characterCountStrategy}
+        />
+      )}
     </div>
   );
 };
