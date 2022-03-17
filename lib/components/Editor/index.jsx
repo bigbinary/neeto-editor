@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
 
-import { markdownToHtml } from "utils/markdown";
 import { stringifyObject } from "utils/common";
 
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
@@ -107,8 +106,8 @@ const Editor = (
 
   const markdownEditor = useMarkdownEditor({
     content: initialValue,
-    onUpdate: (markdown) => onChange(markdownToHtml(markdown)),
-    onSubmit: (markdown) => onSubmit && onSubmit(markdownToHtml(markdown)),
+    onUpdate: ({ html }) => onChange(html),
+    onSubmit: ({ html }) => onSubmit && onSubmit(html),
   });
 
   /* Make editor object available to the parent */
@@ -155,6 +154,7 @@ const Editor = (
           editor={markdownEditor}
           strategy={heightStrategy}
           style={editorStyles}
+          limit={characterLimit}
           className={editorClasses}
           {...otherProps}
         />
@@ -165,7 +165,11 @@ const Editor = (
         <EditorContent editor={editor} {...otherProps} />
       </div>
       <CharacterCount
-        editor={editor}
+        count={
+          markdownMode
+            ? markdownEditor.state.length
+            : editor?.storage.characterCount.characters()
+        }
         limit={characterLimit}
         strategy={characterCountStrategy}
       />
