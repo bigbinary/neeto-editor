@@ -150,16 +150,14 @@ const App = () => {
         items of shape{" "}
         <HighlightText>
           {
-            "{label: 'Mention 1', key: 'mention1', imageUrl: 'optional_image_url.jpg'}"
+            "{name: 'Mention 1', key: 'mention1', imageUrl: 'optional_image_url.jpg'}"
           }
         </HighlightText>{" "}
-        or items can be just plain text like{" "}
-        <HighlightText>'Mention1'</HighlightText>. The available mention
-        suggestions are shown in editor when user types a{" "}
-        <HighlightText>@</HighlightText> character within editor content. The
-        avatar image in the mention suggestion list is enabled by providing
-        truthy value to the <HighlightText>showImageInMention</HighlightText>{" "}
-        prop.
+        . Here the key prop is optional. The available mention suggestions are
+        shown in editor when user types a <HighlightText>@</HighlightText>{" "}
+        character within editor content. The avatar image in the mention
+        suggestion list is enabled by providing a truthy value to the{" "}
+        <HighlightText>showImageInMention</HighlightText> prop.
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.mentionsSampleCode}</CodeBlock>

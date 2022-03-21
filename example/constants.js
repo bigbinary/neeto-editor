@@ -42,11 +42,15 @@ export const SAMPLE_VARIABLES = [
 
 export const SAMPLE_MENTIONS = [
   {
-    label: "Oliver Smith",
+    name: "Oliver Smith",
     key: "oliver-smith",
     imageUrl: "https://i.pravatar.cc/300",
   },
-  "Jaden Smith",
+  {
+    name: "Eve Smith",
+    key: "eve-smith",
+    imageUrl: "https://i.pravatar.cc/300",
+  },
 ];
 
 export const EDITOR_PROP_TABLE_COLUMNS = [
@@ -109,7 +113,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
   [
     "mentions",
     "Accepts an array of mention suggestions.",
-    `[{ label: "Oliver Smith", key: "oliver-smith" }]`,
+    `[{ name: "Oliver Smith", key: "oliver-smith" }]`,
   ],
   [
     "showImageInMention",
@@ -289,11 +293,15 @@ export const STRINGS = {
   mentionsSampleCode: `
   const mentions = [
     {
-      label: "Oliver Smith",
+      name: "Oliver Smith",
       key: "oliver-smith",
       imageUrl: "https://i.pravatar.cc/300"
     },
-    "Jaden Smith",
+    {
+      name: "Eve Smith",
+      key: "eve-smith",
+      imageUrl: "https://i.pravatar.cc/300",
+    },
   ]
 
   <Editor mentions={mentions} showImageInMention />`,
