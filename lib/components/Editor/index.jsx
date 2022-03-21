@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
+
+import { stringifyObject } from "utils/common";
+
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
 import MarkdownEditor from "./CustomExtensions/Markdown";
-import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
 import CharacterCount from "./CustomExtensions/CharacterCount";
+import useMarkdownEditor from "./CustomExtensions/Markdown/useMarkdownEditor";
+import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
+
 import {
   generateAddonOptions,
   getEditorStyles,
@@ -45,13 +50,15 @@ const Editor = (
 ) => {
   const [isImageUploadVisible, setImageUploadVisible] = useState(false);
 
-  const isFixedMenuActive = menuType === "fixed";
-  const isBubbleMenuActive = menuType === "bubble";
-  const isSlashCommandsActive = !hideSlashCommands;
+  const isFixedMenuActive = !markdownMode && menuType === "fixed";
+  const isBubbleMenuActive = !markdownMode && menuType === "bubble";
+  const isSlashCommandsActive = !markdownMode && !hideSlashCommands;
   const isPlaceholderActive = getIsPlaceholderActive(placeholder);
   const showSlashCommandPlaceholder =
     !isPlaceholderActive && isSlashCommandsActive;
   const isUnsplashImageUploadActive = addons.includes("image-upload-unsplash");
+  const isCharacterCountActive =
+    !markdownMode && characterCountStrategy !== "hidden";
 
   const addonOptions = generateAddonOptions(addons, {
     includeImageUpload: isUnsplashImageUploadActive,
@@ -93,16 +100,33 @@ const Editor = (
     editorProps: {
       attributes: {
         class: editorClasses,
-        style: editorStyles,
+        style: stringifyObject(editorStyles),
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
   });
 
+  const markdownEditor = useMarkdownEditor({
+    content: initialValue,
+    onUpdate: ({ html }) => onChange(html),
+    onSubmit: ({ html }) => onSubmit && onSubmit(html),
+  });
+
   /* Make editor object available to the parent */
   React.useImperativeHandle(ref, () => ({
-    editor: editor,
+    editor: markdownMode ? markdownEditor : editor,
   }));
+
+  useEffect(() => {
+    if (!editor) return;
+    const nextContent = markdownMode
+      ? editor.getHTML()
+      : markdownEditor.getHTML();
+    const nextContentUpdater = markdownMode
+      ? markdownEditor.commands.setContent
+      : editor.commands.setContent;
+    nextContentUpdater(nextContent);
+  }, [markdownMode]);
 
   return (
     <div className="neeto-editor-wrapper">
@@ -129,13 +153,11 @@ const Editor = (
       />
       {markdownMode && (
         <MarkdownEditor
-          editor={editor}
+          editor={markdownEditor}
           strategy={heightStrategy}
           style={editorStyles}
+          limit={characterLimit}
           className={editorClasses}
-          onChange={onChange}
-          onSubmit={onSubmit}
-          initialValue={initialValue}
           {...otherProps}
         />
       )}
@@ -144,11 +166,14 @@ const Editor = (
       >
         <EditorContent editor={editor} {...otherProps} />
       </div>
-      <CharacterCount
-        editor={editor}
-        limit={characterLimit}
-        strategy={characterCountStrategy}
-      />
+
+      {isCharacterCountActive && (
+        <CharacterCount
+          count={editor?.storage.characterCount.characters()}
+          limit={characterLimit}
+          strategy={characterCountStrategy}
+        />
+      )}
     </div>
   );
 };
