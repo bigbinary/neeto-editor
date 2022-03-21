@@ -156,7 +156,7 @@ const App = () => {
         . Here the key prop is optional. The available mention suggestions are
         shown in editor when user types a <HighlightText>@</HighlightText>{" "}
         character within editor content. The avatar image in the mention
-        suggestion list is enabled by providing truthy value to the{" "}
+        suggestion list is enabled by providing a truthy value to the{" "}
         <HighlightText>showImageInMention</HighlightText> prop.
       </Description>
       <div className="flex">
