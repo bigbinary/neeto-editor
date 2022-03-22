@@ -114,8 +114,6 @@ const Editor = (
     content: initialValue,
     onUpdate: ({ html }) => onChange(html),
     onSubmit: ({ html }) => onSubmit && onSubmit(html),
-    onFocus,
-    onBlur,
   });
 
   /* Make editor object available to the parent */
@@ -164,6 +162,8 @@ const Editor = (
           style={editorStyles}
           limit={characterLimit}
           className={editorClasses}
+          onFocus={onFocus}
+          onBlur={onBlur}
           {...otherProps}
         />
       )}
