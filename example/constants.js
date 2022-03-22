@@ -76,6 +76,16 @@ export const EDITOR_PROP_TABLE_ROWS = [
     `(newContent) => {}`,
   ],
   [
+    "onFocus",
+    "Accepts a function. This function will be invoked whenever editor is focused",
+    `() => {}`,
+  ],
+  [
+    "onBlur",
+    "Accepts a function. This function will be invoked whenever editor has lost focus",
+    `() => {}`,
+  ],
+  [
     "menuType",
     "Describes the menu type that editor should display. value should be one of ['fixed', 'bubble']. defaults to 'fixed'",
     `"bubble"`,
