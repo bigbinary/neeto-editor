@@ -30,6 +30,8 @@ const Editor = (
     uploadEndpoint,
     initialValue = "",
     onChange = () => {},
+    onFocus = () => {},
+    onBlur = () => {},
     menuType = "fixed",
     variables,
     mentions,
@@ -104,6 +106,8 @@ const Editor = (
       },
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
+    onFocus,
+    onBlur,
   });
 
   const markdownEditor = useMarkdownEditor({
@@ -158,6 +162,8 @@ const Editor = (
           style={editorStyles}
           limit={characterLimit}
           className={editorClasses}
+          onFocus={onFocus}
+          onBlur={onBlur}
           {...otherProps}
         />
       )}
