@@ -100,15 +100,14 @@ class Menu extends React.Component {
       <div ref={this.menuRef} className="neeto-editor-slash-commands__wrapper">
         {items.map((item, index) => {
           const isLeafNode = isNilOrEmpty(item.items);
+
           const nodeElement = (
             <MenuItem
               key={item.title}
               item={item}
               index={index}
               selectedIndex={isCurrentMenuActive ? selectedIndex : -1}
-              selectItem={() => {
-                if (isLeafNode) this.selectItem(index);
-              }}
+              selectItem={() => isLeafNode && this.selectItem(index)}
               onHover={() => this.setState({ selectedIndex: index })}
             />
           );
@@ -156,7 +155,7 @@ const MenuItem = forwardRef(
         className={classnames("neeto-editor-slash-commands__item", {
           active: index === selectedIndex,
         })}
-        onClick={() => selectItem(index)}
+        onClick={selectItem}
         ref={ref}
         data-cy={`neeto-editor-command-list-item-${index}`}
         onMouseEnter={onHover}
