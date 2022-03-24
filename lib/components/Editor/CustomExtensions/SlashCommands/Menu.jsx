@@ -134,7 +134,6 @@ class Menu extends React.Component {
               onHide={() => {
                 this.isSubmenuOpened = false;
               }}
-              appendTo={document.body}
             >
               {nodeElement}
             </Tippy>
