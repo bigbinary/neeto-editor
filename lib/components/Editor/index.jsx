@@ -45,6 +45,7 @@ const Editor = (
     autoFocus = false,
     heightStrategy = "fixed",
     characterCountStrategy = "hidden",
+    keyboardShortcuts = {},
     ...otherProps
   },
   ref
@@ -78,6 +79,7 @@ const Editor = (
     options: addonOptions,
     addonCommands,
     characterLimit,
+    keyboardShortcuts,
   });
 
   const editorClasses = classNames("neeto-editor", {
