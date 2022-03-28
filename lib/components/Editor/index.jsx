@@ -43,7 +43,6 @@ const Editor = (
     editorSecrets,
     rows = 6,
     autoFocus = false,
-    onSubmit,
     heightStrategy = "fixed",
     characterCountStrategy = "hidden",
     ...otherProps
@@ -79,7 +78,6 @@ const Editor = (
     options: addonOptions,
     addonCommands,
     characterLimit,
-    onSubmit,
   });
 
   const editorClasses = classNames("neeto-editor", {
@@ -113,7 +111,6 @@ const Editor = (
   const markdownEditor = useMarkdownEditor({
     content: initialValue,
     onUpdate: ({ html }) => onChange(html),
-    onSubmit: ({ html }) => onSubmit && onSubmit(html),
   });
 
   /* Make editor object available to the parent */
