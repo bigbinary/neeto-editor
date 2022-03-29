@@ -353,7 +353,7 @@ const App = () => {
         <SampleEditor rows={3} heightStrategy="flexible" />
       </div>
       <Heading type="sub">
-        Submit editor content using keyboard shortcuts
+        Control editor content using keyboard shortcuts
       </Heading>
       <Description>
         By default, Neeto Editor submits the content on pressing the{" "}
@@ -361,11 +361,30 @@ const App = () => {
         <HighlightText>Ctrl + Enter</HighlightText> in Windows. An{" "}
         <HighlightText>onSubmit</HighlightText> prop can be provided to call a
         function when the content is submitted. It accepts the resulting HTML
-        content as argument.
+        content as argument. Additional keyboard shortcuts can be created by
+        using the <HighlightText>keyboardShortcuts</HighlightText> prop. It
+        accepts an array of objects. Each object should contain the{" "}
+        <HighlightText>key</HighlightText>, which is the key combination to
+        trigger the action, and <HighlightText>handler</HighlightText>, which is
+        the function to be called when the key combination is pressed. You can
+        use <HighlightText>Mod</HighlightText> as a shorthand for{" "}
+        <HighlightText>Cmd</HighlightText> on Mac and{" "}
+        <HighlightText>Control</HighlightText> on other platforms. For instance,{" "}
+        <HighlightText>Mod-Enter</HighlightText> corresponds to Cmd+Enter on Mac
+        and Control+Enter on other platforms.
       </Description>
       <div className="flex mt-4">
-        <CodeBlock>{STRINGS.editorOnSubmitSampleCode}</CodeBlock>
-        <SampleEditor onSubmit={(content) => console.log(content)} />
+        <CodeBlock>{STRINGS.editorKeyboardShortcutsSampleCode}</CodeBlock>
+        <SampleEditor
+          rows={18}
+          onSubmit={(content) => console.log(content)}
+          keyboardShortcuts={[
+            {
+              key: "Shift-Enter",
+              handler: (content, editor) => alert(content),
+            },
+          ]}
+        />
       </div>
       <Heading>Editor API</Heading>
       <Description>
