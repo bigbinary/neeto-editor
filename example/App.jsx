@@ -376,7 +376,7 @@ const App = () => {
       <div className="flex mt-4">
         <CodeBlock>{STRINGS.editorKeyboardShortcutsSampleCode}</CodeBlock>
         <SampleEditor
-          rows={18}
+          rows={19}
           onSubmit={(content) => console.log(content)}
           keyboardShortcuts={[
             {

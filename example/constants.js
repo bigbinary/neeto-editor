@@ -384,7 +384,7 @@ export const STRINGS = {
     ];
 
     <Editor
-      rows={18}
+      rows={19}
       onSubmit={handleSubmit}
       keyboardShortcuts={keyboardShortcuts}
     />
