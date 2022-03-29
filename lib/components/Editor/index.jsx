@@ -43,9 +43,10 @@ const Editor = (
     editorSecrets,
     rows = 6,
     autoFocus = false,
+    onSubmit,
     heightStrategy = "fixed",
     characterCountStrategy = "hidden",
-    keyboardShortcuts = {},
+    keyboardShortcuts = [],
     ...otherProps
   },
   ref
@@ -113,6 +114,7 @@ const Editor = (
   const markdownEditor = useMarkdownEditor({
     content: initialValue,
     onUpdate: ({ html }) => onChange(html),
+    onSubmit: ({ html }) => onSubmit && onSubmit(html),
   });
 
   /* Make editor object available to the parent */
