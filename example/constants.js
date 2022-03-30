@@ -376,12 +376,12 @@ export const STRINGS = {
       console.log(htmlContent);
     }
 
-    const keyboardShortcuts = [
-      {
-        key: "Shift-Enter",
-        handler: (content, editor) => alert(content),
+    const keyboardShortcuts = {
+      "Shift-Enter": (editor) => {
+        alert(editor.getHTML());
+        return true;
       },
-    ];
+    };
 
     <Editor
       rows={19}
