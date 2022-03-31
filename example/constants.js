@@ -371,11 +371,22 @@ export const STRINGS = {
   <Editor rows={3} heightStrategy="flexible" />
   `,
 
-  editorOnSubmitSampleCode: `
+  editorKeyboardShortcutsSampleCode: `
     const handleSubmit = (htmlContent) => {
       console.log(htmlContent);
     }
 
-    <Editor onSubmit={handleSubmit} />
+    const keyboardShortcuts = {
+      "Shift-Enter": (editor) => {
+        alert(editor.getHTML());
+        return true;
+      },
+    };
+
+    <Editor
+      rows={19}
+      onSubmit={handleSubmit}
+      keyboardShortcuts={keyboardShortcuts}
+    />
   `,
 };
