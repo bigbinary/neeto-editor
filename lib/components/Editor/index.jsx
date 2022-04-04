@@ -81,6 +81,7 @@ const Editor = (
     addonCommands,
     characterLimit,
     keyboardShortcuts,
+    onSubmit,
   });
 
   const editorClasses = classNames("neeto-editor", {
@@ -115,6 +116,7 @@ const Editor = (
     content: initialValue,
     onUpdate: ({ html }) => onChange(html),
     onSubmit: ({ html }) => onSubmit && onSubmit(html),
+    markdownMode,
   });
 
   /* Make editor object available to the parent */
