@@ -377,7 +377,7 @@ export const STRINGS = {
     }
 
     const keyboardShortcuts = {
-      "Shift-Enter": (editor) => {
+      "Shift-Enter": ({ editor }) => {
         alert(editor.getHTML());
         return true;
       },
