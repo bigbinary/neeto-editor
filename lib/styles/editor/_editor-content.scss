@@ -155,8 +155,9 @@
   }
 
   figure.ProseMirror-selectednode {
+    outline: none;
     img {
-      filter: sepia(100%) saturate(300%) brightness(70%) hue-rotate(180deg);
+      user-select: auto;
     }
   }
 }
