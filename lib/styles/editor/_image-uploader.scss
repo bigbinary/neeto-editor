@@ -35,62 +35,76 @@
     font-size: $neeto-ui-text-xs;
   }
 
-  .neeto-editor-image-uploader__dnd {
+  .neeto-editor-image-uploader__dnd-wrapper {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    flex-grow: 1;
-    border: 1px dashed $neeto-ui-gray-400;
-    box-sizing: border-box;
-    border-radius: $neeto-ui-rounded-sm;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 
-    // DragDrop
-    .uppy-DragDrop-container {
-      width: 100%;
-      height: 100%;
-      background-color: $neeto-ui-white;
-      cursor: pointer;
-
-      // firefox fix: removes thin dotted outline
-      &::-moz-focus-inner {
-        border: 0;
-      }
-    }
-
-    .uppy-DragDrop-inner {
+    .neeto-editor-image-uploader__dnd {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      line-height: 1.4;
-      text-align: center;
-      font-weight: $neeto-ui-font-normal;
-      margin: 0;
-    }
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      flex-grow: 1;
+      border: 1px dashed $neeto-ui-gray-400;
+      box-sizing: border-box;
+      border-radius: $neeto-ui-rounded-sm;
 
-    .uppy-DragDrop-arrow {
-      visibility: hidden;
-      display: none;
-    }
+      // DragDrop
+      .uppy-DragDrop-container {
+        width: 100%;
+        height: 100%;
+        background-color: $neeto-ui-white;
+        cursor: pointer;
 
-    .uppy-DragDrop--isDraggingOver {
-      background-color: $neeto-ui-gray-200;
-      border: 2px dashed $neeto-ui-secondary-indigo;
-    }
+        // firefox fix: removes thin dotted outline
+        &::-moz-focus-inner {
+          border: 0;
+        }
+      }
 
-    .uppy-DragDrop-label {
-      @extend .neeto-editor-image-uploader__progress-title;
-    }
+      .uppy-DragDrop-inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 1.4;
+        text-align: center;
+        font-weight: $neeto-ui-font-normal;
+        margin: 0;
+      }
 
-    .uppy-DragDrop-browse {
-      color: $neeto-ui-secondary-indigo;
-      font-size: $neeto-ui-text-sm;
-      font-weight: $neeto-ui-font-semibold;
-      cursor: pointer;
-    }
+      .uppy-DragDrop-arrow {
+        visibility: hidden;
+        display: none;
+      }
 
-    .uppy-DragDrop-note {
-      @extend .neeto-editor-image-uploader__progress-file;
+      .uppy-DragDrop--isDraggingOver {
+        background-color: $neeto-ui-gray-200;
+        border: 2px dashed $neeto-ui-secondary-indigo;
+      }
+
+      .uppy-DragDrop-label {
+        @extend .neeto-editor-image-uploader__progress-title;
+      }
+
+      .uppy-DragDrop-browse {
+        color: $neeto-ui-secondary-indigo;
+        font-size: $neeto-ui-text-sm;
+        font-weight: $neeto-ui-font-semibold;
+        cursor: pointer;
+      }
+
+      .uppy-DragDrop-note {
+        @extend .neeto-editor-image-uploader__progress-file;
+      }
+
+      &--error {
+        color: $neeto-ui-error;
+        font-size: $neeto-ui-text-xs;
+        margin-top: 12px;
+        text-align: center;
+      }
     }
   }
 
