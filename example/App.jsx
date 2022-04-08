@@ -18,9 +18,10 @@ import {
   EDITOR_PROP_TABLE_ROWS,
   SAMPLE_MENTIONS,
   SAMPLE_VARIABLES,
+  SAMPLE_ADDONS,
+  SAMPLE_UPLOAD_CONFIG,
   STRINGS,
   EDITOR_CONTENT_PROP_TABLE_ROWS,
-  SAMPLE_ADDONS,
   EDITOR_ADDONS_TABLE_ROWS,
   EDITOR_ADDONS_TABLE_COLUMNS,
   EDITOR_METHODS_TABLE_COLUMNS,
@@ -248,6 +249,41 @@ const App = () => {
         <SampleEditor
           addons={["image-upload-unsplash"]}
           editorSecrets={{ unsplash: "******" }}
+        />
+      </div>
+      <h3 className="mt-4 mb-2 font-bold">Editor upload configuration</h3>
+      <Description>
+        Neeto editor provides an option edit the upload configuration. The
+        configuration can be passed as a prop to the editor. The default
+        configuration is:
+        <div>
+          <CodeBlock>{`{
+  autoProceed: true,
+  allowMultipleUploads: false,
+  restrictions: {
+    maxFileSize: 5242880, // 5MB
+    allowedFileTypes: [".jpg", ".jpeg", ".png", ".gif"]],
+  },
+}`}</CodeBlock>
+        </div>
+        This can be overridden by passing the{" "}
+        <HighlightText>uploadConfig</HighlightText> prop. Refer{" "}
+        <a
+          href="https://uppy.io/docs/uppy/#Options"
+          className="text-blue-500 font-medium"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Uppy official documentation
+        </a>{" "}
+        for the list of available options.
+      </Description>
+      <div className="flex mt-4">
+        <CodeBlock>{STRINGS.editorUploadConfigSampleCode}</CodeBlock>
+        <SampleEditor
+          rows={15}
+          addons={["image-upload"]}
+          uploadConfig={SAMPLE_UPLOAD_CONFIG}
         />
       </div>
       {/* Custom Slash commands */}

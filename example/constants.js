@@ -53,6 +53,15 @@ export const SAMPLE_MENTIONS = [
   },
 ];
 
+export const SAMPLE_UPLOAD_CONFIG = {
+  autoProceed: true,
+  allowMultipleUploads: false,
+  restrictions: {
+    maxFileSize: 1 * 1024 * 1024, // 1 MB
+    allowedFileTypes: [".jpg", ".jpeg"],
+  },
+};
+
 export const EDITOR_PROP_TABLE_COLUMNS = [
   "Prop",
   "Description",
@@ -196,6 +205,18 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "characterCountStrategy",
     "Accepts a string value. This decides on how the character count should be displayed.",
     "limit",
+  ],
+  [
+    "uploadConfig",
+    "Accepts an object. This object will be used to configure the image uploader.",
+    `{
+      autoProceed: true,
+      allowMultipleUploads: false,
+      restrictions: {
+        maxFileSize: 1048576,
+        allowedFileTypes: [".jpg"]
+      },
+    }`,
   ],
 ];
 
@@ -387,6 +408,22 @@ export const STRINGS = {
       rows={19}
       onSubmit={handleSubmit}
       keyboardShortcuts={keyboardShortcuts}
+    />
+  `,
+
+  editorUploadConfigSampleCode: `
+    const uploadConfig = {
+      autoProceed: true,
+      allowMultipleUploads: false,
+      restrictions: {
+        maxFileSize: 1 * 1024 * 1024; // 1MB
+        allowedFileTypes: [".jpg", ".jpeg"];
+      },
+    };
+
+    <Editor
+      addons={["image-upload"]}
+      uploadConfig={uploadConfig}
     />
   `,
 };
