@@ -28,6 +28,7 @@ const Editor = (
     markdownMode = false,
     className,
     uploadEndpoint,
+    uploadConfig = {},
     initialValue = "",
     onChange = () => {},
     onFocus = () => {},
@@ -155,6 +156,7 @@ const Editor = (
         setIsVisible={setImageUploadVisible}
         editor={editor}
         imageUploadUrl={uploadEndpoint}
+        uploadConfig={uploadConfig}
         isUnsplashImageUploadActive={isUnsplashImageUploadActive}
         unsplashApiKey={editorSecrets?.unsplash}
       />
