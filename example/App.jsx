@@ -28,6 +28,8 @@ import {
   EDITOR_METHODS_TABLE_ROWS,
   EDITOR_COMMANDS_TABLE_COLUMNS,
   EDITOR_COMMANDS_TABLE_ROWS,
+  EDITOR_SHORTCUTS_TABLE_COLUMNS,
+  EDITOR_SHORTCUTS_TABLE_ROWS,
 } from "./constants";
 import Table from "./components/Table";
 
@@ -388,9 +390,23 @@ const App = () => {
         <CodeBlock>{STRINGS.editorHeightSampleCode}</CodeBlock>
         <SampleEditor rows={3} heightStrategy="flexible" />
       </div>
-      <Heading type="sub">
-        Control editor content using keyboard shortcuts
-      </Heading>
+      <Heading type="sub">Keyboard Shortcuts</Heading>
+      Here is a list of keyboard shortcuts available in Neeto Editor. Refer{" "}
+      <a
+        className="text-blue-500 font-medium"
+        href="https://tiptap.dev/api/keyboard-shortcuts"
+        target="_blank"
+        rel="noreferrer"
+      >
+        https://tiptap.dev/api/keyboard-shortcuts
+      </a>{" "}
+      for the full list of available shortcuts.
+      <Table
+        columns={EDITOR_SHORTCUTS_TABLE_COLUMNS}
+        rows={EDITOR_SHORTCUTS_TABLE_ROWS}
+        className="prop-detail-table"
+      />
+      <h3 className="mt-4 mb-2 font-bold">Custom Keyboard shortcuts</h3>
       <Description>
         By default, Neeto Editor submits the content on pressing the{" "}
         <HighlightText>⌘ + Enter</HighlightText> in Mac or{" "}
