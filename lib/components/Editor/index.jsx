@@ -16,6 +16,7 @@ import {
   generateAddonOptions,
   getEditorStyles,
   getIsPlaceholderActive,
+  clipboardTextParser,
 } from "./helpers";
 
 const Editor = (
@@ -107,6 +108,7 @@ const Editor = (
         class: editorClasses,
         style: stringifyObject(editorStyles),
       },
+      clipboardTextParser,
     },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
     onFocus,
