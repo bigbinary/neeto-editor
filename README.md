@@ -22,4 +22,4 @@ The neetoEditor package gets auto-published to npm for every new merge to the ma
 
 ## Documentation
 
-Read the docs here: https://neeto-editor.netlify.app.
+Read the docs here: https://neeto-editor.onrender.com.
