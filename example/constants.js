@@ -233,6 +233,23 @@ export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
   ],
 ];
 
+export const EDITOR_SHORTCUTS_TABLE_COLUMNS = [
+  "Command",
+  "Windows/Linux",
+  "macOS",
+];
+
+export const EDITOR_SHORTCUTS_TABLE_ROWS = [
+  ["Bold", "Ctrl + B", "Cmd + B"],
+  ["Italicize", "Ctrl + I", "Cmd + I"],
+  ["Underline", "Ctrl + U", "Cmd + U"],
+  ["Strikethrough", "Ctrl + Shift + X", "Cmd + Shift + X"],
+  ["Highlight", "Ctrl + Shift + H", "Cmd + Shift + H"],
+  ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
+  ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
+  ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
+];
+
 export const SAMPLE_ADDONS = [
   "highlight",
   "emoji",
