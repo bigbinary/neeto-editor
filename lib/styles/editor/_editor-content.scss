@@ -135,8 +135,15 @@
   }
 
   .image-size-small {
-    width: 50%;
-    max-width: 500px;
+    display: inline;
+
+    img {
+      height: 100%;
+      max-height: 384px;
+      max-width: 500px;
+      object-fit: contain;
+      margin: auto;
+    }
   }
 
   .image-size-large {
