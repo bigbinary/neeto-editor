@@ -110,6 +110,9 @@ const Editor = (
       },
       clipboardTextParser,
     },
+    parseOptions: {
+      preserveWhitespace: true,
+    },
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
     onFocus,
     onBlur,
