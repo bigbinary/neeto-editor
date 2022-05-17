@@ -1,6 +1,8 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/night-owl.min.css");
 
 .neeto-editor-content {
+  white-space: pre-wrap;
+
   // Headers
   h1,
   h2,
