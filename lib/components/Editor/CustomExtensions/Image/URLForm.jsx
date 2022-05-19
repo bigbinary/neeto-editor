@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import classNames from "classnames";
-import Input from "components/Common/Input";
-import Button from "components/Common/Button";
 import { UrlRegExp } from "constants/regexp";
+
+import React, { useState } from "react";
+
+import classNames from "classnames";
+import Button from "components/Common/Button";
+import Input from "components/Common/Input";
 
 const URLForm = ({
   buttonLabel = "Submit",

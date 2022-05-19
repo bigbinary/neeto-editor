@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+
 import Modal from "components/Common/Modal";
 import Tab from "components/Common/Tab";
 import useTabBar from "hooks/useTabBar";
 
-import URLForm from "./URLForm";
+import { IMAGE_UPLOAD_OPTIONS } from "./constants";
+import ImageEditor from "./ImageEditor";
 import LocalUploader from "./LocalUploader";
 import UnsplashImagePicker from "./UnsplashImagePicker";
-import ImageEditor from "./ImageEditor";
-
-import { IMAGE_UPLOAD_OPTIONS } from "./constants";
+import URLForm from "./URLForm";
 
 const ImageUpload = ({
   editor,

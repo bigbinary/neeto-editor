@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   TextBold,
   TextItalic,
@@ -15,14 +16,15 @@ import MenuButton from "components/Common/MenuButton";
 import Modal from "components/Common/Modal";
 import { capitalize } from "utils/common";
 
-import TextColorOption from "./TextColorOption";
-import FontSizeOption from "./FontSizeOption";
-import Variables from "../Variable";
-import Mentions from "../Mention";
-import LinkOption from "./LinkOption";
 import EmojiOption from "./EmojiOption";
+import FontSizeOption from "./FontSizeOption";
+import LinkOption from "./LinkOption";
+import TextColorOption from "./TextColorOption";
+
 import { getImageMenuOptions } from "../BubbleMenu/helpers";
 import ImageEditor from "../Image/ImageEditor";
+import Mentions from "../Mention";
+import Variables from "../Variable";
 
 const FixedMenu = ({
   editor,

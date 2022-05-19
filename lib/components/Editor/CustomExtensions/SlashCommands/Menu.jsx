@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
+
 import Tippy from "@tippyjs/react";
 import classnames from "classnames";
-
 import { isNilOrEmpty } from "utils/common";
 import { scrollHandler } from "utils/scrollhandler";
 
@@ -15,8 +15,9 @@ class Menu extends React.Component {
   componentDidMount() {
     const { menuIndex, activeMenuIndex } = this.props;
     const isCurrentMenuActive = menuIndex === activeMenuIndex;
-    if (isCurrentMenuActive)
+    if (isCurrentMenuActive) {
       document.addEventListener("keydown", this.keydownHandler);
+    }
   }
 
   componentWillUnmount() {
@@ -34,9 +35,9 @@ class Menu extends React.Component {
       index: this.state.selectedIndex,
     });
 
-    if (isCurrentMenuActive)
+    if (isCurrentMenuActive) {
       document.addEventListener("keydown", this.keydownHandler);
-    else document.removeEventListener("keydown", this.keydownHandler);
+    } else document.removeEventListener("keydown", this.keydownHandler);
   }
 
   keydownHandler = event => {

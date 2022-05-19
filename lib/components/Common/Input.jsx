@@ -1,8 +1,9 @@
 import React, { forwardRef } from "react";
+
 import classnames from "classnames";
+import { hyphenize } from "utils/common";
 
 import Label from "./Label";
-import { hyphenize } from "utils/common";
 
 const Input = forwardRef((props, ref) => {
   const {

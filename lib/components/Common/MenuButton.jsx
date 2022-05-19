@@ -14,22 +14,20 @@ const MenuButton = ({
   iconActive = true,
   tooltipProps,
   ...otherProps
-}) => {
-  return (
-    <ToolTip {...tooltipProps}>
-      <button
-        className="neeto-editor-fixed-menu__item"
-        type="button"
-        {...otherProps}
-      >
-        <Icon
-          color={iconActive ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE}
-          size={MENU_ICON_SIZE}
-        />
-      </button>
-    </ToolTip>
-  );
-};
+}) => (
+  <ToolTip {...tooltipProps}>
+    <button
+      className="neeto-editor-fixed-menu__item"
+      type="button"
+      {...otherProps}
+    >
+      <Icon
+        color={iconActive ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE}
+        size={MENU_ICON_SIZE}
+      />
+    </button>
+  </ToolTip>
+);
 
 MenuButton.propTypes = {
   icon: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),

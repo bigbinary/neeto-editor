@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import classnames from "classnames";
+
 import { BubbleMenu } from "@tiptap/react";
+import classnames from "classnames";
 import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
 
@@ -8,7 +9,7 @@ import ImageEditorModal from "./ImageEditorModal";
 import ImageOptions from "./ImageOptions";
 import TextOptions from "./TextOptions";
 
-export default function index({ editor, options: textOptions }) {
+export default function Index({ editor, options: textOptions }) {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
   const [isImageEditorModalOpen, setIsImageEditorModalOpen] = useState(false);

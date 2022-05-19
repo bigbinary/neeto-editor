@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import { isNilOrEmpty } from "utils/common";
-import MasonryInfiniteScroller from "react-masonry-infinite";
 
 import { searchUnsplashImages } from "apis/unsplash";
 import Input from "components/Common/Input";
 import useDebounce from "hooks/useDebounce";
+import MasonryInfiniteScroller from "react-masonry-infinite";
+import { isNilOrEmpty } from "utils/common";
 
 const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
   const masonryRef = useRef(null);
@@ -103,39 +103,37 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
             loader={<Loader key={0} />}
           >
             {images &&
-              images.map((image, index) => {
-                return (
+              images.map((image, index) => (
+                <div
+                  key={index}
+                  className="neeto-editor-unsplash-gallery__item"
+                  data-cy={`neeto-editor-unsplash-image-picker-result-${index}`}
+                >
                   <div
-                    key={index}
-                    className="neeto-editor-unsplash-gallery__item"
-                    data-cy={`neeto-editor-unsplash-image-picker-result-${index}`}
+                    className="neeto-editor-unsplash-gallery__item-placeholder"
+                    style={{
+                      paddingBottom: `${(image.height / image.width) * 100}%`,
+                    }}
                   >
                     <div
-                      className="neeto-editor-unsplash-gallery__item-placeholder"
-                      style={{
-                        paddingBottom: `${(image.height / image.width) * 100}%`,
-                      }}
+                      className="neeto-editor-unsplash-gallery__item-inner"
+                      id={`unsplashImage${index}`}
                     >
-                      <div
-                        className="neeto-editor-unsplash-gallery__item-inner"
-                        id={`unsplashImage${index}`}
+                      <img
+                        src={image.urls.regular}
+                        onClick={() => onSubmit(image.urls.small)}
+                      />
+                      <a
+                        href={`https://unsplash.com/@${image.user.username}`}
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        <img
-                          src={image.urls.regular}
-                          onClick={() => onSubmit(image.urls.small)}
-                        />
-                        <a
-                          href={`https://unsplash.com/@${image.user.username}`}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {image.user.name}{" "}
-                        </a>
-                      </div>
+                        {image.user.name}{" "}
+                      </a>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
           </MasonryInfiniteScroller>
           {!hasMore && (
             <p className="neeto-editor-unsplash-gallery__text">

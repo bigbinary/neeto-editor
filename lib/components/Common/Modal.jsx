@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
-import classnames from "classnames";
-import { useHotkeys } from "react-hotkeys-hook";
+
 import { Close } from "@bigbinary/neeto-icons";
+import classnames from "classnames";
+import Backdrop from "components/Common/Backdrop";
 import Button from "components/Common/Button";
 import Portal from "components/Common/Portal";
-import Backdrop from "components/Common/Backdrop";
 import useOutsideClick from "hooks/useOutsideClick";
+import { useHotkeys } from "react-hotkeys-hook";
 
 const noop = () => {};
 const sizes = {
@@ -29,9 +30,9 @@ const Modal = ({
 }) => {
   const modalWrapper = useRef();
 
-  if (closeOnOutsideClick) useOutsideClick(modalWrapper, onClose);
+  useOutsideClick(modalWrapper, closeOnOutsideClick ? onClose : noop);
 
-  if (closeOnEsc) useHotkeys("esc", onClose);
+  useHotkeys("esc", closeOnEsc ? onClose : noop);
 
   return (
     <Portal className="ne-portal">
@@ -59,7 +60,7 @@ const Modal = ({
                 onClick={onClose}
               />
             )}
-            {loading ? <></> : children}
+            {loading ? "" : children}
           </div>
         </Backdrop>
       )}

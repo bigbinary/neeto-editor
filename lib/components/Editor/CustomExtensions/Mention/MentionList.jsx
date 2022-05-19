@@ -1,6 +1,6 @@
 import React from "react";
-import classNames from "classnames";
 
+import classNames from "classnames";
 import Avatar from "components/Common/Avatar";
 import { scrollHandler } from "utils/scrollhandler";
 
@@ -68,7 +68,7 @@ export class MentionList extends React.Component {
       Enter: this.enterHandler,
     };
 
-    if (keyDownHandlers.hasOwnProperty(event.key)) {
+    if (Object.prototype.hasOwnProperty.call(keyDownHandlers, event.key)) {
       keyDownHandlers[event.key]();
       return true;
     }

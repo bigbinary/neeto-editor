@@ -1,17 +1,14 @@
 import React, { useRef, useState } from "react";
 
-import { Down } from "neetoicons";
-
 import Dropdown from "components/Common/Dropdown";
+import { Down } from "neetoicons";
 
 import CodeBlock from "./components/CodeBlock";
 import Description from "./components/Description";
 import Heading from "./components/Heading";
 import HighlightText from "./components/HighlightText";
 import ListItems from "./components/ListItems";
-
-import { Editor } from "../lib";
-
+import Table from "./components/Table";
 import {
   EDITOR_FEATURES,
   EDITOR_PROP_TABLE_COLUMNS,
@@ -31,15 +28,14 @@ import {
   EDITOR_SHORTCUTS_TABLE_COLUMNS,
   EDITOR_SHORTCUTS_TABLE_ROWS,
 } from "./constants";
-import Table from "./components/Table";
+
+import { Editor } from "../lib";
 
 const App = () => {
   const ref = useRef();
   const [isMarkdownModeActive, setIsMarkdownModeActive] = useState(false);
 
-  const getHTML = () => {
-    return ref.current.editor.getHTML();
-  };
+  const getHTML = () => ref.current.editor.getHTML();
 
   return (
     <div style={{ margin: "48px 60px" }}>
@@ -436,6 +432,7 @@ const App = () => {
         <CodeBlock>{STRINGS.editorKeyboardShortcutsSampleCode}</CodeBlock>
         <SampleEditor
           rows={19}
+          // eslint-disable-next-line no-console
           onSubmit={content => console.log(content)}
           keyboardShortcuts={{
             "Shift-Enter": ({ editor }) => {
@@ -509,8 +506,6 @@ const App = () => {
   );
 };
 
-export default App;
-
 const SampleEditor = props => {
   const ref = useRef();
 
@@ -520,3 +515,5 @@ const SampleEditor = props => {
     </div>
   );
 };
+
+export default App;

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import classNames from "classnames";
-import { useEditor, EditorContent } from "@tiptap/react";
 
+import { useEditor, EditorContent } from "@tiptap/react";
+import classNames from "classnames";
 import { stringifyObject, isNilOrEmpty } from "utils/common";
 
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
+import CharacterCount from "./CustomExtensions/CharacterCount";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
 import MarkdownEditor from "./CustomExtensions/Markdown";
-import CharacterCount from "./CustomExtensions/CharacterCount";
 import useMarkdownEditor from "./CustomExtensions/Markdown/useMarkdownEditor";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
 import {

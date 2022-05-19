@@ -24,28 +24,26 @@ const VariableList = ({ onClickVariable, variables }) => {
   );
 };
 
-export default VariableList;
-
-const VariableCategory = ({ index, title, variables, onClickItem }) => {
-  return (
-    <div
-      className="neeto-editor-variables-block"
-      data-cy={`neeto-editor-variable-option-category-${index}`}
-    >
-      {title && <h6>{title}</h6>}
-      <div className="neeto-editor-variables-row">
-        {variables.map(item => (
-          <button
-            type="button"
-            onClick={() => onClickItem(item)}
-            key={`${item.label}--${item.value}`}
-            className="neeto-editor-variable"
-            data-cy={`neeto-editor-variable-option-item-${item.label}--${item.value}`}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
+const VariableCategory = ({ index, title, variables, onClickItem }) => (
+  <div
+    className="neeto-editor-variables-block"
+    data-cy={`neeto-editor-variable-option-category-${index}`}
+  >
+    {title && <h6>{title}</h6>}
+    <div className="neeto-editor-variables-row">
+      {variables.map(item => (
+        <button
+          type="button"
+          onClick={() => onClickItem(item)}
+          key={`${item.label}--${item.value}`}
+          className="neeto-editor-variable"
+          data-cy={`neeto-editor-variable-option-item-${item.label}--${item.value}`}
+        >
+          {item.label}
+        </button>
+      ))}
     </div>
-  );
-};
+  </div>
+);
+
+export default VariableList;

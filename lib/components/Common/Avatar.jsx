@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
+
 import classNames from "classnames";
+import PropTypes from "prop-types";
 
 const SIZE = {
   small: 24,
@@ -49,6 +50,7 @@ function Avatar({
       if (index === 0 || index === allNames.length - 1) {
         acc = `${acc}${curr.charAt(0).toUpperCase()}`;
       }
+
       return acc;
     }, "");
     return initials;

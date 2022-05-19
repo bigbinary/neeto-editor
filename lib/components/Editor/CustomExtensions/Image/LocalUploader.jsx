@@ -42,6 +42,7 @@ const LocalUploader = ({
           );
           return false;
         }
+
         return true;
       },
     })

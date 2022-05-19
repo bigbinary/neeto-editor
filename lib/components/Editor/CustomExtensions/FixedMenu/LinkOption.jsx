@@ -1,11 +1,12 @@
-import React, { useRef, useState } from "react";
-import { Link } from "@bigbinary/neeto-icons";
+import { UrlRegExp } from "constants/regexp";
 
+import React, { useRef, useState } from "react";
+
+import { Link } from "@bigbinary/neeto-icons";
+import Button from "components/Common/Button";
 import Dropdown from "components/Common/Dropdown";
 import Input from "components/Common/Input";
-import Button from "components/Common/Button";
 import MenuButton from "components/Common/MenuButton";
-import { UrlRegExp } from "constants/regexp";
 
 const LinkOption = ({ editor }) => {
   const dropdownRef = useRef();

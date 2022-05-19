@@ -24,20 +24,19 @@ class EmojiSuggestionMenu extends React.Component {
 
   onKeyDown = ({ event }) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
-      this.setState({
+      this.setState(({ selectedIndex, emojiSuggestions }) => ({
         selectedIndex:
-          (this.state.selectedIndex + this.state.emojiSuggestions.length - 1) %
-          this.state.emojiSuggestions.length,
-      });
+          (selectedIndex + emojiSuggestions.length - 1) %
+          emojiSuggestions.length,
+      }));
 
       return true;
     }
 
     if (event.key === "ArrowRight" || event.key === "ArrowUp") {
-      this.setState({
-        selectedIndex:
-          (this.state.selectedIndex + 1) % this.state.emojiSuggestions.length,
-      });
+      this.setState(({ selectedIndex, emojiSuggestions }) => ({
+        selectedIndex: (selectedIndex + 1) % emojiSuggestions.length,
+      }));
 
       return true;
     }

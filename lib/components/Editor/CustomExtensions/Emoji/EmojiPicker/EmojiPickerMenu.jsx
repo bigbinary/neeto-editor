@@ -1,10 +1,9 @@
 import React from "react";
 
 import { NimblePicker } from "emoji-mart";
-import PropTypes from "prop-types";
-
 import "emoji-mart/css/emoji-mart.css";
 import data from "emoji-mart/data/apple.json";
+import PropTypes from "prop-types";
 
 class EmojiPickerMenu extends React.Component {
   onKeyDown = ({ event }) => {

@@ -1,9 +1,10 @@
 import React from "react";
 
-import VariableList from "./VariableList";
 import Dropdown from "components/Common/Dropdown";
 import { HashtagFilled } from "components/Common/Icons";
 import MenuButton from "components/Common/MenuButton";
+
+import VariableList from "./VariableList";
 
 const Variables = ({ editor, variables }) => {
   const handleClickItem = item => {
@@ -20,7 +21,9 @@ const Variables = ({ editor, variables }) => {
     <Dropdown
       customTarget={() => (
         <MenuButton
-          icon={({ color, ...otherProps }) => <HashtagFilled {...otherProps} />}
+          icon={({ _color, ...otherProps }) => (
+            <HashtagFilled {...otherProps} />
+          )}
           tooltipProps={{
             content: "Variables",
             position: "bottom",

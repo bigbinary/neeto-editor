@@ -1,7 +1,6 @@
 import React from "react";
 
 import classnames from "classnames";
-
 import ToolTip from "components/Common/ToolTip";
 import { capitalize } from "utils/common";
 

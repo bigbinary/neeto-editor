@@ -1,6 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+
 import classnames from "classnames";
+import { NavLink } from "react-router-dom";
 
 const noop = () => {};
 
@@ -12,28 +13,26 @@ const Tab = ({
   noUnderline,
   className = "",
   ...otherProps
-}) => {
-  return (
-    <div
-      className={classnames(
-        {
-          "ne-tab__wrapper": true,
-        },
-        {
-          "ne-tab__wrapper--size-large": size === TAB_SIZES.large,
-        },
-        {
-          "ne-tab__wrapper--underline-none": noUnderline,
-        },
-        [className]
-      )}
-      data-cy="tab-container"
-      {...otherProps}
-    >
-      {children}
-    </div>
-  );
-};
+}) => (
+  <div
+    className={classnames(
+      {
+        "ne-tab__wrapper": true,
+      },
+      {
+        "ne-tab__wrapper--size-large": size === TAB_SIZES.large,
+      },
+      {
+        "ne-tab__wrapper--underline-none": noUnderline,
+      },
+      [className]
+    )}
+    data-cy="tab-container"
+    {...otherProps}
+  >
+    {children}
+  </div>
+);
 
 const Item = ({
   active,
@@ -45,14 +44,15 @@ const Item = ({
   ...otherProps
 }) => {
   let Parent = "button";
-  let Icon =
-    typeof icon == "string"
+  const Icon =
+    typeof icon === "string"
       ? () => <i className={icon} data-cy="tab-item-icon" />
       : icon || React.Fragment;
 
   if (activeClassName) {
     Parent = NavLink;
   }
+
   return (
     <Parent
       className={classnames(

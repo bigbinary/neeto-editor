@@ -1,7 +1,7 @@
 import React from "react";
-import classnames from "classnames";
-import { Info } from "@bigbinary/neeto-icons";
 
+import { Info } from "@bigbinary/neeto-icons";
+import classnames from "classnames";
 import Tooltip from "components/Common/ToolTip";
 
 const Label = ({

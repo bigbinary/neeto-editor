@@ -46,6 +46,7 @@ const useMarkdownEditor = ({ content, onUpdate, onSubmit, markdownMode }) => {
   const handleSubmit = useCallback(
     e => {
       if (!markdownMode) return;
+
       if (e.key !== "Enter" || !(e.metaKey || e.ctrlKey)) return;
 
       inputFieldRef.current?.blur();
