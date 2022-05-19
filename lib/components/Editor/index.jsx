@@ -141,6 +141,14 @@ const Editor = (
     nextContentUpdater(nextContent);
   }, [markdownMode]);
 
+  useEffect(() => {
+    if (initialValue === "") {
+      console.warn(
+        "Empty value (initialValue) in needtoEditor should be '<p></p>' instead of an empty string."
+      );
+    }
+  }, [initialValue]);
+
   return (
     <div className="neeto-editor-wrapper">
       {isFixedMenuActive && (
