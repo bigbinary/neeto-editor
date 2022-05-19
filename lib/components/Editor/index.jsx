@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classNames from "classnames";
+import { is, either, isEmpty, isNil } from "ramda";
 import { stringifyObject, isNilOrEmpty } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
@@ -50,6 +51,7 @@ const Editor = (
     heightStrategy = "fixed",
     characterCountStrategy = "hidden",
     keyboardShortcuts = [],
+    error = null,
     ...otherProps
   },
   ref
@@ -96,6 +98,31 @@ const Editor = (
     "placeholder-active": isPlaceholderActive,
     [className]: className,
   });
+
+  const wrapperClasses = classNames("neeto-editor-wrapper", {
+    "text-red-800 focus-within:shadow-focus-red focus:border-red-400 border-red-400 border":
+      error && isFixedMenuActive,
+  });
+
+  const isNotPresent = either(isNil, isEmpty);
+
+  const renderEditorError = () => {
+    if (!error || !isFixedMenuActive) return null;
+
+    let message;
+
+    if (is(String, error)) {
+      message = error;
+    } else if (is(Array, error)) {
+      message = error[0];
+    } else if (is(Object, error)) {
+      message = error.message;
+    }
+
+    if (isNotPresent(message)) return null;
+
+    return <p className="ne-input__error">{message}</p>;
+  };
 
   const editorStyles = getEditorStyles({ heightStrategy, rows });
 
@@ -155,55 +182,60 @@ const Editor = (
   }, [initialValue]);
 
   return (
-    <div className="neeto-editor-wrapper">
-      {isFixedMenuActive && (
-        <FixedMenu
+    <>
+      <div className={wrapperClasses}>
+        {isFixedMenuActive && (
+          <FixedMenu
+            editor={editor}
+            variables={variables}
+            setImageUploadVisible={setImageUploadVisible}
+            options={addonOptions}
+            mentions={mentions}
+            showImageInMention={showImageInMention}
+          />
+        )}
+        {isBubbleMenuActive && (
+          <BubbleMenu editor={editor} options={addonOptions} />
+        )}
+        <ImageUploader
+          isVisible={isImageUploadVisible}
+          setIsVisible={setImageUploadVisible}
           editor={editor}
-          variables={variables}
-          setImageUploadVisible={setImageUploadVisible}
-          options={addonOptions}
-          mentions={mentions}
-          showImageInMention={showImageInMention}
+          imageUploadUrl={uploadEndpoint}
+          uploadConfig={uploadConfig}
+          isUnsplashImageUploadActive={isUnsplashImageUploadActive}
+          unsplashApiKey={editorSecrets?.unsplash}
         />
-      )}
-      {isBubbleMenuActive && (
-        <BubbleMenu editor={editor} options={addonOptions} />
-      )}
-      <ImageUploader
-        isVisible={isImageUploadVisible}
-        setIsVisible={setImageUploadVisible}
-        editor={editor}
-        imageUploadUrl={uploadEndpoint}
-        uploadConfig={uploadConfig}
-        isUnsplashImageUploadActive={isUnsplashImageUploadActive}
-        unsplashApiKey={editorSecrets?.unsplash}
-      />
-      {markdownMode && (
-        <MarkdownEditor
-          editor={markdownEditor}
-          strategy={heightStrategy}
-          style={editorStyles}
-          limit={characterLimit}
-          className={editorClasses}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          {...otherProps}
-        />
-      )}
-      <div
-        className={classNames({ "neeto-editor-content--hidden": markdownMode })}
-      >
-        <EditorContent editor={editor} {...otherProps} />
-      </div>
+        {markdownMode && (
+          <MarkdownEditor
+            editor={markdownEditor}
+            strategy={heightStrategy}
+            style={editorStyles}
+            limit={characterLimit}
+            className={editorClasses}
+            onFocus={onFocus}
+            onBlur={onBlur}
+            {...otherProps}
+          />
+        )}
+        <div
+          className={classNames({
+            "neeto-editor-content--hidden": markdownMode,
+          })}
+        >
+          <EditorContent editor={editor} {...otherProps} />
+        </div>
 
-      {isCharacterCountActive && (
-        <CharacterCount
-          count={editor?.storage.characterCount.characters()}
-          limit={characterLimit}
-          strategy={characterCountStrategy}
-        />
-      )}
-    </div>
+        {isCharacterCountActive && (
+          <CharacterCount
+            count={editor?.storage.characterCount.characters()}
+            limit={characterLimit}
+            strategy={characterCountStrategy}
+          />
+        )}
+      </div>
+      {renderEditorError()}
+    </>
   );
 };
 
