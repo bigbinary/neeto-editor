@@ -1,7 +1,7 @@
 import React from "react";
 
 const HighlightText = ({ children }) => (
-  <span className="px-1 font-mono bg-gray-100">{children}</span>
+  <span className="bg-gray-100 px-1 font-mono">{children}</span>
 );
 
 export default HighlightText;

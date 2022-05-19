@@ -22,7 +22,7 @@ const ImageUpload = ({
   const [activeTab, setActiveTab] = useTabBar(IMAGE_UPLOAD_OPTIONS);
   const [imageUrl, setImageUrl] = useState("");
 
-  const handleUrlFormSubmit = (url) => {
+  const handleUrlFormSubmit = url => {
     setImageUrl(url);
   };
 
@@ -60,8 +60,8 @@ const ImageUpload = ({
       <div className="neeto-editor-image-uploader">
         <Tab>
           {IMAGE_UPLOAD_OPTIONS.filter(
-            (option) => option.key !== "unsplash" || isUnsplashImageUploadActive
-          ).map((option) => (
+            option => option.key !== "unsplash" || isUnsplashImageUploadActive
+          ).map(option => (
             <Tab.Item
               key={option.key}
               active={activeTab === option.key}

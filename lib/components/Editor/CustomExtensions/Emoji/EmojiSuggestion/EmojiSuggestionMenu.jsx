@@ -71,7 +71,7 @@ class EmojiSuggestionMenu extends React.Component {
     return false;
   };
 
-  selectItem = (index) => {
+  selectItem = index => {
     this.props.editor
       .chain()
       .focus()

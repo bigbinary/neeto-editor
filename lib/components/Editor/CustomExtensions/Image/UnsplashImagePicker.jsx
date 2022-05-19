@@ -22,7 +22,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
     fetchUnsplashPhotos(1);
   }, [debouncedQuery]);
 
-  const fetchUnsplashPhotos = async (page) => {
+  const fetchUnsplashPhotos = async page => {
     try {
       setLoading(true);
       setError(false);

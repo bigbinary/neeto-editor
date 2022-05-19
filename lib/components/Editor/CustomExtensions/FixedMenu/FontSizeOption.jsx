@@ -13,9 +13,9 @@ const FontSizeOption = ({ editor }) => {
     { label: "H3", value: 3 },
   ];
 
-  const isActive = (level) => editor.isActive("heading", { level });
+  const isActive = level => editor.isActive("heading", { level });
 
-  const onClick = (level) =>
+  const onClick = level =>
     editor.chain().focus().toggleHeading({ level }).run();
 
   return (

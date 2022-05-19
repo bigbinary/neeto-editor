@@ -46,7 +46,7 @@ const App = () => {
       <Heading>Neeto Editor</Heading>
       <div className="flex justify-end">
         <button
-          className="px-3 py-1 text-sm font-medium border border-gray-200 rounded shadow-sm"
+          className="rounded border border-gray-200 px-3 py-1 text-sm font-medium shadow-sm"
           onClick={() => {
             // eslint-disable-next-line no-console
             console.log({
@@ -177,7 +177,7 @@ const App = () => {
         The editor can have placeholder texts for different nodes. These value
         is accepted as <HighlightText>placeholder</HighlightText> prop.
       </Description>
-      <ul className="list-disc list-inside">
+      <ul className="list-inside list-disc">
         <li>
           Value as object: Each type of node can have corresponding placeholder,
           in which case the value should be of type{" "}
@@ -240,7 +240,7 @@ const App = () => {
         rows={EDITOR_ADDONS_TABLE_ROWS}
         className="prop-detail-table"
       />
-      <div className="flex mt-4">
+      <div className="mt-4 flex">
         <CodeBlock>{STRINGS.addonsSampleCode}</CodeBlock>
         <SampleEditor addons={SAMPLE_ADDONS} />
       </div>
@@ -252,7 +252,7 @@ const App = () => {
         <HighlightText>editorSecrets</HighlightText> prop and pass the addon{" "}
         <HighlightText>image-picker-unsplash</HighlightText> to enable it.
       </Description>
-      <div className="flex mt-4">
+      <div className="mt-4 flex">
         <CodeBlock>{STRINGS.unsplashSampleCode}</CodeBlock>
         <SampleEditor
           addons={["image-upload-unsplash"]}
@@ -278,7 +278,7 @@ const App = () => {
         <HighlightText>uploadConfig</HighlightText> prop. Refer{" "}
         <a
           href="https://uppy.io/docs/uppy/#Options"
-          className="text-blue-500 font-medium"
+          className="font-medium text-blue-500"
           target="_blank"
           rel="noreferrer"
         >
@@ -286,7 +286,7 @@ const App = () => {
         </a>{" "}
         for the list of available options.
       </Description>
-      <div className="flex mt-4">
+      <div className="mt-4 flex">
         <CodeBlock>{STRINGS.editorUploadConfigSampleCode}</CodeBlock>
         <SampleEditor
           rows={15}
@@ -344,11 +344,11 @@ const App = () => {
       </Description>
       <div className="flex">
         <CodeBlock>{STRINGS.markdownModeSampleCode}</CodeBlock>
-        <div className="flex flex-col flex-1 ml-auto">
+        <div className="ml-auto flex flex-1 flex-col">
           <Dropdown
             className="ml-auto"
             customTarget={() => (
-              <div className="flex items-center px-2 py-1 space-x-2 transition-colors duration-100 bg-gray-200 rounded-sm cursor-pointer hover:bg-gray-300">
+              <div className="flex cursor-pointer items-center space-x-2 rounded-sm bg-gray-200 px-2 py-1 transition-colors duration-100 hover:bg-gray-300">
                 <p> {isMarkdownModeActive ? "Markdown" : "Rich Text"}</p>
                 <Down size={18} />
               </div>
@@ -392,14 +392,14 @@ const App = () => {
         height is <HighlightText>fixed</HighlightText> or{" "}
         <HighlightText>flexible</HighlightText>.
       </Description>
-      <div className="flex mt-4">
+      <div className="mt-4 flex">
         <CodeBlock>{STRINGS.editorHeightSampleCode}</CodeBlock>
         <SampleEditor rows={3} heightStrategy="flexible" />
       </div>
       <Heading type="sub">Keyboard Shortcuts</Heading>
       Here is a list of keyboard shortcuts available in Neeto Editor. Refer{" "}
       <a
-        className="text-blue-500 font-medium"
+        className="font-medium text-blue-500"
         href="https://tiptap.dev/api/keyboard-shortcuts"
         target="_blank"
         rel="noreferrer"
@@ -432,11 +432,11 @@ const App = () => {
         the key combination. Keyboard shortcuts are now only supported in the
         rich-text mode.
       </Description>
-      <div className="flex mt-4">
+      <div className="mt-4 flex">
         <CodeBlock>{STRINGS.editorKeyboardShortcutsSampleCode}</CodeBlock>
         <SampleEditor
           rows={19}
-          onSubmit={(content) => console.log(content)}
+          onSubmit={content => console.log(content)}
           keyboardShortcuts={{
             "Shift-Enter": ({ editor }) => {
               alert(editor.getHTML());
@@ -466,7 +466,7 @@ const App = () => {
       <Description>
         Refer{" "}
         <a
-          className="text-blue-500 font-medium"
+          className="font-medium text-blue-500"
           href="https://tiptap.dev/api/editor"
           target="_blank"
           rel="noreferrer"
@@ -496,7 +496,7 @@ const App = () => {
       <Description>
         Refer{" "}
         <a
-          className="text-blue-500 font-medium"
+          className="font-medium text-blue-500"
           href="https://tiptap.dev/api/commands"
           target="_blank"
           rel="noreferrer"
@@ -511,11 +511,11 @@ const App = () => {
 
 export default App;
 
-const SampleEditor = (props) => {
+const SampleEditor = props => {
   const ref = useRef();
 
   return (
-    <div className="flex-1 mx-3 my-2 h-60">
+    <div className="mx-3 my-2 h-60 flex-1">
       <Editor ref={ref} initialValue="Edit Text Content" {...props} />
     </div>
   );

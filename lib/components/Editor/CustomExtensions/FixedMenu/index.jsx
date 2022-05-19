@@ -72,7 +72,7 @@ const FixedMenu = ({
       active: editor.isActive("highlight"),
       optionName: "highlight",
     },
-  ].filter((item) => options.includes(item.optionName));
+  ].filter(item => options.includes(item.optionName));
 
   const blockStyleOptions = [
     {
@@ -93,7 +93,7 @@ const FixedMenu = ({
       active: editor.isActive("imageUpload"),
       optionName: "image-upload",
     },
-  ].filter((item) => options.includes(item.optionName));
+  ].filter(item => options.includes(item.optionName));
 
   const listStyleOptions = [
     {
@@ -108,7 +108,7 @@ const FixedMenu = ({
       active: editor.isActive("orderedList"),
       optionName: "ordered-list",
     },
-  ].filter((item) => options.includes(item.optionName));
+  ].filter(item => options.includes(item.optionName));
 
   const isTextColorActive = options.includes("font-color");
   const isFontSizeActive = options.includes("font-size");
@@ -137,7 +137,7 @@ const FixedMenu = ({
       {isTextColorActive && (
         <TextColorOption
           color={editor.getAttributes("textStyle").color}
-          onChange={(color) => editor.chain().focus().setColor(color).run()}
+          onChange={color => editor.chain().focus().setColor(color).run()}
         />
       )}
       {isEmojiActive && <EmojiOption editor={editor} />}

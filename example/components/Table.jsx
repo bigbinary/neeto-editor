@@ -5,7 +5,7 @@ const Table = ({ columns, rows = [], className }) => {
   return (
     <table
       className={classNames(
-        "block min-w-full border border-gray-200 overflow-x-auto",
+        "block min-w-full overflow-x-auto border border-gray-200",
         {
           [className]: className,
         }
@@ -14,20 +14,20 @@ const Table = ({ columns, rows = [], className }) => {
       {columns?.length ? (
         <thead>
           <tr>
-            {columns.map((columnData) => (
-              <th className="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+            {columns.map(columnData => (
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                 {columnData}
               </th>
             ))}
           </tr>
         </thead>
       ) : null}
-      <tbody className="text-sm bg-white divide-y divide-gray-200">
-        {rows.map((row) =>
+      <tbody className="divide-y divide-gray-200 bg-white text-sm">
+        {rows.map(row =>
           row?.length ? (
             <tr>
-              {row.map((rowData) => (
-                <td className="px-6 py-2 whitespace-nowrap">{rowData}</td>
+              {row.map(rowData => (
+                <td className="whitespace-nowrap px-6 py-2">{rowData}</td>
               ))}
             </tr>
           ) : null

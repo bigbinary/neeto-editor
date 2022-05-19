@@ -11,7 +11,7 @@ const ImageEditor = ({ url, editor, onClose, alt }) => {
     onClose();
   };
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = event => {
     event.key === "Enter" && handleSubmit();
   };
 
@@ -20,7 +20,7 @@ const ImageEditor = ({ url, editor, onClose, alt }) => {
       <img src={url} />
       <Input
         value={altText}
-        onChange={(e) => setAltText(e.target.value)}
+        onChange={e => setAltText(e.target.value)}
         placeholder="Brand Image"
         label="Alt Text"
       />

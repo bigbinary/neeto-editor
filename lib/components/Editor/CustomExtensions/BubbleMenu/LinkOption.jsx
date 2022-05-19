@@ -12,7 +12,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
     setLink(editor.getAttributes("link").href || "");
   }, []);
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = event => {
     if (event.key === "Escape") {
       handleClose();
     } else if (event.key === "Enter") {

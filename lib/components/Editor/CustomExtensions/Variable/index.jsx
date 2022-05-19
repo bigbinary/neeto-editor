@@ -6,7 +6,7 @@ import { HashtagFilled } from "components/Common/Icons";
 import MenuButton from "components/Common/MenuButton";
 
 const Variables = ({ editor, variables }) => {
-  const handleClickItem = (item) => {
+  const handleClickItem = item => {
     const { category_key, key } = item;
     const variableName = category_key ? `${category_key}.${key}` : key;
     editor.chain().focus().setVariable({ label: variableName }).run();

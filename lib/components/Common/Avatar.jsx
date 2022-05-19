@@ -43,7 +43,7 @@ function Avatar({
   const isLarge = size === "large";
   const isXLarge = size === "xlarge";
 
-  const getInitials = (fullName) => {
+  const getInitials = fullName => {
     const allNames = fullName.trim().split(" ");
     const initials = allNames.reduce((acc, curr, index) => {
       if (index === 0 || index === allNames.length - 1) {

@@ -19,7 +19,7 @@ const LinkOption = ({ editor }) => {
     setUrlString(editor.getAttributes("link").href || "");
   };
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = event => {
     if (event.key === "Escape") {
       dropdownRef.current.close();
     } else if (event.key === "Enter") {

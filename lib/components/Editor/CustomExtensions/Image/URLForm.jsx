@@ -13,7 +13,7 @@ const URLForm = ({
   const [urlString, setUrlString] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     if (UrlRegExp.test(urlString)) {
       onSubmit(urlString);

@@ -24,7 +24,7 @@ const LocalUploader = ({
   const uppy = useUppy(() =>
     new Uppy({
       ...uppyConfig,
-      onBeforeFileAdded: (file) => {
+      onBeforeFileAdded: file => {
         const { maxFileSize, allowedFileTypes } = uppyConfig.restrictions;
 
         if (file.size > maxFileSize) {

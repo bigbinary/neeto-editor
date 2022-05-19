@@ -24,7 +24,7 @@ export class MentionList extends React.Component {
     });
   }
 
-  selectItem = (index) => {
+  selectItem = index => {
     const { items, command } = this.props;
     const item = items[index];
 
@@ -35,7 +35,7 @@ export class MentionList extends React.Component {
 
   upHandler = () => {
     const { items } = this.props;
-    this.setState((prevState) => {
+    this.setState(prevState => {
       const { selectedIndex } = prevState;
       const nextSelectedIndex =
         (selectedIndex + items.length - 1) % items.length;
@@ -47,7 +47,7 @@ export class MentionList extends React.Component {
 
   downHandler = () => {
     const { items } = this.props;
-    this.setState((prevState) => {
+    this.setState(prevState => {
       const { selectedIndex } = prevState;
       const nextSelectedIndex = (selectedIndex + 1) % items.length;
       return {

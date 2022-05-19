@@ -56,10 +56,7 @@ const Item = ({
   return (
     <Parent
       className={classnames(
-        [
-          "ne-tab flex items-center justify-center select-none",
-          className,
-        ],
+        ["ne-tab flex select-none items-center justify-center", className],
         {
           active: active,
         }

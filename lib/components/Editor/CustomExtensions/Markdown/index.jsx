@@ -19,8 +19,8 @@ const MarkdownEditor = ({
   return (
     <textarea
       ref={inputFieldRef}
-      onChange={(event) => onChange(event.target.value)}
-      onKeyDown={(event) =>
+      onChange={event => onChange(event.target.value)}
+      onKeyDown={event =>
         handleKeyDown({ event, inputFieldRef, length, limit, onChange })
       }
       onFocus={onFocus}

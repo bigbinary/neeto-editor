@@ -30,7 +30,7 @@ const TextOptions = ({
       setIsLinkOptionActive,
     })
       .filter(({ optionName }) => options.includes(optionName))
-      .map((option) => <Option {...option} key={option.optionName} />)
+      .map(option => <Option {...option} key={option.optionName} />)
   );
 };
 

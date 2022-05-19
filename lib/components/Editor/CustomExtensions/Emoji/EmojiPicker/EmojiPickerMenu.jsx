@@ -16,7 +16,7 @@ class EmojiPickerMenu extends React.Component {
     return false;
   };
 
-  handleSelect = (emoji) => {
+  handleSelect = emoji => {
     this.props.editor
       .chain()
       .focus()

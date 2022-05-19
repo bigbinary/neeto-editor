@@ -10,7 +10,7 @@ class CommandsList extends React.Component {
       event.key
     );
 
-  setActiveMenuIndex = (index) => this.setState({ activeMenuIndex: index });
+  setActiveMenuIndex = index => this.setState({ activeMenuIndex: index });
 
   render() {
     return (

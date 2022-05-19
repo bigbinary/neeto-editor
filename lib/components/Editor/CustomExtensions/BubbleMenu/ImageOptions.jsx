@@ -12,6 +12,6 @@ const ImageOptions = ({
     editor,
     isImageEditorModalOpen,
     setIsImageEditorModalOpen,
-  }).map((option) => <Option key={option.optionName} {...option} />);
+  }).map(option => <Option key={option.optionName} {...option} />);
 
 export default ImageOptions;

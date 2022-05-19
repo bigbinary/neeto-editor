@@ -13,7 +13,7 @@ const TextColorOption = ({ color = "#000", onChange }) => {
           <input
             ref={colorInputRef}
             type="color"
-            onChange={(event) => onChange && onChange(event.target.value)}
+            onChange={event => onChange && onChange(event.target.value)}
           />
         </>
       )}

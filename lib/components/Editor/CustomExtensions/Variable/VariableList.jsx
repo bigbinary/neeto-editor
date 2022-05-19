@@ -34,7 +34,7 @@ const VariableCategory = ({ index, title, variables, onClickItem }) => {
     >
       {title && <h6>{title}</h6>}
       <div className="neeto-editor-variables-row">
-        {variables.map((item) => (
+        {variables.map(item => (
           <button
             type="button"
             onClick={() => onClickItem(item)}

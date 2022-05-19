@@ -15,7 +15,7 @@ const useMarkdownEditor = ({ content, onUpdate, onSubmit, markdownMode }) => {
 
   // imperative method to accept a html content and update the editor content with corresponding markdown
   const setContent = useCallback(
-    (htmlContent) => {
+    htmlContent => {
       if (!inputFieldRef.current) return;
       const markdownContent = htmlToMarkdown(htmlContent);
       const textContent = htmlToText(htmlContent);
@@ -35,7 +35,7 @@ const useMarkdownEditor = ({ content, onUpdate, onSubmit, markdownMode }) => {
     return htmlToText(htmlContent);
   }, [editorContentRef]);
 
-  const handleChange = (markdown) => {
+  const handleChange = markdown => {
     const htmlContent = markdownToHtml(markdown);
     const textContent = htmlToText(htmlContent);
     setEditorState({ content: markdown, length: textContent.length });
@@ -44,7 +44,7 @@ const useMarkdownEditor = ({ content, onUpdate, onSubmit, markdownMode }) => {
 
   // Submit on Ctrl+Enter and Cmd+Enter
   const handleSubmit = useCallback(
-    (e) => {
+    e => {
       if (!markdownMode) return;
       if (e.key !== "Enter" || !(e.metaKey || e.ctrlKey)) return;
 

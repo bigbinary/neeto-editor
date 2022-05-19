@@ -39,7 +39,7 @@ class Menu extends React.Component {
     else document.removeEventListener("keydown", this.keydownHandler);
   }
 
-  keydownHandler = (event) => {
+  keydownHandler = event => {
     const listeners = {
       Enter: this.enterHandler,
       ArrowUp: this.upHandler,
@@ -51,7 +51,7 @@ class Menu extends React.Component {
     if (event.key in listeners) listeners[event.key](event);
   };
 
-  selectItem = (index) => {
+  selectItem = index => {
     const { items, editor, range } = this.props;
     const selectedItem = items[index];
     const hasCommand = selectedItem && selectedItem.command;
