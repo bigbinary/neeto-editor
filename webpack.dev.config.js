@@ -1,6 +1,5 @@
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const path = require("path");
 require("dotenv").config({ path: "./.env.local" });
 
@@ -14,9 +13,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            plugins: ["react-refresh/babel"],
-          },
         },
       },
       {
@@ -55,7 +51,6 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    hot: true,
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -65,7 +60,6 @@ module.exports = {
       template: "./public/index.html",
       filename: "./index.html",
     }),
-    new ReactRefreshWebpackPlugin({ overlay: false }),
   ],
   resolve: {
     extensions: [".json", ".js", ".jsx"],
