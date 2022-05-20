@@ -1,7 +1,8 @@
-const PeerDepsExternalsPlugin = require("peer-deps-externals-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const path = require("path");
+
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PeerDepsExternalsPlugin = require("peer-deps-externals-webpack-plugin");
 
 module.exports = [
   {
@@ -38,7 +39,7 @@ module.exports = [
       ],
     },
     output: {
-      path: __dirname + "/build",
+      path: `${__dirname}/build`,
       filename: "index.js",
       library: "neeto-editor",
       libraryTarget: "umd",
@@ -83,7 +84,7 @@ module.exports = [
       minimizer: [new CssMinimizerPlugin()],
     },
     output: {
-      path: __dirname + "/dist",
+      path: `${__dirname}/dist`,
     },
   },
 ];
