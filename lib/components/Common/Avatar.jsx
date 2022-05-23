@@ -27,7 +27,7 @@ const COLORS = [
   "#FBCFE8",
 ];
 
-function Avatar({
+const Avatar = ({
   size,
   user,
   isSquare,
@@ -35,7 +35,7 @@ function Avatar({
   onClick,
   className,
   ...otherProps
-}) {
+}) => {
   const [loaded, setLoaded] = useState(false);
 
   const { name = "", imageUrl } = user;
@@ -133,7 +133,7 @@ function Avatar({
       )}
     </div>
   );
-}
+};
 
 Avatar.defaultProps = {
   size: "medium",

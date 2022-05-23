@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { BubbleMenu } from "@tiptap/react";
+import { BubbleMenu as BubbleMenuTipTap } from "@tiptap/react";
 import classnames from "classnames";
 import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
@@ -9,7 +9,7 @@ import ImageEditorModal from "./ImageEditorModal";
 import ImageOptions from "./ImageOptions";
 import TextOptions from "./TextOptions";
 
-export default function Index({ editor, options: textOptions }) {
+const BubbleMenu = ({ editor, options: textOptions }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
   const [isImageEditorModalOpen, setIsImageEditorModalOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function Index({ editor, options: textOptions }) {
 
   return (
     <div>
-      <BubbleMenu
+      <BubbleMenuTipTap
         editor={editor}
         tippyOptions={{
           arrow: roundArrow,
@@ -49,7 +49,7 @@ export default function Index({ editor, options: textOptions }) {
             setIsLinkOptionActive={setIsLinkOptionActive}
           />
         )}
-      </BubbleMenu>
+      </BubbleMenuTipTap>
       <ImageEditorModal
         editor={editor}
         isOpen={isImageEditorModalOpen}
@@ -57,4 +57,6 @@ export default function Index({ editor, options: textOptions }) {
       />
     </div>
   );
-}
+};
+
+export default BubbleMenu;
