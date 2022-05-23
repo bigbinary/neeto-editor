@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 
-import { Email } from "@bigbinary/neeto-icons";
 import Avatar from "components/Common/Avatar";
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
+import { Email } from "neetoicons";
 
 const Mentions = ({ editor, mentions, showImageInMention }) => {
   const dropdownRef = useRef();

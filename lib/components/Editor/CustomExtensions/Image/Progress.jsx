@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Close } from "@bigbinary/neeto-icons";
 import Button from "components/Common/Button";
+import { Close } from "neetoicons";
 
 const Progress = ({ uppy }) => {
   const [progress, setProgress] = useState(0);

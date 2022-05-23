@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import MenuButton from "components/Common/MenuButton";
+import Modal from "components/Common/Modal";
 import {
   TextBold,
   TextItalic,
@@ -11,9 +13,7 @@ import {
   ListNumber,
   Image,
   Quote,
-} from "@bigbinary/neeto-icons";
-import MenuButton from "components/Common/MenuButton";
-import Modal from "components/Common/Modal";
+} from "neetoicons";
 import { capitalize } from "utils/common";
 
 import EmojiOption from "./EmojiOption";

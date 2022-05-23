@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 
-import { Close } from "@bigbinary/neeto-icons";
 import classnames from "classnames";
 import Backdrop from "components/Common/Backdrop";
 import Button from "components/Common/Button";
 import Portal from "components/Common/Portal";
 import useOutsideClick from "hooks/useOutsideClick";
+import { Close } from "neetoicons";
 import { useHotkeys } from "react-hotkeys-hook";
 
 const noop = () => {};

@@ -6,8 +6,8 @@ import React, {
   useImperativeHandle,
 } from "react";
 
-import { Down } from "@bigbinary/neeto-icons";
 import classnames from "classnames";
+import { Down } from "neetoicons";
 import { useHotkeys } from "react-hotkeys-hook";
 import { usePopper } from "react-popper";
 import { hyphenize } from "utils/common";

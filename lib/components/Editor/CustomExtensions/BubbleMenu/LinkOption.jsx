@@ -2,8 +2,8 @@ import { UrlRegExp } from "constants/regexp";
 
 import React, { useEffect, useState } from "react";
 
-import { Close } from "@bigbinary/neeto-icons";
 import Button from "components/Common/Button";
+import { Close } from "neetoicons";
 import { isNilOrEmpty } from "utils/common";
 
 const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { TextSize } from "@bigbinary/neeto-icons";
 import classnames from "classnames";
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
+import { TextSize } from "neetoicons";
 
 const FontSizeOption = ({ editor }) => {
   const options = [

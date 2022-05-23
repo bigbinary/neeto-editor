@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 
-import { Smiley } from "@bigbinary/neeto-icons";
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
+import { Smiley } from "neetoicons";
 
 import EmojiPickerMenu from "../Emoji/EmojiPicker/EmojiPickerMenu";
 
