@@ -1,11 +1,10 @@
-const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require("path");
-require("dotenv").config({ path: "./.env.local" });
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./example/index.js",
-  devtool: "cheap-module-eval-source-map",
+  devtool: "eval-cheap-source-map",
   module: {
     rules: [
       {
