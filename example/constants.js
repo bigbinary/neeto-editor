@@ -475,4 +475,9 @@ export const STRINGS = {
   const editorDefaults = ["font-color", "paragraph", "h1", "h2", "h3", "h4", "h5", "h6"];
 
   <Editor defaults={editorDefaults} />`,
+  editorErrorStateSampleCode: `
+    <Editor error={{
+      message: "Something went wrong in the editor"
+    }} />
+  `,
 };
