@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import { useEditor, EditorContent } from "@tiptap/react";
 
-import { stringifyObject } from "utils/common";
+import { stringifyObject, isNilOrEmpty } from "utils/common";
 
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import FixedMenu from "./CustomExtensions/FixedMenu";
@@ -11,7 +11,6 @@ import MarkdownEditor from "./CustomExtensions/Markdown";
 import CharacterCount from "./CustomExtensions/CharacterCount";
 import useMarkdownEditor from "./CustomExtensions/Markdown/useMarkdownEditor";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
-
 import {
   generateAddonOptions,
   getEditorStyles,
@@ -140,6 +139,18 @@ const Editor = (
       : editor.commands.setContent;
     nextContentUpdater(nextContent);
   }, [markdownMode]);
+
+  useEffect(() => {
+    const isProduction = [process.env.RAILS_ENV, process.env.NODE_ENV].includes(
+      "production"
+    );
+    if (!isProduction && isNilOrEmpty(initialValue)) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[neeto-editor]: Empty value of "initialValue" in needtoEditor is expected to be "<p></p>" instead of "${initialValue}".`
+      );
+    }
+  }, [initialValue]);
 
   return (
     <div className="neeto-editor-wrapper">
