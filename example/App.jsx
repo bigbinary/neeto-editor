@@ -71,6 +71,12 @@ const App = () => {
         rows={EDITOR_PROP_TABLE_ROWS}
         className="prop-detail-table"
       />
+      <div className="mt-4">
+        <h3 className="mb-2 font-bold">Note</h3>
+        <CodeBlock>
+          The empty value or initialValue should should always be {`<p></p>`}
+        </CodeBlock>
+      </div>
       <Heading type="sub">Output</Heading>
       <div className="mt-4">
         <h3 className="mb-2 font-bold">Use EditorContent component</h3>
