@@ -107,7 +107,8 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --open --mode development --config webpack.dev.config.js",
     "build": "NODE_ENV=production webpack --config webpack.dev.config.js",
-    "webpack-build": "NODE_ENV=production webpack --mode production"
+    "webpack-build": "NODE_ENV=production webpack --mode production",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "{lib,example}/**/*.{js,jsx,json}": [
