@@ -54,6 +54,7 @@ module.exports = [
         constants: path.resolve(__dirname, "/lib/constants"),
         utils: path.resolve(__dirname, "/lib/utils"),
         neetoicons: "@bigbinary/neeto-icons",
+        lib: path.resolve(__dirname, "/lib"),
       },
     },
   },

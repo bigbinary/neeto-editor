@@ -4,6 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import classNames from "classnames";
 import { stringifyObject, isNilOrEmpty } from "utils/common";
 
+import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import CharacterCount from "./CustomExtensions/CharacterCount";
 import FixedMenu from "./CustomExtensions/FixedMenu";
@@ -23,6 +24,7 @@ const Editor = (
     forceTitle = false,
     titleError = false,
     hideSlashCommands = false,
+    defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
     addonCommands,
     markdownMode = false,
@@ -64,7 +66,7 @@ const Editor = (
   const isCharacterCountActive =
     !markdownMode && characterCountStrategy !== "hidden";
 
-  const addonOptions = generateAddonOptions(addons, {
+  const addonOptions = generateAddonOptions(defaults, addons, {
     includeImageUpload: isUnsplashImageUploadActive,
   });
 
