@@ -1,14 +1,15 @@
 import React from "react";
-import classNames from "classnames";
+
+import classnames from "classnames";
 import { is } from "ramda";
 import { isNilOrEmpty } from "utils/common";
 
 const ErrorWrapper = ({ error, isFixedMenuActive, children }) => {
-  const wrapperClasses = classNames({
+  const wrapperClasses = classnames({
     "neeto-editor-error": error && isFixedMenuActive,
   });
 
-  const renderEditorError = () => {
+  const getErrorMessage = () => {
     if (!error) return null;
 
     let message;
@@ -23,13 +24,13 @@ const ErrorWrapper = ({ error, isFixedMenuActive, children }) => {
 
     if (isNilOrEmpty(message)) return null;
 
-    return <p className="ne-input__error">{message}</p>;
+    return message;
   };
 
   return (
     <>
       <div className={wrapperClasses}>{children}</div>
-      {renderEditorError()}
+      <p className="ne-input__error">{getErrorMessage()}</p>
     </>
   );
 };
