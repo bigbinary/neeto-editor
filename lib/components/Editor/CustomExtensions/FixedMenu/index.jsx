@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import MenuButton from "components/Common/MenuButton";
 import Modal from "components/Common/Modal";
+import { EDITOR_OPTIONS } from "lib";
 import {
   TextBold,
   TextItalic,
@@ -112,10 +113,11 @@ const FixedMenu = ({
     },
   ].filter(item => options.includes(item.optionName));
 
-  const isTextColorActive = options.includes("font-color");
-  const isFontSizeActive = options.includes("font-size");
-  const isEmojiActive = options.includes("emoji");
-  const isLinkActive = options.includes("link");
+  const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
+  const isTextColorActive = options.includes(EDITOR_OPTIONS.FONT_COLOR);
+  const isFontSizeActive = fontSizeOptions.length > 0;
+  const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
+  const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
 
   const renderOptionButton = ({ Icon, command, active, optionName }, index) => (
     <MenuButton
@@ -134,7 +136,9 @@ const FixedMenu = ({
 
   return (
     <div className="neeto-editor-fixed-menu">
-      {isFontSizeActive && <FontSizeOption editor={editor} />}
+      {isFontSizeActive && (
+        <FontSizeOption editor={editor} options={fontSizeOptions} />
+      )}
       {fontStyleOptions.map(renderOptionButton)}
       {isTextColorActive && (
         <TextColorOption

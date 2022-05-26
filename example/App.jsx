@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 
 import Dropdown from "components/Common/Dropdown";
+import { Editor } from "lib";
 import { Down } from "neetoicons";
 
 import CodeBlock from "./components/CodeBlock";
@@ -16,6 +17,7 @@ import {
   SAMPLE_MENTIONS,
   SAMPLE_VARIABLES,
   SAMPLE_ADDONS,
+  SAMPLE_DEFAULTS,
   SAMPLE_UPLOAD_CONFIG,
   STRINGS,
   EDITOR_CONTENT_PROP_TABLE_ROWS,
@@ -28,8 +30,6 @@ import {
   EDITOR_SHORTCUTS_TABLE_COLUMNS,
   EDITOR_SHORTCUTS_TABLE_ROWS,
 } from "./constants";
-
-import { Editor } from "../lib";
 
 const App = () => {
   const ref = useRef();
@@ -261,14 +261,7 @@ const App = () => {
         configuration can be passed as a prop to the editor. The default
         configuration is:
         <div>
-          <CodeBlock>{`{
-  autoProceed: true,
-  allowMultipleUploads: false,
-  restrictions: {
-    maxFileSize: 5242880, // 5MB
-    allowedFileTypes: [".jpg", ".jpeg", ".png", ".gif"]],
-  },
-}`}</CodeBlock>
+          <CodeBlock>{STRINGS.editorImageConfigurationSampleCode}</CodeBlock>
         </div>
         This can be overridden by passing the{" "}
         <HighlightText>uploadConfig</HighlightText> prop. Refer{" "}
@@ -289,6 +282,31 @@ const App = () => {
           addons={["image-upload"]}
           uploadConfig={SAMPLE_UPLOAD_CONFIG}
         />
+      </div>
+      <Heading type="sub">Customize default options</Heading>
+      <Description>
+        You can override default options available in neetoEditor by passing the{" "}
+        <HighlightText>defaults</HighlightText> prop. By default the following
+        options are available: <HighlightText>font-color</HighlightText>,{" "}
+        <HighlightText>bold</HighlightText>,{" "}
+        <HighlightText>italic</HighlightText>,{" "}
+        <HighlightText>underline</HighlightText>,{" "}
+        <HighlightText>strike</HighlightText>,{" "}
+        <HighlightText>link</HighlightText>,{" "}
+        <HighlightText>paragraph</HighlightText>,{" "}
+        <HighlightText>h1</HighlightText>, <HighlightText>h2</HighlightText>,{" "}
+        <HighlightText>bulleted-list</HighlightText>,{" "}
+        <HighlightText>numbered-list</HighlightText>, . You can edit the
+        available options by passing an array of strings to the{" "}
+        <HighlightText>defaults</HighlightText> prop. In addition to the above
+        options you can also pass the following options:{" "}
+        <HighlightText>h3</HighlightText>, <HighlightText>h4</HighlightText>,
+        <HighlightText>h5</HighlightText>, and <HighlightText>h6</HighlightText>
+        .
+      </Description>
+      <div className="mt-4 flex">
+        <CodeBlock>{STRINGS.editorDefaultsSampleCode}</CodeBlock>
+        <SampleEditor defaults={SAMPLE_DEFAULTS} />
       </div>
       {/* Custom Slash commands */}
       <Heading type="sub">Custom Slash Commands</Heading>

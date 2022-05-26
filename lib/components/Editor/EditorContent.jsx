@@ -1,10 +1,10 @@
+import { EDITOR_CONTENT_CLASSNAME } from "constants/common";
+
 import React, { useEffect } from "react";
 
 import classnames from "classnames";
 import DOMPurify from "dompurify";
 import highlightCode from "utils/highlightCode";
-
-import { EDITOR_CONTENT_CLASSNAME } from "../../constants/common";
 
 const EditorContent = ({ content = "", className, ...otherProps }) => {
   useEffect(() => {

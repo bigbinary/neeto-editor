@@ -7,12 +7,11 @@ import React, {
 } from "react";
 
 import classnames from "classnames";
+import useOutsideClick from "hooks/useOutsideClick";
 import { Down } from "neetoicons";
 import { useHotkeys } from "react-hotkeys-hook";
 import { usePopper } from "react-popper";
 import { hyphenize } from "utils/common";
-
-import useOutsideClick from "../../../hooks/useOutsideClick";
 
 const noop = () => {};
 

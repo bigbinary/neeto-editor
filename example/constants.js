@@ -1,3 +1,5 @@
+import { EDITOR_OPTIONS } from "lib";
+
 export const EDITOR_FEATURES = [
   "Multiple Menu options such as Fixed, Bubble",
   "Support for inline styles: Bold, Italic, Underline, StrikeThrough",
@@ -160,6 +162,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
     `["highlight", "emoji", "code-block", "block-quote", "image-upload", "divider", "video-embed"]`,
   ],
   [
+    "defaults",
+    "Accepts an array of strings, each corresponding to the name of a default option",
+    `["h1", "h2", "h3", "h4", "h5", "h6"]`,
+  ],
+  [
     "addonCommands",
     "Accepts an array of additional custom Slash Command items to be displayed along with pre-defined command items",
     `[{ title: 'Focus Editor', description: 'Focus the editor', optionName: 'focus-editor', command: ({editor}) => editor.focus() }]`,
@@ -251,13 +258,24 @@ export const EDITOR_SHORTCUTS_TABLE_ROWS = [
 ];
 
 export const SAMPLE_ADDONS = [
-  "highlight",
-  "emoji",
-  "code-block",
-  "block-quote",
-  "image-upload",
-  "divider",
-  "video-embed",
+  EDITOR_OPTIONS.HIGHLIGHT,
+  EDITOR_OPTIONS.EMOJI,
+  EDITOR_OPTIONS.CODE_BLOCK,
+  EDITOR_OPTIONS.BLOCKQUOTE,
+  EDITOR_OPTIONS.IMAGE_UPLOAD,
+  EDITOR_OPTIONS.IMAGE_UPLOAD_UNSPLASH,
+  EDITOR_OPTIONS.VIDEO_EMBED,
+];
+
+export const SAMPLE_DEFAULTS = [
+  EDITOR_OPTIONS.FONT_COLOR,
+  EDITOR_OPTIONS.PARAGRAPH,
+  EDITOR_OPTIONS.H1,
+  EDITOR_OPTIONS.H2,
+  EDITOR_OPTIONS.H3,
+  EDITOR_OPTIONS.H4,
+  EDITOR_OPTIONS.H5,
+  EDITOR_OPTIONS.H6,
 ];
 
 export const EDITOR_ADDONS_TABLE_COLUMNS = ["Prop", "Description"];
@@ -443,4 +461,18 @@ export const STRINGS = {
       uploadConfig={uploadConfig}
     />
   `,
+
+  editorImageConfigurationSampleCode: `{
+    autoProceed: true,
+    allowMultipleUploads: false,
+    restrictions: {
+      maxFileSize: 5242880, // 5MB
+      allowedFileTypes: [".jpg", ".jpeg", ".png", ".gif"]],
+    },
+  }`,
+
+  editorDefaultsSampleCode: `
+  const editorDefaults = ["font-color", "paragraph", "h1", "h2", "h3", "h4", "h5", "h6"];
+
+  <Editor defaults={editorDefaults} />`,
 };

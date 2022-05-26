@@ -1,9 +1,12 @@
+import { EDITOR_OPTIONS } from "constants/common";
+
 import React, { useState } from "react";
 
 import { BubbleMenu as BubbleMenuTipTap } from "@tiptap/react";
 import classnames from "classnames";
 import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
+import { isNilOrEmpty } from "utils/common";
 
 import ImageEditorModal from "./ImageEditorModal";
 import ImageOptions from "./ImageOptions";
@@ -17,7 +20,17 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
   const isImageNodeSelected =
     selectedNode && selectedNode.type.name === "image";
 
-  if (!editor) {
+  const bubbleMenuOptions = [
+    EDITOR_OPTIONS.BOLD,
+    EDITOR_OPTIONS.ITALIC,
+    EDITOR_OPTIONS.UNDERLINE,
+    EDITOR_OPTIONS.STRIKETHROUGH,
+    EDITOR_OPTIONS.LINK,
+  ];
+  const noTextOptions = isNilOrEmpty(
+    textOptions.filter(option => bubbleMenuOptions.includes(option))
+  );
+  if (!editor || (!isImageNodeSelected && noTextOptions)) {
     return null;
   }
 
