@@ -1,26 +1,55 @@
 import React from "react";
 
 import classnames from "classnames";
-import { emojiIndex } from "emoji-mart";
+import { init, SearchIndex } from "emoji-mart";
 import { isNilOrEmpty } from "utils/common";
+
+const data = async () => {
+  const response = await fetch("https://cdn.jsdelivr.net/npm/@emoji-mart/data");
+
+  return response.json();
+};
 
 class EmojiSuggestionMenu extends React.Component {
   state = {
     selectedIndex: 0,
-    emojiSuggestions: emojiIndex
-      .search(this.props.query || "smile")
-      .slice(0, 5),
+    emojiSuggestions: [],
   };
+
+  componentDidMount() {
+    init({
+      data,
+      theme: "light",
+      previewPosition: "none",
+    });
+    this.searchEmojiAndSetState();
+  }
 
   componentDidUpdate(oldProps) {
     if (this.props.query !== oldProps.query) {
-      this.setState({
-        emojiSuggestions: emojiIndex
-          .search(this.props.query || "smile")
-          .slice(0, 5),
-      });
+      this.searchEmojiAndSetState();
     }
   }
+
+  searchEmoji = async () =>
+    (await SearchIndex.search(this.props.query || "smile")).slice(0, 5);
+
+  searchEmojiAndSetState = async () => {
+    const suggestions = await this.searchEmoji();
+    this.setState({
+      emojiSuggestions: suggestions,
+    });
+  };
+
+  setEditorState = async () => {
+    const suggestions = await this.searchEmoji();
+    this.props.editor
+      .chain()
+      .focus()
+      .deleteRange(this.props.range)
+      .setEmoji(SearchIndex.search(suggestions[0]))
+      .run();
+  };
 
   onKeyDown = ({ event }) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
@@ -50,12 +79,7 @@ class EmojiSuggestionMenu extends React.Component {
       if (isNilOrEmpty(this.props.query)) {
         this.props.editor.chain().focus().insertContent(" ").run();
       } else {
-        this.props.editor
-          .chain()
-          .focus()
-          .deleteRange(this.props.range)
-          .setEmoji(emojiIndex.search(this.props.query)?.[0])
-          .run();
+        this.setEditorState();
       }
 
       return true;
@@ -93,7 +117,7 @@ class EmojiSuggestionMenu extends React.Component {
               })}
               data-cy={`neeto-editor-emoji-suggestion-${emoji.id}`}
             >
-              {emoji.native}
+              {emoji.skins[0].native}
             </div>
           ))
         ) : (
