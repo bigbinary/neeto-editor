@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classNames from "classnames";
+import ErrorWrapper from "components/Common/ErrorWrapper";
 import { stringifyObject, isNilOrEmpty } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
@@ -50,6 +51,7 @@ const Editor = (
     heightStrategy = "fixed",
     characterCountStrategy = "hidden",
     keyboardShortcuts = [],
+    error = null,
     ...otherProps
   },
   ref
@@ -155,7 +157,7 @@ const Editor = (
   }, [initialValue]);
 
   return (
-    <div className="neeto-editor-wrapper">
+    <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
       {isFixedMenuActive && (
         <FixedMenu
           editor={editor}
@@ -191,7 +193,9 @@ const Editor = (
         />
       )}
       <div
-        className={classNames({ "neeto-editor-content--hidden": markdownMode })}
+        className={classNames({
+          "neeto-editor-content--hidden": markdownMode,
+        })}
       >
         <EditorContent editor={editor} {...otherProps} />
       </div>
@@ -203,7 +207,7 @@ const Editor = (
           strategy={characterCountStrategy}
         />
       )}
-    </div>
+    </ErrorWrapper>
   );
 };
 

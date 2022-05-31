@@ -410,6 +410,21 @@ const App = () => {
         <CodeBlock>{STRINGS.editorHeightSampleCode}</CodeBlock>
         <SampleEditor rows={3} heightStrategy="flexible" />
       </div>
+      <Heading type="sub">Error state</Heading>
+      <Description>
+        Neeto Editor can be configured to provided a custom{" "}
+        <HighlightText>error</HighlightText> prop which will be rendered in the
+        editor. The error prop can be a string, array of strings or an object
+        with a <HighlightText>message</HighlightText> property.
+      </Description>
+      <div className="mt-4 flex">
+        <CodeBlock>{STRINGS.editorErrorStateSampleCode}</CodeBlock>
+        <SampleEditor
+          error={{
+            message: "Something went wrong in the editor",
+          }}
+        />
+      </div>
       <Heading type="sub">Keyboard Shortcuts</Heading>
       Here is a list of keyboard shortcuts available in Neeto Editor. Refer{" "}
       <a

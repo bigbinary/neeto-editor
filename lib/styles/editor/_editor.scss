@@ -114,3 +114,13 @@
   font-size: 12px;
   text-align: right;
 }
+
+.neeto-editor-error{
+  color: $neeto-ui-error;
+  border-width: 1px;
+  border-color: $neeto-ui-error;
+}
+
+.neeto-editor-error:focus-within{
+  border-color: $neeto-ui-error; 
+}
