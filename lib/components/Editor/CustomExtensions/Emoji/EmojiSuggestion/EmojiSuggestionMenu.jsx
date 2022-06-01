@@ -1,24 +1,21 @@
 import React from "react";
 
+import axios from "axios";
 import classnames from "classnames";
+import Loader from "components/Common/Loader";
 import { init, SearchIndex } from "emoji-mart";
 import { isNilOrEmpty } from "utils/common";
 
-const data = async () => {
-  const response = await fetch("https://cdn.jsdelivr.net/npm/@emoji-mart/data");
-
-  return response.json();
-};
-
 class EmojiSuggestionMenu extends React.Component {
   state = {
+    isLoading: false,
     selectedIndex: 0,
     emojiSuggestions: [],
   };
 
   componentDidMount() {
     init({
-      data,
+      data: this.fetchEmojiData,
       theme: "light",
       previewPosition: "none",
     });
@@ -30,6 +27,20 @@ class EmojiSuggestionMenu extends React.Component {
       this.searchEmojiAndSetState();
     }
   }
+
+  fetchEmojiData = async () => {
+    this.setState({ isLoading: true });
+    try {
+      const { data } = await axios.get(
+        "https://cdn.jsdelivr.net/npm/@emoji-mart/data"
+      );
+      this.setState({ isLoading: false });
+      return data;
+    } catch (error) {
+      this.setState({ isLoading: false });
+      return {};
+    }
+  };
 
   searchEmoji = async () =>
     (await SearchIndex.search(this.props.query || "smile")).slice(0, 5);
@@ -106,23 +117,25 @@ class EmojiSuggestionMenu extends React.Component {
   render() {
     return (
       <div className="neeto-editor-emoji-suggestion">
-        {this.state.emojiSuggestions.length > 0 ? (
-          this.state.emojiSuggestions.map((emoji, index) => (
-            <div
-              key={emoji.id}
-              onClick={() => this.selectItem(index)}
-              className={classnames("neeto-editor-emoji-suggestion__item", {
-                "neeto-editor-emoji-suggestion__item--selected":
-                  index === this.state.selectedIndex,
-              })}
-              data-cy={`neeto-editor-emoji-suggestion-${emoji.id}`}
-            >
-              {emoji.skins[0].native}
-            </div>
-          ))
-        ) : (
-          <p>No results</p>
-        )}
+        {this.state.isLoading && <Loader />}
+        {!this.state.isLoading &&
+          (this.state.emojiSuggestions.length > 0 ? (
+            this.state.emojiSuggestions.map((emoji, index) => (
+              <div
+                key={emoji.id}
+                onClick={() => this.selectItem(index)}
+                className={classnames("neeto-editor-emoji-suggestion__item", {
+                  "neeto-editor-emoji-suggestion__item--selected":
+                    index === this.state.selectedIndex,
+                })}
+                data-cy={`neeto-editor-emoji-suggestion-${emoji.id}`}
+              >
+                {emoji.skins[0].native}
+              </div>
+            ))
+          ) : (
+            <p>No results</p>
+          ))}
       </div>
     );
   }

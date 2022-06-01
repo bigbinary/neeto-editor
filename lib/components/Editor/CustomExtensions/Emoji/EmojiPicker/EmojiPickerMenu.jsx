@@ -1,13 +1,8 @@
 import React from "react";
 
+import axios from "axios";
 import { Picker } from "emoji-mart";
 import PropTypes from "prop-types";
-
-const data = async () => {
-  const response = await fetch("https://cdn.jsdelivr.net/npm/@emoji-mart/data");
-
-  return response.json();
-};
 
 class EmojiPickerMenu extends React.Component {
   ref = React.createRef();
@@ -21,10 +16,21 @@ class EmojiPickerMenu extends React.Component {
       native: true,
       previewPosition: "none",
       showSkinTones: false,
-      data,
+      data: this.fetchEmojiData,
       ref: this.ref,
     });
   }
+
+  fetchEmojiData = async () => {
+    try {
+      const { data } = await axios.get(
+        "https://cdn.jsdelivr.net/npm/@emoji-mart/data"
+      );
+      return data;
+    } catch (error) {
+      return {};
+    }
+  };
 
   onKeyDown = ({ event }) => {
     if (event.key === "Escape") {
@@ -45,7 +51,7 @@ class EmojiPickerMenu extends React.Component {
   };
 
   render() {
-    return <div ref={this.ref} data-cy="neeto-editor-emoji-picker"></div>;
+    return <div ref={this.ref} data-cy="neeto-editor-emoji-picker" />;
   }
 }
 
