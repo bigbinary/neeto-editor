@@ -58,7 +58,7 @@ class EmojiSuggestionMenu extends React.Component {
       .chain()
       .focus()
       .deleteRange(this.props.range)
-      .setEmoji(SearchIndex.search(suggestions[0]))
+      .setEmoji(suggestions[0])
       .run();
   };
 
