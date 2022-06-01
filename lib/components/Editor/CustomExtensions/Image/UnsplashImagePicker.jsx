@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 import { searchUnsplashImages } from "apis/unsplash";
 import Input from "components/Common/Input";
+import Loader from "components/Common/Loader";
 import useDebounce from "hooks/useDebounce";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 import { isNilOrEmpty } from "utils/common";
@@ -145,11 +146,5 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
     </div>
   );
 };
-
-const Loader = () => (
-  <div className="neeto-editor-unsplash-gallery__loader">
-    <span className="neeto-editor-unsplash-gallery__spinner-icon"></span>
-  </div>
-);
 
 export default UnsplashImagePicker;
