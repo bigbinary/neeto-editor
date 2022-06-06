@@ -1,3 +1,9 @@
+$emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android emoji, emojisymbols, emojione mozilla, twemoji mozilla, segoe ui symbol;
+
+.neeto-editor-emoji {
+  font-family: $emoji-font-family;
+}
+
 .emoji-mart.emoji-mart-light {
   font-size: 14px;
   color: $neeto-ui-gray-800;
@@ -61,6 +67,7 @@
   align-items: center;
   padding: 4px;
   gap: 2px;
+  font-family: $emoji-font-family;
 
   p {
     font-size: $neeto-ui-text-xs;
