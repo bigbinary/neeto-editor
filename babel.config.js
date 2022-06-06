@@ -5,7 +5,7 @@ module.exports = api => {
     plugins: [
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-transform-runtime",
-			"ramda",
+      "ramda",
     ],
   };
 };
