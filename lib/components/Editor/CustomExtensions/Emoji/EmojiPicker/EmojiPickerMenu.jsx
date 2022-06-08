@@ -1,37 +1,11 @@
 import React from "react";
 
-import axios from "axios";
-import { Picker } from "emoji-mart";
+import { NimblePicker } from "emoji-mart";
+import "emoji-mart/css/emoji-mart.css";
+import data from "emoji-mart/data/apple.json";
 import PropTypes from "prop-types";
 
 class EmojiPickerMenu extends React.Component {
-  ref = React.createRef();
-
-  componentDidMount() {
-    new Picker({
-      ...this.props,
-      onEmojiSelect: this.handleSelect,
-      style: { maxWidth: "100%" },
-      theme: "light",
-      native: true,
-      previewPosition: "none",
-      showSkinTones: false,
-      data: this.fetchEmojiData,
-      ref: this.ref,
-    });
-  }
-
-  fetchEmojiData = async () => {
-    try {
-      const { data } = await axios.get(
-        "https://cdn.jsdelivr.net/npm/@emoji-mart/data"
-      );
-      return data;
-    } catch (error) {
-      return {};
-    }
-  };
-
   onKeyDown = ({ event }) => {
     if (event.key === "Escape") {
       this.props.editor.chain().focus().deleteRange(this.props.range).run();
@@ -51,7 +25,19 @@ class EmojiPickerMenu extends React.Component {
   };
 
   render() {
-    return <div ref={this.ref} data-cy="neeto-editor-emoji-picker" />;
+    return (
+      <NimblePicker
+        style={{ maxWidth: "100%" }}
+        data={data}
+        theme="light"
+        native
+        set="apple"
+        showPreview={false}
+        showSkinTones={false}
+        onSelect={this.handleSelect}
+        data-cy="neeto-editor-emoji-picker"
+      />
+    );
   }
 }
 

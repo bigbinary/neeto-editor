@@ -1,66 +1,26 @@
 import React from "react";
 
-import axios from "axios";
 import classnames from "classnames";
-import Loader from "components/Common/Loader";
-import { init, SearchIndex } from "emoji-mart";
+import { emojiIndex } from "emoji-mart";
 import { isNilOrEmpty } from "utils/common";
 
 class EmojiSuggestionMenu extends React.Component {
   state = {
-    isLoading: false,
     selectedIndex: 0,
-    emojiSuggestions: [],
+    emojiSuggestions: emojiIndex
+      .search(this.props.query || "smile")
+      .slice(0, 5),
   };
-
-  componentDidMount() {
-    init({
-      data: this.fetchEmojiData,
-      theme: "light",
-      previewPosition: "none",
-    });
-    this.searchEmojiAndSetState();
-  }
 
   componentDidUpdate(oldProps) {
     if (this.props.query !== oldProps.query) {
-      this.searchEmojiAndSetState();
+      this.setState({
+        emojiSuggestions: emojiIndex
+          .search(this.props.query || "smile")
+          .slice(0, 5),
+      });
     }
   }
-
-  fetchEmojiData = async () => {
-    this.setState({ isLoading: true });
-    try {
-      const { data } = await axios.get(
-        "https://cdn.jsdelivr.net/npm/@emoji-mart/data"
-      );
-      this.setState({ isLoading: false });
-      return data;
-    } catch (error) {
-      this.setState({ isLoading: false });
-      return {};
-    }
-  };
-
-  searchEmoji = async () =>
-    (await SearchIndex.search(this.props.query || "smile")).slice(0, 5);
-
-  searchEmojiAndSetState = async () => {
-    const suggestions = await this.searchEmoji();
-    this.setState({
-      emojiSuggestions: suggestions,
-    });
-  };
-
-  setEditorState = async () => {
-    const suggestions = await this.searchEmoji();
-    this.props.editor
-      .chain()
-      .focus()
-      .deleteRange(this.props.range)
-      .setEmoji(suggestions[0])
-      .run();
-  };
 
   onKeyDown = ({ event }) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
@@ -90,7 +50,12 @@ class EmojiSuggestionMenu extends React.Component {
       if (isNilOrEmpty(this.props.query)) {
         this.props.editor.chain().focus().insertContent(" ").run();
       } else {
-        this.setEditorState();
+        this.props.editor
+          .chain()
+          .focus()
+          .deleteRange(this.props.range)
+          .setEmoji(emojiIndex.search(this.props.query)?.[0])
+          .run();
       }
 
       return true;
@@ -117,25 +82,23 @@ class EmojiSuggestionMenu extends React.Component {
   render() {
     return (
       <div className="neeto-editor-emoji-suggestion">
-        {this.state.isLoading && <Loader />}
-        {!this.state.isLoading &&
-          (this.state.emojiSuggestions.length > 0 ? (
-            this.state.emojiSuggestions.map((emoji, index) => (
-              <div
-                key={emoji.id}
-                onClick={() => this.selectItem(index)}
-                className={classnames("neeto-editor-emoji-suggestion__item", {
-                  "neeto-editor-emoji-suggestion__item--selected":
-                    index === this.state.selectedIndex,
-                })}
-                data-cy={`neeto-editor-emoji-suggestion-${emoji.id}`}
-              >
-                {emoji.skins[0].native}
-              </div>
-            ))
-          ) : (
-            <p>No results</p>
-          ))}
+        {this.state.emojiSuggestions.length > 0 ? (
+          this.state.emojiSuggestions.map((emoji, index) => (
+            <div
+              key={emoji.id}
+              onClick={() => this.selectItem(index)}
+              className={classnames("neeto-editor-emoji-suggestion__item", {
+                "neeto-editor-emoji-suggestion__item--selected":
+                  index === this.state.selectedIndex,
+              })}
+              data-cy={`neeto-editor-emoji-suggestion-${emoji.id}`}
+            >
+              {emoji.native}
+            </div>
+          ))
+        ) : (
+          <p>No results</p>
+        )}
       </div>
     );
   }
