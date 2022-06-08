@@ -11,7 +11,7 @@ module.exports = [
       rules: [
         {
           test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
+          exclude: /node_modules\/(?!emoji-mart).*/,
           use: {
             loader: "babel-loader",
           },
