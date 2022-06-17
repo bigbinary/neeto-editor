@@ -1,11 +1,14 @@
 module.exports = {
   env: {
-    browser: true, // window object etc part of browser are made available globally.
-    es2020: true, // to include BigInt support
+    browser: true,
+    // window object etc part of browser are made available globally.
+    es2020: true,
+    // to include BigInt support
     es6: true,
     commonjs: true,
     node: true,
   },
+
   /*
    * The order of extending each plugin matters a LOT!!
    * Thus don't change order of items in this array
@@ -19,14 +22,12 @@ module.exports = {
     "./.eslint-rules/globals",
     "./.eslint-rules/imports/order",
     "./.eslint-rules/overrides",
-    // ensure that you don't add custom rules
-    // without taking permission from team leads.
     "./.eslint-rules/custom",
-    // custom rules cannot override the following rules.
     "./.eslint-rules/imports/enforced",
     "./.eslint-rules/react",
     "./.eslint-rules/promise",
     "prettier",
+    "plugin:storybook/recommended",
   ],
   settings: {
     react: {
@@ -55,7 +56,12 @@ module.exports = {
     // auto-fixable: Respect all Prettier rules and apply it.
     "prettier/prettier": "error",
     // not-auto-fixable: No unused variables allowed.
-    "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    "no-unused-vars": [
+      "error",
+      {
+        argsIgnorePattern: "^_",
+      },
+    ],
     // not-auto-fixable: No undefined variables allowed.
     "no-undef": "error",
     // not-auto-fixable: Dont use console statements. Use logger which babel will remove during bundling.
@@ -65,7 +71,11 @@ module.exports = {
     // auto-fixable: sadly this doesn't support guard clauses yet.
     "padding-line-between-statements": [
       "error",
-      { blankLine: "always", prev: "if", next: ["if", "return"] },
+      {
+        blankLine: "always",
+        prev: "if",
+        next: ["if", "return"],
+      },
     ],
     // auto-fixable: Single line statements needn't have any braces. But in all other cases enforce curly braces.
     curly: ["error", "multi-line"],
@@ -104,6 +114,11 @@ module.exports = {
     // auto-fixable: Suggests using template literals instead of string concatenation.
     "prefer-template": "error",
     // auto-fixable: Disallows ternary operators when simpler alternatives exist.
-    "no-unneeded-ternary": ["error", { defaultAssignment: false }],
+    "no-unneeded-ternary": [
+      "error",
+      {
+        defaultAssignment: false,
+      },
+    ],
   },
 };
