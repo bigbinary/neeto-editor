@@ -25,6 +25,7 @@
     background: darken($neeto-ui-pastel-green, 10%);
     border-radius: $neeto-ui-rounded-sm;
     padding: 0px 4px;
+    color: inherit;
   }
 
   [data-variable] {
