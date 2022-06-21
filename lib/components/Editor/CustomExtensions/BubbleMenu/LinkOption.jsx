@@ -58,7 +58,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
         style="icon"
         icon={Close}
         onClick={handleReset}
-        data-cy="neeto-editor-link-submit-button"
+        data-cy="neeto-editor-link-cancel-button"
       />
     </div>
   );
