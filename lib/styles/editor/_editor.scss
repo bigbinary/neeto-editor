@@ -22,9 +22,10 @@
   }
 
   mark {
-    background: darken($neeto-ui-secondary-green, 10%);
+    background: darken($neeto-ui-pastel-green, 10%);
     border-radius: $neeto-ui-rounded-sm;
     padding: 0px 4px;
+    color: inherit;
   }
 
   [data-variable] {
@@ -115,12 +116,12 @@
   text-align: right;
 }
 
-.neeto-editor-error{
+.neeto-editor-error {
   color: $neeto-ui-error;
   border-width: 1px;
   border-color: $neeto-ui-error;
 }
 
-.neeto-editor-error:focus-within{
-  border-color: $neeto-ui-error; 
+.neeto-editor-error:focus-within {
+  border-color: $neeto-ui-error;
 }
