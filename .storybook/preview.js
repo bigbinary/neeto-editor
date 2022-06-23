@@ -15,6 +15,8 @@ export const parameters = {
       order: [
         "Introduction",
         ["Getting started", "Installation", "Changelog"],
+        "Walkthroughs",
+        ["Showing the output", "Menu Types"],
         "Examples",
         "Accessibility",
         "API Reference",
