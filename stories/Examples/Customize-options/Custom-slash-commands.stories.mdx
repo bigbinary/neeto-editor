@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta
+  title="Examples/Customize options/Custom slash commands"
+  parameters={{
+    layout: "padded",
+    viewMode: "docs",
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+  }}
+/>
+
+# Custom slash commands
+
+Neeto Editor allows users to customize their Slash Commands menu by including
+their own custom commands.
+
+Make use of `addonCommands` prop to pass an array of custom slash command menu
+items. The expected array should contain items with following properties:
+
+```json
+{
+  "title": "", // The name of the command that needs to be displayed. Accepts String values,
+  "description": "", // The description for the command. Accepts String values.
+  "optionName": "", //Unique key value for each command item. Accepts String values.
+  "Icon": <> </>, // The Icon that should be shown for command. Accepts a valid React component.
+  "command": ({editor, range}) => {} // A function which takes an object {editor, range} as it's argument. The function may execute any commands on the editor instance which it receives through argument.
+}
+```
+
+One thing we have to keep in mind is that in order to execute any commands other
+than what Neeto Editor is preconfigured to support, you need to pass those
+extensions via the `extensions` prop of Neeto Editor so that editor can
+recognise the command as you execute them.

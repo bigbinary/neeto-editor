@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   Meta,
   Story,
@@ -11,13 +12,12 @@ import {
   Stories,
 } from "@storybook/addon-docs";
 import { Down } from "neetoicons";
-import Dropdown from "../../lib/components/Common/Dropdown";
-import CustomDescription from "../../example/components/Description";
-import HighlightText from "../../example/components/HighlightText";
+
 import { Editor } from "../../lib";
+import Dropdown from "../../lib/components/Common/Dropdown";
 
 export default {
-  title: "Examples/Markdown Mode",
+  title: "Examples/Markdown mode",
   component: Editor,
   parameters: {
     layout: "padded",
@@ -31,12 +31,12 @@ export default {
         <>
           <Title />
           <Primary />
-          <CustomDescription>
+          <div>
             Neeto Editor comes with a markdown mode where users can type the
             content in markdown, which gets converted to the default rich text
             and vice versa. The markdown mode can be enabled by passing a truthy
-            value to the <HighlightText>markdownMode</HighlightText> prop.
-          </CustomDescription>
+            value to the `markdownMode` prop.
+          </div>
         </>
       ),
     },
