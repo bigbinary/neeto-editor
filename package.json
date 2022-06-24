@@ -123,8 +123,7 @@
     "webpack-build": "NODE_ENV=production webpack --mode production",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "example": "NODE_ENV=development webpack-dev-server --open --mode development --config webpack.dev.config.js"
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "{lib,example}/**/*.{js,jsx,json}": [
