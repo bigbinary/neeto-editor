@@ -32,7 +32,7 @@ export default {
           <Title />
           <Primary />
           <div>
-            Neeto Editor comes with a markdown mode where users can type the
+            neetoEditor comes with a markdown mode where users can type the
             content in markdown, which gets converted to the default rich text
             and vice versa. The markdown mode can be enabled by passing a truthy
             value to the `markdownMode` prop.
@@ -48,11 +48,11 @@ export const MarkdownMode = () => {
   const [isMarkdownModeActive, setIsMarkdownModeActive] = useState(false);
 
   return (
-    <div className="flex flex-col flex-1 ml-auto">
+    <div className="ml-auto flex flex-1 flex-col">
       <Dropdown
         className="ml-auto"
         customTarget={() => (
-          <div className="flex items-center px-2 py-1 space-x-2 transition-colors duration-100 bg-gray-200 rounded-sm cursor-pointer hover:bg-gray-300">
+          <div className="flex cursor-pointer items-center space-x-2 rounded-sm bg-gray-200 px-2 py-1 transition-colors duration-100 hover:bg-gray-300">
             <p> {isMarkdownModeActive ? "Markdown" : "Rich Text"}</p>
             <Down size={18} />
           </div>

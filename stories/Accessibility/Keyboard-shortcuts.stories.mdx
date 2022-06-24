@@ -21,7 +21,7 @@ import Table from "../components/Table";
 
 # Keyboard shortcuts
 
-Here is a list of keyboard shortcuts available in Neeto Editor. Refer
+Here is a list of keyboard shortcuts available in neetoEditor. Refer
 [ https://tiptap.dev/api/keyboard-shortcuts](https://tiptap.dev/api/keyboard-shortcuts)
 for the full list of available shortcuts.
 
@@ -34,7 +34,7 @@ for the full list of available shortcuts.
 
 ### **Custom Keyboard shortcuts**
 
-By default, Neeto Editor submits the content on pressing the `⌘ + Enter` in Mac
+By default, neetoEditor submits the content on pressing the `⌘ + Enter` in Mac
 or `Ctrl + Enter` in Windows. An `onSubmit` prop can be provided to call a
 function when the content is submitted. It accepts the resulting HTML content as
 argument. Additional keyboard shortcuts can be created by using the
@@ -50,7 +50,6 @@ only supported in the rich-text mode.
   <Story name="Custom Keyboard shortcuts">
     <Editor
       rows={19}
-      // eslint-disable-next-line no-console
       onSubmit={content => console.log(content)}
       keyboardShortcuts={{
         "Shift-Enter": ({ editor }) => {
