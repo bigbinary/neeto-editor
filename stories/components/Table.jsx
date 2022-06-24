@@ -1,3 +1,5 @@
+import React from "react";
+
 const Table = ({ columns, rows, className }) => (
   <table
     className={`w-full min-w-full overflow-x-auto border border-gray-200 ${className}`}
@@ -16,7 +18,7 @@ const Table = ({ columns, rows, className }) => (
         </tr>
       </thead>
     ) : null}
-    <tbody className="divide-y divide-gray-200 bg-white text-sm">
+    <tbody className="w-full divide-y divide-gray-200 bg-white text-sm">
       {rows.map(row =>
         rows?.length ? (
           <tr>
