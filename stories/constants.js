@@ -61,7 +61,7 @@ export const WELCOME_PAGE_CARDS = [
     heading: "Getting started",
     description: "Everything you need to get up and running.",
     link: {
-      label: "Read instructions",
+      label: "Read more",
       url: "?path=/docs/getting-started--page",
     },
   },
