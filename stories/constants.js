@@ -61,7 +61,7 @@ export const WELCOME_PAGE_CARDS = [
     heading: "Getting started",
     description: "Everything you need to get up and running.",
     link: {
-      label: "Read instructions",
+      label: "Read more",
       url: "?path=/docs/getting-started--page",
     },
   },
@@ -78,7 +78,7 @@ export const WELCOME_PAGE_CARDS = [
     description: "A walkthrough of different usages of the editor",
     link: {
       label: "Read more",
-      url: "?path=/docs/walkthroughs-menutypes-bubble-menu--bubble-menu",
+      url: "?path=/docs/examples-basic--basic",
     },
   },
 ];
