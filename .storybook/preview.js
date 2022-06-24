@@ -14,8 +14,8 @@ export const parameters = {
     storySort: {
       order: [
         "Welcome",
-        "Introduction",
-        ["Getting started", "Changelog"],
+        "Getting started",
+        "Changelog",
         "Walkthroughs",
         "API Reference",
         ["Props", "Editor API"],

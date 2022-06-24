@@ -55,3 +55,30 @@ export const MARKDOWN_MODE_CODE_SAMPLE = `
     markdownMode={isMarkdownModeActive}
   />
   `;
+
+export const WELCOME_PAGE_CARDS = [
+  {
+    heading: "Getting started",
+    description: "Everything you need to get up and running.",
+    link: {
+      label: "Read instructions",
+      url: "?path=/docs/getting-started--page",
+    },
+  },
+  {
+    heading: "Menu types",
+    description: "All the information on different menu types",
+    link: {
+      label: "Read more",
+      url: "?path=/docs/walkthroughs-menutypes-bubble-menu--bubble-menu",
+    },
+  },
+  {
+    heading: "Examples",
+    description: "A walkthrough of different usages of the editor",
+    link: {
+      label: "Read more",
+      url: "?path=/docs/walkthroughs-menutypes-bubble-menu--bubble-menu",
+    },
+  },
+];
