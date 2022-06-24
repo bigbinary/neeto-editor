@@ -39,19 +39,20 @@ for the full list of available shortcuts.
 By default, neetoEditor submits the content on pressing the `⌘ + Enter` in Mac
 or `Ctrl + Enter` in Windows. An `onSubmit` prop can be provided to call a
 function when the content is submitted. It accepts the resulting HTML content as
-argument. Additional keyboard shortcuts can be created by using the
-`keyboardShortcuts` prop. It accepts object. The key is the key combination to
-trigger the action, and value is the function to be called when the key
-combination is pressed. You can use `Mod` as a shorthand for `Cmd` on Mac and
-`Control` on other platforms. For instance, `Mod-Enter` corresponds to Cmd+Enter
-on Mac and Control+Enter on other platforms. Remember to return `true` to
-prevent the default behavior of the key combination. Keyboard shortcuts are now
-only supported in the rich-text mode.
+argument.
+
+Additional keyboard shortcuts can be created by using the `keyboardShortcuts`
+prop. It accepts an object. The key is the key combination to trigger the
+action, and value is the function to be called when the key combination is
+pressed. You can use `Mod` as a shorthand for `Cmd` on Mac and `Control` on
+other platforms. For instance, `Mod-Enter` corresponds to _Cmd+Enter_ on Mac and
+_Control+Enter_ on other platforms. Remember to return `true` to prevent the
+default behavior of the key combination. Keyboard shortcuts are now only
+supported in the rich-text mode.
 
 <Canvas>
   <Story name="Custom Keyboard shortcuts">
     <Editor
-      rows={19}
       onSubmit={content => console.log(content)}
       keyboardShortcuts={{
         "Shift-Enter": ({ editor }) => {

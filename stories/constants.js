@@ -46,3 +46,12 @@ export const EDITOR_SHORTCUTS_TABLE_ROWS = [
   ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
   ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
 ];
+
+export const MARKDOWN_MODE_CODE_SAMPLE = `
+  const [isMarkdownModeActive, setIsMarkdownModeActive] = useState(false);
+
+  <Editor
+    menuType="bubble"
+    markdownMode={isMarkdownModeActive}
+  />
+  `;
