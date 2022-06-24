@@ -32,37 +32,42 @@ export const EDITOR_METHODS_TABLE_ROWS = [
 export const EDITOR_PROP_TABLE_ROWS = [
   [
     "ref",
-    "Accepts a React reference. This reference can be used to access TipTap's inbuilt editor methods, such as getHTML()",
+    "Accepts a React reference. This reference can be used to access TipTap's inbuilt editor methods, such as getHTML().",
     `React.createRef()`,
   ],
   [
     "initialValue",
-    "Accepts a valid HTML string. This string will be parsed to HTML and will be displayed as the editor content",
+    "Accepts a valid HTML string. This string will be parsed to HTML and will be displayed as the editor content.",
     `"<p>Hello World</p"`,
   ],
   [
+    "onSubmit",
+    "Accepts a function. This function will be invoked when the editor is submitted.",
+    "(htmlContent) => {}",
+  ],
+  [
     "onChange",
-    "Accepts a function. This function will be invoked whenever editor content changes, with new content as argument",
+    "Accepts a function. This function will be invoked whenever the editor content changes, with new the content as argument.",
     `(newContent) => {}`,
   ],
   [
     "onFocus",
-    "Accepts a function. This function will be invoked whenever editor is focused",
+    "Accepts a function. This function will be invoked whenever the editor is focused.",
     `() => {}`,
   ],
   [
     "onBlur",
-    "Accepts a function. This function will be invoked whenever editor has lost focus",
+    "Accepts a function. This function will be invoked whenever the editor has lost focus.",
     `() => {}`,
   ],
   [
     "menuType",
-    "Describes the menu type that editor should display. value should be one of ['fixed', 'bubble']. defaults to 'fixed'",
+    "Describes the menu type that editor should display. value should be one of ['fixed', 'bubble']. Defaults to 'fixed'.",
     `"bubble"`,
   ],
   [
     "hideSlashCommands",
-    "Accepts a boolean value. When true, the Slash Commands menu will be hidden",
+    "Accepts a boolean value. When true, the Slash Commands menu will be hidden.",
     `true`,
   ],
   [
@@ -77,12 +82,12 @@ export const EDITOR_PROP_TABLE_ROWS = [
   ],
   [
     "titleError",
-    "Accepts a boolean value. When true, an error message will be displayed below the title field when it is empty",
+    "Accepts a boolean value. When true, an error message will be displayed below the title field when it is empty.",
     `true`,
   ],
   [
     "uploadEndpoint",
-    "Accepts an URL endpoint string. This URL will be used for XHR image uploads",
+    "Accepts an URL endpoint string. This URL will be used for XHR image uploads.",
     `"/api/v1/direct_uploads"`,
   ],
   [
@@ -97,7 +102,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
   ],
   [
     "showImageInMention",
-    "Accepts a boolean value. This value controls the visibility of images in mention suggestions",
+    "Accepts a boolean value. This value controls the visibility of images in mention suggestions.",
     `true`,
   ],
   [
@@ -122,12 +127,12 @@ export const EDITOR_PROP_TABLE_ROWS = [
   ],
   [
     "defaults",
-    "Accepts an array of strings, each corresponding to the name of a default option",
+    "Accepts an array of strings, each corresponding to the name of a default option.",
     `["h1", "h2", "h3", "h4", "h5", "h6"]`,
   ],
   [
     "addonCommands",
-    "Accepts an array of additional custom Slash Command items to be displayed along with pre-defined command items",
+    "Accepts an array of additional custom Slash Command items to be displayed along with pre-defined command items.",
     `[{ title: 'Focus Editor', description: 'Focus the editor', optionName: 'focus-editor', command: ({editor}) => editor.focus() }]`,
   ],
   [
@@ -161,11 +166,6 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "autoFocus",
     "Accepts a boolean value. When true, the editor will be focused on load.",
     "true",
-  ],
-  [
-    "onSubmit",
-    "Accepts a function. This function will be invoked when the editor is submitted.",
-    "(htmlContent) => {}",
   ],
   [
     "characterCountStrategy",
