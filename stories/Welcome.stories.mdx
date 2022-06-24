@@ -29,6 +29,7 @@ export const Card = ({ card }) => {
 
   .sbdocs .sbdocs-hero-banner{
     display:flex;
+    justify-content:space-between;
     align-items:center;
     gap: 20px;
     margin-bottom: 50px;
@@ -84,6 +85,19 @@ export const Card = ({ card }) => {
     color:#0048fd;
   }
 
+  .sbdocs-cover-design-credit-block{
+    text-align: right;
+    display:block;
+    width:100%;
+    padding-right:20px;
+  }
+
+  .sbdocs-cover-design-credit-link{
+    font-size: 11px !important;
+    display: inline-block;
+    opacity:0.5;
+  }
+
 `}</style>
 
 <div className="sbdocs-hero-banner">
@@ -106,6 +120,12 @@ export const Card = ({ card }) => {
   ))}
 </div>
 
-Cover design credits:
-
-<a href="https://www.freepik.com/vectors/people-computer">Freepik</a>
+<div className="sbdocs-cover-design-credit-block pt-20">
+  <a
+    href="https://www.freepik.com/vectors/work-with-us"
+    className="sbdocs-cover-design-credit-link"
+    target="_blank"
+  >
+    Cover design credits: Freepik
+  </a>
+</div>

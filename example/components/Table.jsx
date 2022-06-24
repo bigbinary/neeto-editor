@@ -5,7 +5,7 @@ import classNames from "classnames";
 const Table = ({ columns, rows = [], className }) => (
   <table
     className={classNames(
-      "block min-w-full overflow-x-auto border border-gray-200",
+      "w-full min-w-full overflow-x-auto border border-gray-200",
       {
         [className]: className,
       }
