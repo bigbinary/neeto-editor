@@ -198,7 +198,7 @@ const App = () => {
       </div>
       <Heading type="sub">Force a title</Heading>
       <Description>
-        Neeto editor can be configured to force user to include a document title
+        neetoEditor can be configured to force user to include a document title
         . This can be achieved by providing a truthy value to the{" "}
         <HighlightText>forceTitle</HighlightText> prop. To replace the default
         title placeholder the <HighlightText>placeholder</HighlightText> prop
@@ -217,9 +217,8 @@ const App = () => {
       </div>
       <Heading type="sub">Support for addons</Heading>
       <Description>
-        Neeto editor enables the options{" "}
-        <HighlightText>font size</HighlightText>,{" "}
-        <HighlightText>font color</HighlightText>,{" "}
+        neetoEditor enables the options <HighlightText>font size</HighlightText>
+        , <HighlightText>font color</HighlightText>,{" "}
         <HighlightText>bold</HighlightText>,{" "}
         <HighlightText>italics</HighlightText>,{" "}
         <HighlightText>underline</HighlightText>,{" "}
@@ -242,7 +241,7 @@ const App = () => {
       </div>
       <h3 className="mt-4 mb-2 font-bold">Unsplash image picker</h3>
       <Description>
-        Neeto editor provides an option to add images from{" "}
+        neetoEditor provides an option to add images from{" "}
         <HighlightText>unsplash.com</HighlightText> using an Unsplash image
         picker. Pass the Unsplash access key to the editor via the
         <HighlightText>editorSecrets</HighlightText> prop and pass the addon{" "}
@@ -257,7 +256,7 @@ const App = () => {
       </div>
       <h3 className="mt-4 mb-2 font-bold">Editor upload configuration</h3>
       <Description>
-        Neeto editor provides an option edit the upload configuration. The
+        neetoEditor provides an option edit the upload configuration. The
         configuration can be passed as a prop to the editor. The default
         configuration is:
         <div>
