@@ -78,7 +78,7 @@ export const WELCOME_PAGE_CARDS = [
     description: "A walkthrough of different usages of the editor",
     link: {
       label: "Read more",
-      url: "?path=/docs/walkthroughs-menutypes-bubble-menu--bubble-menu",
+      url: "?path=/docs/examples-basic--basic",
     },
   },
 ];
