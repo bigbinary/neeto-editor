@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../../lib";
 
-import Bubble from "../../assets/bubble.gif";
+import Bubble from "../../assets/bubble.mp4";
 
 <Meta
   title="Walkthroughs/MenuTypes/Bubble Menu"
@@ -18,11 +18,12 @@ import Bubble from "../../assets/bubble.gif";
 
 # Bubble Menu
 
-If you would like to use an on-demand menu to interact with the editor rather
-than an always-on-top fixed menu, Neeto Editor support Bubble Menu option that
-appears when user selects part of text.
+An on-demand menu to interact with the editor rather than an always-on-top fixed
+menu. Bubble Menu option that appears when user selects part of text.
 
-<img src={Bubble} alt="code" width="100%" height="100%" />
+<video src={Bubble} playsinline autoPlay muted loop />
+
+#### **Example**
 
 <Canvas>
   <Story name="Bubble Menu">
