@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Editor } from "../../../lib";
+
+import Bubble from "../../assets/slash-command.mp4";
+
+<Meta
+  title="Walkthroughs/MenuTypes/Slash Command"
+  parameters={{
+    layout: "padded",
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+  }}
+  component={Editor}
+/>
+
+# Slash Commands
+
+Slash commands are actions that can be applied to block of text. This menu is
+enabled by default and appears when user types `/` at start of new line. Slash
+commands can be disabled using `hideSlashCommands` prop.
+
+<video src={Bubble} playsinline autoPlay muted loop />
+
+#### **Example**
+
+<Canvas>
+  <Story name="Slash Command">
+    <Editor rows={40} menuType="bubble" heightStrategy="flexible" />
+  </Story>
+</Canvas>

@@ -1,0 +1,131 @@
+import { Meta } from "@storybook/addon-docs";
+
+import Welcome from "./assets/welcome.svg";
+import { WELCOME_PAGE_CARDS } from "./constants";
+
+<Meta
+  title="Welcome"
+  parameters={{
+    viewMode: "docs",
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+export const Card = ({ card }) => {
+  const { heading, description, link } = card;
+  return (
+    <div className="sbdocs-featured__item">
+      <a href={link.url} className="sbdocs-featured__item-abs-link"></a>
+      <h4>{heading}</h4>
+      <p>{description}</p>
+      <span className="sbdocs-featured__item-link">{link.label}</span>
+    </div>
+  );
+};
+
+<style>{`
+
+  .sbdocs .sbdocs-hero-banner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap: 20px;
+    margin-bottom: 50px;
+  }
+  .sbdocs .sbdocs-neeto-editor-title{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .sbdocs .sbdocs-neeto-editor-title strong {
+    font-size: 200%;
+    font-weight: bold;
+    user-select:none;
+    color:#0048fd;
+  }
+  .sbdocs-featured{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .sbdocs-featured__item{
+    width: calc(33.33% - 20px);
+    border-radius: 12px;
+    padding: 30px;
+    background:rgb(248, 248, 248);
+    display:flex;
+    flex-direction:column;
+    position: relative;
+    user-select:none;
+    transition:all 0.3s;
+  }
+
+  .sbdocs-featured__item:hover{
+    transform:scale(1.05);
+  }
+  .sbdocs-featured__item-abs-link{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+  }
+
+  .sbdocs-featured__item h4{
+    font-size: 22px !important;
+    position: relative;
+  }
+
+  .sbdocs-featured__item-link{
+    margin-top:auto;
+    display: inline-flex;
+    color:#0048fd;
+  }
+
+  .sbdocs-cover-design-credit-block{
+    text-align: right;
+    display:block;
+    width:100%;
+    padding-right:20px;
+  }
+
+  .sbdocs-cover-design-credit-link{
+    font-size: 11px !important;
+    display: inline-block;
+    opacity:0.5;
+  }
+
+`}</style>
+
+<div className="sbdocs-hero-banner">
+  <div>
+    <h1 className="sbdocs-neeto-editor-title">
+      <strong>neetoEditor</strong>
+    </h1>
+    <p>
+      neetoEditor library drives the rich-text experience <br /> in all the
+      neeto products built at BigBinary.
+    </p>
+  </div>
+  <div>
+    <img src={Welcome} width="450px" />
+  </div>
+</div>
+<div className="sbdocs-featured">
+  {WELCOME_PAGE_CARDS.map(card => (
+    <Card card={card} />
+  ))}
+</div>
+
+<div className="sbdocs-cover-design-credit-block pt-20">
+  <a
+    href="https://www.freepik.com/vectors/work-with-us"
+    className="sbdocs-cover-design-credit-link"
+    target="_blank"
+  >
+    Cover design credits: Freepik
+  </a>
+</div>

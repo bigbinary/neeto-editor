@@ -1,0 +1,57 @@
+import { useState } from "react";
+
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Down } from "neetoicons";
+
+import { Editor } from "../../lib";
+import Dropdown from "../../lib/components/Common/Dropdown";
+import { MARKDOWN_MODE_CODE_SAMPLE } from "../constants";
+
+<Meta
+  title="Examples/Markdown mode"
+  parameters={{
+    layout: "padded",
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+  }}
+  component={Editor}
+/>
+
+export const MarkdownMode = () => {
+  const [isMarkdownModeActive, setIsMarkdownModeActive] = useState(false);
+  return (
+    <div className="ml-auto flex flex-1 flex-col">
+      <Dropdown
+        className="ml-auto"
+        customTarget={() => (
+          <div className="flex cursor-pointer items-center space-x-2 rounded-sm bg-gray-200 px-2 py-1 transition-colors duration-100 hover:bg-gray-300">
+            <p> {isMarkdownModeActive ? "Markdown" : "Rich Text"}</p>
+            <Down size={18} />
+          </div>
+        )}
+      >
+        <li onClick={() => setIsMarkdownModeActive(false)}>Rich Text</li>
+        <li onClick={() => setIsMarkdownModeActive(true)}>Markdown</li>
+      </Dropdown>
+      <Editor markdownMode={isMarkdownModeActive} menuType="bubble" />
+    </div>
+  );
+};
+
+# Markdown mode
+
+neetoEditor comes with a markdown mode where users can type the content in
+markdown, which gets converted to the default rich text and vice versa. The
+markdown mode can be enabled by setting the prop `markdownMode`to `true`.
+
+<Canvas>
+  <Story
+    name="Markdown mode"
+    parameters={{ docs: { source: { code: MARKDOWN_MODE_CODE_SAMPLE } } }}
+  >
+    <MarkdownMode />
+  </Story>
+</Canvas>
