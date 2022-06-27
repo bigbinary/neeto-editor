@@ -19,11 +19,30 @@
 .github
 .editorconfig
 .storybook
+.eslint-rules
+.browserslistrc
+.env
+.eslintignore
+.eslintrc.js
+.node-version
+.nvmrc
+.prettierrc.js
+.vscode
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+#logs
+/*.log
+
 #example
-/stories
 /example
+
+#stories
+/stories
+/.storybook
+/storybook-static
+
+#configs
+/*.config.js
