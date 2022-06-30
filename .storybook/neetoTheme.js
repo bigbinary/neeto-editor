@@ -8,14 +8,14 @@ export default create({
   colorSecondary: "#0048fd",
 
   // UI
-  appBg: "#000000",
+  appBg: "#121212",
   appContentBg: "#1e202e",
-  appBorderColor: "#000000",
+  appBorderColor: "#121212",
   appBorderRadius: 12,
 
   // Typography
-  // fontBase: '"Open Sans", sans-serif',
-  // fontCode: "monospace",
+  fontBase: '"Open Sans", sans-serif',
+  fontCode: "monospace",
 
   // Text colors
   // textColor: 'white',
