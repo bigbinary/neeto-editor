@@ -15,6 +15,9 @@
 
   // Paragraph
   p {
+    line-height: $neeto-ui-leading-relaxed;
+    margin-bottom: 16px;
+
     &:empty::after {
       content: "\00a0";
     }
