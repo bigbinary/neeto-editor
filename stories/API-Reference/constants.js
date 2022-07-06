@@ -136,11 +136,6 @@ export const EDITOR_PROP_TABLE_ROWS = [
     `[{ title: 'Focus Editor', description: 'Focus the editor', optionName: 'focus-editor', command: ({editor}) => editor.focus() }]`,
   ],
   [
-    "markdownMode",
-    "Accepts a boolean value. When true, the editor will be rendered in markdown mode.",
-    "true",
-  ],
-  [
     "characterLimit",
     "Accepts an integer value. When provided, the editor will be limited to a certain number of characters.",
     "1000",

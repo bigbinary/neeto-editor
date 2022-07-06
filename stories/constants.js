@@ -73,15 +73,6 @@ export const CUSTOM_SLASH_COMMANDS_TABLE_ROWS = [
   ],
 ];
 
-export const MARKDOWN_MODE_CODE_SAMPLE = `
-  const [isMarkdownModeActive, setIsMarkdownModeActive] = useState(false);
-
-  <Editor
-    menuType="bubble"
-    markdownMode={isMarkdownModeActive}
-  />
-  `;
-
 export const WELCOME_PAGE_CARDS = [
   {
     heading: "Getting started",
