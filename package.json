@@ -43,7 +43,6 @@
     "highlight.js": "^11.3.1",
     "lodash.isplainobject": "^4.0.6",
     "lowlight": "^1.20.0",
-    "marked": "^4.0.7",
     "peer-deps-externals-webpack-plugin": "1.0.4",
     "ramda": "^0.28.0",
     "react-hotkeys-hook": "^3.4.4",
@@ -51,8 +50,7 @@
     "react-masonry-infinite": "^1.2.2",
     "react-popper": "^2.2.5",
     "react-router-dom": "5.3.1",
-    "tippy.js": "^6.3.1",
-    "turndown": "^7.1.1"
+    "tippy.js": "^6.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
