@@ -10,8 +10,6 @@ import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import CharacterCount from "./CustomExtensions/CharacterCount";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
-import MarkdownEditor from "./CustomExtensions/Markdown";
-import useMarkdownEditor from "./CustomExtensions/Markdown/useMarkdownEditor";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
 import {
   generateAddonOptions,
@@ -28,7 +26,6 @@ const Editor = (
     defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
     addonCommands,
-    markdownMode = false,
     className,
     uploadEndpoint,
     uploadConfig = {},
@@ -58,15 +55,14 @@ const Editor = (
 ) => {
   const [isImageUploadVisible, setImageUploadVisible] = useState(false);
 
-  const isFixedMenuActive = !markdownMode && menuType === "fixed";
-  const isBubbleMenuActive = !markdownMode && menuType === "bubble";
-  const isSlashCommandsActive = !markdownMode && !hideSlashCommands;
+  const isFixedMenuActive = menuType === "fixed";
+  const isBubbleMenuActive = menuType === "bubble";
+  const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = getIsPlaceholderActive(placeholder);
   const showSlashCommandPlaceholder =
     !isPlaceholderActive && isSlashCommandsActive;
   const isUnsplashImageUploadActive = addons.includes("image-upload-unsplash");
-  const isCharacterCountActive =
-    !markdownMode && characterCountStrategy !== "hidden";
+  const isCharacterCountActive = characterCountStrategy !== "hidden";
 
   const addonOptions = generateAddonOptions(defaults, addons, {
     includeImageUpload: isUnsplashImageUploadActive,
@@ -121,28 +117,8 @@ const Editor = (
     onBlur,
   });
 
-  const markdownEditor = useMarkdownEditor({
-    content: initialValue,
-    onUpdate: ({ html }) => onChange(html),
-    onSubmit: ({ html }) => onSubmit && onSubmit(html),
-    markdownMode,
-  });
-
   /* Make editor object available to the parent */
-  React.useImperativeHandle(ref, () => ({
-    editor: markdownMode ? markdownEditor : editor,
-  }));
-
-  useEffect(() => {
-    if (!editor) return;
-    const nextContent = markdownMode
-      ? editor.getHTML()
-      : markdownEditor.getHTML();
-    const nextContentUpdater = markdownMode
-      ? markdownEditor.commands.setContent
-      : editor.commands.setContent;
-    nextContentUpdater(nextContent);
-  }, [markdownMode]);
+  React.useImperativeHandle(ref, () => ({ editor }));
 
   useEffect(() => {
     const isProduction = [process.env.RAILS_ENV, process.env.NODE_ENV].includes(
@@ -180,26 +156,7 @@ const Editor = (
         isUnsplashImageUploadActive={isUnsplashImageUploadActive}
         unsplashApiKey={editorSecrets?.unsplash}
       />
-      {markdownMode && (
-        <MarkdownEditor
-          editor={markdownEditor}
-          strategy={heightStrategy}
-          style={editorStyles}
-          limit={characterLimit}
-          className={editorClasses}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          {...otherProps}
-        />
-      )}
-      <div
-        className={classNames({
-          "neeto-editor-content--hidden": markdownMode,
-        })}
-      >
-        <EditorContent editor={editor} {...otherProps} />
-      </div>
-
+      <EditorContent editor={editor} {...otherProps} />
       {isCharacterCountActive && (
         <CharacterCount
           count={editor?.storage.characterCount.characters()}
