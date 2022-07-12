@@ -2,7 +2,6 @@ import React, { forwardRef } from "react";
 
 import classnames from "classnames";
 import ToolTip from "components/Common/ToolTip";
-import { Link } from "react-router-dom";
 
 const noop = () => {};
 const BUTTON_STYLES = {
@@ -10,7 +9,6 @@ const BUTTON_STYLES = {
   secondary: "secondary",
   danger: "danger",
   text: "text",
-  link: "link",
 };
 const BUTTON_SIZES = { large: "large", default: "default" };
 const ICON_POSITIONS = { left: "left", right: "right" };
@@ -23,7 +21,6 @@ const Button = forwardRef((props, ref) => {
     label = "",
     loading = false,
     onClick = noop,
-    to = null,
     type = "button",
     style = "primary",
     fullWidth = false,
@@ -42,10 +39,8 @@ const Button = forwardRef((props, ref) => {
   };
 
   let Parent, elementSpecificProps;
-  if (to) {
-    Parent = Link;
-    elementSpecificProps = { to };
-  } else if (href) {
+
+  if (href) {
     Parent = "a";
     elementSpecificProps = { href };
   } else {

@@ -1,7 +1,6 @@
 import React from "react";
 
 import classnames from "classnames";
-import { NavLink } from "react-router-dom";
 
 const noop = () => {};
 
@@ -40,18 +39,14 @@ const Item = ({
   children,
   icon = null,
   onClick = noop,
-  activeClassName = "",
+
   ...otherProps
 }) => {
-  let Parent = "button";
+  const Parent = "button";
   const Icon =
     typeof icon === "string"
       ? () => <i className={icon} data-cy="tab-item-icon" />
       : icon || React.Fragment;
-
-  if (activeClassName) {
-    Parent = NavLink;
-  }
 
   return (
     <Parent
