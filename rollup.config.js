@@ -55,7 +55,7 @@ export default [
         extensions: [".css", ".scss", ".min.css"],
       }),
       terser({ compress: { evaluate: false } }),
-      visualizer(),
+      // visualizer(),
     ],
   },
   {
