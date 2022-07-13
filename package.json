@@ -109,7 +109,6 @@
     "sass": "^1.26.11",
     "sass-loader": "^10.0.2",
     "style-loader": "^2.0.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "tippy.js": "^6.3.1",
     "webpack": "5.64.3",
     "webpack-cli": "4.9.1",
