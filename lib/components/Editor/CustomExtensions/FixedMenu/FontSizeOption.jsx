@@ -1,9 +1,10 @@
+import { EDITOR_OPTIONS } from "constants/common";
+
 import React from "react";
 
 import classnames from "classnames";
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
-import { EDITOR_OPTIONS } from "lib";
 import { TextSize } from "neetoicons";
 
 const FontSizeOption = ({ editor, options }) => {

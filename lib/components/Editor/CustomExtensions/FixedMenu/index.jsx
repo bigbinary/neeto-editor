@@ -1,8 +1,9 @@
+import { EDITOR_OPTIONS } from "constants/common";
+
 import React, { useState } from "react";
 
 import MenuButton from "components/Common/MenuButton";
 import Modal from "components/Common/Modal";
-import { EDITOR_OPTIONS } from "lib";
 import {
   TextBold,
   TextItalic,
