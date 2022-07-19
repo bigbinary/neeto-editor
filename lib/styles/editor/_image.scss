@@ -1,0 +1,11 @@
+.neeto-editor__image {
+  display: inline-block;
+  border: 1.5px solid $neeto-ui-pastel-blue;
+  padding: 4px;
+  figure {
+    outline: none;
+    img {
+      user-select: auto;
+    }
+  }
+}
