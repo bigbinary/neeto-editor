@@ -27,6 +27,26 @@ jobs:
         if: contains(github.event.pull_request.labels.*.name, 'release')
         run: yarn version --patch
 
+      - name: Read pull request body
+        uses: 8BitJonny/gh-get-current-pr@2.0.0
+        id: PR
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          sha: ${{ github.event.pull_request.head.sha }}
+
+      - name: Extract changelog
+        id: CHANGELOG
+        run: |
+           content=$(echo '${{ steps.PR.outputs.pr_body }}' | python3 -c 'import json; import sys; print(json.dumps(sys.stdin.read().partition("**Description**")[2].partition("**Checklist**")[0].strip()))')
+           echo "CHANGELOG=${content}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: ${{ steps.BUMP_VERSION.outputs.PACKAGE_VERSION }}
+          release-notes: ${{ fromJson(env.CHANGELOG) }}
+
       - name: Bump version
         if: "!contains(github.event.pull_request.labels.*.name, 'release')"
         run: yarn version --patch --no-git-tag-version
