@@ -3,8 +3,7 @@
 ------ FOLLOW THESE WHILE ADDING AN ENTRY ------
 
 ** Add BREAKING keyword in bold for changes which could potentially break the component, eg: **BREAKING**.
-** Represent a component name in italics, eg: _Modal_.
-** Enclose a prop name in double backticks, eg: `isLoading`.
+** Enclose a prop name in double backticks, eg: `menuType`.
 ** Represent a version as second level heading and write the version number inside a square bracket, eg: ##  [3.3.2].
 
 --->
