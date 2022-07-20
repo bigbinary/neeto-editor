@@ -5,10 +5,18 @@
   align-items: center;
   gap: 1.25rem;
 
-  img {
-    height: 384px;
-    width: 500px;
-    object-fit: contain;
+  figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 208px;
+    max-height: 400px;
+    height: fit-content;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
   }
 
   .ne-input__wrapper {
@@ -19,6 +27,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 0.5rem;
   }
 }

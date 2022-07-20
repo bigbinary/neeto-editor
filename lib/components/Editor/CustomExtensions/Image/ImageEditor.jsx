@@ -17,16 +17,18 @@ const ImageEditor = ({ url, editor, onClose, alt }) => {
 
   return (
     <div className="neeto-editor-image-editor" onKeyDown={handleKeyDown}>
-      <img src={url} />
+      <figure>
+        <img src={url} loading="lazy" />
+      </figure>
       <Input
         value={altText}
         onChange={e => setAltText(e.target.value)}
         placeholder="Brand Image"
-        label="Alt Text"
+        label="Caption"
       />
       <div className="neeto-editor-image-editor__footer">
-        <Button label="Save Changes" onClick={handleSubmit} />
-        <Button label="Cancel" style="text" onClick={onClose} />
+        <Button size="large" label="Proceed" onClick={handleSubmit} />
+        <Button size="large" label="Cancel" style="text" onClick={onClose} />
       </div>
     </div>
   );
