@@ -59,6 +59,10 @@
     position: relative;
   }
 
+  [data-placeholder].is-empty:last-child::before {
+    left: auto !important;
+  }
+
   &.placeholder-active {
     &:not(.force-title) {
       .is-editor-empty:first-child::before {
