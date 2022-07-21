@@ -9,6 +9,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["image-upload-unsplash", "Add unsplash integration to the image upload."],
   ["divider", "Add a horizontal line to separate different sections."],
   ["video-embed", "Embed videos from YouTube and Vimeo."],
+  ["paste-unformatted", "Paste by removing all styles."],
 ];
 
 export const EDITOR_PROP_TABLE_COLUMNS = [
