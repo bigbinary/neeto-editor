@@ -1210,7 +1210,7 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bigbinary/neeto-icons@^1.8.25":
+"@bigbinary/neeto-icons@^1.8.37":
   version "1.8.37"
   resolved "https://registry.yarnpkg.com/@bigbinary/neeto-icons/-/neeto-icons-1.8.37.tgz#15b42abc64620ad2384574b55ab63b8acac02427"
   integrity sha512-VRDZpyFPDoCaLTfj9LFI8DmqAJ0VX1r3K5HFJ6Se+v56Cqf0fqpsqmRUrH3K/NuG4vdSDHRVDJz5PVe8hA0YLA==
