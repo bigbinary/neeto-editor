@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.5.1 - 2022-07-22
+
+- Removed `margin-bottom` from the last p tag.
+
 ## 0.5.0 - 2022-07-21
 
 - Fixed:  the overlap of placeholder with images.
