@@ -21,6 +21,10 @@
     &:empty::after {
       content: "\00a0";
     }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   // Code
