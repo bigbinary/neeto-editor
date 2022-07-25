@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.5.4 - 2022-07-25
+
+- Added an option to delete the selected image.
+
 ## 0.5.3 - 2022-07-25
 
 - Fixed UI for showing the image upload progress.
