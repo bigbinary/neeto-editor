@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.5.3 - 2022-07-25
+
+- Fixed UI for showing the image upload progress.
+
 ## 0.5.2 - 2022-07-22
 
 - Added `paste-unformatted` addon in the slash commands. It removes all the HTML formatting while pasting.
