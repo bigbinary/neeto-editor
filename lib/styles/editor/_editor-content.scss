@@ -125,69 +125,48 @@
   [data-mention] {
     opacity: 0.6;
   }
+}
+
+.neeto-editor-content--hidden {
+  display: none;
+}
+
+.neeto-editor__image {
+  display: inline-block;
+  border: 1.5px solid $neeto-ui-pastel-blue;
+  margin: 0 12px;
 
   figure {
-    margin: 8px;
+    margin: 12px;
+    outline: none;
+
+    img {
+      user-select: auto;
+      object-fit: contain;
+    }
 
     figcaption {
       color: $neeto-ui-gray-700;
       text-align: center;
     }
   }
-
-  figure:focus {
-    display: hidden;
-  }
-
-  .image-float-left {
-    float: left;
-    margin-left: 0;
-  }
-
-  .image-float-right {
-    float: right;
-    margin-right: 0;
-  }
-
-  .image-float-none {
-    float: none;
-  }
-
-  .image-size-small {
-    display: inline;
-
-    img {
-      height: 100%;
-      max-height: 384px;
-      max-width: 500px;
-      object-fit: contain;
-      margin: auto;
-    }
-  }
-
-  .image-size-large {
-    width: 100%;
-  }
-
-  .image-align-center {
-    margin: 0 auto;
-  }
-
-  .image-banner {
-    width: 100%;
-    max-height: 300px;
-    overflow: hidden;
-    object-fit: cover;
-  }
-
-  figure.ProseMirror-selectednode {
-    outline: none;
-    img {
-      user-select: auto;
-    }
-  }
 }
 
-.neeto-editor-content--hidden {
-  display: none;
+.neeto-editor__image--none {
+  display: flex;
+  justify-content: center;
+}
+
+.neeto-editor__image--left {
+  float: left;
+  margin-left: 0;
+}
+
+.neeto-editor__image--right {
+  float: right;
+  margin-right: 0;
+}
+
+.neeto-editor__image--center {
+  margin: 0 auto;
 }
