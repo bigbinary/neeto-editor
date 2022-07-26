@@ -22,6 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.0 - 2022-07-26
+
+- Added the ability to resize images.
+- Removed banner mode for images.
+
 ## 0.5.4 - 2022-07-25
 
 - Added an option to delete the selected image.
