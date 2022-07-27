@@ -12,14 +12,14 @@ const ImageComponent = ({ node, editor, getPos }) => {
     <NodeViewWrapper>
       <Resizable
         lockAspectRatio
-        className={`neeto-editor__image neeto-editor__image--${float} neeto-editor__image--${align}`}
+        className={`neeto-editor__image neeto-editor__image--${float} neeto-editor__image--${align} neeto-editor__image-defaults`}
         size={{ height, width }}
-        onResizeStop={(e, direction, ref, d) => {
+        onResizeStop={(e, direction, ref) => {
           view.dispatch(
             view.state.tr.setNodeMarkup(getPos(), undefined, {
               ...node.attrs,
-              height: height + d.height,
-              width: width + d.width,
+              height: ref.offsetHeight,
+              width: ref.offsetWidth,
             })
           );
           editor.commands.focus();
