@@ -22,6 +22,16 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.2 - 2022-07-27
+
+- Fixed word wrap issue in *EditorContent* component.
+- Fixed build issue with `emoji-mart` package.
+- Fixed the image upload modal to reset to state on closing.
+- Added autofocus to input components.
+- Fixed image resize bug with portrait images.
+- Fixed the issue where `figcaption` was rendered as a separate node.
+- Added backward compatibility to render images from existing editor content.
+
 ## 0.6.1 - 2022-07-27
 
 - Added the ability to open images in *EditorContent* in a new tab using a single click.
