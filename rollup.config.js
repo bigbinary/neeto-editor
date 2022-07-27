@@ -45,7 +45,7 @@ export default [
       }),
       commonjs(),
       babel({
-        exclude: /node_modules\/(?!emoji-mart).*/,
+        exclude: /node_modules/,
         extensions: [".jsx", ".js"],
         presets: ["@babel/preset-env", "@babel/preset-react"],
         plugins: ["@babel/plugin-transform-runtime"],
