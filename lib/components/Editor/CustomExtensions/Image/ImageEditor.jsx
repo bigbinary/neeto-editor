@@ -21,6 +21,7 @@ const ImageEditor = ({ url, editor, onClose, alt }) => {
         <img src={url} loading="lazy" />
       </figure>
       <Input
+        autoFocus
         value={altText}
         onChange={e => setAltText(e.target.value)}
         placeholder="Brand Image"
