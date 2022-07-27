@@ -31,6 +31,7 @@ const URLForm = ({
       })}
     >
       <Input
+        autoFocus
         name="url"
         value={urlString}
         placeholder={placeholder}
@@ -43,6 +44,7 @@ const URLForm = ({
         size="large"
         label={buttonLabel}
         onClick={handleSubmit}
+        disabled={!urlString}
         data-cy="neeto-editor-image-upload-url-submit"
       />
     </div>
