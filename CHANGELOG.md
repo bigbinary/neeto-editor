@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.1 - 2022-07-27
+
+- Added the ability to open images in *EditorContent* in a new tab using a single click.
+
 ## 0.6.0 - 2022-07-26
 
 - Added the ability to resize images.
