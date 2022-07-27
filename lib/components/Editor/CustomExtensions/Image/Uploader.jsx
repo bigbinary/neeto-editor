@@ -54,7 +54,10 @@ const ImageUpload = ({
   return (
     <Modal
       isOpen={isVisible}
-      onClose={() => setIsVisible(false)}
+      onClose={() => {
+        setIsVisible(false);
+        setActiveTab(IMAGE_UPLOAD_OPTIONS[0]);
+      }}
       closeButton={false}
     >
       <div className="neeto-editor-image-uploader">
