@@ -26,7 +26,7 @@ const ImageComponent = ({ node, editor, getPos }) => {
         }}
       >
         <figure>
-          <img alt={caption} src={src} />
+          <img alt={caption} src={src} {...node.attrs} />
           <figcaption>{caption}</figcaption>
         </figure>
       </Resizable>
