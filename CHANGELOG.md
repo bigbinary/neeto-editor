@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.3 - 2022-08-10
+
+- Fixed the dnd image upload size to take up the full available size.
+
 ## 0.6.2 - 2022-07-27
 
 - Fixed word wrap issue in *EditorContent* component.
