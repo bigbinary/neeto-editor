@@ -88,7 +88,7 @@ export const EDITOR_PROP_TABLE_ROWS = [
   [
     "uploadEndpoint",
     "Accepts an URL endpoint string. This URL will be used for XHR image uploads.",
-    `"/api/v1/direct_uploads"`,
+    `"/api/v1/direct_uploads/image_upload"`,
   ],
   [
     "variables",
