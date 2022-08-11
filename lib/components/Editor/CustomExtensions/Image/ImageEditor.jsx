@@ -5,6 +5,7 @@ import Input from "components/Common/Input";
 
 const ImageEditor = ({ url, editor, onClose, alt }) => {
   const [altText, setAltText] = useState(alt || "");
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = () => {
     editor.chain().focus().setImage({ src: url, alt: altText }).run();
@@ -17,18 +18,42 @@ const ImageEditor = ({ url, editor, onClose, alt }) => {
 
   return (
     <div className="neeto-editor-image-editor" onKeyDown={handleKeyDown}>
-      <figure>
-        <img src={url} loading="lazy" />
-      </figure>
-      <Input
-        autoFocus
-        value={altText}
-        onChange={e => setAltText(e.target.value)}
-        placeholder="Brand Image"
-        label="Caption"
-      />
+      {isError ? (
+        <div className="neeto-editor-image-editor__error">
+          <h2>Something Went Wrong!</h2>
+          <p>
+            The selected image cannot be displayed. Please try again using
+            another image.
+          </p>
+        </div>
+      ) : (
+        <>
+          <figure>
+            <img
+              src={url}
+              loading="lazy"
+              onError={({ currentTarget }) => {
+                setIsError(true);
+                currentTarget.onerror = null;
+              }}
+            />
+          </figure>
+          <Input
+            autoFocus
+            value={altText}
+            onChange={e => setAltText(e.target.value)}
+            placeholder="Brand Image"
+            label="Caption"
+          />
+        </>
+      )}
       <div className="neeto-editor-image-editor__footer">
-        <Button size="large" label="Proceed" onClick={handleSubmit} />
+        <Button
+          size="large"
+          label="Proceed"
+          disabled={isError}
+          onClick={handleSubmit}
+        />
         <Button size="large" label="Cancel" style="text" onClick={onClose} />
       </div>
     </div>
