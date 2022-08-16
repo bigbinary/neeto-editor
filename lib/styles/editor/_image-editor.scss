@@ -19,6 +19,26 @@
     }
   }
 
+  &__error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 288px;
+    max-height: 400px;
+    width: 100%;
+    padding: 24px;
+    background: $neeto-ui-gray-100;
+    border-radius: $neeto-ui-rounded-sm;
+    gap: 8px;
+
+    h2 {
+      font-size: $neeto-ui-text-lg;
+      font-weight: $neeto-ui-font-medium;
+    }
+  }
+
   .ne-input__wrapper {
     width: 100%;
   }
