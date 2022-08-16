@@ -83,6 +83,7 @@ const Editor = (
     characterLimit,
     keyboardShortcuts,
     onSubmit,
+    uploadEndpoint,
   });
 
   const editorClasses = classNames("neeto-editor", {
