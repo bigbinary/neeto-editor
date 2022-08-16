@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.4 - 2022-08-16
+
+- Added fallback error message for failed image uploads.
+
 ## 0.6.3 - 2022-08-10
 
 - Fixed the dnd image upload size to take up the full available size.
