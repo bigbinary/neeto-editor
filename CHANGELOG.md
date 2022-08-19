@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.5 - 2022-08-19
+
+- Added the logic to upload all pasted images.
+
 ## 0.6.4 - 2022-08-16
 
 - Added fallback error message for failed image uploads.
