@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.6 - 2022-08-23
+
+- Added a predetermined set of default emojis.
+
 ## 0.6.5 - 2022-08-19
 
 - Added the logic to upload all pasted images.
