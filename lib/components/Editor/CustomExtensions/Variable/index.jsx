@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import Dropdown from "components/Common/Dropdown";
-import { HashtagFilled } from "components/Common/Icons";
 import MenuButton from "components/Common/MenuButton";
+import { Braces } from "neetoicons";
 
 import VariableList from "./VariableList";
 
 const Variables = ({ editor, variables }) => {
+  const dropdownRef = useRef();
+
   const handleClickItem = item => {
     const { category_key, key } = item;
     const variableName = category_key ? `${category_key}.${key}` : key;
@@ -19,11 +21,11 @@ const Variables = ({ editor, variables }) => {
 
   return (
     <Dropdown
+      ref={dropdownRef}
       customTarget={() => (
         <MenuButton
-          icon={({ _color, ...otherProps }) => (
-            <HashtagFilled {...otherProps} />
-          )}
+          icon={Braces}
+          iconActive={dropdownRef.current?.visible}
           tooltipProps={{
             content: "Variables",
             position: "bottom",
