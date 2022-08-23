@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.7 - 2022-08-23
+
+- Changed the custom `HashtagFilled` icon in the *Variables* component with the `Braces` icon from neetoicons.
+
 ## 0.6.6 - 2022-08-23
 
 - Added a predetermined set of default emojis.
