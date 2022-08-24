@@ -102,7 +102,7 @@ const Editor = (
     extensions: customExtensions,
     content: initialValue,
     injectCSS: false,
-    autofocus: autoFocus && "end",
+    autofocus: "end",
     editorProps: {
       attributes: {
         class: editorClasses,
@@ -113,6 +113,7 @@ const Editor = (
     parseOptions: {
       preserveWhitespace: true,
     },
+    onCreate: ({ editor }) => !autoFocus && editor.commands.blur(),
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
     onFocus,
     onBlur,
