@@ -16,6 +16,7 @@ import {
   getEditorStyles,
   getIsPlaceholderActive,
   clipboardTextParser,
+  setInitialPosition,
 } from "./helpers";
 
 const Editor = (
@@ -113,6 +114,7 @@ const Editor = (
     parseOptions: {
       preserveWhitespace: true,
     },
+    onCreate: ({ editor }) => !autoFocus && setInitialPosition(editor),
     onUpdate: ({ editor }) => onChange(editor.getHTML()),
     onFocus,
     onBlur,
