@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.6.8 - 2022-08-24
+
+- Fixed issue where variables added get appended to starting of the existing content rather than at the end.
+
 ## 0.6.7 - 2022-08-23
 
 - Changed the custom `HashtagFilled` icon in the *Variables* component with the `Braces` icon from neetoicons.
