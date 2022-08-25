@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.7.0 - 2022-08-25
+
+- Changed: **BREAKING** the CDN for editor content styles from https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css to https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
+
 ## 0.6.8 - 2022-08-24
 
 - Fixed issue where variables added get appended to starting of the existing content rather than at the end.
