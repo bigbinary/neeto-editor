@@ -142,10 +142,10 @@
   },
   "proxy": "http://localhost:3000",
   "bugs": {
-    "url": "https://github.com/bigbinary/neeto-editor-tiptap/issues"
+    "url": "https://github.com/bigbinary/neeto-editor/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bigbinary/neeto-editor-tiptap.git"
+    "url": "git+https://github.com/bigbinary/neeto-editor.git"
   }
 }
