@@ -1,22 +1,16 @@
+import { DIRECT_UPLOAD_ENDPOINT } from "constants/common";
+
 import React, { useState } from "react";
 
 import Uppy from "@uppy/core";
 import { DragDrop, useUppy } from "@uppy/react";
-import XHRUpload from "@uppy/xhr-upload";
+import ActiveStorageUpload from "utils/ActiveStorageUpload";
 
-import {
-  DEFAULT_UPPY_CONFIG,
-  UPPY_UPLOAD_CONFIG,
-  DEFAULT_UPLOAD_ENDPOINT,
-} from "./constants";
+import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
 import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
 
-const LocalUploader = ({
-  endpoint = DEFAULT_UPLOAD_ENDPOINT,
-  onSuccess,
-  uploadConfig,
-}) => {
+const LocalUploader = ({ onSuccess, uploadConfig }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState("");
   const uppyConfig = { ...DEFAULT_UPPY_CONFIG, ...uploadConfig };
@@ -46,9 +40,15 @@ const LocalUploader = ({
         return true;
       },
     })
-      .use(XHRUpload, { endpoint, ...UPPY_UPLOAD_CONFIG })
+      .use(ActiveStorageUpload, {
+        directUploadUrl: DIRECT_UPLOAD_ENDPOINT,
+        ...UPPY_UPLOAD_CONFIG,
+      })
       .on("upload", () => setIsUploading(true))
-      .on("upload-success", (_, response) => onSuccess(response.body.imageURL))
+      .on("upload-success", ({ data: { name } }, { signed_id }) => {
+        const imageUrl = `${window.location.origin}/rails/active_storage/blobs/redirect/${signed_id}/${name}`;
+        onSuccess(imageUrl);
+      })
       .on("cancel-all", () => setIsUploading(false))
       .on("complete", () => setIsUploading(false))
   );

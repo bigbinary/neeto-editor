@@ -154,7 +154,6 @@ const Editor = (
         isVisible={isImageUploadVisible}
         setIsVisible={setImageUploadVisible}
         editor={editor}
-        imageUploadUrl={uploadEndpoint}
         uploadConfig={uploadConfig}
         isUnsplashImageUploadActive={isUnsplashImageUploadActive}
         unsplashApiKey={editorSecrets?.unsplash}
