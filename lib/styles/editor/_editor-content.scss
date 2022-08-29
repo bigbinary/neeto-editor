@@ -1,4 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/night-owl.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/github.min.css");
 
 .neeto-editor-content {
   white-space: pre-wrap;
@@ -39,10 +39,9 @@
   }
 
   pre {
-    color: $neeto-ui-white;
-    background-color: #1f2937;
+    background-color: #f6f8fa;
     overflow-x: auto;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
     margin-top: 8px;
     margin-bottom: 8px;
