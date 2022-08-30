@@ -8,6 +8,12 @@ The **neetoEditor** library drives the rich text experience in the
 yarn add @bigbinary/neeto-editor
 ```
 
+Install all the peer dependencies.
+
+```
+yarn add highlight.js@11.6.0 @rails/activestorage
+```
+
 ## Development
 
 Install all the dependencies by executing following command.
