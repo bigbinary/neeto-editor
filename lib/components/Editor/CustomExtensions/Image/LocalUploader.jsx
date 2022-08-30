@@ -43,10 +43,7 @@ const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
         ...UPPY_UPLOAD_CONFIG,
       })
       .on("upload", () => setIsUploading(true))
-      .on("upload-success", ({ data: { name } }, { signed_id }) => {
-        const imageUrl = `${window.location.origin}/rails/active_storage/blobs/redirect/${signed_id}/${name}`;
-        onSuccess(imageUrl);
-      })
+      .on("upload-success", (_, { blob_url: imageUrl }) => onSuccess(imageUrl))
       .on("cancel-all", () => setIsUploading(false))
       .on("complete", () => setIsUploading(false))
   );
