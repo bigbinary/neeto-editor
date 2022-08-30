@@ -12,6 +12,7 @@ import URLForm from "./URLForm";
 
 const ImageUpload = ({
   editor,
+  imageUploadUrl,
   uploadConfig,
   isVisible,
   setIsVisible,
@@ -28,6 +29,7 @@ const ImageUpload = ({
   const tab = {
     local: () => (
       <LocalUploader
+        endpoint={imageUploadUrl}
         onSuccess={handleUrlFormSubmit}
         uploadConfig={uploadConfig}
       />

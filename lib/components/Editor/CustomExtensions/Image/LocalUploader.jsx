@@ -1,5 +1,3 @@
-import { DIRECT_UPLOAD_ENDPOINT } from "constants/common";
-
 import React, { useState } from "react";
 
 import Uppy from "@uppy/core";
@@ -10,7 +8,7 @@ import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
 import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
 
-const LocalUploader = ({ onSuccess, uploadConfig }) => {
+const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState("");
   const uppyConfig = { ...DEFAULT_UPPY_CONFIG, ...uploadConfig };
@@ -41,7 +39,7 @@ const LocalUploader = ({ onSuccess, uploadConfig }) => {
       },
     })
       .use(ActiveStorageUpload, {
-        directUploadUrl: DIRECT_UPLOAD_ENDPOINT,
+        directUploadUrl: endpoint,
         ...UPPY_UPLOAD_CONFIG,
       })
       .on("upload", () => setIsUploading(true))
