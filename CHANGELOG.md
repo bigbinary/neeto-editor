@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.8.0 - 2022-09-01
+
+- Added: **BREAKING** support for pre-signed URLs for uploading images.
+
 ## 0.7.3 - 2022-09-01
 
 - Fixed: Removed Tiptap warnings in the console.
