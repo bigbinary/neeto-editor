@@ -25,6 +25,7 @@
     "@babel/preset-env": "7.18.9",
     "@babel/preset-react": "7.18.6",
     "@bigbinary/neeto-icons": "1.8.37",
+    "@rails/activestorage": "7.0.3-1",
     "@rollup/plugin-alias": "3.1.9",
     "@rollup/plugin-babel": "5.3.1",
     "@rollup/plugin-commonjs": "22.0.1",
@@ -61,7 +62,6 @@
     "@uppy/core": "2.3.1",
     "@uppy/react": "2.2.2",
     "@uppy/url": "2.2.0",
-    "@uppy/xhr-upload": "2.1.2",
     "autoprefixer": "10.4.7",
     "axios": "0.27.2",
     "babel-loader": "8.2.5",
@@ -114,6 +114,7 @@
     "webpack-dev-server": "4.9.3"
   },
   "peerDependencies": {
+    "@rails/activestorage": "7.0.3-1",
     "highlight.js": "11.6.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"

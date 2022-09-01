@@ -1,3 +1,5 @@
+import { DIRECT_UPLOAD_ENDPOINT } from "constants/common";
+
 import React, { useState, useEffect } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -28,7 +30,7 @@ const Editor = (
     addons = [],
     addonCommands,
     className,
-    uploadEndpoint,
+    uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     uploadConfig = {},
     initialValue = "",
     onChange = () => {},

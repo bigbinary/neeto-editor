@@ -2,21 +2,13 @@ import React, { useState } from "react";
 
 import Uppy from "@uppy/core";
 import { DragDrop, useUppy } from "@uppy/react";
-import XHRUpload from "@uppy/xhr-upload";
+import ActiveStorageUpload from "utils/ActiveStorageUpload";
 
-import {
-  DEFAULT_UPPY_CONFIG,
-  UPPY_UPLOAD_CONFIG,
-  DEFAULT_UPLOAD_ENDPOINT,
-} from "./constants";
+import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
 import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
 
-const LocalUploader = ({
-  endpoint = DEFAULT_UPLOAD_ENDPOINT,
-  onSuccess,
-  uploadConfig,
-}) => {
+const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState("");
   const uppyConfig = { ...DEFAULT_UPPY_CONFIG, ...uploadConfig };
@@ -46,9 +38,12 @@ const LocalUploader = ({
         return true;
       },
     })
-      .use(XHRUpload, { endpoint, ...UPPY_UPLOAD_CONFIG })
+      .use(ActiveStorageUpload, {
+        directUploadUrl: endpoint,
+        ...UPPY_UPLOAD_CONFIG,
+      })
       .on("upload", () => setIsUploading(true))
-      .on("upload-success", (_, response) => onSuccess(response.body.imageURL))
+      .on("upload-success", (_, { blob_url: imageUrl }) => onSuccess(imageUrl))
       .on("cancel-all", () => setIsUploading(false))
       .on("complete", () => setIsUploading(false))
   );
