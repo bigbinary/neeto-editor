@@ -48,6 +48,74 @@ prop. Customize default options
 <br />
 <br />
 
+### **Image upload**
+
+Image upload feature can be enabled in neetoEditor by adding the `image-upload`
+addon to the list of addons. All the images are uploaded using a pre-signed URL
+from the backend.
+
+For handling these requests, neetoEditor uses the `@rails/activestorage`
+package. It needs to be initialized in the host project by adding the following
+lines before the editor is mounted:
+
+```js
+import * as activestorage from "@rails/activestorage";
+activestorage.start();
+```
+
+#### **Integration with Rails**
+
+Rails provides a `DirectUploadsController` to handle direct upload to the
+storage service. You will need to override the `create` action of the controller
+and return the `blob_url` of the uploaded file.
+
+```rb
+class ActiveStorage::DirectUploadsController
+  def create
+    blob = ActiveStorage::Blob.create_before_direct_upload!(**blob_args)
+    blob_url = rails_blob_url(blob)
+    render json: direct_upload_json(blob).merge(blob_url:)
+  end
+end
+```
+
+#### **Integration with other backends**
+
+NeetoEditor sends a total of two requests to upload the image to the storage
+service (say AWS S3).
+
+1. A `GET` request is sent to the `uploadEndpoint` endpoint with the following
+   payload:
+
+```json
+"blob":  {
+  "filename": "image.png",
+  "content_type": "image/png",
+  "byte_size": 452011,
+  "checksum": "<checksum>"
+}
+```
+
+The response must contain the the `blob_url` (URL to the uploaded image) and a
+`direct_upload` key containing the pre-signed URL ad headers for the second
+request.
+
+```json
+{
+  "blob_url": "<image_url>",
+  "direct_upload": {
+    "url": "<pre-signed_url>",
+    "headers": {
+      "Content-Type": "image/png"
+    }
+  }
+}
+```
+
+2. A `PUT` request is sent to the received pre-signed URL from the editor with
+   the image as the payload. Once done, the image will be available for
+   insertion.
+
 ### **Unsplash image picker**
 
 neetoEditor provides an option to add images from `unsplash.com` using an
