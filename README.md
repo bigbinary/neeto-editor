@@ -14,6 +14,9 @@ Install all the peer dependencies.
 yarn add highlight.js@11.6.0 @rails/activestorage
 ```
 
+For setting up image upload refer
+https://neeto-editor.onrender.com/?path=/docs/examples-customize-options-addons--addons.
+
 ## Development
 
 Install all the dependencies by executing following command.
