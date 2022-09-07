@@ -7,7 +7,6 @@
 ** Represent a version as second level heading and write the version number inside a square bracket, eg: ##  [3.3.2].
 
 --->
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -16,12 +15,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 Prefix the change with one of these keywords:
 
-- _Added_: for new features.
-- _Changed_: for changes in existing functionality.
-- _Deprecated_: for soon-to-be removed features.
-- _Removed_: for now removed features.
-- _Fixed_: for any bug fixes.
-- _Security_: in case of vulnerabilities.
+- *Added*: for new features.
+- *Changed*: for changes in existing functionality.
+- *Deprecated*: for soon-to-be removed features.
+- *Removed*: for now removed features.
+- *Fixed*: for any bug fixes.
+- *Security*: in case of vulnerabilities.
+
+## 0.8.1 - 2022-09-07
+
+- Removed: highlight.js package from peer dependencies.
 
 ## 0.8.0 - 2022-09-01
 
@@ -42,19 +45,19 @@ Prefix the change with one of these keywords:
 ## 0.7.0 - 2022-08-25
 
 - Changed: **BREAKING** the CDN for editor content styles from
-  https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css
-  to
-  https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
+- https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css
+- to
+- https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
 
 ## 0.6.8 - 2022-08-24
 
 - Fixed: issue where variables added get appended to starting of the existing
-  content rather than at the end.
+- content rather than at the end.
 
 ## 0.6.7 - 2022-08-23
 
-- Changed: the custom `HashtagFilled` icon in the _Variables_ component with the
-  `Braces` icon from neetoicons.
+- Changed: the custom `HashtagFilled` icon in the *Variables* component with the
+- `Braces` icon from neetoicons.
 
 ## 0.6.6 - 2022-08-23
 
@@ -74,7 +77,7 @@ Prefix the change with one of these keywords:
 
 ## 0.6.2 - 2022-07-27
 
-- Fixed: word wrap issue in _EditorContent_ component.
+- Fixed: word wrap issue in *EditorContent* component.
 - Fixed: build issue with `emoji-mart` package.
 - Fixed: the image upload modal to reset to state on closing.
 - Added: autofocus to input components.
@@ -84,8 +87,8 @@ Prefix the change with one of these keywords:
 
 ## 0.6.1 - 2022-07-27
 
-- Added: the ability to open images in _EditorContent_ in a new tab using a
-  single click.
+- Added: the ability to open images in *EditorContent* in a new tab using a
+- single click.
 
 ## 0.6.0 - 2022-07-26
 
@@ -103,7 +106,7 @@ Prefix the change with one of these keywords:
 ## 0.5.2 - 2022-07-22
 
 - Added: `paste-unformatted` addon in the slash commands. It removes all the
-  HTML formatting while pasting.
+- HTML formatting while pasting.
 
 ## 0.5.1 - 2022-07-22
 
