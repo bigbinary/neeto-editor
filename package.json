@@ -49,6 +49,7 @@
     "@tiptap/extension-code-block-lowlight": "2.0.0-beta.73",
     "@tiptap/extension-color": "2.0.0-beta.12",
     "@tiptap/extension-document": "2.0.0-beta.17",
+    "@tiptap/extension-focus": "^2.0.0-beta.45",
     "@tiptap/extension-highlight": "2.0.0-beta.35",
     "@tiptap/extension-image": "2.0.0-beta.30",
     "@tiptap/extension-link": "2.0.0-beta.43",
