@@ -11,7 +11,7 @@ yarn add @bigbinary/neeto-editor
 Install all the peer dependencies.
 
 ```
-yarn add highlight.js@11.6.0 @rails/activestorage
+yarn add @rails/activestorage
 ```
 
 For setting up image upload refer

@@ -1,17 +1,13 @@
 import { EDITOR_CONTENT_CLASSNAME } from "constants/common";
 
-import React, { useEffect } from "react";
+import React from "react";
 
 import classnames from "classnames";
 import DOMPurify from "dompurify";
 import highlightCode from "utils/highlightCode";
 
 const EditorContent = ({ content = "", className, ...otherProps }) => {
-  useEffect(() => {
-    // Highlight codeblocks;
-    highlightCode();
-  }, [content]);
-
+  const htmlContent = highlightCode(content);
   const sanitize = DOMPurify.sanitize;
 
   return (
@@ -20,7 +16,7 @@ const EditorContent = ({ content = "", className, ...otherProps }) => {
         [className]: className,
       })}
       dangerouslySetInnerHTML={{
-        __html: sanitize(content, { ADD_ATTR: ["target"] }),
+        __html: sanitize(htmlContent, { ADD_ATTR: ["target"] }),
       }}
       data-cy="neeto-editor-content"
       {...otherProps}
