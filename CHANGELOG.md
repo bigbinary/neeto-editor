@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.8.3 - 2022-09-07
+
+- Fixed: wrongly rendered HTML character entities by replacing it with the associated character.
+
 ## 0.8.2 - 2022-09-07
 
 - Fixed: the behaviour of inline code blocks.
