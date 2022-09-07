@@ -22,6 +22,10 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## 0.8.2 - 2022-09-07
+
+- Fixed: the behaviour of inline code blocks.
+
 ## 0.8.1 - 2022-09-07
 
 - Removed: highlight.js package from peer dependencies.
