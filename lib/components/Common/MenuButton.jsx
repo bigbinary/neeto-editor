@@ -1,7 +1,7 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import focusProps from "utils/focusProps";
+import { generateFocusProps } from "utils/focusProps";
 
 import {
   ICON_COLOR_ACTIVE,
@@ -14,13 +14,14 @@ const MenuButton = ({
   icon: Icon,
   iconActive = true,
   tooltipProps,
+  highlight = false,
   ...otherProps
 }) => (
   <ToolTip {...tooltipProps}>
     <button
       className="neeto-editor-fixed-menu__item"
       type="button"
-      {...focusProps}
+      {...generateFocusProps(highlight)}
       {...otherProps}
     >
       <Icon

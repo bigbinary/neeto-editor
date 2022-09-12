@@ -84,12 +84,14 @@ const FixedMenu = ({
       command: () => editor.chain().focus().toggleBlockquote().run(),
       active: editor.isActive("blockquote"),
       optionName: "block-quote",
+      highlight: true,
     },
     {
       Icon: Code,
       command: () => editor.chain().focus().toggleCodeBlock().run(),
       active: editor.isActive("codeBlock"),
       optionName: "code-block",
+      highlight: true,
     },
     {
       Icon: Image,
@@ -105,12 +107,14 @@ const FixedMenu = ({
       command: () => editor.chain().focus().toggleBulletList().run(),
       active: editor.isActive("bulletList"),
       optionName: "bullet-list",
+      highlight: true,
     },
     {
       Icon: ListNumber,
       command: () => editor.chain().focus().toggleOrderedList().run(),
       active: editor.isActive("orderedList"),
       optionName: "ordered-list",
+      highlight: true,
     },
   ].filter(item => options.includes(item.optionName));
 
@@ -120,11 +124,15 @@ const FixedMenu = ({
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
 
-  const renderOptionButton = ({ Icon, command, active, optionName }, index) => (
+  const renderOptionButton = (
+    { Icon, command, active, optionName, highlight },
+    index
+  ) => (
     <MenuButton
       key={index}
       icon={Icon}
       iconActive={active}
+      highlight={highlight}
       onClick={command}
       tooltipProps={{
         content: capitalize(optionName),
