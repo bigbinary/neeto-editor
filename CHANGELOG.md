@@ -22,6 +22,8 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
+## [Unreleased](https://github.com/stefanzweifel/php-changelog-updater/compare/6746a735e5bd8dfe8642fdb341074a0f5ab7508a...HEAD)
+
 ## 0.8.3 - 2022-09-07
 
 - Fixed: wrongly rendered HTML character entities by replacing it with the associated character.
