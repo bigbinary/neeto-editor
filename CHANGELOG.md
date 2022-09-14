@@ -1,6 +1,6 @@
 <!---
 
------- FOLLOW THESE WHILE ADDING AN ENTRY ------
+------- FOLLOW THESE WHILE ADDING AN ENTRY -------
 
 ** Add BREAKING keyword in bold for changes which could potentially break the component, eg: **BREAKING**.
 ** Enclose a prop name in double backticks, eg: `menuType`.
