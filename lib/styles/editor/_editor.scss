@@ -111,6 +111,11 @@
     outline: 3px solid $neeto-ui-pastel-blue;
   }
 
+  .has-focus {
+    background: var(--focus-background-color);
+    transition: background-color 200ms ease;
+  }
+
   @extend .neeto-editor-content;
 }
 

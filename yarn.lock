@@ -2734,6 +2734,14 @@
     prosemirror-view "1.26.2"
     tippy.js "^6.3.7"
 
+"@tiptap/extension-focus@^2.0.0-beta.45":
+  version "2.0.0-beta.45"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-focus/-/extension-focus-2.0.0-beta.45.tgz#6c277219e2a5a05dd7b05cb5d4c457b0592d6c60"
+  integrity sha512-TWUs1aDPojckNKE8MtFzt2LjpKuA//O/3XZ5JZOFAdX1g7XgGjlvlgw1PSQCRkLjht9Kt3WsjhcNruHTpZp7Zg==
+  dependencies:
+    prosemirror-state "1.4.1"
+    prosemirror-view "1.26.2"
+
 "@tiptap/extension-gapcursor@^2.0.0-beta.39":
   version "2.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-gapcursor/-/extension-gapcursor-2.0.0-beta.39.tgz#b8585d2936df7ca90446758c3af90b46d552a1fb"
