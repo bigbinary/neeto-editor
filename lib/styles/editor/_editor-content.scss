@@ -122,8 +122,8 @@
     padding: 4px 6px;
   }
 
-  [data-mention] {
-    opacity: 0.6;
+  [data-type="mention"] {
+    color: $neeto-ui-info;
   }
 }
 
