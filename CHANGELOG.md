@@ -22,7 +22,7 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/stefanzweifel/php-changelog-updater/compare/0.8.5...HEAD)
+## [Unreleased](https://github.com/stefanzweifel/php-changelog-updater/compare/0.8.6...HEAD)
 
 ## 0.8.3 - 2022-09-07
 
@@ -125,6 +125,10 @@ Prefix the change with one of these keywords:
 ## 0.5.0 - 2022-07-21
 
 - Fixed: the overlap of placeholder with images.
+
+## [0.8.6](https://github.com/stefanzweifel/php-changelog-updater/compare/0.8.5...0.8.6) - 2022-09-16
+
+- Fixed: selecting mentions from the fixed menu will properly map to the right user.
 
 ## [0.8.5](https://github.com/stefanzweifel/php-changelog-updater/compare/0.8.4...0.8.5) - 2022-09-15
 
