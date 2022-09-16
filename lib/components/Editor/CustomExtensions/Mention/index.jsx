@@ -4,13 +4,15 @@ import Avatar from "components/Common/Avatar";
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
 import { Email } from "neetoicons";
+import { isEmpty } from "ramda";
+
+import { formatMentions } from "./helpers";
 
 const Mentions = ({ editor, mentions, showImageInMention }) => {
   const dropdownRef = useRef();
+  const formattedMentions = formatMentions(mentions, showImageInMention);
 
-  if (!(mentions && mentions.length)) {
-    return null;
-  }
+  if (isEmpty(formattedMentions)) return null;
 
   return (
     <Dropdown
@@ -29,13 +31,13 @@ const Mentions = ({ editor, mentions, showImageInMention }) => {
       )}
     >
       <div className="neeto-editor-mentions__wrapper neeto-editor-mentions__wrapper--small">
-        {mentions.map(({ key, name, imageUrl }) => (
+        {formattedMentions.map(({ key, name, imageUrl }) => (
           <button
             className={
               "neeto-editor-mentions__item neeto-editor-mentions__item--light"
             }
             key={key}
-            onClick={() => editor.commands.setMention(name)}
+            onClick={() => editor.commands.setMention({ id: key, label: name })}
             type="button"
             data-cy={`neeto-editor-mention-option-${key}`}
           >
