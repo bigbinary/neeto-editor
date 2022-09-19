@@ -9,7 +9,6 @@ import { capitalize } from "utils/common";
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
-import TextColorOption from "./TextColorOption";
 import { buildMenuOptions } from "./utils";
 
 import { getImageMenuOptions } from "../BubbleMenu/helpers";
@@ -40,7 +39,6 @@ const FixedMenu = ({
     list: listStyleOptions,
   } = buildMenuOptions({ editor, options, setImageUploadVisible });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
-  const isTextColorActive = options.includes(EDITOR_OPTIONS.FONT_COLOR);
   const isFontSizeActive = fontSizeOptions.length > 0;
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
@@ -70,12 +68,6 @@ const FixedMenu = ({
         <FontSizeOption editor={editor} options={fontSizeOptions} />
       )}
       {fontStyleOptions.map(renderOptionButton)}
-      {isTextColorActive && (
-        <TextColorOption
-          color={editor.getAttributes("textStyle").color}
-          onChange={color => editor.chain().focus().setColor(color).run()}
-        />
-      )}
       {isEmojiActive && <EmojiOption editor={editor} />}
       {isLinkActive && <LinkOption editor={editor} />}
       {blockStyleOptions.map(renderOptionButton)}
