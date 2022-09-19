@@ -1,8 +1,13 @@
-@import "./styles/abstracts/neeto-ui-variables";
+//Abstracts
 @import "./styles/abstracts/normalize";
+@import "./styles/abstracts/base";
+@import "./styles/abstracts/neeto-ui-variables";
 @import "./styles/abstracts/mixins";
+@import "./styles/abstracts/root";
+@import "./styles/abstracts/theme";
 @import "./styles/abstracts/animations";
 
+// Components
 @import "./styles/components/dropdown";
 @import "./styles/components/avatar";
 @import "./styles/components/tab";
@@ -12,6 +17,7 @@
 @import "./styles/components/modal";
 @import "./styles/components/loader";
 
+// Editor
 @import "./styles/editor/commands";
 @import "./styles/editor/editor";
 @import "./styles/editor/editor-content";
