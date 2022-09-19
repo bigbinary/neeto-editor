@@ -10,10 +10,10 @@
   width: 16px;
   height: 16px;
   display: inline-block;
-  border-radius: $neeto-ui-rounded-full;
-  border: solid 2px $neeto-ui-gray-200;
-  border-top-color: $neeto-ui-gray-800;
-  border-left-color: $neeto-ui-gray-800;
+  border-radius: var(--neeto-ui-rounded-full);
+  border: solid 2px var(--neeto-ui-gray-200);
+  border-top-color: var(--neeto-ui-gray-800);
+  border-left-color: var(--neeto-ui-gray-800);
   animation: spin 600ms linear infinite;
   margin: 1px auto;
 }
