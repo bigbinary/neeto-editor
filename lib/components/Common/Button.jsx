@@ -1,10 +1,8 @@
 import React from "react";
 
 import classnames from "classnames";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
-import Tooltip from "./Tooltip";
+import Tooltip from "./ToolTip";
 
 const BUTTON_STYLES = {
   primary: "primary",
@@ -27,7 +25,6 @@ const Button = React.forwardRef(
       label = "",
       loading = false,
       onClick = () => {},
-      to = "",
       type = BUTTON_TYPES.button,
       style = BUTTON_STYLES.primary,
       fullWidth = false,
@@ -42,10 +39,7 @@ const Button = React.forwardRef(
   ) => {
     let Parent, elementSpecificProps;
 
-    if (to) {
-      Parent = Link;
-      elementSpecificProps = { to };
-    } else if (href) {
+    if (href) {
       Parent = "a";
       elementSpecificProps = { href };
     } else {
@@ -97,69 +91,6 @@ const Button = React.forwardRef(
     );
   }
 );
-
-Button.propTypes = {
-  /**
-   * To specify the style of the Button.
-   */
-  style: PropTypes.oneOf(Object.values(BUTTON_STYLES)),
-  /**
-   * To set the size of the Button.
-   */
-  size: PropTypes.oneOf(Object.values(SIZES)),
-  /**
-   * To specify the position of the icon.
-   */
-  iconPosition: PropTypes.oneOf(Object.values(ICON_POSITIONS)),
-  /**
-   * To specify the size of the icon.
-   */
-  iconSize: PropTypes.number,
-  /**
-   * To set the text to be displayed inside the Button.
-   */
-  label: PropTypes.string,
-  /**
-   * Indicates if a Button is in loading state and shows spinner if true.
-   */
-  loading: PropTypes.bool,
-  /**
-   * To set Button as disabled.
-   */
-  disabled: PropTypes.bool,
-  /**
-   * To set the icon to be shown in the Button.
-   */
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  /**
-   * To specify the action to be triggered on clicking the Button.
-   */
-  onClick: PropTypes.func,
-  /**
-   * To specify an internal route to which the Button points to.
-   */
-  to: PropTypes.string,
-  /**
-   * To specify an external link to which the Button points to.
-   */
-  href: PropTypes.string,
-  /**
-   * To specify the type of Button.
-   */
-  type: PropTypes.oneOf(Object.values(BUTTON_TYPES)),
-  /**
-   * To set the button to full width of the container.
-   */
-  fullWidth: PropTypes.bool,
-  /**
-   * To provide external classnames to Button component.
-   */
-  className: PropTypes.string,
-  /**
-   * To specify the props to be passed to the tooltip.
-   */
-  tooltipProps: PropTypes.object,
-};
 
 Button.displayName = "Button";
 export default Button;

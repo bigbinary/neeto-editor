@@ -1,11 +1,10 @@
 import { useRef, useCallback, useEffect } from "react";
 
+import { manager } from "components/Common/ModalManager";
 import { useHotkeys } from "react-hotkeys-hook";
+import { focusElementsInModal, useOnClickOutside, noop } from "utils/common";
 
-import { manager } from "../components/Modal/ModalManager";
-import { focusElementsInModal, useOnClickOutside, noop } from "../utils";
-
-export const useModal = ({
+const useModal = ({
   isOpen,
   initialFocusRef,
   finalFocusRef,
@@ -94,3 +93,5 @@ export const useModal = ({
     handleModalClose,
   };
 };
+
+export default useModal;
