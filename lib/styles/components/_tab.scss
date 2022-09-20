@@ -1,5 +1,6 @@
 .ne-tab__wrapper {
   width: 100%;
+  display: flex;
   border-bottom: 2px solid rgb(var(--neeto-ui-gray-300));
 
   &--size-large {
@@ -20,6 +21,10 @@
 }
 
 .ne-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
   color: rgb(var(--neeto-ui-gray-500));
   font-weight: var(--neeto-ui-font-semibold);
   font-size: var(--neeto-ui-text-sm);

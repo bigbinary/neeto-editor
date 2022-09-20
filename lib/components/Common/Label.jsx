@@ -23,10 +23,7 @@ const Label = ({
   const HelpIcon = icon || Info;
 
   return (
-    <label
-      className={classnames("ne-label flex items-center", className)}
-      {...otherProps}
-    >
+    <label className={classnames("ne-label", className)} {...otherProps}>
       {children}
       {required && <span aria-hidden>*</span>}
       {helpIconProps && (

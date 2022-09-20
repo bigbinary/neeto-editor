@@ -236,3 +236,8 @@
   font-size: var(--neeto-ui-text-xs);
   color: rgb(var(--neeto-ui-error-800));
 }
+
+.ne-label {
+  display: flex;
+  align-items: center;
+}
