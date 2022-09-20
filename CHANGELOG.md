@@ -7,6 +7,7 @@
 ** Represent a version as second level heading and write the version number inside a square bracket, eg: ##  [3.3.2].
 
 --->
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -24,124 +25,111 @@ Prefix the change with one of these keywords:
 
 ## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/dae456385fb32ecd2af4cd8844bec10d1c65e4c3...HEAD)
 
-## [0.9.2](https://github.com/bigbinary/neeto-editor/compare/decd5c8274f4ef60be82984fc5f87f6a3508fe34...dae456385fb32ecd2af4cd8844bec10d1c65e4c3) - 2022-09-20
-
-## [0.9.1](https://github.com/bigbinary/neeto-editor/compare/0.9.0...decd5c8274f4ef60be82984fc5f87f6a3508fe34) - 2022-09-20
-
-## 0.8.3 - 2022-09-07
-
-- Fixed: wrongly rendered HTML character entities by replacing it with the associated character.
-
-## 0.8.2 - 2022-09-07
-
-- Fixed: the behaviour of inline code blocks.
-
-## 0.8.1 - 2022-09-07
-
-- Removed: highlight.js package from peer dependencies.
-
-## 0.8.0 - 2022-09-01
-
-- Added: **BREAKING** support for pre-signed URLs for uploading images.
-
-## 0.7.3 - 2022-09-01
-
-- Fixed: removed Tiptap warnings in the console.
-
-## 0.7.2 - 2022-09-01
-
-- Added: type support to all the exported components.
-
-## 0.7.1 - 2022-08-29
-
-- Changed: Updated CodeBlock theme from dark to light.
-
-## 0.7.0 - 2022-08-25
-
-- Changed: **BREAKING** the CDN for editor content styles from
-- https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css
-- to
-- https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
-
-## 0.6.8 - 2022-08-24
-
-- Fixed: issue where variables added get appended to starting of the existing
-- content rather than at the end.
-
-## 0.6.7 - 2022-08-23
-
-- Changed: the custom `HashtagFilled` icon in the *Variables* component with the
-- `Braces` icon from neetoicons.
-
-## 0.6.6 - 2022-08-23
-
-- Added: a predetermined set of default emojis.
-
-## 0.6.5 - 2022-08-19
-
-- Added: the logic to upload all pasted images.
-
-## 0.6.4 - 2022-08-16
-
-- Added: fallback error message for failed image uploads.
-
-## 0.6.3 - 2022-08-10
-
-- Fixed: the dnd image upload size to take up the full available size.
-
-## 0.6.2 - 2022-07-27
-
-- Fixed: word wrap issue in *EditorContent* component.
-- Fixed: build issue with `emoji-mart` package.
-- Fixed: the image upload modal to reset to state on closing.
-- Added: autofocus to input components.
-- Fixed: image resize bug with portrait images.
-- Fixed: the issue where `figcaption` was rendered as a separate node.
-- Added: backward compatibility to render images from existing editor content.
-
-## 0.6.1 - 2022-07-27
-
-- Added: the ability to open images in *EditorContent* in a new tab using a
-- single click.
-
-## 0.6.0 - 2022-07-26
-
-- Added: the ability to resize images.
-- Removed: banner mode for images.
-
-## 0.5.4 - 2022-07-25
-
-- Added: an option to delete the selected image.
-
-## 0.5.3 - 2022-07-25
-
-- Fixed: UI for showing the image upload progress.
-
-## 0.5.2 - 2022-07-22
-
-- Added: `paste-unformatted` addon in the slash commands. It removes all the
-- HTML formatting while pasting.
-
-## 0.5.1 - 2022-07-22
-
-- Removed: `margin-bottom` from the last p tag.
-
-## 0.5.0 - 2022-07-21
-
-- Fixed: the overlap of placeholder with images.
-
-## [0.9.0](https://github.com/bigbinary/neeto-editor/compare/0.8.6...0.9.0) - 2022-09-19
+## [0.9.0](https://github.com/bigbinary/neeto-editor/compare/97e0add1b8ecb5de62ebf9984a37b25dbc01bfd0...fb41580bda01e5a63dbd92570bc27a699304653a) - 2022-09-19
 
 - Removed: **BREAKING** official *Color* extension.
 
-## [0.8.6](https://github.com/bigbinary/neeto-editor/compare/0.8.5...0.8.6) - 2022-09-16
+## [0.8.6](https://github.com/bigbinary/neeto-editor/compare/ab692dd346562704d70f0a31603fdf418602489b...c1ac1703a63b2220770bc1be6cbc40dd3b1c6032) - 2022-09-16
 
 - Fixed: selecting mentions from the fixed menu will properly map to the right user.
 
-## [0.8.5](https://github.com/bigbinary/neeto-editor/compare/0.8.4...0.8.5) - 2022-09-15
+## [0.8.5](https://github.com/bigbinary/neeto-editor/compare/3217f47b5f5dd6e47ecee8e37784658b545d0617..a727d13aa8730afe0a5162633b155cf9d4c7b745) - 2022-09-15
 
-Added: highlight to nodes when applying styles.
+- Added: highlight to nodes when applying styles.
 
-## [0.8.4](https://github.com/bigbinary/neeto-editor/compare/6746a735e5bd8dfe8642fdb341074a0f5ab7508a...0.8.4) - 2022-09-14
+## [0.8.3](https://github.com/bigbinary/neeto-editor/compare/e405169ee1d693e4357b1b37651611a7fc80b240...e717879e13c8d74b1098587efc476b7cc85b3166) - 2022-09-07
 
-- Changed: changelog for testing
+- Fixed: wrongly rendered HTML character entities by replacing it with the associated character.
+
+## [0.8.2](https://github.com/bigbinary/neeto-editor/compare/d8ec35f7656ded054ce3cd8250fefa630c311e41...6879a8857972c240cf5e1a4467d89f212c8be102) - 2022-09-07
+
+- Fixed: the behaviour of inline code blocks.
+
+## [0.8.1](https://github.com/bigbinary/neeto-editor/compare/6fe4c8c8d5340143f813003895a112f638471f2c...2a82c45768fc14e36625dc7db4b1f9f40e02153f) - 2022-09-07
+
+- Removed: highlight.js package from peer dependencies.
+
+## [0.8.0](https://github.com/bigbinary/neeto-editor/compare/829d47d2c1f0306bd9d995a88bba6bf0c1f8c3f9...73e6f77873abad5964c557fd2d6e158efaf147c5) - 2022-09-01
+
+- Added: **BREAKING** support for pre-signed URLs for uploading images.
+
+## [0.7.3](https://github.com/bigbinary/neeto-editor/compare/606d9f03cbff4a8cf81a25de398c9695656e13c3...98ff8b759cbfb5e1bdc7a262017de8ce66d63c53) - 2022-09-01
+
+- Fixed: removed Tiptap warnings in the console.
+
+## [0.7.2](https://github.com/bigbinary/neeto-editor/compare/aaa10e1709bf7d3a497c5a49451f24fd8ee4aed1...064c8ab26f8d736c1a4d0d92d4d7a09d1292b197) - 2022-09-01
+
+- Added: type support to all the exported components.
+
+## [0.7.1](https://github.com/bigbinary/neeto-editor/compare/760e07d955acecf3999bb42fbefe2ea09b56958b...83b3cf788a8dc9e79f08f69ff250e06d4bacffc9) - 2022-08-29
+
+- Changed: Updated CodeBlock theme from dark to light.
+
+## [0.7.0](https://github.com/bigbinary/neeto-editor/compare/9c14f50dc6c292a7352d394d1d5cd89abc6d2e79...8fefa88511ad3bfc06fe9fa59eb2457feb60b9c0) - 2022-08-25
+
+- Changed: **BREAKING** the CDN for editor content styles from https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css
+ to https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
+
+## [0.6.8](https://github.com/bigbinary/neeto-editor/compare/46e63b7aa2c42b9f9cf6db79b96945877b6dc822...0667203f6c28cfff80996a9827fa0e9fb8f0227e) - 2022-08-24
+
+- Fixed: issue where variables added get appended to starting of the existing content rather than at the end.
+
+## [0.6.7](https://github.com/bigbinary/neeto-editor/compare/4f26edf80be60b5567c77231f26e363de1573519...240b6b97a12804ae5903cb1fc73aa1c7888499cd) - 2022-08-23
+
+- Changed: the custom _HashtagFilled_ icon in the *Variables* component with the _Braces_ icon from neetoIcons.
+
+## [0.6.6](https://github.com/bigbinary/neeto-editor/compare/bbef6c98dded36ee9e1d278a621e8821cc41c728...8eeb8012b5c5397c072bbb65f6e67b1d597f0dba) - 2022-08-23
+
+- Added: a predetermined set of default emojis.
+
+## [0.6.5](https://github.com/bigbinary/neeto-editor/compare/263bd32144673a6bf3fe1e2e24838d9d73b6b69c...07688b94b185826289826930840e39de1ef836ce) - 2022-08-19
+
+- Added: the logic to upload all pasted images.
+
+## [0.6.4](https://github.com/bigbinary/neeto-editor/compare/5ae0901da83015324c0537ba0c37540922cacb2b...ece0b54b990d974f1a2e2bd22a3235c3830b310e) - 2022-08-16
+
+- Added: fallback error message for failed image uploads.
+
+## [0.6.3](https://github.com/bigbinary/neeto-editor/compare/37693be7a6987174fd5125a0cdb2acfe30d9ea3f...9939a9d08322e07eb9d7c335b9fe1fc659c2cda4) - 2022-08-10
+
+- Fixed: stretched the image upload drag and drop modal to span full available size.
+
+## [0.6.2](https://github.com/bigbinary/neeto-editor/compare/ba937bdcc155f78705b5b3b0877f979d02486ced...b78534aad36b384872f2139f6619f733c10b775a) - 2022-07-27
+
+- Added: autofocus to all the input components.
+- Added: backward compatibility to render images from existing editor content.
+- Fixed: word wrap issue in the *EditorContent* component.
+- Fixed: build issue with `emoji-mart` package.
+- Fixed: the image upload modal to reset to state on closing.
+- Fixed: issues with sizes of portait images.
+- Fixed: the issue where the _figcaption_ component was rendered as a separate node.
+
+## [0.6.1](https://github.com/bigbinary/neeto-editor/compare/f0dd55363409861a702eaa401a321b4818f9f209...ba74c146df4e82aa365acc072888a02d645dd385) - 2022-07-27
+
+- Added: the ability to open images in *EditorContent* in a new tab using a single click.
+
+## [0.6.0](https://github.com/bigbinary/neeto-editor/compare/71d9b6dddd6850faf38b493141bc7204ebf3ce77...c896427e773ffb42b391859407a38bd2a6491480) - 2022-07-26
+
+- Added: the ability to resize images.
+- Removed: banner mode option from image menu.
+
+## [0.5.4](https://github.com/bigbinary/neeto-editor/compare/40628dd04743f94d68d2f0515cd486e091687c20...e6bd77a5ecf176f7c455367eb5826a7b9e89a546) - 2022-07-25
+
+- Added: an option to delete the selected image from the menu.
+
+## [0.5.3](https://github.com/bigbinary/neeto-editor/compare/4e3744a1b1675ec6a34a101c3015b2a4c7b7fb07...ecea784650e06cabac1bcf5d3534c368038b987e) - 2022-07-25
+
+- Fixed: the UI for showing the image upload progress.
+
+## [0.5.2](https://github.com/bigbinary/neeto-editor/compare/de7af460273d0daf56c9e63a4be1f35ff1072940...15da82a90976308dc44cc461611d76dc9fc3fadc) - 2022-07-22
+
+- Added: `paste-unformatted` addon in the slash commands. It pastes the content after removing all the HTML styles.
+
+## [0.5.1](https://github.com/bigbinary/neeto-editor/compare/0372caad4596b3bb578964b08df44a6ff82cb12c...dea96cde565d1d31e4138439f2e508f75f46bf77) - 2022-07-22
+
+- Removed: the `margin-bottom` attribute from the last `p` tag.
+
+## [0.5.0](https://github.com/bigbinary/neeto-editor/compare/11895239fd8888accbdc2d45473d6d251c55765c...3fec138f2c29a807efcadbbd61df06edd9aeee4b) - 2022-07-21
+
+- Fixed: the overlap of placeholder with images.
+
