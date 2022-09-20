@@ -66,9 +66,10 @@ jobs:
         shell: bash
 
       - name: Update Changelog
-        uses: stefanzweifel/changelog-updater-action@v1
+        uses: bigbinary/changelog-updater-action@v1
         with:
           latest-version: ${{ steps.BUMP_VERSION.outputs.PACKAGE_VERSION }}
+          latest-commit: ${{ github.sha }}
           release-notes: ${{ fromJson(env.CHANGELOG) }}
 
       - name: Commit and Push changes
