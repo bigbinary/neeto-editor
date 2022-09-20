@@ -22,7 +22,9 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/decd5c8274f4ef60be82984fc5f87f6a3508fe34...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/dae456385fb32ecd2af4cd8844bec10d1c65e4c3...HEAD)
+
+## [0.9.2](https://github.com/bigbinary/neeto-editor/compare/decd5c8274f4ef60be82984fc5f87f6a3508fe34...dae456385fb32ecd2af4cd8844bec10d1c65e4c3) - 2022-09-20
 
 ## [0.9.1](https://github.com/bigbinary/neeto-editor/compare/0.9.0...decd5c8274f4ef60be82984fc5f87f6a3508fe34) - 2022-09-20
 
