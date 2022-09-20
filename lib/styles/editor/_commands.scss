@@ -21,25 +21,25 @@
     align-items: center;
     padding: 8px 12px;
     gap: 12px;
-    border-radius: $neeto-ui-rounded;
-    transition: $neeto-ui-transition;
+    border-radius: var(--neeto-ui-rounded);
+    transition: var(--neeto-ui-transition);
     cursor: pointer;
-    color: $neeto-ui-white;
+    color: rgb(var(--neeto-ui-white));
 
     &:hover,
     &.active {
-      background-color: $neeto-ui-gray-700;
+      background-color: rgb(var(--neeto-ui-gray-700));
     }
 
     .neeto-editor-slash-commands__item-content {
       h5 {
-        font-size: $neeto-ui-text-sm;
-        font-weight: $neeto-ui-font-semibold;
-        line-height: $neeto-ui-leading-normal;
+        font-size: var(--neeto-ui-text-sm);
+        font-weight: var(--neeto-ui-font-semibold);
+        line-height: var(--neeto-ui-leading-normal);
       }
       p {
-        font-size: $neeto-ui-text-xs;
-        color: $neeto-ui-gray-300;
+        font-size: var(--neeto-ui-text-xs);
+        color: rgb(var(--neeto-ui-gray-300));
       }
     }
   }
@@ -60,11 +60,11 @@
     align-items: center;
     width: 100%;
     padding: 8px;
-    transition: $neeto-ui-transition;
+    transition: var(--neeto-ui-transition);
     cursor: pointer;
-    font-size: $neeto-ui-text-xs;
-    color: $neeto-ui-white;
-    border-radius: $neeto-ui-rounded;
+    font-size: var(--neeto-ui-text-xs);
+    color: rgb(var(--neeto-ui-white));
+    border-radius: var(--neeto-ui-rounded);
 
     p {
       overflow: hidden;
@@ -78,15 +78,15 @@
 
     &:hover,
     &.active {
-      background-color: $neeto-ui-gray-700;
+      background-color: rgb(var(--neeto-ui-gray-700));
     }
 
     &.neeto-editor-mentions__item--light {
-      color: $neeto-ui-gray-800;
+      color: rgb(var(--neeto-ui-gray-800));
 
       &:hover,
       &.active {
-        background-color: $neeto-ui-gray-200;
+        background-color: rgb(var(--neeto-ui-gray-200));
       }
     }
   }

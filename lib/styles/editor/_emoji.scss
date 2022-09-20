@@ -6,31 +6,31 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
 
 .emoji-mart.emoji-mart-light {
   font-size: 14px;
-  color: $neeto-ui-gray-800;
+  color: rgb(var(--neeto-ui-gray-800));
   border: none;
 
   .emoji-mart-bar {
     .emoji-mart-anchors {
       .emoji-mart-anchor {
-        color: $neeto-ui-gray-500;
+        color: rgb(var(--neeto-ui-gray-500));
 
         svg {
           margin: auto;
         }
 
         .emoji-mart-anchor-bar {
-          background-color: $neeto-ui-gray-800 !important;
+          background-color: rgb(var(--neeto-ui-gray-800)) !important;
         }
 
         &.emoji-mart-anchor-selected {
-          color: $neeto-ui-gray-800 !important;
+          color: rgb(var(--neeto-ui-gray-800)) !important;
         }
       }
     }
   }
 
   .emoji-mart-search input {
-    border-radius: $neeto-ui-rounded-sm;
+    border-radius: var(--neeto-ui-rounded-sm);
   }
 
   .emoji-mart-category {
@@ -45,8 +45,8 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
 
       &:hover {
         &::before {
-          background-color: $neeto-ui-gray-200;
-          border-radius: $neeto-ui-rounded-sm;
+          background-color: rgb(var(--neeto-ui-gray-200));
+          border-radius: var(--neeto-ui-rounded-sm);
         }
       }
     }
@@ -70,24 +70,24 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
   font-family: $emoji-font-family;
 
   p {
-    font-size: $neeto-ui-text-xs;
-    color: $neeto-ui-gray-800;
+    font-size: var(--neeto-ui-text-xs);
+    color: rgb(var(--neeto-ui-gray-800));
   }
 
   .neeto-editor-emoji-suggestion__item {
     padding: 6px;
-    font-size: $neeto-ui-text-2xl;
-    transition: $neeto-ui-transition;
-    border-radius: $neeto-ui-rounded-sm;
+    font-size: var(--neeto-ui-text-2xl);
+    transition: var(--neeto-ui-transition);
+    border-radius: var(--neeto-ui-rounded-sm);
     line-height: 1;
     cursor: pointer;
 
     &:hover {
-      background-color: $neeto-ui-gray-200;
+      background-color: rgb(var(--neeto-ui-gray-200));
     }
   }
 
   .neeto-editor-emoji-suggestion__item--selected {
-    background-color: $neeto-ui-gray-200;
+    background-color: rgb(var(--neeto-ui-gray-200));
   }
 }
