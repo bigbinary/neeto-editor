@@ -11,6 +11,7 @@ import { formatMentions } from "./helpers";
 const Mentions = ({ editor, mentions, showImageInMention }) => {
   const dropdownRef = useRef();
   const formattedMentions = formatMentions(mentions, showImageInMention);
+  const { Menu, MenuItem } = Dropdown;
 
   if (isEmpty(formattedMentions)) return null;
 
@@ -30,24 +31,20 @@ const Mentions = ({ editor, mentions, showImageInMention }) => {
         />
       )}
     >
-      <div className="neeto-editor-mentions__wrapper neeto-editor-mentions__wrapper--small">
+      <Menu>
         {formattedMentions.map(({ key, name, imageUrl }) => (
-          <button
-            className={
-              "neeto-editor-mentions__item neeto-editor-mentions__item--light"
-            }
+          <MenuItem.Button
             key={key}
             onClick={() => editor.commands.setMention({ id: key, label: name })}
-            type="button"
             data-cy={`neeto-editor-mention-option-${key}`}
           >
             {showImageInMention && (
               <Avatar size="small" user={{ name, imageUrl }} />
             )}
-            <p>{name}</p>
-          </button>
+            <span>{name}</span>
+          </MenuItem.Button>
         ))}
-      </div>
+      </Menu>
     </Dropdown>
   );
 };

@@ -8,6 +8,7 @@ import VariableList from "./VariableList";
 
 const Variables = ({ editor, variables }) => {
   const dropdownRef = useRef();
+  const { Menu } = Dropdown;
 
   const handleClickItem = item => {
     const { category_key, key } = item;
@@ -35,7 +36,9 @@ const Variables = ({ editor, variables }) => {
         />
       )}
     >
-      <VariableList onClickVariable={handleClickItem} variables={variables} />
+      <Menu>
+        <VariableList onClickVariable={handleClickItem} variables={variables} />
+      </Menu>
     </Dropdown>
   );
 };

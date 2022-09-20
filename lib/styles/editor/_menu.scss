@@ -46,6 +46,7 @@
 .neeto-editor-variables-list {
   padding: 4px 8px;
   min-width: 184px;
+  max-width: 360px;
 
   .neeto-editor-variables-block {
     &:not(:last-child) {
@@ -94,24 +95,19 @@
       display: flex !important;
       flex-direction: row;
       justify-content: flex-start;
-      align-items: center;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 8px;
     }
   }
 }
 
 .neeto-editor-font-size-wrapper {
-  .ne-dropdown__popup {
-    display: flex !important;
+  .ne-dropdown__popup-menu {
+    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 8px;
     padding: 4px;
-
-    li {
-      padding: 6px 8px;
-    }
   }
 }
 

@@ -1,16 +1,3 @@
-.ne-dropdown__wrapper {
-  &.ne-dropdown__wrapper--auto-width {
-    ul {
-      min-width: auto;
-    }
-  }
-  &--multilevel {
-    .ne-dropdown__popup {
-      overflow-y: visible;
-    }
-  }
-}
-
 .ne-dropdown {
   margin: 6px 0;
 
@@ -32,6 +19,10 @@
   background-color: rgb(var(--neeto-ui-white));
   border-radius: var(--neeto-ui-rounded);
   z-index: 99999;
+
+  &.ne-dropdown__popup--auto-width {
+    min-width: auto;
+  }
 
   li,
   .ne-dropdown--item {

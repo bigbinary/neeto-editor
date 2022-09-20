@@ -80,20 +80,6 @@
     &.active {
       background-color: rgb(var(--neeto-ui-gray-700));
     }
-
-    &.neeto-editor-mentions__item--light {
-      color: rgb(var(--neeto-ui-gray-800));
-
-      &:hover,
-      &.active {
-        background-color: rgb(var(--neeto-ui-gray-200));
-      }
-    }
-  }
-
-  &.neeto-editor-mentions__wrapper--small {
-    width: 176px;
-    padding: 0 4px;
   }
 }
 

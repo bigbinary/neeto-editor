@@ -8,6 +8,7 @@ import EmojiPickerMenu from "../Emoji/EmojiPicker/EmojiPickerMenu";
 
 const EmojiOption = ({ editor }) => {
   const dropdownRef = useRef();
+  const { Menu } = Dropdown;
 
   return (
     <Dropdown
@@ -23,7 +24,9 @@ const EmojiOption = ({ editor }) => {
       )}
       position="bottom-start"
     >
-      <EmojiPickerMenu editor={editor} />
+      <Menu>
+        <EmojiPickerMenu editor={editor} />
+      </Menu>
     </Dropdown>
   );
 };
