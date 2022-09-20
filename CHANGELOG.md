@@ -22,7 +22,9 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/stefanzweifel/php-changelog-updater/compare/0.9.0...HEAD)
+## [Unreleased](https://github.com/stefanzweifel/php-changelog-updater/compare/decd5c8274f4ef60be82984fc5f87f6a3508fe34...HEAD)
+
+## [0.9.1](https://github.com/stefanzweifel/php-changelog-updater/compare/0.9.0...decd5c8274f4ef60be82984fc5f87f6a3508fe34) - 2022-09-20
 
 ## 0.8.3 - 2022-09-07
 
