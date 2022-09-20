@@ -22,9 +22,9 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/stefanzweifel/php-changelog-updater/compare/decd5c8274f4ef60be82984fc5f87f6a3508fe34...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/decd5c8274f4ef60be82984fc5f87f6a3508fe34...HEAD)
 
-## [0.9.1](https://github.com/stefanzweifel/php-changelog-updater/compare/0.9.0...decd5c8274f4ef60be82984fc5f87f6a3508fe34) - 2022-09-20
+## [0.9.1](https://github.com/bigbinary/neeto-editor/compare/0.9.0...decd5c8274f4ef60be82984fc5f87f6a3508fe34) - 2022-09-20
 
 ## 0.8.3 - 2022-09-07
 
@@ -128,18 +128,18 @@ Prefix the change with one of these keywords:
 
 - Fixed: the overlap of placeholder with images.
 
-## [0.9.0](https://github.com/stefanzweifel/php-changelog-updater/compare/0.8.6...0.9.0) - 2022-09-19
+## [0.9.0](https://github.com/bigbinary/neeto-editor/compare/0.8.6...0.9.0) - 2022-09-19
 
 - Removed: **BREAKING** official *Color* extension.
 
-## [0.8.6](https://github.com/stefanzweifel/php-changelog-updater/compare/0.8.5...0.8.6) - 2022-09-16
+## [0.8.6](https://github.com/bigbinary/neeto-editor/compare/0.8.5...0.8.6) - 2022-09-16
 
 - Fixed: selecting mentions from the fixed menu will properly map to the right user.
 
-## [0.8.5](https://github.com/stefanzweifel/php-changelog-updater/compare/0.8.4...0.8.5) - 2022-09-15
+## [0.8.5](https://github.com/bigbinary/neeto-editor/compare/0.8.4...0.8.5) - 2022-09-15
 
 Added: highlight to nodes when applying styles.
 
-## [0.8.4](https://github.com/stefanzweifel/php-changelog-updater/compare/6746a735e5bd8dfe8642fdb341074a0f5ab7508a...0.8.4) - 2022-09-14
+## [0.8.4](https://github.com/bigbinary/neeto-editor/compare/6746a735e5bd8dfe8642fdb341074a0f5ab7508a...0.8.4) - 2022-09-14
 
 - Changed: changelog for testing
