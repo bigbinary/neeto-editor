@@ -98,6 +98,7 @@
     "react-hotkeys-hook": "3.4.6",
     "react-masonry-infinite": "1.2.2",
     "react-popper": "2.3.0",
+    "react-transition-group": "^4.4.5",
     "rollup": "2.77.0",
     "rollup-plugin-analyzer": "4.0.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
@@ -115,7 +116,8 @@
   "peerDependencies": {
     "@rails/activestorage": "7.0.3-1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-transition-group": "^4.4.5"
   },
   "scripts": {
     "start": "yarn storybook",
