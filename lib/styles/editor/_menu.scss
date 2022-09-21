@@ -121,7 +121,6 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  overflow: hidden;
   border-radius: $neeto-ui-rounded;
   background: $neeto-ui-gray-800;
 
@@ -161,6 +160,20 @@
       &:hover {
         opacity: 1;
       }
+    }
+  }
+
+  .neeto-editor-bubble-menu__dropdown {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    width: 100%;
+
+    &-target {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
     }
   }
 }
