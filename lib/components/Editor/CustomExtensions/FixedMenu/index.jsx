@@ -64,9 +64,7 @@ const FixedMenu = ({
 
   return (
     <div className="neeto-editor-fixed-menu">
-      {isFontSizeActive && (
-        <FontSizeOption editor={editor} options={fontSizeOptions} />
-      )}
+      {isFontSizeActive && <FontSizeOption editor={editor} />}
       {fontStyleOptions.map(renderOptionButton)}
       {isEmojiActive && <EmojiOption editor={editor} />}
       {isLinkActive && <LinkOption editor={editor} />}
