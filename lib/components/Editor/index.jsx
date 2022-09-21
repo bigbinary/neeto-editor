@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import classNames from "classnames";
 import ErrorWrapper from "components/Common/ErrorWrapper";
+import { EditorView } from "prosemirror-view";
 import { stringifyObject, isNilOrEmpty } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
@@ -88,6 +89,12 @@ const Editor = (
     onSubmit,
     uploadEndpoint,
   });
+
+  // https://github.com/ueberdosis/tiptap/issues/1451#issuecomment-953348865
+  EditorView.prototype.updateState = function updateState(state) {
+    if (!this.docView) return;
+    this.updateStateInner(state, this.state.plugins !== state.plugins);
+  };
 
   const editorClasses = classNames("neeto-editor", {
     "slash-active": showSlashCommandPlaceholder,
