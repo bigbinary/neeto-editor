@@ -22,7 +22,7 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/b6d908b8c2cd13d0cd16c3714283ffc1ccf329c4...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/ea5536b2cdd26997549f538af5b399bd268b3187...HEAD)
 
 ## [0.9.0](https://github.com/bigbinary/neeto-editor/compare/97e0add1b8ecb5de62ebf9984a37b25dbc01bfd0...fb41580bda01e5a63dbd92570bc27a699304653a) - 2022-09-19
 
@@ -136,3 +136,7 @@ Prefix the change with one of these keywords:
 
 - Added: level 3 heading (h3) to the list of default headings.
 - Added: font style dropdown to the bubble menu.
+
+## [0.9.4](https://github.com/bigbinary/neeto-editor/compare/b6d908b8c2cd13d0cd16c3714283ffc1ccf329c4...ea5536b2cdd26997549f538af5b399bd268b3187) - 2022-09-21
+
+- Fixed: issue with autoFocus prop in conditionally rendered editor
