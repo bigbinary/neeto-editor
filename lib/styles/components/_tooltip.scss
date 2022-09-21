@@ -10,7 +10,7 @@
   position: relative;
   background-color: rgb(var(--neeto-ui-gray-800));
   color: rgb(var(--neeto-ui-white));
-  border-radius: var(--neeto-ui-rounded-sm);
+  border-radius: var(--neeto-ui-rounded);
   font-size: var(--neeto-ui-text-xs);
   line-height: 1.4;
   outline: 0;
@@ -82,11 +82,11 @@
 
 .tippy-content {
   position: relative;
-  padding: 5px 9px;
+  padding: 4px 8px;
   z-index: 1;
 }
 
-// svg arrow
+// SVG Arrow
 .tippy-box[data-placement^="top"] > .tippy-svg-arrow {
   bottom: 0;
 }
@@ -139,20 +139,20 @@
   position: absolute;
 }
 
-.tippy-svg-arrow > svg > path {
+
+.tippy-svg-arrow > svg > path{
   fill: rgb(var(--neeto-ui-gray-800));
 }
 
-// light theme
-.tippy-box[data-theme~="light"] .tippy-svg-arrow > svg > path {
+
+// Light Theme
+.tippy-box[data-theme~="light"] .tippy-svg-arrow > svg > path{
   fill: rgb(var(--neeto-ui-white));
 }
 
 .tippy-box[data-theme~="light"] {
   color: rgb(var(--neeto-ui-gray-800));
-  box-shadow: 0 0 20px 4px rgba(154, 161, 177, 0.15),
-    0 4px 80px -8px rgba(36, 40, 47, 0.25),
-    0 4px 4px -2px rgba(91, 94, 105, 0.15);
+  box-shadow: var(--neeto-ui-shadow-s);
   background-color: rgb(var(--neeto-ui-white));
 }
 

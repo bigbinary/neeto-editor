@@ -4,8 +4,10 @@
   justify-content: flex-start;
   align-items: center;
   overflow-x: auto;
+  border: thin solid rgb(var(--neeto-ui-gray-300));
+  border-bottom: none;
   border-radius: var(--neeto-ui-rounded-sm) var(--neeto-ui-rounded-sm) 0px 0px;
-  background-color: rgb(var(--neeto-ui-gray-200));
+  background-color: rgb(var(--neeto-ui-gray-100));
   @include scrollbars(4px);
 
   .neeto-editor-fixed-menu__item {
@@ -22,13 +24,19 @@
     &:focus,
     &:active,
     &.active {
-      background-color: rgb(var(--neeto-ui-gray-300));
+      background-color: rgb(var(--neeto-ui-gray-200));
     }
 
     input[type="color"] {
       visibility: hidden;
       height: 0;
       width: 0;
+    }
+
+    svg {
+      path {
+        stroke: rgb(var(--neeto-ui-gray-600));
+      }
     }
   }
 
