@@ -55,6 +55,7 @@ const TextOptions = ({
         onClickOutside={handleClose}
         content={dropdownOptions.map(({ optionName, command }) => (
           <button
+            type="button"
             key={optionName}
             onClick={() => {
               command();
@@ -67,6 +68,7 @@ const TextOptions = ({
         ))}
       >
         <button
+          type="button"
           onClick={() => setIsDropdownOpen(open => !open)}
           className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown-target"
         >
