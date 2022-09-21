@@ -7,7 +7,6 @@
 ** Represent a version as second level heading and write the version number inside a square bracket, eg: ##  [3.3.2].
 
 --->
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -23,7 +22,7 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/dae456385fb32ecd2af4cd8844bec10d1c65e4c3...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/b6d908b8c2cd13d0cd16c3714283ffc1ccf329c4...HEAD)
 
 ## [0.9.0](https://github.com/bigbinary/neeto-editor/compare/97e0add1b8ecb5de62ebf9984a37b25dbc01bfd0...fb41580bda01e5a63dbd92570bc27a699304653a) - 2022-09-19
 
@@ -68,7 +67,7 @@ Prefix the change with one of these keywords:
 ## [0.7.0](https://github.com/bigbinary/neeto-editor/compare/9c14f50dc6c292a7352d394d1d5cd89abc6d2e79...8fefa88511ad3bfc06fe9fa59eb2457feb60b9c0) - 2022-08-25
 
 - Changed: **BREAKING** the CDN for editor content styles from https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css
- to https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
+- to https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
 
 ## [0.6.8](https://github.com/bigbinary/neeto-editor/compare/46e63b7aa2c42b9f9cf6db79b96945877b6dc822...0667203f6c28cfff80996a9827fa0e9fb8f0227e) - 2022-08-24
 
@@ -76,7 +75,7 @@ Prefix the change with one of these keywords:
 
 ## [0.6.7](https://github.com/bigbinary/neeto-editor/compare/4f26edf80be60b5567c77231f26e363de1573519...240b6b97a12804ae5903cb1fc73aa1c7888499cd) - 2022-08-23
 
-- Changed: the custom _HashtagFilled_ icon in the *Variables* component with the _Braces_ icon from neetoIcons.
+- Changed: the custom *HashtagFilled* icon in the *Variables* component with the *Braces* icon from neetoIcons.
 
 ## [0.6.6](https://github.com/bigbinary/neeto-editor/compare/bbef6c98dded36ee9e1d278a621e8821cc41c728...8eeb8012b5c5397c072bbb65f6e67b1d597f0dba) - 2022-08-23
 
@@ -102,7 +101,7 @@ Prefix the change with one of these keywords:
 - Fixed: build issue with `emoji-mart` package.
 - Fixed: the image upload modal to reset to state on closing.
 - Fixed: issues with sizes of portait images.
-- Fixed: the issue where the _figcaption_ component was rendered as a separate node.
+- Fixed: the issue where the *figcaption* component was rendered as a separate node.
 
 ## [0.6.1](https://github.com/bigbinary/neeto-editor/compare/f0dd55363409861a702eaa401a321b4818f9f209...ba74c146df4e82aa365acc072888a02d645dd385) - 2022-07-27
 
@@ -133,3 +132,7 @@ Prefix the change with one of these keywords:
 
 - Fixed: the overlap of placeholder with images.
 
+## [0.9.3](https://github.com/bigbinary/neeto-editor/compare/dae456385fb32ecd2af4cd8844bec10d1c65e4c3...b6d908b8c2cd13d0cd16c3714283ffc1ccf329c4) - 2022-09-21
+
+- Added: level 3 heading (h3) to the list of default headings.
+- Added: font style dropdown to the bubble menu.
