@@ -8,7 +8,7 @@
 
 .neeto-editor {
   max-width: 100% !important;
-  border-radius: var(--neeto-ui-rounded-sm);
+  border-radius: var(--neeto-ui-rounded);
   white-space: pre-wrap;
   padding: 12px;
   color: rgb(var(--neeto-ui-gray-800));
@@ -48,7 +48,7 @@
 
   &.fixed-menu-active {
     border: thin solid rgb(var(--neeto-ui-gray-300));
-    border-radius: 0px 0px var(--neeto-ui-rounded-sm) var(--neeto-ui-rounded-sm);
+    border-radius: 0px 0px var(--neeto-ui-rounded) var(--neeto-ui-rounded);
   }
 
   .is-empty {
@@ -123,11 +123,12 @@
 }
 
 .neeto-editor-error {
-  color: rgb(var(--neeto-ui-error));
+  color: rgb(var(--neeto-ui-error-500));
   border-width: 1px;
-  border-color: rgb(var(--neeto-ui-error));
+  border-color: rgb(var(--neeto-ui-error-500));
+  border-radius: var(--neeto-ui-rounded);
 }
 
 .neeto-editor-error:focus-within {
-  border-color: rgb(var(--neeto-ui-error));
+  border-color: rgb(var(--neeto-ui-error-600));
 }

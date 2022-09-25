@@ -6,7 +6,7 @@
   overflow-x: auto;
   border: thin solid rgb(var(--neeto-ui-gray-300));
   border-bottom: none;
-  border-radius: var(--neeto-ui-rounded-sm) var(--neeto-ui-rounded-sm) 0px 0px;
+  border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
   background-color: rgb(var(--neeto-ui-gray-100));
   @include scrollbars(4px);
 
