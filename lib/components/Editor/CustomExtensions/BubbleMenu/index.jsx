@@ -42,6 +42,7 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
           arrow: roundArrow,
           zIndex: 99999,
           onHide: () => setIsLinkOptionActive(false),
+          theme: "neeto-editor-bubble-menu",
         }}
         className={classnames("neeto-editor-bubble-menu", {
           "neeto-editor-bubble-menu-animate-shake": isInvalidLink,

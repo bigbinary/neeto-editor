@@ -86,6 +86,13 @@
   z-index: 1;
 }
 
+[data-theme="neeto-editor-slash-menu"],
+[data-theme="neeto-editor-bubble-menu"] {
+  .tippy-content {
+    padding: 0 !important;
+  }
+}
+
 // SVG Arrow
 .tippy-box[data-placement^="top"] > .tippy-svg-arrow {
   bottom: 0;

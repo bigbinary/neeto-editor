@@ -125,8 +125,8 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  border-radius: $neeto-ui-rounded;
-  background: $neeto-ui-gray-800;
+  border-radius: var(--neeto-ui-rounded);
+  background: rgb(var(--neeto-ui-gray-800));
 
   .neeto-editor-bubble-menu__item {
     padding: 8px;
@@ -137,6 +137,16 @@
     &:active,
     &.active {
       background-color: rgb(var(--neeto-ui-gray-700));
+    }
+
+    &:first-child {
+      border-top-left-radius: var(--neeto-ui-rounded);
+      border-bottom-left-radius: var(--neeto-ui-rounded);
+    }
+
+    &:last-child {
+      border-top-right-radius: var(--neeto-ui-rounded);
+      border-bottom-right-radius: var(--neeto-ui-rounded);
     }
   }
 
@@ -167,18 +177,35 @@
     }
   }
 
+  .neeto-editor-bubble-menu__dropdown-target {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    font-size: var(--neeto-ui-text-sm);
+    line-height: var(--neeto-ui-leading-normal);
+  }
+
   .neeto-editor-bubble-menu__dropdown {
     display: flex;
     flex-direction: column;
-    padding: 8px 12px;
-    width: 100%;
+    align-items: flex-start;
 
-    &-target {
-      display: flex;
-      align-items: center;
-      padding: 11px 8px;
-      gap: 4px;
-      white-space: nowrap;
+    .neeto-editor-bubble-menu__dropdown-item {
+      width: 100%;
+      text-align: left;
+      padding: 8px 12px;
+      font-size: var(--neeto-ui-text-xs);
+
+      &:first-child {
+        border-top-left-radius: var(--neeto-ui-rounded);
+        border-top-right-radius: var(--neeto-ui-rounded);
+      }
+
+      &:last-child {
+        border-bottom-left-radius: var(--neeto-ui-rounded);
+        border-bottom-right-radius: var(--neeto-ui-rounded);
+      }
     }
   }
 }
