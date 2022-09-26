@@ -22,13 +22,12 @@ import Table from "../components/Table";
 
 ####
 
-The editor API contains a number of methods and commands which can be used to
-interact with the editor instance. This section will cover the most important
-ones.
-
 <br />
 
-### **Use EditorContent component**
+### **Using the EditorContent component**
+
+The `EditorContent` component can be used to render the HTML content with the
+proper formatting.
 
 ```js
 import { EditorContent } from "@bigbinary/neeto-editor";
@@ -41,7 +40,11 @@ import { EditorContent } from "@bigbinary/neeto-editor";
 
 <br />
 
-### **Include CSS in your project**
+### **Without using the EditorContent component**
+
+#### **Include CSS in your project**
+
+Add the following line to the `<head></head>` tag of your HTML file.
 
 ```html
 <link
@@ -56,3 +59,20 @@ import { EditorContent } from "@bigbinary/neeto-editor";
 
 Use the above CDN link to include the styles in your project. Add the class
 **neeto-editor-content** to the wrapper of the output content.
+
+#### **Apply syntax highlighting**
+
+Add the following two lines of code to the `<head></head>` tag of your HTML
+file.
+
+```html
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/github.min.css"
+  rel="stylesheet"
+/>
+<script
+  defer
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/codeBlockHighlight.js"
+></script>
+```
