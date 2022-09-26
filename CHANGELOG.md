@@ -24,6 +24,19 @@ Prefix the change with one of these keywords:
 
 ## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/57c679b576f326e1e1c0110f9ae7665668448cdb...HEAD)
 
+## [0.9.5](https://github.com/bigbinary/neeto-editor/compare/ea5536b2cdd26997549f538af5b399bd268b3187...57c679b576f326e1e1c0110f9ae7665668448cdb) - 2022-09-21
+
+- Fixed: prevent clicking of *BubbleMenu* buttons from submitting the form.
+
+## [0.9.4](https://github.com/bigbinary/neeto-editor/compare/b6d908b8c2cd13d0cd16c3714283ffc1ccf329c4...ea5536b2cdd26997549f538af5b399bd268b3187) - 2022-09-21
+
+- Fixed: issue with autoFocus prop in conditionally rendered editor
+
+## [0.9.3](https://github.com/bigbinary/neeto-editor/compare/dae456385fb32ecd2af4cd8844bec10d1c65e4c3...b6d908b8c2cd13d0cd16c3714283ffc1ccf329c4) - 2022-09-21
+
+- Added: level 3 heading (h3) to the list of default headings.
+- Added: font style dropdown to the bubble menu.
+
 ## [0.9.0](https://github.com/bigbinary/neeto-editor/compare/97e0add1b8ecb5de62ebf9984a37b25dbc01bfd0...fb41580bda01e5a63dbd92570bc27a699304653a) - 2022-09-19
 
 - Removed: **BREAKING** official *Color* extension.
@@ -131,16 +144,3 @@ Prefix the change with one of these keywords:
 ## [0.5.0](https://github.com/bigbinary/neeto-editor/compare/11895239fd8888accbdc2d45473d6d251c55765c...3fec138f2c29a807efcadbbd61df06edd9aeee4b) - 2022-07-21
 
 - Fixed: the overlap of placeholder with images.
-
-## [0.9.3](https://github.com/bigbinary/neeto-editor/compare/dae456385fb32ecd2af4cd8844bec10d1c65e4c3...b6d908b8c2cd13d0cd16c3714283ffc1ccf329c4) - 2022-09-21
-
-- Added: level 3 heading (h3) to the list of default headings.
-- Added: font style dropdown to the bubble menu.
-
-## [0.9.4](https://github.com/bigbinary/neeto-editor/compare/b6d908b8c2cd13d0cd16c3714283ffc1ccf329c4...ea5536b2cdd26997549f538af5b399bd268b3187) - 2022-09-21
-
-- Fixed: issue with autoFocus prop in conditionally rendered editor
-
-## [0.9.5](https://github.com/bigbinary/neeto-editor/compare/ea5536b2cdd26997549f538af5b399bd268b3187...57c679b576f326e1e1c0110f9ae7665668448cdb) - 2022-09-21
-
-- Fixed: prevent clicking of *BubbleMenu* buttons from submitting the form.
