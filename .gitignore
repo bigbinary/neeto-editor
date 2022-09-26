@@ -10,7 +10,7 @@
 
 # production
 /build
-/dist/*.js
+/dist/editor-output.js
 
 # misc
 .DS_Store
