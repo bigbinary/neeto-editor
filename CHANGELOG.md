@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/57c679b576f326e1e1c0110f9ae7665668448cdb...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/4defcb02234742b1a5fc9fbefa87e44421b7b82c...HEAD)
+
+## [0.9.6](https://github.com/bigbinary/neeto-editor/compare/57c679b576f326e1e1c0110f9ae7665668448cdb...4defcb02234742b1a5fc9fbefa87e44421b7b82c) - 2022-09-26
+
+- Updated the `publish` workflow to use `bigbinary/changelog-updater-action@v2`.
+- Moved all the changelog entries at the bottom of the file to the top.
 
 ## [0.9.5](https://github.com/bigbinary/neeto-editor/compare/ea5536b2cdd26997549f538af5b399bd268b3187...57c679b576f326e1e1c0110f9ae7665668448cdb) - 2022-09-21
 
