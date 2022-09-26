@@ -2,25 +2,19 @@ import React from "react";
 
 import classnames from "classnames";
 
+import {
+  BUTTON_ICON_POSITIONS,
+  SIZES,
+  BUTTON_STYLES,
+  BUTTON_TYPES,
+} from "./constants";
 import Tooltip from "./ToolTip";
-
-const BUTTON_STYLES = {
-  primary: "primary",
-  secondary: "secondary",
-  danger: "danger",
-  danger_text: "danger-text",
-  text: "text",
-  link: "link",
-};
-const SIZES = { small: "small", medium: "medium", large: "large" };
-const ICON_POSITIONS = { left: "left", right: "right" };
-const BUTTON_TYPES = { button: "button", reset: "reset", submit: "submit" };
 
 const Button = React.forwardRef(
   (
     {
       icon = null,
-      iconPosition = ICON_POSITIONS.right,
+      iconPosition = BUTTON_ICON_POSITIONS.right,
       iconSize = 16,
       label = "",
       loading = false,
@@ -75,7 +69,7 @@ const Button = React.forwardRef(
             "ne-btn--size-medium": size === SIZES.medium,
             "ne-btn--size-large": size === SIZES.large,
             "ne-btn--width-full": fullWidth,
-            "ne-btn--icon-left": iconPosition === ICON_POSITIONS.left,
+            "ne-btn--icon-left": iconPosition === BUTTON_ICON_POSITIONS.left,
             "ne-btn--icon-only": !label,
             disabled: disabled,
           })}

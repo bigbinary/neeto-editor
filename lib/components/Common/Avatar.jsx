@@ -4,31 +4,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import { isNil } from "ramda";
 
-const SIZE = {
-  small: 24,
-  medium: 32,
-  large: 40,
-  extraLarge: 64,
-};
-
-const STATUS = {
-  online: "online",
-  idle: "idle",
-  offline: "offline",
-};
-
-const COLORS = [
-  "ne-avatar--container-bg-1",
-  "ne-avatar--container-bg-2",
-  "ne-avatar--container-bg-3",
-  "ne-avatar--container-bg-4",
-  "ne-avatar--container-bg-5",
-  "ne-avatar--container-bg-6",
-  "ne-avatar--container-bg-7",
-];
-
-const USER_ICON_URL =
-  "https://github.com/bigbinary/neeto-ui/blob/602cf3ab48a36d7a512f3780f9950d15d13ebbea/lib/images/user.png?raw=true";
+import { AVATAR_SIZE, STATUS, COLORS, USER_ICON_URL } from "./constants";
 
 const Avatar = ({
   size = "medium",
@@ -73,8 +49,8 @@ const Avatar = ({
   };
 
   const imageContainerStyle = {
-    height: SIZE[size],
-    width: SIZE[size],
+    height: AVATAR_SIZE[size],
+    width: AVATAR_SIZE[size],
   };
 
   const imageClasses = classNames("ne-avatar ", {
@@ -147,7 +123,7 @@ Avatar.propTypes = {
   /**
    * Specify the dimension for Avatar component.
    */
-  size: PropTypes.oneOf(Object.keys(SIZE)),
+  size: PropTypes.oneOf(Object.keys(AVATAR_SIZE)),
   user: PropTypes.shape({
     imageUrl: PropTypes.string,
     name: PropTypes.string,

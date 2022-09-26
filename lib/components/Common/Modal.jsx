@@ -8,11 +8,11 @@ import { CSSTransition } from "react-transition-group";
 
 import Backdrop from "./Backdrop";
 import Button from "./Button";
+import { SIZES } from "./constants";
 import { useModalManager } from "./ModalManager";
 import Portal from "./Portal";
 
 const noop = () => {};
-const SIZES = { small: "small", medium: "medium", large: "large" };
 
 const Modal = ({
   size = SIZES.medium,

@@ -4,9 +4,8 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import { hyphenize } from "utils/common";
 
+import { SIZES } from "./constants";
 import Label from "./Label";
-
-const SIZES = { small: "small", medium: "medium", large: "large" };
 
 const Input = forwardRef(
   (
