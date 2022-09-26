@@ -21,8 +21,6 @@
     transition: var(--neeto-ui-transition);
 
     &:hover,
-    &:focus,
-    &:active,
     &.active {
       background-color: rgb(var(--neeto-ui-gray-200));
     }
@@ -31,12 +29,6 @@
       visibility: hidden;
       height: 0;
       width: 0;
-    }
-
-    svg {
-      path {
-        stroke: rgb(var(--neeto-ui-gray-600));
-      }
     }
   }
 

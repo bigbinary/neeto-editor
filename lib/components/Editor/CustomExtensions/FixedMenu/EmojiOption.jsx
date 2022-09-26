@@ -17,7 +17,7 @@ const EmojiOption = ({ editor }) => {
       customTarget={() => (
         <MenuButton
           icon={Smiley}
-          iconActive={dropdownRef?.current?.visible}
+          iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
           tooltipProps={{ content: "Emoji", position: "bottom", delay: [500] }}
           data-cy="neeto-editor-fixed-menu-emoji-option-button"
         />
