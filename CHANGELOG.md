@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/4defcb02234742b1a5fc9fbefa87e44421b7b82c...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/53a2a8faba0200492ea177acc7e9204da4358fc9...HEAD)
+
+## [0.10.0](https://github.com/bigbinary/neeto-editor/compare/4defcb02234742b1a5fc9fbefa87e44421b7b82c...53a2a8faba0200492ea177acc7e9204da4358fc9) - 2022-09-27
+
+- Changed: updated UI to the new design system.
 
 ## [0.9.6](https://github.com/bigbinary/neeto-editor/compare/57c679b576f326e1e1c0110f9ae7665668448cdb...4defcb02234742b1a5fc9fbefa87e44421b7b82c) - 2022-09-26
 
