@@ -1,16 +1,9 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
-import classNames from "classnames";
-
-const Portal = ({ children, className, ...otherProps }) => (
-  <div
-    className={classNames("ne-backdrop", {
-      [className]: className,
-    })}
-    {...otherProps}
-  >
+const Portal = ({ children, ...otherProps }, ref) => (
+  <div ref={ref} data-testid="ne-backdrop" {...otherProps}>
     {children}
   </div>
 );
 
-export default Portal;
+export default forwardRef(Portal);

@@ -49,23 +49,28 @@ const TextOptions = ({
   return (
     <>
       <Tippy
+        arrow={false}
         interactive
         placement="bottom"
         visible={isDropdownOpen}
         onClickOutside={handleClose}
-        content={dropdownOptions.map(({ optionName, command }) => (
-          <button
-            type="button"
-            key={optionName}
-            onClick={() => {
-              command();
-              handleClose();
-            }}
-            className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown"
-          >
-            {optionName}
-          </button>
-        ))}
+        content={
+          <div className="neeto-editor-bubble-menu__dropdown">
+            {dropdownOptions.map(({ optionName, command }) => (
+              <button
+                type="button"
+                key={optionName}
+                onClick={() => {
+                  command();
+                  handleClose();
+                }}
+                className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown-item"
+              >
+                {optionName}
+              </button>
+            ))}
+          </div>
+        }
       >
         <button
           type="button"

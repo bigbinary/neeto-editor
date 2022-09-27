@@ -1,14 +1,11 @@
 .ne-tab__wrapper {
   width: 100%;
-  border-bottom: 1px solid $neeto-ui-gray-300;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+  border-bottom: 2px solid rgb(var(--neeto-ui-gray-300));
 
   &--size-large {
     .ne-tab {
-      font-size: $neeto-ui-text-xl;
+      font-size: var(--neeto-ui-text-xl);
       padding-left: 12px;
       padding-right: 12px;
     }
@@ -24,12 +21,16 @@
 }
 
 .ne-tab {
-  color: $neeto-ui-gray-500;
-  font-weight: $neeto-ui-font-semibold;
-  font-size: $neeto-ui-text-sm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  color: rgb(var(--neeto-ui-gray-500));
+  font-weight: var(--neeto-ui-font-semibold);
+  font-size: var(--neeto-ui-text-sm);
   line-height: 1;
   padding: 12px 8px;
-  transition: $neeto-ui-transition;
+  transition: var(--neeto-ui-transition);
   position: relative;
   cursor: pointer;
   text-decoration: none;
@@ -38,9 +39,14 @@
   &:hover,
   &:focus,
   &:focus-visible,
-  &:active {
+  &:active{
     text-decoration: none;
     outline: none;
+  }
+
+  &:focus,
+  &:focus-visible{
+    color: rgb(var(--neeto-ui-gray-800));
   }
 
   &__icon {
@@ -53,26 +59,26 @@
   }
 
   &:hover {
-    color: $neeto-ui-gray-600;
+    color: rgb(var(--neeto-ui-gray-600));
   }
 
   &:before {
     content: "";
     position: absolute;
     width: 100%;
-    height: 1px;
+    height: 2px;
     background-color: transparent;
     left: 0;
     right: 0;
-    bottom: -1px;
-    transition: $neeto-ui-transition;
+    bottom: -2px;
+    transition: var(--neeto-ui-transition);
   }
 
   &.active {
-    color: $neeto-ui-gray-800;
+    color: rgb(var(--neeto-ui-gray-800));
 
     &:before {
-      background-color: $neeto-ui-gray-800;
+      background-color: rgb(var(--neeto-ui-gray-800));
     }
   }
 }

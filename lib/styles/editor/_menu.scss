@@ -4,8 +4,10 @@
   justify-content: flex-start;
   align-items: center;
   overflow-x: auto;
-  border-radius: $neeto-ui-rounded-sm $neeto-ui-rounded-sm 0px 0px;
-  background-color: $neeto-ui-gray-200;
+  border: thin solid rgb(var(--neeto-ui-gray-300));
+  border-bottom: none;
+  border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
+  background-color: rgb(var(--neeto-ui-gray-100));
   @include scrollbars(4px);
 
   .neeto-editor-fixed-menu__item {
@@ -16,13 +18,11 @@
 
     padding: 10px;
     cursor: pointer;
-    transition: $neeto-ui-transition;
+    transition: var(--neeto-ui-transition);
 
     &:hover,
-    &:focus,
-    &:active,
     &.active {
-      background-color: $neeto-ui-gray-300;
+      background-color: rgb(var(--neeto-ui-gray-200));
     }
 
     input[type="color"] {
@@ -46,6 +46,7 @@
 .neeto-editor-variables-list {
   padding: 4px 8px;
   min-width: 184px;
+  max-width: 360px;
 
   .neeto-editor-variables-block {
     &:not(:last-child) {
@@ -53,9 +54,9 @@
     }
 
     h6 {
-      font-size: $neeto-ui-text-xs;
-      font-weight: $neeto-ui-font-medium;
-      color: $neeto-ui-gray-600;
+      font-size: var(--neeto-ui-text-xs);
+      font-weight: var(--neeto-ui-font-medium);
+      color: rgb(var(--neeto-ui-gray-600));
       margin-bottom: 4px;
     }
 
@@ -69,15 +70,15 @@
 
       .neeto-editor-variable {
         padding: 4px 6px;
-        font-size: $neeto-ui-text-xs;
-        color: $neeto-ui-gray-700;
+        font-size: var(--neeto-ui-text-xs);
+        color: rgb(var(--neeto-ui-gray-700));
         line-height: 1;
-        background-color: $neeto-ui-pastel-blue;
-        border-radius: $neeto-ui-rounded-sm;
-        transition: $neeto-ui-transition;
+        background-color: rgb(var(--neeto-ui-pastel-blue));
+        border-radius: var(--neeto-ui-rounded-sm);
+        transition: var(--neeto-ui-transition);
 
         &:hover {
-          background-color: darken($neeto-ui-pastel-blue, 5%);
+          background-color: rgb(var(--neeto-ui-info-100));
         }
       }
     }
@@ -94,24 +95,19 @@
       display: flex !important;
       flex-direction: row;
       justify-content: flex-start;
-      align-items: center;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 8px;
     }
   }
 }
 
 .neeto-editor-font-size-wrapper {
-  .ne-dropdown__popup {
-    display: flex !important;
+  .ne-dropdown__popup-menu {
+    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 8px;
     padding: 4px;
-
-    li {
-      padding: 6px 8px;
-    }
   }
 }
 
@@ -121,18 +117,28 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  border-radius: $neeto-ui-rounded;
-  background: $neeto-ui-gray-800;
+  border-radius: var(--neeto-ui-rounded);
+  background: rgb(var(--neeto-ui-gray-800));
 
   .neeto-editor-bubble-menu__item {
     padding: 8px;
     cursor: pointer;
-    transition: $neeto-ui-transition;
+    transition: var(--neeto-ui-transition);
 
     &:hover,
     &:active,
     &.active {
-      background-color: $neeto-ui-gray-700;
+      background-color: rgb(var(--neeto-ui-gray-700));
+    }
+
+    &:first-child {
+      border-top-left-radius: var(--neeto-ui-rounded);
+      border-bottom-left-radius: var(--neeto-ui-rounded);
+    }
+
+    &:last-child {
+      border-top-right-radius: var(--neeto-ui-rounded);
+      border-bottom-right-radius: var(--neeto-ui-rounded);
     }
   }
 
@@ -148,7 +154,7 @@
       line-height: 20px;
 
       &::placeholder {
-        color: rgba($neeto-ui-white, 0.4);
+        color: rgba(var(--neeto-ui-white, 0.4));
       }
     }
 
@@ -163,18 +169,35 @@
     }
   }
 
+  .neeto-editor-bubble-menu__dropdown-target {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    font-size: var(--neeto-ui-text-sm);
+    line-height: var(--neeto-ui-leading-normal);
+  }
+
   .neeto-editor-bubble-menu__dropdown {
     display: flex;
     flex-direction: column;
-    padding: 8px 12px;
-    width: 100%;
+    align-items: flex-start;
 
-    &-target {
-      display: flex;
-      align-items: center;
-      padding: 11px 8px;
-      gap: 4px;
-      white-space: nowrap;
+    .neeto-editor-bubble-menu__dropdown-item {
+      width: 100%;
+      text-align: left;
+      padding: 8px 12px;
+      font-size: var(--neeto-ui-text-xs);
+
+      &:first-child {
+        border-top-left-radius: var(--neeto-ui-rounded);
+        border-top-right-radius: var(--neeto-ui-rounded);
+      }
+
+      &:last-child {
+        border-bottom-left-radius: var(--neeto-ui-rounded);
+        border-bottom-right-radius: var(--neeto-ui-rounded);
+      }
     }
   }
 }

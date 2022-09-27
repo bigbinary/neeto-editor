@@ -1,8 +1,10 @@
 import React from "react";
 
 import classnames from "classnames";
-import Tooltip from "components/Common/ToolTip";
 import { Info } from "neetoicons";
+import PropTypes from "prop-types";
+
+import Tooltip from "./ToolTip";
 
 const Label = ({
   children,
@@ -19,17 +21,15 @@ const Label = ({
     ...otherHelpIconProps
   } = helpIconProps || {};
   const HelpIcon = icon || Info;
+
   return (
-    <label
-      className={classnames("ne-label flex items-center", className)}
-      {...otherProps}
-    >
+    <label className={classnames("ne-label", className)} {...otherProps}>
       {children}
       {required && <span aria-hidden>*</span>}
       {helpIconProps && (
         <Tooltip {...tooltipProps} disabled={!tooltipProps}>
           <span
-            className={classnames("ml-1", {
+            className={classnames("ne-label__help-icon-wrap", {
               [helpIconClassName]: helpIconClassName,
             })}
             onClick={onClick}
@@ -40,6 +40,31 @@ const Label = ({
       )}
     </label>
   );
+};
+
+Label.propTypes = {
+  /**
+   * To specify the content to be rendered inside the label.
+   */
+  children: PropTypes.node,
+  /**
+   * Provide external classnames to label component.
+   */
+  className: PropTypes.string,
+  /**
+   * To specify whether to show the required asterisk.
+   */
+  required: PropTypes.bool,
+  /**
+   * Props for the help icon
+   */
+  helpIconProps: PropTypes.shape({
+    onClick: PropTypes.func,
+    icon: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+    tooltipProps: PropTypes.shape({
+      ...Tooltip.propTypes,
+    }),
+  }),
 };
 
 export default Label;

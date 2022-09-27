@@ -13,6 +13,8 @@ const FontSizeOption = ({ editor }) => {
   const onClick = level =>
     editor.chain().focus().toggleHeading({ level }).run();
 
+  const { Menu, MenuItem } = Dropdown;
+
   return (
     <Dropdown
       customTarget={() => (
@@ -28,18 +30,21 @@ const FontSizeOption = ({ editor }) => {
         />
       )}
       className="neeto-editor-font-size-wrapper"
-      placement="bottom"
+      dropdownProps={{ classNames: "ne-dropdown__popup--auto-width" }}
+      placement="bottom-start"
     >
-      {FONT_SIZE_OPTIONS.map(({ label, value }) => (
-        <li
-          onClick={() => onClick(value)}
-          key={value}
-          className={classnames({ active: isActive(value) })}
-          data-cy={`neeto-editor-fixed-menu-font-size-option-${label}`}
-        >
-          {label}
-        </li>
-      ))}
+      <Menu>
+        {FONT_SIZE_OPTIONS.map(({ label, value }) => (
+          <MenuItem.Button
+            onClick={() => onClick(value)}
+            key={value}
+            className={classnames({ active: isActive(value) })}
+            data-cy={`neeto-editor-fixed-menu-font-size-option-${label}`}
+          >
+            {label}
+          </MenuItem.Button>
+        ))}
+      </Menu>
     </Dropdown>
   );
 };

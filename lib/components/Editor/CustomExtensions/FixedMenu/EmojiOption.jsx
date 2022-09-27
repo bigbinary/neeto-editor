@@ -8,6 +8,7 @@ import EmojiPickerMenu from "../Emoji/EmojiPicker/EmojiPickerMenu";
 
 const EmojiOption = ({ editor }) => {
   const dropdownRef = useRef();
+  const { Menu } = Dropdown;
 
   return (
     <Dropdown
@@ -16,14 +17,16 @@ const EmojiOption = ({ editor }) => {
       customTarget={() => (
         <MenuButton
           icon={Smiley}
-          iconActive={dropdownRef?.current?.visible}
+          iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
           tooltipProps={{ content: "Emoji", position: "bottom", delay: [500] }}
           data-cy="neeto-editor-fixed-menu-emoji-option-button"
         />
       )}
       position="bottom-start"
     >
-      <EmojiPickerMenu editor={editor} />
+      <Menu>
+        <EmojiPickerMenu editor={editor} />
+      </Menu>
     </Dropdown>
   );
 };

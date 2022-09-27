@@ -25,14 +25,14 @@
   }
 
   .neeto-editor-image-uploader__progress-title {
-    color: $neeto-ui-gray-700;
-    font-size: $neeto-ui-text-sm;
+    color: rgb(var(--neeto-ui-gray-700));
+    font-size: var(--neeto-ui-text-sm);
     margin-bottom: 4px;
   }
 
   .neeto-editor-image-uploader__progress-file {
-    color: $neeto-ui-gray-400;
-    font-size: $neeto-ui-text-xs;
+    color: rgb(var(--neeto-ui-gray-400));
+    font-size: var(--neeto-ui-text-xs);
   }
 
   .neeto-editor-image-uploader__dnd-wrapper {
@@ -47,15 +47,15 @@
       justify-content: center;
       align-items: center;
       flex-grow: 1;
-      border: 1px dashed $neeto-ui-gray-400;
+      border: 1px dashed rgb(var(--neeto-ui-gray-400));
       box-sizing: border-box;
-      border-radius: $neeto-ui-rounded-sm;
+      border-radius: var(--neeto-ui-rounded);
 
       // DragDrop
       .uppy-Root {
         width: 100%;
         height: 100%;
-        background-color: $neeto-ui-white;
+        background-color: rgb(var(--neeto-ui-white));
         cursor: pointer;
 
         // firefox fix: removes thin dotted outline
@@ -70,7 +70,7 @@
         justify-content: center;
         line-height: 1.4;
         text-align: center;
-        font-weight: $neeto-ui-font-normal;
+        font-weight: var(--neeto-ui-font-normal);
         margin: 0;
       }
 
@@ -80,8 +80,8 @@
       }
 
       .uppy-DragDrop--isDraggingOver {
-        background-color: $neeto-ui-gray-200;
-        border: 2px dashed $neeto-ui-secondary-indigo;
+        background-color: rgb(var(--neeto-ui-gray-200));
+        border: 2px dashed rgb(var(--neeto-ui-secondary-indigo));
       }
 
       .uppy-DragDrop-label {
@@ -89,9 +89,9 @@
       }
 
       .uppy-DragDrop-browse {
-        color: $neeto-ui-secondary-indigo;
-        font-size: $neeto-ui-text-sm;
-        font-weight: $neeto-ui-font-semibold;
+        color: rgb(var(--neeto-ui-secondary-indigo));
+        font-size: var(--neeto-ui-text-sm);
+        font-weight: var(--neeto-ui-font-semibold);
         cursor: pointer;
       }
 
@@ -100,8 +100,8 @@
       }
 
       &--error {
-        color: $neeto-ui-error;
-        font-size: $neeto-ui-text-xs;
+        color: rgb(var(--neeto-ui-error));
+        font-size: var(--neeto-ui-text-xs);
         margin-top: 12px;
         text-align: center;
       }
@@ -145,15 +145,15 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: $neeto-ui-gray-100;
-        border-radius: $neeto-ui-rounded-sm;
+        background-color: rgb(var(--neeto-ui-gray-100));
+        border-radius: var(--neeto-ui-rounded-sm);
 
         img {
           height: 100%;
           width: 100%;
           object-fit: cover;
           animation: fade-in 1.2s 1s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-          border-radius: $neeto-ui-rounded-sm;
+          border-radius: var(--neeto-ui-rounded);
           position: relative;
           cursor: pointer;
         }
@@ -165,12 +165,12 @@
           bottom: 8px;
           margin: auto;
 
-          color: $neeto-ui-white;
+          color: rgb(var(--neeto-ui-white));
           font-size: 12px;
-          font-weight: $neeto-ui-font-normal;
+          font-weight: var(--neeto-ui-font-normal);
           line-height: 1;
           text-transform: capitalize;
-          transition: $neeto-ui-transition;
+          transition: var(--neeto-ui-transition);
 
           &:hover {
             text-decoration: underline;
@@ -186,8 +186,8 @@
     }
 
     .neeto-editor-unsplash-gallery__text {
-      font-size: $neeto-ui-text-xs;
-      color: $neeto-ui-gray-800;
+      font-size: var(--neeto-ui-text-xs);
+      color: rgb(var(--neeto-ui-gray-800));
       text-align: center;
       margin-top: 12px;
     }
@@ -207,8 +207,8 @@
     align-items: center;
 
     p {
-      font-size: $neeto-ui-text-xs;
-      color: $neeto-ui-gray-800;
+      font-size: var(--neeto-ui-text-xs);
+      color: rgb(var(--neeto-ui-gray-800));
     }
   }
 
@@ -216,15 +216,15 @@
     position: relative;
     width: 100%;
     height: 6px;
-    border-radius: $neeto-ui-rounded-full;
+    border-radius: var(--neeto-ui-rounded-full);
     overflow: hidden;
-    background-color: rgba($neeto-ui-secondary-indigo, 0.2);
+    background-color: rgba(var(--neeto-ui-secondary-indigo, 0.2));
     margin-top: 4px;
   }
 
   .neeto-editor-progress-bar__indicator-inner {
     height: 100%;
-    background-color: $neeto-ui-secondary-indigo;
+    background-color: rgb(var(--neeto-ui-secondary-indigo));
   }
 }
 

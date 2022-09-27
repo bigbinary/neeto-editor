@@ -2,58 +2,41 @@ import React, { useState } from "react";
 
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import { isNil } from "ramda";
 
-const SIZE = {
-  small: 24,
-  medium: 32,
-  large: 40,
-  xlarge: 64,
-};
-
-const STATUS = {
-  online: "online",
-  idle: "idle",
-  offline: "offline",
-};
-
-const COLORS = [
-  "#E5E7EB",
-  "#FECACA",
-  "#FDE68A",
-  "#A7F3D0",
-  "#BFDBFE",
-  "#C7D2FE",
-  "#DDD6FE",
-  "#FBCFE8",
-];
+import { AVATAR_SIZE, STATUS, COLORS, USER_ICON_URL } from "./constants";
 
 const Avatar = ({
-  size,
-  user,
-  isSquare,
-  status,
-  onClick,
-  className,
+  size = "medium",
+  user = {},
+  isSquare = false,
+  status = null,
+  onClick = () => {},
+  className = "",
   ...otherProps
 }) => {
-  const [loaded, setLoaded] = useState(false);
+  const [isLoadingFailed, setIsLoadingFailed] = useState(false);
 
   const { name = "", imageUrl } = user;
 
   const isMedium = size === "medium";
   const isLarge = size === "large";
-  const isXLarge = size === "xlarge";
+  const isExtraLarge = size === "extraLarge";
 
   const getInitials = fullName => {
-    const allNames = fullName.trim().split(" ");
-    const initials = allNames.reduce((acc, curr, index) => {
-      if (index === 0 || index === allNames.length - 1) {
-        acc = `${acc}${curr.charAt(0).toUpperCase()}`;
-      }
+    if (fullName && typeof fullName === "string") {
+      const allNames = fullName.trim().split(" ");
+      const initials = allNames.reduce((acc, curr, index) => {
+        if (index === 0 || index === allNames.length - 1) {
+          acc = `${acc}${curr.charAt(0).toUpperCase()}`;
+        }
 
-      return acc;
-    }, "");
-    return initials;
+        return acc;
+      }, "");
+      return initials;
+    }
+
+    return "";
   };
 
   const avatarString = getInitials(name);
@@ -66,56 +49,57 @@ const Avatar = ({
   };
 
   const imageContainerStyle = {
-    height: SIZE[size],
-    width: SIZE[size],
-    backgroundColor: getRandomBackgroundColor(),
+    height: AVATAR_SIZE[size],
+    width: AVATAR_SIZE[size],
   };
 
-  const imageClasses = classNames("ne-avatar", {
+  const imageClasses = classNames("ne-avatar ", {
     "ne-avatar--medium": isMedium,
     "ne-avatar--large": isLarge,
-    "ne-avatar--xlarge": isXLarge,
+    "ne-avatar--xlarge": isExtraLarge,
     "ne-avatar--round": !isSquare,
-    hidden: !loaded,
+    hidden: isLoadingFailed,
   });
 
   const placeholderClasses = classNames("ne-avatar__text", {
     "ne-avatar__text-medium": isMedium,
     "ne-avatar__text-large": isLarge,
-    "ne-avatar__text-xlarge": isXLarge,
+    "ne-avatar__text-xlarge": isExtraLarge,
   });
 
-  // TODO: Remove 'v2' prefix.
   const statusClasses = classNames("ne-avatar__status", `${status}`, {
     "ne-avatar__status-medium": isMedium,
     "ne-avatar__status-large": isLarge,
-    "ne-avatar__status-xlarge": isXLarge,
+    "ne-avatar__status-xlarge": isExtraLarge,
     "ne-avatar__status-square": isSquare,
   });
 
   const Indicator = () =>
-    status === undefined || status === null ? (
+    isNil(status) ? (
       React.Fragment
     ) : (
-      <span className={statusClasses} />
+      <span className={statusClasses} data-testid="indicator" />
     );
 
   const ImagePlaceholder = () => (
-    <span className={placeholderClasses}>{avatarString}</span>
+    <span className={placeholderClasses} data-testid="initials">
+      {avatarString}
+    </span>
   );
 
-  const shouldDisplayInitials = avatarString && !imageUrl && !loaded;
+  const shouldDisplayInitials = avatarString && !(imageUrl && !isLoadingFailed);
 
   return (
-    <div
+    <span
       onClick={onClick}
       style={imageContainerStyle}
       className={classNames(
-        "ne-avatar--container",
+        "ne-avatar--container ne-select-none",
         {
           "ne-avatar--container-round": !isSquare,
         },
-        className
+        className,
+        getRandomBackgroundColor()
       )}
       {...otherProps}
     >
@@ -125,44 +109,39 @@ const Avatar = ({
       ) : (
         <img
           className={imageClasses}
-          onLoad={() => setLoaded(true)}
-          onError={() => setLoaded(false)}
-          src={imageUrl}
+          onError={() => setIsLoadingFailed(true)}
+          src={imageUrl || USER_ICON_URL}
           alt={`avatar-${avatarString}`}
+          data-chromatic="ignore"
         />
       )}
-    </div>
+    </span>
   );
-};
-
-Avatar.defaultProps = {
-  size: "medium",
-  user: {
-    imageUrl: "",
-    name: "",
-  },
-  isSquare: false,
-  onClick: () => {},
-  status: null,
 };
 
 Avatar.propTypes = {
   /**
-   * Specify the dimension for avatar component.
+   * Specify the dimension for Avatar component.
    */
-  size: PropTypes.oneOf(Object.keys(SIZE)),
+  size: PropTypes.oneOf(Object.keys(AVATAR_SIZE)),
   user: PropTypes.shape({
     imageUrl: PropTypes.string,
     name: PropTypes.string,
   }),
+  /**
+   * To display the Avatar as a square.
+   */
   isSquare: PropTypes.bool,
+  /**
+   * To specify the action to be triggered on clicking the Avatar.
+   */
   onClick: PropTypes.func,
   /**
-   * Specify the status of the user if needed in avatar component.
+   * To specify the status of the user if needed in Avatar component.
    */
   status: PropTypes.oneOf(Object.keys(STATUS)),
   /**
-   * Specify custom className to be applied on the Avatar Container
+   * To provide external classnames to Avatar component.
    */
   className: PropTypes.string,
 };

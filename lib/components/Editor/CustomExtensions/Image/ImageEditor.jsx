@@ -48,13 +48,8 @@ const ImageEditor = ({ url, editor, onClose, alt }) => {
         </>
       )}
       <div className="neeto-editor-image-editor__footer">
-        <Button
-          size="large"
-          label="Proceed"
-          disabled={isError}
-          onClick={handleSubmit}
-        />
-        <Button size="large" label="Cancel" style="text" onClick={onClose} />
+        <Button label="Proceed" disabled={isError} onClick={handleSubmit} />
+        <Button label="Cancel" style="text" onClick={onClose} />
       </div>
     </div>
   );

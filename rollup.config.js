@@ -3,8 +3,6 @@ import path from "path";
 import alias from "@rollup/plugin-alias";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
-import { visualizer } from "rollup-plugin-visualizer";
-
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -43,7 +41,7 @@ export default [
         preferBuiltins: true,
         extensions: [".js", ".jsx", ".svg"],
       }),
-      commonjs(),
+      commonjs({ include: /\**node_modules\**/ }),
       babel({
         exclude: /node_modules/,
         extensions: [".jsx", ".js"],
