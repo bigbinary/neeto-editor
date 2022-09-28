@@ -1,31 +1,56 @@
 .neeto-editor-table {
+  display: relative;
   width: fit-content;
 
   table {
     overflow: hidden;
+    border: 1px solid rgba(var(--neeto-ui-gray-300));
+    border-collapse: separate;
+    border-radius: var(--neeto-ui-rounded-sm);
+    border-spacing: 0;
 
     th,
     td {
-      border: 1px solid rgba(var(--neeto-ui-gray-300));
+      border-left: 1px solid rgba(var(--neeto-ui-gray-300));
+      border-top: 1px solid rgba(var(--neeto-ui-gray-300));
       padding: 8px 12px;
-      border-radius: 10px;
+    }
+
+    td:first-child,
+    th:first-child {
+      border-left: none;
     }
 
     th {
       background: rgba(var(--neeto-ui-gray-100));
+      border-top: none;
     }
   }
 
-  &__add-row {
+  &__wrapper {
     display: flex;
+    gap: 4px;
+  }
+
+  &__add-row,
+  &__add-column {
+    display: flex;
+    align-items: center;
     justify-content: center;
     background: rgba(var(--neeto-ui-gray-200));
     border-radius: var(--neeto-ui-rounded-sm);
-    margin: 4px 0;
     cursor: pointer;
 
     svg {
       background: white;
     }
+  }
+
+  &__add-row {
+    margin: 4px 20px 4px 0;
+  }
+
+  &__add-column {
+    flex-direction: column;
   }
 }
