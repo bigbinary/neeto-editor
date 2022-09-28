@@ -22,7 +22,13 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/a819ef022941327bdf027e94d6f42806bc5d8a74...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/b400535a6cf8fabc5400b09e9f992ce1b9f016ea...HEAD)
+
+## [0.12.0](https://github.com/bigbinary/neeto-editor/compare/a819ef022941327bdf027e94d6f42806bc5d8a74...b400535a6cf8fabc5400b09e9f992ce1b9f016ea) - 2022-09-28
+
+- Changed: image upload no longer depends on the `@rails/activestorage` package.
+- Removed: `@rails/activestorage` package from peer dependencies.
+- Removed: `react-group-transition` package from peer dependencies.
 
 ## [0.11.0](https://github.com/bigbinary/neeto-editor/compare/53a2a8faba0200492ea177acc7e9204da4358fc9...a819ef022941327bdf027e94d6f42806bc5d8a74) - 2022-09-28
 
