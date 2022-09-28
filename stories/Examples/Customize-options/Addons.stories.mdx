@@ -54,15 +54,6 @@ Image upload feature can be enabled in neetoEditor by adding the `image-upload`
 addon to the list of addons. All the images are uploaded using a pre-signed URL
 from the backend.
 
-For handling these requests, neetoEditor uses the `@rails/activestorage`
-package. It needs to be initialized in the host project by adding the following
-lines before the editor is mounted:
-
-```js
-import * as activestorage from "@rails/activestorage";
-activestorage.start();
-```
-
 #### **Integration with Rails**
 
 Rails provides a `DirectUploadsController` to handle direct upload to the

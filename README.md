@@ -8,12 +8,6 @@ The **neetoEditor** library drives the rich text experience in the
 yarn add @bigbinary/neeto-editor
 ```
 
-Install all the peer dependencies.
-
-```
-yarn add @rails/activestorage
-```
-
 For setting up image upload refer
 https://neeto-editor.onrender.com/?path=/docs/examples-customize-options-addons--addons.
 
