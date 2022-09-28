@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/53a2a8faba0200492ea177acc7e9204da4358fc9...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/a819ef022941327bdf027e94d6f42806bc5d8a74...HEAD)
+
+## [0.11.0](https://github.com/bigbinary/neeto-editor/compare/53a2a8faba0200492ea177acc7e9204da4358fc9...a819ef022941327bdf027e94d6f42806bc5d8a74) - 2022-09-28
+
+- Added: exposed code block highlight logic to CDN.
 
 ## [0.10.0](https://github.com/bigbinary/neeto-editor/compare/4defcb02234742b1a5fc9fbefa87e44421b7b82c...53a2a8faba0200492ea177acc7e9204da4358fc9) - 2022-09-27
 
