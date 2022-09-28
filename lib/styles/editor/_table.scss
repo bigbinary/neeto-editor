@@ -25,6 +25,11 @@
       background: rgba(var(--neeto-ui-gray-100));
       border-top: none;
     }
+
+    th.active,
+    td.active {
+      border: 1px solid rgb(var(--neeto-ui-primary-500));
+    }
   }
 
   &__wrapper {
@@ -39,10 +44,16 @@
     justify-content: center;
     background: rgba(var(--neeto-ui-gray-200));
     border-radius: var(--neeto-ui-rounded-sm);
+    transition: var(--neeto-ui-transition);
     cursor: pointer;
 
     svg {
       background: white;
+      color: rgb(var(--neeto-ui-gray-800));
+    }
+
+    &:hover {
+      background: rgba(var(--neeto-ui-gray-300));
     }
   }
 

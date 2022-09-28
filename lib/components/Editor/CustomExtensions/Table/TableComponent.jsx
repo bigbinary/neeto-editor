@@ -19,7 +19,7 @@ const TableComponent = ({ editor }) => (
           <tbody>
             <tr>
               <td>Cell 1</td>
-              <td>Cell 2</td>
+              <td className="active">Cell 2</td>
               <td>Cell 3</td>
             </tr>
             <tr>
