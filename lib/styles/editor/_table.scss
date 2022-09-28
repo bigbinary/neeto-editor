@@ -1,0 +1,31 @@
+.neeto-editor-table {
+  width: fit-content;
+
+  table {
+    overflow: hidden;
+
+    th,
+    td {
+      border: 1px solid rgba(var(--neeto-ui-gray-300));
+      padding: 8px 12px;
+      border-radius: 10px;
+    }
+
+    th {
+      background: rgba(var(--neeto-ui-gray-100));
+    }
+  }
+
+  &__add-row {
+    display: flex;
+    justify-content: center;
+    background: rgba(var(--neeto-ui-gray-200));
+    border-radius: var(--neeto-ui-rounded-sm);
+    margin: 4px 0;
+    cursor: pointer;
+
+    svg {
+      background: white;
+    }
+  }
+}
