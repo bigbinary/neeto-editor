@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/393df11f42eef499f2b8b72bb76e1e3116d849f2...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/3f3ebbb84b5c5f129c8585d4a1be1baef8abee87...HEAD)
+
+## [0.12.2](https://github.com/bigbinary/neeto-editor/compare/393df11f42eef499f2b8b72bb76e1e3116d849f2...3f3ebbb84b5c5f129c8585d4a1be1baef8abee87) - 2022-09-29
+
+- Fixed: build failure when transpiled through Webpack.
 
 ## [0.12.1](https://github.com/bigbinary/neeto-editor/compare/b400535a6cf8fabc5400b09e9f992ce1b9f016ea...393df11f42eef499f2b8b72bb76e1e3116d849f2) - 2022-09-29
 
