@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/b400535a6cf8fabc5400b09e9f992ce1b9f016ea...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/393df11f42eef499f2b8b72bb76e1e3116d849f2...HEAD)
+
+## [0.12.1](https://github.com/bigbinary/neeto-editor/compare/b400535a6cf8fabc5400b09e9f992ce1b9f016ea...393df11f42eef499f2b8b72bb76e1e3116d849f2) - 2022-09-29
+
+- Fixed: overflow in bubble menu.
 
 ## [0.12.0](https://github.com/bigbinary/neeto-editor/compare/a819ef022941327bdf027e94d6f42806bc5d8a74...b400535a6cf8fabc5400b09e9f992ce1b9f016ea) - 2022-09-28
 
