@@ -3,8 +3,10 @@ import path from "path";
 import alias from "@rollup/plugin-alias";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
+import svgr from "@svgr/rollup";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
 import { terser } from "rollup-plugin-terser";
@@ -22,19 +24,20 @@ const plugins = [
       lib: path.resolve(__dirname, "lib"),
     },
   }),
+  json(),
+  svgr(),
   replace({
     "process.env.NODE_ENV": JSON.stringify("production"),
     preventAssignment: true,
   }),
   resolve({
-    browser: true,
     preferBuiltins: true,
     extensions: [".js", ".jsx", ".svg"],
+    moduleDirectories: ["node_modules"],
   }),
   commonjs({ include: /\**node_modules\**/ }),
   babel({
-    exclude: /node_modules/,
-    extensions: [".jsx", ".js"],
+    exclude: "node_modules/**",
     presets: ["@babel/preset-env", "@babel/preset-react"],
     plugins: ["@babel/plugin-transform-runtime"],
     babelHelpers: "runtime",
