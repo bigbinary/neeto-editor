@@ -39,7 +39,12 @@ const plugins = [
   babel({
     exclude: "node_modules/**",
     presets: ["@babel/preset-env", "@babel/preset-react"],
-    plugins: ["@babel/plugin-transform-runtime"],
+    plugins: [
+      "@babel/plugin-transform-runtime",
+      "@babel/plugin-proposal-nullish-coalescing-operator",
+      "@babel/plugin-proposal-class-properties",
+      "ramda",
+    ],
     babelHelpers: "runtime",
   }),
   styles({
