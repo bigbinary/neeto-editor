@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/3f3ebbb84b5c5f129c8585d4a1be1baef8abee87...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/102920df647f3b560193b2e49d8912c18d15f067...HEAD)
+
+## [0.12.3](https://github.com/bigbinary/neeto-editor/compare/3f3ebbb84b5c5f129c8585d4a1be1baef8abee87...102920df647f3b560193b2e49d8912c18d15f067) - 2022-09-30
+
+- Fixed: issue where images were not uploaded when pasted.
 
 ## [0.12.2](https://github.com/bigbinary/neeto-editor/compare/393df11f42eef499f2b8b72bb76e1e3116d849f2...3f3ebbb84b5c5f129c8585d4a1be1baef8abee87) - 2022-09-29
 
