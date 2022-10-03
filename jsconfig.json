@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true,
+    "module": "commonJS",
+    "baseUrl": ".",
+    "types": [],
+    "paths": {
+      "apis/*": ["lib/apis/*"],
+      "apis": ["lib/apis"],
+      "components/*": ["lib/components/*"],
+      "components": ["lib/components"],
+      "constants/*": ["lib/constants/*"],
+      "constants": ["lib/constants"],
+      "contexts/*": ["lib/contexts/*"],
+      "contexts": ["lib/contexts"],
+      "hooks/*": ["lib/hooks/*"],
+      "hooks": ["lib/hooks"],
+      "neetoui/*": ["node_modules/@bigbinary/neetoui/*"],
+      "neetoui": ["node_modules/@bigbinary/neetoui"],
+      "neetoicons": ["node_modules/@bigbinary/neeto-icons"],
+      "utils/*": ["lib/utils/*"],
+      "utils": ["lib/utils"]
+    },
+    "pretty": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "checkJs": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve"
+  },
+  "exclude": ["**/node_modules", "**/.*/"],
+  "include": ["./**/*.js", "./**/*.jsx"]
+}

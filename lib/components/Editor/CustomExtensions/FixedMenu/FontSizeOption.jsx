@@ -1,11 +1,11 @@
-import { FONT_SIZE_OPTIONS } from "constants/common";
-
 import React from "react";
 
 import classnames from "classnames";
+import { TextSize } from "neetoicons";
+
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
-import { TextSize } from "neetoicons";
+import { FONT_SIZE_OPTIONS } from "constants/common";
 
 const FontSizeOption = ({ editor }) => {
   const isActive = level => editor.isActive("heading", { level });
