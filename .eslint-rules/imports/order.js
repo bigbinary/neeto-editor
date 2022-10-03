@@ -1,11 +1,22 @@
-const { buildPathGroupsBasedOnWebpackAliases } = require(__dirname +
-  "/../helpers");
-const pathGroups = buildPathGroupsBasedOnWebpackAliases({});
+const pathGroups = [
+  { pattern: "apis/**", group: "internal" },
+  { pattern: "components/**", group: "internal" },
+  { pattern: "hooks/**", group: "internal" },
+  { pattern: "constants/**", group: "internal" },
+  { pattern: "utils/**", group: "internal" },
+  { pattern: "lib/**", group: "internal" },
+  { pattern: "neetoicons/**", group: "external" },
+  {
+    pattern: "react+(-native|)",
+    group: "external",
+    position: "before",
+  },
+];
 
 const pathGroupForKeepingReactImportsAtTop = {
   pattern: "react+(-native|)",
   group: "external",
-  position: "before"
+  position: "before",
 };
 
 /*
@@ -47,7 +58,7 @@ module.exports = {
           "sibling",
           "parent",
           "object",
-          "type"
+          "type",
         ],
         /*
          * Currently we check for existence of webpack alias
@@ -58,8 +69,8 @@ module.exports = {
          */
         pathGroups,
         // Ignore react imports so that they're always ordered to the top of the file.
-        pathGroupsExcludedImportTypes: ["react", "react-native"]
-      }
-    ]
-  }
+        pathGroupsExcludedImportTypes: ["react", "react-native"],
+      },
+    ],
+  },
 };
