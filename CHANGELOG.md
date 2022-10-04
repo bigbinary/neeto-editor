@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/f95d3f2d661fb280ef85e6d63e212ffd994dbab4...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/5c060b21e8fd036a5bf4799b092fd4394e8a33d1...HEAD)
+
+## [0.12.5](https://github.com/bigbinary/neeto-editor/compare/f95d3f2d661fb280ef85e6d63e212ffd994dbab4...5c060b21e8fd036a5bf4799b092fd4394e8a33d1) - 2022-10-04
+
+- Fixed: issue where the mentions menu item in fixed menu was always active.
+- Fixed: issue where the variables menu item in fixed menu was always active.
 
 ## [0.12.4](https://github.com/bigbinary/neeto-editor/compare/102920df647f3b560193b2e49d8912c18d15f067...f95d3f2d661fb280ef85e6d63e212ffd994dbab4) - 2022-10-04
 
