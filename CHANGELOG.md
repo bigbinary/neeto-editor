@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/102920df647f3b560193b2e49d8912c18d15f067...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/f95d3f2d661fb280ef85e6d63e212ffd994dbab4...HEAD)
+
+## [0.12.4](https://github.com/bigbinary/neeto-editor/compare/102920df647f3b560193b2e49d8912c18d15f067...f95d3f2d661fb280ef85e6d63e212ffd994dbab4) - 2022-10-04
+
+- Fixed: the performance issues with the `onChange` method.
 
 ## [0.12.3](https://github.com/bigbinary/neeto-editor/compare/3f3ebbb84b5c5f129c8585d4a1be1baef8abee87...102920df647f3b560193b2e49d8912c18d15f067) - 2022-09-30
 
