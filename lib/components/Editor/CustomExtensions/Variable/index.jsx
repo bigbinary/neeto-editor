@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 
+import { Braces } from "neetoicons";
+
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
-import { Braces } from "neetoicons";
 
 import VariableList from "./VariableList";
 
@@ -26,7 +27,7 @@ const Variables = ({ editor, variables }) => {
       customTarget={() => (
         <MenuButton
           icon={Braces}
-          iconActive={dropdownRef.current?.visible}
+          iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
           tooltipProps={{
             content: "Variables",
             position: "bottom",

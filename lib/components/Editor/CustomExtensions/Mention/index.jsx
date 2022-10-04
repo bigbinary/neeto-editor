@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 
+import { Email } from "neetoicons";
+import { isEmpty } from "ramda";
+
 import Avatar from "components/Common/Avatar";
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
-import { Email } from "neetoicons";
-import { isEmpty } from "ramda";
 
 import { formatMentions } from "./helpers";
 
@@ -21,7 +22,7 @@ const Mentions = ({ editor, mentions, showImageInMention }) => {
       customTarget={() => (
         <MenuButton
           icon={Email}
-          iconActive={dropdownRef.current?.visible}
+          iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
           tooltipProps={{
             content: "Mention",
             position: "bottom",
