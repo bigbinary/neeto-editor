@@ -13,11 +13,6 @@
   padding: 12px;
   color: rgb(var(--neeto-ui-gray-800));
 
-  p {
-    line-height: var(--neeto-ui-leading-relaxed);
-    margin-bottom: 16px;
-  }
-
   &:focus {
     outline: none;
   }
