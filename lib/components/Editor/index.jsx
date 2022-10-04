@@ -1,11 +1,11 @@
-import { DIRECT_UPLOAD_ENDPOINT } from "constants/common";
-
 import React, { useState, useEffect } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classNames from "classnames";
-import ErrorWrapper from "components/Common/ErrorWrapper";
 import { EditorView } from "prosemirror-view";
+
+import ErrorWrapper from "components/Common/ErrorWrapper";
+import { DIRECT_UPLOAD_ENDPOINT } from "constants/common";
 import { stringifyObject, isNilOrEmpty } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
@@ -124,7 +124,7 @@ const Editor = (
       preserveWhitespace: true,
     },
     onCreate: ({ editor }) => !autoFocus && setInitialPosition(editor),
-    onUpdate: ({ editor }) => onChange(editor.getHTML()),
+    onUpdate: ({ editor }) => setTimeout(() => onChange(editor.getHTML()), 0),
     onFocus,
     onBlur,
   });
