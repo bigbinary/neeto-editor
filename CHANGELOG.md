@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/f13d8f521f20afaf1bcbaaa19c9fd3f282e0b4db...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/1176e9f9b0f6142a3d89cfc44dda546d7745ce5d...HEAD)
+
+## [0.12.7](https://github.com/bigbinary/neeto-editor/compare/f13d8f521f20afaf1bcbaaa19c9fd3f282e0b4db...1176e9f9b0f6142a3d89cfc44dda546d7745ce5d) - 2022-10-05
+
+- Fixed: pressing "Esc" key when a dropdown is open will properly close the dropdown.
+- Fixed: auto focussed the input when the link dropdown is opened.
 
 ## [0.12.6](https://github.com/bigbinary/neeto-editor/compare/5c060b21e8fd036a5bf4799b092fd4394e8a33d1...f13d8f521f20afaf1bcbaaa19c9fd3f282e0b4db) - 2022-10-05
 
