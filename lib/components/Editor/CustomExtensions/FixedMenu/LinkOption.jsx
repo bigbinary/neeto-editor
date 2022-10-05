@@ -1,28 +1,28 @@
-import { UrlRegExp } from "constants/regexp";
+import React, { useState } from "react";
 
-import React, { useRef, useState } from "react";
+import { Link } from "neetoicons";
 
 import Button from "components/Common/Button";
 import Dropdown from "components/Common/Dropdown";
 import Input from "components/Common/Input";
 import MenuButton from "components/Common/MenuButton";
-import { Link } from "neetoicons";
+import { UrlRegExp } from "constants/regexp";
 
 const LinkOption = ({ editor }) => {
-  const dropdownRef = useRef();
-  const inputRef = useRef();
   const [error, setError] = useState("");
   const [urlString, setUrlString] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const isActive = editor.isActive("link");
 
-  const onClickTrigger = () => {
+  const onClickTrigger = () =>
     setUrlString(editor.getAttributes("link").href || "");
-  };
+
+  const handleClose = () => setIsOpen(false);
 
   const handleKeyDown = event => {
     if (event.key === "Escape") {
-      dropdownRef.current.close();
+      handleClose();
     } else if (event.key === "Enter") {
       handleLink();
     }
@@ -31,7 +31,7 @@ const LinkOption = ({ editor }) => {
   const handleLink = () => {
     if (UrlRegExp.test(urlString)) {
       editor.chain().focus().setLink({ href: urlString }).run();
-      dropdownRef.current?.close();
+      handleClose();
     } else {
       setError("Please enter a valid url");
     }
@@ -39,17 +39,14 @@ const LinkOption = ({ editor }) => {
 
   const handleUnlink = () => {
     editor.chain().focus().unsetLink().run();
-    dropdownRef.current?.close();
+    handleClose();
   };
 
   return (
     <Dropdown
-      ref={dropdownRef}
-      onVisible={() =>
-        inputRef.current?.focus({
-          preventScroll: true,
-        })
-      }
+      isOpen={isOpen}
+      onClick={() => setIsOpen(open => !open)}
+      onClose={handleClose}
       customTarget={() => (
         <MenuButton
           icon={Link}
@@ -65,7 +62,7 @@ const LinkOption = ({ editor }) => {
     >
       <div onKeyDown={handleKeyDown} className="neeto-editor-link__item">
         <Input
-          ref={inputRef}
+          autoFocus
           name="url"
           value={urlString}
           placeholder="Paste URL"
