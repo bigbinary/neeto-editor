@@ -12,11 +12,13 @@
   h5,
   h6 {
     font-size: revert;
+    margin: 16px 0;
   }
 
   // Paragraph
   p {
-    line-height: var(--neeto-ui-leading-relaxed);
+    line-height: var(--neeto-ui-leading-normal);
+    color: rgb(var(--neeto-ui-gray-700));
     margin-bottom: 8px;
 
     &:empty::after {
@@ -96,7 +98,8 @@
 
   // Link
   a[href] {
-    color: rgb(var(--neeto-ui-info));
+    color: rgb(var(--neeto-ui-primary-800));
+    font-weight: 500;
   }
 
   // Embed
@@ -123,7 +126,7 @@
   }
 
   [data-type="mention"] {
-    color: rgb(var(--neeto-ui-info));
+    color: rgb(var(--neeto-ui-primary-800));
   }
 }
 
