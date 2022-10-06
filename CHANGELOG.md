@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/5cc0a55cb3e74f488b187fc3a05076167f126a0b...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/bcade1343ce2fb34fee061c90591fa4c594fc235...HEAD)
+
+## [0.12.9](https://github.com/bigbinary/neeto-editor/compare/5cc0a55cb3e74f488b187fc3a05076167f126a0b...bcade1343ce2fb34fee061c90591fa4c594fc235) - 2022-10-06
+
+- Fixed: Prevented strings with HTML tag structure from getting converted to actual tags.
 
 ## [0.12.8](https://github.com/bigbinary/neeto-editor/compare/1176e9f9b0f6142a3d89cfc44dda546d7745ce5d...5cc0a55cb3e74f488b187fc3a05076167f126a0b) - 2022-10-06
 
