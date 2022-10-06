@@ -8,7 +8,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["image-upload", "Upload images to the editor."],
   ["image-upload-unsplash", "Add unsplash integration to the image upload."],
   ["divider", "Add a horizontal line to separate different sections."],
-  ["video-embed", "Embed videos from YouTube and Vimeo."],
+  ["video-embed", "Embed videos from YouTube, Loom and Vimeo."],
   ["paste-unformatted", "Paste by removing all styles."],
 ];
 
