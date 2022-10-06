@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/1176e9f9b0f6142a3d89cfc44dda546d7745ce5d...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/5cc0a55cb3e74f488b187fc3a05076167f126a0b...HEAD)
+
+## [0.12.8](https://github.com/bigbinary/neeto-editor/compare/1176e9f9b0f6142a3d89cfc44dda546d7745ce5d...5cc0a55cb3e74f488b187fc3a05076167f126a0b) - 2022-10-06
+
+- Added: ability to embed Loom videos.
 
 ## [0.12.7](https://github.com/bigbinary/neeto-editor/compare/f13d8f521f20afaf1bcbaaa19c9fd3f282e0b4db...1176e9f9b0f6142a3d89cfc44dda546d7745ce5d) - 2022-10-05
 
