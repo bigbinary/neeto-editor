@@ -25,7 +25,7 @@ application to test out changes.
 ## Building
 
 The neetoEditor package gets auto-published to npm for every new merge to the
-master branch. You can checkout the `publish` workflow in git actions to get a
+main branch. You can checkout the `publish` workflow in git actions to get a
 live update.
 
 ## Documentation

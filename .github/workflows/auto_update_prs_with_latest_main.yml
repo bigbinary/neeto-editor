@@ -1,4 +1,4 @@
-name: PR-autoupdate-from-master
+name: PR-autoupdate-from-main
 
 on:
   push:

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-prevent_pushing_to_master() {
+prevent_pushing_to_main() {
   current_branch=`git symbolic-ref HEAD`
   current_origin=`git remote`
   if [ current_origin = "origin" -o "$current_branch" = "refs/heads/master" -o "$current_branch" = "refs/heads/main" ]
@@ -14,8 +14,8 @@ Or if you are 100% sure you want to push/commit to master/main branch,
 then pass in the optional --no-verify option with the git command.
 
 Example:
-# Warning: pushing to master is not recommended
-git push origin master --no-verify
+# Warning: pushing to main is not recommended
+git push origin main --no-verify
 ======================================================================================
 EOT
     echo "";
