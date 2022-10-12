@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 
+import { Smiley } from "neetoicons";
+
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
-import { Smiley } from "neetoicons";
 
 import EmojiPickerMenu from "../Emoji/EmojiPicker/EmojiPickerMenu";
 
@@ -23,6 +24,7 @@ const EmojiOption = ({ editor }) => {
         />
       )}
       position="bottom-start"
+      dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
     >
       <Menu>
         <EmojiPickerMenu editor={editor} />

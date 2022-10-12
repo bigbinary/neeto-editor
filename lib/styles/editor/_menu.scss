@@ -37,6 +37,10 @@
     align-items: center;
     margin-left: auto;
   }
+
+  .neeto-editor-fixed-menu__emoji-dropdown {
+    max-height: unset;
+  }
 }
 
 .neeto-editor-variables-suggestion {
