@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/6d3f031cb80818453fdd662a912c92a6a752346e...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/7d17d1dac013e8fb284c7890c7c03451a3a6b873...HEAD)
+
+## [0.12.12](https://github.com/bigbinary/neeto-editor/compare/6d3f031cb80818453fdd662a912c92a6a752346e...7d17d1dac013e8fb284c7890c7c03451a3a6b873) - 2022-10-13
+
+- Fixed: Replaced *replaceAll* method with *replace* with a global flag to support all browsers.
 
 ## [0.12.11](https://github.com/bigbinary/neeto-editor/compare/32d2a68a6acdd6e26a53dbe8dcad687d6148dc36...6d3f031cb80818453fdd662a912c92a6a752346e) - 2022-10-13
 
