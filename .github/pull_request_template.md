@@ -4,11 +4,8 @@ Fixes #issue-number
 
 **Checklist**
 
-- [ ] I have performed a self-review of my code.
 - [ ] I have made corresponding changes to the documentation.
-- [ ] I have added the necessary label (patch/minor/major - If package publish
-      is required).
-- [ ] I have followed the suggested description format and styling.
+- [ ] I have added the necessary label (patch/minor/major - If package publish is required).
 
 **Reviewers**
 

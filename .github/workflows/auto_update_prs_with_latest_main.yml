@@ -3,7 +3,7 @@ name: PR-autoupdate-from-main
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   Auto:
