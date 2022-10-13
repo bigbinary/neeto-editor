@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/32d2a68a6acdd6e26a53dbe8dcad687d6148dc36...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/6d3f031cb80818453fdd662a912c92a6a752346e...HEAD)
+
+## [0.12.11](https://github.com/bigbinary/neeto-editor/compare/32d2a68a6acdd6e26a53dbe8dcad687d6148dc36...6d3f031cb80818453fdd662a912c92a6a752346e) - 2022-10-13
+
+- Removed: the Typography extension.
 
 ## [0.12.10](https://github.com/bigbinary/neeto-editor/compare/bcade1343ce2fb34fee061c90591fa4c594fc235...32d2a68a6acdd6e26a53dbe8dcad687d6148dc36) - 2022-10-13
 
