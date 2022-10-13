@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/bcade1343ce2fb34fee061c90591fa4c594fc235...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/32d2a68a6acdd6e26a53dbe8dcad687d6148dc36...HEAD)
+
+## [0.12.10](https://github.com/bigbinary/neeto-editor/compare/bcade1343ce2fb34fee061c90591fa4c594fc235...32d2a68a6acdd6e26a53dbe8dcad687d6148dc36) - 2022-10-13
+
+- Fixed: Removed second scrollbar from emoji picker.
 
 ## [0.12.9](https://github.com/bigbinary/neeto-editor/compare/5cc0a55cb3e74f488b187fc3a05076167f126a0b...bcade1343ce2fb34fee061c90591fa4c594fc235) - 2022-10-06
 
