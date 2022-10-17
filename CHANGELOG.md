@@ -148,8 +148,7 @@ Prefix the change with one of these keywords:
 
 ## [0.7.0](https://github.com/bigbinary/neeto-editor/compare/9c14f50dc6c292a7352d394d1d5cd89abc6d2e79...8fefa88511ad3bfc06fe9fa59eb2457feb60b9c0) - 2022-08-25
 
-- Changed: **BREAKING** the CDN for editor content styles from https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css
-- to https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
+- Changed: **BREAKING** the CDN for editor content styles from https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor-tiptap@master/dist/editor-content.min.css to https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@master/dist/editor-content.min.css.
 
 ## [0.6.8](https://github.com/bigbinary/neeto-editor/compare/46e63b7aa2c42b9f9cf6db79b96945877b6dc822...0667203f6c28cfff80996a9827fa0e9fb8f0227e) - 2022-08-24
 
