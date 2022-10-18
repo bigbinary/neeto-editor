@@ -31,7 +31,6 @@ const FontSizeOption = ({ editor }) => {
       )}
       className="neeto-editor-font-size-wrapper"
       dropdownProps={{ classNames: "ne-dropdown__popup--auto-width" }}
-      placement="bottom-start"
     >
       <Menu>
         {FONT_SIZE_OPTIONS.map(({ label, value }) => (

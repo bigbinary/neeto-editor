@@ -37,6 +37,7 @@ const FixedMenu = ({
     font: fontStyleOptions,
     block: blockStyleOptions,
     list: listStyleOptions,
+    misc: miscOptions,
   } = buildMenuOptions({ editor, options, setImageUploadVisible });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = fontSizeOptions.length > 0;
@@ -67,9 +68,8 @@ const FixedMenu = ({
       {fontStyleOptions.map(renderOptionButton)}
       {isFontSizeActive && <FontSizeOption editor={editor} />}
       <Separator />
-      {isEmojiActive && <EmojiOption editor={editor} />}
-      {isLinkActive && <LinkOption editor={editor} />}
       {blockStyleOptions.map(renderOptionButton)}
+      {isEmojiActive && <EmojiOption editor={editor} />}
       <Separator />
       {listStyleOptions.map(renderOptionButton)}
       {isImageNodeSelected &&
@@ -91,13 +91,16 @@ const FixedMenu = ({
             data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
           />
         ))}
-      <div className="neeto-editor-fixed-menu__addons">
+      <Separator />
+      {isLinkActive && <LinkOption editor={editor} />}
+      {miscOptions.map(renderOptionButton)}
+      <Mentions
+        editor={editor}
+        mentions={mentions}
+        showImageInMention={showImageInMention}
+      />
+      <div className="neeto-editor-fixed-menu__variables">
         <Variables editor={editor} variables={variables} />
-        <Mentions
-          editor={editor}
-          mentions={mentions}
-          showImageInMention={showImageInMention}
-        />
       </div>
       <Modal
         isOpen={isImageEditorModalOpen}
