@@ -28,6 +28,7 @@ const Variables = ({ editor, variables }) => {
         <MenuButton
           icon={Braces}
           iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
+          color="white"
           tooltipProps={{
             content: "Variables",
             position: "bottom",

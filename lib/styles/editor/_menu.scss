@@ -1,9 +1,10 @@
 .neeto-editor-fixed-menu {
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  overflow-x: auto;
+  overflow: visible;
   border: thin solid rgb(var(--neeto-ui-gray-300));
   border-bottom: none;
   border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
@@ -15,7 +16,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     padding: 8px;
     cursor: pointer;
     transition: var(--neeto-ui-transition);
@@ -32,10 +32,22 @@
     }
   }
 
-  &__addons {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
+  &__variables {
+    position: absolute;
+    right: 8px;
+    bottom: -32px;
+    z-index: 10;
+
+    .neeto-editor-fixed-menu__item {
+      padding: 4px;
+      border-radius: var(--neeto-ui-rounded-sm);
+      background-color: rgb(var(--neeto-ui-gray-800));
+
+      &:hover,
+      &.active {
+        background-color: rgb(var(--neeto-ui-gray-700));
+      }
+    }
   }
 
   &__emoji-dropdown {

@@ -2,6 +2,7 @@ import React from "react";
 
 import classnames from "classnames";
 import PropTypes from "prop-types";
+
 import { generateFocusProps } from "utils/focusProps";
 
 import {
@@ -16,6 +17,7 @@ const MenuButton = ({
   iconActive = true,
   tooltipProps,
   highlight = false,
+  color,
   ...otherProps
 }) => (
   <ToolTip {...tooltipProps}>
@@ -28,7 +30,7 @@ const MenuButton = ({
       {...otherProps}
     >
       <Icon
-        color={iconActive ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE}
+        color={color || (iconActive ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE)}
         size={MENU_ICON_SIZE}
       />
     </button>
