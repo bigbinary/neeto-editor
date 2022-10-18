@@ -1,14 +1,14 @@
-import { EDITOR_OPTIONS } from "constants/common";
-
 import React, { useState } from "react";
 
 import MenuButton from "components/Common/MenuButton";
 import Modal from "components/Common/Modal";
+import { EDITOR_OPTIONS } from "constants/common";
 import { capitalize } from "utils/common";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
+import Separator from "./Separator";
 import { buildMenuOptions } from "./utils";
 
 import { getImageMenuOptions } from "../BubbleMenu/helpers";
@@ -64,11 +64,13 @@ const FixedMenu = ({
 
   return (
     <div className="neeto-editor-fixed-menu">
-      {isFontSizeActive && <FontSizeOption editor={editor} />}
       {fontStyleOptions.map(renderOptionButton)}
+      {isFontSizeActive && <FontSizeOption editor={editor} />}
+      <Separator />
       {isEmojiActive && <EmojiOption editor={editor} />}
       {isLinkActive && <LinkOption editor={editor} />}
       {blockStyleOptions.map(renderOptionButton)}
+      <Separator />
       {listStyleOptions.map(renderOptionButton)}
       {isImageNodeSelected &&
         getImageMenuOptions({
@@ -89,7 +91,7 @@ const FixedMenu = ({
             data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
           />
         ))}
-      <div className="neeto-editor-fixed-menu-addons">
+      <div className="neeto-editor-fixed-menu__addons">
         <Variables editor={editor} variables={variables} />
         <Mentions
           editor={editor}
