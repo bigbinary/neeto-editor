@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
-import MenuButton from "components/Common/MenuButton";
 import Modal from "components/Common/Modal";
 import { EDITOR_OPTIONS } from "constants/common";
-import { capitalize } from "utils/common";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
 import Separator from "./Separator";
-import { buildMenuOptions } from "./utils";
+import { buildMenuOptions, renderOptionButton } from "./utils";
 
 import { getImageMenuOptions } from "../BubbleMenu/helpers";
 import ImageEditor from "../Image/ImageEditor";
@@ -44,25 +42,6 @@ const FixedMenu = ({
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
 
-  const renderOptionButton = (
-    { Icon, command, active, optionName, highlight },
-    index
-  ) => (
-    <MenuButton
-      key={index}
-      icon={Icon}
-      iconActive={active}
-      highlight={highlight}
-      onClick={command}
-      tooltipProps={{
-        content: capitalize(optionName),
-        position: "bottom",
-        delay: [500],
-      }}
-      data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
-    />
-  );
-
   return (
     <div className="neeto-editor-fixed-menu">
       {fontStyleOptions.map(renderOptionButton)}
@@ -77,20 +56,7 @@ const FixedMenu = ({
           editor,
           isImageEditorModalOpen,
           setIsImageEditorModalOpen,
-        }).map(({ Icon, command, active, optionName }, index) => (
-          <MenuButton
-            key={index}
-            icon={Icon}
-            iconActive={active}
-            onClick={command}
-            tooltipProps={{
-              content: capitalize(optionName),
-              position: "bottom",
-              delay: [500],
-            }}
-            data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
-          />
-        ))}
+        }).map(renderOptionButton)}
       <Separator />
       {isLinkActive && <LinkOption editor={editor} />}
       {miscOptions.map(renderOptionButton)}
