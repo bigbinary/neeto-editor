@@ -3,13 +3,16 @@ import React, { useState } from "react";
 import Tippy from "@tippyjs/react";
 import { Down } from "neetoicons";
 
+import LinkOption from "./LinkOption";
 import {
   getNodeType,
-  getTextMenuDefaultOptions,
   getTextMenuDropdownOptions,
-} from "./helpers";
-import LinkOption from "./LinkOption";
-import Option from "./Option";
+  renderOptionButton,
+} from "./utils";
+
+import EmojiOption from "../FixedMenu/EmojiOption";
+import Separator from "../FixedMenu/Separator";
+import { buildMenuOptions } from "../FixedMenu/utils";
 
 const TextOptions = ({
   editor,
@@ -20,12 +23,15 @@ const TextOptions = ({
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const fixedOptions = getTextMenuDefaultOptions({
-    editor,
-    setIsLinkOptionActive,
-  }).filter(({ optionName }) => options.includes(optionName));
   const dropdownOptions = getTextMenuDropdownOptions({ editor });
   const nodeType = getNodeType(dropdownOptions);
+
+  const {
+    font: fontStyleOptions,
+    block: blockStyleOptions,
+    list: listStyleOptions,
+    misc: miscOptions,
+  } = buildMenuOptions({ editor, options, setImageUploadVisible: () => {} });
 
   const handleAnimateInvalidLink = () => {
     setIsInvalidLink(true);
@@ -81,9 +87,20 @@ const TextOptions = ({
           <Down size={14} />
         </button>
       </Tippy>
-      {fixedOptions.map(option => (
-        <Option {...option} key={option.optionName} />
-      ))}
+      <Separator />
+      {fontStyleOptions.map(renderOptionButton)}
+      <Separator />
+      {blockStyleOptions.map(renderOptionButton)}
+      <EmojiOption editor={editor} theme="dark" />
+      <Separator />
+      {listStyleOptions.map(renderOptionButton)}
+      <Separator />
+      {/* <LinkOption
+        editor={editor}
+        handleClose={handleClose}
+        handleAnimateInvalidLink={handleAnimateInvalidLink}
+      /> */}
+      {miscOptions.map(renderOptionButton)}
     </>
   );
 };

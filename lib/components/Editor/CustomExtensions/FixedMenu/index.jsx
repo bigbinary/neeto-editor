@@ -9,7 +9,7 @@ import LinkOption from "./LinkOption";
 import Separator from "./Separator";
 import { buildMenuOptions, renderOptionButton } from "./utils";
 
-import { getImageMenuOptions } from "../BubbleMenu/helpers";
+import { getImageMenuOptions } from "../BubbleMenu/utils";
 import ImageEditor from "../Image/ImageEditor";
 import Mentions from "../Mention";
 import Variables from "../Variable";

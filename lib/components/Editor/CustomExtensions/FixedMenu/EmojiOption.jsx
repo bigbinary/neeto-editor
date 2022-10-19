@@ -7,7 +7,7 @@ import MenuButton from "components/Common/MenuButton";
 
 import EmojiPickerMenu from "../Emoji/EmojiPicker/EmojiPickerMenu";
 
-const EmojiOption = ({ editor }) => {
+const EmojiOption = ({ editor, theme = "light" }) => {
   const dropdownRef = useRef();
   const { Menu } = Dropdown;
 
@@ -21,6 +21,7 @@ const EmojiOption = ({ editor }) => {
           iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
           tooltipProps={{ content: "Emoji", position: "bottom", delay: [500] }}
           data-cy="neeto-editor-fixed-menu-emoji-option-button"
+          color={theme === "dark" && "white"}
         />
       )}
       position="bottom-start"

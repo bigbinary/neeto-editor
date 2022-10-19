@@ -1,11 +1,11 @@
-import { EDITOR_OPTIONS } from "constants/common";
-
 import React, { useState } from "react";
 
 import { BubbleMenu as BubbleMenuTipTap } from "@tiptap/react";
 import classnames from "classnames";
 import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
+
+import { EDITOR_OPTIONS } from "constants/common";
 import { isNilOrEmpty } from "utils/common";
 
 import ImageEditorModal from "./ImageEditorModal";
@@ -43,7 +43,7 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
           zIndex: 99999,
           onHide: () => setIsLinkOptionActive(false),
           theme: "neeto-editor-bubble-menu",
-          maxWidth: 384,
+          maxWidth: 500,
         }}
         className={classnames("neeto-editor-bubble-menu", {
           "neeto-editor-bubble-menu-animate-shake": isInvalidLink,

@@ -1,7 +1,4 @@
-import React from "react";
-
-import { getImageMenuOptions } from "./helpers";
-import Option from "./Option";
+import { getImageMenuOptions, renderOptionButton } from "./utils";
 
 const ImageOptions = ({
   editor,
@@ -12,6 +9,6 @@ const ImageOptions = ({
     editor,
     isImageEditorModalOpen,
     setIsImageEditorModalOpen,
-  }).map(option => <Option key={option.optionName} {...option} />);
+  }).map(renderOptionButton);
 
 export default ImageOptions;

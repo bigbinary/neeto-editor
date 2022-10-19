@@ -22,7 +22,7 @@ const MenuButton = ({
 }) => (
   <ToolTip {...tooltipProps}>
     <button
-      className={classnames("neeto-editor-fixed-menu__item", {
+      className={classnames("neeto-editor-menu__item", {
         active: iconActive,
       })}
       type="button"

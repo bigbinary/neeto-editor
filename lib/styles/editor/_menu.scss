@@ -11,27 +11,6 @@
   background-color: rgb(var(--neeto-ui-gray-100));
   @include scrollbars(4px);
 
-  &__item {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    cursor: pointer;
-    transition: var(--neeto-ui-transition);
-
-    &:hover,
-    &.active {
-      background-color: rgb(var(--neeto-ui-gray-300));
-    }
-
-    input[type="color"] {
-      visibility: hidden;
-      height: 0;
-      width: 0;
-    }
-  }
-
   &__variables {
     position: absolute;
     right: 8px;
@@ -66,6 +45,27 @@
     span:first-child {
       border-right: 1px solid rgb(var(--neeto-ui-gray-200));
     }
+  }
+}
+
+.neeto-editor-menu__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  transition: var(--neeto-ui-transition);
+
+  &:hover,
+  &.active {
+    background-color: rgb(var(--neeto-ui-gray-300));
+  }
+
+  input[type="color"] {
+    visibility: hidden;
+    height: 0;
+    width: 0;
   }
 }
 
@@ -149,26 +149,13 @@
   align-items: center;
   border-radius: var(--neeto-ui-rounded);
   background: rgb(var(--neeto-ui-gray-800));
+  padding: 0 4px;
 
-  .neeto-editor-bubble-menu__item {
-    padding: 8px;
-    cursor: pointer;
-    transition: var(--neeto-ui-transition);
-
+  .neeto-editor-menu__item {
     &:hover,
     &:active,
     &.active {
       background-color: rgb(var(--neeto-ui-gray-700));
-    }
-
-    &:first-child {
-      border-top-left-radius: var(--neeto-ui-rounded);
-      border-bottom-left-radius: var(--neeto-ui-rounded);
-    }
-
-    &:last-child {
-      border-top-right-radius: var(--neeto-ui-rounded);
-      border-bottom-right-radius: var(--neeto-ui-rounded);
     }
   }
 
@@ -204,7 +191,7 @@
     align-items: center;
     gap: 4px;
     white-space: nowrap;
-    font-size: var(--neeto-ui-text-sm);
+    font-size: var(--neeto-ui-text-xs);
     line-height: var(--neeto-ui-leading-normal);
   }
 
