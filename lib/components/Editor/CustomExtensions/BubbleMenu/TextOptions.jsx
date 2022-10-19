@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
 import Tippy from "@tippyjs/react";
-import { Down } from "neetoicons";
+import { Down, Link } from "neetoicons";
+
+import { EDITOR_OPTIONS } from "constants/common";
 
 import LinkOption from "./LinkOption";
 import {
@@ -25,7 +27,8 @@ const TextOptions = ({
 
   const dropdownOptions = getTextMenuDropdownOptions({ editor });
   const nodeType = getNodeType(dropdownOptions);
-
+  const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
+  const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
   const {
     font: fontStyleOptions,
     block: blockStyleOptions,
@@ -91,15 +94,17 @@ const TextOptions = ({
       {fontStyleOptions.map(renderOptionButton)}
       <Separator />
       {blockStyleOptions.map(renderOptionButton)}
-      <EmojiOption editor={editor} theme="dark" />
+      {isEmojiActive && <EmojiOption editor={editor} theme="dark" />}
       <Separator />
       {listStyleOptions.map(renderOptionButton)}
       <Separator />
-      {/* <LinkOption
-        editor={editor}
-        handleClose={handleClose}
-        handleAnimateInvalidLink={handleAnimateInvalidLink}
-      /> */}
+      {isLinkActive &&
+        renderOptionButton({
+          Icon: Link,
+          command: () => setIsLinkOptionActive(true),
+          active: editor.isActive("link"),
+          optionName: "link",
+        })}
       {miscOptions.map(renderOptionButton)}
     </>
   );

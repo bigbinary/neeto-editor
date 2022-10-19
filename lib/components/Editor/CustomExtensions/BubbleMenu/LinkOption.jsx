@@ -1,9 +1,9 @@
-import { UrlRegExp } from "constants/regexp";
-
 import React, { useEffect, useState } from "react";
 
-import Button from "components/Common/Button";
 import { Close } from "neetoicons";
+
+import Button from "components/Common/Button";
+import { UrlRegExp } from "constants/regexp";
 import { isNilOrEmpty } from "utils/common";
 
 const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
@@ -56,7 +56,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
       />
       <Button
         style="icon"
-        icon={Close}
+        icon={() => <Close size={16} />}
         onClick={handleReset}
         data-cy="neeto-editor-link-cancel-button"
       />

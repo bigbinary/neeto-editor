@@ -160,15 +160,18 @@
   }
 
   .neeto-editor-bubble-menu__link {
+    width: 256px;
     display: flex;
     align-items: center;
-    padding: 8px;
+    justify-content: space-between;
+    padding: 6px;
     gap: 8px;
 
     .neeto-editor-bubble-menu-link__input {
       background-color: transparent;
       outline: none;
       line-height: 20px;
+      width: 100%;
 
       &::placeholder {
         color: rgba(var(--neeto-ui-white, 0.4));
