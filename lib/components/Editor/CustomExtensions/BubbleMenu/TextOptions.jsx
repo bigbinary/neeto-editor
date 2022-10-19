@@ -15,10 +15,13 @@ import {
 import EmojiOption from "../FixedMenu/EmojiOption";
 import Separator from "../FixedMenu/Separator";
 import { buildMenuOptions } from "../FixedMenu/utils";
+import Mentions from "../Mention";
 
 const TextOptions = ({
   editor,
   options,
+  mentions,
+  showImageInMention,
   setIsInvalidLink,
   isLinkOptionActive,
   setIsLinkOptionActive,
@@ -33,7 +36,6 @@ const TextOptions = ({
     font: fontStyleOptions,
     block: blockStyleOptions,
     list: listStyleOptions,
-    misc: miscOptions,
   } = buildMenuOptions({ editor, options, setImageUploadVisible: () => {} });
 
   const handleAnimateInvalidLink = () => {
@@ -105,7 +107,12 @@ const TextOptions = ({
           active: editor.isActive("link"),
           optionName: "link",
         })}
-      {miscOptions.map(renderOptionButton)}
+      <Mentions
+        menuType="bubble"
+        editor={editor}
+        mentions={mentions}
+        showImageInMention={showImageInMention}
+      />
     </>
   );
 };

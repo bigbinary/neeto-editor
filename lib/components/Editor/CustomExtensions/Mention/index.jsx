@@ -9,7 +9,12 @@ import MenuButton from "components/Common/MenuButton";
 
 import { formatMentions } from "./helpers";
 
-const Mentions = ({ editor, mentions, showImageInMention }) => {
+const Mentions = ({
+  editor,
+  mentions,
+  showImageInMention,
+  menuType = "fixed",
+}) => {
   const dropdownRef = useRef();
   const formattedMentions = formatMentions(mentions, showImageInMention);
   const { Menu, MenuItem } = Dropdown;
@@ -28,6 +33,7 @@ const Mentions = ({ editor, mentions, showImageInMention }) => {
             position: "bottom",
             delay: [500],
           }}
+          color={menuType === "bubble" && "white"}
           data-cy="neeto-editor-mention-option"
         />
       )}
