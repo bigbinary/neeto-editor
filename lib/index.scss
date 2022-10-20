@@ -2,7 +2,6 @@
 @import "./styles/abstracts/normalize";
 @import "./styles/abstracts/base";
 @import "./styles/abstracts/neeto-ui-variables";
-@import "./styles/abstracts/mixins";
 @import "./styles/abstracts/root";
 @import "./styles/abstracts/theme";
 @import "./styles/abstracts/animations";
@@ -41,8 +40,6 @@ code {
 }
 
 .ProseMirror {
-  @include scrollbars(4px);
-
   overflow-y: auto;
   height: 100%;
   white-space: break-spaces;

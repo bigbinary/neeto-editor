@@ -8,7 +8,6 @@
   border-bottom: none;
   border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
   background-color: rgb(var(--neeto-ui-gray-100));
-  @include scrollbars(4px);
 
   .neeto-editor-fixed-menu__item {
     display: flex;

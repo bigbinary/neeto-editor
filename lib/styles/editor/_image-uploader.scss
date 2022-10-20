@@ -122,7 +122,6 @@
       max-height: 50vh;
       overflow-y: auto;
       overflow-x: hidden;
-      @include scrollbars(4px);
     }
 
     .neeto-editor-unsplash-gallery {
