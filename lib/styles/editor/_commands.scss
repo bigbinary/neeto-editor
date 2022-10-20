@@ -11,8 +11,6 @@
   align-items: flex-start;
   gap: 4px;
 
-  @include scrollbars(4px);
-
   .neeto-editor-slash-commands__item {
     width: 100%;
     display: flex;
@@ -50,8 +48,6 @@
   width: 208px;
   max-height: 256px;
   overflow-y: auto;
-
-  @include scrollbars(4px);
 
   .neeto-editor-mentions__item {
     display: flex;
