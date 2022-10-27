@@ -1,66 +1,10 @@
-import {
-  TextBold,
-  TextItalic,
-  Underline,
-  TextCross,
-  Link,
-  Code,
-  Highlight,
-  CenterAlign,
-  LeftAlign,
-  RightAlign,
-  Edit,
-  Close,
-} from "neetoicons";
+import React from "react";
+
+import { CenterAlign, LeftAlign, RightAlign, Edit, Close } from "neetoicons";
 import { prop } from "ramda";
 
-export const getTextMenuDefaultOptions = ({
-  editor,
-  setIsLinkOptionActive,
-}) => [
-  {
-    Icon: TextBold,
-    command: () => editor.chain().focus().toggleBold().run(),
-    active: editor.isActive("bold"),
-    optionName: "bold",
-  },
-  {
-    Icon: TextItalic,
-    command: () => editor.chain().focus().toggleItalic().run(),
-    active: editor.isActive("italic"),
-    optionName: "italic",
-  },
-  {
-    Icon: Underline,
-    command: () => editor.chain().focus().toggleUnderline().run(),
-    active: editor.isActive("underline"),
-    optionName: "underline",
-  },
-  {
-    Icon: TextCross,
-    command: () => editor.chain().focus().toggleStrike().run(),
-    active: editor.isActive("strike"),
-    optionName: "strike",
-  },
-  {
-    Icon: Link,
-    command: () => setIsLinkOptionActive(true),
-    active: editor.isActive("link"),
-    optionName: "link",
-  },
-  {
-    Icon: Code,
-    command: () => editor.chain().focus().toggleCode().run(),
-    active: editor.isActive("code"),
-    optionName: "code-block",
-  },
-  {
-    Icon: Highlight,
-    command: () => editor.chain().focus().toggleHighlight().run(),
-    active: editor.isActive("highlight"),
-    optionName: "highlight",
-  },
-];
+import MenuButton from "components/Common/MenuButton";
+import { humanize } from "utils/common";
 
 export const getTextMenuDropdownOptions = ({ editor }) => [
   {
@@ -92,7 +36,7 @@ export const getTextMenuDropdownOptions = ({ editor }) => [
     command: () => editor.chain().focus().toggleBulletList().run(),
   },
   {
-    optionName: "Paragraph",
+    optionName: "Text",
     active: editor.isActive("paragraph"),
     command: () => editor.chain().focus().setNode("paragraph").run(),
   },
@@ -169,4 +113,28 @@ export const getImageMenuOptions = ({
 ];
 
 export const getNodeType = options =>
-  options.find(prop("active"))?.optionName || "Paragraph";
+  options.find(prop("active"))?.optionName || "Text";
+
+export const renderOptionButton = ({
+  Icon,
+  command,
+  active,
+  optionName,
+  highlight,
+}) => (
+  <MenuButton
+    color="white"
+    data-cy={`neeto-editor-bubble-menu-${optionName}-option`}
+    highlight={highlight}
+    icon={Icon}
+    iconActive={active}
+    key={optionName}
+    tooltipProps={{
+      content: humanize(optionName),
+      position: "bottom",
+      theme: "dark",
+      delay: [500],
+    }}
+    onClick={command}
+  />
+);

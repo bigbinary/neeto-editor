@@ -1,44 +1,70 @@
 .neeto-editor-fixed-menu {
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  overflow-x: auto;
+  overflow: visible;
   border: thin solid rgb(var(--neeto-ui-gray-300));
   border-bottom: none;
   border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
   background-color: rgb(var(--neeto-ui-gray-100));
 
-  .neeto-editor-fixed-menu__item {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  &__variables {
+    position: absolute;
+    right: 8px;
+    bottom: -32px;
+    z-index: 10;
 
-    padding: 10px;
-    cursor: pointer;
-    transition: var(--neeto-ui-transition);
+    .neeto-editor-menu__item {
+      padding: 4px;
+      border-radius: var(--neeto-ui-rounded-sm);
+      background-color: rgb(var(--neeto-ui-gray-800));
 
-    &:hover,
-    &.active {
-      background-color: rgb(var(--neeto-ui-gray-200));
-    }
-
-    input[type="color"] {
-      visibility: hidden;
-      height: 0;
-      width: 0;
+      &:hover,
+      &.active {
+        background-color: rgb(var(--neeto-ui-gray-700));
+      }
     }
   }
 
-  .neeto-editor-fixed-menu-addons {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-  }
-
-  .neeto-editor-fixed-menu__emoji-dropdown {
+  &__emoji-dropdown {
     max-height: unset;
+  }
+
+  &__separator {
+    display: flex;
+    height: 28px;
+    width: 32px;
+
+    span {
+      width: 100%;
+    }
+
+    span:first-child {
+      border-right: 1px solid rgb(var(--neeto-ui-gray-200));
+    }
+  }
+}
+
+.neeto-editor-menu__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  cursor: pointer;
+  transition: var(--neeto-ui-transition);
+
+  &:hover,
+  &.active {
+    background-color: rgb(var(--neeto-ui-gray-300));
+  }
+
+  input[type="color"] {
+    visibility: hidden;
+    height: 0;
+    width: 0;
   }
 }
 
@@ -122,39 +148,29 @@
   align-items: center;
   border-radius: var(--neeto-ui-rounded);
   background: rgb(var(--neeto-ui-gray-800));
+  padding: 0 4px;
 
-  .neeto-editor-bubble-menu__item {
-    padding: 8px;
-    cursor: pointer;
-    transition: var(--neeto-ui-transition);
-
+  .neeto-editor-menu__item {
     &:hover,
     &:active,
     &.active {
       background-color: rgb(var(--neeto-ui-gray-700));
     }
-
-    &:first-child {
-      border-top-left-radius: var(--neeto-ui-rounded);
-      border-bottom-left-radius: var(--neeto-ui-rounded);
-    }
-
-    &:last-child {
-      border-top-right-radius: var(--neeto-ui-rounded);
-      border-bottom-right-radius: var(--neeto-ui-rounded);
-    }
   }
 
   .neeto-editor-bubble-menu__link {
+    width: 256px;
     display: flex;
     align-items: center;
-    padding: 8px;
+    justify-content: space-between;
+    padding: 6px;
     gap: 8px;
 
     .neeto-editor-bubble-menu-link__input {
       background-color: transparent;
       outline: none;
       line-height: 20px;
+      width: 100%;
 
       &::placeholder {
         color: rgba(var(--neeto-ui-white, 0.4));
@@ -177,7 +193,7 @@
     align-items: center;
     gap: 4px;
     white-space: nowrap;
-    font-size: var(--neeto-ui-text-sm);
+    font-size: var(--neeto-ui-text-xs);
     line-height: var(--neeto-ui-leading-normal);
   }
 

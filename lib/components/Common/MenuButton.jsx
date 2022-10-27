@@ -17,19 +17,20 @@ const MenuButton = ({
   iconActive = true,
   tooltipProps,
   highlight = false,
+  color,
   ...otherProps
 }) => (
   <ToolTip {...tooltipProps}>
     <button
       type="button"
-      className={classnames("neeto-editor-fixed-menu__item", {
+      className={classnames("neeto-editor-menu__item", {
         active: iconActive,
       })}
       {...generateFocusProps(highlight)}
       {...otherProps}
     >
       <Icon
-        color={iconActive ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE}
+        color={color || (iconActive ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE)}
         size={MENU_ICON_SIZE}
       />
     </button>
