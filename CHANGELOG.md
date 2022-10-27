@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/265a30e94c1d5d9fe7cd539d68298ba62e0726a7...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/d84582d57cc3b79ba8ec87f766ae328ae46a975a...HEAD)
+
+## [0.12.16](https://github.com/bigbinary/neeto-editor/compare/265a30e94c1d5d9fe7cd539d68298ba62e0726a7...d84582d57cc3b79ba8ec87f766ae328ae46a975a) - 2022-10-20
+
+- Fixed: Bumped Tiptap packages.
 
 ## [0.12.14](https://github.com/bigbinary/neeto-editor/compare/67d30c48e1852c4e67ff9a8ebd1d47233ea0b535...265a30e94c1d5d9fe7cd539d68298ba62e0726a7) - 2022-10-20
 
