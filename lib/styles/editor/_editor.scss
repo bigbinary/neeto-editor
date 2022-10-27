@@ -10,8 +10,13 @@
   max-width: 100% !important;
   border-radius: var(--neeto-ui-rounded);
   white-space: pre-wrap;
-  padding: 12px;
+  padding: 16px;
   color: rgb(var(--neeto-ui-gray-800));
+
+  ::selection {
+    color: rgb(var(--neeto-ui-white));
+    background-color: rgb(var(--neeto-ui-primary-500));
+  }
 
   &:focus {
     outline: none;

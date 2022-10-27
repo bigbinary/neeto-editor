@@ -12,7 +12,12 @@ import ImageEditorModal from "./ImageEditorModal";
 import ImageOptions from "./ImageOptions";
 import TextOptions from "./TextOptions";
 
-const BubbleMenu = ({ editor, options: textOptions }) => {
+const BubbleMenu = ({
+  editor,
+  options: textOptions,
+  mentions,
+  showImageInMention,
+}) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
   const [isImageEditorModalOpen, setIsImageEditorModalOpen] = useState(false);
@@ -47,7 +52,7 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
           zIndex: 99999,
           onHide: () => setIsLinkOptionActive(false),
           theme: "neeto-editor-bubble-menu",
-          maxWidth: 384,
+          maxWidth: 500,
         }}
       >
         {isImageNodeSelected ? (
@@ -61,6 +66,8 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
             editor={editor}
             isLinkOptionActive={isLinkOptionActive}
             options={textOptions}
+            mentions={mentions}
+            showImageInMention={showImageInMention}
             setIsInvalidLink={setIsInvalidLink}
             setIsLinkOptionActive={setIsLinkOptionActive}
           />

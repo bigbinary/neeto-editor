@@ -7,7 +7,7 @@ import MenuButton from "components/Common/MenuButton";
 
 import EmojiPickerMenu from "../Emoji/EmojiPicker/EmojiPickerMenu";
 
-const EmojiOption = ({ editor }) => {
+const EmojiOption = ({ editor, theme = "light" }) => {
   const dropdownRef = useRef();
   const { Menu } = Dropdown;
 
@@ -23,6 +23,7 @@ const EmojiOption = ({ editor }) => {
           icon={Smiley}
           iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
           tooltipProps={{ content: "Emoji", position: "bottom", delay: [500] }}
+          color={theme === "dark" && "white"}
         />
       )}
     >

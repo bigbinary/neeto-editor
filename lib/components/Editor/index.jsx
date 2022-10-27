@@ -158,7 +158,12 @@ const Editor = (
         />
       )}
       {isBubbleMenuActive && (
-        <BubbleMenu editor={editor} options={addonOptions} />
+        <BubbleMenu
+          editor={editor}
+          options={addonOptions}
+          mentions={mentions}
+          showImageInMention={showImageInMention}
+        />
       )}
       <ImageUploader
         editor={editor}

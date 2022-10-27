@@ -1,31 +1,43 @@
 import React, { useState } from "react";
 
 import Tippy from "@tippyjs/react";
-import { Down } from "neetoicons";
+import { Down, Link } from "neetoicons";
+
+import { EDITOR_OPTIONS } from "common/constants";
 
 import LinkOption from "./LinkOption";
-import Option from "./Option";
 import {
   getNodeType,
-  getTextMenuDefaultOptions,
   getTextMenuDropdownOptions,
+  renderOptionButton,
 } from "./utils";
+
+import EmojiOption from "../FixedMenu/EmojiOption";
+import Separator from "../FixedMenu/Separator";
+import { buildMenuOptions } from "../FixedMenu/utils";
+import Mentions from "../Mention";
+import { noop } from "utils/common";
 
 const TextOptions = ({
   editor,
   options,
+  mentions,
+  showImageInMention,
   setIsInvalidLink,
   isLinkOptionActive,
   setIsLinkOptionActive,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const fixedOptions = getTextMenuDefaultOptions({
-    editor,
-    setIsLinkOptionActive,
-  }).filter(({ optionName }) => options.includes(optionName));
   const dropdownOptions = getTextMenuDropdownOptions({ editor });
   const nodeType = getNodeType(dropdownOptions);
+  const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
+  const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
+  const {
+    font: fontStyleOptions,
+    block: blockStyleOptions,
+    list: listStyleOptions,
+  } = buildMenuOptions({ editor, options, setIsImageUploadVisible: noop });
 
   const handleAnimateInvalidLink = () => {
     setIsInvalidLink(true);
@@ -81,9 +93,28 @@ const TextOptions = ({
           <Down size={14} />
         </button>
       </Tippy>
-      {fixedOptions.map(option => (
-        <Option {...option} key={option.optionName} />
-      ))}
+      <Separator />
+      {fontStyleOptions.map(renderOptionButton)}
+      <Separator />
+      {blockStyleOptions.map(renderOptionButton)}
+      {isEmojiActive && <EmojiOption editor={editor} theme="dark" />}
+      <Separator />
+      {listStyleOptions.map(renderOptionButton)}
+      <Separator />
+      {isLinkActive &&
+        renderOptionButton({
+          Icon: Link,
+          command: () => setIsLinkOptionActive(true),
+          active: editor.isActive("link"),
+          optionName: "link",
+          highlight: false,
+        })}
+      <Mentions
+        editor={editor}
+        mentions={mentions}
+        menuType="bubble"
+        showImageInMention={showImageInMention}
+      />
     </>
   );
 };
