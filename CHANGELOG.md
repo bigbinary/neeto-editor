@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/d84582d57cc3b79ba8ec87f766ae328ae46a975a...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/011b7fbff30966def6c2b71907c66bb02c8a78e0...HEAD)
+
+## [0.12.17](https://github.com/bigbinary/neeto-editor/compare/d84582d57cc3b79ba8ec87f766ae328ae46a975a...011b7fbff30966def6c2b71907c66bb02c8a78e0) - 2022-10-31
+
+- Fixed: Removed unnecessary tooltips when typing or pasting content with suggestion triggers.
 
 ## [0.12.16](https://github.com/bigbinary/neeto-editor/compare/265a30e94c1d5d9fe7cd539d68298ba62e0726a7...d84582d57cc3b79ba8ec87f766ae328ae46a975a) - 2022-10-20
 
