@@ -69,7 +69,7 @@ const Avatar = ({
     "ne-avatar__text-xlarge": isExtraLarge,
   });
 
-  const statusClasses = classNames("ne-avatar__status", `${status}`, {
+  const statusClasses = classNames("ne-avatar__status", status, {
     "ne-avatar__status-medium": isMedium,
     "ne-avatar__status-large": isLarge,
     "ne-avatar__status-xlarge": isExtraLarge,

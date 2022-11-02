@@ -1157,6 +1157,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@bigbinary/eslint-plugin-neeto@1.0.15":
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/@bigbinary/eslint-plugin-neeto/-/eslint-plugin-neeto-1.0.15.tgz#6d89a6c6e5db688ee76f16514c2b51be3285846a"
+  integrity sha512-PlKdPo8fsgLq9TIwDBRgw07V/xwTwYkrK9j0IfkUVMpbRhHk/MFDuDX4z+dha/WB9IV0lEDatVmrxzE4CJgQpw==
+
 "@bigbinary/neeto-icons@1.8.39":
   version "1.8.39"
   resolved "https://registry.yarnpkg.com/@bigbinary/neeto-icons/-/neeto-icons-1.8.39.tgz#102e78d87f2e0052be9c0d70e6cdc495ec85af55"

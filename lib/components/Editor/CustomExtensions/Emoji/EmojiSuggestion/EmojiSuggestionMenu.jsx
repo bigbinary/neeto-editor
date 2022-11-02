@@ -1,9 +1,9 @@
 import React from "react";
 
-import axios from "axios";
 import classnames from "classnames";
 import { init, SearchIndex } from "emoji-mart";
 
+import emojiPickerApi from "apis/emoji_picker";
 import Loader from "components/Common/Loader";
 import { isNilOrEmpty } from "utils/common";
 
@@ -32,9 +32,7 @@ class EmojiSuggestionMenu extends React.Component {
   fetchEmojiData = async () => {
     this.setState({ isLoading: true });
     try {
-      const { data } = await axios.get(
-        "https://cdn.jsdelivr.net/npm/@emoji-mart/data"
-      );
+      const { data } = await emojiPickerApi.fetch();
       this.setState({ isLoading: false });
 
       return data;

@@ -15,7 +15,7 @@ module.exports = {
     // not-auto-fixable: Prevent definitions of unused prop types.
     "react/no-unused-prop-types": "error",
     // not-auto-fixable: Report missing key props in iterators/collection literals. Important rule!
-    "react/jsx-key": "error",
+    "react/jsx-key": ["error", { checkFragmentShorthand: true }],
     // not-auto-fixable: Enforce no duplicate props.
     "react/jsx-no-duplicate-props": "error",
     // not-auto-fixable: Disallow undeclared variables in JSX.

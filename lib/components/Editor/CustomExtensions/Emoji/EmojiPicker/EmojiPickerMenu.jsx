@@ -1,8 +1,9 @@
 import React from "react";
 
-import axios from "axios";
 import { Picker } from "emoji-mart";
 import PropTypes from "prop-types";
+
+import emojiPickerApi from "apis/emoji_picker";
 
 class EmojiPickerMenu extends React.Component {
   ref = React.createRef();
@@ -23,9 +24,7 @@ class EmojiPickerMenu extends React.Component {
 
   fetchEmojiData = async () => {
     try {
-      const { data } = await axios.get(
-        "https://cdn.jsdelivr.net/npm/@emoji-mart/data"
-      );
+      const { data } = await emojiPickerApi.fetch();
 
       return data;
     } catch {

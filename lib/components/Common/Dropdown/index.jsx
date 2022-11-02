@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Tippy from "@tippyjs/react";
 import classnames from "classnames";
 import { Down } from "neetoicons";
+import { isNil } from "ramda";
 
 import Divider from "./Divider";
 import Menu from "./Menu";
@@ -105,7 +106,7 @@ const Dropdown = React.forwardRef(
     const [instance, setInstance] = useState(null);
     const [mounted, setMounted] = useState(false);
 
-    const isControlled = !(isOpen === undefined || isOpen === null);
+    const isControlled = !isNil(isOpen);
 
     const controlledProps = isControlled
       ? {

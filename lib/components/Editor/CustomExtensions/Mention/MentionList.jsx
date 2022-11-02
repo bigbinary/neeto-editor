@@ -1,6 +1,7 @@
 import React from "react";
 
 import classNames from "classnames";
+import { isEmpty } from "ramda";
 
 import Avatar from "components/Common/Avatar";
 import { scrollHandler } from "utils/scrollhandler";
@@ -84,7 +85,7 @@ export class MentionList extends React.Component {
     const { selectedIndex } = this.state;
     const { items } = this.props;
 
-    if (items.length === 0) {
+    if (isEmpty(items)) {
       return (
         <div className="neeto-editor-mentions__wrapper">
           <p className="neeto-editor-mentions__item">No Results</p>

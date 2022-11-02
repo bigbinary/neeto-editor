@@ -28,6 +28,7 @@ module.exports = {
     "./.eslint-rules/promise",
     "prettier",
     "plugin:storybook/recommended",
+    "./.eslint-rules/neeto",
   ],
   settings: {
     react: {
@@ -57,6 +58,7 @@ module.exports = {
     "promise",
     "jam3",
     "unused-imports",
+    "@bigbinary/neeto",
   ],
   rules: {
     // auto-fixable: Respect all Prettier rules and apply it.
@@ -77,6 +79,8 @@ module.exports = {
     "no-console": "error",
     // not-auto-fixable: require `return` statements to either always or never specify values.
     "consistent-return": "error",
+    // auto-fixable: disallows repeating variable name when declaring object properties.
+    "object-shorthand": "error",
     // auto-fixable: sadly this doesn't support guard clauses yet.
     "padding-line-between-statements": [
       "error",
@@ -135,12 +139,14 @@ module.exports = {
     "prefer-template": "error",
     // auto-fixable: Disallows ternary operators when simpler alternatives exist.
     "no-unneeded-ternary": ["error", { defaultAssignment: false }],
-    // auto-fixable: Partially fixable. Prefer {x} over {x: x}.
-    "object-shorthand": [
-      "error",
-      "always",
-      { avoidQuotes: true, ignoreConstructors: true },
-    ],
+    // not-auto-fixable: Enforces declaring default params last
+    "default-param-last": "error",
+    // not-auto-fixable: Remove redundant async-awaits
+    "no-return-await": "warn",
+    // not-auto-fixable: Disallow empty block statements
+    "no-empty": ["error", { allowEmptyCatch: true }],
+    // not-auto-fixable: Enforce return statements in callbacks of array methods.
+    "array-callback-return": ["error"],
     // auto-fixable: Partially fixable. Unless there's a need to the this keyword, there's no advantage of using a plain function.
     "prefer-arrow-callback": ["error", { allowUnboundThis: true }],
     // not-auto-fixable: Convert multiple imports from same module into a single import.
