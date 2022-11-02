@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 
 import Tippy from "@tippyjs/react";
 import classnames from "classnames";
+
 import { isNilOrEmpty } from "utils/common";
 import { scrollHandler } from "utils/scrollhandler";
 
@@ -98,17 +99,17 @@ class Menu extends React.Component {
     const isCurrentMenuActive = menuIndex === activeMenuIndex;
 
     return (
-      <div ref={this.menuRef} className="neeto-editor-slash-commands__wrapper">
+      <div className="neeto-editor-slash-commands__wrapper" ref={this.menuRef}>
         {items.map((item, index) => {
           const isLeafNode = isNilOrEmpty(item.items);
 
           const nodeElement = (
             <MenuItem
-              key={item.title}
-              item={item}
               index={index}
-              selectedIndex={isCurrentMenuActive ? selectedIndex : -1}
+              item={item}
+              key={item.title}
               selectItem={() => isLeafNode && this.selectItem(index)}
+              selectedIndex={isCurrentMenuActive ? selectedIndex : -1}
               onHover={() => this.setState({ selectedIndex: index })}
             />
           );
@@ -117,9 +118,10 @@ class Menu extends React.Component {
 
           return (
             <Tippy
-              key={item.title}
               interactive
+              key={item.title}
               placement="right"
+              visible={selectedIndex === index}
               content={
                 <Menu
                   {...this.props}
@@ -128,12 +130,11 @@ class Menu extends React.Component {
                 />
               }
               onCreate={({ popper }) => (popper.style.width = "max-content")}
-              visible={selectedIndex === index}
-              onShow={() => {
-                this.isSubmenuOpened = true;
-              }}
               onHide={() => {
                 this.isSubmenuOpened = false;
+              }}
+              onShow={() => {
+                this.isSubmenuOpened = true;
               }}
             >
               {nodeElement}
@@ -152,12 +153,12 @@ const MenuItem = forwardRef(
 
     return (
       <div
+        data-cy={`neeto-editor-command-list-item-${index}`}
+        ref={ref}
         className={classnames("neeto-editor-slash-commands__item", {
           active: index === selectedIndex,
         })}
         onClick={selectItem}
-        ref={ref}
-        data-cy={`neeto-editor-command-list-item-${index}`}
         onMouseEnter={onHover}
       >
         {Icon && <Icon size={20} />}

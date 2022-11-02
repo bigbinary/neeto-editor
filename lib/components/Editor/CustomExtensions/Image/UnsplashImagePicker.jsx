@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 
+import MasonryInfiniteScroller from "react-masonry-infinite";
+
 import { searchUnsplashImages } from "apis/unsplash";
 import Input from "components/Common/Input";
 import Loader from "components/Common/Loader";
 import useDebounce from "hooks/useDebounce";
-import MasonryInfiniteScroller from "react-masonry-infinite";
 import { isNilOrEmpty } from "utils/common";
 
 const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
@@ -33,6 +34,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
         query: debouncedQuery,
         apiKey: unsplashApiKey,
       });
+
       const {
         data: { results, total_pages },
       } = response;
@@ -45,7 +47,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
 
       setPageNo(page + 1);
       setHasMore(page < total_pages);
-    } catch (error) {
+    } catch {
       setError(true);
     } finally {
       setLoading(false);
@@ -62,13 +64,13 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
     <div className="neeto-editor-unsplash-wrapper">
       <Input
         autoFocus
+        data-cy="neeto-editor-unsplash-image-picker-search-input"
         name="text"
-        value={query}
         placeholder="Search Unsplash"
+        value={query}
         onChange={({ target: { value } }) => {
           setQuery(value);
         }}
-        data-cy="neeto-editor-unsplash-image-picker-search-input"
       />
       {error && (
         <p
@@ -89,27 +91,27 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
       {!error && (
         <div className="neeto-editor-unsplash-container">
           <MasonryInfiniteScroller
+            pack
+            position
+            className="neeto-editor-unsplash-gallery"
+            hasMore={hasMore}
+            loadMore={loadMore}
+            loader={<Loader key={0} />}
             ref={masonryRef}
-            pack={true}
             style={{ width: "100%" }}
+            useWindow={false}
             sizes={[
               { columns: 3, gutter: 0 },
               { mq: "768px", columns: 3, gutter: 0 },
               { mq: "1024px", columns: 3, gutter: 0 },
             ]}
-            hasMore={hasMore}
-            loadMore={loadMore}
-            position={true}
-            useWindow={false}
-            className="neeto-editor-unsplash-gallery"
-            loader={<Loader key={0} />}
           >
             {images &&
               images.map((image, index) => (
                 <div
-                  key={index}
                   className="neeto-editor-unsplash-gallery__item"
                   data-cy={`neeto-editor-unsplash-image-picker-result-${index}`}
+                  key={index}
                 >
                   <div
                     className="neeto-editor-unsplash-gallery__item-placeholder"
@@ -127,8 +129,8 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
                       />
                       <a
                         href={`https://unsplash.com/@${image.user.username}`}
-                        target="_blank"
                         rel="noreferrer"
+                        target="_blank"
                       >
                         {image.user.name}{" "}
                       </a>

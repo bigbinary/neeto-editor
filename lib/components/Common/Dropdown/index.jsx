@@ -18,6 +18,7 @@ const BTN_STYLES = {
   text: "text",
   link: "link",
 };
+
 const BTN_SIZES = {
   small: "small",
   medium: "medium",
@@ -62,6 +63,7 @@ const hideOnEsc = {
         hide();
       }
     }
+
     return {
       onShow() {
         document.addEventListener("keydown", onKeyDown);
@@ -113,6 +115,7 @@ const Dropdown = React.forwardRef(
       : {
           onClickOutside: () => {
             onClose();
+
             return closeOnOutsideClick;
           },
         };
@@ -131,34 +134,23 @@ const Dropdown = React.forwardRef(
 
     return (
       <Tippy
+        interactive
+        animation={false}
+        arrow={false}
+        duration={0}
+        hideOnClick={hideOnClick}
+        hideOnEsc={closeOnEsc}
+        maxWidth="none"
+        offset={0}
+        placement={position || PLACEMENT.bottomEnd}
+        plugins={[hideOnEsc]}
         ref={ref}
         role="dropdown"
-        trigger={TRIGGERS[trigger]}
-        plugins={[hideOnEsc]}
-        hideOnEsc={closeOnEsc}
-        hideOnClick={hideOnClick}
-        interactive
-        placement={position || PLACEMENT.bottomEnd}
-        arrow={false}
-        offset={0}
-        animation={false}
         theme="light"
+        trigger={TRIGGERS[trigger]}
         className={classnames("ne-dropdown", {
           [className]: className,
         })}
-        duration={0}
-        onCreate={instance => instance && setInstance(instance)}
-        popperOptions={{
-          strategy,
-          modifiers: dropdownModifiers,
-        }}
-        maxWidth="none"
-        onMount={() => {
-          setMounted(true);
-        }}
-        onHidden={() => {
-          setMounted(false);
-        }}
         content={
           mounted ? (
             <div
@@ -172,6 +164,17 @@ const Dropdown = React.forwardRef(
             </div>
           ) : null
         }
+        popperOptions={{
+          strategy,
+          modifiers: dropdownModifiers,
+        }}
+        onCreate={instance => instance && setInstance(instance)}
+        onHidden={() => {
+          setMounted(false);
+        }}
+        onMount={() => {
+          setMounted(true);
+        }}
         {...otherProps}
         {...controlledProps}
       >
@@ -181,12 +184,12 @@ const Dropdown = React.forwardRef(
           </span>
         ) : (
           <Button
-            label={label}
-            style={style ?? buttonStyle}
-            size={size ?? buttonSize}
+            disabled={disabled || buttonProps?.disabled}
             icon={icon || Down}
             iconPosition="right"
-            disabled={disabled || buttonProps?.disabled}
+            label={label}
+            size={size ?? buttonSize}
+            style={style ?? buttonStyle}
             onClick={onClick}
             {...buttonProps}
           />

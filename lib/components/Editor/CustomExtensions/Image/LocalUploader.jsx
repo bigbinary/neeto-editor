@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Uppy from "@uppy/core";
 import { DragDrop, useUppy } from "@uppy/react";
+
 import ActiveStorageUpload from "utils/ActiveStorageUpload";
 
 import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
@@ -25,6 +26,7 @@ const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
               uppyConfig.restrictions.maxFileSize
             )}.`
           );
+
           return false;
         } else if (!allowedFileTypes.includes(`.${file.extension}`)) {
           setError(
@@ -32,6 +34,7 @@ const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
               ", "
             )}.`
           );
+
           return false;
         }
 
@@ -54,17 +57,17 @@ const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
     <div className="neeto-editor-image-uploader__dnd-wrapper">
       <DragDrop
         className="neeto-editor-image-uploader__dnd"
-        note={`Max. File Size: ${convertToFileSize(
-          uppyConfig.restrictions.maxFileSize
-        )}`}
+        data-cy="neeto-editor-image-local-uploader"
+        uppy={uppy}
         locale={{
           strings: {
             dropHereOr: "Drop your file(s) here or %{browse}",
             browse: "Browse",
           },
         }}
-        uppy={uppy}
-        data-cy="neeto-editor-image-local-uploader"
+        note={`Max. File Size: ${convertToFileSize(
+          uppyConfig.restrictions.maxFileSize
+        )}`}
       />
       {error && (
         <p className="neeto-editor-image-uploader__dnd--error">{error}</p>

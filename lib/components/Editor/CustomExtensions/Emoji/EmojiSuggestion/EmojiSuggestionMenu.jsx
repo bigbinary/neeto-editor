@@ -2,8 +2,9 @@ import React from "react";
 
 import axios from "axios";
 import classnames from "classnames";
-import Loader from "components/Common/Loader";
 import { init, SearchIndex } from "emoji-mart";
+
+import Loader from "components/Common/Loader";
 import { isNilOrEmpty } from "utils/common";
 
 class EmojiSuggestionMenu extends React.Component {
@@ -35,9 +36,11 @@ class EmojiSuggestionMenu extends React.Component {
         "https://cdn.jsdelivr.net/npm/@emoji-mart/data"
       );
       this.setState({ isLoading: false });
+
       return data;
-    } catch (error) {
+    } catch {
       this.setState({ isLoading: false });
+
       return {};
     }
   };
@@ -51,6 +54,7 @@ class EmojiSuggestionMenu extends React.Component {
     const results = await Promise.all(
       defaultEmojis.map(emoji => SearchIndex.search(emoji))
     );
+
     return results.map(result => result[0]);
   };
 
@@ -92,6 +96,7 @@ class EmojiSuggestionMenu extends React.Component {
 
     if (event.key === "Enter") {
       this.selectItem(this.state.selectedIndex);
+
       return true;
     }
 
@@ -131,13 +136,13 @@ class EmojiSuggestionMenu extends React.Component {
           (this.state.emojiSuggestions.length > 0 ? (
             this.state.emojiSuggestions.map((emoji, index) => (
               <div
+                data-cy={`neeto-editor-emoji-suggestion-${emoji.id}`}
                 key={emoji.id}
-                onClick={() => this.selectItem(index)}
                 className={classnames("neeto-editor-emoji-suggestion__item", {
                   "neeto-editor-emoji-suggestion__item--selected":
                     index === this.state.selectedIndex,
                 })}
-                data-cy={`neeto-editor-emoji-suggestion-${emoji.id}`}
+                onClick={() => this.selectItem(index)}
               >
                 {emoji.skins[0].native}
               </div>

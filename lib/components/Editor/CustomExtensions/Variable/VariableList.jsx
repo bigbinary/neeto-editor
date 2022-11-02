@@ -13,8 +13,8 @@ const VariableList = ({ onClickVariable, variables }) => {
     <div className="neeto-editor-variables-list">
       {parsedVariables.map(({ label, variables }, index) => (
         <VariableCategory
-          key={index}
           index={index}
+          key={index}
           title={label}
           variables={variables}
           onClickItem={onClickVariable}
@@ -33,11 +33,11 @@ const VariableCategory = ({ index, title, variables, onClickItem }) => (
     <div className="neeto-editor-variables-row">
       {variables.map(item => (
         <button
-          type="button"
-          onClick={() => onClickItem(item)}
-          key={`${item.label}--${item.value}`}
           className="neeto-editor-variable"
           data-cy={`neeto-editor-variable-option-item-${item.label}--${item.value}`}
+          key={`${item.label}--${item.value}`}
+          type="button"
+          onClick={() => onClickItem(item)}
         >
           {item.label}
         </button>

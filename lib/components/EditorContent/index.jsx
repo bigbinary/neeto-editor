@@ -12,13 +12,13 @@ const EditorContent = ({ content = "", className, ...otherProps }) => {
 
   return (
     <div
+      data-cy="neeto-editor-content"
       className={classnames(EDITOR_CONTENT_CLASSNAME, {
         [className]: className,
       })}
       dangerouslySetInnerHTML={{
         __html: sanitize(htmlContent, SANITIZE_OPTIONS),
       }}
-      data-cy="neeto-editor-content"
       {...otherProps}
     />
   );

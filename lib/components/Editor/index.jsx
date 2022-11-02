@@ -4,8 +4,8 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import classNames from "classnames";
 import { EditorView } from "prosemirror-view";
 
+import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
-import { DIRECT_UPLOAD_ENDPOINT } from "constants/common";
 import { stringifyObject, isNilOrEmpty } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
@@ -57,7 +57,7 @@ const Editor = (
   },
   ref
 ) => {
-  const [isImageUploadVisible, setImageUploadVisible] = useState(false);
+  const [isImageUploadVisible, setIsImageUploadVisible] = useState(false);
 
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
@@ -81,7 +81,7 @@ const Editor = (
     variables,
     isSlashCommandsActive,
     showImageInMention,
-    setImageUploadVisible,
+    setIsImageUploadVisible,
     options: addonOptions,
     addonCommands,
     characterLimit,
@@ -149,24 +149,24 @@ const Editor = (
       {isFixedMenuActive && (
         <FixedMenu
           editor={editor}
-          variables={variables}
-          setImageUploadVisible={setImageUploadVisible}
-          options={addonOptions}
           mentions={mentions}
+          options={addonOptions}
+          setIsImageUploadVisible={setIsImageUploadVisible}
           showImageInMention={showImageInMention}
+          variables={variables}
         />
       )}
       {isBubbleMenuActive && (
         <BubbleMenu editor={editor} options={addonOptions} />
       )}
       <ImageUploader
-        isVisible={isImageUploadVisible}
-        setIsVisible={setImageUploadVisible}
         editor={editor}
         imageUploadUrl={uploadEndpoint}
-        uploadConfig={uploadConfig}
         isUnsplashImageUploadActive={isUnsplashImageUploadActive}
+        isVisible={isImageUploadVisible}
+        setIsVisible={setIsImageUploadVisible}
         unsplashApiKey={editorSecrets?.unsplash}
+        uploadConfig={uploadConfig}
       />
       <EditorContent editor={editor} {...otherProps} />
       {isCharacterCountActive && (

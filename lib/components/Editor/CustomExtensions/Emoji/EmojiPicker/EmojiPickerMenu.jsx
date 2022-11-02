@@ -26,8 +26,9 @@ class EmojiPickerMenu extends React.Component {
       const { data } = await axios.get(
         "https://cdn.jsdelivr.net/npm/@emoji-mart/data"
       );
+
       return data;
-    } catch (error) {
+    } catch {
       return {};
     }
   };
@@ -35,6 +36,7 @@ class EmojiPickerMenu extends React.Component {
   onKeyDown = ({ event }) => {
     if (event.key === "Escape") {
       this.props.editor.chain().focus().deleteRange(this.props.range).run();
+
       return true;
     }
 
@@ -51,7 +53,7 @@ class EmojiPickerMenu extends React.Component {
   };
 
   render() {
-    return <div ref={this.ref} data-cy="neeto-editor-emoji-picker" />;
+    return <div data-cy="neeto-editor-emoji-picker" ref={this.ref} />;
   }
 }
 

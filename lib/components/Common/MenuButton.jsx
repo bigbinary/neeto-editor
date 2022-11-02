@@ -2,6 +2,7 @@ import React from "react";
 
 import classnames from "classnames";
 import PropTypes from "prop-types";
+
 import { generateFocusProps } from "utils/focusProps";
 
 import {
@@ -20,10 +21,10 @@ const MenuButton = ({
 }) => (
   <ToolTip {...tooltipProps}>
     <button
+      type="button"
       className={classnames("neeto-editor-fixed-menu__item", {
         active: iconActive,
       })}
-      type="button"
       {...generateFocusProps(highlight)}
       {...otherProps}
     >

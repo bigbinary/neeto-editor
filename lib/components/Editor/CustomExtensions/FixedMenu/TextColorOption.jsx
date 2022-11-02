@@ -8,9 +8,12 @@ const TextColorOption = ({ color = "#000", onChange }) => {
 
   return (
     <MenuButton
+      data-cy="neeto-editor-fixed-menu-text-color-option"
+      iconActive={false}
+      tooltipProps={{ content: "Text Color", position: "bottom", delay: [500] }}
       icon={({ color: iconColor, size }) => (
         <>
-          <TextColor size={size} color={iconColor} underlineColor={color} />
+          <TextColor color={iconColor} size={size} underlineColor={color} />
           <input
             ref={colorInputRef}
             type="color"
@@ -18,10 +21,7 @@ const TextColorOption = ({ color = "#000", onChange }) => {
           />
         </>
       )}
-      iconActive={false}
       onClick={() => colorInputRef.current?.click()}
-      tooltipProps={{ content: "Text Color", position: "bottom", delay: [500] }}
-      data-cy="neeto-editor-fixed-menu-text-color-option"
     />
   );
 };

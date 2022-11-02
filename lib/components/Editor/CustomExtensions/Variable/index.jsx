@@ -26,6 +26,7 @@ const Variables = ({ editor, variables }) => {
       ref={dropdownRef}
       customTarget={() => (
         <MenuButton
+          data-cy="neeto-editor-variable-option"
           icon={Braces}
           iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
           tooltipProps={{
@@ -33,12 +34,11 @@ const Variables = ({ editor, variables }) => {
             position: "bottom",
             delay: [500],
           }}
-          data-cy="neeto-editor-variable-option"
         />
       )}
     >
       <Menu>
-        <VariableList onClickVariable={handleClickItem} variables={variables} />
+        <VariableList variables={variables} onClickVariable={handleClickItem} />
       </Menu>
     </Dropdown>
   );

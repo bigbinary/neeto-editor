@@ -40,8 +40,8 @@ const TextOptions = ({
     return (
       <LinkOption
         editor={editor}
-        handleClose={() => setIsLinkOptionActive(false)}
         handleAnimateInvalidLink={handleAnimateInvalidLink}
+        handleClose={() => setIsLinkOptionActive(false)}
       />
     );
   }
@@ -49,33 +49,33 @@ const TextOptions = ({
   return (
     <>
       <Tippy
-        arrow={false}
         interactive
+        arrow={false}
         placement="bottom"
         visible={isDropdownOpen}
-        onClickOutside={handleClose}
         content={
           <div className="neeto-editor-bubble-menu__dropdown">
             {dropdownOptions.map(({ optionName, command }) => (
               <button
-                type="button"
+                className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown-item"
                 key={optionName}
+                type="button"
                 onClick={() => {
                   command();
                   handleClose();
                 }}
-                className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown-item"
               >
                 {optionName}
               </button>
             ))}
           </div>
         }
+        onClickOutside={handleClose}
       >
         <button
+          className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown-target"
           type="button"
           onClick={() => setIsDropdownOpen(open => !open)}
-          className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown-target"
         >
           {nodeType}
           <Down size={14} />

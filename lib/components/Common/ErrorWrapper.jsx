@@ -2,6 +2,7 @@ import React from "react";
 
 import classnames from "classnames";
 import { is } from "ramda";
+
 import { isNilOrEmpty } from "utils/common";
 
 const ErrorWrapper = ({ error, isFixedMenuActive, children }) => {

@@ -2,6 +2,7 @@ import React, { useState, forwardRef } from "react";
 
 import classnames from "classnames";
 import PropTypes from "prop-types";
+
 import { hyphenize } from "utils/common";
 
 import { SIZES } from "./constants";
@@ -47,9 +48,9 @@ const Input = forwardRef(
         <div className="ne-input__label-wrapper">
           {label && (
             <Label
-              required={required}
               data-cy={`ne-${hyphenize(label)}-input-label`}
               htmlFor={id}
+              required={required}
             >
               {label}
             </Label>
@@ -76,18 +77,18 @@ const Input = forwardRef(
         >
           {prefix && <div className="ne-input__prefix">{prefix}</div>}
           <input
-            ref={ref}
-            id={id}
-            type={type}
-            disabled={disabled}
-            size={contentSize}
-            required={required}
             aria-invalid={!!error}
+            data-cy="input-field"
+            disabled={disabled}
+            id={id}
+            ref={ref}
+            required={required}
+            size={contentSize}
+            type={type}
             aria-describedby={classnames({
               [errorId]: !!error,
               [helpTextId]: helpText,
             })}
-            data-cy="input-field"
             {...otherProps}
             value={value}
             onChange={onChange}
@@ -96,8 +97,8 @@ const Input = forwardRef(
         </div>
         {!!error && (
           <p
-            data-cy={`ne-${hyphenize(label)}-input-error`}
             className="ne-input__error"
+            data-cy={`ne-${hyphenize(label)}-input-error`}
             id={errorId}
           >
             {error}
@@ -106,8 +107,8 @@ const Input = forwardRef(
         {helpText && (
           <p
             className="ne-input__help-text"
-            id={helpTextId}
             data-cy={`ne-${hyphenize(label)}-input-help`}
+            id={helpTextId}
           >
             {helpText}
           </p>

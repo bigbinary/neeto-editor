@@ -30,8 +30,8 @@ const ImageEditor = ({ url, editor, onClose, alt }) => {
         <>
           <figure>
             <img
-              src={url}
               loading="lazy"
+              src={url}
               onError={({ currentTarget }) => {
                 setIsError(true);
                 currentTarget.onerror = null;
@@ -40,15 +40,15 @@ const ImageEditor = ({ url, editor, onClose, alt }) => {
           </figure>
           <Input
             autoFocus
+            label="Caption"
+            placeholder="Brand Image"
             value={altText}
             onChange={e => setAltText(e.target.value)}
-            placeholder="Brand Image"
-            label="Caption"
           />
         </>
       )}
       <div className="neeto-editor-image-editor__footer">
-        <Button label="Proceed" disabled={isError} onClick={handleSubmit} />
+        <Button disabled={isError} label="Proceed" onClick={handleSubmit} />
         <Button label="Cancel" style="text" onClick={onClose} />
       </div>
     </div>

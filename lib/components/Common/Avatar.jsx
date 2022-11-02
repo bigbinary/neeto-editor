@@ -33,6 +33,7 @@ const Avatar = ({
 
         return acc;
       }, "");
+
       return initials;
     }
 
@@ -45,6 +46,7 @@ const Avatar = ({
     const charCode =
       (avatarString.charCodeAt(0) || 0) + (avatarString.charCodeAt(1) || 0);
     const bgColor = COLORS[(charCode % 65) % COLORS.length] || COLORS[0];
+
     return bgColor;
   };
 
@@ -91,7 +93,6 @@ const Avatar = ({
 
   return (
     <span
-      onClick={onClick}
       style={imageContainerStyle}
       className={classNames(
         "ne-avatar--container ne-select-none",
@@ -101,6 +102,7 @@ const Avatar = ({
         className,
         getRandomBackgroundColor()
       )}
+      onClick={onClick}
       {...otherProps}
     >
       <Indicator />
@@ -108,11 +110,11 @@ const Avatar = ({
         <ImagePlaceholder />
       ) : (
         <img
-          className={imageClasses}
-          onError={() => setIsLoadingFailed(true)}
-          src={imageUrl || USER_ICON_URL}
           alt={`avatar-${avatarString}`}
+          className={imageClasses}
           data-chromatic="ignore"
+          src={imageUrl || USER_ICON_URL}
+          onError={() => setIsLoadingFailed(true)}
         />
       )}
     </span>

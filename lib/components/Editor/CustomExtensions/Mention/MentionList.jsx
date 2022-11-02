@@ -1,6 +1,7 @@
 import React from "react";
 
 import classNames from "classnames";
+
 import Avatar from "components/Common/Avatar";
 import { scrollHandler } from "utils/scrollhandler";
 
@@ -39,6 +40,7 @@ export class MentionList extends React.Component {
       const { selectedIndex } = prevState;
       const nextSelectedIndex =
         (selectedIndex + items.length - 1) % items.length;
+
       return {
         selectedIndex: nextSelectedIndex,
       };
@@ -50,6 +52,7 @@ export class MentionList extends React.Component {
     this.setState(prevState => {
       const { selectedIndex } = prevState;
       const nextSelectedIndex = (selectedIndex + 1) % items.length;
+
       return {
         selectedIndex: nextSelectedIndex,
       };
@@ -70,6 +73,7 @@ export class MentionList extends React.Component {
 
     if (Object.prototype.hasOwnProperty.call(keyDownHandlers, event.key)) {
       keyDownHandlers[event.key]();
+
       return true;
     }
 
@@ -90,19 +94,19 @@ export class MentionList extends React.Component {
 
     return (
       <div
-        ref={this.mentionRef}
         className="neeto-editor-mentions__wrapper"
         data-cy="neeto-editor-mention-list"
+        ref={this.mentionRef}
       >
         {items.map(({ key, name, imageUrl, showImage }, index) => (
           <button
+            data-cy={`neeto-editor-mention-list-${name}`}
+            key={key}
+            type="button"
             className={classNames("neeto-editor-mentions__item", {
               active: index === selectedIndex,
             })}
-            key={key}
             onClick={() => this.selectItem(index)}
-            type="button"
-            data-cy={`neeto-editor-mention-list-${name}`}
           >
             {showImage && <Avatar user={{ name, imageUrl }} />}
             <p>{name}</p>
