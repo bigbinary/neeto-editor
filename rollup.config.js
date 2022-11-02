@@ -1,5 +1,3 @@
-import path from "path";
-
 import alias from "@rollup/plugin-alias";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
@@ -13,17 +11,7 @@ import { terser } from "rollup-plugin-terser";
 
 const plugins = [
   peerDepsExternal(),
-  alias({
-    entries: {
-      apis: path.resolve(__dirname, "lib/apis"),
-      components: path.resolve(__dirname, "lib/components"),
-      hooks: path.resolve(__dirname, "lib/hooks"),
-      constants: path.resolve(__dirname, "lib/constants"),
-      utils: path.resolve(__dirname, "lib/utils"),
-      neetoicons: "@bigbinary/neeto-icons",
-      lib: path.resolve(__dirname, "lib"),
-    },
-  }),
+  alias({ entries: require("./alias") }),
   json(),
   svgr(),
   replace({

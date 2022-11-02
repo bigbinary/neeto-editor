@@ -32,5 +32,61 @@ module.exports = {
     "react-hooks/exhaustive-deps": "warn",
     // auto-fixable: A fragment is redundant if it contains only one child, or if it is the child of a html element, and is not a keyed fragment.
     "react/jsx-no-useless-fragment": ["error", { allowExpressions: true }],
+    // auto-fixable: Prefer arrow function expressions for component declaration.
+    "react/function-component-definition": [
+      "error",
+      {
+        namedComponents: "arrow-function",
+        unnamedComponents: "arrow-function",
+      },
+    ],
+    // auto-fixable: Components without children can be self-closed to avoid unnecessary extra closing tag.
+    "react/self-closing-comp": [
+      "error",
+      {
+        component: true,
+        html: true,
+      },
+    ],
+    // auto-fixable: Wrapping multiline JSX in parentheses can improve readability and/or convenience.
+    "react/jsx-wrap-multilines": [
+      "error",
+      {
+        declaration: "parens-new-line",
+        assignment: "parens-new-line",
+        return: "parens-new-line",
+        arrow: "parens-new-line",
+        condition: "parens-new-line",
+        logical: "parens-new-line",
+        prop: "ignore",
+      },
+    ],
+    // not-auto-fixable: Make sure files containing JSX is having .jsx extension.
+    "react/jsx-filename-extension": ["error", { allow: "as-needed" }],
+    // auto-fixable: Omit mentioning the "true" value if it can be implicitly understood in props.
+    "react/jsx-boolean-value": "error",
+    // auto-fixable: Partially fixable. Make sure the state and setter have symmertic naming.
+    "react/hook-use-state": "error",
+    // auto-fixable: Shorthand notations should always be at the top and also enforce props alphabetical sorting.
+    "react/jsx-sort-props": [
+      "error",
+      {
+        callbacksLast: true,
+        shorthandFirst: true,
+        multiline: "last",
+        reservedFirst: false,
+        locale: "auto",
+      },
+    ],
+    // auto-fixable: Disallow unnecessary curly braces in JSX props and/or children.
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        props: "never",
+        children: "never",
+        // JSX prop values that are JSX elements should be enclosed in braces.
+        propElementValues: "always",
+      },
+    ],
   },
 };

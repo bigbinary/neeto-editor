@@ -1,14 +1,11 @@
 module.exports = {
   env: {
-    browser: true,
-    // window object etc part of browser are made available globally.
-    es2020: true,
-    // to include BigInt support
+    browser: true, // window object etc part of browser are made available globally.
+    es2020: true, // to include BigInt support
     es6: true,
     commonjs: true,
     node: true,
   },
-
   /*
    * The order of extending each plugin matters a LOT!!
    * Thus don't change order of items in this array
@@ -22,7 +19,10 @@ module.exports = {
     "./.eslint-rules/globals",
     "./.eslint-rules/imports/order",
     "./.eslint-rules/overrides",
+    // ensure that you don't add custom rules
+    // without taking permission from team leads.
     "./.eslint-rules/custom",
+    // custom rules cannot override the following rules.
     "./.eslint-rules/imports/enforced",
     "./.eslint-rules/react",
     "./.eslint-rules/promise",
@@ -32,6 +32,12 @@ module.exports = {
   settings: {
     react: {
       version: "detect",
+    },
+    // We need this for the import/extensions rule to work: https://github.com/import-js/eslint-plugin-import#importextensions
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".svg", ".json", ".mp3"],
+      },
     },
   },
   parserOptions: {
@@ -59,7 +65,10 @@ module.exports = {
     "no-unused-vars": [
       "error",
       {
+        args: "all",
         argsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+        caughtErrors: "all",
       },
     ],
     // not-auto-fixable: No undefined variables allowed.
@@ -71,10 +80,21 @@ module.exports = {
     // auto-fixable: sadly this doesn't support guard clauses yet.
     "padding-line-between-statements": [
       "error",
+      { blankLine: "always", prev: "if", next: ["if", "return"] },
+      // The newline-before-return rule is deprecated in favor of the following:
+      { blankLine: "always", prev: "*", next: "return" },
+      // Add newline between function declarations
       {
         blankLine: "always",
-        prev: "if",
-        next: ["if", "return"],
+        prev: [
+          "block",
+          "multiline-block-like",
+          "function",
+          "iife",
+          "multiline-const",
+          "multiline-expression",
+        ],
+        next: ["function", "iife", "multiline-const", "multiline-expression"],
       },
     ],
     // auto-fixable: Single line statements needn't have any braces. But in all other cases enforce curly braces.
@@ -114,11 +134,22 @@ module.exports = {
     // auto-fixable: Suggests using template literals instead of string concatenation.
     "prefer-template": "error",
     // auto-fixable: Disallows ternary operators when simpler alternatives exist.
-    "no-unneeded-ternary": [
+    "no-unneeded-ternary": ["error", { defaultAssignment: false }],
+    // auto-fixable: Partially fixable. Prefer {x} over {x: x}.
+    "object-shorthand": [
       "error",
-      {
-        defaultAssignment: false,
-      },
+      "always",
+      { avoidQuotes: true, ignoreConstructors: true },
     ],
+    // auto-fixable: Partially fixable. Unless there's a need to the this keyword, there's no advantage of using a plain function.
+    "prefer-arrow-callback": ["error", { allowUnboundThis: true }],
+    // not-auto-fixable: Convert multiple imports from same module into a single import.
+    "no-duplicate-imports": ["error", { includeExports: true }],
+    // auto-fixable: Partially fixable. In JavaScript, there are a lot of different ways to convert value types. Allow only readable coercions.
+    "no-implicit-coercion": ["error", { allow: ["!!"] }],
+    // auto-fixable: Require let or const instead of var.
+    "no-var": "error",
+    // auto-fixable: This rule conflicts with prettier rules. Thus we've NOT kept this rule in react file. This rule ensures we don't add blank lines in JSX.
+    "react/jsx-newline": ["error", { prevent: true }],
   },
 };

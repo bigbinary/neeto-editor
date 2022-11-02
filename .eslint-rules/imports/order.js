@@ -1,17 +1,7 @@
-const pathGroups = [
-  { pattern: "apis/**", group: "internal" },
-  { pattern: "components/**", group: "internal" },
-  { pattern: "hooks/**", group: "internal" },
-  { pattern: "constants/**", group: "internal" },
-  { pattern: "utils/**", group: "internal" },
-  { pattern: "lib/**", group: "internal" },
-  { pattern: "neetoicons/**", group: "external" },
-  {
-    pattern: "react+(-native|)",
-    group: "external",
-    position: "before",
-  },
-];
+const { buildPathGroupsBasedOnWebpackAliases } = require("../helpers");
+const pathGroups = buildPathGroupsBasedOnWebpackAliases({});
+
+console.log(pathGroups);
 
 const pathGroupForKeepingReactImportsAtTop = {
   pattern: "react+(-native|)",
