@@ -81,7 +81,7 @@ export default [
     ],
   },
   {
-    input: "./lib/utils/codeBlockHighlight.js",
+    input: "./lib/components/EditorContent/highlight.js",
     output: {
       dir: `${__dirname}/dist`,
       format: "cjs",
