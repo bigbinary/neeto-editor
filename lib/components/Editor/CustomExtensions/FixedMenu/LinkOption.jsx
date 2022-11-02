@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import { Link } from "neetoicons";
 
+import { URL_REGEXP } from "common/constants";
 import Button from "components/Common/Button";
 import Dropdown from "components/Common/Dropdown";
 import Input from "components/Common/Input";
 import MenuButton from "components/Common/MenuButton";
-import { UrlRegExp } from "constants/regexp";
 
 const LinkOption = ({ editor }) => {
   const [error, setError] = useState("");
@@ -29,7 +29,7 @@ const LinkOption = ({ editor }) => {
   };
 
   const handleLink = () => {
-    if (UrlRegExp.test(urlString)) {
+    if (URL_REGEXP.test(urlString)) {
       editor.chain().focus().setLink({ href: urlString }).run();
       handleClose();
     } else {
@@ -44,43 +44,43 @@ const LinkOption = ({ editor }) => {
 
   return (
     <Dropdown
-      isOpen={isOpen}
-      onClick={() => setIsOpen(open => !open)}
-      onClose={handleClose}
-      customTarget={() => (
-        <MenuButton
-          icon={Link}
-          iconActive={isActive}
-          onClick={onClickTrigger}
-          tooltipProps={{ content: "Link", position: "bottom", delay: [500] }}
-          data-cy="neeto-editor-fixed-menu-link-option"
-        />
-      )}
       className="neeto-editor-link-wrapper"
       closeOnSelect={false}
+      isOpen={isOpen}
       position="bottom"
+      customTarget={() => (
+        <MenuButton
+          data-cy="neeto-editor-fixed-menu-link-option"
+          icon={Link}
+          iconActive={isActive}
+          tooltipProps={{ content: "Link", position: "bottom", delay: [500] }}
+          onClick={onClickTrigger}
+        />
+      )}
+      onClick={() => setIsOpen(open => !open)}
+      onClose={handleClose}
     >
-      <div onKeyDown={handleKeyDown} className="neeto-editor-link__item">
+      <div className="neeto-editor-link__item" onKeyDown={handleKeyDown}>
         <Input
           autoFocus
-          name="url"
-          value={urlString}
-          placeholder="Paste URL"
-          onFocus={() => setError("")}
-          error={error}
-          onChange={({ target: { value } }) => setUrlString(value)}
           data-cy="neeto-editor-fixed-menu-link-option-input"
+          error={error}
+          name="url"
+          placeholder="Paste URL"
+          value={urlString}
+          onChange={({ target: { value } }) => setUrlString(value)}
+          onFocus={() => setError("")}
         />
         <Button
+          data-cy="neeto-editor-fixed-menu-link-option-link-button"
           label="Link"
           onClick={handleLink}
-          data-cy="neeto-editor-fixed-menu-link-option-link-button"
         />
         {isActive && (
           <Button
+            data-cy="neeto-editor-fixed-menu-link-option-unlink-button"
             label="Unlink"
             onClick={handleUnlink}
-            data-cy="neeto-editor-fixed-menu-link-option-unlink-button"
           />
         )}
       </div>

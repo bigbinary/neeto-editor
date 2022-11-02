@@ -1,8 +1,6 @@
 const { buildPathGroupsBasedOnWebpackAliases } = require("../helpers");
 const pathGroups = buildPathGroupsBasedOnWebpackAliases({});
 
-console.log(pathGroups);
-
 const pathGroupForKeepingReactImportsAtTop = {
   pattern: "react+(-native|)",
   group: "external",
