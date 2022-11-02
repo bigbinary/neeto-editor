@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { EDITOR_OPTIONS } from "common/constants";
 import MenuButton from "components/Common/MenuButton";
 import Modal from "components/Common/Modal";
-import { capitalize } from "utils/common";
+import { humanize } from "utils/common";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
 import { buildMenuOptions } from "./utils";
 
-import { getImageMenuOptions } from "../BubbleMenu/helpers";
+import { getImageMenuOptions } from "../BubbleMenu/utils";
 import ImageEditor from "../Image/ImageEditor";
 import Mentions from "../Mention";
 import Variables from "../Variable";
@@ -53,7 +53,7 @@ const FixedMenu = ({
       iconActive={active}
       key={index}
       tooltipProps={{
-        content: capitalize(optionName),
+        content: humanize(optionName),
         position: "bottom",
         delay: [500],
       }}
@@ -81,7 +81,7 @@ const FixedMenu = ({
             iconActive={active}
             key={index}
             tooltipProps={{
-              content: capitalize(optionName),
+              content: humanize(optionName),
               position: "bottom",
               delay: [500],
             }}

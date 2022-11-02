@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import Tippy from "@tippyjs/react";
 import { Down } from "neetoicons";
 
+import LinkOption from "./LinkOption";
+import Option from "./Option";
 import {
   getNodeType,
   getTextMenuDefaultOptions,
   getTextMenuDropdownOptions,
-} from "./helpers";
-import LinkOption from "./LinkOption";
-import Option from "./Option";
+} from "./utils";
 
 const TextOptions = ({
   editor,

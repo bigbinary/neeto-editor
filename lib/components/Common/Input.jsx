@@ -3,7 +3,7 @@ import React, { useState, forwardRef } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-import { hyphenize } from "utils/common";
+import { slugify } from "utils/common";
 
 import { SIZES } from "./constants";
 import Label from "./Label";
@@ -48,7 +48,7 @@ const Input = forwardRef(
         <div className="ne-input__label-wrapper">
           {label && (
             <Label
-              data-cy={`ne-${hyphenize(label)}-input-label`}
+              data-cy={`ne-${slugify(label)}-input-label`}
               htmlFor={id}
               required={required}
             >
@@ -98,7 +98,7 @@ const Input = forwardRef(
         {!!error && (
           <p
             className="ne-input__error"
-            data-cy={`ne-${hyphenize(label)}-input-error`}
+            data-cy={`ne-${slugify(label)}-input-error`}
             id={errorId}
           >
             {error}
@@ -107,7 +107,7 @@ const Input = forwardRef(
         {helpText && (
           <p
             className="ne-input__help-text"
-            data-cy={`ne-${hyphenize(label)}-input-help`}
+            data-cy={`ne-${slugify(label)}-input-help`}
             id={helpTextId}
           >
             {helpText}

@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 
 import { Braces } from "neetoicons";
+import { isEmpty } from "ramda";
 
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
@@ -17,7 +18,7 @@ const Variables = ({ editor, variables }) => {
     editor.chain().focus().setVariable({ label: variableName }).run();
   };
 
-  if (!(variables && variables.length)) {
+  if (isEmpty(variables)) {
     return null;
   }
 

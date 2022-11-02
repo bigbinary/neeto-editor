@@ -7,7 +7,7 @@ import Avatar from "components/Common/Avatar";
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
 
-import { formatMentions } from "./helpers";
+import { formatMentions } from "./utils";
 
 const Mentions = ({ editor, mentions, showImageInMention }) => {
   const dropdownRef = useRef();

@@ -6,7 +6,7 @@ import { EditorView } from "prosemirror-view";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
-import { stringifyObject, isNilOrEmpty } from "utils/common";
+import { isNilOrEmpty, noop } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
@@ -20,7 +20,8 @@ import {
   getIsPlaceholderActive,
   clipboardTextParser,
   setInitialPosition,
-} from "./helpers";
+  stringifyObject,
+} from "./utils";
 
 const Editor = (
   {
@@ -29,7 +30,7 @@ const Editor = (
     hideSlashCommands = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
-    addonCommands,
+    addonCommands = [],
     className,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     uploadConfig = {},
@@ -38,17 +39,17 @@ const Editor = (
     onFocus = () => {},
     onBlur = () => {},
     menuType = "fixed",
-    variables,
-    mentions,
+    variables = [],
+    mentions = [],
     showImageInMention = false,
     placeholder = forceTitle ? { title: "Untitled" } : null,
-    extensions,
+    extensions = [],
     contentClassName,
     characterLimit,
-    editorSecrets,
+    editorSecrets = {},
     rows = 6,
     autoFocus = false,
-    onSubmit,
+    onSubmit = noop,
     heightStrategy = "fixed",
     characterCountStrategy = "hidden",
     keyboardShortcuts = [],
@@ -165,7 +166,7 @@ const Editor = (
         isUnsplashImageUploadActive={isUnsplashImageUploadActive}
         isVisible={isImageUploadVisible}
         setIsVisible={setIsImageUploadVisible}
-        unsplashApiKey={editorSecrets?.unsplash}
+        unsplashApiKey={editorSecrets.unsplash}
         uploadConfig={uploadConfig}
       />
       <EditorContent editor={editor} {...otherProps} />

@@ -3,7 +3,7 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-import { generateFocusProps } from "utils/focusProps";
+import { generateFocusProps } from "utils/focusHighlighter";
 
 import {
   ICON_COLOR_ACTIVE,

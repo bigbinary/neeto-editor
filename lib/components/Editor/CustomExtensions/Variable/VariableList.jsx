@@ -1,11 +1,13 @@
 import React from "react";
 
-import { parseVariables } from "./helpers";
+import { isEmpty } from "ramda";
+
+import { parseVariables } from "./utils";
 
 const VariableList = ({ onClickVariable, variables }) => {
   const parsedVariables = parseVariables(variables);
 
-  if (!(variables && variables.length)) {
+  if (isEmpty(variables)) {
     return null;
   }
 

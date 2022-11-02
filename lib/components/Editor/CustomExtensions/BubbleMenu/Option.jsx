@@ -3,10 +3,10 @@ import React from "react";
 import classnames from "classnames";
 
 import ToolTip from "components/Common/ToolTip";
-import { capitalize } from "utils/common";
+import { humanize } from "utils/common";
 
 const Option = ({ Icon, command, active, optionName }) => (
-  <ToolTip content={capitalize(optionName)} delay={[500]} position="top">
+  <ToolTip content={humanize(optionName)} delay={[500]} position="top">
     <div
       data-cy={`neeto-editor-bubble-menu-${optionName}-option`}
       className={classnames("neeto-editor-bubble-menu__item", {
