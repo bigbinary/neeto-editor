@@ -17,7 +17,6 @@ import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
 import {
   generateAddonOptions,
   getEditorStyles,
-  getIsPlaceholderActive,
   clipboardTextParser,
   setInitialPosition,
   stringifyObject,
@@ -58,7 +57,7 @@ const Editor = (
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
-  const isPlaceholderActive = getIsPlaceholderActive(placeholder);
+  const isPlaceholderActive = !!placeholder;
   const showSlashCommandPlaceholder =
     !isPlaceholderActive && isSlashCommandsActive;
   const isUnsplashImageUploadActive = addons.includes("image-upload-unsplash");
