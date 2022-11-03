@@ -9,14 +9,9 @@ import MenuButton from "components/Common/MenuButton";
 
 import { formatMentions } from "./utils";
 
-const Mentions = ({
-  editor,
-  mentions,
-  showImageInMention,
-  menuType = "fixed",
-}) => {
+const Mentions = ({ editor, mentions, menuType = "fixed" }) => {
   const dropdownRef = useRef();
-  const formattedMentions = formatMentions(mentions, showImageInMention);
+  const formattedMentions = formatMentions(mentions);
   const { Menu, MenuItem } = Dropdown;
 
   if (isEmpty(formattedMentions)) return null;
@@ -26,6 +21,7 @@ const Mentions = ({
       ref={dropdownRef}
       customTarget={() => (
         <MenuButton
+          color={menuType === "bubble" && "white"}
           data-cy="neeto-editor-mention-option"
           icon={Email}
           iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
@@ -34,7 +30,6 @@ const Mentions = ({
             position: "bottom",
             delay: [500],
           }}
-          color={menuType === "bubble" && "white"}
         />
       )}
     >
@@ -45,9 +40,7 @@ const Mentions = ({
             key={key}
             onClick={() => editor.commands.setMention({ id: key, label: name })}
           >
-            {showImageInMention && (
-              <Avatar size="small" user={{ name, imageUrl }} />
-            )}
+            <Avatar size="small" user={{ name, imageUrl }} />
             <span>{name}</span>
           </MenuItem.Button>
         ))}

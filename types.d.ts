@@ -53,7 +53,6 @@ export function Editor(props: {
   menuType?: string;
   variables?: Variable[];
   mentions?: Mention[];
-  showImageInMention?: boolean;
   placeholder?: { title: string } | string | null;
   extensions?: Array<Node | Extension>;
   contentClassName?: string[];

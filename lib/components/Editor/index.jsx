@@ -39,7 +39,6 @@ const Editor = (
     menuType = "fixed",
     variables = [],
     mentions = [],
-    showImageInMention = false,
     placeholder,
     extensions = [],
     contentClassName,
@@ -78,7 +77,6 @@ const Editor = (
     mentions,
     variables,
     isSlashCommandsActive,
-    showImageInMention,
     setIsImageUploadVisible,
     options: addonOptions,
     addonCommands,
@@ -148,7 +146,6 @@ const Editor = (
           mentions={mentions}
           options={addonOptions}
           setIsImageUploadVisible={setIsImageUploadVisible}
-          showImageInMention={showImageInMention}
           variables={variables}
         />
       )}
@@ -157,7 +154,6 @@ const Editor = (
           editor={editor}
           mentions={mentions}
           options={addonOptions}
-          showImageInMention={showImageInMention}
         />
       )}
       <ImageUploader
