@@ -41,7 +41,6 @@ const Editor = (
     mentions = [],
     placeholder,
     extensions = [],
-    contentClassName,
     characterLimit,
     editorSecrets = {},
     rows = 6,
@@ -71,7 +70,6 @@ const Editor = (
   });
 
   const customExtensions = useCustomExtensions({
-    contentClassName,
     placeholder,
     extensions,
     mentions,
