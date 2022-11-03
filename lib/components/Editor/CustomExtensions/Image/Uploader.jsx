@@ -30,15 +30,15 @@ const ImageUpload = ({
     local: () => (
       <LocalUploader
         endpoint={imageUploadUrl}
-        onSuccess={handleUrlFormSubmit}
         uploadConfig={uploadConfig}
+        onSuccess={handleUrlFormSubmit}
       />
     ),
     link: () => (
       <URLForm
-        onSubmit={handleUrlFormSubmit}
         buttonLabel="Upload Image"
         placeholder="Paste the image link"
+        onSubmit={handleUrlFormSubmit}
       />
     ),
     unsplash: () => (
@@ -53,12 +53,12 @@ const ImageUpload = ({
 
   return (
     <Modal
+      closeButton={false}
       isOpen={isVisible}
       onClose={() => {
         setIsVisible(false);
         setActiveTab(IMAGE_UPLOAD_OPTIONS[0]);
       }}
-      closeButton={false}
     >
       <div className="neeto-editor-image-uploader">
         <Tab>
@@ -66,20 +66,19 @@ const ImageUpload = ({
             option => option.key !== "unsplash" || isUnsplashImageUploadActive
           ).map(option => (
             <Tab.Item
-              key={option.key}
               active={activeTab === option.key}
+              key={option.key}
               onClick={() => setActiveTab(option)}
             >
               {option.title}
             </Tab.Item>
           ))}
         </Tab>
-
         <div className="neeto-editor-image-uploader__content">
           {imageUrl ? (
             <ImageEditor
-              url={imageUrl}
               editor={editor}
+              url={imageUrl}
               onClose={() => {
                 setImageUrl(null);
                 setIsVisible(false);

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import Button from "components/Common/Button";
 import { Close } from "neetoicons";
+
+import Button from "components/Common/Button";
 
 const Progress = ({ uppy }) => {
   const [progress, setProgress] = useState(0);
@@ -28,16 +29,16 @@ const Progress = ({ uppy }) => {
           <p>{progressPercentage}</p>
           <Button
             icon={Close}
-            onClick={() => uppy.cancelAll()}
             size="small"
             style="text"
+            onClick={() => uppy.cancelAll()}
           />
         </div>
         <div className="neeto-editor-progress-bar__indicator">
           <div
-            style={{ width: progressPercentage }}
             className="neeto-editor-progress-bar__indicator-inner"
-          ></div>
+            style={{ width: progressPercentage }}
+          />
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
-import { UrlRegExp } from "constants/regexp";
-
 import React, { useState } from "react";
 
 import classNames from "classnames";
+
+import { URL_REGEXP } from "common/constants";
 import Button from "components/Common/Button";
 import Input from "components/Common/Input";
 
@@ -17,7 +17,7 @@ const URLForm = ({
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (UrlRegExp.test(urlString)) {
+    if (URL_REGEXP.test(urlString)) {
       onSubmit(urlString);
     } else {
       setError("Please enter a valid url");
@@ -32,19 +32,19 @@ const URLForm = ({
     >
       <Input
         autoFocus
-        name="url"
-        value={urlString}
-        placeholder={placeholder}
-        onFocus={() => setError("")}
-        error={error}
-        onChange={({ target: { value } }) => setUrlString(value)}
         data-cy="neeto-editor-image-upload-url-input"
+        error={error}
+        name="url"
+        placeholder={placeholder}
+        value={urlString}
+        onChange={({ target: { value } }) => setUrlString(value)}
+        onFocus={() => setError("")}
       />
       <Button
+        data-cy="neeto-editor-image-upload-url-submit"
+        disabled={!urlString}
         label={buttonLabel}
         onClick={handleSubmit}
-        disabled={!urlString}
-        data-cy="neeto-editor-image-upload-url-submit"
       />
     </div>
   );

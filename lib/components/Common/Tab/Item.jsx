@@ -27,11 +27,11 @@ const Item = ({
 
   return (
     <Parent
+      data-cy="tab-item"
       className={classnames(["ne-tab", className], {
-        active: active,
+        active,
       })}
       onClick={onClick}
-      data-cy="tab-item"
       {...otherProps}
     >
       {icon && <Icon className="ne-tab__icon" />}

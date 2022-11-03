@@ -12,10 +12,10 @@ const ImageEditorModal = ({ editor, isOpen, onClose }) => {
       <div className="neeto-editor-image-uploader">
         <div className="neeto-editor-image-uploader__content">
           <ImageEditor
-            editor={editor}
-            onClose={onClose}
-            url={node?.attrs.src}
             alt={node?.attrs.alt}
+            editor={editor}
+            url={node?.attrs.src}
+            onClose={onClose}
           />
         </div>
       </div>

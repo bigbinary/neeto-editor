@@ -1,11 +1,11 @@
-import { EDITOR_OPTIONS } from "constants/common";
-
 import React, { useState } from "react";
 
 import { BubbleMenu as BubbleMenuTipTap } from "@tiptap/react";
 import classnames from "classnames";
 import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
+
+import { EDITOR_OPTIONS } from "common/constants";
 import { isNilOrEmpty } from "utils/common";
 
 import ImageEditorModal from "./ImageEditorModal";
@@ -27,6 +27,7 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
     EDITOR_OPTIONS.STRIKETHROUGH,
     EDITOR_OPTIONS.LINK,
   ];
+
   const noTextOptions = isNilOrEmpty(
     textOptions.filter(option => bubbleMenuOptions.includes(option))
   );
@@ -38,6 +39,9 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
     <div>
       <BubbleMenuTipTap
         editor={editor}
+        className={classnames("neeto-editor-bubble-menu", {
+          "neeto-editor-bubble-menu-animate-shake": isInvalidLink,
+        })}
         tippyOptions={{
           arrow: roundArrow,
           zIndex: 99999,
@@ -45,9 +49,6 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
           theme: "neeto-editor-bubble-menu",
           maxWidth: 384,
         }}
-        className={classnames("neeto-editor-bubble-menu", {
-          "neeto-editor-bubble-menu-animate-shake": isInvalidLink,
-        })}
       >
         {isImageNodeSelected ? (
           <ImageOptions
@@ -58,9 +59,9 @@ const BubbleMenu = ({ editor, options: textOptions }) => {
         ) : (
           <TextOptions
             editor={editor}
+            isLinkOptionActive={isLinkOptionActive}
             options={textOptions}
             setIsInvalidLink={setIsInvalidLink}
-            isLinkOptionActive={isLinkOptionActive}
             setIsLinkOptionActive={setIsLinkOptionActive}
           />
         )}

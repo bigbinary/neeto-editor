@@ -57,8 +57,8 @@ const Button = React.forwardRef(
     return (
       <Tooltip disabled={!tooltipProps} {...tooltipProps}>
         <Parent
+          disabled={disabled}
           ref={ref}
-          onClick={handleClick}
           className={classnames("ne-btn", [className], {
             "ne-btn--style-primary": style === BUTTON_STYLES.primary,
             "ne-btn--style-secondary": style === BUTTON_STYLES.secondary,
@@ -71,15 +71,14 @@ const Button = React.forwardRef(
             "ne-btn--width-full": fullWidth,
             "ne-btn--icon-left": iconPosition === BUTTON_ICON_POSITIONS.left,
             "ne-btn--icon-only": !label,
-            disabled: disabled,
+            disabled,
           })}
-          disabled={disabled}
+          onClick={handleClick}
           {...elementSpecificProps}
           {...otherProps}
         >
           {label && <span>{label}</span>}
-
-          {icon && <Icon key="2" size={iconSize} className="ne-btn__icon" />}
+          {icon && <Icon className="ne-btn__icon" key="2" size={iconSize} />}
         </Parent>
       </Tooltip>
     );

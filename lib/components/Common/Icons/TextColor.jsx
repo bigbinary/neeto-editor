@@ -5,21 +5,22 @@ import PropTypes from "prop-types";
 
 const TextColor = props => {
   const { size, color, underlineColor, ...other } = props;
+
   return (
-    <svg viewBox="0 0 24 24" fill="none" height={size} width={size} {...other}>
+    <svg fill="none" height={size} viewBox="0 0 24 24" width={size} {...other}>
       <path
         d="M21 20H3"
         stroke={underlineColor || color}
-        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="1.5"
       />
       <path
         d="M17.3125 15L12.1562 4L7 15M8.03125 12.8H16.2812"
         stroke={color}
-        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        strokeWidth="1.5"
       />
     </svg>
   );

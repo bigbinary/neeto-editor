@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = {
   core: {
     builder: "webpack5",
@@ -22,23 +20,7 @@ module.exports = {
     plugins: ["@babel/plugin-proposal-class-properties"],
   }),
   webpackFinal: async (config, { configType }) => {
-    // (config.module.rules = [
-    //   {
-    //     test: /.jsx?$/,
-    //     loader: "babel-loader",
-    //   },
-    // ]),
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      apis: path.resolve(__dirname, "../lib/apis"),
-      components: path.resolve(__dirname, "../lib/components"),
-      hooks: path.resolve(__dirname, "../lib/hooks"),
-      constants: path.resolve(__dirname, "../lib/constants"),
-      utils: path.resolve(__dirname, "../lib/utils"),
-      neetoicons: "@bigbinary/neeto-icons",
-      lib: path.resolve(__dirname, "../lib"),
-    };
-
+    config.resolve.alias = require("../alias");
     return config;
   },
 };

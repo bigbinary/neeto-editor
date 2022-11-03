@@ -14,7 +14,7 @@ const ImageComponent = ({ node, editor, getPos }) => {
         lockAspectRatio
         className={`neeto-editor__image neeto-editor__image--${float} neeto-editor__image--${align} neeto-editor__image-defaults`}
         size={{ height, width }}
-        onResizeStop={(e, direction, ref) => {
+        onResizeStop={(_event, _direction, ref) => {
           view.dispatch(
             view.state.tr.setNodeMarkup(getPos(), undefined, {
               ...node.attrs,

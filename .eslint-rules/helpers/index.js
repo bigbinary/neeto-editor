@@ -1,29 +1,26 @@
 const fs = require("fs");
+const path = require("path");
 
 const buildPathGroupsBasedOnWebpackAliases = ({
-  customJSRoot = "app/javascript/",
-  customAliasPath = "config/webpack/alias.js"
+  customJSRoot = "",
+  customAliasPath = "alias.js",
 }) => {
-  const rootOfProject = __dirname + `/../../`;
+  const rootOfProject = path.resolve(__dirname + `/../../`);
 
   const isFile = filePath =>
     fs.existsSync(filePath) && fs.lstatSync(filePath).isFile();
 
-  const webpackAliasPath = rootOfProject + customAliasPath;
+  const webpackAliasPath = path.resolve(rootOfProject, customAliasPath);
 
   const hasWebpackAliasConfig = isFile(webpackAliasPath);
 
-  const isRailsProject = isFile(rootOfProject + "Gemfile");
-
   const emptyPathGroups = [];
 
-  if (!hasWebpackAliasConfig || !isRailsProject) return emptyPathGroups;
+  if (!hasWebpackAliasConfig) return emptyPathGroups;
 
-  const {
-    resolve: { alias }
-  } = require(webpackAliasPath);
+  const alias = require(webpackAliasPath);
 
-  const railsJSFilesRoot = rootOfProject + customJSRoot;
+  const railsJSFilesRoot = path.resolve(rootOfProject + customJSRoot);
 
   const pathGroups = Object.entries(alias).map(([name, path]) => {
     // sometimes alias might be already resolved to full absolute path
@@ -39,7 +36,7 @@ const buildPathGroupsBasedOnWebpackAliases = ({
         : "/**";
 
     let group = "internal";
-    if (name === "neetoui") {
+    if (name === "neetoicons") {
       group = "external";
     }
 

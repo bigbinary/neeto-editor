@@ -1,9 +1,9 @@
-import { UrlRegExp } from "constants/regexp";
-
 import React, { useEffect, useState } from "react";
 
-import Button from "components/Common/Button";
 import { Close } from "neetoicons";
+
+import { URL_REGEXP } from "common/constants";
+import Button from "components/Common/Button";
 import { isNilOrEmpty } from "utils/common";
 
 const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
@@ -22,7 +22,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
   };
 
   const handleSubmit = () => {
-    if (UrlRegExp.test(link)) {
+    if (URL_REGEXP.test(link)) {
       editor.chain().focus().setLink({ href: link }).run();
       handleClose();
     } else if (isNilOrEmpty(link)) {
@@ -44,21 +44,21 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
   };
 
   return (
-    <div onKeyDown={handleKeyDown} className="neeto-editor-bubble-menu__link">
+    <div className="neeto-editor-bubble-menu__link" onKeyDown={handleKeyDown}>
       <input
         autoFocus
-        name="url"
-        value={link}
-        placeholder="Paste or type a link..."
-        onChange={({ target: { value } }) => setLink(value)}
         className="neeto-editor-bubble-menu-link__input"
         data-cy="neeto-editor-link-input"
+        name="url"
+        placeholder="Paste or type a link..."
+        value={link}
+        onChange={({ target: { value } }) => setLink(value)}
       />
       <Button
-        style="icon"
-        icon={Close}
-        onClick={handleReset}
         data-cy="neeto-editor-link-cancel-button"
+        icon={Close}
+        style="icon"
+        onClick={handleReset}
       />
     </div>
   );

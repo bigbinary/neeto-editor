@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 
 import classnames from "classnames";
-import useModal from "hooks/useModal";
 import { Close } from "neetoicons";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
+
+import useModal from "hooks/useModal";
 
 import Backdrop from "./Backdrop";
 import Button from "./Button";
@@ -49,23 +50,23 @@ const Modal = ({
   return (
     <Portal rootId="neeto-ui-portal">
       <CSSTransition
-        in={isOpen}
-        appear={isOpen}
-        timeout={300}
-        classNames="ne-modal"
         unmountOnExit
+        appear={isOpen}
+        classNames="ne-modal"
+        in={isOpen}
+        timeout={300}
       >
         <Backdrop
-          ref={backdropRef}
-          key="modal-backdrop"
-          data-testid="backdrop"
           className={classnames("ne-modal__backdrop", backdropClassName)}
+          data-testid="backdrop"
+          key="modal-backdrop"
+          ref={backdropRef}
         >
           <div
-            role="dialog"
-            aria-modal={true}
-            ref={modalWrapper}
+            aria-modal
             key="modal-wrapper"
+            ref={modalWrapper}
+            role="dialog"
             className={classnames("ne-modal__wrapper", {
               "ne-modal__wrapper--small": size === SIZES.small,
               "ne-modal__wrapper--medium": size === SIZES.medium,
@@ -77,12 +78,12 @@ const Modal = ({
             {closeButton && (
               <Button
                 aria-label="Close"
-                style="text"
-                icon={Close}
                 className="ne-modal__close"
-                onClick={handleModalClose}
                 data-testid="close-button"
+                icon={Close}
                 size="small"
+                style="text"
+                onClick={handleModalClose}
               />
             )}
             {children}

@@ -1,17 +1,16 @@
-import { EDITOR_OPTIONS } from "constants/common";
-
 import React, { useState } from "react";
 
+import { EDITOR_OPTIONS } from "common/constants";
 import MenuButton from "components/Common/MenuButton";
 import Modal from "components/Common/Modal";
-import { capitalize } from "utils/common";
+import { humanize } from "utils/common";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
 import { buildMenuOptions } from "./utils";
 
-import { getImageMenuOptions } from "../BubbleMenu/helpers";
+import { getImageMenuOptions } from "../BubbleMenu/utils";
 import ImageEditor from "../Image/ImageEditor";
 import Mentions from "../Mention";
 import Variables from "../Variable";
@@ -19,7 +18,7 @@ import Variables from "../Variable";
 const FixedMenu = ({
   editor,
   variables,
-  setImageUploadVisible,
+  setIsImageUploadVisible,
   options,
   mentions,
   showImageInMention,
@@ -37,7 +36,7 @@ const FixedMenu = ({
     font: fontStyleOptions,
     block: blockStyleOptions,
     list: listStyleOptions,
-  } = buildMenuOptions({ editor, options, setImageUploadVisible });
+  } = buildMenuOptions({ editor, options, setIsImageUploadVisible });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = fontSizeOptions.length > 0;
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
@@ -48,17 +47,17 @@ const FixedMenu = ({
     index
   ) => (
     <MenuButton
-      key={index}
+      data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
+      highlight={highlight}
       icon={Icon}
       iconActive={active}
-      highlight={highlight}
-      onClick={command}
+      key={index}
       tooltipProps={{
-        content: capitalize(optionName),
+        content: humanize(optionName),
         position: "bottom",
         delay: [500],
       }}
-      data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
+      onClick={command}
     />
   );
 
@@ -77,16 +76,16 @@ const FixedMenu = ({
           setIsImageEditorModalOpen,
         }).map(({ Icon, command, active, optionName }, index) => (
           <MenuButton
-            key={index}
+            data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
             icon={Icon}
             iconActive={active}
-            onClick={command}
+            key={index}
             tooltipProps={{
-              content: capitalize(optionName),
+              content: humanize(optionName),
               position: "bottom",
               delay: [500],
             }}
-            data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
+            onClick={command}
           />
         ))}
       <div className="neeto-editor-fixed-menu-addons">
@@ -104,10 +103,10 @@ const FixedMenu = ({
         <div className="neeto-editor-image-uploader">
           <div className="neeto-editor-image-uploader__content">
             <ImageEditor
-              editor={editor}
-              onClose={() => setIsImageEditorModalOpen(false)}
-              url={selectedNode?.attrs.src}
               alt={selectedNode?.attrs.alt}
+              editor={editor}
+              url={selectedNode?.attrs.src}
+              onClose={() => setIsImageEditorModalOpen(false)}
             />
           </div>
         </div>

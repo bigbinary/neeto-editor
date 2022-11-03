@@ -16,8 +16,8 @@ class CommandsList extends React.Component {
     return (
       <Menu
         {...this.props}
-        menuIndex={0}
         activeMenuIndex={this.state.activeMenuIndex}
+        menuIndex={0}
         setActiveMenuIndex={this.setActiveMenuIndex}
       />
     );

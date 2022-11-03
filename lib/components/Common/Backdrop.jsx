@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 
 const Portal = ({ children, ...otherProps }, ref) => (
-  <div ref={ref} data-testid="ne-backdrop" {...otherProps}>
+  <div data-testid="ne-backdrop" ref={ref} {...otherProps}>
     {children}
   </div>
 );

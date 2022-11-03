@@ -15,6 +15,7 @@ const Tab = ({
   ...otherProps
 }) => (
   <div
+    data-cy="tab-container"
     className={classnames(
       {
         "ne-tab__wrapper": true,
@@ -30,7 +31,6 @@ const Tab = ({
       },
       [className]
     )}
-    data-cy="tab-container"
     {...otherProps}
   >
     {children}

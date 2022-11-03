@@ -13,18 +13,18 @@ const EmojiOption = ({ editor }) => {
 
   return (
     <Dropdown
-      ref={dropdownRef}
       closeOnSelect={false}
+      dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
+      position="bottom-start"
+      ref={dropdownRef}
       customTarget={() => (
         <MenuButton
+          data-cy="neeto-editor-fixed-menu-emoji-option-button"
           icon={Smiley}
           iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
           tooltipProps={{ content: "Emoji", position: "bottom", delay: [500] }}
-          data-cy="neeto-editor-fixed-menu-emoji-option-button"
         />
       )}
-      position="bottom-start"
-      dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
     >
       <Menu>
         <EmojiPickerMenu editor={editor} />
