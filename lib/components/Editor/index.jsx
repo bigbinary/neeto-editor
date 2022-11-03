@@ -25,6 +25,8 @@ import {
 
 const Editor = (
   {
+    initialValue = "",
+    menuType = "fixed",
     hideSlashCommands = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
@@ -32,11 +34,10 @@ const Editor = (
     className,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     uploadConfig = {},
-    initialValue = "",
-    onChange = () => {},
-    onFocus = () => {},
-    onBlur = () => {},
-    menuType = "fixed",
+    onChange = noop,
+    onFocus = noop,
+    onBlur = noop,
+    onSubmit = noop,
     variables = [],
     mentions = [],
     placeholder,
@@ -45,8 +46,6 @@ const Editor = (
     editorSecrets = {},
     rows = 6,
     autoFocus = false,
-    onSubmit = noop,
-    heightStrategy = "fixed",
     characterCountStrategy = "hidden",
     keyboardShortcuts = [],
     error = null,
@@ -98,7 +97,7 @@ const Editor = (
     [className]: className,
   });
 
-  const editorStyles = getEditorStyles({ heightStrategy, rows });
+  const editorStyles = getEditorStyles({ rows });
 
   const editor = useEditor({
     extensions: customExtensions,
