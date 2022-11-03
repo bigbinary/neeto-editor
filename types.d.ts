@@ -39,7 +39,6 @@ type EditorFocus = (props: {
 }) => void;
 
 export function Editor(props: {
-  titleError?: boolean;
   hideSlashCommands?: boolean;
   defaults?: string[];
   addons?: string[];

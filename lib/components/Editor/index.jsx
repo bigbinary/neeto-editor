@@ -25,7 +25,6 @@ import {
 
 const Editor = (
   {
-    titleError = false,
     hideSlashCommands = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
@@ -99,7 +98,6 @@ const Editor = (
     "slash-active": showSlashCommandPlaceholder,
     "fixed-menu-active border": isFixedMenuActive,
     "bubble-menu-active": isBubbleMenuActive,
-    "force-title--error": titleError,
     "placeholder-active": isPlaceholderActive,
     [className]: className,
   });
