@@ -25,7 +25,6 @@ import {
 
 const Editor = (
   {
-    forceTitle = false,
     titleError = false,
     hideSlashCommands = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
@@ -42,7 +41,7 @@ const Editor = (
     variables = [],
     mentions = [],
     showImageInMention = false,
-    placeholder = forceTitle ? { title: "Untitled" } : null,
+    placeholder,
     extensions = [],
     contentClassName,
     characterLimit,
@@ -75,7 +74,6 @@ const Editor = (
 
   const customExtensions = useCustomExtensions({
     contentClassName,
-    forceTitle,
     placeholder,
     extensions,
     mentions,
@@ -101,7 +99,6 @@ const Editor = (
     "slash-active": showSlashCommandPlaceholder,
     "fixed-menu-active border": isFixedMenuActive,
     "bubble-menu-active": isBubbleMenuActive,
-    "force-title": forceTitle,
     "force-title--error": titleError,
     "placeholder-active": isPlaceholderActive,
     [className]: className,
@@ -160,8 +157,8 @@ const Editor = (
       {isBubbleMenuActive && (
         <BubbleMenu
           editor={editor}
-          options={addonOptions}
           mentions={mentions}
+          options={addonOptions}
           showImageInMention={showImageInMention}
         />
       )}
