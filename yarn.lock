@@ -1162,10 +1162,10 @@
   resolved "https://registry.yarnpkg.com/@bigbinary/eslint-plugin-neeto/-/eslint-plugin-neeto-1.0.15.tgz#6d89a6c6e5db688ee76f16514c2b51be3285846a"
   integrity sha512-PlKdPo8fsgLq9TIwDBRgw07V/xwTwYkrK9j0IfkUVMpbRhHk/MFDuDX4z+dha/WB9IV0lEDatVmrxzE4CJgQpw==
 
-"@bigbinary/neeto-icons@1.8.39":
-  version "1.8.39"
-  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-icons/-/neeto-icons-1.8.39.tgz#102e78d87f2e0052be9c0d70e6cdc495ec85af55"
-  integrity sha512-RAbbiAEFDRM5fLYpCA/uDMus7hd2/5DUMvZ+cs0oA2Boc+c7XUfb1GbY6741AMox6WCinqLjhJjQeS+l63K/zg==
+"@bigbinary/neeto-icons@1.8.40":
+  version "1.8.40"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-icons/-/neeto-icons-1.8.40.tgz#3885846f6bc53484770828f32000a320819901fc"
+  integrity sha512-apcqHE+YKW3nbDZ5mV/L77ga6N8aqkZvs2S1F2AlyBLqZlfZnchp9kD2oLOnls8g0Bn90YuhXCaJVXmsRgD6EA==
   dependencies:
     prop-types "^15.7.2"
     react "^17.0.2"
