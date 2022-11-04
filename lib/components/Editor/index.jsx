@@ -10,7 +10,7 @@ import { isNilOrEmpty, noop } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
-import CharacterCount from "./CustomExtensions/CharacterCount";
+import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
 import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
@@ -133,35 +133,37 @@ const Editor = (
 
   return (
     <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
-      {isFixedMenuActive && (
-        <FixedMenu
-          editor={editor}
-          mentions={mentions}
-          options={addonOptions}
-          setIsImageUploadVisible={setIsImageUploadVisible}
-          variables={variables}
-        />
-      )}
-      {isBubbleMenuActive && (
-        <BubbleMenu
-          editor={editor}
-          mentions={mentions}
-          options={addonOptions}
-        />
-      )}
-      <ImageUploader
+      <CharacterCountWrapper
         editor={editor}
-        imageUploadUrl={uploadEndpoint}
-        isUnsplashImageUploadActive={isUnsplashImageUploadActive}
-        isVisible={isImageUploadVisible}
-        setIsVisible={setIsImageUploadVisible}
-        unsplashApiKey={editorSecrets.unsplash}
-        uploadConfig={uploadConfig}
-      />
-      <EditorContent editor={editor} {...otherProps} />
-      {isCharacterCountActive && (
-        <CharacterCount count={editor?.storage.characterCount.characters()} />
-      )}
+        isCharacterCountActive={isCharacterCountActive}
+      >
+        {isFixedMenuActive && (
+          <FixedMenu
+            editor={editor}
+            mentions={mentions}
+            options={addonOptions}
+            setIsImageUploadVisible={setIsImageUploadVisible}
+            variables={variables}
+          />
+        )}
+        {isBubbleMenuActive && (
+          <BubbleMenu
+            editor={editor}
+            mentions={mentions}
+            options={addonOptions}
+          />
+        )}
+        <ImageUploader
+          editor={editor}
+          imageUploadUrl={uploadEndpoint}
+          isUnsplashImageUploadActive={isUnsplashImageUploadActive}
+          isVisible={isImageUploadVisible}
+          setIsVisible={setIsImageUploadVisible}
+          unsplashApiKey={editorSecrets.unsplash}
+          uploadConfig={uploadConfig}
+        />
+        <EditorContent editor={editor} {...otherProps} />
+      </CharacterCountWrapper>
     </ErrorWrapper>
   );
 };

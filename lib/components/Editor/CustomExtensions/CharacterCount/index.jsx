@@ -1,12 +1,23 @@
 import React from "react";
 
-const CharacterCount = ({ count }) => (
-  <p
-    className="neeto-editor-character-count"
-    data-cy="neeto-editor-character-count"
-  >
-    {count} characters
-  </p>
-);
+const CharacterCountWrapper = ({
+  editor,
+  isCharacterCountActive,
+  children,
+}) => {
+  if (!isCharacterCountActive || !editor) return children;
 
-export default CharacterCount;
+  return (
+    <>
+      {children}
+      <p
+        className="neeto-editor-character-count"
+        data-cy="neeto-editor-character-count"
+      >
+        {editor.storage.characterCount.characters()} characters
+      </p>
+    </>
+  );
+};
+
+export default CharacterCountWrapper;
