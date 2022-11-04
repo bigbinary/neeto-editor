@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useImperativeHandle } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classNames from "classnames";
@@ -6,7 +6,8 @@ import { EditorView } from "prosemirror-view";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
-import { isNilOrEmpty, noop } from "utils/common";
+import useEditorWarnings from "hooks/useEditorWarnings";
+import { noop } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import BubbleMenu from "./CustomExtensions/BubbleMenu";
@@ -65,6 +66,7 @@ const Editor = (
     includeImageUpload: isUnsplashImageUploadActive,
   });
 
+  useEditorWarnings({ initialValue });
   const customExtensions = useCustomExtensions({
     placeholder,
     extensions,
@@ -107,29 +109,15 @@ const Editor = (
       },
       clipboardTextParser,
     },
-    parseOptions: {
-      preserveWhitespace: true,
-    },
+    parseOptions: { preserveWhitespace: true },
     onCreate: ({ editor }) => !autoFocus && setInitialPosition(editor),
-    onUpdate: ({ editor }) => setTimeout(() => onChange(editor.getHTML()), 0),
+    onUpdate: ({ editor }) => onChange(editor.getHTML()),
     onFocus,
     onBlur,
   });
 
   /* Make editor object available to the parent */
-  React.useImperativeHandle(ref, () => ({ editor }));
-
-  useEffect(() => {
-    const isProduction = [process.env.RAILS_ENV, process.env.NODE_ENV].includes(
-      "production"
-    );
-    if (!isProduction && isNilOrEmpty(initialValue)) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        `[neeto-editor]: Empty value of "initialValue" in needtoEditor is expected to be "<p></p>" instead of "${initialValue}".`
-      );
-    }
-  }, [initialValue]);
+  useImperativeHandle(ref, () => ({ editor }));
 
   return (
     <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
