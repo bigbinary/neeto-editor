@@ -46,6 +46,7 @@ const Editor = (
     isCharacterCountActive = false,
     keyboardShortcuts = [],
     error = null,
+    config = {},
     ...otherProps
   },
   ref
@@ -69,6 +70,7 @@ const Editor = (
     keyboardShortcuts,
     onSubmit,
     uploadEndpoint,
+    config,
   });
   useEditorWarnings({ initialValue });
 
