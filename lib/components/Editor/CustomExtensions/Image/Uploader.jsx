@@ -17,10 +17,10 @@ const ImageUpload = ({
   isVisible,
   setIsVisible,
   unsplashApiKey,
-  isUnsplashImageUploadActive,
 }) => {
   const [activeTab, setActiveTab] = useTabBar(IMAGE_UPLOAD_OPTIONS);
   const [imageUrl, setImageUrl] = useState("");
+  const isUnsplashImageUploadActive = !!unsplashApiKey;
 
   const handleUrlFormSubmit = url => {
     setImageUrl(url);

@@ -1,7 +1,7 @@
 import React, { useState, useImperativeHandle } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
-import classNames from "classnames";
+import classnames from "classnames";
 import { EditorView } from "prosemirror-view";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
@@ -16,11 +16,9 @@ import FixedMenu from "./CustomExtensions/FixedMenu";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
 import {
-  generateAddonOptions,
   getEditorStyles,
   clipboardTextParser,
   setInitialPosition,
-  stringifyObject,
 } from "./utils";
 
 const Editor = (
@@ -52,21 +50,13 @@ const Editor = (
   },
   ref
 ) => {
-  const [isImageUploadVisible, setIsImageUploadVisible] = useState(false);
-
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = !!placeholder;
-  const showSlashCommandPlaceholder =
-    !isPlaceholderActive && isSlashCommandsActive;
-  const isUnsplashImageUploadActive = addons.includes("image-upload-unsplash");
+  const addonOptions = [...defaults, ...addons];
 
-  const addonOptions = generateAddonOptions(defaults, addons, {
-    includeImageUpload: isUnsplashImageUploadActive,
-  });
-
-  useEditorWarnings({ initialValue });
+  const [isImageUploadVisible, setIsImageUploadVisible] = useState(false);
   const customExtensions = useCustomExtensions({
     placeholder,
     extensions,
@@ -80,22 +70,18 @@ const Editor = (
     onSubmit,
     uploadEndpoint,
   });
+  useEditorWarnings({ initialValue });
 
-  // https://github.com/ueberdosis/tiptap/issues/1451#issuecomment-953348865
-  EditorView.prototype.updateState = function updateState(state) {
-    if (!this.docView) return;
-    this.updateStateInner(state, this.state.plugins !== state.plugins);
-  };
+  /* Make editor object available to the parent */
+  useImperativeHandle(ref, () => ({ editor }));
 
-  const editorClasses = classNames("neeto-editor", {
-    "slash-active": showSlashCommandPlaceholder,
+  const editorClasses = classnames("neeto-editor", {
+    "slash-active": isSlashCommandsActive && !isPlaceholderActive,
     "fixed-menu-active border": isFixedMenuActive,
     "bubble-menu-active": isBubbleMenuActive,
     "placeholder-active": isPlaceholderActive,
     [className]: className,
   });
-
-  const editorStyles = getEditorStyles({ rows });
 
   const editor = useEditor({
     extensions: customExtensions,
@@ -105,7 +91,7 @@ const Editor = (
     editorProps: {
       attributes: {
         class: editorClasses,
-        style: stringifyObject(editorStyles),
+        style: getEditorStyles({ rows }),
       },
       clipboardTextParser,
     },
@@ -116,8 +102,11 @@ const Editor = (
     onBlur,
   });
 
-  /* Make editor object available to the parent */
-  useImperativeHandle(ref, () => ({ editor }));
+  // https://github.com/ueberdosis/tiptap/issues/1451#issuecomment-953348865
+  EditorView.prototype.updateState = function updateState(state) {
+    if (!this.docView) return;
+    this.updateStateInner(state, this.state.plugins !== state.plugins);
+  };
 
   return (
     <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
@@ -144,7 +133,6 @@ const Editor = (
         <ImageUploader
           editor={editor}
           imageUploadUrl={uploadEndpoint}
-          isUnsplashImageUploadActive={isUnsplashImageUploadActive}
           isVisible={isImageUploadVisible}
           setIsVisible={setIsImageUploadVisible}
           unsplashApiKey={editorSecrets.unsplash}
