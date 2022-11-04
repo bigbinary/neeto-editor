@@ -26,6 +26,7 @@ const Editor = (
   {
     initialValue = "",
     menuType = "fixed",
+    autoFocus = false,
     hideSlashCommands = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
@@ -41,11 +42,9 @@ const Editor = (
     mentions = [],
     placeholder,
     extensions = [],
-    characterLimit,
     editorSecrets = {},
     rows = 6,
-    autoFocus = false,
-    characterCountStrategy = "hidden",
+    isCharacterCountActive = false,
     keyboardShortcuts = [],
     error = null,
     ...otherProps
@@ -61,7 +60,6 @@ const Editor = (
   const showSlashCommandPlaceholder =
     !isPlaceholderActive && isSlashCommandsActive;
   const isUnsplashImageUploadActive = addons.includes("image-upload-unsplash");
-  const isCharacterCountActive = characterCountStrategy !== "hidden";
 
   const addonOptions = generateAddonOptions(defaults, addons, {
     includeImageUpload: isUnsplashImageUploadActive,
@@ -76,7 +74,6 @@ const Editor = (
     setIsImageUploadVisible,
     options: addonOptions,
     addonCommands,
-    characterLimit,
     keyboardShortcuts,
     onSubmit,
     uploadEndpoint,
@@ -163,11 +160,7 @@ const Editor = (
       />
       <EditorContent editor={editor} {...otherProps} />
       {isCharacterCountActive && (
-        <CharacterCount
-          count={editor?.storage.characterCount.characters()}
-          limit={characterLimit}
-          strategy={characterCountStrategy}
-        />
+        <CharacterCount count={editor?.storage.characterCount.characters()} />
       )}
     </ErrorWrapper>
   );
