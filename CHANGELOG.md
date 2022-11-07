@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/011b7fbff30966def6c2b71907c66bb02c8a78e0...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/acc774a101524ea7fd69e386ce91df7ac53cba1f...HEAD)
+
+## [0.12.18](https://github.com/bigbinary/neeto-editor/compare/011b7fbff30966def6c2b71907c66bb02c8a78e0...acc774a101524ea7fd69e386ce91df7ac53cba1f) - 2022-11-07
+
+- Fixed: thrown exceptions due to null value for embedURL in video upload.
 
 ## [0.12.17](https://github.com/bigbinary/neeto-editor/compare/d84582d57cc3b79ba8ec87f766ae328ae46a975a...011b7fbff30966def6c2b71907c66bb02c8a78e0) - 2022-10-31
 
