@@ -6,6 +6,13 @@ import {
 } from "@tiptap/core/dist/packages/core/src";
 import { Range } from "@tiptap/core/dist/packages/core/src/types";
 import { Transaction } from "prosemirror-state";
+import { CodeOptions } from "@tiptap/extension-code";
+import { UnderlineOptions } from "@tiptap/extension-underline";
+import { HighlightOptions } from "lowlight/lib/core";
+import { CodeBlockLowlightOptions } from "@tiptap/extension-code-block-lowlight";
+import { StarterKitOptions } from "@tiptap/starter-kit";
+import { PlaceholderOptions } from "@tiptap/extension-placeholder";
+import { CharacterCountOptions } from "@tiptap/extension-character-count";
 
 interface Command {
   title: string;
@@ -38,6 +45,23 @@ type EditorFocus = (props: {
   transaction: Transaction;
 }) => void;
 
+interface Config {
+  code?: Partial<CodeOptions>;
+  underline?: Partial<UnderlineOptions>;
+  highlight?: Partial<HighlightOptions>;
+  codeBlock?: Partial<CodeBlockLowlightOptions>;
+  figCaption?: Partial<any>;
+  embeds?: Partial<any>;
+  link?: Partial<any>;
+  emojiSuggestion?: Partial<any>;
+  emojiPicker?: Partial<any>;
+  customCommands?: Partial<any>;
+  characterCount?: Partial<CharacterCountOptions>;
+  focus?: Partial<FocusOptions>;
+  starterKit?: Partial<StarterKitOptions>;
+  placeholder?: Partial<PlaceholderOptions>;
+}
+
 export function Editor(props: {
   hideSlashCommands?: boolean;
   defaults?: string[];
@@ -53,18 +77,15 @@ export function Editor(props: {
   menuType?: string;
   variables?: Variable[];
   mentions?: Mention[];
-  placeholder?: { title: string } | string | null;
+  placeholder?: string;
   extensions?: Array<Node | Extension>;
-  contentClassName?: string[];
-  characterLimit?: number;
   editorSecrets?: Array<{ unsplash?: string }>;
   rows?: number;
   autoFocus?: boolean;
   onSubmit?: (htmlContent: string) => void;
-  heightStrategy?: string;
-  characterCountStrategy?: string;
   keyboardShortcuts?: KeyboardShortcuts;
   error?: string;
+  config: Config;
   [otherProps: string]: any;
 }): JSX.Element;
 
