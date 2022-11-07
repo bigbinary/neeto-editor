@@ -1,7 +1,5 @@
 import React from "react";
 
-import MenuButton from "lib/components/Common/MenuButton";
-import { humanize } from "lib/utils/common";
 import {
   CenterAlign,
   LeftAlign,
@@ -17,6 +15,9 @@ import {
   Underline,
 } from "neetoicons";
 import { prop } from "ramda";
+
+import MenuButton from "components/Common/MenuButton";
+import { humanize } from "utils/common";
 
 export const getTextMenuDefaultOptions = ({
   editor,

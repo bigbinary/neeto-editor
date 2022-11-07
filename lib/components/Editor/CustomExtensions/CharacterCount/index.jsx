@@ -1,18 +1,23 @@
 import React from "react";
 
-const CharacterCount = ({ count, limit, strategy }) => {
-  const characterLimitActive = strategy === "limit" && limit;
+const CharacterCountWrapper = ({
+  editor,
+  isCharacterCountActive,
+  children,
+}) => {
+  if (!isCharacterCountActive || !editor) return children;
 
   return (
-    <p
-      className="neeto-editor-character-count"
-      data-cy="neeto-editor-character-count"
-    >
-      {characterLimitActive
-        ? `${limit - count} characters remaining`
-        : `${count} characters`}
-    </p>
+    <>
+      {children}
+      <p
+        className="neeto-editor-character-count"
+        data-cy="neeto-editor-character-count"
+      >
+        {editor.storage.characterCount.characters()} characters
+      </p>
+    </>
   );
 };
 
-export default CharacterCount;
+export default CharacterCountWrapper;

@@ -17,25 +17,11 @@ import { Editor } from "../../lib";
 
 # Charater Count
 
-neetoEditor can be configured to show the character count as and word count.
-This can be achieved by providing the `characterCountStrategy` prop with the
-string value `count`.
+neetoEditor can be configured to show the character count. This can be enabled
+by passing a truthy value to the `isCharacterCountActive` prop.
 
 <Canvas>
   <Story name="Character count and word count">
-    <Editor characterCountStrategy="count" />
-  </Story>
-</Canvas>
-
-### **Charater Limit**
-
-neetoEditor can be configured to enforce a character limit. This can be done by
-providing an integer value to the `characterLimit` prop. Additionally, provide
-the `characterCountStrategy` prop with the string value `limit` to display the
-number of characters remaining.
-
-<Canvas>
-  <Story name="Character limit">
-    <Editor characterCountStrategy="limit" characterLimit={100} />
+    <Editor isCharacterCountActive />
   </Story>
 </Canvas>

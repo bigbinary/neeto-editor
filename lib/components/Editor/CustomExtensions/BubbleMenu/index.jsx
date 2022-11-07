@@ -12,12 +12,7 @@ import ImageEditorModal from "./ImageEditorModal";
 import ImageOptions from "./ImageOptions";
 import TextOptions from "./TextOptions";
 
-const BubbleMenu = ({
-  editor,
-  options: textOptions,
-  mentions,
-  showImageInMention,
-}) => {
+const BubbleMenu = ({ editor, options: textOptions, mentions }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
   const [isImageEditorModalOpen, setIsImageEditorModalOpen] = useState(false);
@@ -65,9 +60,8 @@ const BubbleMenu = ({
           <TextOptions
             editor={editor}
             isLinkOptionActive={isLinkOptionActive}
-            options={textOptions}
             mentions={mentions}
-            showImageInMention={showImageInMention}
+            options={textOptions}
             setIsInvalidLink={setIsInvalidLink}
             setIsLinkOptionActive={setIsLinkOptionActive}
           />

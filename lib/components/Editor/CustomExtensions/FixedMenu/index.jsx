@@ -20,7 +20,6 @@ const FixedMenu = ({
   setIsImageUploadVisible,
   options,
   mentions,
-  showImageInMention,
 }) => {
   const [isImageEditorModalOpen, setIsImageEditorModalOpen] = useState(false);
   const selectedNode = editor && editor.view.state.selection.node;
@@ -60,11 +59,7 @@ const FixedMenu = ({
       <Separator />
       {isLinkActive && <LinkOption editor={editor} />}
       {miscOptions.map(renderOptionButton)}
-      <Mentions
-        editor={editor}
-        mentions={mentions}
-        showImageInMention={showImageInMention}
-      />
+      <Mentions editor={editor} mentions={mentions} />
       <div className="neeto-editor-fixed-menu__variables">
         <Variables editor={editor} variables={variables} />
       </div>

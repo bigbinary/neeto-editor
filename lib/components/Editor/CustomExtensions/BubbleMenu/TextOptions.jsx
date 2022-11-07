@@ -4,6 +4,7 @@ import Tippy from "@tippyjs/react";
 import { Down, Link } from "neetoicons";
 
 import { EDITOR_OPTIONS } from "common/constants";
+import { noop } from "utils/common";
 
 import LinkOption from "./LinkOption";
 import {
@@ -16,13 +17,11 @@ import EmojiOption from "../FixedMenu/EmojiOption";
 import Separator from "../FixedMenu/Separator";
 import { buildMenuOptions } from "../FixedMenu/utils";
 import Mentions from "../Mention";
-import { noop } from "utils/common";
 
 const TextOptions = ({
   editor,
   options,
   mentions,
-  showImageInMention,
   setIsInvalidLink,
   isLinkOptionActive,
   setIsLinkOptionActive,
@@ -109,12 +108,7 @@ const TextOptions = ({
           optionName: "link",
           highlight: false,
         })}
-      <Mentions
-        editor={editor}
-        mentions={mentions}
-        menuType="bubble"
-        showImageInMention={showImageInMention}
-      />
+      <Mentions editor={editor} mentions={mentions} menuType="bubble" />
     </>
   );
 };
