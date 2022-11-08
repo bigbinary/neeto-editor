@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/acc774a101524ea7fd69e386ce91df7ac53cba1f...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/4e11af9f04c2d8541c87e5dab55ba78afc07b859...HEAD)
+
+## [0.12.19](https://github.com/bigbinary/neeto-editor/compare/acc774a101524ea7fd69e386ce91df7ac53cba1f...4e11af9f04c2d8541c87e5dab55ba78afc07b859) - 2022-11-08
+
+- Fixed: the broken *KeyboardShortcuts* extension.
+- Changed the code block option to the code option in *FixedMenu*.
 
 ## [0.12.18](https://github.com/bigbinary/neeto-editor/compare/011b7fbff30966def6c2b71907c66bb02c8a78e0...acc774a101524ea7fd69e386ce91df7ac53cba1f) - 2022-11-07
 
