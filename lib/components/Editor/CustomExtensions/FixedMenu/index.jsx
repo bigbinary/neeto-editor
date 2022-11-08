@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { EDITOR_OPTIONS } from "common/constants";
 import Modal from "components/Common/Modal";
@@ -16,12 +16,12 @@ import Variables from "../Variable";
 
 const FixedMenu = ({
   editor,
-  variables,
-  setIsImageUploadVisible,
   options,
   mentions,
+  variables,
+  isImageUploadOpen,
+  setIsImageUploadOpen,
 }) => {
-  const [isImageEditorModalOpen, setIsImageEditorModalOpen] = useState(false);
   const selectedNode = editor && editor.view.state.selection.node;
   const isImageNodeSelected =
     selectedNode && selectedNode.type.name === "image";
@@ -35,7 +35,7 @@ const FixedMenu = ({
     block: blockStyleOptions,
     list: listStyleOptions,
     misc: miscOptions,
-  } = buildMenuOptions({ editor, options, setIsImageUploadVisible });
+  } = buildMenuOptions({ editor, options, setIsImageUploadOpen });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = fontSizeOptions.length > 0;
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
@@ -53,8 +53,8 @@ const FixedMenu = ({
       {isImageNodeSelected &&
         getImageMenuOptions({
           editor,
-          isImageEditorModalOpen,
-          setIsImageEditorModalOpen,
+          isImageUploadOpen,
+          setIsImageUploadOpen,
         }).map(renderOptionButton)}
       <Separator />
       {isLinkActive && <LinkOption editor={editor} />}
@@ -64,8 +64,8 @@ const FixedMenu = ({
         <Variables editor={editor} variables={variables} />
       </div>
       <Modal
-        isOpen={isImageEditorModalOpen}
-        onClose={() => setIsImageEditorModalOpen(false)}
+        isOpen={isImageUploadOpen}
+        onClose={() => setIsImageUploadOpen(false)}
       >
         <div className="neeto-editor-image-uploader">
           <div className="neeto-editor-image-uploader__content">
@@ -73,7 +73,7 @@ const FixedMenu = ({
               alt={selectedNode?.attrs.alt}
               editor={editor}
               url={selectedNode?.attrs.src}
-              onClose={() => setIsImageEditorModalOpen(false)}
+              onClose={() => setIsImageUploadOpen(false)}
             />
           </div>
         </div>

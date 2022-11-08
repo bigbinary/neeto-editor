@@ -1,4 +1,4 @@
-import React, { useState, useImperativeHandle } from "react";
+import React, { useImperativeHandle } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
@@ -10,11 +10,9 @@ import useEditorWarnings from "hooks/useEditorWarnings";
 import { noop } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
-import BubbleMenu from "./CustomExtensions/BubbleMenu";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
-import FixedMenu from "./CustomExtensions/FixedMenu";
-import ImageUploader from "./CustomExtensions/Image/Uploader";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
+import Menu from "./Menu";
 import {
   getEditorStyles,
   clipboardTextParser,
@@ -55,20 +53,17 @@ const Editor = (
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = !!placeholder;
-  const addonOptions = [...defaults, ...addons];
 
-  const [isImageUploadVisible, setIsImageUploadVisible] = useState(false);
   const customExtensions = useCustomExtensions({
     placeholder,
     extensions,
     mentions,
     variables,
     isSlashCommandsActive,
-    setIsImageUploadVisible,
-    options: addonOptions,
+    options: [...defaults, ...addons],
     addonCommands,
-    keyboardShortcuts,
     onSubmit,
+    keyboardShortcuts,
     uploadEndpoint,
     config,
   });
@@ -112,33 +107,17 @@ const Editor = (
 
   return (
     <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
-      <CharacterCountWrapper
-        editor={editor}
-        isCharacterCountActive={isCharacterCountActive}
-      >
-        {isFixedMenuActive && (
-          <FixedMenu
-            editor={editor}
-            mentions={mentions}
-            options={addonOptions}
-            setIsImageUploadVisible={setIsImageUploadVisible}
-            variables={variables}
-          />
-        )}
-        {isBubbleMenuActive && (
-          <BubbleMenu
-            editor={editor}
-            mentions={mentions}
-            options={addonOptions}
-          />
-        )}
-        <ImageUploader
+      <CharacterCountWrapper editor={editor} isActive={isCharacterCountActive}>
+        <Menu
+          addons={addons}
+          defaults={defaults}
           editor={editor}
-          imageUploadUrl={uploadEndpoint}
-          isVisible={isImageUploadVisible}
-          setIsVisible={setIsImageUploadVisible}
-          unsplashApiKey={editorSecrets.unsplash}
+          editorSecrets={editorSecrets}
+          mentions={mentions}
+          menuType={menuType}
           uploadConfig={uploadConfig}
+          uploadEndpoint={uploadEndpoint}
+          variables={variables}
         />
         <EditorContent editor={editor} {...otherProps} />
       </CharacterCountWrapper>

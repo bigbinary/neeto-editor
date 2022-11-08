@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Button from "components/Common/Button";
 import Input from "components/Common/Input";
 
-const ImageEditor = ({ url, editor, onClose, alt }) => {
+const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
   const [altText, setAltText] = useState(alt || "");
   const [isError, setIsError] = useState(false);
 
