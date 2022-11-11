@@ -66,6 +66,8 @@ const Editor = (
     keyboardShortcuts,
     uploadEndpoint,
     config,
+    editorSecrets,
+    uploadConfig,
   });
   useEditorWarnings({ initialValue });
 
