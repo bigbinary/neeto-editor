@@ -7,12 +7,8 @@ import { humanize } from "utils/common";
 
 import { MENU_OPTIONS } from "./constants";
 
-export const buildMenuOptions = ({
-  editor,
-  options,
-  setIsImageUploadVisible,
-}) => {
-  const menuOptions = MENU_OPTIONS(editor, setIsImageUploadVisible);
+export const buildMenuOptions = ({ editor, options, setIsImageUploadOpen }) => {
+  const menuOptions = MENU_OPTIONS(editor, setIsImageUploadOpen);
 
   return fromPairs(
     ["font", "block", "list", "misc"].map(option => [
@@ -30,16 +26,16 @@ export const renderOptionButton = ({
   highlight,
 }) => (
   <MenuButton
-    key={optionName}
+    data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
+    highlight={highlight}
     icon={Icon}
     iconActive={active}
-    highlight={highlight}
-    onClick={command}
+    key={optionName}
     tooltipProps={{
       content: humanize(optionName),
       position: "bottom",
       delay: [500],
     }}
-    data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
+    onClick={command}
   />
 );

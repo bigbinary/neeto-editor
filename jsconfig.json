@@ -6,7 +6,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "NodeNext",
-    "baseUrl": ".",
+    "baseUrl": "./lib",
     "paths": {
       "apis/*": ["apis/*"],
       "apis": ["apis"],
@@ -27,8 +27,8 @@
       "translations": ["translations"],
       "utils/*": ["utils/*"],
       "utils": ["utils"],
-      "neetoicons/*": ["node_modules/@bigbinary/neeto-icons/*"],
-      "neetoicons": ["node_modules/@bigbinary/neeto-icons"]
+      "neetoicons/*": ["../node_modules/@bigbinary/neeto-icons/*"],
+      "neetoicons": ["../node_modules/@bigbinary/neeto-icons"]
     },
     "pretty": true,
     "experimentalDecorators": true,

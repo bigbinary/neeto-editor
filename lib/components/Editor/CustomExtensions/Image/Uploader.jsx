@@ -11,11 +11,11 @@ import UnsplashImagePicker from "./UnsplashImagePicker";
 import URLForm from "./URLForm";
 
 const ImageUpload = ({
+  isOpen,
+  onClose,
   editor,
   imageUploadUrl,
   uploadConfig,
-  isVisible,
-  setIsVisible,
   unsplashApiKey,
 }) => {
   const [activeTab, setActiveTab] = useTabBar(IMAGE_UPLOAD_OPTIONS);
@@ -54,9 +54,9 @@ const ImageUpload = ({
   return (
     <Modal
       closeButton={false}
-      isOpen={isVisible}
+      isOpen={isOpen}
       onClose={() => {
-        setIsVisible(false);
+        onClose();
         setActiveTab(IMAGE_UPLOAD_OPTIONS[0]);
       }}
     >
@@ -80,8 +80,8 @@ const ImageUpload = ({
               editor={editor}
               url={imageUrl}
               onClose={() => {
-                setImageUrl(null);
-                setIsVisible(false);
+                setImageUrl("");
+                onClose();
               }}
             />
           ) : (

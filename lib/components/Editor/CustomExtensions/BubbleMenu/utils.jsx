@@ -105,8 +105,8 @@ export const getTextMenuDropdownOptions = ({ editor }) => [
 
 export const getImageMenuOptions = ({
   editor,
-  isImageEditorModalOpen,
-  setIsImageEditorModalOpen,
+  isImageUploadOpen,
+  setIsImageUploadOpen,
 }) => [
   {
     Icon: LeftAlign,
@@ -161,8 +161,8 @@ export const getImageMenuOptions = ({
   },
   {
     Icon: Edit,
-    command: () => setIsImageEditorModalOpen(true),
-    active: isImageEditorModalOpen,
+    command: () => setIsImageUploadOpen(true),
+    active: isImageUploadOpen,
     optionName: "Caption",
   },
   {
