@@ -18,10 +18,12 @@ const MenuButton = ({
   tooltipProps,
   highlight = false,
   color,
+  disabled,
   ...otherProps
 }) => (
   <ToolTip {...tooltipProps}>
     <button
+      disabled={disabled}
       type="button"
       className={classnames("neeto-editor-menu__item", {
         active: iconActive,
