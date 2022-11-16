@@ -72,18 +72,8 @@ export const EDITOR_PROP_TABLE_ROWS = [
   ],
   [
     "placeholder",
-    "Accepts a string, an object or a function that returns the placeholder for HTML nodes.",
+    "Accepts a string value. When provided, it displays the placeholder value in the editor.",
     `"Input text here"`,
-  ],
-  [
-    "forceTitle",
-    "Accepts a boolean value. When true, the content is forced to have a title by default.",
-    `true`,
-  ],
-  [
-    "titleError",
-    "Accepts a boolean value. When true, an error message will be displayed below the title field when it is empty.",
-    `true`,
   ],
   [
     "uploadEndpoint",
@@ -99,16 +89,6 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "mentions",
     "Accepts an array of mention suggestions.",
     `[{ name: "Oliver Smith", key: "oliver-smith" }]`,
-  ],
-  [
-    "showImageInMention",
-    "Accepts a boolean value. This value controls the visibility of images in mention suggestions.",
-    `true`,
-  ],
-  [
-    "formatterOptions",
-    "Accepts an array of string values. The values are used to filter actions that should be shown in the Bubble menu.",
-    `["bold", "italic", "code", "highlight", "strike", "link"]`,
   ],
   [
     "extensions",
@@ -136,11 +116,6 @@ export const EDITOR_PROP_TABLE_ROWS = [
     `[{ title: 'Focus Editor', description: 'Focus the editor', optionName: 'focus-editor', command: ({editor}) => editor.focus() }]`,
   ],
   [
-    "characterLimit",
-    "Accepts an integer value. When provided, the editor will be limited to a certain number of characters.",
-    "1000",
-  ],
-  [
     "editorSecrets",
     "Accepts an object. Use this prop to pass down API keys and other secrets.",
     `{
@@ -153,19 +128,14 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "6",
   ],
   [
-    "heightStrategy",
-    "Accepts a string value. This decides whether the editor height is fixed or flexible.",
-    "fixed",
-  ],
-  [
     "autoFocus",
     "Accepts a boolean value. When true, the editor will be focused on load.",
     "true",
   ],
   [
-    "characterCountStrategy",
-    "Accepts a string value. This decides on how the character count should be displayed.",
-    "limit",
+    "isCharacterCountActive",
+    "Accepts a boolean value. If provided, the character count will be displayed.",
+    "true",
   ],
   [
     "uploadConfig",
@@ -178,6 +148,35 @@ export const EDITOR_PROP_TABLE_ROWS = [
         allowedFileTypes: [".jpg"]
       },
     }`,
+  ],
+  [
+    "keyboardShortcuts",
+    "Accepts an object representing the custom keyboard shortcuts for the editor",
+    `{
+        Enter: ({ editor }) => {
+           console.log(editor.getHTML());
+           return true;
+        },
+        "Shift-Enter": ({ editor }) => {
+          console.log(editor.getHTML());
+          return true;
+        }
+      }
+    `,
+  ],
+  [
+    "error",
+    "Accepts a string value. If provided, it will render the error UI for the editor.",
+    "This field is required",
+  ],
+  [
+    "config",
+    "Accepts an object value. This can be used to overrride the default properties of the different extensions used with the editor.",
+    `
+    {
+      focus: { mode: "deepest" }
+    }
+    `,
   ],
 ];
 

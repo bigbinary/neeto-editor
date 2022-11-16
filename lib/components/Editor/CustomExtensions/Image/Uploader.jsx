@@ -10,17 +10,17 @@ import LocalUploader from "./LocalUploader";
 import UnsplashImagePicker from "./UnsplashImagePicker";
 import URLForm from "./URLForm";
 
-const ImageUpload = ({
+const Uploader = ({
+  isOpen,
+  onClose,
   editor,
   imageUploadUrl,
   uploadConfig,
-  isVisible,
-  setIsVisible,
   unsplashApiKey,
-  isUnsplashImageUploadActive,
 }) => {
   const [activeTab, setActiveTab] = useTabBar(IMAGE_UPLOAD_OPTIONS);
   const [imageUrl, setImageUrl] = useState("");
+  const isUnsplashImageUploadActive = !!unsplashApiKey;
 
   const handleUrlFormSubmit = url => {
     setImageUrl(url);
@@ -54,9 +54,9 @@ const ImageUpload = ({
   return (
     <Modal
       closeButton={false}
-      isOpen={isVisible}
+      isOpen={isOpen}
       onClose={() => {
-        setIsVisible(false);
+        onClose();
         setActiveTab(IMAGE_UPLOAD_OPTIONS[0]);
       }}
     >
@@ -80,8 +80,8 @@ const ImageUpload = ({
               editor={editor}
               url={imageUrl}
               onClose={() => {
-                setImageUrl(null);
-                setIsVisible(false);
+                setImageUrl("");
+                onClose();
               }}
             />
           ) : (
@@ -93,4 +93,4 @@ const ImageUpload = ({
   );
 };
 
-export default ImageUpload;
+export default Uploader;

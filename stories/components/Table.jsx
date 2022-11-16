@@ -19,9 +19,9 @@ const Table = ({ columns, rows, className }) => (
       </thead>
     ) : null}
     <tbody className="w-full divide-y divide-gray-200 bg-white text-sm">
-      {rows.map(row =>
+      {rows.map((row, idx) =>
         rows?.length ? (
-          <tr>
+          <tr key={idx}>
             {row.map((rowData, idx) => (
               <td className="whitespace-nowrap px-6 py-2" key={idx}>
                 {rowData}

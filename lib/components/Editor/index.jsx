@@ -1,32 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useImperativeHandle, useState } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
-import classNames from "classnames";
+import classnames from "classnames";
 import { EditorView } from "prosemirror-view";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
-import { isNilOrEmpty, noop } from "utils/common";
+import useEditorWarnings from "hooks/useEditorWarnings";
+import { noop } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
-import BubbleMenu from "./CustomExtensions/BubbleMenu";
-import CharacterCount from "./CustomExtensions/CharacterCount";
-import FixedMenu from "./CustomExtensions/FixedMenu";
+import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
 import ImageUploader from "./CustomExtensions/Image/Uploader";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
+import Menu from "./Menu";
 import {
-  generateAddonOptions,
   getEditorStyles,
-  getIsPlaceholderActive,
   clipboardTextParser,
   setInitialPosition,
-  stringifyObject,
 } from "./utils";
 
 const Editor = (
   {
-    forceTitle = false,
-    titleError = false,
+    initialValue = "",
+    menuType = "fixed",
+    autoFocus = false,
     hideSlashCommands = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
@@ -34,80 +32,56 @@ const Editor = (
     className,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     uploadConfig = {},
-    initialValue = "",
-    onChange = () => {},
-    onFocus = () => {},
-    onBlur = () => {},
-    menuType = "fixed",
+    onChange = noop,
+    onFocus = noop,
+    onBlur = noop,
+    onSubmit = noop,
     variables = [],
     mentions = [],
-    showImageInMention = false,
-    placeholder = forceTitle ? { title: "Untitled" } : null,
+    placeholder,
     extensions = [],
-    contentClassName,
-    characterLimit,
     editorSecrets = {},
     rows = 6,
-    autoFocus = false,
-    onSubmit = noop,
-    heightStrategy = "fixed",
-    characterCountStrategy = "hidden",
+    isCharacterCountActive = false,
     keyboardShortcuts = [],
     error = null,
+    config = {},
     ...otherProps
   },
   ref
 ) => {
-  const [isImageUploadVisible, setIsImageUploadVisible] = useState(false);
-
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
-  const isPlaceholderActive = getIsPlaceholderActive(placeholder);
-  const showSlashCommandPlaceholder =
-    !isPlaceholderActive && isSlashCommandsActive;
-  const isUnsplashImageUploadActive = addons.includes("image-upload-unsplash");
-  const isCharacterCountActive = characterCountStrategy !== "hidden";
-
-  const addonOptions = generateAddonOptions(defaults, addons, {
-    includeImageUpload: isUnsplashImageUploadActive,
-  });
+  const isPlaceholderActive = !!placeholder;
+  const [isImageUploaderOpen, setIsImageUploaderOpen] = useState(false);
 
   const customExtensions = useCustomExtensions({
-    contentClassName,
-    forceTitle,
     placeholder,
     extensions,
     mentions,
     variables,
     isSlashCommandsActive,
-    showImageInMention,
-    setIsImageUploadVisible,
-    options: addonOptions,
+    options: [...defaults, ...addons],
     addonCommands,
-    characterLimit,
-    keyboardShortcuts,
     onSubmit,
+    keyboardShortcuts,
     uploadEndpoint,
+    config,
+    openImageUploader: () => setIsImageUploaderOpen(true),
   });
+  useEditorWarnings({ initialValue });
 
-  // https://github.com/ueberdosis/tiptap/issues/1451#issuecomment-953348865
-  EditorView.prototype.updateState = function updateState(state) {
-    if (!this.docView) return;
-    this.updateStateInner(state, this.state.plugins !== state.plugins);
-  };
+  /* Make editor object available to the parent */
+  useImperativeHandle(ref, () => ({ editor }));
 
-  const editorClasses = classNames("neeto-editor", {
-    "slash-active": showSlashCommandPlaceholder,
+  const editorClasses = classnames("neeto-editor", {
+    "slash-active": isSlashCommandsActive && !isPlaceholderActive,
     "fixed-menu-active border": isFixedMenuActive,
     "bubble-menu-active": isBubbleMenuActive,
-    "force-title": forceTitle,
-    "force-title--error": titleError,
     "placeholder-active": isPlaceholderActive,
     [className]: className,
   });
-
-  const editorStyles = getEditorStyles({ heightStrategy, rows });
 
   const editor = useEditor({
     extensions: customExtensions,
@@ -117,66 +91,49 @@ const Editor = (
     editorProps: {
       attributes: {
         class: editorClasses,
-        style: stringifyObject(editorStyles),
+        style: getEditorStyles({ rows }),
       },
       clipboardTextParser,
     },
-    parseOptions: {
-      preserveWhitespace: true,
-    },
+    parseOptions: { preserveWhitespace: true },
     onCreate: ({ editor }) => !autoFocus && setInitialPosition(editor),
-    onUpdate: ({ editor }) => setTimeout(() => onChange(editor.getHTML()), 0),
+    onUpdate: ({ editor }) => onChange(editor.getHTML()),
     onFocus,
     onBlur,
   });
 
-  /* Make editor object available to the parent */
-  React.useImperativeHandle(ref, () => ({ editor }));
-
-  useEffect(() => {
-    const isProduction = [process.env.RAILS_ENV, process.env.NODE_ENV].includes(
-      "production"
-    );
-    if (!isProduction && isNilOrEmpty(initialValue)) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        `[neeto-editor]: Empty value of "initialValue" in needtoEditor is expected to be "<p></p>" instead of "${initialValue}".`
-      );
-    }
-  }, [initialValue]);
+  // https://github.com/ueberdosis/tiptap/issues/1451#issuecomment-953348865
+  EditorView.prototype.updateState = function updateState(state) {
+    if (!this.docView) return;
+    this.updateStateInner(state, this.state.plugins !== state.plugins);
+  };
 
   return (
     <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
-      {isFixedMenuActive && (
-        <FixedMenu
+      <CharacterCountWrapper editor={editor} isActive={isCharacterCountActive}>
+        <Menu
+          addons={addons}
+          className={className}
+          defaults={defaults}
           editor={editor}
+          editorSecrets={editorSecrets}
+          isIndependant={false}
           mentions={mentions}
-          options={addonOptions}
-          setIsImageUploadVisible={setIsImageUploadVisible}
-          showImageInMention={showImageInMention}
+          menuType={menuType}
+          uploadConfig={uploadConfig}
+          uploadEndpoint={uploadEndpoint}
           variables={variables}
         />
-      )}
-      {isBubbleMenuActive && (
-        <BubbleMenu editor={editor} options={addonOptions} />
-      )}
-      <ImageUploader
-        editor={editor}
-        imageUploadUrl={uploadEndpoint}
-        isUnsplashImageUploadActive={isUnsplashImageUploadActive}
-        isVisible={isImageUploadVisible}
-        setIsVisible={setIsImageUploadVisible}
-        unsplashApiKey={editorSecrets.unsplash}
-        uploadConfig={uploadConfig}
-      />
-      <EditorContent editor={editor} {...otherProps} />
-      {isCharacterCountActive && (
-        <CharacterCount
-          count={editor?.storage.characterCount.characters()}
-          limit={characterLimit}
-          strategy={characterCountStrategy}
+        <EditorContent editor={editor} {...otherProps} />
+        <ImageUploader
+          editor={editor}
+          imageUploadUrl={uploadEndpoint}
+          isOpen={isImageUploaderOpen}
+          unsplashApiKey={editorSecrets.unsplash}
+          uploadConfig={uploadConfig}
+          onClose={() => setIsImageUploaderOpen(false)}
         />
-      )}
+      </CharacterCountWrapper>
     </ErrorWrapper>
   );
 };

@@ -30,6 +30,7 @@ const Variables = ({ editor, variables }) => {
           data-cy="neeto-editor-variable-option"
           icon={Braces}
           iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
+          color="white"
           tooltipProps={{
             content: "Variables",
             position: "bottom",

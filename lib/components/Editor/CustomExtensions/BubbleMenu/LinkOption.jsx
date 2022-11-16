@@ -56,7 +56,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
       />
       <Button
         data-cy="neeto-editor-link-cancel-button"
-        icon={Close}
+        icon={() => <Close size={16} />}
         style="icon"
         onClick={handleReset}
       />
