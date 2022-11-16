@@ -11,7 +11,7 @@ export const buildMenuOptions = ({ editor, options, setIsImageUploadOpen }) => {
   const menuOptions = MENU_OPTIONS(editor, setIsImageUploadOpen);
 
   return fromPairs(
-    ["font", "block", "list", "misc"].map(option => [
+    ["font", "block", "list", "misc", "right"].map(option => [
       option,
       menuOptions[option].filter(item => options.includes(item.optionName)),
     ])
@@ -24,9 +24,11 @@ export const renderOptionButton = ({
   active,
   optionName,
   highlight,
+  disabled,
 }) => (
   <MenuButton
     data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
+    disabled={disabled}
     highlight={highlight}
     icon={Icon}
     iconActive={active}

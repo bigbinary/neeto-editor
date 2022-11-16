@@ -1,14 +1,19 @@
 .neeto-editor-fixed-menu {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: visible;
   border: thin solid rgb(var(--neeto-ui-gray-300));
-  border-bottom: none;
   border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
+  border-bottom: none;
   background-color: rgb(var(--neeto-ui-gray-100));
+  text-align: center;
+
+  &__wrapper {
+    display: inline-flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: auto;
+    max-width: 1056px;
+    width: 100%;
+  }
 
   &__variables {
     position: absolute;
@@ -26,6 +31,12 @@
         background-color: rgb(var(--neeto-ui-gray-700));
       }
     }
+  }
+
+  &__right-options {
+    display: flex;
+    justify-self: flex-end;
+    margin-left: auto;
   }
 
   &__emoji-dropdown {
@@ -65,6 +76,11 @@
     visibility: hidden;
     height: 0;
     width: 0;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    background-color: rgb(var(--neeto-ui-gray-100));
   }
 }
 

@@ -35,6 +35,7 @@ const FixedMenu = ({
     block: blockStyleOptions,
     list: listStyleOptions,
     misc: miscOptions,
+    right: rightOptions,
   } = buildMenuOptions({ editor, options, setIsImageUploadOpen });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = fontSizeOptions.length > 0;
@@ -43,41 +44,46 @@ const FixedMenu = ({
 
   return (
     <div className="neeto-editor-fixed-menu">
-      {fontStyleOptions.map(renderOptionButton)}
-      {isFontSizeActive && <FontSizeOption editor={editor} />}
-      <Separator />
-      {blockStyleOptions.map(renderOptionButton)}
-      {isEmojiActive && <EmojiOption editor={editor} />}
-      <Separator />
-      {listStyleOptions.map(renderOptionButton)}
-      {isImageNodeSelected &&
-        getImageMenuOptions({
-          editor,
-          isImageUploadOpen,
-          setIsImageUploadOpen,
-        }).map(renderOptionButton)}
-      <Separator />
-      {isLinkActive && <LinkOption editor={editor} />}
-      {miscOptions.map(renderOptionButton)}
-      <Mentions editor={editor} mentions={mentions} />
-      <div className="neeto-editor-fixed-menu__variables">
-        <Variables editor={editor} variables={variables} />
-      </div>
-      <Modal
-        isOpen={isImageUploadOpen}
-        onClose={() => setIsImageUploadOpen(false)}
-      >
-        <div className="neeto-editor-image-uploader">
-          <div className="neeto-editor-image-uploader__content">
-            <ImageEditor
-              alt={selectedNode?.attrs.alt}
-              editor={editor}
-              url={selectedNode?.attrs.src}
-              onClose={() => setIsImageUploadOpen(false)}
-            />
-          </div>
+      <div className="neeto-editor-fixed-menu__wrapper">
+        {fontStyleOptions.map(renderOptionButton)}
+        {isFontSizeActive && <FontSizeOption editor={editor} />}
+        <Separator />
+        {blockStyleOptions.map(renderOptionButton)}
+        {isEmojiActive && <EmojiOption editor={editor} />}
+        <Separator />
+        {listStyleOptions.map(renderOptionButton)}
+        {isImageNodeSelected &&
+          getImageMenuOptions({
+            editor,
+            isImageUploadOpen,
+            setIsImageUploadOpen,
+          }).map(renderOptionButton)}
+        <Separator />
+        {isLinkActive && <LinkOption editor={editor} />}
+        {miscOptions.map(renderOptionButton)}
+        <Mentions editor={editor} mentions={mentions} />
+        <div className="neeto-editor-fixed-menu__variables">
+          <Variables editor={editor} variables={variables} />
         </div>
-      </Modal>
+        <div className="neeto-editor-fixed-menu__right-options">
+          {rightOptions.map(renderOptionButton)}
+        </div>
+        <Modal
+          isOpen={isImageUploadOpen}
+          onClose={() => setIsImageUploadOpen(false)}
+        >
+          <div className="neeto-editor-image-uploader">
+            <div className="neeto-editor-image-uploader__content">
+              <ImageEditor
+                alt={selectedNode?.attrs.alt}
+                editor={editor}
+                url={selectedNode?.attrs.src}
+                onClose={() => setIsImageUploadOpen(false)}
+              />
+            </div>
+          </div>
+        </Modal>
+      </div>
     </div>
   );
 };
