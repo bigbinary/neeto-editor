@@ -22,7 +22,21 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/4e11af9f04c2d8541c87e5dab55ba78afc07b859...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/75c6865ecd20dd38e11e613bebb50b7ffd89ff97...HEAD)
+
+## [1.0.0](https://github.com/bigbinary/neeto-editor/compare/4e11af9f04c2d8541c87e5dab55ba78afc07b859...75c6865ecd20dd38e11e613bebb50b7ffd89ff97) - 2022-11-16
+
+- Changed: Updated the UI for editor.
+- Removed: **BREAKING** the `forceTitle` and `titleError` props. This feature is not relevant and is best handled using a separate input component.
+- Removed: **BREAKING** the `showImageInMention` prop. Mentions must be standardized and must always contain an image.
+- Removed: **BREAKING** the `contentClassname` prop. Content can be modified by using the `editor-content` class.
+- Removed: **BREAKING** the `heightStrategy` prop. The editor behavior is standardized by always making the height flexible.
+- Changed: **BREAKING** standardized how the placeholders are handled. Now, it only permits strings. Object and function formats are removed.
+- Removed: **BREAKING** the `characterCountStrategy` prop. Now only the character count will be displayed.
+- Added: `config` prop. All the custom extensions can now be overridden by passing the `config` prop.
+- Eg: `{ focus: {  mode: "deepest" } }`.
+- Added: *Menu* component. This will help in using the *Menu* component independent from the editor content.
+- Added: Undo and redo addons.
 
 ## [0.12.19](https://github.com/bigbinary/neeto-editor/compare/acc774a101524ea7fd69e386ce91df7ac53cba1f...4e11af9f04c2d8541c87e5dab55ba78afc07b859) - 2022-11-08
 
