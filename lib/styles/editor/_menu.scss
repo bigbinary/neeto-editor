@@ -15,7 +15,7 @@
     position: relative;
     justify-content: flex-start;
     align-items: center;
-    overflow: auto;
+    overflow: visible;
     max-width: 1056px;
     width: 100%;
   }
@@ -67,14 +67,22 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 8px;
   align-items: center;
   padding: 8px;
   cursor: pointer;
   transition: var(--neeto-ui-transition);
+  border-radius: 2px;
+
+  p {
+    color: rgb(var(--neeto-ui-gray-700));
+    font-size: var(--neeto-ui-text-xs);
+    line-height: 1;
+  }
 
   &:hover,
   &.active {
-    background-color: rgb(var(--neeto-ui-gray-300));
+    background-color: rgb(var(--neeto-ui-gray-200));
   }
 
   input[type="color"] {
@@ -154,8 +162,7 @@
 .neeto-editor-font-size-wrapper {
   .ne-dropdown__popup-menu {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
     align-items: center;
     padding: 4px;
   }

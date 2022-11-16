@@ -19,6 +19,7 @@ const MenuButton = ({
   highlight = false,
   color,
   disabled,
+  label,
   ...otherProps
 }) => (
   <ToolTip {...tooltipProps}>
@@ -31,10 +32,15 @@ const MenuButton = ({
       {...generateFocusProps(highlight)}
       {...otherProps}
     >
-      <Icon
-        color={color || (iconActive ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE)}
-        size={MENU_ICON_SIZE}
-      />
+      {label && <p>{label}</p>}
+      {Icon && (
+        <Icon
+          size={MENU_ICON_SIZE}
+          color={
+            color || (iconActive ? ICON_COLOR_ACTIVE : ICON_COLOR_INACTIVE)
+          }
+        />
+      )}
     </button>
   </ToolTip>
 );
