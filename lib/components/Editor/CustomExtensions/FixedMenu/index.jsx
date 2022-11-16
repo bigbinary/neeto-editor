@@ -1,7 +1,9 @@
 import React from "react";
 
+import classnames from "classnames";
+import { isEmpty } from "ramda";
+
 import { EDITOR_OPTIONS } from "common/constants";
-import Modal from "components/Common/Modal";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
@@ -10,7 +12,6 @@ import Separator from "./Separator";
 import { buildMenuOptions, renderOptionButton } from "./utils";
 
 import { getImageMenuOptions } from "../BubbleMenu/utils";
-import ImageEditor from "../Image/ImageEditor";
 import Mentions from "../Mention";
 import Variables from "../Variable";
 
@@ -21,6 +22,8 @@ const FixedMenu = ({
   variables,
   isImageUploadOpen,
   setIsImageUploadOpen,
+  isIndependant,
+  className,
 }) => {
   const selectedNode = editor && editor.view.state.selection.node;
   const isImageNodeSelected =
@@ -43,14 +46,19 @@ const FixedMenu = ({
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
 
   return (
-    <div className="neeto-editor-fixed-menu">
+    <div
+      className={classnames("neeto-editor-fixed-menu", {
+        "neeto-editor-fixed-menu--independant": isIndependant,
+        [className]: className,
+      })}
+    >
       <div className="neeto-editor-fixed-menu__wrapper">
-        {fontStyleOptions.map(renderOptionButton)}
         {isFontSizeActive && <FontSizeOption editor={editor} />}
-        <Separator />
+        {fontStyleOptions.map(renderOptionButton)}
+        {(isFontSizeActive || !isEmpty(fontSizeOptions)) && <Separator />}
         {blockStyleOptions.map(renderOptionButton)}
         {isEmojiActive && <EmojiOption editor={editor} />}
-        <Separator />
+        {(isEmojiActive || !isEmpty(blockStyleOptions)) && <Separator />}
         {listStyleOptions.map(renderOptionButton)}
         {isImageNodeSelected &&
           getImageMenuOptions({
@@ -58,7 +66,7 @@ const FixedMenu = ({
             isImageUploadOpen,
             setIsImageUploadOpen,
           }).map(renderOptionButton)}
-        <Separator />
+        {(isImageNodeSelected || !isEmpty(listStyleOptions)) && <Separator />}
         {isLinkActive && <LinkOption editor={editor} />}
         {miscOptions.map(renderOptionButton)}
         <Mentions editor={editor} mentions={mentions} />
@@ -68,21 +76,6 @@ const FixedMenu = ({
         <div className="neeto-editor-fixed-menu__right-options">
           {rightOptions.map(renderOptionButton)}
         </div>
-        <Modal
-          isOpen={isImageUploadOpen}
-          onClose={() => setIsImageUploadOpen(false)}
-        >
-          <div className="neeto-editor-image-uploader">
-            <div className="neeto-editor-image-uploader__content">
-              <ImageEditor
-                alt={selectedNode?.attrs.alt}
-                editor={editor}
-                url={selectedNode?.attrs.src}
-                onClose={() => setIsImageUploadOpen(false)}
-              />
-            </div>
-          </div>
-        </Modal>
       </div>
     </div>
   );

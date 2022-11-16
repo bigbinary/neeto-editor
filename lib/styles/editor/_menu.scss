@@ -5,6 +5,11 @@
   background-color: rgb(var(--neeto-ui-gray-100));
   text-align: center;
 
+  &--independant {
+    border-radius: unset;
+    border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
+  }
+
   &__wrapper {
     display: inline-flex;
     position: relative;
@@ -62,14 +67,27 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 8px;
   align-items: center;
   padding: 8px;
   cursor: pointer;
   transition: var(--neeto-ui-transition);
+  border-radius: 2px;
+
+  p {
+    color: rgb(var(--neeto-ui-gray-700));
+    font-size: var(--neeto-ui-text-xs);
+    line-height: 1;
+  }
 
   &:hover,
   &.active {
-    background-color: rgb(var(--neeto-ui-gray-300));
+    background-color: rgb(var(--neeto-ui-gray-200));
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: rgb(var(--neeto-ui-gray-300)) auto 1px;
   }
 
   input[type="color"] {
@@ -149,8 +167,7 @@
 .neeto-editor-font-size-wrapper {
   .ne-dropdown__popup-menu {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: column;
     align-items: center;
     padding: 4px;
   }

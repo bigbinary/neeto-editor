@@ -17,6 +17,8 @@ const Menu = ({
   uploadConfig = {},
   mentions = [],
   variables = [],
+  isIndependant = true,
+  className,
 }) => {
   const [isImageUploadOpen, setIsImageUploadOpen] = useState(false);
   const options = [...defaults, ...addons];
@@ -27,8 +29,10 @@ const Menu = ({
     <>
       {isFixedMenuActive && (
         <FixedMenu
+          className={className}
           editor={editor}
           isImageUploadOpen={isImageUploadOpen}
+          isIndependant={isIndependant}
           mentions={mentions}
           options={options}
           setIsImageUploadOpen={setIsImageUploadOpen}
