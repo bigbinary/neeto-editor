@@ -97,7 +97,7 @@ const Dropdown = React.forwardRef(
       closeOnOutsideClick = true,
       dropdownModifiers = [],
       trigger = TRIGGERS.click,
-      strategy = STRATEGY.absolute,
+      strategy = STRATEGY.fixed,
       onClick,
       ...otherProps
     },
