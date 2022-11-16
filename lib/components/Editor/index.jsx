@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from "react";
+import React, { useImperativeHandle, useState } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
@@ -11,6 +11,7 @@ import { noop } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
+import ImageUploader from "./CustomExtensions/Image/Uploader";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
 import Menu from "./Menu";
 import {
@@ -53,6 +54,7 @@ const Editor = (
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = !!placeholder;
+  const [isImageUploaderOpen, setIsImageUploaderOpen] = useState(false);
 
   const customExtensions = useCustomExtensions({
     placeholder,
@@ -68,6 +70,7 @@ const Editor = (
     config,
     editorSecrets,
     uploadConfig,
+    openImageUploader: () => setIsImageUploaderOpen(true),
   });
   useEditorWarnings({ initialValue });
 
@@ -112,6 +115,7 @@ const Editor = (
       <CharacterCountWrapper editor={editor} isActive={isCharacterCountActive}>
         <Menu
           addons={addons}
+          className={className}
           defaults={defaults}
           editor={editor}
           editorSecrets={editorSecrets}
@@ -123,6 +127,14 @@ const Editor = (
           variables={variables}
         />
         <EditorContent editor={editor} {...otherProps} />
+        <ImageUploader
+          editor={editor}
+          imageUploadUrl={uploadEndpoint}
+          isOpen={isImageUploaderOpen}
+          unsplashApiKey={editorSecrets.unsplash}
+          uploadConfig={uploadConfig}
+          onClose={() => setIsImageUploaderOpen(false)}
+        />
       </CharacterCountWrapper>
     </ErrorWrapper>
   );

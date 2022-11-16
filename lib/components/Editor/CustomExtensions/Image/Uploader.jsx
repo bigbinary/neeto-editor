@@ -10,7 +10,7 @@ import LocalUploader from "./LocalUploader";
 import UnsplashImagePicker from "./UnsplashImagePicker";
 import URLForm from "./URLForm";
 
-const ImageUpload = ({
+const Uploader = ({
   isOpen,
   onClose,
   editor,
@@ -93,4 +93,4 @@ const ImageUpload = ({
   );
 };
 
-export default ImageUpload;
+export default Uploader;
