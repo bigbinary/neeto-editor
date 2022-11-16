@@ -85,6 +85,11 @@
     background-color: rgb(var(--neeto-ui-gray-200));
   }
 
+  &:focus,
+  &:focus-visible {
+    outline: rgb(var(--neeto-ui-gray-300)) auto 1px;
+  }
+
   input[type="color"] {
     visibility: hidden;
     height: 0;
