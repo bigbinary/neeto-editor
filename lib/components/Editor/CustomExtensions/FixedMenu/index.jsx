@@ -1,5 +1,7 @@
 import React from "react";
 
+import classnames from "classnames";
+
 import { EDITOR_OPTIONS } from "common/constants";
 import Modal from "components/Common/Modal";
 
@@ -21,6 +23,8 @@ const FixedMenu = ({
   variables,
   isImageUploadOpen,
   setIsImageUploadOpen,
+  isIndependant,
+  className,
 }) => {
   const selectedNode = editor && editor.view.state.selection.node;
   const isImageNodeSelected =
@@ -43,7 +47,12 @@ const FixedMenu = ({
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
 
   return (
-    <div className="neeto-editor-fixed-menu">
+    <div
+      className={classnames("neeto-editor-fixed-menu", {
+        "neeto-editor-fixed-menu--independant": isIndependant,
+        [className]: className,
+      })}
+    >
       <div className="neeto-editor-fixed-menu__wrapper">
         {fontStyleOptions.map(renderOptionButton)}
         {isFontSizeActive && <FontSizeOption editor={editor} />}

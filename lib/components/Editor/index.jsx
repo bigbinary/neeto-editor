@@ -115,6 +115,7 @@ const Editor = (
           defaults={defaults}
           editor={editor}
           editorSecrets={editorSecrets}
+          isIndependant={false}
           mentions={mentions}
           menuType={menuType}
           uploadConfig={uploadConfig}

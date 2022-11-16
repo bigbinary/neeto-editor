@@ -5,6 +5,11 @@
   background-color: rgb(var(--neeto-ui-gray-100));
   text-align: center;
 
+  &--independant {
+    border-radius: unset;
+    border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
+  }
+
   &__wrapper {
     display: inline-flex;
     position: relative;
