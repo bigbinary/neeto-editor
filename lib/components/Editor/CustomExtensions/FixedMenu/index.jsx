@@ -1,6 +1,7 @@
 import React from "react";
 
 import classnames from "classnames";
+import { isEmpty } from "ramda";
 
 import { EDITOR_OPTIONS } from "common/constants";
 import Modal from "components/Common/Modal";
@@ -56,10 +57,10 @@ const FixedMenu = ({
       <div className="neeto-editor-fixed-menu__wrapper">
         {fontStyleOptions.map(renderOptionButton)}
         {isFontSizeActive && <FontSizeOption editor={editor} />}
-        <Separator />
+        {(isFontSizeActive || !isEmpty(fontSizeOptions)) && <Separator />}
         {blockStyleOptions.map(renderOptionButton)}
         {isEmojiActive && <EmojiOption editor={editor} />}
-        <Separator />
+        {(isEmojiActive || !isEmpty(blockStyleOptions)) && <Separator />}
         {listStyleOptions.map(renderOptionButton)}
         {isImageNodeSelected &&
           getImageMenuOptions({
@@ -67,7 +68,7 @@ const FixedMenu = ({
             isImageUploadOpen,
             setIsImageUploadOpen,
           }).map(renderOptionButton)}
-        <Separator />
+        {(isImageNodeSelected || !isEmpty(listStyleOptions)) && <Separator />}
         {isLinkActive && <LinkOption editor={editor} />}
         {miscOptions.map(renderOptionButton)}
         <Mentions editor={editor} mentions={mentions} />
