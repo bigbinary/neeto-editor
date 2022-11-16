@@ -3,7 +3,7 @@ import React from "react";
 import Menu from "./Menu";
 
 class CommandsList extends React.Component {
-  state = { activeMenuIndex: 0, isImageUploadOpen: false };
+  state = { activeMenuIndex: 0 };
 
   onKeyDown = ({ event }) =>
     ["Enter", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(

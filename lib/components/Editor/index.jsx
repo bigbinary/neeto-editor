@@ -68,8 +68,6 @@ const Editor = (
     keyboardShortcuts,
     uploadEndpoint,
     config,
-    editorSecrets,
-    uploadConfig,
     openImageUploader: () => setIsImageUploaderOpen(true),
   });
   useEditorWarnings({ initialValue });
