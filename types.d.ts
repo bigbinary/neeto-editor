@@ -63,6 +63,9 @@ interface Config {
 }
 
 export function Editor(props: {
+  initialValue?: string;
+  menuType?: "fixed" | "bubble" | "none";
+  autoFocus?: boolean;
   hideSlashCommands?: boolean;
   defaults?: string[];
   addons?: string[];
@@ -70,22 +73,20 @@ export function Editor(props: {
   className?: string;
   uploadEndpoint?: string;
   uploadConfig?: UppyOptions<Record<string, unknown>>;
-  initialValue?: string;
   onChange?: (htmlContent: string) => void;
   onFocus?: EditorFocus;
   onBlur?: EditorFocus;
-  menuType?: string;
+  onSubmit?: (htmlContent: string) => void;
   variables?: Variable[];
   mentions?: Mention[];
   placeholder?: string;
   extensions?: Array<Node | Extension>;
   editorSecrets?: Array<{ unsplash?: string }>;
   rows?: number;
-  autoFocus?: boolean;
-  onSubmit?: (htmlContent: string) => void;
+  isCharacterCountActive?: boolean;
   keyboardShortcuts?: KeyboardShortcuts;
   error?: string;
-  config: Config;
+  config?: Config;
   [otherProps: string]: any;
 }): JSX.Element;
 
