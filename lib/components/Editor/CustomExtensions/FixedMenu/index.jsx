@@ -70,12 +70,12 @@ const FixedMenu = ({
         {isLinkActive && <LinkOption editor={editor} />}
         {miscOptions.map(renderOptionButton)}
         <Mentions editor={editor} mentions={mentions} />
-        <div className="neeto-editor-fixed-menu__variables">
-          <Variables editor={editor} variables={variables} />
-        </div>
         <div className="neeto-editor-fixed-menu__right-options">
           {rightOptions.map(renderOptionButton)}
         </div>
+      </div>
+      <div className="neeto-editor-fixed-menu__variables">
+        <Variables editor={editor} variables={variables} />
       </div>
     </div>
   );

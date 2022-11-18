@@ -4,6 +4,7 @@
   border-bottom: none;
   background-color: rgb(var(--neeto-ui-gray-100));
   text-align: center;
+  position: relative;
 
   &--independant {
     border-radius: unset;
@@ -12,7 +13,6 @@
 
   &__wrapper {
     display: inline-flex;
-    position: relative;
     justify-content: flex-start;
     align-items: center;
     overflow: auto;
