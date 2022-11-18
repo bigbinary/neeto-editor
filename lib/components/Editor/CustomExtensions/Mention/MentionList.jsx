@@ -99,7 +99,7 @@ export class MentionList extends React.Component {
         data-cy="neeto-editor-mention-list"
         ref={this.mentionRef}
       >
-        {items.map(({ key, name, imageUrl, showImage }, index) => (
+        {items.map(({ key, name, imageUrl }, index) => (
           <button
             data-cy={`neeto-editor-mention-list-${name}`}
             key={key}
@@ -109,7 +109,7 @@ export class MentionList extends React.Component {
             })}
             onClick={() => this.selectItem(index)}
           >
-            {showImage && <Avatar user={{ name, imageUrl }} />}
+            <Avatar user={{ name, imageUrl }} />
             <p>{name}</p>
           </button>
         ))}
