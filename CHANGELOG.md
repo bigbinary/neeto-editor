@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/ea254fc004e71423770fb813d6fd2f3450849fd1...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/9cef94a4355b15ed60f48aa2bcb9481a38b0e520...HEAD)
+
+## [1.0.3](https://github.com/bigbinary/neeto-editor/compare/ea254fc004e71423770fb813d6fd2f3450849fd1...9cef94a4355b15ed60f48aa2bcb9481a38b0e520) - 2022-11-18
+
+- Fixed: the missing variable icon.
 
 ## [1.0.2](https://github.com/bigbinary/neeto-editor/compare/5243908e4144a8ebd82a7a779591d93b6a88c619...ea254fc004e71423770fb813d6fd2f3450849fd1) - 2022-11-18
 
