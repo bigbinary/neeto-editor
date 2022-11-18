@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/8fea294d05f8fcc64c42bb03267bb4e2375aeffa...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/90eac238e67708f38dc18b67c21ef6c99ca6596c...HEAD)
+
+## [1.0.5](https://github.com/bigbinary/neeto-editor/compare/8fea294d05f8fcc64c42bb03267bb4e2375aeffa...90eac238e67708f38dc18b67c21ef6c99ca6596c) - 2022-11-18
+
+- Fixed: always show image in mentions.
 
 ## [1.0.4](https://github.com/bigbinary/neeto-editor/compare/9cef94a4355b15ed60f48aa2bcb9481a38b0e520...8fea294d05f8fcc64c42bb03267bb4e2375aeffa) - 2022-11-18
 
