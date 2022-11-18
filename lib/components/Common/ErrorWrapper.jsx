@@ -28,6 +28,8 @@ const ErrorWrapper = ({ error, isFixedMenuActive, children }) => {
     return message;
   };
 
+  if (!error) return children;
+
   return (
     <>
       <div className={wrapperClasses}>{children}</div>

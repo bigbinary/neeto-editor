@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import classnames from "classnames";
+
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 
 import { DEFAULT_EDITOR_OPTIONS } from "../constants";
@@ -29,7 +31,7 @@ const Menu = ({
     <>
       {isFixedMenuActive && (
         <FixedMenu
-          className={className}
+          className={classnames({ [className]: className })}
           editor={editor}
           isImageUploadOpen={isImageUploadOpen}
           isIndependant={isIndependant}
