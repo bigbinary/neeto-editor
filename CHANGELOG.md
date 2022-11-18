@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/29d00ae45f53cbf696e14da5d57afb8acae18255...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/ea254fc004e71423770fb813d6fd2f3450849fd1...HEAD)
+
+## [1.0.2](https://github.com/bigbinary/neeto-editor/compare/5243908e4144a8ebd82a7a779591d93b6a88c619...ea254fc004e71423770fb813d6fd2f3450849fd1) - 2022-11-18
+
+- Changed: synced types with new changes in prop.
+- Changed: editor menu item styles.
 
 ## [1.0.1](https://github.com/bigbinary/neeto-editor/compare/75c6865ecd20dd38e11e613bebb50b7ffd89ff97...29d00ae45f53cbf696e14da5d57afb8acae18255) - 2022-11-17
 
