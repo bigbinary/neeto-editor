@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/90eac238e67708f38dc18b67c21ef6c99ca6596c...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/6e1fae0dce0cd3e59a15e8cfe7466369d47c78e0...HEAD)
+
+## [1.0.6](https://github.com/bigbinary/neeto-editor/compare/90eac238e67708f38dc18b67c21ef6c99ca6596c...6e1fae0dce0cd3e59a15e8cfe7466369d47c78e0) - 2022-11-18
+
+- Fixed: broken keyboard shortcuts.
 
 ## [1.0.5](https://github.com/bigbinary/neeto-editor/compare/8fea294d05f8fcc64c42bb03267bb4e2375aeffa...90eac238e67708f38dc18b67c21ef6c99ca6596c) - 2022-11-18
 
