@@ -109,36 +109,31 @@ const Editor = (
   };
 
   return (
-    <div className={classnames({ [className]: className })}>
-      <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
-        <CharacterCountWrapper
+    <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
+      <CharacterCountWrapper editor={editor} isActive={isCharacterCountActive}>
+        <Menu
+          addons={addons}
+          defaults={defaults}
           editor={editor}
-          isActive={isCharacterCountActive}
-        >
-          <Menu
-            addons={addons}
-            defaults={defaults}
-            editor={editor}
-            editorSecrets={editorSecrets}
-            isIndependant={false}
-            mentions={mentions}
-            menuType={menuType}
-            uploadConfig={uploadConfig}
-            uploadEndpoint={uploadEndpoint}
-            variables={variables}
-          />
-          <EditorContent editor={editor} {...otherProps} />
-          <ImageUploader
-            editor={editor}
-            imageUploadUrl={uploadEndpoint}
-            isOpen={isImageUploaderOpen}
-            unsplashApiKey={editorSecrets.unsplash}
-            uploadConfig={uploadConfig}
-            onClose={() => setIsImageUploaderOpen(false)}
-          />
-        </CharacterCountWrapper>
-      </ErrorWrapper>
-    </div>
+          editorSecrets={editorSecrets}
+          isIndependant={false}
+          mentions={mentions}
+          menuType={menuType}
+          uploadConfig={uploadConfig}
+          uploadEndpoint={uploadEndpoint}
+          variables={variables}
+        />
+        <EditorContent editor={editor} {...otherProps} />
+        <ImageUploader
+          editor={editor}
+          imageUploadUrl={uploadEndpoint}
+          isOpen={isImageUploaderOpen}
+          unsplashApiKey={editorSecrets.unsplash}
+          uploadConfig={uploadConfig}
+          onClose={() => setIsImageUploaderOpen(false)}
+        />
+      </CharacterCountWrapper>
+    </ErrorWrapper>
   );
 };
 
