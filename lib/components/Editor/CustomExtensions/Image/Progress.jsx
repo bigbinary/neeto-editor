@@ -8,7 +8,7 @@ const Progress = ({ uppy }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    uppy.on("progress", setProgress);
+    uppy.on("upload-progress", (_, { progress }) => setProgress(progress));
   }, [uppy]);
 
   const progressPercentage = `${progress}%`;

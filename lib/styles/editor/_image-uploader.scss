@@ -81,7 +81,7 @@
 
       .uppy-DragDrop--isDraggingOver {
         background-color: rgb(var(--neeto-ui-gray-200));
-        border: 2px dashed rgb(var(--neeto-ui-secondary-indigo));
+        border: 2px dashed rgb(var(--neeto-ui-primary-500));
       }
 
       .uppy-DragDrop-label {
@@ -89,7 +89,7 @@
       }
 
       .uppy-DragDrop-browse {
-        color: rgb(var(--neeto-ui-secondary-indigo));
+        color: rgb(var(--neeto-ui-primary-500));
         font-size: var(--neeto-ui-text-sm);
         font-weight: var(--neeto-ui-font-semibold);
         cursor: pointer;
@@ -217,13 +217,13 @@
     height: 6px;
     border-radius: var(--neeto-ui-rounded-full);
     overflow: hidden;
-    background-color: rgba(var(--neeto-ui-secondary-indigo, 0.2));
+    background-color: rgba(var(--neeto-ui-primary-500), 0.2);
     margin-top: 4px;
   }
 
   .neeto-editor-progress-bar__indicator-inner {
     height: 100%;
-    background-color: rgb(var(--neeto-ui-secondary-indigo));
+    background-color: rgb(var(--neeto-ui-primary-500));
   }
 }
 
