@@ -26,6 +26,12 @@ const Uploader = ({
     setImageUrl(url);
   };
 
+  const handleClose = () => {
+    onClose();
+    setImageUrl("");
+    setActiveTab(IMAGE_UPLOAD_OPTIONS[0]);
+  };
+
   const tab = {
     local: () => (
       <LocalUploader
@@ -52,14 +58,7 @@ const Uploader = ({
   const ActiveTab = tab[activeTab];
 
   return (
-    <Modal
-      closeButton={false}
-      isOpen={isOpen}
-      onClose={() => {
-        onClose();
-        setActiveTab(IMAGE_UPLOAD_OPTIONS[0]);
-      }}
-    >
+    <Modal closeButton={false} isOpen={isOpen} onClose={handleClose}>
       <div className="neeto-editor-image-uploader">
         <Tab>
           {IMAGE_UPLOAD_OPTIONS.filter(
@@ -76,14 +75,7 @@ const Uploader = ({
         </Tab>
         <div className="neeto-editor-image-uploader__content">
           {imageUrl ? (
-            <ImageEditor
-              editor={editor}
-              url={imageUrl}
-              onClose={() => {
-                setImageUrl("");
-                onClose();
-              }}
-            />
+            <ImageEditor editor={editor} url={imageUrl} onClose={handleClose} />
           ) : (
             <ActiveTab />
           )}
