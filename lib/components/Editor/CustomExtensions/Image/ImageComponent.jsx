@@ -28,7 +28,7 @@ const ImageMenu = ({ editor }) => {
         className: "neeto-editor__image-menu-btn",
       }}
     >
-      {menuOptions.map(({ Icon, active, optionName, command }) => (
+      {menuOptions.map(({ Icon, active, optionName, align }) => (
         <MenuButton
           icon={Icon}
           iconActive={active}
@@ -38,7 +38,7 @@ const ImageMenu = ({ editor }) => {
             position: "bottom",
             delay: [500],
           }}
-          onClick={command}
+          onClick={() => editor.commands.updateAttributes("image", { align })}
         />
       ))}
       <Menu />

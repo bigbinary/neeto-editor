@@ -135,7 +135,7 @@
 }
 
 .neeto-editor__image-wrapper {
-  display: block;
+  display: flex;
   color: unset !important;
   font-weight: unset !important;
 
@@ -169,16 +169,16 @@
       color: rgb(var(--neeto-ui-gray-500));
     }
   }
+}
 
-  .neeto-editor__image--left {
-    justify-content: flex-start;
-  }
+.neeto-editor__image--left {
+  justify-content: flex-start;
+}
 
-  .neeto-editor__image--center {
-    justify-content: center;
-  }
+.neeto-editor__image--center {
+  justify-content: center;
+}
 
-  .neeto-editor__image--right {
-    justify-content: flex-end;
-  }
+.neeto-editor__image--right {
+  justify-content: flex-end;
 }
