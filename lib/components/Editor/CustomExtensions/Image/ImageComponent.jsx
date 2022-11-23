@@ -1,7 +1,26 @@
 import React from "react";
 
 import { NodeViewWrapper } from "@tiptap/react";
+import { MenuHorizontal } from "neetoicons";
 import { Resizable } from "re-resizable";
+
+import Dropdown from "components/Common/Dropdown";
+
+const { Menu } = Dropdown;
+
+const ImageMenu = () => (
+  <Dropdown
+    buttonSize="small"
+    icon={MenuHorizontal}
+    position="top"
+    trigger="hover"
+    buttonProps={{
+      className: "neeto-editor__image-menu",
+    }}
+  >
+    <Menu />
+  </Dropdown>
+);
 
 const ImageComponent = ({ node, editor, getPos }) => {
   const { alt, src, figheight, figwidth } = node.attrs;
@@ -13,6 +32,7 @@ const ImageComponent = ({ node, editor, getPos }) => {
   return (
     <NodeViewWrapper>
       <figure>
+        <ImageMenu />
         <Resizable
           lockAspectRatio
           className="neeto-editor__image"

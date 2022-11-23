@@ -136,6 +136,7 @@
 
 .neeto-editor__image {
   display: inline-block;
+  cursor: default;
 
   img {
     display: inline-block;
@@ -147,6 +148,7 @@
 }
 
 figure {
+  position: relative;
   display: inline-block;
 }
 
@@ -158,4 +160,12 @@ figcaption {
 figcaption:empty:before {
   content: "Add a caption";
   color: rgb(var(--neeto-ui-gray-500));
+}
+
+.neeto-editor__image-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  padding: 2px !important;
 }
