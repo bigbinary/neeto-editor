@@ -134,60 +134,47 @@
   display: none;
 }
 
-.neeto-editor__image {
-  display: inline-block;
-
-  img {
-    display: inline-block;
-    height: 100%;
-    border: 2px solid rgb(var(--neeto-ui-gray-300));
-    border-radius: var(--neeto-ui-rounded-lg);
-    padding: 4px;
-  }
-}
-
-figure {
-  position: relative;
-  display: inline-block;
-}
-
-figcaption {
-  margin-top: 4px;
-  text-align: center;
-}
-
-figcaption:empty:before {
-  content: "Add a caption";
-  color: rgb(var(--neeto-ui-gray-500));
-}
-
-.neeto-editor__image-menu {
-  .ne-dropdown__popup {
-    display: flex;
-    min-width: unset;
-  }
-
-  &-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    padding: 2px !important;
-  }
-}
-
 .neeto-editor__image-wrapper {
-  display: flex;
-}
+  display: block;
+  color: unset !important;
+  font-weight: unset !important;
 
-.neeto-editor__image--left {
-  justify-content: flex-start;
-}
+  figure {
+    position: relative;
+    display: inline-block;
+  }
 
-.neeto-editor__image--center {
-  justify-content: center;
-}
+  .neeto-editor__image {
+    display: inline-block;
 
-.neeto-editor__image--right {
-  justify-content: flex-end;
+    img {
+      display: inline-block;
+      height: 100%;
+      border: 2px solid rgb(var(--neeto-ui-gray-300));
+      border-radius: var(--neeto-ui-rounded-lg);
+      padding: 4px;
+    }
+  }
+
+  figcaption {
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  .neeto-editor__image-caption:empty:before {
+    content: "Add a caption";
+    color: rgb(var(--neeto-ui-gray-500));
+  }
+
+  .neeto-editor__image--left {
+    justify-content: flex-start;
+  }
+
+  .neeto-editor__image--center {
+    justify-content: center;
+  }
+
+  .neeto-editor__image--right {
+    justify-content: flex-end;
+  }
 }

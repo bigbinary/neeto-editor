@@ -78,7 +78,9 @@ const ImageComponent = ({ node, editor, getPos }) => {
         >
           <img {...node.attrs} alt={caption} src={src} />
         </Resizable>
-        <figcaption>{caption}</figcaption>
+        <figcaption className="neeto-editor__image-caption">
+          {caption}
+        </figcaption>
       </figure>
     </NodeViewWrapper>
   );

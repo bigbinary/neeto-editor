@@ -257,3 +257,18 @@
 .neeto-editor-bubble-menu-animate-shake {
   animation: 1s linear infinite alternate both shake;
 }
+
+.neeto-editor__image-menu {
+  .ne-dropdown__popup {
+    display: flex;
+    min-width: unset;
+  }
+
+  &-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    padding: 2px !important;
+  }
+}
