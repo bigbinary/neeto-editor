@@ -5,22 +5,44 @@ import { MenuHorizontal } from "neetoicons";
 import { Resizable } from "re-resizable";
 
 import Dropdown from "components/Common/Dropdown";
+import MenuButton from "components/Common/MenuButton";
+import { humanize } from "utils/common";
+
+import { buildImageOptions } from "./utils";
 
 const { Menu } = Dropdown;
 
-const ImageMenu = () => (
-  <Dropdown
-    buttonSize="small"
-    icon={MenuHorizontal}
-    position="top"
-    trigger="hover"
-    buttonProps={{
-      className: "neeto-editor__image-menu",
-    }}
-  >
-    <Menu />
-  </Dropdown>
-);
+const ImageMenu = ({ editor }) => {
+  const menuOptions = buildImageOptions(editor);
+
+  return (
+    <Dropdown
+      buttonSize="small"
+      className="neeto-editor__image-menu"
+      icon={MenuHorizontal}
+      position="top"
+      trigger="hover"
+      buttonProps={{
+        className: "neeto-editor__image-menu-btn",
+      }}
+    >
+      {menuOptions.map(({ Icon, active, optionName, command }) => (
+        <MenuButton
+          icon={Icon}
+          iconActive={active}
+          key={optionName}
+          tooltipProps={{
+            content: humanize(optionName),
+            position: "bottom",
+            delay: [500],
+          }}
+          onClick={command}
+        />
+      ))}
+      <Menu />
+    </Dropdown>
+  );
+};
 
 const ImageComponent = ({ node, editor, getPos }) => {
   const { alt, src, figheight, figwidth } = node.attrs;
@@ -32,7 +54,7 @@ const ImageComponent = ({ node, editor, getPos }) => {
   return (
     <NodeViewWrapper>
       <figure>
-        <ImageMenu />
+        <ImageMenu editor={editor} />
         <Resizable
           lockAspectRatio
           className="neeto-editor__image"
