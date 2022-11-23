@@ -136,7 +136,6 @@
 
 .neeto-editor__image {
   display: inline-block;
-  cursor: default;
 
   img {
     display: inline-block;
@@ -175,4 +174,20 @@ figcaption:empty:before {
     z-index: 1;
     padding: 2px !important;
   }
+}
+
+.neeto-editor__image-wrapper {
+  display: flex;
+}
+
+.neeto-editor__image--left {
+  justify-content: flex-start;
+}
+
+.neeto-editor__image--center {
+  justify-content: center;
+}
+
+.neeto-editor__image--right {
+  justify-content: flex-end;
 }

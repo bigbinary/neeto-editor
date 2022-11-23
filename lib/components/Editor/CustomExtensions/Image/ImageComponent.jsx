@@ -45,14 +45,16 @@ const ImageMenu = ({ editor }) => {
 };
 
 const ImageComponent = ({ node, editor, getPos }) => {
-  const { alt, src, figheight, figwidth } = node.attrs;
+  const { alt, src, figheight, figwidth, align } = node.attrs;
   const caption = alt || "";
   const { view } = editor;
   let height = figheight;
   let width = figwidth;
 
   return (
-    <NodeViewWrapper>
+    <NodeViewWrapper
+      className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
+    >
       <figure>
         <ImageMenu editor={editor} />
         <Resizable
