@@ -7,6 +7,8 @@ const ImageComponent = ({ node, editor, getPos }) => {
   const { alt, src, figheight, figwidth } = node.attrs;
   const caption = alt || "";
   const { view } = editor;
+  let height = figheight;
+  let width = figwidth;
 
   return (
     <NodeViewWrapper>
@@ -14,13 +16,17 @@ const ImageComponent = ({ node, editor, getPos }) => {
         <Resizable
           lockAspectRatio
           className="neeto-editor__image"
-          size={{ height: figheight, width: figwidth }}
+          size={{ height, width }}
           onResizeStop={(_event, _direction, ref) => {
+            height = ref.offsetHeight;
+            width = ref.offsetWidth;
             view.dispatch(
               view.state.tr.setNodeMarkup(getPos(), undefined, {
                 ...node.attrs,
-                height: ref.offsetHeight,
-                width: ref.offsetWidth,
+                figheight: height,
+                figwidth: width,
+                height,
+                width,
               })
             );
             editor.commands.focus();
@@ -28,12 +34,7 @@ const ImageComponent = ({ node, editor, getPos }) => {
         >
           <img {...node.attrs} alt={caption} src={src} />
         </Resizable>
-        <figcaption
-          contentEditable="true"
-          data-placeholder="this div is actually empty , you can insert content here."
-        >
-          {caption}
-        </figcaption>
+        <figcaption>{caption}</figcaption>
       </figure>
     </NodeViewWrapper>
   );
