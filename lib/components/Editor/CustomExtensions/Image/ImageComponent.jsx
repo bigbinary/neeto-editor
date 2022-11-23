@@ -52,8 +52,9 @@ const ImageComponent = ({ node, editor, getPos, updateAttributes }) => {
   const { view } = editor;
   let height = figheight;
   let width = figwidth;
-  const caption =
-    figureRef.current?.querySelector("figcaption>div")?.textContent;
+  const caption = figureRef.current
+    ? figureRef.current.querySelector("figcaption>div")?.textContent
+    : alt;
 
   return (
     <NodeViewWrapper
@@ -80,7 +81,7 @@ const ImageComponent = ({ node, editor, getPos, updateAttributes }) => {
             editor.commands.focus();
           }}
         >
-          <img {...node.attrs} alt={alt} src={src} />
+          <img {...node.attrs} alt={caption} src={src} />
         </Resizable>
         <NodeViewContent
           as="figcaption"
