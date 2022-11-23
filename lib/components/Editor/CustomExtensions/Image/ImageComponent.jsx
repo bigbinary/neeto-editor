@@ -1,6 +1,6 @@
 import React from "react";
 
-import { NodeViewWrapper } from "@tiptap/react";
+import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import { MenuHorizontal } from "neetoicons";
 import { Resizable } from "re-resizable";
 
@@ -78,9 +78,10 @@ const ImageComponent = ({ node, editor, getPos }) => {
         >
           <img {...node.attrs} alt={caption} src={src} />
         </Resizable>
-        <figcaption className="neeto-editor__image-caption">
-          {caption}
-        </figcaption>
+        <NodeViewContent
+          as="figcaption"
+          className="neeto-editor__image-caption"
+        />
       </figure>
     </NodeViewWrapper>
   );
