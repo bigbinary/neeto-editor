@@ -4,32 +4,37 @@ import { NodeViewWrapper } from "@tiptap/react";
 import { Resizable } from "re-resizable";
 
 const ImageComponent = ({ node, editor, getPos }) => {
-  const { alt, src, float, align, height, width } = node.attrs;
+  const { alt, src, figheight, figwidth } = node.attrs;
   const caption = alt || "";
   const { view } = editor;
 
   return (
     <NodeViewWrapper>
-      <Resizable
-        lockAspectRatio
-        className={`neeto-editor__image neeto-editor__image--${float} neeto-editor__image--${align} neeto-editor__image-defaults`}
-        size={{ height, width }}
-        onResizeStop={(_event, _direction, ref) => {
-          view.dispatch(
-            view.state.tr.setNodeMarkup(getPos(), undefined, {
-              ...node.attrs,
-              height: ref.offsetHeight,
-              width: ref.offsetWidth,
-            })
-          );
-          editor.commands.focus();
-        }}
-      >
-        <figure>
-          <img alt={caption} src={src} {...node.attrs} />
-          <figcaption>{caption}</figcaption>
-        </figure>
-      </Resizable>
+      <figure>
+        <Resizable
+          lockAspectRatio
+          className="neeto-editor__image"
+          size={{ height: figheight, width: figwidth }}
+          onResizeStop={(_event, _direction, ref) => {
+            view.dispatch(
+              view.state.tr.setNodeMarkup(getPos(), undefined, {
+                ...node.attrs,
+                height: ref.offsetHeight,
+                width: ref.offsetWidth,
+              })
+            );
+            editor.commands.focus();
+          }}
+        >
+          <img {...node.attrs} alt={caption} src={src} />
+        </Resizable>
+        <figcaption
+          contentEditable="true"
+          data-placeholder="this div is actually empty , you can insert content here."
+        >
+          {caption}
+        </figcaption>
+      </figure>
     </NodeViewWrapper>
   );
 };

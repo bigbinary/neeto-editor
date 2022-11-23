@@ -8,7 +8,11 @@ const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = () => {
-    editor.chain().focus().setImage({ src: url, alt: altText }).run();
+    editor
+      .chain()
+      .focus()
+      .setFigure({ src: url, caption: altText, alt: altText })
+      .run();
     onClose();
   };
 

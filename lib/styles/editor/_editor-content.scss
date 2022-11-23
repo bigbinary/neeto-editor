@@ -136,46 +136,26 @@
 
 .neeto-editor__image {
   display: inline-block;
-  border: 1.5px solid rgb(var(--neeto-ui-pastel-blue));
-  margin: 0 12px;
 
-  figure {
-    margin: 16px 12px;
-    outline: none;
-
-    img {
-      height: 100%;
-      width: 100%;
-      user-select: auto;
-      object-fit: contain;
-    }
-
-    figcaption {
-      color: rgb(var(--neeto-ui-gray-700));
-      text-align: center;
-    }
-  }
-
-  &-defaults {
-    width: fit-content;
+  img {
+    display: inline-block;
+    height: 100%;
+    border: 2px solid rgb(var(--neeto-ui-gray-300));
+    border-radius: var(--neeto-ui-rounded-lg);
+    padding: 4px;
   }
 }
 
-.neeto-editor__image--none {
-  display: flex;
-  justify-content: center;
+figure {
+  display: inline-block;
 }
 
-.neeto-editor__image--left {
-  float: left;
-  margin-left: 0;
+figcaption {
+  margin-top: 4px;
+  text-align: center;
 }
 
-.neeto-editor__image--right {
-  float: right;
-  margin-right: 0;
-}
-
-.neeto-editor__image--center {
-  margin: 0 auto;
+figcaption:empty:before {
+  content: "Add a caption";
+  color: rgb(var(--neeto-ui-gray-500));
 }
