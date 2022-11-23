@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
+import classNames from "classnames";
+import { isEmpty } from "lodash";
 import { MenuHorizontal } from "neetoicons";
 import { Resizable } from "re-resizable";
 
@@ -45,17 +47,19 @@ const ImageMenu = ({ editor }) => {
 };
 
 const ImageComponent = ({ node, editor, getPos }) => {
+  const figureRef = useRef(null);
   const { alt, src, figheight, figwidth, align } = node.attrs;
-  const caption = alt || "";
   const { view } = editor;
   let height = figheight;
   let width = figwidth;
+  const caption =
+    figureRef.current?.querySelector("figcaption>div")?.textContent;
 
   return (
     <NodeViewWrapper
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
     >
-      <figure>
+      <figure ref={figureRef}>
         <ImageMenu editor={editor} />
         <Resizable
           lockAspectRatio
@@ -76,11 +80,11 @@ const ImageComponent = ({ node, editor, getPos }) => {
             editor.commands.focus();
           }}
         >
-          <img {...node.attrs} alt={caption} src={src} />
+          <img {...node.attrs} alt={alt} src={src} />
         </Resizable>
         <NodeViewContent
           as="figcaption"
-          className="neeto-editor__image-caption"
+          className={classNames({ "is-empty": isEmpty(caption) })}
         />
       </figure>
     </NodeViewWrapper>

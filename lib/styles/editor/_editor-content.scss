@@ -161,9 +161,13 @@
     text-align: center;
   }
 
-  .neeto-editor__image-caption:empty:before {
-    content: "Add a caption";
-    color: rgb(var(--neeto-ui-gray-500));
+  figcaption.is-empty {
+    div:before {
+      position: absolute;
+      inset: 0;
+      content: "Add a caption";
+      color: rgb(var(--neeto-ui-gray-500));
+    }
   }
 
   .neeto-editor__image--left {
