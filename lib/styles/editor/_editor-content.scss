@@ -136,8 +136,6 @@
 
 .neeto-editor__image-wrapper {
   display: flex;
-  color: unset !important;
-  font-weight: unset !important;
 
   figure {
     position: relative;
@@ -170,6 +168,11 @@
       content: "Add a caption";
       color: rgb(var(--neeto-ui-gray-500));
     }
+  }
+
+  a {
+    color: unset !important;
+    font-weight: normal !important;
   }
 }
 
