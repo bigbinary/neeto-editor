@@ -14,8 +14,12 @@ import { buildImageOptions } from "./utils";
 
 const { Menu } = Dropdown;
 
-const ImageMenu = ({ align, updateAttributes }) => {
+const ImageMenu = ({ align, updateAttributes, deleteNode }) => {
   const menuOptions = buildImageOptions();
+
+  const handleClick = align => {
+    align ? updateAttributes({ align }) : deleteNode();
+  };
 
   return (
     <Dropdown
@@ -37,7 +41,7 @@ const ImageMenu = ({ align, updateAttributes }) => {
             position: "bottom",
             delay: [500],
           }}
-          onClick={() => updateAttributes({ align: alignPos })}
+          onClick={() => handleClick(alignPos)}
         />
       ))}
       <Menu />
@@ -45,7 +49,13 @@ const ImageMenu = ({ align, updateAttributes }) => {
   );
 };
 
-const ImageComponent = ({ node, editor, getPos, updateAttributes }) => {
+const ImageComponent = ({
+  node,
+  editor,
+  getPos,
+  updateAttributes,
+  deleteNode,
+}) => {
   const figureRef = useRef(null);
 
   const { alt, src, figheight, figwidth, align } = node.attrs;
@@ -61,7 +71,11 @@ const ImageComponent = ({ node, editor, getPos, updateAttributes }) => {
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
     >
       <figure ref={figureRef}>
-        <ImageMenu align={align} updateAttributes={updateAttributes} />
+        <ImageMenu
+          align={align}
+          deleteNode={deleteNode}
+          updateAttributes={updateAttributes}
+        />
         <Resizable
           lockAspectRatio
           className="neeto-editor__image"
