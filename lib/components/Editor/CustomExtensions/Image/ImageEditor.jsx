@@ -16,8 +16,12 @@ const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
     onClose();
   };
 
+  const handleKeyDown = event => {
+    event.key === "Enter" && handleSubmit();
+  };
+
   return (
-    <div className="neeto-editor-image-editor">
+    <div className="neeto-editor-image-editor" onKeyDown={handleKeyDown}>
       {isError ? (
         <div className="neeto-editor-image-editor__error">
           <h2>Something Went Wrong!</h2>
