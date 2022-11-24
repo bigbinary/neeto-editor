@@ -65,6 +65,8 @@ interface Config {
 export function Editor(props: {
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "none";
+  label?: string;
+  required?: boolean;
   autoFocus?: boolean;
   hideSlashCommands?: boolean;
   defaults?: string[];
