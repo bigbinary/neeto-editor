@@ -1,7 +1,8 @@
 {
   "name": "@bigbinary/neeto-editor",
   "version": "1.0.8",
-  "main": "./build/index.js",
+  "main": "./index.js",
+  "module": "./index.js",
   "types": "./types.d.ts",
   "description": "neetoEditor is the library that drives the rich text experience in all neeto products built at BigBinary",
   "keywords": [
@@ -11,8 +12,8 @@
     "react"
   ],
   "files": [
-    "dist",
-    "build",
+    "index.js",
+    "formik.js",
     "types.d.ts"
   ],
   "author": "BigBinary",

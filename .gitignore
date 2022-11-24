@@ -24,3 +24,5 @@ yarn-debug.log*
 yarn-error.log*
 
 editor-content.js
+index.js
+formik.js
