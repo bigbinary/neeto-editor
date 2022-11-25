@@ -6,8 +6,9 @@ import { EditorView } from "prosemirror-view";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
+import Label from "components/Common/Label";
 import useEditorWarnings from "hooks/useEditorWarnings";
-import { noop } from "utils/common";
+import { noop, slugify } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
@@ -24,6 +25,8 @@ const Editor = (
   {
     initialValue = "",
     menuType = "fixed",
+    label = "",
+    required = false,
     autoFocus = false,
     hideSlashCommands = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
@@ -109,31 +112,41 @@ const Editor = (
   };
 
   return (
-    <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
-      <CharacterCountWrapper editor={editor} isActive={isCharacterCountActive}>
-        <Menu
-          addons={addons}
-          defaults={defaults}
+    <div>
+      {label && (
+        <Label data-cy={`${slugify(label)}-editor-label`} required={required}>
+          {label}
+        </Label>
+      )}
+      <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
+        <CharacterCountWrapper
           editor={editor}
-          editorSecrets={editorSecrets}
-          isIndependant={false}
-          mentions={mentions}
-          menuType={menuType}
-          uploadConfig={uploadConfig}
-          uploadEndpoint={uploadEndpoint}
-          variables={variables}
-        />
-        <EditorContent editor={editor} {...otherProps} />
-        <ImageUploader
-          editor={editor}
-          imageUploadUrl={uploadEndpoint}
-          isOpen={isImageUploaderOpen}
-          unsplashApiKey={editorSecrets.unsplash}
-          uploadConfig={uploadConfig}
-          onClose={() => setIsImageUploaderOpen(false)}
-        />
-      </CharacterCountWrapper>
-    </ErrorWrapper>
+          isActive={isCharacterCountActive}
+        >
+          <Menu
+            addons={addons}
+            defaults={defaults}
+            editor={editor}
+            editorSecrets={editorSecrets}
+            isIndependant={false}
+            mentions={mentions}
+            menuType={menuType}
+            uploadConfig={uploadConfig}
+            uploadEndpoint={uploadEndpoint}
+            variables={variables}
+          />
+          <EditorContent editor={editor} {...otherProps} />
+          <ImageUploader
+            editor={editor}
+            imageUploadUrl={uploadEndpoint}
+            isOpen={isImageUploaderOpen}
+            unsplashApiKey={editorSecrets.unsplash}
+            uploadConfig={uploadConfig}
+            onClose={() => setIsImageUploaderOpen(false)}
+          />
+        </CharacterCountWrapper>
+      </ErrorWrapper>
+    </div>
   );
 };
 

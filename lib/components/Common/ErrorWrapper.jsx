@@ -28,7 +28,7 @@ const ErrorWrapper = ({ error, isFixedMenuActive, children }) => {
     return message;
   };
 
-  if (!error) return children;
+  if (isNilOrEmpty(error)) return children;
 
   return (
     <>

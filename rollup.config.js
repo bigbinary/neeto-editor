@@ -45,7 +45,18 @@ export default [
   {
     input: "./lib/index.js",
     output: {
-      file: "build/index.js",
+      file: "./index.js",
+      format: "esm",
+      sourcemap: false,
+      name: "neetoEditor",
+      assetFileNames: "[name][extname]",
+    },
+    plugins,
+  },
+  {
+    input: "./lib/components/Editor/FormikEditor.jsx",
+    output: {
+      file: "./formik.js",
       format: "esm",
       sourcemap: false,
       name: "neetoEditor",
