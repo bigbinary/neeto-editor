@@ -63,7 +63,7 @@ storage service. You will need to override the `create` action of the controller
 and return the `blob_url` of the uploaded file.
 
 ```rb
-class ActiveStorage::DirectUploadsController
+class Api::DirectUploadsController < ActiveStorage::DirectUploadsController
   def create
     blob = ActiveStorage::Blob.create_before_direct_upload!(**blob_args)
     blob_url = rails_blob_url(blob)
