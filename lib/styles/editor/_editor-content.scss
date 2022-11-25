@@ -157,8 +157,8 @@
   figcaption {
     margin-top: 4px;
     text-align: center;
-    font-size: 14px;
-    font-weight: normal;
+    font-size: var(--neeto-ui-text-sm);
+    font-weight: var(--neeto-ui-font-normal);
   }
 
   figcaption.is-empty {
