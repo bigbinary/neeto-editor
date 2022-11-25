@@ -8,14 +8,11 @@ import "tippy.js/dist/svg-arrow.css";
 import { EDITOR_OPTIONS } from "common/constants";
 import { isNilOrEmpty } from "utils/common";
 
-import ImageEditorModal from "./ImageEditorModal";
-import ImageOptions from "./ImageOptions";
-import TextOptions from "./TextOptions";
+import Options from "./Options";
 
 const BubbleMenu = ({ editor, options: textOptions, mentions }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
-  const [isImageEditorModalOpen, setIsImageEditorModalOpen] = useState(false);
   const selectedNode = editor && editor.view.state.selection.node;
   const isImageNodeSelected =
     selectedNode && selectedNode.type.name === "image";
@@ -50,28 +47,15 @@ const BubbleMenu = ({ editor, options: textOptions, mentions }) => {
           maxWidth: 500,
         }}
       >
-        {isImageNodeSelected ? (
-          <ImageOptions
-            editor={editor}
-            isImageEditorModalOpen={isImageEditorModalOpen}
-            setIsImageEditorModalOpen={setIsImageEditorModalOpen}
-          />
-        ) : (
-          <TextOptions
-            editor={editor}
-            isLinkOptionActive={isLinkOptionActive}
-            mentions={mentions}
-            options={textOptions}
-            setIsInvalidLink={setIsInvalidLink}
-            setIsLinkOptionActive={setIsLinkOptionActive}
-          />
-        )}
+        <Options
+          editor={editor}
+          isLinkOptionActive={isLinkOptionActive}
+          mentions={mentions}
+          options={textOptions}
+          setIsInvalidLink={setIsInvalidLink}
+          setIsLinkOptionActive={setIsLinkOptionActive}
+        />
       </BubbleMenuTipTap>
-      <ImageEditorModal
-        editor={editor}
-        isOpen={isImageEditorModalOpen}
-        onClose={() => setIsImageEditorModalOpen(false)}
-      />
     </div>
   );
 };

@@ -1,11 +1,6 @@
 import React from "react";
 
 import {
-  CenterAlign,
-  LeftAlign,
-  RightAlign,
-  Edit,
-  Close,
   Code,
   Highlight,
   Link,
@@ -100,76 +95,6 @@ export const getTextMenuDropdownOptions = ({ editor }) => [
     optionName: "Text",
     active: editor.isActive("paragraph"),
     command: () => editor.chain().focus().setNode("paragraph").run(),
-  },
-];
-
-export const getImageMenuOptions = ({
-  editor,
-  isImageUploadOpen,
-  setIsImageUploadOpen,
-}) => [
-  {
-    Icon: LeftAlign,
-    command: () =>
-      editor
-        .chain()
-        .focus()
-        .setImageAttributes({
-          float: "left",
-          align: "none",
-        })
-        .run(),
-    active: editor.isActive("image", {
-      float: "left",
-      align: "none",
-    }),
-    optionName: "Float Left",
-  },
-  {
-    Icon: CenterAlign,
-    command: () =>
-      editor
-        .chain()
-        .focus()
-        .setImageAttributes({
-          float: "none",
-          align: "center",
-        })
-        .run(),
-    active: editor.isActive("image", {
-      float: "none",
-      align: "center",
-    }),
-    optionName: "Align Center",
-  },
-  {
-    Icon: RightAlign,
-    command: () =>
-      editor
-        .chain()
-        .focus()
-        .setImageAttributes({
-          float: "right",
-          align: "none",
-        })
-        .run(),
-    active: editor.isActive("image", {
-      float: "right",
-      align: "center",
-    }),
-    optionName: "Float Right",
-  },
-  {
-    Icon: Edit,
-    command: () => setIsImageUploadOpen(true),
-    active: isImageUploadOpen,
-    optionName: "Caption",
-  },
-  {
-    Icon: Close,
-    command: () => editor.commands.deleteSelection(),
-    active: false,
-    optionName: "Remove",
   },
 ];
 

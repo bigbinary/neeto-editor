@@ -33,7 +33,6 @@ const Menu = ({
         <FixedMenu
           className={classnames({ [className]: className })}
           editor={editor}
-          isImageUploadOpen={isImageUploadOpen}
           isIndependant={isIndependant}
           mentions={mentions}
           options={options}

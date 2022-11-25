@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import Modal from "components/Common/Modal";
 import Tab from "components/Common/Tab";
-import useTabBar from "hooks/useTabBar";
 
 import { IMAGE_UPLOAD_OPTIONS } from "./constants";
 import ImageEditor from "./ImageEditor";
@@ -18,74 +17,59 @@ const Uploader = ({
   uploadConfig,
   unsplashApiKey,
 }) => {
-  const [activeTab, setActiveTab] = useTabBar(IMAGE_UPLOAD_OPTIONS);
+  const [activeTab, setActiveTab] = useState("local");
   const [imageUrl, setImageUrl] = useState("");
-  const isUnsplashImageUploadActive = !!unsplashApiKey;
 
-  const handleUrlFormSubmit = url => {
-    setImageUrl(url);
+  const tabs = unsplashApiKey
+    ? IMAGE_UPLOAD_OPTIONS
+    : IMAGE_UPLOAD_OPTIONS.slice(0, 2);
+
+  const handleClose = () => {
+    onClose();
+    setImageUrl("");
+    setActiveTab("local");
   };
-
-  const tab = {
-    local: () => (
-      <LocalUploader
-        endpoint={imageUploadUrl}
-        uploadConfig={uploadConfig}
-        onSuccess={handleUrlFormSubmit}
-      />
-    ),
-    link: () => (
-      <URLForm
-        buttonLabel="Upload Image"
-        placeholder="Paste the image link"
-        onSubmit={handleUrlFormSubmit}
-      />
-    ),
-    unsplash: () => (
-      <UnsplashImagePicker
-        unsplashApiKey={unsplashApiKey}
-        onSubmit={handleUrlFormSubmit}
-      />
-    ),
-  };
-
-  const ActiveTab = tab[activeTab];
 
   return (
-    <Modal
-      closeButton={false}
-      isOpen={isOpen}
-      onClose={() => {
-        onClose();
-        setActiveTab(IMAGE_UPLOAD_OPTIONS[0]);
-      }}
-    >
+    <Modal closeButton={false} isOpen={isOpen} onClose={handleClose}>
       <div className="neeto-editor-image-uploader">
         <Tab>
-          {IMAGE_UPLOAD_OPTIONS.filter(
-            option => option.key !== "unsplash" || isUnsplashImageUploadActive
-          ).map(option => (
+          {tabs.map(({ key, title }) => (
             <Tab.Item
-              active={activeTab === option.key}
-              key={option.key}
-              onClick={() => setActiveTab(option)}
+              active={activeTab === key}
+              key={key}
+              onClick={() => setActiveTab(key)}
             >
-              {option.title}
+              {title}
             </Tab.Item>
           ))}
         </Tab>
         <div className="neeto-editor-image-uploader__content">
           {imageUrl ? (
-            <ImageEditor
-              editor={editor}
-              url={imageUrl}
-              onClose={() => {
-                setImageUrl("");
-                onClose();
-              }}
-            />
+            <ImageEditor editor={editor} url={imageUrl} onClose={handleClose} />
           ) : (
-            <ActiveTab />
+            <>
+              {activeTab === "local" && (
+                <LocalUploader
+                  endpoint={imageUploadUrl}
+                  uploadConfig={uploadConfig}
+                  onSuccess={setImageUrl}
+                />
+              )}
+              {activeTab === "link" && (
+                <URLForm
+                  buttonLabel="Upload Image"
+                  placeholder="Paste the image link"
+                  onSubmit={setImageUrl}
+                />
+              )}
+              {activeTab === "unsplash" && (
+                <UnsplashImagePicker
+                  unsplashApiKey={unsplashApiKey}
+                  onSubmit={setImageUrl}
+                />
+              )}
+            </>
           )}
         </div>
       </div>

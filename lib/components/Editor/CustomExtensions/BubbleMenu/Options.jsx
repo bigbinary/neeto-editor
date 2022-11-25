@@ -18,7 +18,7 @@ import Separator from "../FixedMenu/Separator";
 import { buildMenuOptions } from "../FixedMenu/utils";
 import Mentions from "../Mention";
 
-const TextOptions = ({
+const Options = ({
   editor,
   options,
   mentions,
@@ -113,4 +113,4 @@ const TextOptions = ({
   );
 };
 
-export default TextOptions;
+export default Options;

@@ -1,35 +1,65 @@
-import React from "react";
+import React, { useRef } from "react";
 
-import { NodeViewWrapper } from "@tiptap/react";
+import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
+import classNames from "classnames";
+import { isEmpty } from "ramda";
 import { Resizable } from "re-resizable";
 
-const ImageComponent = ({ node, editor, getPos }) => {
-  const { alt, src, float, align, height, width } = node.attrs;
-  const caption = alt || "";
+import Menu from "./Menu";
+
+const ImageComponent = ({
+  node,
+  editor,
+  getPos,
+  updateAttributes,
+  deleteNode,
+}) => {
+  const figureRef = useRef(null);
+
+  const { alt, src, figheight, figwidth, align } = node.attrs;
   const { view } = editor;
+  let height = figheight;
+  let width = figwidth;
+  const caption = figureRef.current
+    ? figureRef.current.querySelector("figcaption>div")?.textContent
+    : alt;
 
   return (
-    <NodeViewWrapper>
-      <Resizable
-        lockAspectRatio
-        className={`neeto-editor__image neeto-editor__image--${float} neeto-editor__image--${align} neeto-editor__image-defaults`}
-        size={{ height, width }}
-        onResizeStop={(_event, _direction, ref) => {
-          view.dispatch(
-            view.state.tr.setNodeMarkup(getPos(), undefined, {
-              ...node.attrs,
-              height: ref.offsetHeight,
-              width: ref.offsetWidth,
-            })
-          );
-          editor.commands.focus();
-        }}
-      >
-        <figure>
-          <img alt={caption} src={src} {...node.attrs} />
-          <figcaption>{caption}</figcaption>
-        </figure>
-      </Resizable>
+    <NodeViewWrapper
+      className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
+    >
+      <figure ref={figureRef}>
+        <Menu
+          align={align}
+          deleteNode={deleteNode}
+          updateAttributes={updateAttributes}
+        />
+        <Resizable
+          lockAspectRatio
+          className="neeto-editor__image"
+          size={{ height, width }}
+          onResizeStop={(_event, _direction, ref) => {
+            height = ref.offsetHeight;
+            width = ref.offsetWidth;
+            view.dispatch(
+              view.state.tr.setNodeMarkup(getPos(), undefined, {
+                ...node.attrs,
+                figheight: height,
+                figwidth: width,
+                height,
+                width,
+              })
+            );
+            editor.commands.focus();
+          }}
+        >
+          <img {...node.attrs} alt={caption} src={src} />
+        </Resizable>
+        <NodeViewContent
+          as="figcaption"
+          className={classNames({ "is-empty": isEmpty(caption) })}
+        />
+      </figure>
     </NodeViewWrapper>
   );
 };

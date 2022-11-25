@@ -11,7 +11,6 @@ import LinkOption from "./LinkOption";
 import Separator from "./Separator";
 import { buildMenuOptions, renderOptionButton } from "./utils";
 
-import { getImageMenuOptions } from "../BubbleMenu/utils";
 import Mentions from "../Mention";
 import Variables from "../Variable";
 
@@ -20,15 +19,10 @@ const FixedMenu = ({
   options,
   mentions,
   variables,
-  isImageUploadOpen,
   setIsImageUploadOpen,
   isIndependant,
   className,
 }) => {
-  const selectedNode = editor && editor.view.state.selection.node;
-  const isImageNodeSelected =
-    selectedNode && selectedNode.type.name === "image";
-
   if (!editor) {
     return null;
   }
@@ -60,13 +54,7 @@ const FixedMenu = ({
         {isEmojiActive && <EmojiOption editor={editor} />}
         {(isEmojiActive || !isEmpty(blockStyleOptions)) && <Separator />}
         {listStyleOptions.map(renderOptionButton)}
-        {isImageNodeSelected &&
-          getImageMenuOptions({
-            editor,
-            isImageUploadOpen,
-            setIsImageUploadOpen,
-          }).map(renderOptionButton)}
-        {(isImageNodeSelected || !isEmpty(listStyleOptions)) && <Separator />}
+        {!isEmpty(listStyleOptions) && <Separator />}
         {isLinkActive && <LinkOption editor={editor} />}
         {miscOptions.map(renderOptionButton)}
         <Mentions editor={editor} mentions={mentions} />

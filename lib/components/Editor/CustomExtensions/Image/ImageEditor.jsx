@@ -8,7 +8,11 @@ const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = () => {
-    editor.chain().focus().setImage({ src: url, alt: altText }).run();
+    editor
+      .chain()
+      .focus()
+      .setFigure({ src: url, caption: altText, alt: altText })
+      .run();
     onClose();
   };
 
@@ -48,7 +52,7 @@ const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
         </>
       )}
       <div className="neeto-editor-image-editor__footer">
-        <Button disabled={isError} label="Proceed" onClick={handleSubmit} />
+        <Button disabled={isError} label="Done" onClick={handleSubmit} />
         <Button label="Cancel" style="text" onClick={onClose} />
       </div>
     </div>
