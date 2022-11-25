@@ -97,3 +97,5 @@ export function EditorContent(props: {
   className?: string;
   [otherProps: string]: any;
 }): JSX.Element;
+
+export function isEditorEmpty(htmlContent: string): boolean;
