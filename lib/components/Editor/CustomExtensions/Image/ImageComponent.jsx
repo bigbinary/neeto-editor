@@ -2,52 +2,10 @@ import React, { useRef } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
-import { isEmpty } from "lodash";
-import { MenuHorizontal } from "neetoicons";
+import { isEmpty } from "ramda";
 import { Resizable } from "re-resizable";
 
-import Dropdown from "components/Common/Dropdown";
-import MenuButton from "components/Common/MenuButton";
-import { humanize } from "utils/common";
-
-import { buildImageOptions } from "./utils";
-
-const { Menu } = Dropdown;
-
-const ImageMenu = ({ align, updateAttributes, deleteNode }) => {
-  const menuOptions = buildImageOptions();
-
-  const handleClick = align => {
-    align ? updateAttributes({ align }) : deleteNode();
-  };
-
-  return (
-    <Dropdown
-      buttonSize="small"
-      className="neeto-editor__image-menu"
-      icon={MenuHorizontal}
-      position="top"
-      buttonProps={{
-        className: "neeto-editor__image-menu-btn",
-      }}
-    >
-      {menuOptions.map(({ Icon, optionName, alignPos }) => (
-        <MenuButton
-          icon={Icon}
-          iconActive={alignPos === align}
-          key={optionName}
-          tooltipProps={{
-            content: humanize(optionName),
-            position: "bottom",
-            delay: [500],
-          }}
-          onClick={() => handleClick(alignPos)}
-        />
-      ))}
-      <Menu />
-    </Dropdown>
-  );
-};
+import Menu from "./Menu";
 
 const ImageComponent = ({
   node,
@@ -71,7 +29,7 @@ const ImageComponent = ({
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
     >
       <figure ref={figureRef}>
-        <ImageMenu
+        <Menu
           align={align}
           deleteNode={deleteNode}
           updateAttributes={updateAttributes}
