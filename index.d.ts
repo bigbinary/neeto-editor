@@ -62,7 +62,7 @@ interface Config {
   placeholder?: Partial<PlaceholderOptions>;
 }
 
-export function Editor(props: {
+export interface EditorProps {
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "none";
   label?: string;
@@ -90,7 +90,9 @@ export function Editor(props: {
   error?: string;
   config?: Config;
   [otherProps: string]: any;
-}): JSX.Element;
+}
+
+export function Editor(props: EditorProps): JSX.Element;
 
 export function EditorContent(props: {
   content?: string;

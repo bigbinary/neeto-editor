@@ -3,7 +3,7 @@
   "version": "1.0.8",
   "main": "./index.js",
   "module": "./index.js",
-  "types": "./types.d.ts",
+  "types": "./index.d.ts",
   "description": "neetoEditor is the library that drives the rich text experience in all neeto products built at BigBinary",
   "keywords": [
     "ui",
@@ -14,7 +14,8 @@
   "files": [
     "index.js",
     "formik.js",
-    "types.d.ts"
+    "index.d.ts",
+    "formik.d.ts"
   ],
   "author": "BigBinary",
   "license": "MIT",
