@@ -22,7 +22,13 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/128f64be4d731f52effe0c9f2cf81f82e8b0f8fa...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/285ca3119cca477395dd67c0076180cb0b0bac9a...HEAD)
+
+## [1.1.0](https://github.com/bigbinary/neeto-editor/compare/128f64be4d731f52effe0c9f2cf81f82e8b0f8fa...285ca3119cca477395dd67c0076180cb0b0bac9a) - 2022-11-25
+
+- Added: *FormikEditor* component. This component can be used for easy integration with formik.
+- Added: `isEditorEmpty` method to check whether the passed HTML content is empty.
+- Added: `label` and `required` props.
 
 ## [1.0.8](https://github.com/bigbinary/neeto-editor/compare/9d20cc50ac2af0e5ed8dd7f1c7686a132b757ab6...128f64be4d731f52effe0c9f2cf81f82e8b0f8fa) - 2022-11-21
 
