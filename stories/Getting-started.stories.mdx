@@ -25,10 +25,41 @@ yarn add @bigbinary/neeto-editor
 
 </div>
 
+Add `formik` as a peer dependency to use the `FormikEditor` component.
+
+<div className="sbdocs-install-code">
+
+```
+yarn add formik
+```
+
+</div>
+
 ### **Usage**
+
+Use the `Editor` component for rendering the rich text editor.
 
 ```jsx
 import { Editor } from "@bigbinary/neeto-editor";
+```
+
+Use the `EditorContent` component for displaying the rich text content.
+
+```jsx
+import { EditorContent } from "@bigbinary/neeto-editor";
+```
+
+Use the `isEditoryEmpty` method to check whether the passed `htmlContent` is
+considered empty by the editor.
+
+```jsx
+import { isEditoryEmpty } from "@bigbinary/neeto-editor";
+```
+
+Use the `FormikEditor` component if it is used as a formik input component.
+
+```jsx
+import FormikEditor from "@bigbinary/neeto-editor/formik";
 ```
 
 ### **Local development**

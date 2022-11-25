@@ -1,0 +1,61 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import FormikEditorDemo from "./FormikEditorDemo";
+import FormikEditor from "../../lib/components/Editor/FormikEditor";
+
+<Meta
+  title="Walkthroughs/Formik"
+  parameters={{
+    viewMode: "padded",
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  component={FormikEditor}
+/>
+
+# Formik with neetoEditor
+
+Use the `FormikEditor` component to make it easier to integrate neetoEditor with
+formik.
+
+### Usage
+
+```jsx
+import React from "react";
+
+import { isEditorEmpty } from "@bigbinary/neeto-editor";
+import FormikEditor from "@bigbinary/neeto-editor/formik";
+import { Formik, Form } from "formik";
+import * as yup from "yup";
+
+const INITIAL_VALUES = {
+  description: "<p></p>",
+};
+
+const VALIDATION_SCHEMA = yup.object().shape({
+  description: yup
+    .string()
+    .test(
+      "description",
+      "Description is required",
+      value => !isEditorEmpty(value)
+    ),
+});
+
+const App = () => (
+  <Formik
+    initialValues={INITIAL_VALUES}
+    validationSchema={VALIDATION_SCHEMA}
+    onSubmit={values => console.log(values)}
+  >
+    <Form>
+      <FormikEditor required label="Description" name="description" />
+      <button type="submit">Submit</button>
+    </Form>
+  </Formik>
+);
+```
+
+<Canvas>
+  <FormikEditorDemo />
+</Canvas>

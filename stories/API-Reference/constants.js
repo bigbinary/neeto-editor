@@ -41,9 +41,56 @@ export const EDITOR_PROP_TABLE_ROWS = [
     `"<p>Hello World</p"`,
   ],
   [
-    "onSubmit",
-    "Accepts a function. This function will be invoked when the editor is submitted.",
-    "(htmlContent) => {}",
+    "menuType",
+    "Describes the menu type that editor should display. value should be one of ['fixed', 'bubble', 'none']. Defaults to 'fixed'.",
+    `"bubble"`,
+  ],
+  [
+    "autoFocus",
+    "Accepts a boolean value. When true, the editor will be focused on load.",
+    "true",
+  ],
+  [
+    "hideSlashCommands",
+    "Accepts a boolean value. When true, the Slash Commands menu will be hidden.",
+    `true`,
+  ],
+  [
+    "defaults",
+    "Accepts an array of strings, each corresponding to the name of a default option.",
+    `["h1", "h2", "h3", "h4", "h5", "h6"]`,
+  ],
+  [
+    "addons",
+    "Accepts an array of strings, each corresponding to the name of an addon.",
+    `["highlight", "emoji", "code-block", "block-quote", "image-upload", "divider", "video-embed", "paste-unformatted"]`,
+  ],
+  [
+    "addonCommands",
+    "Accepts an array of additional custom Slash Command items to be displayed along with pre-defined command items.",
+    `[{ title: 'Focus Editor', description: 'Focus the editor', optionName: 'focus-editor', command: ({editor}) => editor.focus() }]`,
+  ],
+  [
+    "className",
+    "Accepts a string value. Can be used for further customisation of the editor content layout.",
+    `"neeto-editor-content"`,
+  ],
+  [
+    "uploadEndpoint",
+    "Accepts an URL endpoint string. This URL will be used for XHR image uploads.",
+    `"/api/direct_uploads"`,
+  ],
+  [
+    "uploadConfig",
+    "Accepts an object. This object will be used to configure the image uploader.",
+    `{
+      autoProceed: true,
+      allowMultipleUploads: false,
+      restrictions: {
+        maxFileSize: 1048576,
+        allowedFileTypes: [".jpg"]
+      },
+    }`,
   ],
   [
     "onChange",
@@ -61,24 +108,9 @@ export const EDITOR_PROP_TABLE_ROWS = [
     `() => {}`,
   ],
   [
-    "menuType",
-    "Describes the menu type that editor should display. value should be one of ['fixed', 'bubble']. Defaults to 'fixed'.",
-    `"bubble"`,
-  ],
-  [
-    "hideSlashCommands",
-    "Accepts a boolean value. When true, the Slash Commands menu will be hidden.",
-    `true`,
-  ],
-  [
-    "placeholder",
-    "Accepts a string value. When provided, it displays the placeholder value in the editor.",
-    `"Input text here"`,
-  ],
-  [
-    "uploadEndpoint",
-    "Accepts an URL endpoint string. This URL will be used for XHR image uploads.",
-    `"/api/direct_uploads"`,
+    "onSubmit",
+    "Accepts a function. This function will be invoked when the editor is submitted.",
+    "(htmlContent) => {}",
   ],
   [
     "variables",
@@ -88,32 +120,17 @@ export const EDITOR_PROP_TABLE_ROWS = [
   [
     "mentions",
     "Accepts an array of mention suggestions.",
-    `[{ name: "Oliver Smith", key: "oliver-smith" }]`,
+    `[{ name: "Oliver Smith", key: "oliver-smith", imageUrl: "url" }]`,
+  ],
+  [
+    "placeholder",
+    "Accepts a string value. When provided, it displays the placeholder value in the editor.",
+    `"Input text here"`,
   ],
   [
     "extensions",
     "Accepts an array of TipTap extensions. When provided, this will be combined with the default set of extensions.",
     `[Bold, Color]`,
-  ],
-  [
-    "className",
-    "Accepts a string value. Can be used for further customisation of the editor content layout.",
-    `"neeto-editor-content"`,
-  ],
-  [
-    "addons",
-    "Accepts an array of strings, each corresponding to the name of an addon.",
-    `["highlight", "emoji", "code-block", "block-quote", "image-upload", "divider", "video-embed", "paste-unformatted"]`,
-  ],
-  [
-    "defaults",
-    "Accepts an array of strings, each corresponding to the name of a default option.",
-    `["h1", "h2", "h3", "h4", "h5", "h6"]`,
-  ],
-  [
-    "addonCommands",
-    "Accepts an array of additional custom Slash Command items to be displayed along with pre-defined command items.",
-    `[{ title: 'Focus Editor', description: 'Focus the editor', optionName: 'focus-editor', command: ({editor}) => editor.focus() }]`,
   ],
   [
     "editorSecrets",
@@ -128,30 +145,13 @@ export const EDITOR_PROP_TABLE_ROWS = [
     "6",
   ],
   [
-    "autoFocus",
-    "Accepts a boolean value. When true, the editor will be focused on load.",
-    "true",
-  ],
-  [
     "isCharacterCountActive",
     "Accepts a boolean value. If provided, the character count will be displayed.",
     "true",
   ],
   [
-    "uploadConfig",
-    "Accepts an object. This object will be used to configure the image uploader.",
-    `{
-      autoProceed: true,
-      allowMultipleUploads: false,
-      restrictions: {
-        maxFileSize: 1048576,
-        allowedFileTypes: [".jpg"]
-      },
-    }`,
-  ],
-  [
     "keyboardShortcuts",
-    "Accepts an object representing the custom keyboard shortcuts for the editor",
+    "Accepts an object representing the custom keyboard shortcuts for the editor in addition to the existing shortcuts.",
     `{
         Enter: ({ editor }) => {
            console.log(editor.getHTML());

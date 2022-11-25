@@ -10,6 +10,8 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["divider", "Add a horizontal line to separate different sections."],
   ["video-embed", "Embed videos from YouTube, Loom and Vimeo."],
   ["paste-unformatted", "Paste by removing all styles."],
+  ["undo", "Undo last performed action."],
+  ["redo", "Redo last performed action."],
 ];
 
 export const EDITOR_PROP_TABLE_COLUMNS = [
