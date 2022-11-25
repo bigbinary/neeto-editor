@@ -1,8 +1,9 @@
 {
   "name": "@bigbinary/neeto-editor",
   "version": "1.0.8",
-  "main": "./build/index.js",
-  "types": "./types.d.ts",
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
   "description": "neetoEditor is the library that drives the rich text experience in all neeto products built at BigBinary",
   "keywords": [
     "ui",
@@ -11,9 +12,10 @@
     "react"
   ],
   "files": [
-    "dist",
-    "build",
-    "types.d.ts"
+    "index.js",
+    "formik.js",
+    "index.d.ts",
+    "formik.d.ts"
   ],
   "author": "BigBinary",
   "license": "MIT",
@@ -85,6 +87,7 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-storybook": "0.6.6",
     "eslint-plugin-unused-imports": "2.0.0",
+    "formik": "2.2.9",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
     "lodash.isplainobject": "4.0.6",
@@ -116,6 +119,7 @@
     "webpack-dev-server": "4.9.3"
   },
   "peerDependencies": {
+    "formik": "2.2.9",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },

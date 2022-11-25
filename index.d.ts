@@ -62,9 +62,11 @@ interface Config {
   placeholder?: Partial<PlaceholderOptions>;
 }
 
-export function Editor(props: {
+export interface EditorProps {
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "none";
+  label?: string;
+  required?: boolean;
   autoFocus?: boolean;
   hideSlashCommands?: boolean;
   defaults?: string[];
@@ -88,10 +90,14 @@ export function Editor(props: {
   error?: string;
   config?: Config;
   [otherProps: string]: any;
-}): JSX.Element;
+}
+
+export function Editor(props: EditorProps): JSX.Element;
 
 export function EditorContent(props: {
   content?: string;
   className?: string;
   [otherProps: string]: any;
 }): JSX.Element;
+
+export function isEditorEmpty(htmlContent: string | null | undefined): boolean;
