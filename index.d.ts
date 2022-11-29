@@ -86,6 +86,7 @@ export interface EditorProps {
   addons?: string[];
   addonCommands?: Command[];
   className?: string;
+  contentClassName?: string;
   uploadEndpoint?: string;
   uploadConfig?: UppyOptions<Record<string, unknown>>;
   onChange?: (htmlContent: string) => void;

@@ -33,6 +33,7 @@ const Editor = (
     addons = [],
     addonCommands = [],
     className,
+    contentClassName,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     uploadConfig = {},
     onChange = noop,
@@ -83,7 +84,7 @@ const Editor = (
     "fixed-menu-active border": isFixedMenuActive,
     "bubble-menu-active": isBubbleMenuActive,
     "placeholder-active": isPlaceholderActive,
-    [className]: className,
+    [contentClassName]: contentClassName,
   });
 
   const editor = useEditor({
@@ -112,7 +113,7 @@ const Editor = (
   };
 
   return (
-    <div>
+    <div className={classnames({ [className]: className })}>
       {label && (
         <Label data-cy={`${slugify(label)}-editor-label`} required={required}>
           {label}
