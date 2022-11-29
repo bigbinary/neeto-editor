@@ -72,6 +72,11 @@ export const EDITOR_PROP_TABLE_ROWS = [
   ],
   [
     "className",
+    "Accepts a string value. Can be used for further customisation of the editor wrapper layout.",
+    `"neeto-editor-content"`,
+  ],
+  [
+    "contentClassName",
     "Accepts a string value. Can be used for further customisation of the editor content layout.",
     `"neeto-editor-content"`,
   ],
