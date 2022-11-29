@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/adb046bf2f6c0717ca0af632578cd47eef2240ba...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/40a5428c256547796fedad24024fe1c3343acd67...HEAD)
+
+## [1.2.1](https://github.com/bigbinary/neeto-editor/compare/adb046bf2f6c0717ca0af632578cd47eef2240ba...40a5428c256547796fedad24024fe1c3343acd67) - 2022-11-29
+
+- Added: `contentClassName` prop. This helps pass classes directly to the editor content.
 
 ## [1.2.0](https://github.com/bigbinary/neeto-editor/compare/285ca3119cca477395dd67c0076180cb0b0bac9a...adb046bf2f6c0717ca0af632578cd47eef2240ba) - 2022-11-25
 
