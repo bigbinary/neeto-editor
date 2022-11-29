@@ -62,6 +62,19 @@ interface Config {
   placeholder?: Partial<PlaceholderOptions>;
 }
 
+interface MenuProps {
+  editor: string;
+  menuType?: "fixed" | "bubble";
+  defaults?: string[];
+  addons?: string[];
+  uploadEndpoint?: string;
+  uploadConfig?: UppyOptions<Record<string, unknown>>;
+  mentions?: Mention[];
+  variables?: Variable[];
+  isIndependant?: boolean;
+  className?: string;
+}
+
 export interface EditorProps {
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "none";
@@ -99,5 +112,7 @@ export function EditorContent(props: {
   className?: string;
   [otherProps: string]: any;
 }): JSX.Element;
+
+export function Menu(props: MenuProps): JSX.Element;
 
 export function isEditorEmpty(htmlContent: string | null | undefined): boolean;
