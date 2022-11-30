@@ -1,0 +1,50 @@
+import { Meta, Canvas } from "@storybook/addon-docs";
+import IndependantMenuComponentDemo from "./IndependantMenuComponentDemo";
+import { Editor } from "../../lib";
+
+<Meta
+  title="Examples/Independent menu component"
+  parameters={{
+    viewMode: "docs",
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  component={Editor}
+/>
+
+# Independent menu component
+
+<Canvas>
+  <IndependantMenuComponentDemo />
+</Canvas>
+
+## Usage
+
+```jsx
+import React from "react";
+
+import { Editor, Menu, useEditorStore } from "@bigbinary/neeto-editor";
+import { prop } from "ramda";
+
+const App = () => {
+  const EDITOR_KEY = "NEETO_EDITOR_KEY";
+  const editor = useEditorStore(prop(EDITOR_KEY));
+
+  return (
+    <div className="space-y-4">
+      <Menu editor={editor} />
+      <h2>Other components</h2>
+      <Editor
+        autoFocus
+        contentClassName="border"
+        editorKey={EDITOR_KEY}
+        initialValue="<p>Hello World</p>"
+        menuType="none"
+      />
+    </div>
+  );
+};
+
+export default App;
+```
