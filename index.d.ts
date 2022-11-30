@@ -103,7 +103,7 @@ export interface EditorProps {
   keyboardShortcuts?: KeyboardShortcuts;
   error?: string;
   config?: Config;
-  editorContextKey?: string;
+  editorKey?: string;
   [otherProps: string]: any;
 }
 
