@@ -21,6 +21,8 @@
       "hooks": ["hooks"],
       "reducers/*": ["reducers/*"],
       "reducers": ["reducers"],
+      "stores/*": ["stores/*"],
+      "stores": ["stores"],
       "routes/*": ["common/routes/*"],
       "routes": ["common/routes"],
       "translations/*": ["translations/*"],

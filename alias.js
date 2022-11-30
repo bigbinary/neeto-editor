@@ -10,6 +10,7 @@ module.exports = {
   contexts: absolutePath("contexts"),
   hooks: absolutePath("hooks"),
   reducers: absolutePath("reducers"),
+  stores: absolutePath("stores"),
   utils: absolutePath("utils"),
   neetoicons: "@bigbinary/neeto-icons",
 };
