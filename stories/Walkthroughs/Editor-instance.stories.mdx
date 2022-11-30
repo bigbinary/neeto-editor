@@ -1,0 +1,45 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Editor } from "../../lib";
+
+<Meta
+  title="Walkthroughs/Editor instance"
+  parameters={{
+    viewMode: "docs",
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  component={Editor}
+/>
+
+# Access the editor instance
+
+You need to access the `editor` instance to call the methods specified in the
+[Editor API](https://neeto-editor.onrender.com/?path=/docs/api-reference-editor-api--page)
+section. This is possible using the `useEditorStore` hook. Pass a constant
+string value to the `editorKey` prop to the `Editor` component and use this key
+to access the `editor` instance.
+
+### Usage
+
+```jsx
+import React from "react";
+
+import { Editor, useEditorStore } from "@bigbinary/neeto-editor";
+import { prop } from "ramda";
+
+const EDITOR_KEY = "NEETO_EDITOR_KEY";
+
+const App = () => {
+  const editor = useEditorStore(prop(EDITOR_KEY));
+
+  const handleClearEditor = () => editor.commands.clearContent();
+
+  return (
+    <div>
+      <Editor editorKey={EDITOR_KEY} />
+      <button onClick={handleClearEditor}>Clear content</button>
+    </div>
+  );
+};
+```
