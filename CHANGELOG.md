@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/7dffef6802a67a81891f194badf1631c75030b81...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/9eba3d9458bbdd88d4c604df8efe519c5592faea...HEAD)
+
+## [1.2.3](https://github.com/bigbinary/neeto-editor/compare/7dffef6802a67a81891f194badf1631c75030b81...9eba3d9458bbdd88d4c604df8efe519c5592faea) - 2022-11-30
+
+- Fixed: prevented the *ErrorWrapper* component from re-rendering the whole *Editor* within formik.
+- Added: updated `isEditorEmpty` method to handle `img` and `iframe` tags.
 
 ## [1.2.2](https://github.com/bigbinary/neeto-editor/compare/40a5428c256547796fedad24024fe1c3343acd67...7dffef6802a67a81891f194badf1631c75030b81) - 2022-11-29
 
