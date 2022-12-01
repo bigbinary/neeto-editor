@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/d12f377986bcc8637d35dfa00d539f9643b6455c...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/a47a2a0491e278e60e828855a628ecd1c0954b3f...HEAD)
+
+## [1.4.1](https://github.com/bigbinary/neeto-editor/compare/d12f377986bcc8637d35dfa00d539f9643b6455c...a47a2a0491e278e60e828855a628ecd1c0954b3f) - 2022-12-01
+
+- Removed: unnecessary wrapper `div` from images. This enables easy updation of editor to latest version.
 
 ## [1.4.0](https://github.com/bigbinary/neeto-editor/compare/84f9e5b066f89fea8815ab659ba6051b9ca79c04...d12f377986bcc8637d35dfa00d539f9643b6455c) - 2022-12-01
 
