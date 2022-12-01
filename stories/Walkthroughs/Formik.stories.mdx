@@ -1,6 +1,6 @@
 import { Meta, Canvas } from "@storybook/addon-docs";
 import FormikEditorDemo from "./FormikEditorDemo";
-import FormikEditor from "../../lib/components/Editor/FormikEditor";
+import FormikEditor from "../../lib";
 
 <Meta
   title="Walkthroughs/Formik"
@@ -24,7 +24,7 @@ formik.
 import React from "react";
 
 import { isEditorEmpty } from "@bigbinary/neeto-editor";
-import FormikEditor from "@bigbinary/neeto-editor/formik";
+import FormikEditor from "@bigbinary/neeto-editor";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 
