@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/9eba3d9458bbdd88d4c604df8efe519c5592faea...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/84f9e5b066f89fea8815ab659ba6051b9ca79c04...HEAD)
+
+## [1.3.0](https://github.com/bigbinary/neeto-editor/compare/5a82971b57a24d338b3e03c820b60b20543603e5...84f9e5b066f89fea8815ab659ba6051b9ca79c04) - 2022-12-01
+
+- Added: `useEditorStore` hook to obtain the editor instance.
+- Added: `editorKey` prop to map the editor instance to the associated `Editor` component.
 
 ## [1.2.3](https://github.com/bigbinary/neeto-editor/compare/7dffef6802a67a81891f194badf1631c75030b81...9eba3d9458bbdd88d4c604df8efe519c5592faea) - 2022-11-30
 
