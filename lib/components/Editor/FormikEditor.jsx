@@ -10,7 +10,6 @@ const FormikEditor = ({ name, ...otherProps }, ref) => (
   <Field name={name}>
     {({ field, form, meta }) => (
       <Editor
-        {...field}
         error={meta.touched ? meta.error : ""}
         initialValue={field.value}
         ref={ref}
