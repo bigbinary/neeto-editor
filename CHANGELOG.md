@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/84f9e5b066f89fea8815ab659ba6051b9ca79c04...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/d12f377986bcc8637d35dfa00d539f9643b6455c...HEAD)
+
+## [1.4.0](https://github.com/bigbinary/neeto-editor/compare/84f9e5b066f89fea8815ab659ba6051b9ca79c04...d12f377986bcc8637d35dfa00d539f9643b6455c) - 2022-12-01
+
+- Changed: **BREAKING** Moved *FormikEdotor* component to the main bundle. It needs to be imported as `import { FormikEditor } from "@bigbinary/neeto-editor";`.
+- Fixed: issues with `isEditorEmpty` method which prevented it from recognizing tags.
 
 ## [1.3.0](https://github.com/bigbinary/neeto-editor/compare/5a82971b57a24d338b3e03c820b60b20543603e5...84f9e5b066f89fea8815ab659ba6051b9ca79c04) - 2022-12-01
 
