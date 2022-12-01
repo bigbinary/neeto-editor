@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useState } from "react";
+import React, { useEffect, useImperativeHandle, useState } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
@@ -109,7 +109,9 @@ const Editor = (
 
   /* Make editor object available to the parent */
   useImperativeHandle(ref, () => ({ editor }));
-  editorKey && setEditor({ [editorKey]: editor });
+  useEffect(() => {
+    if (editorKey) setEditor({ [editorKey]: editor });
+  }, [editor, editorKey, setEditor]);
 
   // https://github.com/ueberdosis/tiptap/issues/1451#issuecomment-953348865
   EditorView.prototype.updateState = function updateState(state) {

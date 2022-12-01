@@ -3,9 +3,8 @@ import React from "react";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 
-import { isEditorEmpty } from "../../lib";
+import { isEditorEmpty, FormikEditor } from "../../lib";
 import Button from "../../lib/components/Common/Button";
-import FormikEditor from "../../lib/components/Editor/FormikEditor";
 
 const INITIAL_VALUES = {
   description: "<p></p>",

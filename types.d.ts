@@ -75,7 +75,7 @@ interface MenuProps {
   className?: string;
 }
 
-export interface EditorProps {
+interface EditorProps {
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "none";
   label?: string;
@@ -107,7 +107,13 @@ export interface EditorProps {
   [otherProps: string]: any;
 }
 
+interface FormikEditorProps extends EditorProps {
+  name: string;
+}
+
 export function Editor(props: EditorProps): JSX.Element;
+
+export function FormikEditor(props: FormikEditorProps): JSX.Element;
 
 export function EditorContent(props: {
   content?: string;

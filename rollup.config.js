@@ -54,17 +54,6 @@ export default [
     plugins,
   },
   {
-    input: "./lib/components/Editor/FormikEditor.jsx",
-    output: {
-      file: "./formik.js",
-      format: "esm",
-      sourcemap: false,
-      name: "neetoEditor",
-      assetFileNames: "[name][extname]",
-    },
-    plugins,
-  },
-  {
     input: "./lib/styles/editor-output.scss",
     output: {
       dir: `${__dirname}/dist`,
