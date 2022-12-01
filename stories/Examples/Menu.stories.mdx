@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import { MENU_PROPS } from "./constants";
+import { Editor, Menu } from "../../lib";
+import { buildArgValues } from "../utils";
+
+<Meta
+  title="Walkthroughs/Menu"
+  parameters={{
+    viewMode: "docs",
+    layout: "padded",
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+  component={Editor}
+  argTypes={buildArgValues(MENU_PROPS)}
+/>
+
+# Use Menu as an independant component
+
+Sometimes the editor's menu needs to be rendered separate from the editor
+content. In such cases use the `Menu` component.
+
+### Props
+
+export const Template = args => <Menu {...args} />;
+
+<Story name="Menu"> {Template.bind({})}</Story>
+
+<div id="hide-controls-column">
+  <ArgsTable story="Menu" />
+</div>
+
+[Independant menu component](https://neeto-editor.onrender.com/?path=/docs/examples-independent-menu-component--page)
+section shows an example with the `Menu` component in action.

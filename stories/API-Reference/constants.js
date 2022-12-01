@@ -29,7 +29,7 @@ export const EDITOR_METHODS_TABLE_ROWS = [
   ],
 ];
 
-export const EDITOR_PROP_TABLE_ROWS = [
+export const EDITOR_PROPS = [
   [
     "ref",
     "Accepts a React reference. This reference can be used to access TipTap's inbuilt editor methods, such as getHTML().",
@@ -183,18 +183,9 @@ export const EDITOR_PROP_TABLE_ROWS = [
     }
     `,
   ],
+  [
+    "editorKey",
+    "Accepts a string. If provided, this can be used to use the `editor` instance using the `useEditorStore` hook.",
+    `NEETO_KB_EDITOR`,
+  ],
 ];
-
-export const ARG_VALUES = EDITOR_PROP_TABLE_ROWS.reduce((acc, value) => {
-  return {
-    ...acc,
-    [value[0]]: {
-      name: value[0],
-      description: value[1],
-      control: false,
-      table: {
-        defaultValue: { summary: value[2] },
-      },
-    },
-  };
-}, {});

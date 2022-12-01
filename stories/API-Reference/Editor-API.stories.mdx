@@ -32,7 +32,7 @@ methods that can be access the editor content.
 #### **Usage**
 
 ```js
-editorRef.current.editor.methodName;
+editor.methodName;
 ```
 
 Refer [https://tiptap.dev/api/editor](https://tiptap.dev/api/editor) for the
@@ -48,13 +48,13 @@ commands to control the editor content.
 #### **Usage**
 
 ```js
-editorRef.current.editor.commands.commandName();
+editor.commands.commandName();
 ```
 
 You can also combine multiple commands in a single call.
 
 ```js
-editorRef.current.editor.chain().command1().command2().run();
+editor.chain().command1().command2().run();
 ```
 
 Refer [https://tiptap.dev/api/commands](https://tiptap.dev/api/commands) for the

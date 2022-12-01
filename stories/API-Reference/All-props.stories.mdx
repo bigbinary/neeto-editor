@@ -1,6 +1,7 @@
 import { Meta, Story, ArgsTable } from "@storybook/addon-docs";
+import { EDITOR_PROPS } from "./constants";
+import { buildArgValues } from "../utils";
 import { Editor } from "../../lib";
-import { ARG_VALUES } from "./constants";
 
 <Meta
   title="API Reference/All Props"
@@ -14,7 +15,7 @@ import { ARG_VALUES } from "./constants";
       },
     },
   }}
-  argTypes={ARG_VALUES}
+  argTypes={buildArgValues(EDITOR_PROPS)}
 />
 
 # **Props**

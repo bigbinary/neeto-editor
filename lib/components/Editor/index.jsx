@@ -3,11 +3,13 @@ import React, { useImperativeHandle, useState } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
 import { EditorView } from "prosemirror-view";
+import { prop } from "ramda";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import Label from "components/Common/Label";
 import useEditorWarnings from "hooks/useEditorWarnings";
+import useEditorStore from "stores/useEditorStore";
 import { noop, slugify } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
@@ -50,6 +52,7 @@ const Editor = (
     keyboardShortcuts = [],
     error = null,
     config = {},
+    editorKey,
     ...otherProps
   },
   ref
@@ -59,6 +62,7 @@ const Editor = (
   const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = !!placeholder;
   const [isImageUploaderOpen, setIsImageUploaderOpen] = useState(false);
+  const setEditor = useEditorStore(prop("setEditor"));
 
   const customExtensions = useCustomExtensions({
     placeholder,
@@ -75,9 +79,6 @@ const Editor = (
     openImageUploader: () => setIsImageUploaderOpen(true),
   });
   useEditorWarnings({ initialValue });
-
-  /* Make editor object available to the parent */
-  useImperativeHandle(ref, () => ({ editor }));
 
   const editorClasses = classnames("neeto-editor", {
     "slash-active": isSlashCommandsActive && !isPlaceholderActive,
@@ -105,6 +106,10 @@ const Editor = (
     onFocus,
     onBlur,
   });
+
+  /* Make editor object available to the parent */
+  useImperativeHandle(ref, () => ({ editor }));
+  editorKey && setEditor({ [editorKey]: editor });
 
   // https://github.com/ueberdosis/tiptap/issues/1451#issuecomment-953348865
   EditorView.prototype.updateState = function updateState(state) {
