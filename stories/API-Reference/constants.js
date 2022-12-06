@@ -33,7 +33,7 @@ export const EDITOR_PROPS = [
   [
     "ref",
     "Accepts a React reference. This reference can be used to access TipTap's inbuilt editor methods, such as getHTML().",
-    `React.createRef()`,
+    "React.createRef()",
   ],
   [
     "initialValue",
@@ -53,7 +53,7 @@ export const EDITOR_PROPS = [
   [
     "hideSlashCommands",
     "Accepts a boolean value. When true, the Slash Commands menu will be hidden.",
-    `true`,
+    "true",
   ],
   [
     "defaults",
@@ -135,7 +135,7 @@ export const EDITOR_PROPS = [
   [
     "extensions",
     "Accepts an array of TipTap extensions. When provided, this will be combined with the default set of extensions.",
-    `[Bold, Color]`,
+    "[Bold, Color]",
   ],
   [
     "editorSecrets",
@@ -182,10 +182,5 @@ export const EDITOR_PROPS = [
       focus: { mode: "deepest" }
     }
     `,
-  ],
-  [
-    "editorKey",
-    "Accepts a string. If provided, this can be used to use the `editor` instance using the `useEditorStore` hook.",
-    `NEETO_KB_EDITOR`,
   ],
 ];
