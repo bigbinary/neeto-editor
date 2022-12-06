@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 
-import { prop } from "ramda";
+import { Editor, Menu } from "../../lib";
 
-import { Editor, Menu, useEditorStore } from "../../lib";
-
-const IndependantMenuComponentDemo = () => {
-  const EDITOR_KEY = "NEETO_EDITOR_KEY";
-  const editor = useEditorStore(prop(EDITOR_KEY));
+const IndependantMenuComponent = () => {
+  const [editor, setEditor] = useState(null);
+  const editorRef = useCallback(node => {
+    if (node) setEditor(node.editor);
+  }, []);
 
   return (
     <div className="space-y-4">
@@ -15,12 +15,12 @@ const IndependantMenuComponentDemo = () => {
       <Editor
         autoFocus
         contentClassName="border"
-        editorKey={EDITOR_KEY}
         initialValue="<p>Hello World</p>"
         menuType="none"
+        ref={editorRef}
       />
     </div>
   );
 };
 
-export default IndependantMenuComponentDemo;
+export default IndependantMenuComponent;

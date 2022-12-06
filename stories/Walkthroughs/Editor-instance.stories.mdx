@@ -16,28 +16,27 @@ import { Editor } from "../../lib";
 
 You need to access the `editor` instance to call the methods specified in the
 [Editor API](https://neeto-editor.onrender.com/?path=/docs/api-reference-editor-api--page)
-section. This is possible using the `useEditorStore` hook. Pass a constant
-string value to the `editorKey` prop to the `Editor` component and use this key
-to access the `editor` instance.
+section. This is possible by passing a `ref` to the `Editor` or `FormikEditor`
+component. If the `ref` is named as `editorRef`, then the `editor` instance can
+be accessed as `editorRef.current.editor`.
 
 ### Usage
 
 ```jsx
-import React from "react";
+import React, { useRef } from "react";
 
-import { Editor, useEditorStore } from "@bigbinary/neeto-editor";
+import { Editor } from "@bigbinary/neeto-editor";
 import { prop } from "ramda";
 
-const EDITOR_KEY = "NEETO_EDITOR_KEY";
-
 const App = () => {
-  const editor = useEditorStore(prop(EDITOR_KEY));
+  const editorRef = useRef(null);
 
-  const handleClearEditor = () => editor.commands.clearContent();
+  const handleClearEditor = () =>
+    editorRef.current.editor.commands.clearContent();
 
   return (
     <div>
-      <Editor editorKey={EDITOR_KEY} />
+      <Editor ref={editorRef} />
       <button onClick={handleClearEditor}>Clear content</button>
     </div>
   );
