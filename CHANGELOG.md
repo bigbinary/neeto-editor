@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/a47a2a0491e278e60e828855a628ecd1c0954b3f...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/862f7cb4d267a4fc7201514bb9b4225fa1964494...HEAD)
+
+## [1.5.0](https://github.com/bigbinary/neeto-editor/compare/a47a2a0491e278e60e828855a628ecd1c0954b3f...862f7cb4d267a4fc7201514bb9b4225fa1964494) - 2022-12-06
+
+- Removed: **BREAKING** the *useEditorStore* hook to access the editor instance.
+- Removed: **BREAKING** the `editorKey` prop to access the *useEditorStore* hook.
 
 ## [1.4.1](https://github.com/bigbinary/neeto-editor/compare/d12f377986bcc8637d35dfa00d539f9643b6455c...a47a2a0491e278e60e828855a628ecd1c0954b3f) - 2022-12-01
 
