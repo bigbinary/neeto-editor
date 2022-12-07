@@ -19,6 +19,7 @@ const Menu = ({
   uploadConfig = {},
   mentions = [],
   variables = [],
+  addonCommands = [],
   isIndependant = true,
   className,
 }) => {
@@ -31,6 +32,7 @@ const Menu = ({
     <>
       {isFixedMenuActive && (
         <FixedMenu
+          addonCommands={addonCommands}
           className={classnames({ [className]: className })}
           editor={editor}
           isIndependant={isIndependant}

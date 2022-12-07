@@ -41,3 +41,13 @@ export const renderOptionButton = ({
     onClick={command}
   />
 );
+
+export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
+  const { to } = editor.state.selection;
+
+  return commands.map(option => ({
+    ...option,
+    active: option.active?.({ editor }),
+    command: () => option.command?.({ editor, range: { from: to, to } }),
+  }));
+};

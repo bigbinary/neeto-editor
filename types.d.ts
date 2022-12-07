@@ -19,6 +19,7 @@ interface Command {
   Icon: Function;
   description?: string;
   optionName: string;
+  active?: ({ editor: TiptapEditor }) => boolean;
   command?: (props: { editor: TiptapEditor; range: Range }) => void;
   items?: Command[];
 }
@@ -71,6 +72,7 @@ interface MenuProps {
   uploadConfig?: UppyOptions<Record<string, unknown>>;
   mentions?: Mention[];
   variables?: Variable[];
+  addonCommands?: Command[];
   isIndependant?: boolean;
   className?: string;
 }
