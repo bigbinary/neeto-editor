@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/862f7cb4d267a4fc7201514bb9b4225fa1964494...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/9038faa0c898426699464b60f340c1c2c6e8e127...HEAD)
+
+## [1.5.1](https://github.com/bigbinary/neeto-editor/compare/862f7cb4d267a4fc7201514bb9b4225fa1964494...9038faa0c898426699464b60f340c1c2c6e8e127) - 2022-12-07
+
+- Fixed: prevented figure captions from aligning to the left.
 
 ## [1.5.0](https://github.com/bigbinary/neeto-editor/compare/a47a2a0491e278e60e828855a628ecd1c0954b3f...862f7cb4d267a4fc7201514bb9b4225fa1964494) - 2022-12-06
 
