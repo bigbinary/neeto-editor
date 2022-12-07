@@ -159,6 +159,11 @@
     text-align: center;
     font-size: var(--neeto-ui-text-sm);
     font-weight: var(--neeto-ui-font-normal);
+
+    a {
+      display: inline-block;
+      text-align: center;
+    }
   }
 
   figcaption.is-empty {
