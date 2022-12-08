@@ -125,6 +125,7 @@ const Editor = (
           isActive={isCharacterCountActive}
         >
           <Menu
+            addonCommands={addonCommands}
             addons={addons}
             defaults={defaults}
             editor={editor}

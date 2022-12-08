@@ -14,7 +14,7 @@ import ToolTip from "./ToolTip";
 
 const MenuButton = ({
   icon: Icon,
-  iconActive = true,
+  iconActive = false,
   tooltipProps,
   highlight = false,
   color,

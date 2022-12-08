@@ -9,7 +9,11 @@ import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
 import Separator from "./Separator";
-import { buildMenuOptions, renderOptionButton } from "./utils";
+import {
+  buildMenuOptions,
+  buildOptionsFromAddonCommands,
+  renderOptionButton,
+} from "./utils";
 
 import Mentions from "../Mention";
 import Variables from "../Variable";
@@ -20,6 +24,7 @@ const FixedMenu = ({
   mentions,
   variables,
   setIsImageUploadOpen,
+  addonCommands,
   isIndependant,
   className,
 }) => {
@@ -38,6 +43,10 @@ const FixedMenu = ({
   const isFontSizeActive = fontSizeOptions.length > 0;
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
+  const addonCommandOptions = buildOptionsFromAddonCommands({
+    editor,
+    commands: addonCommands,
+  });
 
   return (
     <div
@@ -58,6 +67,7 @@ const FixedMenu = ({
         {isLinkActive && <LinkOption editor={editor} />}
         {miscOptions.map(renderOptionButton)}
         <Mentions editor={editor} mentions={mentions} />
+        {addonCommandOptions.map(renderOptionButton)}
         <div className="neeto-editor-fixed-menu__right-options">
           {rightOptions.map(renderOptionButton)}
         </div>
