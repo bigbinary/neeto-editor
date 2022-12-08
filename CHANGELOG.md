@@ -22,7 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/9038faa0c898426699464b60f340c1c2c6e8e127...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/f57c55efc03dc4ef243d02c1abfbaab3124d3d81...HEAD)
+
+## [1.6.0](https://github.com/bigbinary/neeto-editor/compare/9038faa0c898426699464b60f340c1c2c6e8e127...f57c55efc03dc4ef243d02c1abfbaab3124d3d81) - 2022-12-08
+
+- Added: `addonCommands` prop to the *Menu* component. Each addon command will add its corresponding option in the menu.
 
 ## [1.5.1](https://github.com/bigbinary/neeto-editor/compare/862f7cb4d267a4fc7201514bb9b4225fa1964494...9038faa0c898426699464b60f340c1c2c6e8e127) - 2022-12-07
 
