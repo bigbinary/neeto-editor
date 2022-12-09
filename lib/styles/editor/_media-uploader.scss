@@ -1,4 +1,4 @@
-.neeto-editor-image-uploader {
+.ne-media-uploader {
   display: flex;
   flex-direction: column;
   min-height: 184px;
@@ -9,13 +9,13 @@
     }
   }
 
-  .neeto-editor-image-uploader__content {
+  .ne-media-uploader__content {
     flex-grow: 1;
     display: flex;
     padding: 16px;
   }
 
-  .neeto-editor-image-uploader__progress {
+  .ne-media-uploader__progress {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,24 +24,24 @@
     text-align: center;
   }
 
-  .neeto-editor-image-uploader__progress-title {
+  .ne-media-uploader__progress-title {
     color: rgb(var(--neeto-ui-gray-700));
     font-size: var(--neeto-ui-text-sm);
     margin-bottom: 4px;
   }
 
-  .neeto-editor-image-uploader__progress-file {
+  .ne-media-uploader__progress-file {
     color: rgb(var(--neeto-ui-gray-400));
     font-size: var(--neeto-ui-text-xs);
   }
 
-  .neeto-editor-image-uploader__dnd-wrapper {
+  .ne-media-uploader__dnd-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
 
-    .neeto-editor-image-uploader__dnd {
+    .ne-media-uploader__dnd {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -85,7 +85,7 @@
       }
 
       .uppy-DragDrop-label {
-        @extend .neeto-editor-image-uploader__progress-title;
+        @extend .ne-media-uploader__progress-title;
       }
 
       .uppy-DragDrop-browse {
@@ -96,7 +96,7 @@
       }
 
       .uppy-DragDrop-note {
-        @extend .neeto-editor-image-uploader__progress-file;
+        @extend .ne-media-uploader__progress-file;
       }
 
       &--error {

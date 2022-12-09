@@ -10,7 +10,12 @@ import { isNilOrEmpty } from "utils/common";
 
 import Options from "./Options";
 
-const BubbleMenu = ({ editor, options: textOptions, mentions }) => {
+const BubbleMenu = ({
+  editor,
+  options: textOptions,
+  mentions,
+  setMediaUploader,
+}) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
   const selectedNode = editor && editor.view.state.selection.node;
@@ -54,6 +59,7 @@ const BubbleMenu = ({ editor, options: textOptions, mentions }) => {
           options={textOptions}
           setIsInvalidLink={setIsInvalidLink}
           setIsLinkOptionActive={setIsLinkOptionActive}
+          setMediaUploader={setMediaUploader}
         />
       </BubbleMenuTipTap>
     </div>

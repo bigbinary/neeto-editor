@@ -14,11 +14,9 @@ const Progress = ({ uppy }) => {
   const progressPercentage = `${progress}%`;
 
   return (
-    <div className="neeto-editor-image-uploader__progress">
-      <p className="neeto-editor-image-uploader__progress-title">
-        Uploading...
-      </p>
-      <p className="neeto-editor-image-uploader__progress-file">
+    <div className="ne-media-uploader__progress">
+      <p className="ne-media-uploader__progress-title">Uploading...</p>
+      <p className="ne-media-uploader__progress-file">
         {uppy.getFiles()[0]?.name}
       </p>
       <div

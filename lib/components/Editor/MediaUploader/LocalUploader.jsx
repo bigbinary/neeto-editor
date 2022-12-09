@@ -5,14 +5,21 @@ import { DragDrop, useUppy } from "@uppy/react";
 
 import ActiveStorageUpload from "utils/ActiveStorageUpload";
 
-import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
+import {
+  DEFAULT_IMAGE_UPPY_CONFIG,
+  DEFAULT_VIDEO_UPPY_CONFIG,
+  UPPY_UPLOAD_CONFIG,
+} from "./constants";
 import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
 
-const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
+const LocalUploader = ({ isImage, endpoint, onSuccess, uploadConfig }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState("");
-  const uppyConfig = { ...DEFAULT_UPPY_CONFIG, ...uploadConfig };
+  const defaultUppyConfig = isImage
+    ? DEFAULT_IMAGE_UPPY_CONFIG
+    : DEFAULT_VIDEO_UPPY_CONFIG;
+  const uppyConfig = { ...defaultUppyConfig, ...uploadConfig };
 
   const uppy = useUppy(() =>
     new Uppy({
@@ -46,7 +53,7 @@ const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
         ...UPPY_UPLOAD_CONFIG,
       })
       .on("upload", () => setIsUploading(true))
-      .on("upload-success", (_, { blob_url: imageUrl }) => onSuccess(imageUrl))
+      .on("upload-success", (_, { blob_url: blobUrl }) => onSuccess(blobUrl))
       .on("cancel-all", () => setIsUploading(false))
       .on("complete", () => setIsUploading(false))
   );
@@ -54,10 +61,10 @@ const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
   return isUploading ? (
     <Progress uppy={uppy} />
   ) : (
-    <div className="neeto-editor-image-uploader__dnd-wrapper">
+    <div className="ne-media-uploader__dnd-wrapper">
       <DragDrop
-        className="neeto-editor-image-uploader__dnd"
-        data-cy="neeto-editor-image-local-uploader"
+        className="ne-media-uploader__dnd"
+        data-cy="neeto-editor-media-local-uploader"
         uppy={uppy}
         locale={{
           strings: {
@@ -69,9 +76,7 @@ const LocalUploader = ({ endpoint, onSuccess, uploadConfig }) => {
           uppyConfig.restrictions.maxFileSize
         )}`}
       />
-      {error && (
-        <p className="neeto-editor-image-uploader__dnd--error">{error}</p>
-      )}
+      {error && <p className="ne-media-uploader__dnd--error">{error}</p>}
     </div>
   );
 };

@@ -23,7 +23,7 @@ const FixedMenu = ({
   options,
   mentions,
   variables,
-  setIsImageUploadOpen,
+  setMediaUploader,
   addonCommands,
   isIndependant,
   className,
@@ -38,7 +38,7 @@ const FixedMenu = ({
     list: listStyleOptions,
     misc: miscOptions,
     right: rightOptions,
-  } = buildMenuOptions({ editor, options, setIsImageUploadOpen });
+  } = buildMenuOptions({ editor, options, setMediaUploader });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = fontSizeOptions.length > 0;
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);

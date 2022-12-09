@@ -4,7 +4,6 @@ import Tippy from "@tippyjs/react";
 import { Down, Link } from "neetoicons";
 
 import { EDITOR_OPTIONS } from "common/constants";
-import { noop } from "utils/common";
 
 import LinkOption from "./LinkOption";
 import {
@@ -25,6 +24,7 @@ const Options = ({
   setIsInvalidLink,
   isLinkOptionActive,
   setIsLinkOptionActive,
+  setMediaUploader,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -36,7 +36,7 @@ const Options = ({
     font: fontStyleOptions,
     block: blockStyleOptions,
     list: listStyleOptions,
-  } = buildMenuOptions({ editor, options, setIsImageUploadVisible: noop });
+  } = buildMenuOptions({ editor, options, setMediaUploader });
 
   const handleAnimateInvalidLink = () => {
     setIsInvalidLink(true);
