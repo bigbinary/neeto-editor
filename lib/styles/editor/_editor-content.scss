@@ -145,7 +145,8 @@
   .neeto-editor__image {
     display: inline-block;
 
-    img {
+    img,
+    video {
       display: inline-block;
       height: 100%;
       border: 2px solid rgb(var(--neeto-ui-gray-300));
