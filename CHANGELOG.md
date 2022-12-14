@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/63cf2a910d76ececac5b81572eac129c063f3a55...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/63091fe28813d8a55cfaed13a42877fd035a75f1...HEAD)
+
+## [1.7.0](https://github.com/bigbinary/neeto-editor/compare/3b7685f0453859109ca1f509f2499d665336053c...63091fe28813d8a55cfaed13a42877fd035a75f1) - 2022-12-14
+
+- Added: video upload addon.
+- Removed: `uploadConfig` prop to control uppy props for image and video upload.
 
 ## [1.6.1](https://github.com/bigbinary/neeto-editor/compare/f57c55efc03dc4ef243d02c1abfbaab3124d3d81...63cf2a910d76ececac5b81572eac129c063f3a55) - 2022-12-08
 
