@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 
+import { isEmpty } from "ramda";
+
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 
+import BubbleMenu from "./Bubble";
+import FixedMenu from "./Fixed";
+import HeadlessMenu from "./Headless";
+
 import { DEFAULT_EDITOR_OPTIONS } from "../constants";
-import BubbleMenu from "../CustomExtensions/BubbleMenu";
-import FixedMenu from "../CustomExtensions/FixedMenu";
 import MediaUploader from "../MediaUploader";
 
 const Menu = props => {
@@ -15,8 +19,8 @@ const Menu = props => {
 
   const {
     menuType = "fixed",
-    defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
+    options = [],
     editor,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
@@ -25,17 +29,20 @@ const Menu = props => {
   const menuComponent = {
     fixed: FixedMenu,
     bubble: BubbleMenu,
-    headless: () => <div />,
+    headless: HeadlessMenu,
     none: () => <div />,
   };
 
   const MenuComponent = menuComponent[menuType];
+  const menuOptions = isEmpty(options)
+    ? [...DEFAULT_EDITOR_OPTIONS, ...addons]
+    : options;
 
   return (
     <>
       <MenuComponent
         {...props}
-        options={[...defaults, ...addons]}
+        options={menuOptions}
         setMediaUploader={setMediaUploader}
       />
       <MediaUploader

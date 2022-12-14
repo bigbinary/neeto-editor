@@ -10,7 +10,7 @@ import { isNilOrEmpty } from "utils/common";
 
 import Options from "./Options";
 
-const BubbleMenu = ({
+const Bubble = ({
   editor,
   options: textOptions,
   mentions = [],
@@ -66,4 +66,4 @@ const BubbleMenu = ({
   );
 };
 
-export default BubbleMenu;
+export default Bubble;
