@@ -64,7 +64,7 @@ interface Config {
 
 interface MenuProps {
   editor: string;
-  menuType?: "fixed" | "bubble" | "none";
+  menuType?: "fixed" | "bubble" | "headless" | "none";
   defaults?: string[];
   addons?: string[];
   uploadEndpoint?: string;
@@ -77,7 +77,7 @@ interface MenuProps {
 
 interface EditorProps {
   initialValue?: string;
-  menuType?: "fixed" | "bubble" | "none";
+  menuType?: "fixed" | "bubble" | "headless" | "none";
   label?: string;
   required?: boolean;
   autoFocus?: boolean;
