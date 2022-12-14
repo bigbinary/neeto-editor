@@ -1,4 +1,3 @@
-import { UppyOptions } from "@uppy/core/types";
 import {
   Editor as TiptapEditor,
   Extension,
@@ -69,7 +68,6 @@ interface MenuProps {
   defaults?: string[];
   addons?: string[];
   uploadEndpoint?: string;
-  uploadConfig?: UppyOptions<Record<string, unknown>>;
   mentions?: Mention[];
   variables?: Variable[];
   addonCommands?: Command[];
@@ -90,7 +88,6 @@ interface EditorProps {
   className?: string;
   contentClassName?: string;
   uploadEndpoint?: string;
-  uploadConfig?: UppyOptions<Record<string, unknown>>;
   onChange?: (htmlContent: string) => void;
   onFocus?: EditorFocus;
   onBlur?: EditorFocus;
