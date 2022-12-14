@@ -13,13 +13,12 @@ import {
 import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
 
-const LocalUploader = ({ isImage, endpoint, onSuccess, uploadConfig }) => {
+const LocalUploader = ({ isImage, endpoint, onSuccess }) => {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState("");
-  const defaultUppyConfig = isImage
+  const uppyConfig = isImage
     ? DEFAULT_IMAGE_UPPY_CONFIG
     : DEFAULT_VIDEO_UPPY_CONFIG;
-  const uppyConfig = { ...defaultUppyConfig, ...uploadConfig };
 
   const uppy = useUppy(() =>
     new Uppy({

@@ -16,7 +16,6 @@ const Menu = ({
   addons = [],
   editorSecrets = {},
   uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
-  uploadConfig = {},
   mentions = [],
   variables = [],
   addonCommands = [],
@@ -57,7 +56,6 @@ const Menu = ({
         editor={editor}
         mediaUploader={mediaUploader}
         unsplashApiKey={editorSecrets.unsplash}
-        uploadConfig={uploadConfig}
         uploadEndpoint={uploadEndpoint}
         onClose={() => setMediaUploader({ image: false, video: false })}
       />

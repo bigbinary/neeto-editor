@@ -35,7 +35,6 @@ const Editor = (
     className,
     contentClassName,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
-    uploadConfig = {},
     onChange = noop,
     onFocus = noop,
     onBlur = noop,
@@ -136,7 +135,6 @@ const Editor = (
             isIndependant={false}
             mentions={mentions}
             menuType={menuType}
-            uploadConfig={uploadConfig}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
           />
@@ -145,7 +143,6 @@ const Editor = (
             editor={editor}
             mediaUploader={mediaUploader}
             unsplashApiKey={editorSecrets.unsplash}
-            uploadConfig={uploadConfig}
             uploadEndpoint={uploadEndpoint}
             onClose={() => setMediaUploader({ image: false, video: false })}
           />

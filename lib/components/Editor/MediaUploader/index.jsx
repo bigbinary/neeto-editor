@@ -16,7 +16,6 @@ const MediaUploader = ({
   onClose,
   editor,
   uploadEndpoint,
-  uploadConfig,
   unsplashApiKey,
 }) => {
   const [activeTab, setActiveTab] = useState("local");
@@ -64,7 +63,6 @@ const MediaUploader = ({
                 <LocalUploader
                   endpoint={uploadEndpoint}
                   isImage={mediaUploader.image}
-                  uploadConfig={uploadConfig}
                   onSuccess={setMediaUrl}
                 />
               )}
