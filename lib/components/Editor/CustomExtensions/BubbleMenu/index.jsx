@@ -13,7 +13,7 @@ import Options from "./Options";
 const BubbleMenu = ({
   editor,
   options: textOptions,
-  mentions,
+  mentions = [],
   setMediaUploader,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);

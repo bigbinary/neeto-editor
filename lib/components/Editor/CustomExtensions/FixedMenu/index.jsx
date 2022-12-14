@@ -21,11 +21,11 @@ import Variables from "../Variable";
 const FixedMenu = ({
   editor,
   options,
-  mentions,
-  variables,
+  mentions = [],
+  variables = [],
   setMediaUploader,
-  addonCommands,
-  isIndependant,
+  addonCommands = [],
+  isIndependant = true,
   className,
 }) => {
   if (!editor) {
