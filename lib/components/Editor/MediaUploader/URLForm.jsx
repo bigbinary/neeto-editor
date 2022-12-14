@@ -32,7 +32,7 @@ const URLForm = ({
     >
       <Input
         autoFocus
-        data-cy="neeto-editor-image-upload-url-input"
+        data-cy="neeto-editor-media-upload-url-input"
         error={error}
         name="url"
         placeholder={placeholder}
@@ -41,7 +41,7 @@ const URLForm = ({
         onFocus={() => setError("")}
       />
       <Button
-        data-cy="neeto-editor-image-upload-url-submit"
+        data-cy="neeto-editor-media-upload-url-submit"
         disabled={!urlString}
         label={buttonLabel}
         onClick={handleSubmit}

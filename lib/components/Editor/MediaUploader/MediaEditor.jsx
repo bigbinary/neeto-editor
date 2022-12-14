@@ -3,16 +3,22 @@ import React, { useState } from "react";
 import Button from "components/Common/Button";
 import Input from "components/Common/Input";
 
-const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
+const MediaEditor = ({ isImage, url, editor, onClose, alt = "" }) => {
   const [altText, setAltText] = useState(alt || "");
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = () => {
-    editor
-      .chain()
-      .focus()
-      .setFigure({ src: url, caption: altText, alt: altText })
-      .run();
+    isImage
+      ? editor
+          .chain()
+          .focus()
+          .setFigure({ src: url, caption: altText, alt: altText })
+          .run()
+      : editor
+          .chain()
+          .focus()
+          .setVideo({ src: url, caption: altText, alt: altText })
+          .run();
     onClose();
   };
 
@@ -21,18 +27,15 @@ const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
   };
 
   return (
-    <div className="neeto-editor-image-editor" onKeyDown={handleKeyDown}>
+    <div className="ne-media-editor" onKeyDown={handleKeyDown}>
       {isError ? (
-        <div className="neeto-editor-image-editor__error">
+        <div className="ne-media-editor__error">
           <h2>Something Went Wrong!</h2>
-          <p>
-            The selected image cannot be displayed. Please try again using
-            another image.
-          </p>
+          <p>The selected media cannot be displayed. Please try again.</p>
         </div>
       ) : (
         <>
-          <figure>
+          {isImage ? (
             <img
               loading="lazy"
               src={url}
@@ -41,17 +44,25 @@ const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
                 currentTarget.onerror = null;
               }}
             />
-          </figure>
+          ) : (
+            <video
+              src={url}
+              onError={({ currentTarget }) => {
+                setIsError(true);
+                currentTarget.onerror = null;
+              }}
+            />
+          )}
           <Input
             autoFocus
             label="Caption"
-            placeholder="Brand Image"
+            placeholder="Enter a caption"
             value={altText}
             onChange={e => setAltText(e.target.value)}
           />
         </>
       )}
-      <div className="neeto-editor-image-editor__footer">
+      <div className="ne-media-editor__footer">
         <Button disabled={isError} label="Done" onClick={handleSubmit} />
         <Button label="Cancel" style="text" onClick={onClose} />
       </div>
@@ -59,4 +70,4 @@ const ImageEditor = ({ url, editor, onClose, alt = "" }) => {
   );
 };
 
-export default ImageEditor;
+export default MediaEditor;

@@ -12,8 +12,8 @@ import { noop, slugify } from "utils/common";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
-import ImageUploader from "./CustomExtensions/Image/Uploader";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
+import ImageUploader from "./MediaUploader";
 import Menu from "./Menu";
 import {
   getEditorStyles,
@@ -35,7 +35,6 @@ const Editor = (
     className,
     contentClassName,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
-    uploadConfig = {},
     onChange = noop,
     onFocus = noop,
     onBlur = noop,
@@ -58,7 +57,10 @@ const Editor = (
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = !!placeholder;
-  const [isImageUploaderOpen, setIsImageUploaderOpen] = useState(false);
+  const [mediaUploader, setMediaUploader] = useState({
+    image: false,
+    video: false,
+  });
 
   const customExtensions = useCustomExtensions({
     placeholder,
@@ -72,7 +74,7 @@ const Editor = (
     keyboardShortcuts,
     uploadEndpoint,
     config,
-    openImageUploader: () => setIsImageUploaderOpen(true),
+    setMediaUploader,
   });
   useEditorWarnings({ initialValue });
 
@@ -133,18 +135,16 @@ const Editor = (
             isIndependant={false}
             mentions={mentions}
             menuType={menuType}
-            uploadConfig={uploadConfig}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
           />
           <EditorContent editor={editor} {...otherProps} />
           <ImageUploader
             editor={editor}
-            imageUploadUrl={uploadEndpoint}
-            isOpen={isImageUploaderOpen}
+            mediaUploader={mediaUploader}
             unsplashApiKey={editorSecrets.unsplash}
-            uploadConfig={uploadConfig}
-            onClose={() => setIsImageUploaderOpen(false)}
+            uploadEndpoint={uploadEndpoint}
+            onClose={() => setMediaUploader({ image: false, video: false })}
           />
         </CharacterCountWrapper>
       </ErrorWrapper>

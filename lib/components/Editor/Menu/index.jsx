@@ -7,7 +7,7 @@ import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import { DEFAULT_EDITOR_OPTIONS } from "../constants";
 import BubbleMenu from "../CustomExtensions/BubbleMenu";
 import FixedMenu from "../CustomExtensions/FixedMenu";
-import ImageUploader from "../CustomExtensions/Image/Uploader";
+import MediaUploader from "../MediaUploader";
 
 const Menu = ({
   editor,
@@ -16,14 +16,16 @@ const Menu = ({
   addons = [],
   editorSecrets = {},
   uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
-  uploadConfig = {},
   mentions = [],
   variables = [],
   addonCommands = [],
   isIndependant = true,
   className,
 }) => {
-  const [isImageUploadOpen, setIsImageUploadOpen] = useState(false);
+  const [mediaUploader, setMediaUploader] = useState({
+    image: false,
+    video: false,
+  });
   const options = [...defaults, ...addons];
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
@@ -38,20 +40,24 @@ const Menu = ({
           isIndependant={isIndependant}
           mentions={mentions}
           options={options}
-          setIsImageUploadOpen={setIsImageUploadOpen}
+          setMediaUploader={setMediaUploader}
           variables={variables}
         />
       )}
       {isBubbleMenuActive && (
-        <BubbleMenu editor={editor} mentions={mentions} options={options} />
+        <BubbleMenu
+          editor={editor}
+          mentions={mentions}
+          options={options}
+          setMediaUploader={setMediaUploader}
+        />
       )}
-      <ImageUploader
+      <MediaUploader
         editor={editor}
-        imageUploadUrl={uploadEndpoint}
-        isOpen={isImageUploadOpen}
+        mediaUploader={mediaUploader}
         unsplashApiKey={editorSecrets.unsplash}
-        uploadConfig={uploadConfig}
-        onClose={() => setIsImageUploadOpen(false)}
+        uploadEndpoint={uploadEndpoint}
+        onClose={() => setMediaUploader({ image: false, video: false })}
       />
     </>
   );
