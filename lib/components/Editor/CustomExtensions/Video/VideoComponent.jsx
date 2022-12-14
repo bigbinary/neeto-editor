@@ -53,7 +53,13 @@ const VideoComponent = ({
             editor.commands.focus();
           }}
         >
-          <video controls {...node.attrs} alt={caption} src={src} />
+          <video
+            controls
+            {...node.attrs}
+            alt={caption}
+            preload="metadata"
+            src={src}
+          />
         </Resizable>
         <NodeViewContent
           as="figcaption"
