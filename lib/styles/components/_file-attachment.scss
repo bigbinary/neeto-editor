@@ -1,0 +1,43 @@
+
+.ne-file-attachments-inner-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+
+  .ne-file-attachment-wrapper {
+    display: flex;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.25rem;
+    border-width: 2px;
+  }
+  .ne-file-attachment-inner-wrapper {
+    display: flex;
+    column-gap: 0.75rem;
+    .icon-opacity-75 {
+      opacity: 0.75;
+    }
+    .input-width {
+      width: 16rem;
+    }
+  }
+  .drop-down-container {
+    margin-left: 1rem;
+    .menu-label {
+      text-transform: capitalize;
+    }
+  }
+}
+.upload-btn {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.file-input {
+  display: none;
+}

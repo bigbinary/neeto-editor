@@ -20,7 +20,7 @@ const LocalUploader = ({ isImage, endpoint, onSuccess }) => {
   const { isUploading, error, uppy } = useUppyUploader({
     endpoint,
     uppyConfig,
-    uppyUploadConfig: { ...UPPY_UPLOAD_CONFIG },
+    uppyUploadConfig: UPPY_UPLOAD_CONFIG,
     onSuccess,
   });
 
