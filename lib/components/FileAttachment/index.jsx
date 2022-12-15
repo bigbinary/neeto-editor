@@ -1,17 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import Uppy from "@uppy/core";
 import "@uppy/core/dist/style.css";
 import "@uppy/progress-bar/dist/style.css";
-import { useUppy } from "@uppy/react";
 import { saveAs } from "file-saver";
 import { isEmpty } from "ramda";
 
 import directUploadsApi from "apis/direct_uploads";
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import Button from "components/Common/Button";
-import { convertToFileSize } from "components/Editor/MediaUploader/utils";
-import ActiveStorageUpload from "utils/ActiveStorageUpload";
+import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachments from "./Attachments";
 import {
@@ -22,57 +19,33 @@ import {
 
 import Progress from "../Editor/MediaUploader/Progress";
 
-const FileAttachment = ({ uploadEndpoint = DIRECT_UPLOAD_ENDPOINT }) => {
+const FileAttachment = ({
+  endpoint = DIRECT_UPLOAD_ENDPOINT,
+  onRename = _ => {},
+  onDelete = _ => {},
+  onError = _ => {},
+}) => {
   const fileInputRef = useRef(null);
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [error, setError] = useState("");
-  const [isUploading, setIsUploading] = useState(false);
-
+  const uppyConfig = { ...DEFAULT_UPPY_CONFIG };
   const onClickAttachment = () => fileInputRef?.current?.click();
 
-  const uppyConfig = { ...DEFAULT_UPPY_CONFIG };
-  const uppy = useUppy(() =>
-    new Uppy({
-      ...uppyConfig,
-      onBeforeFileAdded: file => {
-        const { maxFileSize, allowedFileTypes } = uppyConfig.restrictions;
+  const {
+    uppy,
+    isUploading,
+    error: uppyError,
+  } = useUppyUploader({
+    endpoint,
+    uppyConfig,
+    uppyUploadConfig: { ...UPPY_UPLOAD_CONFIG },
+  });
 
-        if (file.size > maxFileSize) {
-          setError(
-            `File size is too large. Max size is  ${convertToFileSize(
-              uppyConfig.restrictions.maxFileSize
-            )}.`
-          );
-
-          return false;
-        } else if (!allowedFileTypes.includes(`.${file.extension}`)) {
-          setError(
-            `File type is not permitted. Allowed file types are: ${allowedFileTypes.join(
-              ", "
-            )}.`
-          );
-
-          return false;
-        }
-
-        return true;
-      },
-    })
-      .use(ActiveStorageUpload, {
-        directUploadUrl: uploadEndpoint,
-        ...UPPY_UPLOAD_CONFIG,
-      })
-      .on("upload", () => {
-        setError("");
-        setIsUploading(true);
-      })
-      .on("cancel-all", () => setIsUploading(false))
-      .on("complete", () => {
-        fileInputRef.current.value = null;
-        uppy.reset();
-        setIsUploading(false);
-      })
-  );
+  useEffect(() => {
+    if (!isEmpty(uppyError)) {
+      setError(uppyError);
+    }
+  }, [uppyError]);
 
   const onSelectAttachment = async e => {
     const files = Array.from(e?.target.files);
@@ -86,6 +59,7 @@ const FileAttachment = ({ uploadEndpoint = DIRECT_UPLOAD_ENDPOINT }) => {
       }
 
       const { successful = [], failed = [] } = await uppy.upload();
+
       if (!isEmpty(successful)) {
         setUploadedFiles([...uploadedFiles, ...successful]);
       }
@@ -94,32 +68,37 @@ const FileAttachment = ({ uploadEndpoint = DIRECT_UPLOAD_ENDPOINT }) => {
         const errorMessages = failed.map(file => file?.error.message).join(",");
         setError(errorMessages);
       }
-    } catch {}
+    } catch (e) {
+      onError && onError(e);
+    }
   };
 
   const handleDelete = async file => {
     const { signed_id: signedId } = file.response;
+
     try {
-      await directUploadsApi.destroy(`${uploadEndpoint}/${signedId}`);
+      await directUploadsApi.destroy(`${endpoint}/${signedId}`);
       setUploadedFiles(
         uploadedFiles.filter(
           uploadedFile => uploadedFile.response.signed_id !== signedId
         )
       );
-    } catch {
+      onDelete(file);
+    } catch (e) {
       setError(`Something went wrong while deleting file: ${file.name}`);
+      onError && onError(e);
     }
   };
 
-  const handleRename = async (newAttachment, callback) => {
+  const handleRename = async (attachment, callback) => {
     try {
-      const { fileName, signedId } = newAttachment;
+      const { fileName, signedId } = attachment;
       const payload = {
         blob: { filename: fileName },
       };
 
       const response = await directUploadsApi.create(
-        `${uploadEndpoint}/${signedId}/`,
+        `${endpoint}/${signedId}/`,
         payload
       );
       const { blob = {} } = response.data;
@@ -132,8 +111,11 @@ const FileAttachment = ({ uploadEndpoint = DIRECT_UPLOAD_ENDPOINT }) => {
         );
         setUploadedFiles([...updatedFiles]);
         callback(true);
+        onRename(blob.filename);
       }
-    } catch {}
+    } catch (e) {
+      onError && onError(e);
+    }
   };
 
   const handleView = ({ response, name }) => {

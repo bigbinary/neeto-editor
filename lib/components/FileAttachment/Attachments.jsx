@@ -87,10 +87,10 @@ const Attachments = ({ uploadedFiles = [], handleRename, dropDownOptions }) => {
               )}
             >
               <Menu>
-                {dropDownOptions.map(({ key, label, handler }) => (
+                {dropDownOptions.map(({ key, label, handler }, index) => (
                   <MenuItem.Button
                     data-cy={`attachment-options-${key}`}
-                    key={label}
+                    key={index}
                     onClick={() => onMenuItemClick({ key, handler, file })}
                   >
                     <span className="capitalize">{label}</span>
