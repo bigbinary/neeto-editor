@@ -15,17 +15,17 @@ import {
   renderOptionButton,
 } from "./utils";
 
-import Mentions from "../Mention";
-import Variables from "../Variable";
+import Mentions from "../../CustomExtensions/Mention";
+import Variables from "../../CustomExtensions/Variable";
 
-const FixedMenu = ({
+const Fixed = ({
   editor,
   options,
-  mentions,
-  variables,
+  mentions = [],
+  variables = [],
   setMediaUploader,
-  addonCommands,
-  isIndependant,
+  addonCommands = [],
+  isIndependant = true,
   className,
 }) => {
   if (!editor) {
@@ -79,4 +79,4 @@ const FixedMenu = ({
   );
 };
 
-export default FixedMenu;
+export default Fixed;

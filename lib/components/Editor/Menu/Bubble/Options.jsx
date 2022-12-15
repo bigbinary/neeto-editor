@@ -12,10 +12,10 @@ import {
   renderOptionButton,
 } from "./utils";
 
-import EmojiOption from "../FixedMenu/EmojiOption";
-import Separator from "../FixedMenu/Separator";
-import { buildMenuOptions } from "../FixedMenu/utils";
-import Mentions from "../Mention";
+import Mentions from "../../CustomExtensions/Mention";
+import EmojiOption from "../Fixed/EmojiOption";
+import Separator from "../Fixed/Separator";
+import { buildMenuOptions } from "../Fixed/utils";
 
 const Options = ({
   editor,

@@ -10,10 +10,10 @@ import { isNilOrEmpty } from "utils/common";
 
 import Options from "./Options";
 
-const BubbleMenu = ({
+const Bubble = ({
   editor,
   options: textOptions,
-  mentions,
+  mentions = [],
   setMediaUploader,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
@@ -66,4 +66,4 @@ const BubbleMenu = ({
   );
 };
 
-export default BubbleMenu;
+export default Bubble;
