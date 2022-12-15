@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { MenuVertical, File } from "@bigbinary/neeto-icons";
+import { clone } from "ramda";
 
 import Dropdown from "components/Common/Dropdown";
 import Input from "components/Common/Input";
@@ -17,7 +18,7 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
 
   const onMenuItemClick = ({ key, handler, attachment }) => {
     if (key === DROP_DOWN_OPTIONS_KEYS.RENAME) {
-      setActiveFile(attachment);
+      setActiveFile({ ...clone(attachment) });
     } else {
       handler(attachment);
     }
@@ -34,7 +35,7 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
           signedId: attachment.signedId,
           fileName: activeFile.filename,
         },
-        renamed => renamed && setActiveFile({})
+        fileRenamed => fileRenamed && setActiveFile({})
       );
     }
   };
@@ -42,7 +43,6 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
   const handleInputChange = value => {
     const fileNameErrorMessage = validFileName(value);
     fileNameErrorMessage ? setError(fileNameErrorMessage) : setError("");
-
     setActiveFile({ ...activeFile, filename: value });
   };
 
@@ -52,7 +52,7 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
         <div>
           <File className="icon-opacity-75" size={25} />
         </div>
-        {activeFile?.filename === attachment.filename ? (
+        {activeFile.signedId === attachment.signedId ? (
           <Input
             autoFocus
             className="input-width"

@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 
 import { saveAs } from "file-saver";
-import { isEmpty } from "ramda";
 
 import directUploadsApi from "apis/direct_uploads";
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
@@ -70,26 +69,18 @@ const FileAttachment = ({
         blob: { filename: fileName },
       };
 
-      const response = await directUploadsApi.update(
-        endpoint,
-        signedId,
-        payload
+      await directUploadsApi.update(endpoint, signedId, payload);
+      onChange(
+        attachments.map(attachment =>
+          attachment.signedId === signedId
+            ? {
+                ...attachment,
+                filename: fileName,
+              }
+            : attachment
+        )
       );
-      const { blob = {} } = response.data;
-
-      if (!isEmpty(blob)) {
-        onChange(
-          attachments.map(attachment =>
-            attachment.signedId === signedId
-              ? {
-                  ...attachment,
-                  filename: fileName,
-                }
-              : attachment
-          )
-        );
-        callback(true);
-      }
+      callback(true);
     } catch {}
   };
 
