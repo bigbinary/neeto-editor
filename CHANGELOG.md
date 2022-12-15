@@ -22,7 +22,12 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/63091fe28813d8a55cfaed13a42877fd035a75f1...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/c71b561d2aa5e4621205d4f53f1db3a913962867...HEAD)
+
+
+## [1.8.0](https://github.com/bigbinary/neeto-editor/compare/92bc7ba1406a96cd0640b581ec136742620bbae7...c71b561d2aa5e4621205d4f53f1db3a913962867) - 2022-12-14
+
+- Added: headless menu type.
 
 ## [1.7.0](https://github.com/bigbinary/neeto-editor/compare/3b7685f0453859109ca1f509f2499d665336053c...63091fe28813d8a55cfaed13a42877fd035a75f1) - 2022-12-14
 
