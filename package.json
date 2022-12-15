@@ -156,5 +156,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bigbinary/neeto-editor.git"
+  },
+  "dependencies": {
+    "@uppy/progress-bar": "^3.0.1",
+    "@uppy/xhr-upload": "^3.0.4",
+    "file-saver": "^2.0.5"
   }
 }

@@ -2,5 +2,8 @@
   "files.trimTrailingWhitespace": true,
   "files.trimFinalNewlines": true,
   "editor.formatOnSave": true,
-  "yaml.format.enable": true
+  "yaml.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
