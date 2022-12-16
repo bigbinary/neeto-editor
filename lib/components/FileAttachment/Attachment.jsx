@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { MenuVertical, File } from "@bigbinary/neeto-icons";
-import { clone } from "ramda";
 
 import Dropdown from "components/Common/Dropdown";
 import Input from "components/Common/Input";
@@ -18,7 +17,7 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
 
   const onMenuItemClick = ({ key, handler, attachment }) => {
     if (key === DROP_DOWN_OPTIONS_KEYS.RENAME) {
-      setActiveFile({ ...clone(attachment) });
+      setActiveFile(attachment);
     } else {
       handler(attachment);
     }
