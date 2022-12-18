@@ -107,7 +107,6 @@
     "react-router-dom": "5.2.0",
     "react-router-nav-prompt": "0.4.1",
     "react-toastify": "8.0.2",
-    "react-transition-group": "4.4.5",
     "rollup": "2.79.1",
     "rollup-plugin-analyzer": "4.0.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
