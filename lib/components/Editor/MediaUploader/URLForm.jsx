@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
 import classNames from "classnames";
+import { Button, Input } from "neetoui";
 
 import { URL_REGEXP } from "common/constants";
-import { Button } from "neetoui";
-import Input from "components/Common/Input";
 
 const URLForm = ({
   buttonLabel = "Submit",

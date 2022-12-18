@@ -5,8 +5,6 @@ import PropTypes from "prop-types";
 
 import MenuItem from "./MenuItem";
 
-import { ITEM_BTN_STYLES, BUTTON_TYPES } from "../../constants";
-
 const MenuItemButton = ({
   children,
   className,
@@ -14,7 +12,7 @@ const MenuItemButton = ({
   style,
   prefix,
   suffix,
-  type = BUTTON_TYPES.button,
+  type = "button",
   href = "",
   ...otherProps
 }) => {
@@ -34,8 +32,7 @@ const MenuItemButton = ({
       <Parent
         className={classnames("ne-dropdown__popup-menu-item-btn", className, {
           "ne-dropdown__popup-menu-item-btn": isActive,
-          "ne-dropdown__popup-menu-item-btn--style-danger":
-            style === ITEM_BTN_STYLES.danger,
+          "ne-dropdown__popup-menu-item-btn--style-danger": style === "danger",
         })}
         {...otherProps}
         {...elementSpecificProps}
@@ -88,7 +85,6 @@ MenuItemButton.propTypes = {
   /**
    * To specify the type of Button.
    */
-  type: PropTypes.oneOf(Object.values(BUTTON_TYPES)),
 };
 
 export default MenuItemButton;

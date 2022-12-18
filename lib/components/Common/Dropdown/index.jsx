@@ -3,13 +3,12 @@ import React, { useState } from "react";
 import Tippy from "@tippyjs/react";
 import classnames from "classnames";
 import { Down } from "neetoicons";
+import { Button } from "neetoui";
 import { isNil } from "ramda";
 
 import Divider from "./Divider";
 import Menu from "./Menu";
 import MenuItem from "./MenuItem";
-
-import { Button } from "neetoui";
 
 const BTN_STYLES = {
   primary: "primary",

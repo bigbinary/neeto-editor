@@ -112,12 +112,6 @@
   .neeto-editor-unsplash-wrapper {
     width: 100%;
 
-    .ne-input__wrapper {
-      width: 100%;
-      flex-grow: 0;
-      margin-bottom: 16px;
-    }
-
     .neeto-editor-unsplash-container {
       max-height: 50vh;
       overflow-y: auto;
@@ -236,7 +230,7 @@
   flex-grow: 1;
   padding: 0 24px;
 
-  .ne-input__wrapper {
+  .neeto-ui-input__wrapper {
     width: 100%;
     flex-grow: 0;
     margin-bottom: 16px;

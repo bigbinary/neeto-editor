@@ -9,14 +9,13 @@ import { CSSTransition } from "react-transition-group";
 import useModal from "hooks/useModal";
 
 import Backdrop from "./Backdrop";
-import { SIZES } from "./constants";
 import { useModalManager } from "./ModalManager";
 import Portal from "./Portal";
 
 const noop = () => {};
 
 const Modal = ({
-  size = SIZES.medium,
+  size = "medium",
   isOpen = false,
   onClose = noop,
   children,
@@ -68,9 +67,9 @@ const Modal = ({
             ref={modalWrapper}
             role="dialog"
             className={classnames("ne-modal__wrapper", {
-              "ne-modal__wrapper--small": size === SIZES.small,
-              "ne-modal__wrapper--medium": size === SIZES.medium,
-              "ne-modal__wrapper--large": size === SIZES.large,
+              "ne-modal__wrapper--small": size === "small",
+              "ne-modal__wrapper--medium": size === "medium",
+              "ne-modal__wrapper--large": size === "large",
               [className]: className,
             })}
             {...otherProps}
@@ -98,7 +97,6 @@ Modal.propTypes = {
   /**
    * To specify the size of the Modal.
    */
-  size: PropTypes.oneOf(Object.values(SIZES)),
   /**
    * To specify whether the Modal is open or not.
    */

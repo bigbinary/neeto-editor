@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 
-import { Spinner } from "neetoui";
+import { Input, Spinner } from "neetoui";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 
 import { searchUnsplashImages } from "apis/unsplash";
-import Input from "components/Common/Input";
 import useDebounce from "hooks/useDebounce";
 import { isNilOrEmpty } from "utils/common";
 

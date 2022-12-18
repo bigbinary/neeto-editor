@@ -1,16 +1,10 @@
 //Abstracts
-@import "./styles/abstracts/normalize";
-@import "./styles/abstracts/base";
-@import "./styles/abstracts/neeto-ui-variables";
-@import "./styles/abstracts/root";
-@import "./styles/abstracts/theme";
 @import "./styles/abstracts/animations";
 
 // Components
 @import "./styles/components/dropdown";
 @import "./styles/components/tab";
 @import "./styles/components/tooltip";
-@import "./styles/components/input";
 @import "./styles/components/modal";
 
 // Editor
