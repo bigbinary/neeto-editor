@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
 import { isEmpty } from "lodash";
-import { Modal } from "neetoui";
-
-import Tab from "components/Common/Tab";
+import { Modal, Tab } from "neetoui";
 
 import { MEDIA_UPLOAD_OPTIONS } from "./constants";
 import LocalUploader from "./LocalUploader";
