@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 import { URL_REGEXP } from "common/constants";
-import Button from "components/Common/Button";
+import { Button } from "neetoui";
 import Input from "components/Common/Input";
 
 const URLForm = ({

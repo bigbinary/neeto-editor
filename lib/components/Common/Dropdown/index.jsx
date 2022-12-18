@@ -9,7 +9,7 @@ import Divider from "./Divider";
 import Menu from "./Menu";
 import MenuItem from "./MenuItem";
 
-import Button from "../Button";
+import { Button } from "neetoui";
 
 const BTN_STYLES = {
   primary: "primary",

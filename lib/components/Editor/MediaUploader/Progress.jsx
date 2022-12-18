@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Close } from "neetoicons";
 
-import Button from "components/Common/Button";
+import { Button } from "neetoui";
 
 const Progress = ({ uppy }) => {
   const [progress, setProgress] = useState(0);

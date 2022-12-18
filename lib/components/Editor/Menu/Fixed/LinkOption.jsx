@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link } from "neetoicons";
 
 import { URL_REGEXP } from "common/constants";
-import Button from "components/Common/Button";
+import { Button } from "neetoui";
 import Dropdown from "components/Common/Dropdown";
 import Input from "components/Common/Input";
 import MenuButton from "components/Common/MenuButton";

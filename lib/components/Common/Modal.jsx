@@ -2,13 +2,13 @@ import React, { useRef } from "react";
 
 import classnames from "classnames";
 import { Close } from "neetoicons";
+import { Button } from "neetoui";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
 
 import useModal from "hooks/useModal";
 
 import Backdrop from "./Backdrop";
-import Button from "./Button";
 import { SIZES } from "./constants";
 import { useModalManager } from "./ModalManager";
 import Portal from "./Portal";
