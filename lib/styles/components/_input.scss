@@ -5,33 +5,6 @@
   align-items: flex-start;
   flex-grow: 1;
 
-  .ne-input__label-wrapper {
-    display: flex;
-    gap: 8px;
-    justify-content: space-between;
-    width: 100%;
-
-    .ne-label {
-      flex-grow: 1;
-      overflow-wrap: break-word;
-    }
-
-    .ne-input__max-length {
-      color: rgb(var(--neeto-ui-gray-700));
-      line-height: 1;
-      margin-bottom: 8px;
-      margin-left: auto;
-
-      &.ne-input__max-length--error {
-        color: rgb(var(--neeto-ui-error-800));
-      }
-    }
-  }
-
-  .ne-label {
-    margin-bottom: 8px;
-  }
-
   .ne-input {
     width: 100%;
     display: flex;
@@ -235,11 +208,4 @@
   line-height: 1.1;
   font-size: var(--neeto-ui-text-xs);
   color: rgb(var(--neeto-ui-error-800));
-}
-
-.ne-label {
-  display: flex;
-  align-items: center;
-  color: rgb(var(--neeto-ui-gray-700));
-  margin-bottom: 8px;
 }

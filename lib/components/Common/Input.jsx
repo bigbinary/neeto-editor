@@ -1,12 +1,12 @@
 import React, { useState, forwardRef } from "react";
 
 import classnames from "classnames";
+import { Label } from "neetoui";
 import PropTypes from "prop-types";
 
 import { slugify } from "utils/common";
 
 import { SIZES } from "./constants";
-import Label from "./Label";
 
 const Input = forwardRef(
   (
