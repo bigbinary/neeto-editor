@@ -1,8 +1,7 @@
 import React from "react";
 
 import classnames from "classnames";
-
-import Tooltip from "components/Common/ToolTip";
+import Tooltip from "neetoui";
 
 const Button = ({
   icon = null,

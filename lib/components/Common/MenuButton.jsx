@@ -1,6 +1,7 @@
 import React from "react";
 
 import classnames from "classnames";
+import { Tooltip } from "neetoui";
 import PropTypes from "prop-types";
 
 import { generateFocusProps } from "utils/focusHighlighter";
@@ -10,7 +11,6 @@ import {
   ICON_COLOR_INACTIVE,
   MENU_ICON_SIZE,
 } from "./constants";
-import ToolTip from "./ToolTip";
 
 const MenuButton = ({
   icon: Icon,
@@ -22,7 +22,7 @@ const MenuButton = ({
   label,
   ...otherProps
 }) => (
-  <ToolTip {...tooltipProps}>
+  <Tooltip {...tooltipProps}>
     <button
       disabled={disabled}
       type="button"
@@ -42,7 +42,7 @@ const MenuButton = ({
         />
       )}
     </button>
-  </ToolTip>
+  </Tooltip>
 );
 
 MenuButton.propTypes = {
