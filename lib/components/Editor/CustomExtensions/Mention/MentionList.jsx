@@ -1,9 +1,9 @@
 import React from "react";
 
 import classNames from "classnames";
+import { Avatar } from "neetoui";
 import { isEmpty } from "ramda";
 
-import Avatar from "components/Common/Avatar";
 import { scrollHandler } from "utils/scrollhandler";
 
 export class MentionList extends React.Component {

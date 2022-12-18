@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 
 import { Email } from "neetoicons";
+import { Avatar } from "neetoui";
 import { isEmpty } from "ramda";
 
-import Avatar from "components/Common/Avatar";
 import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
 
