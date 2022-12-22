@@ -248,13 +248,13 @@
 }
 
 .neeto-editor__image-menu {
-  .ne-dropdown__popup {
+  .neeto-ui-dropdown__popup {
     display: flex;
     min-width: unset;
   }
 
   &-btn {
-    position: absolute;
+    position: absolute !important;
     top: 4px;
     right: 4px;
     z-index: 1;
