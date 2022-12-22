@@ -15,23 +15,19 @@ const Menu = ({ align, updateAttributes, deleteNode }) => {
 
   return (
     <Dropdown
+      buttonProps={{ className: "neeto-editor__image-menu-btn" }}
       buttonSize="small"
       buttonStyle="secondary"
       className="neeto-editor__image-menu"
       icon={MenuHorizontal}
       position="top"
-      buttonProps={{
-        className: "neeto-editor__image-menu-btn",
-      }}
     >
       {menuOptions.map(({ Icon, optionName, alignPos }) => (
         <Button
           icon={() => <Icon size={18} />}
           key={optionName}
           style={alignPos === align ? "secondary" : "text"}
-          buttonProps={{
-            tooltipProps: { content: humanize(optionName), position: "top" },
-          }}
+          tooltipProps={{ content: humanize(optionName), position: "top" }}
           onClick={() => handleClick(alignPos)}
         />
       ))}

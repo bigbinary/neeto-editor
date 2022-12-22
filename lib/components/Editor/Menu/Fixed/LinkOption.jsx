@@ -40,13 +40,13 @@ const LinkOption = ({ editor }) => {
 
   return (
     <Dropdown
+      buttonProps={{ tooltipProps: { content: "Link", position: "bottom" } }}
       buttonStyle={isActive ? "secondary" : "text"}
       closeOnSelect={false}
       data-cy="neeto-editor-fixed-menu-link-option"
       icon={() => <Link size={18} />}
       isOpen={isOpen}
       position="bottom"
-      tooltipProps={{ content: "Link", position: "bottom" }}
       onClick={() => setIsOpen(open => !open)}
       onClose={handleClose}
     >

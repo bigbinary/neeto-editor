@@ -7,7 +7,7 @@ import EmojiPickerMenu from "../../CustomExtensions/Emoji/EmojiPicker/EmojiPicke
 
 const EmojiOption = ({ editor }) => (
   <Dropdown
-    buttonProps={{ dropdownProps: { content: "Emoji", position: "bottom" } }}
+    buttonProps={{ tooltipProps: { content: "Emoji", position: "bottom" } }}
     buttonStyle="text"
     closeOnSelect={false}
     dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
