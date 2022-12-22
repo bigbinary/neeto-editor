@@ -44,6 +44,7 @@
 
   &.fixed-menu-active {
     border: thin solid rgb(var(--neeto-ui-gray-300));
+    border-top: none;
     border-radius: 0px 0px var(--neeto-ui-rounded) var(--neeto-ui-rounded);
   }
 
