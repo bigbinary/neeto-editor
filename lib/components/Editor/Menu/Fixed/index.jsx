@@ -1,14 +1,12 @@
 import React from "react";
 
 import classnames from "classnames";
-import { isEmpty } from "ramda";
 
 import { EDITOR_OPTIONS } from "common/constants";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
-import Separator from "./Separator";
 import {
   buildMenuOptions,
   buildOptionsFromAddonCommands,
@@ -58,12 +56,9 @@ const Fixed = ({
       <div className="neeto-editor-fixed-menu__wrapper">
         {isFontSizeActive && <FontSizeOption editor={editor} />}
         {fontStyleOptions.map(renderOptionButton)}
-        {(isFontSizeActive || !isEmpty(fontSizeOptions)) && <Separator />}
         {blockStyleOptions.map(renderOptionButton)}
         {isEmojiActive && <EmojiOption editor={editor} />}
-        {(isEmojiActive || !isEmpty(blockStyleOptions)) && <Separator />}
         {listStyleOptions.map(renderOptionButton)}
-        {!isEmpty(listStyleOptions) && <Separator />}
         {isLinkActive && <LinkOption editor={editor} />}
         {miscOptions.map(renderOptionButton)}
         <Mentions editor={editor} mentions={mentions} />
