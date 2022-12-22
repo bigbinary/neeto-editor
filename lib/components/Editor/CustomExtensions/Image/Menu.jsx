@@ -30,7 +30,7 @@ const Menu = ({ align, updateAttributes, deleteNode }) => {
           key={optionName}
           style={alignPos === align ? "secondary" : "text"}
           buttonProps={{
-            tooltipProps: { content: humanize(optionName), position: "bottom" },
+            tooltipProps: { content: humanize(optionName), position: "top" },
           }}
           onClick={() => handleClick(alignPos)}
         />
