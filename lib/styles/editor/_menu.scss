@@ -16,12 +16,14 @@
     align-items: center;
     overflow: auto;
     width: 100%;
+    padding: 2px;
+    gap: 0 4px;
   }
 
   &__variables {
     position: absolute;
     right: 8px;
-    bottom: -32px;
+    bottom: -24;
     z-index: 10;
 
     .neeto-editor-menu__item {
@@ -43,7 +45,7 @@
   }
 
   &__emoji-dropdown {
-    max-height: unset;
+    max-height: unset !important;
   }
 
   &__separator {
@@ -147,29 +149,17 @@
   }
 }
 
-.neeto-editor-link-wrapper {
-  .ne-dropdown__popup {
-    padding: 8px;
-    width: 100%;
-    max-width: 400px;
-
-    .neeto-editor-link__item {
-      display: flex !important;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 8px;
-    }
-  }
+.neeto-editor-link__item {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-.neeto-editor-font-size-wrapper {
-  .ne-dropdown__popup-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4px;
-  }
+.neeto-editor-font-size__wrapper {
+  font-weight: var(--neeto-ui-font-normal) !important;
+  padding: 8px !important;
 }
 
 .neeto-editor-bubble-menu {

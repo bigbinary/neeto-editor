@@ -1,9 +1,10 @@
 import React from "react";
 
+import { Button } from "@bigbinary/neetoui";
 import { fromPairs } from "ramda";
 
-import MenuButton from "components/Common/MenuButton";
 import { humanize } from "utils/common";
+import { generateFocusProps } from "utils/focusHighlighter";
 
 import { MENU_OPTIONS } from "./constants";
 
@@ -26,19 +27,15 @@ export const renderOptionButton = ({
   highlight,
   disabled,
 }) => (
-  <MenuButton
+  <Button
     data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
     disabled={disabled}
-    highlight={highlight}
-    icon={Icon}
-    iconActive={active}
+    icon={() => <Icon size={18} />}
     key={optionName}
-    tooltipProps={{
-      content: humanize(optionName),
-      position: "bottom",
-      delay: [500],
-    }}
+    style={active ? "secondary" : "text"}
+    tooltipProps={{ content: humanize(optionName), position: "bottom" }}
     onClick={command}
+    {...generateFocusProps(highlight)}
   />
 );
 

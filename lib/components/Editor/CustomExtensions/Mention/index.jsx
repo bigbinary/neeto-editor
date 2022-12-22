@@ -1,15 +1,12 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { Email } from "neetoicons";
-import { Avatar, Dropdown } from "neetoui";
+import { Avatar, Dropdown, Typography } from "neetoui";
 import { isEmpty } from "ramda";
-
-import MenuButton from "components/Common/MenuButton";
 
 import { formatMentions } from "./utils";
 
-const Mentions = ({ editor, mentions, menuType = "fixed" }) => {
-  const dropdownRef = useRef();
+const Mentions = ({ editor, mentions }) => {
   const formattedMentions = formatMentions(mentions);
   const { Menu, MenuItem } = Dropdown;
 
@@ -17,20 +14,13 @@ const Mentions = ({ editor, mentions, menuType = "fixed" }) => {
 
   return (
     <Dropdown
-      ref={dropdownRef}
-      customTarget={() => (
-        <MenuButton
-          color={menuType === "bubble" && "white"}
-          data-cy="neeto-editor-mention-option"
-          icon={Email}
-          iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
-          tooltipProps={{
-            content: "Mention",
-            position: "bottom",
-            delay: [500],
-          }}
-        />
-      )}
+      buttonStyle="text"
+      data-cy="neeto-editor-mention-option"
+      icon={() => <Email size={18} />}
+      strategy="fixed"
+      buttonProps={{
+        tooltipProps: { content: "Mention", position: "bottom" },
+      }}
     >
       <Menu>
         {formattedMentions.map(({ key, name, imageUrl }) => (
@@ -40,7 +30,7 @@ const Mentions = ({ editor, mentions, menuType = "fixed" }) => {
             onClick={() => editor.commands.setMention({ id: key, label: name })}
           >
             <Avatar size="small" user={{ name, imageUrl }} />
-            <span>{name}</span>
+            <Typography style="body2">{name}</Typography>
           </MenuItem.Button>
         ))}
       </Menu>
