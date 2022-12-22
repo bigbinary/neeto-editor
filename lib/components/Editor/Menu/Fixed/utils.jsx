@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button } from "@bigbinary/neetoui";
+import { Button } from "neetoui";
 import { fromPairs } from "ramda";
 
 import { humanize } from "utils/common";
