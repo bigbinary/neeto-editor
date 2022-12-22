@@ -26,7 +26,8 @@ const FontSizeOption = ({ editor }) => {
       placement="bottom-start"
       buttonProps={{
         tooltipProps: { content: "Font size", position: "bottom" },
-        className: "neeto-editor-font-size__wrapper",
+        className:
+          "neeto-editor-fixed-menu__item neeto-editor-font-size__wrapper",
       }}
     >
       <Menu>

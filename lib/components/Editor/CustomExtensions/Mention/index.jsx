@@ -20,6 +20,7 @@ const Mentions = ({ editor, mentions }) => {
       strategy="fixed"
       buttonProps={{
         tooltipProps: { content: "Mention", position: "bottom" },
+        className: "neeto-editor-fixed-menu__item",
       }}
     >
       <Menu>

@@ -11,6 +11,10 @@
     border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
   }
 
+  &__item {
+    border-radius: var(--neeto-ui-rounded-sm) !important;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: flex-start;

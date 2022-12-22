@@ -28,6 +28,7 @@ export const renderOptionButton = ({
   disabled,
 }) => (
   <Button
+    className="neeto-editor-fixed-menu__item"
     data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
     disabled={disabled}
     icon={() => <Icon size={18} />}
