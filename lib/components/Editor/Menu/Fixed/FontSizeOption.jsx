@@ -2,11 +2,13 @@ import React from "react";
 
 import classnames from "classnames";
 import { Down } from "neetoicons";
+import { Dropdown } from "neetoui";
 
-import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
 
 import { FONT_SIZE_OPTIONS } from "./constants";
+
+const { Menu, MenuItem } = Dropdown;
 
 const FontSizeOption = ({ editor }) => {
   const isActive = level => editor.isActive("heading", { level });
@@ -18,8 +20,6 @@ const FontSizeOption = ({ editor }) => {
     level
       ? editor.chain().focus().toggleHeading({ level }).run()
       : editor.chain().focus().setNode("paragraph").run();
-
-  const { Menu, MenuItem } = Dropdown;
 
   return (
     <Dropdown

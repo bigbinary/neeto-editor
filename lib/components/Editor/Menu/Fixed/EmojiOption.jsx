@@ -1,15 +1,16 @@
 import React, { useRef } from "react";
 
 import { Smiley } from "neetoicons";
+import { Dropdown } from "neetoui";
 
-import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
 
 import EmojiPickerMenu from "../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
 
+const { Menu } = Dropdown;
+
 const EmojiOption = ({ editor, theme = "light" }) => {
   const dropdownRef = useRef();
-  const { Menu } = Dropdown;
 
   return (
     <Dropdown

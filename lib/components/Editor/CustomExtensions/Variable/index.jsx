@@ -1,16 +1,17 @@
 import React, { useRef } from "react";
 
 import { Braces } from "neetoicons";
+import { Dropdown } from "neetoui";
 import { isEmpty } from "ramda";
 
-import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
 
 import VariableList from "./VariableList";
 
+const { Menu } = Dropdown;
+
 const Variables = ({ editor, variables }) => {
   const dropdownRef = useRef();
-  const { Menu } = Dropdown;
 
   const handleClickItem = item => {
     const { category_key, key } = item;
@@ -27,10 +28,10 @@ const Variables = ({ editor, variables }) => {
       ref={dropdownRef}
       customTarget={() => (
         <MenuButton
+          color="white"
           data-cy="neeto-editor-variable-option"
           icon={Braces}
           iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
-          color="white"
           tooltipProps={{
             content: "Variables",
             position: "bottom",

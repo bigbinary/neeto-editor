@@ -1,8 +1,8 @@
 import React from "react";
 
 import { MenuHorizontal } from "neetoicons";
+import { Dropdown } from "neetoui";
 
-import Dropdown from "components/Common/Dropdown";
 import MenuButton from "components/Common/MenuButton";
 import { humanize } from "utils/common";
 

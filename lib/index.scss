@@ -1,9 +1,6 @@
 //Abstracts
 @import "./styles/abstracts/animations";
 
-// Components
-@import "./styles/components/dropdown";
-
 // Editor
 @import "./styles/editor/commands";
 @import "./styles/editor/editor";
@@ -12,20 +9,6 @@
 @import "./styles/editor/media-uploader";
 @import "./styles/editor/emoji";
 @import "./styles/editor/media-editor";
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 
 .ProseMirror {
   overflow-y: auto;
