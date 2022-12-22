@@ -30,7 +30,9 @@
       "utils/*": ["utils/*"],
       "utils": ["utils"],
       "neetoicons/*": ["../node_modules/@bigbinary/neeto-icons/*"],
-      "neetoicons": ["../node_modules/@bigbinary/neeto-icons"]
+      "neetoicons": ["../node_modules/@bigbinary/neeto-icons"],
+      "neetoui/*": ["../node_modules/@bigbinary/neetoui/*"],
+      "neetoui": ["../node_modules/@bigbinary/neetoui"]
     },
     "pretty": true,
     "experimentalDecorators": true,
