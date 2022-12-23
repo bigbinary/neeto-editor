@@ -13,4 +13,5 @@ module.exports = {
   stores: absolutePath("stores"),
   utils: absolutePath("utils"),
   neetoicons: "@bigbinary/neeto-icons",
+  neetoui: "@bigbinary/neetoui",
 };

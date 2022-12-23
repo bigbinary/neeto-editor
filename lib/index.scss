@@ -1,20 +1,5 @@
 //Abstracts
-@import "./styles/abstracts/normalize";
-@import "./styles/abstracts/base";
-@import "./styles/abstracts/neeto-ui-variables";
-@import "./styles/abstracts/root";
-@import "./styles/abstracts/theme";
 @import "./styles/abstracts/animations";
-
-// Components
-@import "./styles/components/dropdown";
-@import "./styles/components/avatar";
-@import "./styles/components/tab";
-@import "./styles/components/button";
-@import "./styles/components/tooltip";
-@import "./styles/components/input";
-@import "./styles/components/modal";
-@import "./styles/components/loader";
 
 // Editor
 @import "./styles/editor/commands";
@@ -24,20 +9,6 @@
 @import "./styles/editor/media-uploader";
 @import "./styles/editor/emoji";
 @import "./styles/editor/media-editor";
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
 
 .ProseMirror {
   overflow-y: auto;

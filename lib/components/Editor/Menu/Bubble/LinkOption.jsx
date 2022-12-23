@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Close } from "neetoicons";
 
 import { URL_REGEXP } from "common/constants";
-import Button from "components/Common/Button";
+import { Button } from "neetoui";
 import { isNilOrEmpty } from "utils/common";
 
 const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {

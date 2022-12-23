@@ -1,9 +1,8 @@
 import React from "react";
 
 import { MenuHorizontal } from "neetoicons";
+import { Button, Dropdown } from "neetoui";
 
-import Dropdown from "components/Common/Dropdown";
-import MenuButton from "components/Common/MenuButton";
 import { humanize } from "utils/common";
 
 import { buildImageOptions } from "../../MediaUploader/utils";
@@ -16,25 +15,19 @@ const Menu = ({ align, updateAttributes, deleteNode }) => {
 
   return (
     <Dropdown
+      buttonProps={{ className: "neeto-editor__image-menu-btn" }}
       buttonSize="small"
       buttonStyle="secondary"
       className="neeto-editor__image-menu"
       icon={MenuHorizontal}
       position="top"
-      buttonProps={{
-        className: "neeto-editor__image-menu-btn",
-      }}
     >
       {menuOptions.map(({ Icon, optionName, alignPos }) => (
-        <MenuButton
-          icon={Icon}
-          iconActive={alignPos === align}
+        <Button
+          icon={() => <Icon size={18} />}
           key={optionName}
-          tooltipProps={{
-            content: humanize(optionName),
-            position: "bottom",
-            delay: [500],
-          }}
+          style={alignPos === align ? "secondary" : "text"}
+          tooltipProps={{ content: humanize(optionName), position: "top" }}
           onClick={() => handleClick(alignPos)}
         />
       ))}

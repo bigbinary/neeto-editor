@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
 import { Link } from "neetoicons";
+import { Button, Dropdown, Input } from "neetoui";
 
 import { URL_REGEXP } from "common/constants";
-import Button from "components/Common/Button";
-import Dropdown from "components/Common/Dropdown";
-import Input from "components/Common/Input";
-import MenuButton from "components/Common/MenuButton";
+
+const { Menu } = Dropdown;
 
 const LinkOption = ({ editor }) => {
   const [error, setError] = useState("");
@@ -14,9 +13,6 @@ const LinkOption = ({ editor }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const isActive = editor.isActive("link");
-
-  const onClickTrigger = () =>
-    setUrlString(editor.getAttributes("link").href || "");
 
   const handleClose = () => setIsOpen(false);
 
@@ -44,23 +40,20 @@ const LinkOption = ({ editor }) => {
 
   return (
     <Dropdown
-      className="neeto-editor-link-wrapper"
+      buttonStyle={isActive ? "secondary" : "text"}
       closeOnSelect={false}
+      data-cy="neeto-editor-fixed-menu-link-option"
+      icon={() => <Link size={18} />}
       isOpen={isOpen}
       position="bottom"
-      customTarget={() => (
-        <MenuButton
-          data-cy="neeto-editor-fixed-menu-link-option"
-          icon={Link}
-          iconActive={isActive}
-          tooltipProps={{ content: "Link", position: "bottom", delay: [500] }}
-          onClick={onClickTrigger}
-        />
-      )}
+      buttonProps={{
+        tooltipProps: { content: "Link", position: "bottom" },
+        className: "neeto-editor-fixed-menu__item",
+      }}
       onClick={() => setIsOpen(open => !open)}
       onClose={handleClose}
     >
-      <div className="neeto-editor-link__item" onKeyDown={handleKeyDown}>
+      <Menu className="neeto-editor-link__item" onKeyDown={handleKeyDown}>
         <Input
           autoFocus
           data-cy="neeto-editor-fixed-menu-link-option-input"
@@ -83,7 +76,7 @@ const LinkOption = ({ editor }) => {
             onClick={handleUnlink}
           />
         )}
-      </div>
+      </Menu>
     </Dropdown>
   );
 };

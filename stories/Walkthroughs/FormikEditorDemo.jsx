@@ -1,10 +1,10 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
+import { Button } from "neetoui";
 import * as yup from "yup";
 
 import { isEditorEmpty, FormikEditor } from "../../lib";
-import Button from "../../lib/components/Common/Button";
 
 const INITIAL_VALUES = {
   description: "<p></p>",

@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 
+import { Input, Spinner } from "neetoui";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 
 import { searchUnsplashImages } from "apis/unsplash";
-import Input from "components/Common/Input";
-import Loader from "components/Common/Loader";
 import useDebounce from "hooks/useDebounce";
 import { isNilOrEmpty } from "utils/common";
 
@@ -96,7 +95,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
             className="neeto-editor-unsplash-gallery"
             hasMore={hasMore}
             loadMore={loadMore}
-            loader={<Loader key={0} />}
+            loader={<Spinner />}
             ref={masonryRef}
             style={{ width: "100%" }}
             useWindow={false}

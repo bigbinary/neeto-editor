@@ -30,7 +30,7 @@ const ErrorWrapper = ({ error, isFixedMenuActive, children }) => {
   return (
     <>
       <div className={wrapperClasses}>{children}</div>
-      {isError && <p className="ne-input__error">{getErrorMessage()}</p>}
+      {isError && <p className="neeto-ui-input__error">{getErrorMessage()}</p>}
     </>
   );
 };

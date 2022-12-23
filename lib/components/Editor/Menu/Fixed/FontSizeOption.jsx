@@ -1,12 +1,10 @@
 import React from "react";
 
-import classnames from "classnames";
-import { Down } from "neetoicons";
-
-import Dropdown from "components/Common/Dropdown";
-import MenuButton from "components/Common/MenuButton";
+import { Dropdown } from "neetoui";
 
 import { FONT_SIZE_OPTIONS } from "./constants";
+
+const { Menu, MenuItem } = Dropdown;
 
 const FontSizeOption = ({ editor }) => {
   const isActive = level => editor.isActive("heading", { level });
@@ -19,31 +17,22 @@ const FontSizeOption = ({ editor }) => {
       ? editor.chain().focus().toggleHeading({ level }).run()
       : editor.chain().focus().setNode("paragraph").run();
 
-  const { Menu, MenuItem } = Dropdown;
-
   return (
     <Dropdown
-      className="neeto-editor-font-size-wrapper"
-      dropdownProps={{ classNames: "ne-dropdown__popup--auto-width" }}
+      autoWidth
+      buttonStyle="text"
+      data-cy="neeto-editor-fixed-menu-font-size-option"
+      label={label}
       placement="bottom-start"
-      customTarget={() => (
-        <MenuButton
-          data-cy="neeto-editor-fixed-menu-font-size-option"
-          icon={Down}
-          iconActive={false}
-          label={label}
-          tooltipProps={{
-            content: "Font Size",
-            position: "bottom",
-            delay: [500],
-          }}
-        />
-      )}
+      buttonProps={{
+        tooltipProps: { content: "Font size", position: "bottom" },
+        className:
+          "neeto-editor-fixed-menu__item neeto-editor-font-size__wrapper",
+      }}
     >
       <Menu>
         {FONT_SIZE_OPTIONS.map(({ label, value }) => (
           <MenuItem.Button
-            className={classnames({ active: isActive(value) })}
             data-cy={`neeto-editor-fixed-menu-font-size-option-${label}`}
             key={value}
             onClick={() => handleClick(value)}

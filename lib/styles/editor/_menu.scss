@@ -2,7 +2,7 @@
   border: thin solid rgb(var(--neeto-ui-gray-300));
   border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
   border-bottom: none;
-  background-color: rgb(var(--neeto-ui-gray-100));
+  background-color: rgb(var(--neeto-ui-white));
   text-align: center;
   position: relative;
 
@@ -11,18 +11,24 @@
     border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
   }
 
+  &__item {
+    border-radius: var(--neeto-ui-rounded-sm) !important;
+  }
+
   &__wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     overflow: auto;
     width: 100%;
+    padding: 2px;
+    gap: 0 4px;
   }
 
   &__variables {
     position: absolute;
     right: 8px;
-    bottom: -32px;
+    bottom: -24px;
     z-index: 10;
 
     .neeto-editor-menu__item {
@@ -44,7 +50,7 @@
   }
 
   &__emoji-dropdown {
-    max-height: unset;
+    max-height: unset !important;
   }
 
   &__separator {
@@ -148,29 +154,18 @@
   }
 }
 
-.neeto-editor-link-wrapper {
-  .ne-dropdown__popup {
-    padding: 8px;
-    width: 100%;
-    max-width: 400px;
-
-    .neeto-editor-link__item {
-      display: flex !important;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: flex-start;
-      gap: 8px;
-    }
-  }
+.neeto-editor-link__item {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px !important;
 }
 
-.neeto-editor-font-size-wrapper {
-  .ne-dropdown__popup-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 4px;
-  }
+.neeto-editor-font-size__wrapper {
+  font-weight: var(--neeto-ui-font-normal) !important;
+  padding: 8px !important;
 }
 
 .neeto-editor-bubble-menu {
@@ -259,13 +254,13 @@
 }
 
 .neeto-editor__image-menu {
-  .ne-dropdown__popup {
+  .neeto-ui-dropdown__popup {
     display: flex;
     min-width: unset;
   }
 
   &-btn {
-    position: absolute;
+    position: absolute !important;
     top: 4px;
     right: 4px;
     z-index: 1;

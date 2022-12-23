@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import Button from "components/Common/Button";
-import Input from "components/Common/Input";
+import { Button, Input } from "neetoui";
 
 const MediaEditor = ({ isImage, url, editor, onClose, alt = "" }) => {
   const [altText, setAltText] = useState(alt || "");

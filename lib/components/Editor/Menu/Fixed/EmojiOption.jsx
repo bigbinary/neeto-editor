@@ -1,37 +1,25 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { Smiley } from "neetoicons";
-
-import Dropdown from "components/Common/Dropdown";
-import MenuButton from "components/Common/MenuButton";
+import { Dropdown } from "neetoui";
 
 import EmojiPickerMenu from "../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
 
-const EmojiOption = ({ editor, theme = "light" }) => {
-  const dropdownRef = useRef();
-  const { Menu } = Dropdown;
-
-  return (
-    <Dropdown
-      closeOnSelect={false}
-      dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
-      position="bottom-start"
-      ref={dropdownRef}
-      customTarget={() => (
-        <MenuButton
-          color={theme === "dark" && "white"}
-          data-cy="neeto-editor-fixed-menu-emoji-option-button"
-          icon={Smiley}
-          iconActive={dropdownRef?.current?._tippy?.state?.isVisible}
-          tooltipProps={{ content: "Emoji", position: "bottom", delay: [500] }}
-        />
-      )}
-    >
-      <Menu>
-        <EmojiPickerMenu editor={editor} />
-      </Menu>
-    </Dropdown>
-  );
-};
+const EmojiOption = ({ editor }) => (
+  <Dropdown
+    buttonStyle="text"
+    closeOnSelect={false}
+    dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
+    icon={() => <Smiley size={18} />}
+    position="bottom-start"
+    strategy="fixed"
+    buttonProps={{
+      tooltipProps: { content: "Emoji", position: "bottom" },
+      className: "neeto-editor-fixed-menu__item",
+    }}
+  >
+    <EmojiPickerMenu editor={editor} />
+  </Dropdown>
+);
 
 export default EmojiOption;

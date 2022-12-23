@@ -2,11 +2,11 @@ import React, { useImperativeHandle, useState } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
+import { Label } from "neetoui";
 import { EditorView } from "prosemirror-view";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
-import Label from "components/Common/Label";
 import useEditorWarnings from "hooks/useEditorWarnings";
 import { noop, slugify } from "utils/common";
 
@@ -117,7 +117,11 @@ const Editor = (
   return (
     <div className={classnames({ [className]: className })}>
       {label && (
-        <Label data-cy={`${slugify(label)}-editor-label`} required={required}>
+        <Label
+          className="neeto-ui-mb-2"
+          data-cy={`${slugify(label)}-editor-label`}
+          required={required}
+        >
           {label}
         </Label>
       )}

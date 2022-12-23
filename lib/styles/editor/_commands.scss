@@ -61,15 +61,12 @@
     font-size: var(--neeto-ui-text-xs);
     color: rgb(var(--neeto-ui-white));
     border-radius: var(--neeto-ui-rounded);
+    gap: 8px;
 
     p {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    .ne-avatar--container {
-      margin-right: 8px;
     }
 
     &:hover,

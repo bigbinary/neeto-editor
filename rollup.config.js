@@ -9,6 +9,10 @@ import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
 import { terser } from "rollup-plugin-terser";
 
+import packageJson from "./package.json";
+
+const peerDependencies = Object.keys(packageJson.peerDependencies);
+
 const plugins = [
   peerDepsExternal(),
   alias({ entries: require("./alias") }),
@@ -44,6 +48,7 @@ const plugins = [
 export default [
   {
     input: "./lib/index.js",
+    external: peerDependencies,
     output: {
       file: "./index.js",
       format: "esm",

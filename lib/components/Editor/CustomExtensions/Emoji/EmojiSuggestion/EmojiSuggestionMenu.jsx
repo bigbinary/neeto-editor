@@ -2,9 +2,9 @@ import React from "react";
 
 import classnames from "classnames";
 import { init, SearchIndex } from "emoji-mart";
+import { Spinner } from "neetoui";
 
 import emojiPickerApi from "apis/emoji_picker";
-import Loader from "components/Common/Loader";
 import { isNilOrEmpty } from "utils/common";
 
 class EmojiSuggestionMenu extends React.Component {
@@ -129,7 +129,7 @@ class EmojiSuggestionMenu extends React.Component {
   render() {
     return (
       <div className="neeto-editor-emoji-suggestion">
-        {this.state.isLoading && <Loader />}
+        {this.state.isLoading && <Spinner />}
         {!this.state.isLoading &&
           (this.state.emojiSuggestions.length > 0 ? (
             this.state.emojiSuggestions.map((emoji, index) => (
