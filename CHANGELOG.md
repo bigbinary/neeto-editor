@@ -22,8 +22,11 @@ Prefix the change with one of these keywords:
 - *Fixed*: for any bug fixes.
 - *Security*: in case of vulnerabilities.
 
-## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/c71b561d2aa5e4621205d4f53f1db3a913962867...HEAD)
+## [Unreleased](https://github.com/bigbinary/neeto-editor/compare/2f6600bcf6302f335cf0c3911918d78c2c6b1af6...HEAD)
 
+## [1.9.0](https://github.com/bigbinary/neeto-editor/compare/22a2906e54dc6512c54e946fe84e5e8eb812a33f...2f6600bcf6302f335cf0c3911918d78c2c6b1af6) - 2022-12-23
+
+- Added: **BREAKING** Integrated neetoUI to neetoEditor and did a full UI revamp.
 
 ## [1.8.0](https://github.com/bigbinary/neeto-editor/compare/92bc7ba1406a96cd0640b581ec136742620bbae7...c71b561d2aa5e4621205d4f53f1db3a913962867) - 2022-12-14
 
