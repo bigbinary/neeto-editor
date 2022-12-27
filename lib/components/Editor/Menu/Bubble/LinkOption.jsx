@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import { Close } from "neetoicons";
+import { Button } from "neetoui";
 
 import { URL_REGEXP } from "common/constants";
-import { Button } from "neetoui";
 import { isNilOrEmpty } from "utils/common";
 
 const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
@@ -56,7 +56,8 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
       />
       <Button
         data-cy="neeto-editor-link-cancel-button"
-        icon={() => <Close size={16} />}
+        icon={Close}
+        size="small"
         style="icon"
         onClick={handleReset}
       />

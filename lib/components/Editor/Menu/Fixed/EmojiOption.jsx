@@ -10,7 +10,7 @@ const EmojiOption = ({ editor }) => (
     buttonStyle="text"
     closeOnSelect={false}
     dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
-    icon={() => <Smiley size={18} />}
+    icon={Smiley}
     position="bottom-start"
     strategy="fixed"
     buttonProps={{

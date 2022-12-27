@@ -43,7 +43,7 @@ const LinkOption = ({ editor }) => {
       buttonStyle={isActive ? "secondary" : "text"}
       closeOnSelect={false}
       data-cy="neeto-editor-fixed-menu-link-option"
-      icon={() => <Link size={18} />}
+      icon={Link}
       isOpen={isOpen}
       position="bottom"
       buttonProps={{

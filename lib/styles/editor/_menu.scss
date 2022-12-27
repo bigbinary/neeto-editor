@@ -15,6 +15,13 @@
     border-radius: var(--neeto-ui-rounded-sm) !important;
   }
 
+  button.neeto-editor-fixed-menu__item {
+    .neeto-ui-btn__icon {
+      height: 18px !important;
+      width: 18px !important;
+    }
+  }
+
   &__wrapper {
     display: flex;
     justify-content: flex-start;
@@ -257,6 +264,13 @@
   .neeto-ui-dropdown__popup {
     display: flex;
     min-width: unset;
+
+    .neeto-ui-btn {
+      .neeto-ui-btn__icon {
+        height: 18px !important;
+        width: 18px !important;
+      }
+    }
   }
 
   &-btn {

@@ -16,7 +16,7 @@ const Mentions = ({ editor, mentions }) => {
     <Dropdown
       buttonStyle="text"
       data-cy="neeto-editor-mention-option"
-      icon={() => <Email size={18} />}
+      icon={Email}
       strategy="fixed"
       buttonProps={{
         tooltipProps: { content: "Mention", position: "bottom" },
