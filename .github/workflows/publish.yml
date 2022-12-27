@@ -66,6 +66,7 @@ jobs:
         shell: bash
 
       - name: Update Changelog
+        continue-on-error: true
         uses: bigbinary/changelog-updater-action@v2
         with:
           latest-version: ${{ steps.BUMP_VERSION.outputs.PACKAGE_VERSION }}
