@@ -21,9 +21,10 @@ const Variables = ({ editor, variables }) => {
 
   return (
     <Dropdown
+      buttonSize="small"
       buttonStyle="secondary"
       data-cy="neeto-editor-variable-option"
-      icon={() => <Braces size={18} />}
+      icon={Braces}
       strategy="fixed"
       buttonProps={{
         tooltipProps: { content: "Variables", position: "bottom" },

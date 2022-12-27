@@ -24,7 +24,7 @@ const Menu = ({ align, updateAttributes, deleteNode }) => {
     >
       {menuOptions.map(({ Icon, optionName, alignPos }) => (
         <Button
-          icon={() => <Icon size={18} />}
+          icon={Icon}
           key={optionName}
           style={alignPos === align ? "secondary" : "text"}
           tooltipProps={{ content: humanize(optionName), position: "top" }}

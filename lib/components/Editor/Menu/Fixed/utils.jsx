@@ -31,7 +31,7 @@ export const renderOptionButton = ({
     className="neeto-editor-fixed-menu__item"
     data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
     disabled={disabled}
-    icon={() => <Icon size={18} />}
+    icon={Icon}
     key={optionName}
     style={active ? "secondary" : "text"}
     tooltipProps={{ content: humanize(optionName), position: "bottom" }}
