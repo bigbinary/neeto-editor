@@ -4,11 +4,13 @@ import { MenuVertical, File } from "neetoicons";
 import { Dropdown, Input, Typography } from "neetoui";
 
 import { ATTACHMENT_OPTIONS } from "./constants";
+import { validFileName } from "./utils";
 
 const { Menu, MenuItem } = Dropdown;
 
 const Attachment = ({ attachment, dropDownOptions = [] }) => {
   const [activeFile, setActiveFile] = useState({});
+  const [error, setError] = useState("");
 
   const onMenuItemClick = ({ key, handler, attachment }) => {
     if (key === ATTACHMENT_OPTIONS.RENAME) {
@@ -23,7 +25,7 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
       option => option.label === key
     );
 
-    if (event.key === "Enter" && handler) {
+    if (event.key === "Enter" && handler && error === "") {
       handler(
         {
           signedId: attachment.signedId,
@@ -37,6 +39,8 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
   };
 
   const handleInputChange = value => {
+    const error = validFileName(value);
+    setError(error);
     setActiveFile({ ...activeFile, filename: value });
   };
 
@@ -50,6 +54,7 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
           <Input
             autoFocus
             className="input-width"
+            error={error}
             type="text"
             value={activeFile.filename}
             onChange={event => {
