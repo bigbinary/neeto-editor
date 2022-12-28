@@ -8,13 +8,15 @@ import { validFileName } from "./utils";
 
 const { Menu, MenuItem } = Dropdown;
 
-const Attachment = ({ attachment, dropDownOptions = [] }) => {
-  const [activeFile, setActiveFile] = useState({});
+const AttachmentCard = ({ attachment, dropDownOptions = [] }) => {
+  const [isRenaming, setIsRenaming] = useState(false);
+  const [newFilename, setNewFilename] = useState("");
   const [error, setError] = useState("");
 
   const onMenuItemClick = ({ key, handler, attachment }) => {
     if (key === ATTACHMENT_OPTIONS.RENAME) {
-      setActiveFile(attachment);
+      setIsRenaming(true);
+      setNewFilename(attachment.filename);
     } else {
       handler(attachment);
     }
@@ -29,19 +31,27 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
       handler(
         {
           signedId: attachment.signedId,
-          fileName: activeFile.filename,
+          fileName: newFilename,
         },
-        fileRenamed => fileRenamed && setActiveFile({})
+        fileRenamed => {
+          if (fileRenamed) {
+            setIsRenaming(false);
+            setNewFilename("");
+          }
+        }
       );
     }
 
-    if (event.key === "Escape") setActiveFile({});
+    if (event.key === "Escape") {
+      setIsRenaming(false);
+      setNewFilename("");
+    }
   };
 
   const handleInputChange = value => {
     const error = validFileName(value);
     setError(error);
-    setActiveFile({ ...activeFile, filename: value });
+    setNewFilename(value);
   };
 
   return (
@@ -50,13 +60,13 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
         <div>
           <File className="icon-opacity-75" size={25} />
         </div>
-        {activeFile.signedId === attachment.signedId ? (
+        {isRenaming ? (
           <Input
             autoFocus
             className="input-width"
             error={error}
             type="text"
-            value={activeFile.filename}
+            value={newFilename}
             onChange={event => {
               handleInputChange(event.target.value);
             }}
@@ -94,4 +104,4 @@ const Attachment = ({ attachment, dropDownOptions = [] }) => {
   );
 };
 
-export default Attachment;
+export default AttachmentCard;

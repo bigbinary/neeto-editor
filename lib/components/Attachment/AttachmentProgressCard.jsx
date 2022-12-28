@@ -3,7 +3,7 @@ import React from "react";
 import { File } from "neetoicons";
 import { Typography } from "neetoui";
 
-const AttachmentProgress = ({ attachment }) => {
+const AttachmentProgressCard = ({ attachment }) => {
   const progressPercentage = `${attachment.progress}%`;
 
   return (
@@ -23,4 +23,4 @@ const AttachmentProgress = ({ attachment }) => {
   );
 };
 
-export default AttachmentProgress;
+export default AttachmentProgressCard;

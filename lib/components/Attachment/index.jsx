@@ -1,30 +1,22 @@
 import React, { useRef, useEffect, useState } from "react";
 
 import { saveAs } from "file-saver";
-import { Button, Typography } from "neetoui";
+import { Button, Typography, Toastr } from "neetoui";
 
 import directUploadsApi from "apis/direct_uploads";
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
 
-import Attachment from "./Attachment";
-import AttachmentProgress from "./AttachmentProgress";
+import AttachmentCard from "./AttachmentCard";
+import AttachmentProgressCard from "./AttachmentProgressCard";
 import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
 
-const FileAttachment = ({
+const Attachment = ({
   endpoint = DIRECT_UPLOAD_ENDPOINT,
   attachments = [],
   onChange,
 }) => {
-  const [adding, setAdding] = useState(false);
-  const [fileProgresses, setFileProgresses] = useState(
-    attachments.map(attachment => ({
-      filename: attachment.filename,
-      signedId: attachment.signedId,
-      url: attachment.url,
-      progress: 100,
-    }))
-  );
+  const [fileProgresses, setFileProgresses] = useState([]);
 
   const addFileRef = useRef(null);
 
@@ -53,7 +45,7 @@ const FileAttachment = ({
       })),
     ];
     setFileProgresses(prevState => [...prevState, ...newlyAddedFiles]);
-    setAdding(true);
+    handleUpload();
   };
 
   const handleUpload = async () => {
@@ -69,8 +61,9 @@ const FileAttachment = ({
         ...prevState.filter(attachment => attachment.progress !== 100),
       ]);
       onChange([...attachments, ...uploadedFiles]);
-      setAdding(false);
-    } catch {}
+    } catch {
+      Toastr.error("Upload failed.");
+    }
   };
 
   const handleUploadProgress = (file, progress) => {
@@ -91,7 +84,9 @@ const FileAttachment = ({
       onChange(
         attachments.filter(attachment => attachment.signedId !== signedId)
       );
-    } catch {}
+    } catch {
+      Toastr.error("Delete failed.");
+    }
   };
 
   const handleRename = async (attachment, callback) => {
@@ -113,7 +108,10 @@ const FileAttachment = ({
         )
       );
       callback(true);
-    } catch {}
+    } catch {
+      Toastr.error("Rename failed.");
+      callback(false);
+    }
   };
 
   const handleDownload = ({ url = "", filename = "file.txt" }) => {
@@ -136,30 +134,27 @@ const FileAttachment = ({
   ];
 
   useEffect(() => {
-    if (adding) {
-      uppy.on("upload-progress", handleUploadProgress);
-      handleUpload();
-    }
+    uppy.on("upload-progress", handleUploadProgress);
 
     return () => {
       uppy.off("upload-progress", handleUploadProgress);
     };
-  }, [adding]);
+  }, []);
 
   return (
-    <div className="mt-2">
+    <div>
       <Typography style="h5">Attachments</Typography>
       <div className="ne-file-attachments-inner-wrapper">
-        {attachments?.map(attachment => (
-          <Attachment
+        {attachments.map(attachment => (
+          <AttachmentCard
             attachment={attachment}
             dropDownOptions={DROPDOWN_OPTIONS}
             key={attachment.signedId}
           />
         ))}
         {isUploading &&
-          fileProgresses?.map(attachment => (
-            <AttachmentProgress
+          fileProgresses.map(attachment => (
+            <AttachmentProgressCard
               attachment={attachment}
               key={attachment.filename}
             />
@@ -174,9 +169,7 @@ const FileAttachment = ({
         />
         <input
           multiple
-          className="file-input"
           disabled={isUploading}
-          id="file-input"
           ref={addFileRef}
           type="file"
           onChange={handleAddFile}
@@ -185,4 +178,4 @@ const FileAttachment = ({
     </div>
   );
 };
-export default FileAttachment;
+export default Attachment;
