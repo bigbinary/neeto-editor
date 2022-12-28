@@ -52,10 +52,6 @@
   margin-top: 0.5rem;
 }
 
-.file-input {
-  display: none;
-}
-
 .truncate-ellipsis {
   max-width: 15rem;
   white-space: nowrap;
@@ -74,4 +70,8 @@
 
 .icon-opacity-50 {
   opacity: 0.50;
+}
+
+input[type=file] {
+  display: none;
 }
