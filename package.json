@@ -165,5 +165,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bigbinary/neeto-editor.git"
+  },
+  "dependencies": {
+    "fuse.js": "^6.6.2"
   }
 }
