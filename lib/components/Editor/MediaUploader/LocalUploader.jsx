@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-import Uppy from "@uppy/core";
-import { DragDrop, useUppy } from "@uppy/react";
+import { DragDrop } from "@uppy/react";
 
-import ActiveStorageUpload from "utils/ActiveStorageUpload";
+import useUppyUploader from "hooks/useUppyUploader";
 
 import {
   DEFAULT_IMAGE_UPPY_CONFIG,
@@ -14,48 +13,16 @@ import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
 
 const LocalUploader = ({ isImage, endpoint, onSuccess }) => {
-  const [isUploading, setIsUploading] = useState(false);
-  const [error, setError] = useState("");
   const uppyConfig = isImage
     ? DEFAULT_IMAGE_UPPY_CONFIG
     : DEFAULT_VIDEO_UPPY_CONFIG;
 
-  const uppy = useUppy(() =>
-    new Uppy({
-      ...uppyConfig,
-      onBeforeFileAdded: file => {
-        const { maxFileSize, allowedFileTypes } = uppyConfig.restrictions;
-
-        if (file.size > maxFileSize) {
-          setError(
-            `File size is too large. Max size is  ${convertToFileSize(
-              uppyConfig.restrictions.maxFileSize
-            )}.`
-          );
-
-          return false;
-        } else if (!allowedFileTypes.includes(`.${file.extension}`)) {
-          setError(
-            `File type is not permitted. Allowed file types are: ${allowedFileTypes.join(
-              ", "
-            )}.`
-          );
-
-          return false;
-        }
-
-        return true;
-      },
-    })
-      .use(ActiveStorageUpload, {
-        directUploadUrl: endpoint,
-        ...UPPY_UPLOAD_CONFIG,
-      })
-      .on("upload", () => setIsUploading(true))
-      .on("upload-success", (_, { blob_url: blobUrl }) => onSuccess(blobUrl))
-      .on("cancel-all", () => setIsUploading(false))
-      .on("complete", () => setIsUploading(false))
-  );
+  const { uppy, isUploading } = useUppyUploader({
+    endpoint,
+    uppyConfig,
+    uppyUploadConfig: UPPY_UPLOAD_CONFIG,
+    onSuccess,
+  });
 
   return isUploading ? (
     <Progress uppy={uppy} />
@@ -75,7 +42,6 @@ const LocalUploader = ({ isImage, endpoint, onSuccess }) => {
           uppyConfig.restrictions.maxFileSize
         )}`}
       />
-      {error && <p className="ne-media-uploader__dnd--error">{error}</p>}
     </div>
   );
 };

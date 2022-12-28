@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 import { saveAs } from "file-saver";
 import { Button, Typography, Toastr } from "neetoui";
+import { assoc } from "ramda";
 
 import directUploadsApi from "apis/direct_uploads";
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
@@ -51,6 +52,7 @@ const Attachment = ({
   const handleUpload = async () => {
     try {
       const { successful = [] } = await uppy.upload();
+      uppy.reset();
       const uploadedFiles = successful.map(file => ({
         filename: file.name,
         signedId: file.response.signed_id,
@@ -100,10 +102,7 @@ const Attachment = ({
       onChange(
         attachments.map(attachment =>
           attachment.signedId === signedId
-            ? {
-                ...attachment,
-                filename: fileName,
-              }
+            ? assoc("filename", fileName, attachment)
             : attachment
         )
       );
