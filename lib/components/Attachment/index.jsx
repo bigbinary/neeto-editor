@@ -1,10 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 
-import { saveAs } from "file-saver";
+import classnames from "classnames";
 import { Button, Typography, Toastr } from "neetoui";
-import { assoc } from "ramda";
 
-import directUploadsApi from "apis/direct_uploads";
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
 
@@ -15,6 +13,7 @@ import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
 const Attachment = ({
   endpoint = DIRECT_UPLOAD_ENDPOINT,
   attachments = [],
+  className,
   onChange,
 }) => {
   const [fileProgresses, setFileProgresses] = useState([]);
@@ -80,58 +79,6 @@ const Attachment = ({
     );
   };
 
-  const handleDelete = async ({ signedId }) => {
-    try {
-      await directUploadsApi.destroy(endpoint, signedId);
-      onChange(
-        attachments.filter(attachment => attachment.signedId !== signedId)
-      );
-    } catch {
-      Toastr.error("Delete failed.");
-    }
-  };
-
-  const handleRename = async (attachment, callback) => {
-    try {
-      const { fileName, signedId } = attachment;
-      const payload = {
-        blob: { filename: fileName },
-      };
-
-      await directUploadsApi.update(endpoint, signedId, payload);
-      onChange(
-        attachments.map(attachment =>
-          attachment.signedId === signedId
-            ? assoc("filename", fileName, attachment)
-            : attachment
-        )
-      );
-      callback(true);
-    } catch {
-      Toastr.error("Rename failed.");
-      callback(false);
-    }
-  };
-
-  const handleDownload = ({ url = "", filename = "file.txt" }) => {
-    saveAs(url, filename);
-  };
-
-  const DROPDOWN_OPTIONS = [
-    {
-      label: "Download",
-      handler: handleDownload,
-    },
-    {
-      label: "Rename",
-      handler: handleRename,
-    },
-    {
-      label: "Delete",
-      handler: handleDelete,
-    },
-  ];
-
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
 
@@ -141,14 +88,16 @@ const Attachment = ({
   }, []);
 
   return (
-    <div>
+    <div className={classnames({ [className]: className })}>
       <Typography style="h5">Attachments</Typography>
       <div className="ne-file-attachments-inner-wrapper">
         {attachments.map(attachment => (
           <AttachmentCard
             attachment={attachment}
-            dropDownOptions={DROPDOWN_OPTIONS}
+            attachments={attachments}
+            endpoint={endpoint}
             key={attachment.signedId}
+            onChange={onChange}
           />
         ))}
         {isUploading &&
