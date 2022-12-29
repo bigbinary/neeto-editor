@@ -3,15 +3,13 @@ import React from "react";
 import { File } from "neetoicons";
 import { Typography } from "neetoui";
 
-const AttachmentProgressCard = ({ attachment }) => {
+const AttachmentProgress = ({ attachment }) => {
   const progressPercentage = `${attachment.progress}%`;
 
   return (
-    <div className="ne-file-attachment-wrapper">
+    <div className="ne-file-attachment-card-wrapper">
       <div className="ne-file-attachment-inner-wrapper">
-        <div>
-          <File className="icon-opacity-50" size={25} />
-        </div>
+        <File className="icon-opacity-50" size={25} />
         <div className="ne-file-attachment-progress-wrapper">
           <Typography className="truncate-ellipsis-progress">
             {attachment.filename}
@@ -23,4 +21,4 @@ const AttachmentProgressCard = ({ attachment }) => {
   );
 };
 
-export default AttachmentProgressCard;
+export default AttachmentProgress;

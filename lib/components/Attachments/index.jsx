@@ -6,9 +6,9 @@ import { Button, Typography, Toastr } from "neetoui";
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
 
-import AttachmentCard from "./AttachmentCard";
-import AttachmentProgressCard from "./AttachmentProgressCard";
-import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
+import Attachment from "./Attachment";
+import AttachmentProgress from "./AttachmentProgress";
+import { DEFAULT_UPPY_CONFIG } from "./constants";
 
 const Attachments = ({
   endpoint = DIRECT_UPLOAD_ENDPOINT,
@@ -23,7 +23,6 @@ const Attachments = ({
   const { uppy, isUploading } = useUppyUploader({
     endpoint,
     uppyConfig: DEFAULT_UPPY_CONFIG,
-    uppyUploadConfig: UPPY_UPLOAD_CONFIG,
   });
 
   const handleAddFile = event => {
@@ -90,9 +89,9 @@ const Attachments = ({
   return (
     <div className={classnames({ [className]: className })}>
       <Typography style="h5">Attachments</Typography>
-      <div className="ne-file-attachments-inner-wrapper">
+      <div className="ne-file-attachments-wrapper">
         {attachments.map(attachment => (
-          <AttachmentCard
+          <Attachment
             attachment={attachment}
             attachments={attachments}
             endpoint={endpoint}
@@ -102,7 +101,7 @@ const Attachments = ({
         ))}
         {isUploading &&
           fileProgresses.map(attachment => (
-            <AttachmentProgressCard
+            <AttachmentProgress
               attachment={attachment}
               key={attachment.filename}
             />
