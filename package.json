@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-editor",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "main": "./index.js",
   "module": "./index.js",
   "types": "./types.d.ts",
@@ -88,6 +88,7 @@
     "eslint-plugin-storybook": "0.6.8",
     "eslint-plugin-unused-imports": "2.0.0",
     "formik": "2.2.9",
+    "fuse.js": "6.6.2",
     "husky": "8.0.1",
     "lint-staged": "13.0.3",
     "lodash.isplainobject": "4.0.6",
@@ -119,8 +120,7 @@
     "webpack": "5.73.0",
     "webpack-cli": "4.10.0",
     "webpack-dev-server": "4.9.3",
-    "yup": "0.32.11",
-    "fuse.js": "6.6.2"
+    "yup": "0.32.11"
   },
   "peerDependencies": {
     "@bigbinary/neetoui": "latest",
