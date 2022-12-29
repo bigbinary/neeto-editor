@@ -16,9 +16,9 @@ const Attachments = ({
   className,
   onChange,
 }) => {
-  const [fileProgresses, setFileProgresses] = useState([]);
+  const [pendingAttachments, setPendingAttachments] = useState([]);
 
-  const addFileRef = useRef(null);
+  const addAttachmentRef = useRef(null);
 
   const { uppy, isUploading } = useUppyUploader({
     endpoint,
@@ -36,14 +36,14 @@ const Attachments = ({
     });
 
     const newlyAddedFiles = [
-      ...uppy.getFiles().map(file => ({
+      files.map(file => ({
         filename: file.name,
         signedId: "awaiting",
         url: "",
         progress: 0,
       })),
     ];
-    setFileProgresses(prevState => [...prevState, ...newlyAddedFiles]);
+    setPendingAttachments(prevState => [...prevState, ...newlyAddedFiles]);
     handleUpload();
   };
 
@@ -57,9 +57,7 @@ const Attachments = ({
         url: file.response.blob_url,
       }));
 
-      setFileProgresses(prevState => [
-        ...prevState.filter(attachment => attachment.progress !== 100),
-      ]);
+      setPendingAttachments([]);
       onChange([...attachments, ...uploadedFiles]);
     } catch {
       Toastr.error("Upload failed.");
@@ -67,7 +65,7 @@ const Attachments = ({
   };
 
   const handleUploadProgress = (file, progress) => {
-    setFileProgresses(prevState =>
+    setPendingAttachments(prevState =>
       prevState.map(uploadingFile => ({
         ...uploadingFile,
         progress:
@@ -99,25 +97,26 @@ const Attachments = ({
             onChange={onChange}
           />
         ))}
-        {isUploading &&
-          fileProgresses.map(attachment => (
-            <AttachmentProgress
-              attachment={attachment}
-              key={attachment.filename}
-            />
-          ))}
+        {pendingAttachments.map(attachment => (
+          <AttachmentProgress
+            attachment={attachment}
+            key={attachment.filename}
+          />
+        ))}
       </div>
       <div className="upload-btn">
         <Button
+          disabled={isUploading}
           label="Add attachments"
+          loading={isUploading}
           size="medium"
           style="link"
-          onClick={() => addFileRef.current.click()}
+          onClick={() => addAttachmentRef.current.click()}
         />
         <input
           multiple
           disabled={isUploading}
-          ref={addFileRef}
+          ref={addAttachmentRef}
           type="file"
           onChange={handleAddFile}
         />
