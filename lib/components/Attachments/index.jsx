@@ -35,14 +35,12 @@ const Attachments = ({
       });
     });
 
-    const newlyAddedFiles = [
-      files.map(file => ({
-        filename: file.name,
-        signedId: "awaiting",
-        url: "",
-        progress: 0,
-      })),
-    ];
+    const newlyAddedFiles = files.map(file => ({
+      filename: file.name,
+      signedId: "awaiting",
+      url: "",
+      progress: 0,
+    }));
     setPendingAttachments(prevState => [...prevState, ...newlyAddedFiles]);
     handleUpload();
   };
