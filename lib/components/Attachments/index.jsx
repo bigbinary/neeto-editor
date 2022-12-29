@@ -10,7 +10,7 @@ import AttachmentCard from "./AttachmentCard";
 import AttachmentProgressCard from "./AttachmentProgressCard";
 import { DEFAULT_UPPY_CONFIG, UPPY_UPLOAD_CONFIG } from "./constants";
 
-const Attachment = ({
+const Attachments = ({
   endpoint = DIRECT_UPLOAD_ENDPOINT,
   attachments = [],
   className,
@@ -126,4 +126,4 @@ const Attachment = ({
     </div>
   );
 };
-export default Attachment;
+export default Attachments;
