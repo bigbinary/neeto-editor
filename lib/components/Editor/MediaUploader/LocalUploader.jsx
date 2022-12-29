@@ -7,7 +7,6 @@ import useUppyUploader from "hooks/useUppyUploader";
 import {
   DEFAULT_IMAGE_UPPY_CONFIG,
   DEFAULT_VIDEO_UPPY_CONFIG,
-  UPPY_UPLOAD_CONFIG,
 } from "./constants";
 import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
@@ -20,7 +19,6 @@ const LocalUploader = ({ isImage, endpoint, onSuccess }) => {
   const { uppy, isUploading } = useUppyUploader({
     endpoint,
     uppyConfig,
-    uppyUploadConfig: UPPY_UPLOAD_CONFIG,
     onSuccess,
   });
 
