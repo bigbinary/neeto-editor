@@ -32,9 +32,9 @@
 
   // Code
   code {
-    padding: 0.2em 0.4em;
+    padding: 2px;
     font-size: 85%;
-    border-radius: 6px;
+    border-radius: var(--neeto-ui-rounded-sm);
     background-color: rgb(var(--neeto-ui-gray-200));
     font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
       Liberation Mono, monospace;
