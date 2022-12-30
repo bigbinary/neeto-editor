@@ -17,18 +17,18 @@
 
   button.neeto-editor-fixed-menu__item {
     min-width: fit-content;
-    max-width: fit-content;
     .neeto-ui-btn__icon {
       height: 18px !important;
       width: 18px !important;
     }
   }
 
+  
   &__wrapper {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    overflow: auto;
+    overflow: scroll;
     width: 100%;
     padding: 2px;
     gap: 0 4px;
