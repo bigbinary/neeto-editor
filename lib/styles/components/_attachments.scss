@@ -1,0 +1,78 @@
+.ne-file-attachments-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  .ne-file-attachment-card-wrapper {
+    display: flex;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0.25rem;
+    border-width: 2px;
+    width: 15rem;
+
+    .ne-file-attachment-inner-wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: 0.75rem;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+      gap: 0.25rem;
+      width: 100%;
+
+      .ne-file-attachment-progress-wrapper {
+        display: flex;
+        gap: auto;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        opacity: 0.5;
+        width: 85%;
+
+        .truncate-ellipsis-progress {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: block;
+          width: 100%;
+        }
+      }
+
+      .truncate-ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        width: 100%;
+      }
+
+      .drop-down-container {
+        .menu-label {
+           text-transform: capitalize;
+        }
+      }
+
+      .icon-opacity-50 {
+        opacity: 0.50;
+      }
+
+      .rename-input {
+        margin-right: 0.5rem;
+        height: 90%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.upload-btn {
+  margin-top: 0.5rem;
+}
+
+input[type=file] {
+  display: none;
+}
