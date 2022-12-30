@@ -16,11 +16,14 @@
   }
 
   button.neeto-editor-fixed-menu__item {
+    min-width: fit-content;
+
     .neeto-ui-btn__icon {
       height: 18px !important;
       width: 18px !important;
     }
   }
+
 
   &__wrapper {
     display: flex;
