@@ -64,7 +64,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
         attachments.filter(attachment => attachment.signedId !== signedId)
       );
     } catch (error) {
-      Toastr.error(error.message);
+      Toastr.error(error);
     } finally {
       setIsDeleteAlertOpen(false);
       setNewFilename("");

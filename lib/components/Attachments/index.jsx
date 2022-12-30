@@ -48,7 +48,6 @@ const Attachments = ({
   const handleUpload = async () => {
     try {
       const { successful = [] } = await uppy.upload();
-      uppy.reset();
       const uploadedFiles = successful.map(file => ({
         filename: file.name,
         signedId: file.response.signed_id,
@@ -57,8 +56,8 @@ const Attachments = ({
 
       setPendingAttachments([]);
       onChange([...attachments, ...uploadedFiles]);
-    } catch {
-      Toastr.error("Upload failed.");
+    } catch (error) {
+      Toastr.error(error);
     }
   };
 

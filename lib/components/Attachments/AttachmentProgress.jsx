@@ -1,7 +1,7 @@
 import React from "react";
 
-import { File } from "neetoicons";
-import { Typography } from "neetoui";
+import { File, Close } from "neetoicons";
+import { Button, Typography } from "neetoui";
 
 const AttachmentProgress = ({ attachment }) => {
   const progressPercentage = `${attachment.progress}%`;
@@ -15,6 +15,7 @@ const AttachmentProgress = ({ attachment }) => {
             {attachment.filename}
           </Typography>
           <Typography>{progressPercentage}</Typography>
+          <Button icon={Close} style="text" onClick={() => {}} />
         </div>
       </div>
     </div>
