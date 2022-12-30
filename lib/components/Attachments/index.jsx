@@ -14,7 +14,7 @@ const Attachments = ({
   endpoint = DIRECT_UPLOAD_ENDPOINT,
   attachments = [],
   className,
-  onChange,
+  onChange = _ => {},
 }) => {
   const [pendingAttachments, setPendingAttachments] = useState([]);
 
