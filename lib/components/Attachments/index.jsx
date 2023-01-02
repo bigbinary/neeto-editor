@@ -82,9 +82,14 @@ const Attachments = ({
   }, []);
 
   return (
-    <div className={classnames({ [className]: className })}>
+    <div
+      className={classnames({
+        [className]: className,
+        "ne-file-attachments": true,
+      })}
+    >
       <Typography style="h5">Attachments</Typography>
-      <div className="ne-file-attachments-wrapper">
+      <div className="ne-file-attachments__attachments">
         {attachments.map(attachment => (
           <Attachment
             attachment={attachment}

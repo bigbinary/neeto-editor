@@ -7,16 +7,27 @@ const AttachmentProgress = ({ attachment }) => {
   const progressPercentage = `${attachment.progress}%`;
 
   return (
-    <div className="ne-file-attachment-card-wrapper">
-      <div className="ne-file-attachment-inner-wrapper">
-        <File className="icon-opacity-50" size={25} />
-        <div className="ne-file-attachment-progress-wrapper">
-          <Typography className="truncate-ellipsis-progress">
+    <div className="ne-file-attachments__attachments__attachment">
+      <div className="ne-file-attachments__attachments__attachment__content">
+        <File
+          className="ne-file-attachments__attachments__attachment__content__progress__icon"
+          size={18}
+        />
+        <div className="ne-file-attachments__attachments__attachment__content__progress">
+          <Typography
+            className="ne-file-attachments__attachments__attachment__content__progress__truncate"
+            style="body2"
+          >
             {attachment.filename}
           </Typography>
-          <Typography>{progressPercentage}</Typography>
-          <Button icon={Close} style="text" onClick={() => {}} />
+          <Typography style="body2">{progressPercentage}</Typography>
         </div>
+        <Button
+          className="ne-file-attachments__attachments__attachment__content__progress__button"
+          icon={Close}
+          style="text"
+          onClick={() => {}}
+        />
       </div>
     </div>
   );

@@ -103,14 +103,14 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
   };
 
   return (
-    <div className="ne-file-attachment-card-wrapper">
-      <div className="ne-file-attachment-inner-wrapper">
+    <div className="ne-file-attachments__attachments__attachment">
+      <div className="ne-file-attachments__attachments__attachment__content">
         {isRenaming ? (
           <>
             <Tooltip content={newFilename} position="top">
               <Input
                 autoFocus
-                className="rename-input"
+                className="ne-file-attachments__attachments__attachment__content__rename-input"
                 value={newFilename}
                 onChange={e => setNewFilename(e.target.value)}
                 onKeyDown={event =>
@@ -122,6 +122,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
               />
             </Tooltip>
             <Button
+              className="ne-file-attachments__attachments__attachment__content__rename-close"
               icon={Close}
               style="secondary"
               onClick={() => setIsRenaming(false)}
@@ -129,14 +130,24 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
           </>
         ) : (
           <>
-            <File size={25} />
+            <File
+              className="ne-file-attachments__attachments__attachment__content__icon"
+              size={18}
+            />
             <Tooltip content={attachment.filename} position="top">
-              <Typography className="truncate-ellipsis">
+              <Typography
+                className="ne-file-attachments__attachments__attachment__content__truncate"
+                style="body2"
+              >
                 {attachment.filename}
               </Typography>
             </Tooltip>
-            <div className="drop-down-container">
-              <Dropdown buttonStyle="text" icon={MenuVertical}>
+            <div className="ne-file-attachments__attachments__attachment__content__dropdown">
+              <Dropdown
+                buttonStyle="text"
+                className="ne-file-attachments__attachments__attachment__content__button"
+                icon={MenuVertical}
+              >
                 <Menu>
                   {Object.entries(handlers).map(([label, handler]) => (
                     <MenuItem.Button
