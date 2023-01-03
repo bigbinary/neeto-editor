@@ -1,83 +1,54 @@
-.ne-file-attachments {
+.ne-attachments {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 
-  &__attachments {
+  &__items {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    column-gap: 10px;
+  }
 
-    &__attachment {
-      padding-top: 4px;
-      padding-bottom: 4px;
+  &__attachment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1px;
+    padding: 4px 0px 4px 6px;
+    border-radius: var(--neeto-ui-rounded-sm);
+    border-width: 1px;
+    width: 256px;
 
+    &__progress {
+      display: flex;
+      gap: 1px;
+      opacity: 0.5;
       justify-content: space-between;
-      align-items: center;
-      border-radius: 5px;
-      border-width: 1px;
-      width: 200px;
-      height: 42px;
+      width: 75%;
 
-      &__content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1px;
-        width: 100%;
-        height: 100%;
-
-        &__progress {
-          display: flex;
-          gap: 1px;
-          opacity: 0.5;
-          justify-content: space-between;
-          width: 70%;
-
-          &__truncate {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-            width: 80%;
-          }
-
-          &__icon {
-            opacity: 0.50;
-            padding: 6px;
-            width: fit-content;
-            height: fit-content;
-          }
-
-          &__button {
-            height: 10px;
-          }
-        }
-
-        &__truncate {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: block;
-          width: 75%;
-        }
-
-        &__icon {
-          padding: 4px;
-          width: fit-content;
-          height: fit-content;
-        }
-
-        &__rename-input {
-          margin-right: 4px;
-          margin-left: 4px;
-        }
-
-        &__rename-close {
-          margin-right: 4px;
-        }
+      &-truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        width: 85%;
       }
+
+      &-icon {
+        opacity: 0.50;
+      }
+    }
+
+    &-truncate {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      width: 75%;
+    }
+
+    &__rename-close {
+      margin: 0px 4px 0px 4px;
     }
   }
 

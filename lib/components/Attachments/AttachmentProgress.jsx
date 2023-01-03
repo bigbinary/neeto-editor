@@ -7,28 +7,18 @@ const AttachmentProgress = ({ attachment }) => {
   const progressPercentage = `${attachment.progress}%`;
 
   return (
-    <div className="ne-file-attachments__attachments__attachment">
-      <div className="ne-file-attachments__attachments__attachment__content">
-        <File
-          className="ne-file-attachments__attachments__attachment__content__progress__icon"
-          size={18}
-        />
-        <div className="ne-file-attachments__attachments__attachment__content__progress">
-          <Typography
-            className="ne-file-attachments__attachments__attachment__content__progress__truncate"
-            style="body2"
-          >
-            {attachment.filename}
-          </Typography>
-          <Typography style="body2">{progressPercentage}</Typography>
-        </div>
-        <Button
-          className="ne-file-attachments__attachments__attachment__content__progress__button"
-          icon={Close}
-          style="text"
-          onClick={() => {}}
-        />
+    <div className="ne-attachments__attachment">
+      <File className="ne-attachments__attachment__progress-icon" size={16} />
+      <div className="ne-attachments__attachment__progress">
+        <Typography
+          className="ne-attachments__attachment__progress-truncate"
+          style="body2"
+        >
+          {attachment.filename}
+        </Typography>
+        <Typography style="body2">{progressPercentage}</Typography>
       </div>
+      <Button icon={Close} size="small" style="text" onClick={() => {}} />
     </div>
   );
 };

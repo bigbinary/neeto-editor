@@ -103,14 +103,13 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
   };
 
   return (
-    <div className="ne-file-attachments__attachments__attachment">
-      <div className="ne-file-attachments__attachments__attachment__content">
+    <>
+      <div className="ne-attachments__attachment">
         {isRenaming ? (
           <>
             <Tooltip content={newFilename} position="top">
               <Input
                 autoFocus
-                className="ne-file-attachments__attachments__attachment__content__rename-input"
                 value={newFilename}
                 onChange={e => setNewFilename(e.target.value)}
                 onKeyDown={event =>
@@ -122,7 +121,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
               />
             </Tooltip>
             <Button
-              className="ne-file-attachments__attachments__attachment__content__rename-close"
+              className="ne-attachments__attachment__rename-close"
               icon={Close}
               style="secondary"
               onClick={() => setIsRenaming(false)}
@@ -130,36 +129,27 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
           </>
         ) : (
           <>
-            <File
-              className="ne-file-attachments__attachments__attachment__content__icon"
-              size={18}
-            />
+            <File size={16} />
             <Tooltip content={attachment.filename} position="top">
               <Typography
-                className="ne-file-attachments__attachments__attachment__content__truncate"
+                className="ne-attachments__attachment-truncate"
                 style="body2"
               >
                 {attachment.filename}
               </Typography>
             </Tooltip>
-            <div className="ne-file-attachments__attachments__attachment__content__dropdown">
-              <Dropdown
-                buttonStyle="text"
-                className="ne-file-attachments__attachments__attachment__content__button"
-                icon={MenuVertical}
-              >
-                <Menu>
-                  {Object.entries(handlers).map(([label, handler]) => (
-                    <MenuItem.Button
-                      key={label}
-                      onClick={() => onMenuItemClick({ key: label, handler })}
-                    >
-                      {label}
-                    </MenuItem.Button>
-                  ))}
-                </Menu>
-              </Dropdown>
-            </div>
+            <Dropdown buttonStyle="text" icon={MenuVertical}>
+              <Menu>
+                {Object.entries(handlers).map(([label, handler]) => (
+                  <MenuItem.Button
+                    key={label}
+                    onClick={() => onMenuItemClick({ key: label, handler })}
+                  >
+                    {label}
+                  </MenuItem.Button>
+                ))}
+              </Menu>
+            </Dropdown>
           </>
         )}
       </div>
@@ -170,7 +160,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
         onClose={() => setIsDeleteAlertOpen(false)}
         onSubmit={() => handleDelete()}
       />
-    </div>
+    </>
   );
 };
 
