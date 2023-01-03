@@ -26,12 +26,11 @@
       justify-content: space-between;
       width: 75%;
 
-      &-truncate {
+      p {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         display: block;
-        width: 85%;
       }
 
       &-icon {
@@ -39,16 +38,12 @@
       }
     }
 
-    &-truncate {
+    p {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       display: block;
       width: 75%;
-    }
-
-    &__rename-close {
-      margin: 0px 4px 0px 4px;
     }
   }
 

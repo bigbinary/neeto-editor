@@ -10,12 +10,7 @@ const AttachmentProgress = ({ attachment }) => {
     <div className="ne-attachments__attachment">
       <File className="ne-attachments__attachment__progress-icon" size={16} />
       <div className="ne-attachments__attachment__progress">
-        <Typography
-          className="ne-attachments__attachment__progress-truncate"
-          style="body2"
-        >
-          {attachment.filename}
-        </Typography>
+        <Typography style="body2">{attachment.filename}</Typography>
         <Typography style="body2">{progressPercentage}</Typography>
       </div>
       <Button icon={Close} size="small" style="text" onClick={() => {}} />

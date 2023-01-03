@@ -121,9 +121,9 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
               />
             </Tooltip>
             <Button
-              className="ne-attachments__attachment__rename-close"
               icon={Close}
-              style="secondary"
+              size="small"
+              style="text"
               onClick={() => setIsRenaming(false)}
             />
           </>
@@ -131,12 +131,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
           <>
             <File size={16} />
             <Tooltip content={attachment.filename} position="top">
-              <Typography
-                className="ne-attachments__attachment-truncate"
-                style="body2"
-              >
-                {attachment.filename}
-              </Typography>
+              <Typography style="body2">{attachment.filename}</Typography>
             </Tooltip>
             <Dropdown buttonStyle="text" icon={MenuVertical}>
               <Menu>
