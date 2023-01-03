@@ -1,5 +1,7 @@
 import React from "react";
 
+import classnames from "classnames";
+
 import Option from "./Option";
 import { buildMenuOptions } from "./utils";
 
@@ -11,6 +13,7 @@ const Headless = ({
   setMediaUploader,
   addonCommands = [],
   children,
+  className,
 }) => {
   if (!editor) {
     return null;
@@ -24,7 +27,7 @@ const Headless = ({
   const allOptions = [...menuOptions, ...addonCommandOptions];
 
   return (
-    <div className="ne-headless">
+    <div className={classnames("ne-headless", { [className]: className })}>
       {allOptions.map(option => (
         <Option editor={editor} key={option.optionName} {...option} />
       ))}
