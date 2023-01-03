@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 
 import classnames from "classnames";
-import { Button, Typography, Toastr } from "neetoui";
+import { Button, Toastr } from "neetoui";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
@@ -83,7 +83,6 @@ const Attachments = ({
 
   return (
     <div className={classnames("ne-attachments", { [className]: className })}>
-      <Typography style="h5">Attachments</Typography>
       <div className="ne-attachments__items">
         {attachments.map(attachment => (
           <Attachment
@@ -101,7 +100,7 @@ const Attachments = ({
           />
         ))}
       </div>
-      <div className="upload-btn">
+      <div>
         <Button
           disabled={isUploading}
           label="Add attachments"
