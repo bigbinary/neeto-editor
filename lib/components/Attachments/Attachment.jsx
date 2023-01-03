@@ -103,14 +103,13 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
   };
 
   return (
-    <div className="ne-file-attachment-card-wrapper">
-      <div className="ne-file-attachment-inner-wrapper">
+    <>
+      <div className="ne-attachments__attachment">
         {isRenaming ? (
           <>
             <Tooltip content={newFilename} position="top">
               <Input
                 autoFocus
-                className="rename-input"
                 value={newFilename}
                 onChange={e => setNewFilename(e.target.value)}
                 onKeyDown={event =>
@@ -123,32 +122,29 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
             </Tooltip>
             <Button
               icon={Close}
-              style="secondary"
+              size="small"
+              style="text"
               onClick={() => setIsRenaming(false)}
             />
           </>
         ) : (
           <>
-            <File size={25} />
+            <File size={16} />
             <Tooltip content={attachment.filename} position="top">
-              <Typography className="truncate-ellipsis">
-                {attachment.filename}
-              </Typography>
+              <Typography style="body2">{attachment.filename}</Typography>
             </Tooltip>
-            <div className="drop-down-container">
-              <Dropdown buttonStyle="text" icon={MenuVertical}>
-                <Menu>
-                  {Object.entries(handlers).map(([label, handler]) => (
-                    <MenuItem.Button
-                      key={label}
-                      onClick={() => onMenuItemClick({ key: label, handler })}
-                    >
-                      {label}
-                    </MenuItem.Button>
-                  ))}
-                </Menu>
-              </Dropdown>
-            </div>
+            <Dropdown buttonStyle="text" icon={MenuVertical}>
+              <Menu>
+                {Object.entries(handlers).map(([label, handler]) => (
+                  <MenuItem.Button
+                    key={label}
+                    onClick={() => onMenuItemClick({ key: label, handler })}
+                  >
+                    {label}
+                  </MenuItem.Button>
+                ))}
+              </Menu>
+            </Dropdown>
           </>
         )}
       </div>
@@ -159,7 +155,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
         onClose={() => setIsDeleteAlertOpen(false)}
         onSubmit={() => handleDelete()}
       />
-    </div>
+    </>
   );
 };
 
