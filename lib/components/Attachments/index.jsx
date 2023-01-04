@@ -50,8 +50,8 @@ const Attachments = ({
       const { successful = [] } = await uppy.upload();
       const uploadedFiles = successful.map(file => ({
         filename: file.name,
-        signedId: file.response.signed_id,
-        url: file.response.blob_url,
+        signedId: file.response.signedId,
+        url: file.response.blobUrl,
       }));
 
       setPendingAttachments([]);
