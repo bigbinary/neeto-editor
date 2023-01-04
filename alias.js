@@ -12,7 +12,7 @@ module.exports = {
   reducers: absolutePath("reducers"),
   stores: absolutePath("stores"),
   utils: absolutePath("utils"),
-  neetocommons: "@bigbinary/neeto-commons",
+  neetocommons: "@bigbinary/neeto-commons-frontend",
   neetoicons: "@bigbinary/neeto-icons",
   neetoui: "@bigbinary/neetoui",
 };

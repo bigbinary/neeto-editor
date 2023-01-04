@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "neetoui";
 import { fromPairs } from "ramda";
 
-import { humanize } from "utils/common";
+import { humanize } from "neetocommons/pure";
 import { generateFocusProps } from "utils/focusHighlighter";
 
 import { MENU_OPTIONS } from "./constants";
