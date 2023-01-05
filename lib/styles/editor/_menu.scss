@@ -189,14 +189,6 @@
   background: rgb(var(--neeto-ui-gray-800));
   padding: 0 4px;
 
-  &__item {
-    &:hover,
-    &:active,
-    &.active {
-      background-color: rgb(var(--neeto-ui-gray-600)) !important;
-    }
-  }
-
   button.neeto-ui-btn--style-text {
     color: rgb(var(--neeto-ui-gray-200));
     min-width: fit-content;
@@ -228,14 +220,14 @@
     background-color: rgb(var(--neeto-ui-gray-800));
 
     &-menu-item-btn {
-        color: rgb(var(--neeto-ui-gray-200)) !important;
+      color: rgb(var(--neeto-ui-gray-200)) !important;
 
-        &:hover,
-        &:active,
-        &.active {
-          background-color: rgb(var(--neeto-ui-gray-600)) !important;
-        }
+      &:hover,
+      &:active,
+      &.active {
+        background-color: rgb(var(--neeto-ui-gray-600)) !important;
       }
+    }
   }
 
 
