@@ -8,7 +8,7 @@ import { EditorView } from "prosemirror-view";
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import useEditorWarnings from "hooks/useEditorWarnings";
-import { noop, slugify } from "utils/common";
+import { noop, slugify } from "neetocommons/pure";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";

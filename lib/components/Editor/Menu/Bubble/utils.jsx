@@ -12,7 +12,7 @@ import {
 import { prop } from "ramda";
 
 import MenuButton from "components/Common/MenuButton";
-import { humanize } from "utils/common";
+import { humanize } from "neetocommons/pure";
 
 export const getTextMenuDefaultOptions = ({
   editor,

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-import { isEmpty } from "lodash";
 import { Modal, Tab } from "neetoui";
+
+import { isNilOrEmpty } from "utils/common";
 
 import { MEDIA_UPLOAD_OPTIONS } from "./constants";
 import LocalUploader from "./LocalUploader";
@@ -34,7 +35,7 @@ const MediaUploader = ({
   return (
     <Modal closeButton={false} isOpen={isOpen} onClose={handleClose}>
       <div className="ne-media-uploader">
-        {!isEmpty(tabs) && (
+        {!isNilOrEmpty(tabs) && (
           <Tab>
             {tabs.map(({ key, title }) => (
               <Tab.Item

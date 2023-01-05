@@ -3,6 +3,8 @@ import React from "react";
 import { File, Close } from "neetoicons";
 import { Button, Typography } from "neetoui";
 
+import { noop } from "neetocommons/pure";
+
 const AttachmentProgress = ({ attachment }) => {
   const progressPercentage = `${attachment.progress}%`;
 
@@ -13,7 +15,7 @@ const AttachmentProgress = ({ attachment }) => {
         <Typography style="body2">{attachment.filename}</Typography>
         <Typography style="body2">{progressPercentage}</Typography>
       </div>
-      <Button icon={Close} size="small" style="text" onClick={() => {}} />
+      <Button icon={Close} size="small" style="text" onClick={noop} />
     </div>
   );
 };

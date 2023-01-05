@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Smiley } from "neetoicons";
 
 import EmojiPicker from "components/Editor/CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
-import { humanize } from "utils/common";
+import { humanize } from "neetocommons/pure";
 
 import Dropdown from "./UI/Dropdown";
 

@@ -3,7 +3,7 @@ import React from "react";
 import { MenuHorizontal } from "neetoicons";
 import { Button, Dropdown } from "neetoui";
 
-import { humanize } from "utils/common";
+import { humanize } from "neetocommons/pure";
 
 import { buildImageOptions } from "../../MediaUploader/utils";
 

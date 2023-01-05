@@ -32,7 +32,9 @@
       "neetoicons/*": ["../node_modules/@bigbinary/neeto-icons/*"],
       "neetoicons": ["../node_modules/@bigbinary/neeto-icons"],
       "neetoui/*": ["../node_modules/@bigbinary/neetoui/*"],
-      "neetoui": ["../node_modules/@bigbinary/neetoui"]
+      "neetoui": ["../node_modules/@bigbinary/neetoui"],
+      "neetocommons/*": ["../node_modules/@bigbinary/neeto-commons-frontend/*"],
+      "neetocommons": ["../node_modules/@bigbinary/neeto-commons-frontend"],
     },
     "pretty": true,
     "experimentalDecorators": true,

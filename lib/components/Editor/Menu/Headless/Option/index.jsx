@@ -1,7 +1,7 @@
 import React from "react";
 
 import { EDITOR_OPTIONS } from "common/constants";
-import { humanize } from "utils/common";
+import { humanize } from "neetocommons/pure";
 
 import Emoji from "./Emoji";
 import Button from "./UI/Button";
