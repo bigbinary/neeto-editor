@@ -11,7 +11,7 @@ import {
   Button,
   Alert,
 } from "neetoui";
-import { assoc } from "ramda";
+import { isEmpty, assoc } from "ramda";
 
 import directUploadsApi from "apis/direct_uploads";
 
@@ -36,9 +36,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
       };
 
       const {
-        data: {
-          blob: { filename },
-        },
+        blob: { filename },
       } = await directUploadsApi.update(endpoint, signedId, payload);
 
       onChange(
@@ -92,7 +90,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
   const handleKeyDown = ({ event, key }) => {
     const handler = handlers[key];
 
-    if (event.key === "Enter" && handler) {
+    if (event.key === "Enter" && handler && !isEmpty(newFilename)) {
       handler();
     }
 
@@ -110,6 +108,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
             <Tooltip content={newFilename} position="top">
               <Input
                 autoFocus
+                error={isEmpty(newFilename) ? "Filename cannot be empty" : ""}
                 value={newFilename}
                 onChange={e => setNewFilename(e.target.value)}
                 onKeyDown={event =>

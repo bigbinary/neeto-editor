@@ -42,6 +42,7 @@ const Attachments = ({
       progress: 0,
     }));
     setPendingAttachments(prevState => [...prevState, ...newlyAddedFiles]);
+    addAttachmentRef.current.value = null;
     handleUpload();
   };
 
