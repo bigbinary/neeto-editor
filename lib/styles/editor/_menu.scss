@@ -181,6 +181,7 @@
 .neeto-editor-bubble-menu {
   position: relative;
   display: flex;
+  gap: 1px;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -188,13 +189,37 @@
   background: rgb(var(--neeto-ui-gray-800));
   padding: 0 4px;
 
-  .neeto-editor-menu__item {
+  button.neeto-ui-btn--style-text {
+    color: rgb(var(--neeto-ui-gray-200));
+    min-width: fit-content;
+
     &:hover,
     &:active,
     &.active {
-      background-color: rgb(var(--neeto-ui-gray-700));
+      color: rgb(var(--neeto-ui-gray-200)) !important;
+      background-color: rgb(var(--neeto-ui-gray-600)) !important;
     }
   }
+
+  button.neeto-ui-btn--style-secondary {
+    min-width: fit-content;
+    background-color: rgb(var(--neeto-ui-gray-400));
+  }
+
+  .neeto-ui-dropdown__popup {
+    background-color: rgb(var(--neeto-ui-gray-800));
+
+    &-menu-item-btn {
+      color: rgb(var(--neeto-ui-gray-200)) !important;
+
+      &:hover,
+      &:active,
+      &.active {
+        background-color: rgb(var(--neeto-ui-gray-600)) !important;
+      }
+    }
+  }
+
 
   .neeto-editor-bubble-menu__link {
     width: 256px;
