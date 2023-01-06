@@ -109,9 +109,23 @@ interface FormikEditorProps extends EditorProps {
   name: string;
 }
 
+type attachment = {
+  filename?: string;
+  signedId?: string;
+  url?: string;
+};
+interface AttachmentsProps {
+  endpoint?: string;
+  attachments?: Array<attachment>;
+  onChange: (attachments: attachment[]) => void;
+}
+
+
 export function Editor(props: EditorProps): JSX.Element;
 
 export function FormikEditor(props: FormikEditorProps): JSX.Element;
+
+export function Attachments(props: AttachmentsProps): JSX.Element;
 
 export function EditorContent(props: {
   content?: string;
