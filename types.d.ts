@@ -113,6 +113,7 @@ type attachment = {
   filename?: string;
   signedId?: string;
   url?: string;
+  [otherProps: string]: any;
 };
 interface AttachmentsProps {
   endpoint?: string;
