@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-import Tippy from "@tippyjs/react";
-import { Down, Link } from "neetoicons";
+import { Dropdown } from "@bigbinary/neetoui";
+import { Link } from "neetoicons";
 
 import { EDITOR_OPTIONS } from "common/constants";
 
@@ -14,7 +14,6 @@ import {
 
 import Mentions from "../../CustomExtensions/Mention";
 import EmojiOption from "../Fixed/EmojiOption";
-import Separator from "../Fixed/Separator";
 import { buildMenuOptions } from "../Fixed/utils";
 
 const Options = ({
@@ -26,7 +25,7 @@ const Options = ({
   setIsLinkOptionActive,
   setMediaUploader,
 }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { Menu, MenuItem } = Dropdown;
 
   const dropdownOptions = getTextMenuDropdownOptions({ editor });
   const nodeType = getNodeType(dropdownOptions);
@@ -45,8 +44,6 @@ const Options = ({
     }, 1000);
   };
 
-  const handleClose = () => setIsDropdownOpen(false);
-
   if (isLinkOptionActive) {
     return (
       <LinkOption
@@ -59,47 +56,24 @@ const Options = ({
 
   return (
     <>
-      <Tippy
-        interactive
-        arrow={false}
-        placement="bottom"
-        visible={isDropdownOpen}
-        content={
-          <div className="neeto-editor-bubble-menu__dropdown">
-            {dropdownOptions.map(({ optionName, command }) => (
-              <button
-                className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown-item"
-                key={optionName}
-                type="button"
-                onClick={() => {
-                  command();
-                  handleClose();
-                }}
-              >
-                {optionName}
-              </button>
-            ))}
-          </div>
-        }
-        onClickOutside={handleClose}
+      <Dropdown
+        buttonSize="small"
+        buttonStyle="text"
+        label={nodeType}
+        strategy="fixed"
       >
-        <button
-          className="neeto-editor-bubble-menu__item neeto-editor-bubble-menu__dropdown-target"
-          type="button"
-          onClick={() => setIsDropdownOpen(open => !open)}
-        >
-          {nodeType}
-          <Down size={14} />
-        </button>
-      </Tippy>
-      <Separator />
+        <Menu>
+          {dropdownOptions.map(({ optionName, command }) => (
+            <MenuItem.Button key={optionName} onClick={command}>
+              {optionName}
+            </MenuItem.Button>
+          ))}
+        </Menu>
+      </Dropdown>
       {fontStyleOptions.map(renderOptionButton)}
-      <Separator />
       {blockStyleOptions.map(renderOptionButton)}
-      {isEmojiActive && <EmojiOption editor={editor} theme="dark" />}
-      <Separator />
+      {isEmojiActive && <EmojiOption editor={editor} />}
       {listStyleOptions.map(renderOptionButton)}
-      <Separator />
       {isLinkActive &&
         renderOptionButton({
           Icon: Link,
@@ -108,7 +82,7 @@ const Options = ({
           optionName: "link",
           highlight: false,
         })}
-      <Mentions editor={editor} mentions={mentions} menuType="bubble" />
+      <Mentions editor={editor} mentions={mentions} />
     </>
   );
 };

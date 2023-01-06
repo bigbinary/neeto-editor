@@ -9,10 +9,11 @@ import {
   TextItalic,
   Underline,
 } from "neetoicons";
+import { Button } from "neetoui";
 import { prop } from "ramda";
 
-import MenuButton from "components/Common/MenuButton";
 import { humanize } from "neetocommons/pure";
+import { generateFocusProps } from "utils/focusHighlighter";
 
 export const getTextMenuDefaultOptions = ({
   editor,
@@ -108,13 +109,12 @@ export const renderOptionButton = ({
   optionName,
   highlight,
 }) => (
-  <MenuButton
-    color="white"
+  <Button
     data-cy={`neeto-editor-bubble-menu-${optionName}-option`}
-    highlight={highlight}
     icon={Icon}
-    iconActive={active}
     key={optionName}
+    size="small"
+    style={active ? "secondary" : "text"}
     tooltipProps={{
       content: humanize(optionName),
       position: "bottom",
@@ -122,5 +122,6 @@ export const renderOptionButton = ({
       delay: [500],
     }}
     onClick={command}
+    {...generateFocusProps(highlight)}
   />
 );
