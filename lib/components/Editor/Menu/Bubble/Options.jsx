@@ -56,15 +56,15 @@ const Options = ({
 
   return (
     <>
-      <Dropdown buttonStyle="text" label={nodeType}>
+      <Dropdown
+        buttonSize="small"
+        buttonStyle="text"
+        label={nodeType}
+        strategy="fixed"
+      >
         <Menu>
           {dropdownOptions.map(({ optionName, command }) => (
-            <MenuItem.Button
-              key={optionName}
-              onClick={() => {
-                command();
-              }}
-            >
+            <MenuItem.Button key={optionName} onClick={() => command()}>
               {optionName}
             </MenuItem.Button>
           ))}
@@ -72,7 +72,7 @@ const Options = ({
       </Dropdown>
       {fontStyleOptions.map(renderOptionButton)}
       {blockStyleOptions.map(renderOptionButton)}
-      {isEmojiActive && <EmojiOption editor={editor} theme="dark" />}
+      {isEmojiActive && <EmojiOption editor={editor} />}
       {listStyleOptions.map(renderOptionButton)}
       {isLinkActive &&
         renderOptionButton({
@@ -82,7 +82,7 @@ const Options = ({
           optionName: "link",
           highlight: false,
         })}
-      <Mentions editor={editor} mentions={mentions} menuType="bubble" />
+      <Mentions editor={editor} mentions={mentions} />
     </>
   );
 };

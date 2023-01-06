@@ -113,6 +113,7 @@ export const renderOptionButton = ({
     data-cy={`neeto-editor-bubble-menu-${optionName}-option`}
     icon={Icon}
     key={optionName}
+    size="small"
     style={active ? "secondary" : "text"}
     tooltipProps={{
       content: humanize(optionName),

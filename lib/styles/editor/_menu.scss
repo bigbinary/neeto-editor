@@ -193,11 +193,6 @@
     color: rgb(var(--neeto-ui-gray-200));
     min-width: fit-content;
 
-    .neeto-ui-btn__icon {
-      height: 18px !important;
-      width: 18px !important;
-    }
-
     &:hover,
     &:active,
     &.active {
@@ -209,11 +204,6 @@
   button.neeto-ui-btn--style-secondary {
     min-width: fit-content;
     background-color: rgb(var(--neeto-ui-gray-400));
-
-    .neeto-ui-btn__icon {
-      height: 18px !important;
-      width: 18px !important;
-    }
   }
 
   .neeto-ui-dropdown__popup {
