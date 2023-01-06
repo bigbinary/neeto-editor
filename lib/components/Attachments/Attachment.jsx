@@ -90,7 +90,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
   const handleKeyDown = ({ event, key }) => {
     const handler = handlers[key];
 
-    if (event.key === "Enter" && handler) {
+    if (event.key === "Enter" && handler && !isEmpty(newFilename)) {
       handler();
     }
 
