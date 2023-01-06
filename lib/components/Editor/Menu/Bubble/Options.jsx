@@ -64,7 +64,7 @@ const Options = ({
       >
         <Menu>
           {dropdownOptions.map(({ optionName, command }) => (
-            <MenuItem.Button key={optionName} onClick={() => command()}>
+            <MenuItem.Button key={optionName} onClick={command}>
               {optionName}
             </MenuItem.Button>
           ))}
