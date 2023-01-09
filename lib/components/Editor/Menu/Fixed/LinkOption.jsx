@@ -14,7 +14,11 @@ const LinkOption = ({ editor }) => {
 
   const isActive = editor.isActive("link");
 
-  const handleClose = () => setIsOpen(false);
+  const handleClose = () => {
+    setIsOpen(false);
+    setUrlString("");
+    setError("");
+  };
 
   const handleKeyDown = event => {
     if (event.key === "Escape") {
@@ -22,6 +26,11 @@ const LinkOption = ({ editor }) => {
     } else if (event.key === "Enter") {
       handleLink();
     }
+  };
+
+  const handleDropDownClick = () => {
+    setUrlString(editor.getAttributes("link").href);
+    setIsOpen(open => !open);
   };
 
   const handleLink = () => {
@@ -35,6 +44,7 @@ const LinkOption = ({ editor }) => {
 
   const handleUnlink = () => {
     editor.chain().focus().unsetLink().run();
+    setUrlString("");
     handleClose();
   };
 
@@ -50,7 +60,7 @@ const LinkOption = ({ editor }) => {
         tooltipProps: { content: "Link", position: "bottom" },
         className: "neeto-editor-fixed-menu__item",
       }}
-      onClick={() => setIsOpen(open => !open)}
+      onClick={handleDropDownClick}
       onClose={handleClose}
     >
       <Menu className="neeto-editor-link__item" onKeyDown={handleKeyDown}>
@@ -73,6 +83,7 @@ const LinkOption = ({ editor }) => {
           <Button
             data-cy="neeto-editor-fixed-menu-link-option-unlink-button"
             label="Unlink"
+            style="text"
             onClick={handleUnlink}
           />
         )}
