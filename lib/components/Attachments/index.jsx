@@ -35,7 +35,8 @@ const Attachments = ({
       });
     });
 
-    const newlyAddedFiles = files.map(file => ({
+    const newlyAddedFiles = uppy.getFiles().map(file => ({
+      id: file.id,
       filename: file.name,
       signedId: "awaiting",
       url: "",
@@ -74,6 +75,12 @@ const Attachments = ({
     );
   };
 
+  const removeUploadingFile = id => {
+    setPendingAttachments(prevState =>
+      prevState.filter(uploadingFile => uploadingFile.id !== id)
+    );
+  };
+
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
 
@@ -97,7 +104,9 @@ const Attachments = ({
         {pendingAttachments.map(attachment => (
           <AttachmentProgress
             attachment={attachment}
-            key={attachment.filename}
+            key={attachment.id}
+            removeUploadingFile={removeUploadingFile}
+            uppy={uppy}
           />
         ))}
       </div>
