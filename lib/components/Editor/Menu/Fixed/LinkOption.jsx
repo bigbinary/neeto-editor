@@ -35,6 +35,7 @@ const LinkOption = ({ editor }) => {
 
   const handleUnlink = () => {
     editor.chain().focus().unsetLink().run();
+    setUrlString("");
     handleClose();
   };
 
@@ -73,6 +74,7 @@ const LinkOption = ({ editor }) => {
           <Button
             data-cy="neeto-editor-fixed-menu-link-option-unlink-button"
             label="Unlink"
+            style="secondary"
             onClick={handleUnlink}
           />
         )}
