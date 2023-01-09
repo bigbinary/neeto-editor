@@ -50,7 +50,7 @@ const Attachments = ({
   const handleUpload = async () => {
     try {
       const { successful = [] } = await uppy.upload();
-      const uploadedFiles = successful.map(file => ({
+      const uploadedFiles = successful?.map(file => ({
         filename: file.name,
         signedId: file.response.signedId,
         url: file.response.blobUrl,
