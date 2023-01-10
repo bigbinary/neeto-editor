@@ -22,6 +22,7 @@ const { Menu, MenuItem } = Dropdown;
 const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
   const [isRenaming, setIsRenaming] = useState(false);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [newFilename, setNewFilename] = useState("");
 
   const handleDownload = () => {
@@ -55,6 +56,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
   };
 
   const handleDelete = async () => {
+    setIsDeleting(true);
     try {
       const { signedId } = attachment;
       await directUploadsApi.destroy(endpoint, signedId);
@@ -63,9 +65,6 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
       );
     } catch (error) {
       Toastr.error(error);
-    } finally {
-      setIsDeleteAlertOpen(false);
-      setNewFilename("");
     }
   };
 
@@ -149,10 +148,11 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
       </div>
       <Alert
         isOpen={isDeleteAlertOpen}
+        isSubmitting={isDeleting}
         message={`Are you sure you want to remove ${newFilename}?`}
         title="Remove Attachment?"
         onClose={() => setIsDeleteAlertOpen(false)}
-        onSubmit={() => handleDelete()}
+        onSubmit={handleDelete}
       />
     </>
   );

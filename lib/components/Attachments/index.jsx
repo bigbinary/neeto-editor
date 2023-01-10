@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 import classnames from "classnames";
 import { Button, Toastr } from "neetoui";
+import { isNil } from "ramda";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
@@ -35,7 +36,8 @@ const Attachments = ({
       });
     });
 
-    const newlyAddedFiles = files.map(file => ({
+    const newlyAddedFiles = uppy.getFiles().map(file => ({
+      id: file.id,
       filename: file.name,
       signedId: "awaiting",
       url: "",
@@ -48,8 +50,11 @@ const Attachments = ({
 
   const handleUpload = async () => {
     try {
-      const { successful = [] } = await uppy.upload();
-      const uploadedFiles = successful.map(file => ({
+      const response = await uppy.upload();
+
+      if (isNil(response)) return;
+
+      const uploadedFiles = response.successful.map(file => ({
         filename: file.name,
         signedId: file.response.signedId,
         url: file.response.blobUrl,
@@ -71,6 +76,12 @@ const Attachments = ({
             ? uploadingFile.progress
             : progress.progress,
       }))
+    );
+  };
+
+  const removeUploadingFile = id => {
+    setPendingAttachments(prevState =>
+      prevState.filter(uploadingFile => uploadingFile.id !== id)
     );
   };
 
@@ -97,7 +108,9 @@ const Attachments = ({
         {pendingAttachments.map(attachment => (
           <AttachmentProgress
             attachment={attachment}
-            key={attachment.filename}
+            key={attachment.id}
+            removeUploadingFile={removeUploadingFile}
+            uppy={uppy}
           />
         ))}
       </div>
