@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useState } from "react";
+import React, { useImperativeHandle, useState, useRef } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
@@ -20,6 +20,8 @@ import {
   clipboardTextParser,
   setInitialPosition,
 } from "./utils";
+
+import Attachments from "../Attachments";
 
 const Editor = (
   {
@@ -61,6 +63,10 @@ const Editor = (
     image: false,
     video: false,
   });
+  const [attachedFiles, setAttachedFiles] = useState([]);
+  const addAttachmentsRef = useRef(null);
+  const onClickAttachment =
+    addAttachmentsRef.current?.onClickAttachment || noop;
 
   const customExtensions = useCustomExtensions({
     placeholder,
@@ -75,6 +81,7 @@ const Editor = (
     uploadEndpoint,
     config,
     setMediaUploader,
+    onClickAttachment,
   });
   useEditorWarnings({ initialValue });
 
@@ -141,6 +148,7 @@ const Editor = (
             menuType={menuType}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
+            onClickAttachment={onClickAttachment}
           />
           <EditorContent editor={editor} {...otherProps} />
           <ImageUploader
@@ -149,6 +157,13 @@ const Editor = (
             unsplashApiKey={editorSecrets.unsplash}
             uploadEndpoint={uploadEndpoint}
             onClose={() => setMediaUploader({ image: false, video: false })}
+          />
+          <Attachments
+            attachments={attachedFiles}
+            className="editor-file-attachment"
+            isIndependent={false}
+            ref={addAttachmentsRef}
+            onChange={setAttachedFiles}
           />
         </CharacterCountWrapper>
       </ErrorWrapper>

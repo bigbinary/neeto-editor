@@ -25,6 +25,7 @@ const Fixed = ({
   addonCommands = [],
   isIndependant = true,
   className,
+  onClickAttachment,
 }) => {
   if (!editor) {
     return null;
@@ -36,7 +37,12 @@ const Fixed = ({
     list: listStyleOptions,
     misc: miscOptions,
     right: rightOptions,
-  } = buildMenuOptions({ editor, options, setMediaUploader });
+  } = buildMenuOptions({
+    editor,
+    options,
+    setMediaUploader,
+    onClickAttachment,
+  });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = fontSizeOptions.length > 0;
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);

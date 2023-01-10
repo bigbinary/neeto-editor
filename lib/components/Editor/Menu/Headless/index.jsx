@@ -14,12 +14,19 @@ const Headless = ({
   addonCommands = [],
   children,
   className,
+  onClickAttachment,
 }) => {
   if (!editor) {
     return null;
   }
 
-  const menuOptions = buildMenuOptions({ editor, options, setMediaUploader });
+  const menuOptions = buildMenuOptions({
+    editor,
+    options,
+    setMediaUploader,
+    onClickAttachment,
+  });
+
   const addonCommandOptions = buildOptionsFromAddonCommands({
     editor,
     commands: addonCommands,

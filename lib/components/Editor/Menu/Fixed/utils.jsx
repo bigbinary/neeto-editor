@@ -8,8 +8,13 @@ import { generateFocusProps } from "utils/focusHighlighter";
 
 import { MENU_OPTIONS } from "./constants";
 
-export const buildMenuOptions = ({ editor, options, setMediaUploader }) => {
-  const menuOptions = MENU_OPTIONS(editor, setMediaUploader);
+export const buildMenuOptions = ({
+  editor,
+  options,
+  setMediaUploader,
+  onClickAttachment,
+}) => {
+  const menuOptions = MENU_OPTIONS(editor, setMediaUploader, onClickAttachment);
 
   return fromPairs(
     ["font", "block", "list", "misc", "right"].map(option => [

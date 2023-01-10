@@ -53,3 +53,10 @@
     display: none;
   }
 }
+
+.editor-file-attachment {
+  padding: 4px 6px;
+  border: thin solid rgb(var(--neeto-ui-gray-300));
+  border-top: none;
+  border-radius: 0px 0px var(--neeto-ui-rounded) var(--neeto-ui-rounded);
+}
