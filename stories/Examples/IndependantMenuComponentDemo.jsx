@@ -13,7 +13,6 @@ const IndependantMenuComponent = () => {
     <div className="space-y-4">
       <Menu editor={editor} />
       <h2>Other components</h2>
-      <Attachments isIndependent />
       <Editor
         autoFocus
         contentClassName="border"
