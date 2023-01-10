@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 
 import { Editor, Menu } from "../../lib";
-import Attachments from "../../lib/components/Attachments";
 
 const IndependantMenuComponent = () => {
   const [editor, setEditor] = useState(null);
