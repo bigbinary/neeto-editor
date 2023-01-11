@@ -75,6 +75,12 @@ interface MenuProps {
   className?: string;
 }
 
+type attachment = {
+  filename?: string;
+  signedId?: string;
+  url?: string;
+  [otherProps: string]: any;
+};
 interface EditorProps {
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "headless" | "none";
@@ -102,25 +108,19 @@ interface EditorProps {
   keyboardShortcuts?: KeyboardShortcuts;
   error?: string;
   config?: Config;
+  attachments?: Array<attachment>;
+  onChangeAttachments: (attachments: attachment[]) => void;
   [otherProps: string]: any;
 }
 
 interface FormikEditorProps extends EditorProps {
   name: string;
 }
-
-type attachment = {
-  filename?: string;
-  signedId?: string;
-  url?: string;
-  [otherProps: string]: any;
-};
 interface AttachmentsProps {
   endpoint?: string;
   attachments?: Array<attachment>;
   onChange: (attachments: attachment[]) => void;
 }
-
 
 export function Editor(props: EditorProps): JSX.Element;
 

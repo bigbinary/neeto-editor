@@ -24,6 +24,7 @@ const Menu = props => {
     editor,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
+    handleUploadAttachments,
   } = props;
 
   const menuComponent = {
@@ -42,6 +43,7 @@ const Menu = props => {
     <>
       <MenuComponent
         {...props}
+        handleUploadAttachments={handleUploadAttachments}
         options={menuOptions}
         setMediaUploader={setMediaUploader}
       />

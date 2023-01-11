@@ -24,6 +24,7 @@ const Options = ({
   isLinkOptionActive,
   setIsLinkOptionActive,
   setMediaUploader,
+  handleUploadAttachments,
 }) => {
   const { Menu, MenuItem } = Dropdown;
 
@@ -35,7 +36,12 @@ const Options = ({
     font: fontStyleOptions,
     block: blockStyleOptions,
     list: listStyleOptions,
-  } = buildMenuOptions({ editor, options, setMediaUploader });
+  } = buildMenuOptions({
+    editor,
+    options,
+    setMediaUploader,
+    handleUploadAttachments,
+  });
 
   const handleAnimateInvalidLink = () => {
     setIsInvalidLink(true);

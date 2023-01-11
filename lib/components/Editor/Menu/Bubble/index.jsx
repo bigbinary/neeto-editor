@@ -15,6 +15,7 @@ const Bubble = ({
   options: textOptions,
   mentions = [],
   setMediaUploader,
+  handleUploadAttachments,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
@@ -54,6 +55,7 @@ const Bubble = ({
       >
         <Options
           editor={editor}
+          handleUploadAttachments={handleUploadAttachments}
           isLinkOptionActive={isLinkOptionActive}
           mentions={mentions}
           options={textOptions}

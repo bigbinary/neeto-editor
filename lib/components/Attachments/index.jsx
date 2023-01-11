@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useImperativeHandle } from "react";
 
 import classnames from "classnames";
 import { Button, Toastr } from "neetoui";
@@ -11,15 +11,19 @@ import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
 import { DEFAULT_UPPY_CONFIG } from "./constants";
 
-const Attachments = ({
-  endpoint = DIRECT_UPLOAD_ENDPOINT,
-  attachments = [],
-  className,
-  onChange = _ => {},
-}) => {
+const Attachments = (
+  {
+    endpoint = DIRECT_UPLOAD_ENDPOINT,
+    attachments = [],
+    className = "",
+    onChange = _ => {},
+    isIndependent = true,
+  },
+  ref
+) => {
   const [pendingAttachments, setPendingAttachments] = useState([]);
 
-  const addAttachmentRef = useRef(null);
+  const attachmentInputRef = useRef(null);
 
   const { uppy, isUploading } = useUppyUploader({
     endpoint,
@@ -44,7 +48,7 @@ const Attachments = ({
       progress: 0,
     }));
     setPendingAttachments(prevState => [...prevState, ...newlyAddedFiles]);
-    addAttachmentRef.current.value = null;
+    attachmentInputRef.current.value = null;
     handleUpload();
   };
 
@@ -85,6 +89,10 @@ const Attachments = ({
     );
   };
 
+  const handleUploadAttachments = () => attachmentInputRef.current.click();
+
+  useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
+
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
 
@@ -115,18 +123,20 @@ const Attachments = ({
         ))}
       </div>
       <div>
-        <Button
-          disabled={isUploading}
-          label="Add attachments"
-          loading={isUploading}
-          size="medium"
-          style="link"
-          onClick={() => addAttachmentRef.current.click()}
-        />
+        {isIndependent && (
+          <Button
+            disabled={isUploading}
+            label="Add attachments"
+            loading={isUploading}
+            size="medium"
+            style="link"
+            onClick={handleUploadAttachments}
+          />
+        )}
         <input
           multiple
           disabled={isUploading}
-          ref={addAttachmentRef}
+          ref={attachmentInputRef}
           type="file"
           onChange={handleAddFile}
         />
@@ -134,4 +144,5 @@ const Attachments = ({
     </div>
   );
 };
-export default Attachments;
+
+export default React.forwardRef(Attachments);

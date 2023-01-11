@@ -53,3 +53,10 @@
     display: none;
   }
 }
+
+.ne-attachments--integrated {
+  padding: 0px 6px;
+  border: 1px solid rgb(var(--neeto-ui-gray-300));
+  border-top: none;
+  border-radius: 0px 0px var(--neeto-ui-rounded) var(--neeto-ui-rounded);
+}
