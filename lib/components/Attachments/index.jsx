@@ -89,13 +89,9 @@ const Attachments = (
     );
   };
 
-  useImperativeHandle(
-    ref,
-    () => ({
-      handleUploadAttachments: () => attachmentInputRef.current.click(),
-    }),
-    []
-  );
+  const handleUploadAttachments = () => attachmentInputRef.current.click();
+
+  useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
 
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
@@ -134,7 +130,7 @@ const Attachments = (
             loading={isUploading}
             size="medium"
             style="link"
-            onClick={() => attachmentInputRef.current.click()}
+            onClick={handleUploadAttachments}
           />
         )}
         <input
@@ -148,4 +144,5 @@ const Attachments = (
     </div>
   );
 };
+
 export default React.forwardRef(Attachments);
