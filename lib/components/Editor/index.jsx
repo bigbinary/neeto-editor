@@ -161,9 +161,11 @@ const Editor = (
           />
           <Attachments
             attachments={attachments}
-            className={isFixedMenuActive ? "ne-attachments--integrated" : ""}
             isIndependent={false}
             ref={addAttachmentsRef}
+            className={classnames({
+              "ne-attachments--integrated": isFixedMenuActive,
+            })}
             onChange={onChangeAttachments}
           />
         </CharacterCountWrapper>
