@@ -51,6 +51,8 @@ const Editor = (
     keyboardShortcuts = [],
     error = null,
     config = {},
+    attachments,
+    onChangeAttachments = noop,
     ...otherProps
   },
   ref
@@ -63,10 +65,9 @@ const Editor = (
     image: false,
     video: false,
   });
-  const [attachedFiles, setAttachedFiles] = useState([]);
   const addAttachmentsRef = useRef(null);
-  const onClickAttachment =
-    addAttachmentsRef.current?.onClickAttachment || noop;
+  const handleUploadAttachments =
+    addAttachmentsRef.current?.handleUploadAttachments || noop;
 
   const customExtensions = useCustomExtensions({
     placeholder,
@@ -81,7 +82,7 @@ const Editor = (
     uploadEndpoint,
     config,
     setMediaUploader,
-    onClickAttachment,
+    handleUploadAttachments,
   });
   useEditorWarnings({ initialValue });
 
@@ -143,12 +144,12 @@ const Editor = (
             defaults={defaults}
             editor={editor}
             editorSecrets={editorSecrets}
+            handleUploadAttachments={handleUploadAttachments}
             isIndependant={false}
             mentions={mentions}
             menuType={menuType}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
-            onClickAttachment={onClickAttachment}
           />
           <EditorContent editor={editor} {...otherProps} />
           <ImageUploader
@@ -159,11 +160,11 @@ const Editor = (
             onClose={() => setMediaUploader({ image: false, video: false })}
           />
           <Attachments
-            attachments={attachedFiles}
-            className="editor-file-attachment"
+            attachments={attachments}
+            className="ne-attachments--integrated"
             isIndependent={false}
             ref={addAttachmentsRef}
-            onChange={setAttachedFiles}
+            onChange={onChangeAttachments}
           />
         </CharacterCountWrapper>
       </ErrorWrapper>

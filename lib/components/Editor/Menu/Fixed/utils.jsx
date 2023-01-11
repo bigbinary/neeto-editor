@@ -12,9 +12,13 @@ export const buildMenuOptions = ({
   editor,
   options,
   setMediaUploader,
-  onClickAttachment,
+  handleUploadAttachments,
 }) => {
-  const menuOptions = MENU_OPTIONS(editor, setMediaUploader, onClickAttachment);
+  const menuOptions = MENU_OPTIONS(
+    editor,
+    setMediaUploader,
+    handleUploadAttachments
+  );
 
   return fromPairs(
     ["font", "block", "list", "misc", "right"].map(option => [

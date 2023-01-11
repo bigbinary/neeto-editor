@@ -25,7 +25,7 @@ const Fixed = ({
   addonCommands = [],
   isIndependant = true,
   className,
-  onClickAttachment,
+  handleUploadAttachments,
 }) => {
   if (!editor) {
     return null;
@@ -41,7 +41,7 @@ const Fixed = ({
     editor,
     options,
     setMediaUploader,
-    onClickAttachment,
+    handleUploadAttachments,
   });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = fontSizeOptions.length > 0;

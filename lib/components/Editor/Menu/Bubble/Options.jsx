@@ -24,7 +24,7 @@ const Options = ({
   isLinkOptionActive,
   setIsLinkOptionActive,
   setMediaUploader,
-  onClickAttachment,
+  handleUploadAttachments,
 }) => {
   const { Menu, MenuItem } = Dropdown;
 
@@ -40,7 +40,7 @@ const Options = ({
     editor,
     options,
     setMediaUploader,
-    onClickAttachment,
+    handleUploadAttachments,
   });
 
   const handleAnimateInvalidLink = () => {

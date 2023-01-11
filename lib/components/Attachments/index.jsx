@@ -92,7 +92,7 @@ const Attachments = (
   useImperativeHandle(
     ref,
     () => ({
-      onClickAttachment: () => attachmentInputRef.current.click(),
+      handleUploadAttachments: () => attachmentInputRef.current.click(),
     }),
     []
   );

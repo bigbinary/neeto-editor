@@ -15,7 +15,7 @@ const Bubble = ({
   options: textOptions,
   mentions = [],
   setMediaUploader,
-  onClickAttachment,
+  handleUploadAttachments,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
@@ -55,13 +55,13 @@ const Bubble = ({
       >
         <Options
           editor={editor}
+          handleUploadAttachments={handleUploadAttachments}
           isLinkOptionActive={isLinkOptionActive}
           mentions={mentions}
           options={textOptions}
           setIsInvalidLink={setIsInvalidLink}
           setIsLinkOptionActive={setIsLinkOptionActive}
           setMediaUploader={setMediaUploader}
-          onClickAttachment={onClickAttachment}
         />
       </BubbleMenuTipTap>
     </div>

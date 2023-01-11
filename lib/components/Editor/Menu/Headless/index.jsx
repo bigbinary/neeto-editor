@@ -14,7 +14,7 @@ const Headless = ({
   addonCommands = [],
   children,
   className,
-  onClickAttachment,
+  handleUploadAttachments,
 }) => {
   if (!editor) {
     return null;
@@ -24,7 +24,7 @@ const Headless = ({
     editor,
     options,
     setMediaUploader,
-    onClickAttachment,
+    handleUploadAttachments,
   });
 
   const addonCommandOptions = buildOptionsFromAddonCommands({
