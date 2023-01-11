@@ -51,7 +51,7 @@ const Editor = (
     keyboardShortcuts = [],
     error = null,
     config = {},
-    attachments,
+    attachments = [],
     onChangeAttachments = noop,
     ...otherProps
   },
