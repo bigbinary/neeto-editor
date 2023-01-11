@@ -8,6 +8,7 @@
 
 .neeto-editor {
   max-width: 100% !important;
+  border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
   border-bottom: none;
   white-space: pre-wrap;
   padding: 16px;
@@ -45,6 +46,7 @@
   &.fixed-menu-active {
     border: thin solid rgb(var(--neeto-ui-gray-300));
     border-top: none;
+    border-radius: 0px;
     border-bottom: none;
   }
 
