@@ -63,6 +63,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
     <div className="neeto-editor-unsplash-wrapper">
       <Input
         autoFocus
+        className="neeto-editor-unsplash-search"
         data-cy="neeto-editor-unsplash-image-picker-search-input"
         name="text"
         placeholder="Search Unsplash"
