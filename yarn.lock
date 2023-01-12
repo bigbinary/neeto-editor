@@ -3551,6 +3551,13 @@
     "@uppy/utils" "^4.1.2"
     preact "^10.5.13"
 
+"@uppy/drop-target@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@uppy/drop-target/-/drop-target-2.0.1.tgz#94e106056a846d9de12b0d12231f66c9718a6778"
+  integrity sha512-FMO8wj+0dx4mlwXKxFWSTUF+irgr0BVXadyc4qaoBBtZ3vEcwc3jP7SQfwk3JizV/D5MYG8MRICRbPAIrY9M8w==
+  dependencies:
+    "@uppy/utils" "^5.0.2"
+
 "@uppy/file-input@^2.1.1":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@uppy/file-input/-/file-input-2.1.2.tgz#c71cd7c6c97764d46921bc4307ac8e40ca41857f"
@@ -3634,6 +3641,13 @@
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/@uppy/utils/-/utils-4.1.3.tgz#9d0be6ece4df25f228d30ef40be0f14208258ce3"
   integrity sha512-nTuMvwWYobnJcytDO3t+D6IkVq/Qs4Xv3vyoEZ+Iaf8gegZP+rEyoaFT2CK5XLRMienPyqRqNbIfRuFaOWSIFw==
+  dependencies:
+    lodash.throttle "^4.1.1"
+
+"@uppy/utils@^5.0.2":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@uppy/utils/-/utils-5.1.1.tgz#9597e8696e17d71413672bd56eb082c7410514a3"
+  integrity sha512-uoI+PcIVQboky0ZbN4PQeK1seZnnJocomzeK7blId9HKJ6QNgZLf2ibk2CQuQxrOuNsWhgrhs5uLO5Si0oM0Yw==
   dependencies:
     lodash.throttle "^4.1.1"
 
