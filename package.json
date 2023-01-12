@@ -66,6 +66,7 @@
     "@uppy/core": "2.3.1",
     "@uppy/react": "2.2.2",
     "@uppy/url": "2.2.0",
+    "@uppy/drop-target": "2.0.1",
     "antd": "4.18.7",
     "autoprefixer": "10.4.12",
     "axios": "0.27.2",

@@ -60,3 +60,19 @@
   border-top: none;
   border-radius: 0px 0px var(--neeto-ui-rounded) var(--neeto-ui-rounded);
 }
+
+.ne-attachments__wrapper {
+  position: relative;
+
+  .uppy-is-drag-over::after {
+    position: absolute;
+    inset: 7px;
+    border-radius: 5px;
+    background-color: rgba(var(--neeto-ui-gray-600), 0.15);
+    border: 5px dashed rgba(var(--neeto-ui-gray-600), 0.5);
+    content: 'Drop the file here';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
