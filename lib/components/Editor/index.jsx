@@ -93,6 +93,7 @@ const Editor = (
     "fixed-menu-active border": isFixedMenuActive,
     "bubble-menu-active": isBubbleMenuActive,
     "placeholder-active": isPlaceholderActive,
+    "attachments-active": isAttachmentsActive,
     [contentClassName]: contentClassName,
   });
 
@@ -164,16 +165,16 @@ const Editor = (
               uploadEndpoint={uploadEndpoint}
               onClose={() => setMediaUploader({ image: false, video: false })}
             />
-            <Attachments
-              attachments={attachments}
-              dragDropRef={dragDropRef}
-              isIndependent={false}
-              ref={addAttachmentsRef}
-              className={classnames({
-                "ne-attachments--integrated": isFixedMenuActive,
-              })}
-              onChange={onChangeAttachments}
-            />
+            {isAttachmentsActive && (
+              <Attachments
+                attachments={attachments}
+                className="ne-attachments--integrated"
+                dragDropRef={dragDropRef}
+                isIndependent={false}
+                ref={addAttachmentsRef}
+                onChange={onChangeAttachments}
+              />
+            )}
           </CharacterCountWrapper>
         </ErrorWrapper>
       </div>

@@ -45,8 +45,14 @@
   &.fixed-menu-active {
     border: thin solid rgb(var(--neeto-ui-gray-300));
     border-top: none;
-    border-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  &.attachments-active {
     border-bottom: none;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
 
   .is-empty {
