@@ -59,7 +59,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
     pageNo > 1 && fetchUnsplashPhotos(pageNo);
   };
 
-  const getLoader = () => (
+  const Loader = (
     <div className="neeto-editor-unsplash-gallery__loader">
       <Spinner />
     </div>
@@ -102,7 +102,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
             className="neeto-editor-unsplash-gallery"
             hasMore={hasMore}
             loadMore={loadMore}
-            loader={getLoader()}
+            loader={Loader}
             ref={masonryRef}
             style={{ width: "100%" }}
             useWindow={false}
