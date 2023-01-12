@@ -109,7 +109,8 @@
   }
 
   .neeto-editor-unsplash-search {
-    padding: 8px;
+    padding: 0px 8px;
+    margin-bottom: 16px;
   }
   //Unsplash
   .neeto-editor-unsplash-wrapper {
@@ -124,6 +125,11 @@
     .neeto-editor-unsplash-gallery {
       width: 100%;
       right: -8px;
+    }
+
+    .neeto-editor-unsplash-gallery__loader {
+      display: flex;
+      justify-content: center;
     }
 
     .neeto-editor-unsplash-gallery__item {
