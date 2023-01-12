@@ -168,12 +168,10 @@ const Editor = (
             {isAttachmentsActive && (
               <Attachments
                 attachments={attachments}
+                className="ne-attachments--integrated"
                 dragDropRef={dragDropRef}
                 isIndependent={false}
                 ref={addAttachmentsRef}
-                className={classnames({
-                  "ne-attachments--integrated": isAttachmentsActive,
-                })}
                 onChange={onChangeAttachments}
               />
             )}
