@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState, useImperativeHandle } from "react";
 
+import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
 import { Button, Toastr } from "neetoui";
 import { isNil } from "ramda";
@@ -18,6 +19,7 @@ const Attachments = (
     className = "",
     onChange = _ => {},
     isIndependent = true,
+    dragDropRef = null,
   },
   ref
 ) => {
@@ -39,7 +41,10 @@ const Attachments = (
         data: file,
       });
     });
+    afterAddingFiles();
+  };
 
+  const afterAddingFiles = () => {
     const newlyAddedFiles = uppy.getFiles().map(file => ({
       id: file.id,
       filename: file.name,
@@ -95,6 +100,14 @@ const Attachments = (
 
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
+    if (dragDropRef.current) {
+      uppy.use(DropTarget, {
+        target: dragDropRef.current,
+        onDrop: () => {
+          afterAddingFiles();
+        },
+      });
+    }
 
     return () => {
       uppy.off("upload-progress", handleUploadProgress);

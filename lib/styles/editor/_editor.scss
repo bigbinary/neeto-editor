@@ -8,8 +8,7 @@
 
 .neeto-editor {
   max-width: 100% !important;
-  border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
-  border-bottom: none;
+  border-radius: var(--neeto-ui-rounded);
   white-space: pre-wrap;
   padding: 16px;
   color: rgb(var(--neeto-ui-gray-800));
