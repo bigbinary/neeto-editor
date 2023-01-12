@@ -119,6 +119,7 @@ interface FormikEditorProps extends EditorProps {
 interface AttachmentsProps {
   endpoint?: string;
   attachments?: Array<attachment>;
+  dragDropRef?: React.RefObject<HTMLDivElement>;
   onChange: (attachments: attachment[]) => void;
 }
 
