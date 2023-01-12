@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-editor",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "main": "./index.js",
   "module": "./index.js",
   "types": "./types.d.ts",
@@ -64,9 +64,9 @@
     "@tiptap/starter-kit": "2.0.0-beta.199",
     "@tiptap/suggestion": "2.0.0-beta.197",
     "@uppy/core": "2.3.1",
+    "@uppy/drop-target": "2.0.1",
     "@uppy/react": "2.2.2",
     "@uppy/url": "2.2.0",
-    "@uppy/drop-target": "2.0.1",
     "antd": "4.18.7",
     "autoprefixer": "10.4.12",
     "axios": "0.27.2",
