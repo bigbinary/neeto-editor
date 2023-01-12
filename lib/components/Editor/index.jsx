@@ -124,7 +124,7 @@ const Editor = (
   };
 
   return (
-    <div className="relative">
+    <div className="ne-attachments__wrapper">
       <div className={classnames({ [className]: className })} ref={dragDropRef}>
         {label && (
           <Label

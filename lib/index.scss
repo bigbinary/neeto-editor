@@ -11,21 +11,6 @@
 @import "./styles/editor/media-editor";
 @import "./styles/components/attachments";
 
-.uppy-is-drag-over::after {
-  position: absolute;
-  top: 7px;
-  right: 7px;
-  bottom: 7px;
-  left: 7px;
-  border-radius: 5px;
-  background-color: rgba(var(--neeto-ui-gray-600), 0.15);
-  border: 5px dashed rgba(var(--neeto-ui-gray-600), 0.5);
-  content: 'Drop the file here';
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .ProseMirror {
   overflow-y: auto;
   height: 100%;
