@@ -58,6 +58,7 @@ const Editor = (
   ref
 ) => {
   const dragDropRef = useRef(null);
+  const isAttachmentsActive = addons.includes("attachments");
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
@@ -124,7 +125,9 @@ const Editor = (
   };
 
   return (
-    <div className="ne-attachments__wrapper">
+    <div
+      className={isAttachmentsActive ? "ne-attachments__wrapper" : "relative"}
+    >
       <div className={classnames({ [className]: className })} ref={dragDropRef}>
         {label && (
           <Label
