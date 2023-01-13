@@ -18,11 +18,10 @@ const CustomDragDropDemo = () => {
             Typography
           </Typography>
         </Pane.Header>
-        <div
-          className="flex justify-center w-full h-full ne-attachments__wrapper"
-          ref={dropRef}
-        >
-          <Attachments dragDropRef={dropRef} />
+        <div className="ne-attachments__wrapper w-full h-full">
+          <div className="flex justify-center w-full h-full" ref={dropRef}>
+            <Attachments dragDropRef={dropRef} />
+          </div>
         </div>
       </Pane>
     </>
