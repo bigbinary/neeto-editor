@@ -1,0 +1,68 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import CustomDragDropDemo from "./CustomDragDropDemo";
+import { Button } from "neetoui";
+import { Attachments } from "../../../lib";
+
+import Bubble from "../../assets/bubble.gif";
+
+<Meta
+  title="Walkthroughs/Attachments"
+  parameters={{
+    layout: "padded",
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+  }}
+  component={Attachments}
+/>
+
+
+
+# Custom drop zone for attachments
+
+The drop zone can be customized by passing a ref to the `Attachments` component.
+
+<Canvas>
+  <Story name="Custom drop zone">
+    <CustomDragDropDemo />
+  </Story>
+</Canvas>
+
+## Usage
+
+```jsx
+import React, { useState, useRef } from "react";
+
+import { Button, Pane, Typography } from "@bigbinary/neetoui";
+
+import { Attachments } from "@bigbinary/neeto-editor";
+
+const CustomDragDropDemo = () => {
+  const [showPane, setShowPane] = useState(false);
+
+  const dropRef = useRef(null);
+
+  return (
+    <>
+      <Button label="Show Pane" onClick={() => setShowPane(true)} />
+      <div className="ne-attachments__wrapper" ref={dropRef}>
+        <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
+          <Pane.Header>
+            <Typography style="h2" weight="semibold">
+              Typography
+            </Typography>
+          </Pane.Header>
+          <div className="flex justify-center w-full h-full" ref={dropRef}>
+            <Attachments dragDropRef={dropRef} />
+          </div>
+        </Pane>
+      </div>
+    </>
+  );
+};
+export default CustomDragDropDemo;
+
+
+```

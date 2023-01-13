@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Editor } from "../../../lib";
+import { Button } from "neetoui";
+import { Attachments } from "../../../lib";
+
+import Bubble from "../../assets/bubble.gif";
+
+<Meta
+  title="Walkthroughs/Attachments"
+  parameters={{
+    layout: "padded",
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+  }}
+  component={Attachments}
+/>
+
+
+
+# Integrated to neetoEditor
+
+File attachment feature can be enabled in neetoEditor by adding the `attachments`
+addon to the list of addons. All the files are uploaded using a pre-signed URL
+from the backend.
+This addon also enables the drag and drop feature to upload files.
+
+<Canvas>
+  <Story name="Integrated to neetoEditor">
+    <Editor addons={["attachments"]} />
+  </Story>
+</Canvas>
+
+> The file attachment feature uses a procedure similar to image upload feature.

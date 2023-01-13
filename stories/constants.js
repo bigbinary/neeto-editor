@@ -5,6 +5,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["emoji", "Add emojis to your content using an emoji picker."],
   ["code-block", "Provide syntax highlighting for code snippets."],
   ["block-quote", "Highlight a block of text as a quote."],
+  ["attachments", "Add attachments to the editor."],
   ["video-upload", "Upload videos to the editor."],
   ["image-upload", "Upload images to the editor."],
   ["image-upload-unsplash", "Add unsplash integration to the image upload."],

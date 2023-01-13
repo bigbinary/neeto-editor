@@ -1,0 +1,55 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Editor } from "../../../lib";
+import { Button } from "neetoui";
+import {
+  EDITOR_ADDONS_TABLE_COLUMNS,
+  EDITOR_ADDONS_TABLE_ROWS,
+} from "./constants";
+import { Attachments } from "../../../lib";
+import Table from "../../components/Table";
+
+<Meta
+  title="Walkthroughs/Attachments"
+  parameters={{
+    layout: "padded",
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+  }}
+  component={Attachments}
+/>
+
+
+
+# Attachments
+
+`import { Attachments } from "@bigbinary/neeto-editor";`
+
+The Attachments component allows users to upload files by either drag-and-drop or by selecting them through a file input. It utilizes the `Uppy` package for handling the file upload process.
+<br />
+<br />
+
+#### **Props**
+
+<Table columns={EDITOR_ADDONS_TABLE_COLUMNS} rows={EDITOR_ADDONS_TABLE_ROWS} />
+<br />
+<br />
+
+## **Stories**
+<br />
+
+### **Default**
+<Canvas>
+  <Story name="Default">
+    <Attachments />
+  </Story>
+</Canvas>
+
+### **With previous Attachments**
+<Canvas>
+  <Story name="With previous Attachments">
+    <Attachments attachments={[{ filename: "file1.jpg" }, { filename: "file2.jpg" }]} />
+  </Story>
+</Canvas>
