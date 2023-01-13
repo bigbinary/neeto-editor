@@ -100,7 +100,7 @@ const Attachments = (
 
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
-    if (dragDropRef.current) {
+    if (dragDropRef?.current) {
       uppy.use(DropTarget, {
         target: dragDropRef.current,
         onDrop: afterAddingFiles,
