@@ -20,7 +20,7 @@ import { Attachments } from "../../../lib";
 
 # Custom drop zone for attachments
 
-The drop zone can be customized by passing a ref to the `Attachments` component.
+The drop zone can be specified by providing a ref (`dragDropRef`) to the wrapper component and passing it as a prop to the `Attachments` component. In the below example, the entire `Pane` body is a drop zone.
 
 <Canvas>
   <Story name="Custom drop zone">
@@ -40,20 +40,20 @@ import { Attachments } from "@bigbinary/neeto-editor";
 const CustomDragDropDemo = () => {
   const [showPane, setShowPane] = useState(false);
 
-  const dropRef = useRef(null);
+  const dragDropRef = useRef(null);
 
   return (
     <>
       <Button label="Show Pane" onClick={() => setShowPane(true)} />
-      <div className="ne-attachments__wrapper" ref={dropRef}>
+      <div className="ne-attachments__wrapper" ref={dragDropRef}>
         <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
           <Pane.Header>
             <Typography style="h2" weight="semibold">
               Typography
             </Typography>
           </Pane.Header>
-          <div className="flex justify-center w-full h-full" ref={dropRef}>
-            <Attachments dragDropRef={dropRef} />
+          <div className="flex justify-center w-full h-full" ref={dragDropRef}>
+            <Attachments dragDropRef={dragDropRef} />
           </div>
         </Pane>
       </div>
