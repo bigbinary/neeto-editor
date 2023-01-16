@@ -18,7 +18,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ],
 ];
 
-export const ATTACHMENTS = [
+export const attachments = [
   {
     filename: "Books.jpg",
     url: "https://i.picsum.photos/id/24/4855/1803.jpg?hmac=ICVhP1pUXDLXaTkgwDJinSUS59UWalMxf4SOIWb9Ui4",
@@ -30,3 +30,5 @@ export const ATTACHMENTS = [
     signedId: "2",
   },
 ];
+
+export const setAttachments = () => {};
