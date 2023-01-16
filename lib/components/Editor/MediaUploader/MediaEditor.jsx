@@ -42,9 +42,7 @@ const MediaEditor = ({
           label="back"
           size="small"
           style="text"
-          onClick={() => {
-            setMediaUrl("");
-          }}
+          onClick={() => setMediaUrl("")}
         />
       </div>
       {isError ? (
