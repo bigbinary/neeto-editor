@@ -5,6 +5,12 @@
   align-items: center;
   gap: 1.25rem;
 
+  &__back-button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
   img,
   video {
     display: flex;
