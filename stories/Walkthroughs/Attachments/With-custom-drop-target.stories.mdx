@@ -39,24 +39,23 @@ import { Attachments } from "@bigbinary/neeto-editor";
 
 const CustomDragDropDemo = () => {
   const [showPane, setShowPane] = useState(false);
+  const [attachments, setAttachments] = useState([]);
 
   const dragDropRef = useRef(null);
 
   return (
     <>
       <Button label="Show Pane" onClick={() => setShowPane(true)} />
-      <div className="ne-attachments__wrapper" ref={dragDropRef}>
         <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
           <Pane.Header>
             <Typography style="h2" weight="semibold">
               Typography
             </Typography>
           </Pane.Header>
-          <div className="flex justify-center w-full h-full" ref={dragDropRef}>
-            <Attachments dragDropRef={dragDropRef} />
+          <div className="flex justify-center w-full h-full ne-attachments__wrapper" ref={dragDropRef}>
+            <Attachments dragDropRef={dragDropRef} attachments={attachments} onChange={setAttachments} />
           </div>
         </Pane>
-      </div>
     </>
   );
 };

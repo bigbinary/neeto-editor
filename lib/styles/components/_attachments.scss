@@ -63,8 +63,9 @@
 
 .ne-attachments__wrapper {
   position: relative;
+}
 
-  .uppy-is-drag-over::after {
+.ne-attachments__wrapper.uppy-is-drag-over::after {
     position: absolute;
     inset: 7px;
     border-radius: 5px;
@@ -75,4 +76,3 @@
     align-items: center;
     justify-content: center;
   }
-}
