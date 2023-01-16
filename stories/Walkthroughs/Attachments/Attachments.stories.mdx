@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../../lib";
 import { Button } from "neetoui";
-import { ATTACHMENTS } from "./constants";
+import { attachments, setAttachments } from "./constants";
 import {
   EDITOR_ADDONS_TABLE_COLUMNS,
   EDITOR_ADDONS_TABLE_ROWS,
@@ -44,15 +44,32 @@ The Attachments component allows users to upload files by either drag-and-drop o
 <br />
 
 ### **Default**
+
+The attachments prop is an array of objects with the following structure:
+
+```js
+[
+  {
+    filename: 'example.jpg',
+    url: 'https://example.com/images/example.jpg',
+    signedId: 'ASDF1234'
+  },
+  {
+    filename: 'example2.jpg',
+    url: 'https://example.com/images/example2.jpg',
+    signedId: 'QWER5678'
+  },
+];
+```
 <Canvas>
   <Story name="Default">
-    <Attachments />
+    <Attachments attachments={[]} onChange={() => {}} />
   </Story>
 </Canvas>
 
 ### **With previous Attachments**
 <Canvas>
   <Story name="With previous Attachments">
-    <Attachments attachments={ATTACHMENTS} />
+    <Attachments attachments={attachments} onChange={setAttachments} />
   </Story>
 </Canvas>

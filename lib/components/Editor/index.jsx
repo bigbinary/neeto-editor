@@ -127,57 +127,59 @@ const Editor = (
 
   return (
     <div
-      className={isAttachmentsActive ? "ne-attachments__wrapper" : "relative"}
+      ref={dragDropRef}
+      className={classnames({
+        [className]: className,
+        "ne-attachments__wrapper": isAttachmentsActive,
+      })}
     >
-      <div className={classnames({ [className]: className })} ref={dragDropRef}>
-        {label && (
-          <Label
-            className="neeto-ui-mb-2"
-            data-cy={`${slugify(label)}-editor-label`}
-            required={required}
-          >
-            {label}
-          </Label>
-        )}
-        <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
-          <CharacterCountWrapper
+      {label && (
+        <Label
+          className="neeto-ui-mb-2"
+          data-cy={`${slugify(label)}-editor-label`}
+          required={required}
+        >
+          {label}
+        </Label>
+      )}
+      <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
+        <CharacterCountWrapper
+          editor={editor}
+          isActive={isCharacterCountActive}
+        >
+          <Menu
+            addonCommands={addonCommands}
+            addons={addons}
+            defaults={defaults}
             editor={editor}
-            isActive={isCharacterCountActive}
-          >
-            <Menu
-              addonCommands={addonCommands}
-              addons={addons}
-              defaults={defaults}
-              editor={editor}
-              editorSecrets={editorSecrets}
-              handleUploadAttachments={handleUploadAttachments}
-              isIndependant={false}
-              mentions={mentions}
-              menuType={menuType}
-              uploadEndpoint={uploadEndpoint}
-              variables={variables}
+            editorSecrets={editorSecrets}
+            handleUploadAttachments={handleUploadAttachments}
+            isIndependant={false}
+            mentions={mentions}
+            menuType={menuType}
+            uploadEndpoint={uploadEndpoint}
+            variables={variables}
+          />
+          <EditorContent editor={editor} {...otherProps} />
+          <ImageUploader
+            editor={editor}
+            mediaUploader={mediaUploader}
+            unsplashApiKey={editorSecrets.unsplash}
+            uploadEndpoint={uploadEndpoint}
+            onClose={() => setMediaUploader({ image: false, video: false })}
+          />
+          {isAttachmentsActive && (
+            <Attachments
+              attachments={attachments}
+              className="ne-attachments--integrated"
+              dragDropRef={dragDropRef}
+              isIndependent={false}
+              ref={addAttachmentsRef}
+              onChange={onChangeAttachments}
             />
-            <EditorContent editor={editor} {...otherProps} />
-            <ImageUploader
-              editor={editor}
-              mediaUploader={mediaUploader}
-              unsplashApiKey={editorSecrets.unsplash}
-              uploadEndpoint={uploadEndpoint}
-              onClose={() => setMediaUploader({ image: false, video: false })}
-            />
-            {isAttachmentsActive && (
-              <Attachments
-                attachments={attachments}
-                className="ne-attachments--integrated"
-                dragDropRef={dragDropRef}
-                isIndependent={false}
-                ref={addAttachmentsRef}
-                onChange={onChangeAttachments}
-              />
-            )}
-          </CharacterCountWrapper>
-        </ErrorWrapper>
-      </div>
+          )}
+        </CharacterCountWrapper>
+      </ErrorWrapper>
     </div>
   );
 };
