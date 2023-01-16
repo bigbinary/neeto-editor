@@ -20,7 +20,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
 
 export const ATTACHMENTS = [
   {
-    filename: "Books.jpg",
+    filename: "Books.pdf",
     url: "https://i.picsum.photos/id/24/4855/1803.jpg?hmac=ICVhP1pUXDLXaTkgwDJinSUS59UWalMxf4SOIWb9Ui4",
     signedId: "1",
   },

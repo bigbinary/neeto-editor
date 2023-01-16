@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import saveAs from "file-saver";
-import { MenuVertical, File, Close } from "neetoicons";
+import { MenuVertical, Close } from "neetoicons";
 import {
   Dropdown,
   Input,
@@ -16,6 +16,7 @@ import { isEmpty, assoc } from "ramda";
 import directUploadsApi from "apis/direct_uploads";
 
 import { ATTACHMENT_OPTIONS } from "./constants";
+import FileIcon from "./FileIcon";
 
 const { Menu, MenuItem } = Dropdown;
 
@@ -127,7 +128,7 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
           </>
         ) : (
           <>
-            <File size={16} />
+            <FileIcon fileName={attachment.filename} />
             <Tooltip content={attachment.filename} position="top">
               <Typography style="body2">{attachment.filename}</Typography>
             </Tooltip>
