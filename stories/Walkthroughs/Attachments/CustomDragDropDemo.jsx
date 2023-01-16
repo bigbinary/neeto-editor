@@ -6,8 +6,9 @@ import { Attachments } from "../../../lib";
 
 const CustomDragDropDemo = () => {
   const [showPane, setShowPane] = useState(false);
+  const [attachments, setAttachments] = useState([]);
 
-  const dropRef = useRef(null);
+  const dragDropRef = useRef(null);
 
   return (
     <>
@@ -18,10 +19,15 @@ const CustomDragDropDemo = () => {
             Typography
           </Typography>
         </Pane.Header>
-        <div className="ne-attachments__wrapper w-full h-full">
-          <div className="flex justify-center w-full h-full" ref={dropRef}>
-            <Attachments dragDropRef={dropRef} />
-          </div>
+        <div
+          className="flex justify-center w-full h-full ne-attachments__wrapper"
+          ref={dragDropRef}
+        >
+          <Attachments
+            attachments={attachments}
+            dragDropRef={dragDropRef}
+            onChange={setAttachments}
+          />
         </div>
       </Pane>
     </>

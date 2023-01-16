@@ -39,6 +39,8 @@ import { Button } from "@bigbinary/neetoui";
 import { Attachments } from "@bigbinary/neeto-editor";
 
 const CustomAttachmentsDemo = () => {
+  const [attachments, setAttachments] = useState([]);
+
   const attachmentsRef = useRef(null);
 
   const handleUpload = () =>
@@ -47,7 +49,7 @@ const CustomAttachmentsDemo = () => {
   return (
     <>
       <Button label="Custom upload button" onClick={handleUpload} />
-      <Attachments isIndependent={false} ref={attachmentsRef} />
+      <Attachments isIndependent={false} ref={attachmentsRef} attachments={attachments} onChange={setAttachments}/>
     </>
   );
 };
