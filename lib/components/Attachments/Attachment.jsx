@@ -94,6 +94,7 @@ const Attachment = ({
   };
 
   const handleKeyDown = ({ event, key }) => {
+    event.preventDefault();
     const handler = handlers[key];
 
     if (event.key === "Enter" && handler && !isEmpty(newFilename)) {

@@ -20,7 +20,7 @@ const CustomDragDropDemo = () => {
           </Typography>
         </Pane.Header>
         <div
-          className="flex justify-center w-full h-full ne-attachments__wrapper"
+          className="flex justify-center w-full ne-attachments__wrapper h-96"
           ref={dragDropRef}
         >
           <Attachments
