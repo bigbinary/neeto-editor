@@ -35,16 +35,14 @@ const MediaEditor = ({
 
   return (
     <div className="ne-media-editor" onKeyDown={handleKeyDown}>
-      <div className="ne-media-editor__back-button-wrapper">
-        <Button
-          icon={LeftArrow}
-          iconPosition="left"
-          label="back"
-          size="small"
-          style="text"
-          onClick={() => setMediaUrl("")}
-        />
-      </div>
+      <Button
+        icon={LeftArrow}
+        iconPosition="left"
+        label="back"
+        size="small"
+        style="text"
+        onClick={() => setMediaUrl("")}
+      />
       {isError ? (
         <div className="ne-media-editor__error">
           <h2>Something Went Wrong!</h2>
