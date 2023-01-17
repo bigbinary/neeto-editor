@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { Modal, Tab } from "neetoui";
-import { isEmpty } from "ramda";
 
 import { isNilOrEmpty } from "utils/common";
 
@@ -36,13 +35,16 @@ const MediaUploader = ({
   return (
     <Modal closeButton={false} isOpen={isOpen} onClose={handleClose}>
       <div className="ne-media-uploader">
-        {!isNilOrEmpty(tabs) && isEmpty(mediaUrl) && (
+        {!isNilOrEmpty(tabs) && (
           <Tab>
             {tabs.map(({ key, title }) => (
               <Tab.Item
                 active={activeTab === key}
                 key={key}
-                onClick={() => setActiveTab(key)}
+                onClick={() => {
+                  setMediaUrl("");
+                  setActiveTab(key);
+                }}
               >
                 {title}
               </Tab.Item>
@@ -54,6 +56,7 @@ const MediaUploader = ({
             <MediaEditor
               editor={editor}
               isImage={mediaUploader.image}
+              setMediaUrl={setMediaUrl}
               url={mediaUrl}
               onClose={handleClose}
             />

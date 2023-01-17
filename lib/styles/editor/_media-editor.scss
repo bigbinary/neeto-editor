@@ -5,6 +5,10 @@
   align-items: center;
   gap: 1.25rem;
 
+  button {
+    margin-right: auto;
+  }
+
   img,
   video {
     display: flex;
