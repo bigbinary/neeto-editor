@@ -15,12 +15,18 @@ import { isEmpty, assoc } from "ramda";
 
 import directUploadsApi from "apis/direct_uploads";
 
-import { ATTACHMENT_OPTIONS } from "./constants";
+import { ATTACHMENT_OPTIONS, OPTIONS_DISABLED_MESSAGE } from "./constants";
 import FileIcon from "./FileIcon";
 
 const { Menu, MenuItem } = Dropdown;
 
-const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
+const Attachment = ({
+  attachment,
+  endpoint,
+  onChange,
+  attachments,
+  isDisabled,
+}) => {
   const [isRenaming, setIsRenaming] = useState(false);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -132,18 +138,30 @@ const Attachment = ({ attachment, endpoint, onChange, attachments }) => {
             <Tooltip content={attachment.filename} position="top">
               <Typography style="body2">{attachment.filename}</Typography>
             </Tooltip>
-            <Dropdown buttonStyle="text" icon={MenuVertical}>
-              <Menu>
-                {Object.entries(handlers).map(([label, handler]) => (
-                  <MenuItem.Button
-                    key={label}
-                    onClick={() => onMenuItemClick({ key: label, handler })}
-                  >
-                    {label}
-                  </MenuItem.Button>
-                ))}
-              </Menu>
-            </Dropdown>
+            <Tooltip
+              content={OPTIONS_DISABLED_MESSAGE}
+              disabled={!isDisabled}
+              position="top"
+            >
+              <div>
+                <Dropdown
+                  buttonStyle="text"
+                  disabled={isDisabled}
+                  icon={MenuVertical}
+                >
+                  <Menu>
+                    {Object.entries(handlers).map(([label, handler]) => (
+                      <MenuItem.Button
+                        key={label}
+                        onClick={() => onMenuItemClick({ key: label, handler })}
+                      >
+                        {label}
+                      </MenuItem.Button>
+                    ))}
+                  </Menu>
+                </Dropdown>
+              </div>
+            </Tooltip>
           </>
         )}
       </div>
