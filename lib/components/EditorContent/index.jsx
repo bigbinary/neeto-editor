@@ -3,11 +3,21 @@ import React from "react";
 import classnames from "classnames";
 import DOMPurify from "dompurify";
 
-import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
-import { highlightCode } from "./utils";
+import { isNilOrEmpty } from "utils/common";
 
-const EditorContent = ({ content = "", className, ...otherProps }) => {
-  const htmlContent = highlightCode(content);
+import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
+import { highlightCode, substituteVariables } from "./utils";
+
+const EditorContent = ({
+  content = "",
+  variables = [],
+  className,
+  ...otherProps
+}) => {
+  const highlightedContent = highlightCode(content);
+  const htmlContent = !isNilOrEmpty(variables)
+    ? substituteVariables(highlightedContent, variables)
+    : highlightedContent;
   const sanitize = DOMPurify.sanitize;
 
   return (
