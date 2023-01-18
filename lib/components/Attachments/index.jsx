@@ -19,6 +19,7 @@ const Attachments = (
     className = "",
     onChange = _ => {},
     isIndependent = true,
+    disabled = false,
     dragDropRef = null,
   },
   ref
@@ -119,6 +120,7 @@ const Attachments = (
           <Attachment
             attachment={attachment}
             attachments={attachments}
+            disabled={disabled}
             endpoint={endpoint}
             key={attachment.signedId}
             onChange={onChange}

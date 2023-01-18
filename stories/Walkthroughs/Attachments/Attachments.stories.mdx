@@ -73,3 +73,10 @@ The attachments prop is an array of objects with the following structure:
     <Attachments attachments={attachments} onChange={setAttachments} />
   </Story>
 </Canvas>
+
+### **With options disabled**
+<Canvas>
+  <Story name="With options disabled">
+    <Attachments attachments={attachments} onChange={setAttachments} isIndependent={false} disabled />
+  </Story>
+</Canvas>
