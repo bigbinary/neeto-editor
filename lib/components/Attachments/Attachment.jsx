@@ -15,7 +15,7 @@ import { isEmpty, assoc } from "ramda";
 
 import directUploadsApi from "apis/direct_uploads";
 
-import { ATTACHMENT_OPTIONS, OPTIONS_DISABLED_MESSAGE } from "./constants";
+import { ATTACHMENT_OPTIONS } from "./constants";
 import FileIcon from "./FileIcon";
 
 const { Menu, MenuItem } = Dropdown;
@@ -25,7 +25,7 @@ const Attachment = ({
   endpoint,
   onChange,
   attachments,
-  isDisabled,
+  disabled,
 }) => {
   const [isRenaming, setIsRenaming] = useState(false);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
@@ -140,14 +140,14 @@ const Attachment = ({
               <Typography style="body2">{attachment.filename}</Typography>
             </Tooltip>
             <Tooltip
-              content={OPTIONS_DISABLED_MESSAGE}
-              disabled={!isDisabled}
+              content="You are not permitted to update or delete attachments"
+              disabled={!disabled}
               position="top"
             >
-              <div>
+              <span>
                 <Dropdown
                   buttonStyle="text"
-                  disabled={isDisabled}
+                  disabled={disabled}
                   icon={MenuVertical}
                 >
                   <Menu>
@@ -161,7 +161,7 @@ const Attachment = ({
                     ))}
                   </Menu>
                 </Dropdown>
-              </div>
+              </span>
             </Tooltip>
           </>
         )}

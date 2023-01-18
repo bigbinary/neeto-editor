@@ -17,7 +17,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
     "Ref for the Attachments component. This ref needs to be used for accessing the handleUploadAttachment function.",
   ],
   [
-    "isDisabled",
+    "disabled",
     "If true, the options to download, rename and delete the attachments will be disabled.",
   ],
 ];

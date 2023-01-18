@@ -121,6 +121,9 @@ interface AttachmentsProps {
   attachments?: Array<attachment>;
   dragDropRef?: React.RefObject<HTMLDivElement>;
   onChange: (attachments: attachment[]) => void;
+  isIndependent?: boolean;
+  disabled?: boolean;
+  className?: string;
 }
 
 export function Editor(props: EditorProps): JSX.Element;
