@@ -40,6 +40,34 @@ import { EditorContent } from "@bigbinary/neeto-editor";
 
 <br />
 
+### **`variables`**
+
+The `variables` prop is used to render the variables in the output content. The
+`variables` prop accepts an array of objects in the following two formats.
+
+```js
+[{key: "name", label: "Name", value: "John"}, {key: "age", label: "Age", value: "20"}]
+```
+
+```js
+[{
+    category_key: "ticket",
+    category_label: "Ticket",
+    variables: [
+      {
+        key: "id",
+        label: "ID",
+        value: "123",
+      },
+    ],
+  },]`,
+  ]
+```
+
+
+
+<br />
+
 ### **Without using the EditorContent component**
 
 #### **Include CSS in your project**
