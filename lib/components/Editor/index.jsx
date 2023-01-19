@@ -70,8 +70,8 @@ const Editor = (
   });
   const [isEmojiPickerActive, setIsEmojiPickerActive] = useState(false);
   const addAttachmentsRef = useRef(null);
-  const handleUploadAttachments =
-    addAttachmentsRef.current?.handleUploadAttachments || noop;
+  const handleUploadAttachments = () =>
+    addAttachmentsRef.current?.handleUploadAttachments() || noop();
 
   const customExtensions = useCustomExtensions({
     placeholder,
