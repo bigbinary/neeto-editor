@@ -69,6 +69,7 @@ const Editor = (
     video: false,
   });
   const [isEmojiPickerActive, setIsEmojiPickerActive] = useState(false);
+
   const addAttachmentsRef = useRef(null);
   const handleUploadAttachments = () =>
     addAttachmentsRef.current?.handleUploadAttachments() || noop();
