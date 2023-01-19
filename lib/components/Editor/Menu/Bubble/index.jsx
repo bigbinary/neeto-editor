@@ -17,6 +17,8 @@ const Bubble = ({
   setMediaUploader,
   tooltips = {},
   handleUploadAttachments,
+  isEmojiPickerActive,
+  setIsEmojiPickerActive,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
@@ -57,9 +59,11 @@ const Bubble = ({
         <Options
           editor={editor}
           handleUploadAttachments={handleUploadAttachments}
+          isEmojiPickerActive={isEmojiPickerActive}
           isLinkOptionActive={isLinkOptionActive}
           mentions={mentions}
           options={textOptions}
+          setIsEmojiPickerActive={setIsEmojiPickerActive}
           setIsInvalidLink={setIsInvalidLink}
           setIsLinkOptionActive={setIsLinkOptionActive}
           setMediaUploader={setMediaUploader}

@@ -27,6 +27,8 @@ const Fixed = ({
   className,
   tooltips = {},
   handleUploadAttachments,
+  isEmojiPickerActive,
+  setIsEmojiPickerActive,
 }) => {
   if (!editor) {
     return null;
@@ -73,6 +75,8 @@ const Fixed = ({
         {isEmojiActive && (
           <EmojiOption
             editor={editor}
+            isActive={isEmojiPickerActive}
+            setActive={setIsEmojiPickerActive}
             tooltipContent={tooltips.emoji || "Emoji"}
           />
         )}

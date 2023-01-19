@@ -16,6 +16,8 @@ const Headless = ({
   children,
   className,
   handleUploadAttachments,
+  isEmojiPickerActive,
+  setIsEmojiPickerActive,
 }) => {
   if (!editor) {
     return null;
@@ -27,6 +29,8 @@ const Headless = ({
     options,
     setMediaUploader,
     handleUploadAttachments,
+    isEmojiPickerActive,
+    setIsEmojiPickerActive,
   });
 
   const addonCommandOptions = buildOptionsFromAddonCommands({
