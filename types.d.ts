@@ -12,6 +12,7 @@ import { CodeBlockLowlightOptions } from "@tiptap/extension-code-block-lowlight"
 import { StarterKitOptions } from "@tiptap/starter-kit";
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { CharacterCountOptions } from "@tiptap/extension-character-count";
+import Variables from "components/Editor/CustomExtensions/Variable/index";
 
 interface Command {
   title: string;
@@ -24,9 +25,15 @@ interface Command {
 }
 
 interface Variable {
+  label?: string;
+  key: string;
+  value?: any;
+}
+
+interface VariableCategory {
   category_key: string;
-  category_label: string;
-  variables?: Array<{ key: string; label: string }>;
+  category_label?: string;
+  variables?: Variable[];
 }
 
 interface Mention {
@@ -69,7 +76,7 @@ interface MenuProps {
   addons?: string[];
   uploadEndpoint?: string;
   mentions?: Mention[];
-  variables?: Variable[];
+  variables: (VariableCategory | Variable)[];
   addonCommands?: Command[];
   isIndependant?: boolean;
   className?: string;
@@ -98,7 +105,7 @@ interface EditorProps {
   onFocus?: EditorFocus;
   onBlur?: EditorFocus;
   onSubmit?: (htmlContent: string) => void;
-  variables?: Variable[];
+  variables: (VariableCategory | Variable)[];
   mentions?: Mention[];
   placeholder?: string;
   extensions?: Array<Node | Extension>;
@@ -135,6 +142,7 @@ export function Attachments(props: AttachmentsProps): JSX.Element;
 export function EditorContent(props: {
   content?: string;
   className?: string;
+  variables: (VariableCategory | Variable)[];
   [otherProps: string]: any;
 }): JSX.Element;
 

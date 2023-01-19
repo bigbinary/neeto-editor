@@ -33,6 +33,11 @@ export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
     "Accepts a string value. Can be used for further customisation of the editor content.",
     `"neeto-editor-content"`,
   ],
+  [
+    "variables",
+    "Accepts an array of objects which cotains value to be substituted for the variables.",
+    `[{key: "name", value: "John"}]`,
+  ],
 ];
 
 export const EDITOR_SHORTCUTS_TABLE_COLUMNS = [

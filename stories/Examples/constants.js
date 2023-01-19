@@ -59,3 +59,46 @@ export const MENU_PROPS = [
      }`,
   ],
 ];
+
+export const VARIABLES = [
+  {
+    category_key: "ticket",
+    category_label: "Ticket",
+    variables: [
+      {
+        label: "ID",
+        key: "id",
+        value: "001",
+      },
+      {
+        label: "Name",
+        key: "name",
+        value: "Ticket name",
+      },
+    ],
+  },
+  {
+    label: "Subdomain",
+    key: "subdomain",
+    value: "subdomain name",
+  },
+  {
+    label: "User",
+    key: "user",
+  },
+  {
+    category_key: "organisation",
+    category_label: "Organisation",
+    variables: [
+      {
+        label: "ID",
+        key: "id",
+      },
+      {
+        label: "Name",
+        key: "name",
+        value: "Organisation name",
+      },
+    ],
+  },
+];
