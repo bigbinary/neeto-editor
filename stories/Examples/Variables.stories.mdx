@@ -1,6 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../lib";
 import Variables from "../assets/variables.png";
+import VariablesDemo from "./VariablesDemo";
 
 <Meta
   title="Examples/Variables"
@@ -55,5 +56,54 @@ typing`{{` within the editor.
 </Canvas>
 
 ### **Usage**
+following is the example of how to use variables in neetoEditor.
+<VariablesDemo />
 
-<img src={Variables} />
+<br />
+
+### **Variables Prop**
+
+```js
+[
+  {
+    category_key: "ticket",
+    category_label: "Ticket",
+    variables: [
+      {
+        label: "ID",
+        key: "id",
+        value: "001",
+      },
+      {
+        label: "Name",
+        key: "name",
+        value: "Ticket name",
+      },
+    ],
+  },
+  {
+    label: "Subdomain",
+    key: "subdomain",
+    value: "subdomain name",
+  },
+  {
+    label: "User",
+    key: "user",
+  },
+  {
+    category_key: "organisation",
+    category_label: "Organisation",
+    variables: [
+      {
+        label: "ID",
+        key: "id",
+      },
+      {
+        label: "Name",
+        key: "name",
+        value: "Organisation name",
+      },
+    ],
+  },
+];
+```

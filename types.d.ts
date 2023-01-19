@@ -25,15 +25,15 @@ interface Command {
 }
 
 interface Variable {
-  label: string;
+  label?: string;
   key: string;
   value?: any;
 }
 
 interface VariableCategory {
   category_key: string;
-  category_label: string;
-  variables: Variable[];
+  category_label?: string;
+  variables?: Variable[];
 }
 
 interface Mention {
