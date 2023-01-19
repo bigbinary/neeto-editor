@@ -67,7 +67,7 @@ const Fixed = ({
         )}
         {fontStyleOptions.map(renderOptionButton)}
         {blockStyleOptions.map(renderOptionButton)}
-        {isEmojiActive && <EmojiOption editor={editor} />}
+        {isEmojiActive && <EmojiOption editor={editor} tooltips={tooltips} />}
         {listStyleOptions.map(renderOptionButton)}
         {isLinkActive && <LinkOption editor={editor} tooltips={tooltips} />}
         {miscOptions.map(renderOptionButton)}

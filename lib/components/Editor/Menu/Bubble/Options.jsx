@@ -91,7 +91,7 @@ const Options = ({
           highlight: false,
           tooltip: tooltips?.link,
         })}
-      <Mentions editor={editor} mentions={mentions} />
+      <Mentions editor={editor} mentions={mentions} tooltips={tooltips} />
     </>
   );
 };
