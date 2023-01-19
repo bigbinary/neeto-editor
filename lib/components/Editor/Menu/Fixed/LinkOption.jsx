@@ -7,7 +7,7 @@ import { URL_REGEXP } from "common/constants";
 
 const { Menu } = Dropdown;
 
-const LinkOption = ({ editor }) => {
+const LinkOption = ({ editor, tooltips }) => {
   const [error, setError] = useState("");
   const [urlString, setUrlString] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +57,7 @@ const LinkOption = ({ editor }) => {
       isOpen={isOpen}
       position="bottom"
       buttonProps={{
-        tooltipProps: { content: "Link", position: "bottom" },
+        tooltipProps: { content: tooltips?.link || "Link", position: "bottom" },
         className: "neeto-editor-fixed-menu__item",
       }}
       onClick={handleDropDownClick}

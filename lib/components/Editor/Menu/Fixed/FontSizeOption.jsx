@@ -6,7 +6,7 @@ import { FONT_SIZE_OPTIONS } from "./constants";
 
 const { Menu, MenuItem } = Dropdown;
 
-const FontSizeOption = ({ editor }) => {
+const FontSizeOption = ({ editor, tooltips }) => {
   const isActive = level => editor.isActive("heading", { level });
   const label =
     FONT_SIZE_OPTIONS.find(({ value }) => isActive(value))?.label ||
@@ -25,7 +25,10 @@ const FontSizeOption = ({ editor }) => {
       label={label}
       placement="bottom-start"
       buttonProps={{
-        tooltipProps: { content: "Font size", position: "bottom" },
+        tooltipProps: {
+          content: tooltips?.fontSize || "Font size",
+          position: "bottom",
+        },
         className:
           "neeto-editor-fixed-menu__item neeto-editor-font-size__wrapper",
       }}

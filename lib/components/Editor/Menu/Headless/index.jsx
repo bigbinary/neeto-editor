@@ -10,6 +10,7 @@ import { buildOptionsFromAddonCommands } from "../Fixed/utils";
 const Headless = ({
   editor,
   options,
+  tooltips,
   setMediaUploader,
   addonCommands = [],
   children,
@@ -21,6 +22,7 @@ const Headless = ({
   }
 
   const menuOptions = buildMenuOptions({
+    tooltips,
     editor,
     options,
     setMediaUploader,

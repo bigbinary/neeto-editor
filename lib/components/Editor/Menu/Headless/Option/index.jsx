@@ -6,9 +6,17 @@ import { humanize } from "neetocommons/pure";
 import Emoji from "./Emoji";
 import Button from "./UI/Button";
 
-const Option = ({ editor, optionName, command, disabled, Icon, active }) => {
+const Option = ({
+  editor,
+  optionName,
+  command,
+  disabled,
+  Icon,
+  active,
+  tooltip,
+}) => {
   if (optionName === EDITOR_OPTIONS.EMOJI) {
-    return <Emoji editor={editor} optionName={optionName} />;
+    return <Emoji editor={editor} optionName={optionName} tooltip={tooltip} />;
   }
 
   return (
@@ -17,7 +25,7 @@ const Option = ({ editor, optionName, command, disabled, Icon, active }) => {
       disabled={disabled}
       icon={Icon}
       tooltipProps={{
-        content: humanize(optionName),
+        content: tooltip || humanize(optionName),
         delay: [500],
         position: "bottom",
       }}

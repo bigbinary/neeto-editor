@@ -25,6 +25,7 @@ const Fixed = ({
   addonCommands = [],
   isIndependant = true,
   className,
+  tooltips,
   handleUploadAttachments,
 }) => {
   if (!editor) {
@@ -38,6 +39,7 @@ const Fixed = ({
     misc: miscOptions,
     right: rightOptions,
   } = buildMenuOptions({
+    tooltips,
     editor,
     options,
     setMediaUploader,
@@ -60,21 +62,23 @@ const Fixed = ({
       })}
     >
       <div className="neeto-editor-fixed-menu__wrapper">
-        {isFontSizeActive && <FontSizeOption editor={editor} />}
+        {isFontSizeActive && (
+          <FontSizeOption editor={editor} tooltips={tooltips} />
+        )}
         {fontStyleOptions.map(renderOptionButton)}
         {blockStyleOptions.map(renderOptionButton)}
         {isEmojiActive && <EmojiOption editor={editor} />}
         {listStyleOptions.map(renderOptionButton)}
-        {isLinkActive && <LinkOption editor={editor} />}
+        {isLinkActive && <LinkOption editor={editor} tooltips={tooltips} />}
         {miscOptions.map(renderOptionButton)}
-        <Mentions editor={editor} mentions={mentions} />
+        <Mentions editor={editor} mentions={mentions} tooltips={tooltips} />
         {addonCommandOptions.map(renderOptionButton)}
         <div className="neeto-editor-fixed-menu__right-options">
           {rightOptions.map(renderOptionButton)}
         </div>
       </div>
       <div className="neeto-editor-fixed-menu__variables">
-        <Variables editor={editor} variables={variables} />
+        <Variables editor={editor} tooltips={tooltips} variables={variables} />
       </div>
     </div>
   );

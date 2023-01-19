@@ -34,6 +34,7 @@ const Editor = (
     defaults = DEFAULT_EDITOR_OPTIONS,
     addons = [],
     addonCommands = [],
+    tooltips = {},
     className,
     contentClassName,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
@@ -157,6 +158,7 @@ const Editor = (
             isIndependant={false}
             mentions={mentions}
             menuType={menuType}
+            tooltips={tooltips}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
           />

@@ -7,7 +7,7 @@ import { humanize } from "neetocommons/pure";
 
 import Dropdown from "./UI/Dropdown";
 
-const Emoji = ({ editor, optionName }) => {
+const Emoji = ({ editor, optionName, tooltip }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ const Emoji = ({ editor, optionName }) => {
       isOpen={isOpen}
       buttonProps={{
         tooltipProps: {
-          content: humanize(optionName),
+          content: tooltip || humanize(optionName),
           delay: [500],
           position: "bottom",
         },

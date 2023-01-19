@@ -3,22 +3,23 @@ import React from "react";
 import { Button } from "neetoui";
 import { fromPairs } from "ramda";
 
-import { humanize } from "neetocommons/pure";
 import { generateFocusProps } from "utils/focusHighlighter";
 
 import { MENU_OPTIONS } from "./constants";
 
 export const buildMenuOptions = ({
+  tooltips,
   editor,
   options,
   setMediaUploader,
   handleUploadAttachments,
 }) => {
-  const menuOptions = MENU_OPTIONS(
+  const menuOptions = MENU_OPTIONS({
+    tooltips,
     editor,
     setMediaUploader,
-    handleUploadAttachments
-  );
+    handleUploadAttachments,
+  });
 
   return fromPairs(
     ["font", "block", "list", "misc", "right"].map(option => [
@@ -35,6 +36,7 @@ export const renderOptionButton = ({
   optionName,
   highlight,
   disabled,
+  tooltip,
 }) => (
   <Button
     className="neeto-editor-fixed-menu__item"
@@ -43,7 +45,7 @@ export const renderOptionButton = ({
     icon={Icon}
     key={optionName}
     style={active ? "secondary" : "text"}
-    tooltipProps={{ content: humanize(optionName), position: "bottom" }}
+    tooltipProps={{ content: tooltip, position: "bottom" }}
     onClick={command}
     {...generateFocusProps(highlight)}
   />

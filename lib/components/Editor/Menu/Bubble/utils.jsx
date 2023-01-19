@@ -103,6 +103,7 @@ export const getNodeType = options =>
   options.find(prop("active"))?.optionName || "Text";
 
 export const renderOptionButton = ({
+  tooltip,
   Icon,
   command,
   active,
@@ -116,7 +117,7 @@ export const renderOptionButton = ({
     size="small"
     style={active ? "secondary" : "text"}
     tooltipProps={{
-      content: humanize(optionName),
+      content: tooltip || humanize(optionName),
       position: "bottom",
       theme: "dark",
       delay: [500],
