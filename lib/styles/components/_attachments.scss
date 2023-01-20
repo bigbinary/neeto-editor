@@ -76,8 +76,8 @@
     position: absolute;
     inset: 7px;
     border-radius: 5px;
-    background-color: rgba(var(--neeto-ui-gray-600), 0.15);
-    border: 5px dashed rgba(var(--neeto-ui-gray-600), 0.5);
+    background-color: rgba(var(--neeto-ui-primary-100), 0.3);
+    border: 3px dashed rgb(var(--neeto-ui-primary-100));
     content: 'Drop the file here';
     display: flex;
     align-items: center;

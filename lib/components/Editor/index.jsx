@@ -126,13 +126,7 @@ const Editor = (
   };
 
   return (
-    <div
-      ref={dragDropRef}
-      className={classnames({
-        [className]: className,
-        "ne-attachments__wrapper": isAttachmentsActive,
-      })}
-    >
+    <>
       {label && (
         <Label
           className="neeto-ui-mb-2"
@@ -160,27 +154,35 @@ const Editor = (
             uploadEndpoint={uploadEndpoint}
             variables={variables}
           />
-          <EditorContent editor={editor} {...otherProps} />
-          <ImageUploader
-            editor={editor}
-            mediaUploader={mediaUploader}
-            unsplashApiKey={editorSecrets.unsplash}
-            uploadEndpoint={uploadEndpoint}
-            onClose={() => setMediaUploader({ image: false, video: false })}
-          />
-          {isAttachmentsActive && (
-            <Attachments
-              attachments={attachments}
-              className="ne-attachments--integrated"
-              dragDropRef={dragDropRef}
-              isIndependent={false}
-              ref={addAttachmentsRef}
-              onChange={onChangeAttachments}
+          <div
+            ref={dragDropRef}
+            className={classnames({
+              [className]: className,
+              "ne-attachments__wrapper": isAttachmentsActive,
+            })}
+          >
+            <EditorContent editor={editor} {...otherProps} />
+            <ImageUploader
+              editor={editor}
+              mediaUploader={mediaUploader}
+              unsplashApiKey={editorSecrets.unsplash}
+              uploadEndpoint={uploadEndpoint}
+              onClose={() => setMediaUploader({ image: false, video: false })}
             />
-          )}
+            {isAttachmentsActive && (
+              <Attachments
+                attachments={attachments}
+                className="ne-attachments--integrated"
+                dragDropRef={dragDropRef}
+                isIndependent={false}
+                ref={addAttachmentsRef}
+                onChange={onChangeAttachments}
+              />
+            )}
+          </div>
         </CharacterCountWrapper>
       </ErrorWrapper>
-    </div>
+    </>
   );
 };
 

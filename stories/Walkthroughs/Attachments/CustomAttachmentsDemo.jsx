@@ -14,7 +14,11 @@ const CustomAttachmentsDemo = () => {
   return (
     <>
       <Button label="Custom upload button" onClick={handleUpload} />
-      <Attachments isIndependent={false} ref={attachmentsRef} />
+      <Attachments
+        className="pt-2"
+        isIndependent={false}
+        ref={attachmentsRef}
+      />
     </>
   );
 };
