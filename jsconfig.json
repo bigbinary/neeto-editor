@@ -8,6 +8,8 @@
     "moduleResolution": "NodeNext",
     "baseUrl": "./lib",
     "paths": {
+      "lib/*": ["lib/*"],
+      "lib": ["lib"],
       "apis/*": ["apis/*"],
       "apis": ["apis"],
       "assets/*": ["assets/*"],
