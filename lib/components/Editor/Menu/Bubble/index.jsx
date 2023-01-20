@@ -15,7 +15,7 @@ const Bubble = ({
   options: textOptions,
   mentions = [],
   setMediaUploader,
-  tooltips,
+  tooltips = {},
   handleUploadAttachments,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);

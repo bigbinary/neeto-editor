@@ -25,7 +25,7 @@ const Fixed = ({
   addonCommands = [],
   isIndependant = true,
   className,
-  tooltips,
+  tooltips = {},
   handleUploadAttachments,
 }) => {
   if (!editor) {
