@@ -94,10 +94,10 @@ const Attachment = ({
   };
 
   const handleKeyDown = ({ event, key }) => {
-    event.preventDefault();
     const handler = handlers[key];
 
     if (event.key === "Enter" && handler && !isEmpty(newFilename)) {
+      event.preventDefault();
       handler();
     }
 
@@ -116,6 +116,7 @@ const Attachment = ({
               <Input
                 autoFocus
                 error={isEmpty(newFilename) ? "Filename cannot be empty" : ""}
+                size="small"
                 value={newFilename}
                 onChange={e => setNewFilename(e.target.value)}
                 onKeyDown={event =>
@@ -146,6 +147,7 @@ const Attachment = ({
             >
               <span>
                 <Dropdown
+                  buttonSize="small"
                   buttonStyle="text"
                   disabled={disabled}
                   icon={MenuVertical}

@@ -16,6 +16,7 @@
     padding: 4px 2px 4px 8px;
     border-radius: var(--neeto-ui-rounded-sm);
     border: 1px solid rgb(var(--neeto-ui-gray-200));
+    background-color: rgb(var(--neeto-ui-white));
     width: 256px;
 
     &-file-icon {
@@ -28,7 +29,7 @@
       display: flex;
       opacity: 0.5;
       justify-content: space-between;
-      width: 80%;
+      width: 76%;
 
       p {
         white-space: nowrap;
@@ -42,7 +43,8 @@
       }
 
       &-icon {
-        opacity: 0.5;
+        width: 15px;
+        height: auto;
       }
     }
 
@@ -75,8 +77,8 @@
     position: absolute;
     inset: 7px;
     border-radius: 5px;
-    background-color: rgba(var(--neeto-ui-gray-600), 0.15);
-    border: 5px dashed rgba(var(--neeto-ui-gray-600), 0.5);
+    background-color: rgba(var(--neeto-ui-primary-100), 0.3);
+    border: 3px dashed rgb(var(--neeto-ui-primary-100));
     content: 'Drop the file here';
     display: flex;
     align-items: center;
