@@ -63,22 +63,43 @@ const Fixed = ({
     >
       <div className="neeto-editor-fixed-menu__wrapper">
         {isFontSizeActive && (
-          <FontSizeOption editor={editor} tooltips={tooltips} />
+          <FontSizeOption
+            editor={editor}
+            tooltipContent={tooltips.fontSize || "Font size"}
+          />
         )}
         {fontStyleOptions.map(renderOptionButton)}
         {blockStyleOptions.map(renderOptionButton)}
-        {isEmojiActive && <EmojiOption editor={editor} tooltips={tooltips} />}
+        {isEmojiActive && (
+          <EmojiOption
+            editor={editor}
+            tooltipContent={tooltips.emoji || "Emoji"}
+          />
+        )}
         {listStyleOptions.map(renderOptionButton)}
-        {isLinkActive && <LinkOption editor={editor} tooltips={tooltips} />}
+        {isLinkActive && (
+          <LinkOption
+            editor={editor}
+            tooltipContent={tooltips.link || "Link"}
+          />
+        )}
         {miscOptions.map(renderOptionButton)}
-        <Mentions editor={editor} mentions={mentions} tooltips={tooltips} />
+        <Mentions
+          editor={editor}
+          mentions={mentions}
+          tooltipContent={tooltips.mention || "Mention"}
+        />
         {addonCommandOptions.map(renderOptionButton)}
         <div className="neeto-editor-fixed-menu__right-options">
           {rightOptions.map(renderOptionButton)}
         </div>
       </div>
       <div className="neeto-editor-fixed-menu__variables">
-        <Variables editor={editor} tooltips={tooltips} variables={variables} />
+        <Variables
+          editor={editor}
+          tooltipContent={tooltips.variables || "Variables"}
+          variables={variables}
+        />
       </div>
     </div>
   );

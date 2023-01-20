@@ -80,7 +80,12 @@ const Options = ({
       </Dropdown>
       {fontStyleOptions.map(renderOptionButton)}
       {blockStyleOptions.map(renderOptionButton)}
-      {isEmojiActive && <EmojiOption editor={editor} tooltips={tooltips} />}
+      {isEmojiActive && (
+        <EmojiOption
+          editor={editor}
+          tooltipContent={tooltips.emoji || "Emoji"}
+        />
+      )}
       {listStyleOptions.map(renderOptionButton)}
       {isLinkActive &&
         renderOptionButton({
@@ -89,9 +94,13 @@ const Options = ({
           active: editor.isActive("link"),
           optionName: "link",
           highlight: false,
-          tooltip: tooltips?.link,
+          tooltip: tooltips.link || "Link",
         })}
-      <Mentions editor={editor} mentions={mentions} tooltips={tooltips} />
+      <Mentions
+        editor={editor}
+        mentions={mentions}
+        tooltipContent={tooltips.mention || "Mention"}
+      />
     </>
   );
 };

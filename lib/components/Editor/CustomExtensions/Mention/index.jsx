@@ -6,7 +6,7 @@ import { isEmpty } from "ramda";
 
 import { formatMentions } from "./utils";
 
-const Mentions = ({ editor, mentions, tooltips }) => {
+const Mentions = ({ editor, mentions, tooltipContent }) => {
   const formattedMentions = formatMentions(mentions);
   const { Menu, MenuItem } = Dropdown;
 
@@ -20,7 +20,7 @@ const Mentions = ({ editor, mentions, tooltips }) => {
       strategy="fixed"
       buttonProps={{
         tooltipProps: {
-          content: tooltips?.mention || "Mention",
+          content: tooltipContent,
           position: "bottom",
         },
         className: "neeto-editor-fixed-menu__item",

@@ -12,7 +12,6 @@ import {
 import { Button } from "neetoui";
 import { prop } from "ramda";
 
-import { humanize } from "neetocommons/pure";
 import { generateFocusProps } from "utils/focusHighlighter";
 
 export const getTextMenuDefaultOptions = ({
@@ -117,7 +116,7 @@ export const renderOptionButton = ({
     size="small"
     style={active ? "secondary" : "text"}
     tooltipProps={{
-      content: tooltip || humanize(optionName),
+      content: tooltip,
       position: "bottom",
       theme: "dark",
       delay: [500],

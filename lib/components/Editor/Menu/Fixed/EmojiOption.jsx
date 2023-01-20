@@ -5,7 +5,7 @@ import { Dropdown } from "neetoui";
 
 import EmojiPickerMenu from "../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
 
-const EmojiOption = ({ editor, tooltips }) => (
+const EmojiOption = ({ editor, tooltipContent }) => (
   <Dropdown
     buttonStyle="text"
     closeOnSelect={false}
@@ -14,7 +14,7 @@ const EmojiOption = ({ editor, tooltips }) => (
     position="bottom-start"
     strategy="fixed"
     buttonProps={{
-      tooltipProps: { content: tooltips?.emoji || "Emoji", position: "bottom" },
+      tooltipProps: { content: tooltipContent, position: "bottom" },
       className: "neeto-editor-fixed-menu__item",
     }}
   >

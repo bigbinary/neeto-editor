@@ -6,7 +6,7 @@ import { FONT_SIZE_OPTIONS } from "./constants";
 
 const { Menu, MenuItem } = Dropdown;
 
-const FontSizeOption = ({ editor, tooltips }) => {
+const FontSizeOption = ({ editor, tooltipContent }) => {
   const isActive = level => editor.isActive("heading", { level });
   const label =
     FONT_SIZE_OPTIONS.find(({ value }) => isActive(value))?.label ||
@@ -26,7 +26,7 @@ const FontSizeOption = ({ editor, tooltips }) => {
       placement="bottom-start"
       buttonProps={{
         tooltipProps: {
-          content: tooltips?.fontSize || "Font size",
+          content: tooltipContent,
           position: "bottom",
         },
         className:

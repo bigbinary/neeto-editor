@@ -8,7 +8,7 @@ import VariableList from "./VariableList";
 
 const { Menu } = Dropdown;
 
-const Variables = ({ editor, variables, tooltips }) => {
+const Variables = ({ editor, variables, tooltipContent }) => {
   const handleClickItem = item => {
     const { category_key, key } = item;
     const variableName = category_key ? `${category_key}.${key}` : key;
@@ -28,7 +28,7 @@ const Variables = ({ editor, variables, tooltips }) => {
       strategy="fixed"
       buttonProps={{
         tooltipProps: {
-          content: tooltips?.variables || "Variables",
+          content: tooltipContent,
           position: "bottom",
         },
       }}

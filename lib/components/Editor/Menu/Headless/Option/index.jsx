@@ -1,7 +1,6 @@
 import React from "react";
 
 import { EDITOR_OPTIONS } from "common/constants";
-import { humanize } from "neetocommons/pure";
 
 import Emoji from "./Emoji";
 import Button from "./UI/Button";
@@ -16,7 +15,7 @@ const Option = ({
   tooltip,
 }) => {
   if (optionName === EDITOR_OPTIONS.EMOJI) {
-    return <Emoji editor={editor} optionName={optionName} tooltip={tooltip} />;
+    return <Emoji editor={editor} tooltipContent={tooltip.emoji || "Emoji"} />;
   }
 
   return (
@@ -25,7 +24,7 @@ const Option = ({
       disabled={disabled}
       icon={Icon}
       tooltipProps={{
-        content: tooltip || humanize(optionName),
+        content: tooltip,
         delay: [500],
         position: "bottom",
       }}
