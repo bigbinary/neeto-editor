@@ -146,6 +146,7 @@ const Attachment = ({
             >
               <span>
                 <Dropdown
+                  buttonSize="small"
                   buttonStyle="text"
                   disabled={disabled}
                   icon={MenuVertical}

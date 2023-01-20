@@ -14,7 +14,7 @@ const AttachmentProgress = ({ attachment, uppy, removeUploadingFile }) => {
 
   return (
     <div className="ne-attachments__attachment">
-      <div className="ne-attachments__attachment-file-icon">
+      <div className="ne-attachments__attachment__progress-icon">
         <FileIcon />
       </div>
       <div className="ne-attachments__attachment__progress">
