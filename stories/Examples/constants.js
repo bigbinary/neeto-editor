@@ -58,6 +58,26 @@ export const MENU_PROPS = [
       unsplash: "<unsplash-api-key>"
      }`,
   ],
+  [
+    "tooltips",
+    "Accepts an object. Use this prop to pass down custom tooltips for the options.",
+    `{
+      bold: "Bold",
+      italic: "Italic",
+      underline: "Underline",
+      strke: "Strikethrough",
+      attachments: "Attachment",
+      code: "Code",
+      blockQuote: "Blockquote",
+      imageUpload: "Image Upload",
+      videoUpload: "Video Upload",
+      emoji: "Emoji",
+      bulletList: "Bullet List",
+      orderedList: "Ordered List",
+      variables: "Variables",
+      mention: "Mentions",
+    }`,
+  ],
 ];
 
 export const VARIABLES = [

@@ -20,6 +20,7 @@ const Options = ({
   editor,
   options,
   mentions,
+  tooltips,
   setIsInvalidLink,
   isLinkOptionActive,
   setIsLinkOptionActive,
@@ -40,6 +41,7 @@ const Options = ({
     editor,
     options,
     setMediaUploader,
+    tooltips,
     handleUploadAttachments,
   });
 
@@ -78,7 +80,12 @@ const Options = ({
       </Dropdown>
       {fontStyleOptions.map(renderOptionButton)}
       {blockStyleOptions.map(renderOptionButton)}
-      {isEmojiActive && <EmojiOption editor={editor} />}
+      {isEmojiActive && (
+        <EmojiOption
+          editor={editor}
+          tooltipContent={tooltips.emoji || "Emoji"}
+        />
+      )}
       {listStyleOptions.map(renderOptionButton)}
       {isLinkActive &&
         renderOptionButton({
@@ -87,8 +94,13 @@ const Options = ({
           active: editor.isActive("link"),
           optionName: "link",
           highlight: false,
+          tooltip: tooltips.link || "Link",
         })}
-      <Mentions editor={editor} mentions={mentions} />
+      <Mentions
+        editor={editor}
+        mentions={mentions}
+        tooltipContent={tooltips.mention || "Mention"}
+      />
     </>
   );
 };

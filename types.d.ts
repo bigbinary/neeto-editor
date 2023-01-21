@@ -69,7 +69,12 @@ interface Config {
   placeholder?: Partial<PlaceholderOptions>;
 }
 
+interface tooltips {
+[key: string]: string;
+}
+
 interface MenuProps {
+  tooltips?: tooltips;
   editor: string;
   menuType?: "fixed" | "bubble" | "headless" | "none";
   defaults?: string[];
@@ -88,7 +93,9 @@ type attachment = {
   url?: string;
   [otherProps: string]: any;
 };
+
 interface EditorProps {
+  tooltips?: tooltips;
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "headless" | "none";
   label?: string;

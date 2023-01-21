@@ -25,6 +25,7 @@ const Fixed = ({
   addonCommands = [],
   isIndependant = true,
   className,
+  tooltips = {},
   handleUploadAttachments,
 }) => {
   if (!editor) {
@@ -38,6 +39,7 @@ const Fixed = ({
     misc: miscOptions,
     right: rightOptions,
   } = buildMenuOptions({
+    tooltips,
     editor,
     options,
     setMediaUploader,
@@ -60,21 +62,44 @@ const Fixed = ({
       })}
     >
       <div className="neeto-editor-fixed-menu__wrapper">
-        {isFontSizeActive && <FontSizeOption editor={editor} />}
+        {isFontSizeActive && (
+          <FontSizeOption
+            editor={editor}
+            tooltipContent={tooltips.fontSize || "Font size"}
+          />
+        )}
         {fontStyleOptions.map(renderOptionButton)}
         {blockStyleOptions.map(renderOptionButton)}
-        {isEmojiActive && <EmojiOption editor={editor} />}
+        {isEmojiActive && (
+          <EmojiOption
+            editor={editor}
+            tooltipContent={tooltips.emoji || "Emoji"}
+          />
+        )}
         {listStyleOptions.map(renderOptionButton)}
-        {isLinkActive && <LinkOption editor={editor} />}
+        {isLinkActive && (
+          <LinkOption
+            editor={editor}
+            tooltipContent={tooltips.link || "Link"}
+          />
+        )}
         {miscOptions.map(renderOptionButton)}
-        <Mentions editor={editor} mentions={mentions} />
+        <Mentions
+          editor={editor}
+          mentions={mentions}
+          tooltipContent={tooltips.mention || "Mention"}
+        />
         {addonCommandOptions.map(renderOptionButton)}
         <div className="neeto-editor-fixed-menu__right-options">
           {rightOptions.map(renderOptionButton)}
         </div>
       </div>
       <div className="neeto-editor-fixed-menu__variables">
-        <Variables editor={editor} variables={variables} />
+        <Variables
+          editor={editor}
+          tooltipContent={tooltips.variables || "Variables"}
+          variables={variables}
+        />
       </div>
     </div>
   );

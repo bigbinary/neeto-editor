@@ -3,11 +3,10 @@ import React, { useState } from "react";
 import { Smiley } from "neetoicons";
 
 import EmojiPicker from "components/Editor/CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
-import { humanize } from "neetocommons/pure";
 
 import Dropdown from "./UI/Dropdown";
 
-const Emoji = ({ editor, optionName }) => {
+const Emoji = ({ editor, tooltipContent }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,7 +16,7 @@ const Emoji = ({ editor, optionName }) => {
       isOpen={isOpen}
       buttonProps={{
         tooltipProps: {
-          content: humanize(optionName),
+          content: tooltipContent,
           delay: [500],
           position: "bottom",
         },
