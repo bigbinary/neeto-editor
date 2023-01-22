@@ -18,6 +18,7 @@ const EmojiOption = ({ editor, isActive, setActive, tooltipContent }) => (
       tooltipProps: { content: tooltipContent, position: "bottom" },
       className: "neeto-editor-fixed-menu__item",
     }}
+    onClick={() => setActive(active => !active)}
     onClose={() => setActive(false)}
   >
     <EmojiPickerMenu editor={editor} />
