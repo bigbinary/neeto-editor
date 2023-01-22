@@ -26,6 +26,8 @@ const Options = ({
   setIsLinkOptionActive,
   setMediaUploader,
   handleUploadAttachments,
+  isEmojiPickerActive,
+  setIsEmojiPickerActive,
 }) => {
   const { Menu, MenuItem } = Dropdown;
 
@@ -83,6 +85,8 @@ const Options = ({
       {isEmojiActive && (
         <EmojiOption
           editor={editor}
+          isActive={isEmojiPickerActive}
+          setActive={setIsEmojiPickerActive}
           tooltipContent={tooltips.emoji || "Emoji"}
         />
       )}
