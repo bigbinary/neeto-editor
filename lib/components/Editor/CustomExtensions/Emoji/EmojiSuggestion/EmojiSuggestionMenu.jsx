@@ -2,7 +2,7 @@ import React from "react";
 
 import classnames from "classnames";
 import { init, SearchIndex } from "emoji-mart";
-import { Spinner } from "neetoui";
+import { Kbd, Spinner } from "neetoui";
 
 import emojiPickerApi from "apis/emoji_picker";
 import { isNilOrEmpty } from "utils/common";
@@ -74,7 +74,10 @@ class EmojiSuggestionMenu extends React.Component {
   };
 
   onKeyDown = ({ event }) => {
-    if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
+    if (
+      event.altKey &&
+      (event.key === "ArrowLeft" || event.key === "ArrowDown")
+    ) {
       this.setState(({ selectedIndex, emojiSuggestions }) => ({
         selectedIndex:
           (selectedIndex + emojiSuggestions.length - 1) %
@@ -84,7 +87,10 @@ class EmojiSuggestionMenu extends React.Component {
       return true;
     }
 
-    if (event.key === "ArrowRight" || event.key === "ArrowUp") {
+    if (
+      event.altKey &&
+      (event.key === "ArrowRight" || event.key === "ArrowUp")
+    ) {
       this.setState(({ selectedIndex, emojiSuggestions }) => ({
         selectedIndex: (selectedIndex + 1) % emojiSuggestions.length,
       }));
@@ -148,6 +154,7 @@ class EmojiSuggestionMenu extends React.Component {
           ) : (
             <p>No results</p>
           ))}
+        (<Kbd keyName="⌥" />+<Kbd keyName="↔" />)
       </div>
     );
   }
