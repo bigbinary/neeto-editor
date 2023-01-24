@@ -56,7 +56,9 @@ typing`{{` within the editor.
 </Canvas>
 
 ### **Usage**
+
 following is the example of how to use variables in neetoEditor.
+
 <VariablesDemo />
 
 <br />
@@ -107,3 +109,14 @@ following is the example of how to use variables in neetoEditor.
   },
 ];
 ```
+
+### **substituteVariables** method
+
+The `substituteVariables` method can be used to substitute the variables of the
+editor content with the associated values.
+
+```jsx
+const parsedEditorContent = substituteVariables(editorContent, variables);
+```
+
+Here `variables` is an array of the above mentioned format.
