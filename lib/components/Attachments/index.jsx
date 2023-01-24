@@ -109,9 +109,13 @@ const Attachments = (
     }
 
     return () => {
+      const instance = uppy.getPlugin("DropTarget");
+      if (instance) {
+        uppy.removePlugin(instance);
+      }
       uppy.off("upload-progress", handleUploadProgress);
     };
-  }, []);
+  }, [attachments]);
 
   return (
     <div className={classnames("ne-attachments", { [className]: className })}>
