@@ -74,6 +74,11 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
     color: rgb(var(--neeto-ui-gray-800));
   }
 
+  span {
+    height: 20px !important;
+    width: 20px !important;
+  }
+
   .neeto-editor-emoji-suggestion__item {
     padding: 6px;
     font-size: var(--neeto-ui-text-2xl);

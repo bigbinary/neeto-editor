@@ -154,7 +154,8 @@ class EmojiSuggestionMenu extends React.Component {
           ) : (
             <p>No results</p>
           ))}
-        (<Kbd keyName="⌥" />+<Kbd keyName="↔" />)
+        (<Kbd keyName="⌥" />+
+        <Kbd keyName="↔" />)
       </div>
     );
   }
