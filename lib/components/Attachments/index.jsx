@@ -104,14 +104,18 @@ const Attachments = (
     if (dragDropRef?.current) {
       uppy.use(DropTarget, {
         target: dragDropRef.current,
-        onDrop: afterAddingFiles,
+        onDrop: () => afterAddingFiles(),
       });
     }
 
     return () => {
+      const instance = uppy.getPlugin("DropTarget");
+      if (instance) {
+        uppy.removePlugin(instance);
+      }
       uppy.off("upload-progress", handleUploadProgress);
     };
-  }, []);
+  }, [attachments]);
 
   return (
     <div className={classnames("ne-attachments", { [className]: className })}>
