@@ -104,7 +104,7 @@ const Attachments = (
     if (dragDropRef?.current) {
       uppy.use(DropTarget, {
         target: dragDropRef.current,
-        onDrop: () => afterAddingFiles(),
+        onDrop: afterAddingFiles,
       });
     }
 
