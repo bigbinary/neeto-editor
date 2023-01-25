@@ -55,10 +55,10 @@ export const EDITOR_SHORTCUTS_TABLE_ROWS = [
   ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
   ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
   ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
-  ["Emoji", "Ctrl + Shift + E", "Cmd + Shift + E"],
-  ["Vieo uploader", "Ctrl + Shift + V", "Cmd + Shift + V"],
-  ["Image uploader", "Ctrl + Shift + I", "Cmd + Shift + k"],
-  ["Upload attachments", "Ctrl + Shift + A", "Cmd + Shift + A"],
+  ["Emoji", "Ctrl + Alt + E", "Cmd + Opt + E"],
+  ["Video uploader", "Ctrl + Alt + V", "Cmd + Opt + V"],
+  ["Image uploader", "Ctrl + Alt + I", "Cmd + Opt + K"],
+  ["Upload attachments", "Ctrl + Alt + A", "Cmd + Opt + A"],
 ];
 
 export const CUSTOM_SLASH_COMMANDS_TABLE_COLUMNS = ["Property", "Description"];
