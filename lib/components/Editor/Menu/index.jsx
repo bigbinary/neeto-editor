@@ -40,25 +40,21 @@ const Menu = props => {
     ? [...DEFAULT_EDITOR_OPTIONS, ...addons]
     : options;
 
-  useEffect(() => {
-    document.addEventListener("keydown", e => {
-      if (e.metaKey && e.altKey && e.code === "KeyE") {
+  const handleKeyDown = e => {
+    if ((e.metaKey || e.ctrlKey) && e.altKey) {
+      if (e.code === "KeyE") {
         setIsEmojiPickerActive(prevState => !prevState);
-      }
-
-      if (e.metaKey && e.altKey && e.code === "KeyA") {
+      } else if (e.code === "KeyA") {
         handleUploadAttachments();
-      }
-
-      if (e.metaKey && e.altKey && e.code === "KeyK") {
+      } else if (e.code === "KeyK") {
         setMediaUploader(assoc("image", true));
-      }
-
-      if (e.metaKey && e.altKey && e.code === "KeyV") {
+      } else if (e.code === "KeyV") {
         setMediaUploader(assoc("video", true));
       }
-    });
-  }, []);
+    }
+  };
+
+  useEffect(() => document.addEventListener("keydown", handleKeyDown), []);
 
   return (
     <>
