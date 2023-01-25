@@ -49,6 +49,7 @@ class EmojiPickerMenu extends React.Component {
       .deleteRange(this.props.range)
       .setEmoji(emoji)
       .run();
+    this.props.setActive(false);
   };
 
   render() {
