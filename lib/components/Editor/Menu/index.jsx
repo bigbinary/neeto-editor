@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { isEmpty } from "ramda";
+import { assoc, isEmpty } from "ramda";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 
@@ -12,6 +12,7 @@ import { DEFAULT_EDITOR_OPTIONS } from "../constants";
 import MediaUploader from "../MediaUploader";
 
 const Menu = props => {
+  const [isEmojiPickerActive, setIsEmojiPickerActive] = useState(false);
   const [mediaUploader, setMediaUploader] = useState({
     image: false,
     video: false,
@@ -25,8 +26,6 @@ const Menu = props => {
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
     handleUploadAttachments,
-    isEmojiPickerActive,
-    setIsEmojiPickerActive,
   } = props;
 
   const menuComponent = {
@@ -40,6 +39,22 @@ const Menu = props => {
   const menuOptions = isEmpty(options)
     ? [...DEFAULT_EDITOR_OPTIONS, ...addons]
     : options;
+
+  const handleKeyDown = e => {
+    if ((e.metaKey || e.ctrlKey) && e.altKey) {
+      if (e.code === "KeyE") {
+        setIsEmojiPickerActive(prevState => !prevState);
+      } else if (e.code === "KeyA") {
+        handleUploadAttachments();
+      } else if (e.code === "KeyK") {
+        setMediaUploader(assoc("image", true));
+      } else if (e.code === "KeyV") {
+        setMediaUploader(assoc("video", true));
+      }
+    }
+  };
+
+  useEffect(() => document.addEventListener("keydown", handleKeyDown), []);
 
   return (
     <>

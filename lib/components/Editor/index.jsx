@@ -68,7 +68,6 @@ const Editor = (
     image: false,
     video: false,
   });
-  const [isEmojiPickerActive, setIsEmojiPickerActive] = useState(false);
 
   const addAttachmentsRef = useRef(null);
   const handleUploadAttachments = () =>
@@ -87,8 +86,6 @@ const Editor = (
     uploadEndpoint,
     config,
     setMediaUploader,
-    handleUploadAttachments,
-    setIsEmojiPickerActive,
   });
   useEditorWarnings({ initialValue });
 
@@ -158,11 +155,9 @@ const Editor = (
             editor={editor}
             editorSecrets={editorSecrets}
             handleUploadAttachments={handleUploadAttachments}
-            isEmojiPickerActive={isEmojiPickerActive}
             isIndependant={false}
             mentions={mentions}
             menuType={menuType}
-            setIsEmojiPickerActive={setIsEmojiPickerActive}
             tooltips={tooltips}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
