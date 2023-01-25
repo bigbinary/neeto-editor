@@ -21,7 +21,7 @@ const EmojiOption = ({ editor, isActive, setActive, tooltipContent }) => (
     onClick={() => setActive(active => !active)}
     onClose={() => setActive(false)}
   >
-    <EmojiPickerMenu editor={editor} />
+    <EmojiPickerMenu editor={editor} setActive={setActive} />
   </Dropdown>
 );
 
