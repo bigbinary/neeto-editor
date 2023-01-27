@@ -11,16 +11,24 @@ const Option = ({
   command,
   disabled,
   Icon,
-  active,
+  isActive,
+  setActive,
   tooltip,
 }) => {
   if (optionName === EDITOR_OPTIONS.EMOJI) {
-    return <Emoji editor={editor} tooltipContent={tooltip.emoji || "Emoji"} />;
+    return (
+      <Emoji
+        editor={editor}
+        isActive={isActive}
+        setActive={setActive}
+        tooltipContent={tooltip || "Emoji"}
+      />
+    );
   }
 
   return (
     <Button
-      className={active ? "ne-headless-btn--active" : ""}
+      className={isActive ? "ne-headless-btn--active" : ""}
       disabled={disabled}
       icon={Icon}
       tooltipProps={{

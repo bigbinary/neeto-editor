@@ -40,21 +40,26 @@ const Menu = props => {
     ? [...DEFAULT_EDITOR_OPTIONS, ...addons]
     : options;
 
-  const handleKeyDown = e => {
-    if ((e.metaKey || e.ctrlKey) && e.altKey) {
-      if (e.code === "KeyE") {
-        setIsEmojiPickerActive(prevState => !prevState);
-      } else if (e.code === "KeyA") {
-        handleUploadAttachments();
-      } else if (e.code === "KeyK") {
-        setMediaUploader(assoc("image", true));
-      } else if (e.code === "KeyV") {
-        setMediaUploader(assoc("video", true));
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if ((e.metaKey || e.ctrlKey) && e.altKey) {
+        if (e.code === "KeyE") {
+          setIsEmojiPickerActive(prevState => !prevState);
+        } else if (e.code === "KeyA") {
+          handleUploadAttachments();
+        } else if (e.code === "KeyK") {
+          setMediaUploader(assoc("image", true));
+        } else if (e.code === "KeyV") {
+          setMediaUploader(assoc("video", true));
+        }
       }
-    }
-  };
+    };
+    document.addEventListener("keydown", handleKeyDown);
 
-  useEffect(() => document.addEventListener("keydown", handleKeyDown), []);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { Smiley } from "neetoicons";
 
@@ -6,30 +6,22 @@ import EmojiPicker from "components/Editor/CustomExtensions/Emoji/EmojiPicker/Em
 
 import Dropdown from "./UI/Dropdown";
 
-const Emoji = ({ editor, isActive, setActive, tooltipContent }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <Dropdown
-      className="ne-headless__emoji"
-      icon={Smiley}
-      isOpen={isOpen || isActive}
-      buttonProps={{
-        tooltipProps: {
-          content: tooltipContent,
-          delay: [500],
-          position: "bottom",
-        },
-      }}
-      onClick={() => setIsOpen(open => !open)}
-      onClose={() => {
-        setIsOpen(false);
-        setActive(false);
-      }}
-    >
-      <EmojiPicker editor={editor} />
-    </Dropdown>
-  );
-};
-
+const Emoji = ({ editor, isActive, setActive, tooltipContent }) => (
+  <Dropdown
+    className="ne-headless__emoji"
+    icon={Smiley}
+    isOpen={isActive}
+    buttonProps={{
+      tooltipProps: {
+        content: tooltipContent,
+        delay: [500],
+        position: "bottom",
+      },
+    }}
+    onClick={() => setActive(active => !active)}
+    onClose={() => setActive(false)}
+  >
+    <EmojiPicker editor={editor} setActive={setActive} />
+  </Dropdown>
+);
 export default Emoji;
