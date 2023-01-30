@@ -13,12 +13,14 @@ export const buildMenuOptions = ({
   options,
   setMediaUploader,
   handleUploadAttachments,
+  setIsEmbedModalOpen,
 }) => {
   const menuOptions = MENU_OPTIONS({
     tooltips,
     editor,
     setMediaUploader,
     handleUploadAttachments,
+    setIsEmbedModalOpen,
   });
 
   return fromPairs(

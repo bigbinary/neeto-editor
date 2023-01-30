@@ -28,6 +28,7 @@ const Options = ({
   handleUploadAttachments,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
+  setIsEmbedModalOpen,
 }) => {
   const { Menu, MenuItem } = Dropdown;
 
@@ -45,6 +46,7 @@ const Options = ({
     setMediaUploader,
     tooltips,
     handleUploadAttachments,
+    setIsEmbedModalOpen,
   });
 
   const handleAnimateInvalidLink = () => {

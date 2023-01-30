@@ -13,6 +13,7 @@ import { noop, slugify } from "neetocommons/pure";
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
+import EmbedOption from "./EmbedOption";
 import ImageUploader from "./MediaUploader";
 import Menu from "./Menu";
 import {
@@ -64,6 +65,7 @@ const Editor = (
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = !!placeholder;
+  const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
   const [mediaUploader, setMediaUploader] = useState({
     image: false,
     video: false,
@@ -86,6 +88,7 @@ const Editor = (
     uploadEndpoint,
     config,
     setMediaUploader,
+    setIsEmbedModalOpen,
   });
   useEditorWarnings({ initialValue });
 
@@ -158,6 +161,7 @@ const Editor = (
             isIndependant={false}
             mentions={mentions}
             menuType={menuType}
+            setIsEmbedModalOpen={setIsEmbedModalOpen}
             tooltips={tooltips}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
@@ -170,6 +174,13 @@ const Editor = (
             uploadEndpoint={uploadEndpoint}
             onClose={() => setMediaUploader({ image: false, video: false })}
           />
+          {addons.includes("video-embed") && (
+            <EmbedOption
+              editor={editor}
+              isEmbedModalOpen={isEmbedModalOpen}
+              setIsEmbedModalOpen={setIsEmbedModalOpen}
+            />
+          )}
           {isAttachmentsActive && (
             <Attachments
               attachments={attachments}

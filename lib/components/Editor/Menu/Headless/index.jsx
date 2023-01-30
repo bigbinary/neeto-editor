@@ -18,6 +18,7 @@ const Headless = ({
   handleUploadAttachments,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
+  setIsEmbedModalOpen,
 }) => {
   if (!editor) {
     return null;
@@ -31,6 +32,7 @@ const Headless = ({
     handleUploadAttachments,
     isEmojiPickerActive,
     setIsEmojiPickerActive,
+    setIsEmbedModalOpen,
   });
 
   const addonCommandOptions = buildOptionsFromAddonCommands({

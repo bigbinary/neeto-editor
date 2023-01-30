@@ -19,6 +19,7 @@ const Bubble = ({
   handleUploadAttachments,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
+  setIsEmbedModalOpen,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
@@ -63,6 +64,7 @@ const Bubble = ({
           isLinkOptionActive={isLinkOptionActive}
           mentions={mentions}
           options={textOptions}
+          setIsEmbedModalOpen={setIsEmbedModalOpen}
           setIsEmojiPickerActive={setIsEmojiPickerActive}
           setIsInvalidLink={setIsInvalidLink}
           setIsLinkOptionActive={setIsLinkOptionActive}

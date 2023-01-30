@@ -26,6 +26,7 @@ const Menu = props => {
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
     handleUploadAttachments,
+    setIsEmbedModalOpen,
   } = props;
 
   const menuComponent = {
@@ -68,6 +69,7 @@ const Menu = props => {
         handleUploadAttachments={handleUploadAttachments}
         isEmojiPickerActive={isEmojiPickerActive}
         options={menuOptions}
+        setIsEmbedModalOpen={setIsEmbedModalOpen}
         setIsEmojiPickerActive={setIsEmojiPickerActive}
         setMediaUploader={setMediaUploader}
       />
