@@ -10,6 +10,7 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
 
   const handleEmbed = () => {
     editor.chain().focus().setExternalVideo({ src: embedUrl }).run();
+    setEmbedUrl("");
     setIsEmbedModalOpen(false);
   };
 
