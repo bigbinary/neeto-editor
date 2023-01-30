@@ -54,7 +54,9 @@ const Menu = props => {
         }
       }
     };
-    document.addEventListener("keydown", handleKeyDown);
+    if (menuType !== "none") {
+      document.addEventListener("keydown", handleKeyDown);
+    }
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
