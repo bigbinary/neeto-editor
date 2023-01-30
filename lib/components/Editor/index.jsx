@@ -161,7 +161,6 @@ const Editor = (
             isIndependant={false}
             mentions={mentions}
             menuType={menuType}
-            setIsEmbedModalOpen={setIsEmbedModalOpen}
             tooltips={tooltips}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
