@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-editor",
-  "version": "1.15.6",
+  "version": "1.15.7",
   "main": "./index.js",
   "module": "./index.js",
   "types": "./types.d.ts",
