@@ -78,7 +78,11 @@ const MediaEditor = ({
         </>
       )}
       <div className="ne-media-editor__footer">
-        <Button disabled={isError} label="Done" onClick={handleSubmit} />
+        <Button
+          disabled={isError}
+          label="Save changes"
+          onClick={handleSubmit}
+        />
         <Button label="Cancel" style="text" onClick={onClose} />
       </div>
     </div>

@@ -12,8 +12,8 @@ import { noop, slugify } from "neetocommons/pure";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
+import EmbedOption from "./CustomExtensions/Embeds";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
-import EmbedOption from "./EmbedOption";
 import MediaUploader from "./MediaUploader";
 import Menu from "./Menu";
 import {
