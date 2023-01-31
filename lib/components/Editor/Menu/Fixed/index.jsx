@@ -29,6 +29,7 @@ const Fixed = ({
   handleUploadAttachments,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
+  setIsEmbedModalOpen,
 }) => {
   if (!editor) {
     return null;
@@ -46,6 +47,7 @@ const Fixed = ({
     options,
     setMediaUploader,
     handleUploadAttachments,
+    setIsEmbedModalOpen,
   });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = fontSizeOptions.length > 0;

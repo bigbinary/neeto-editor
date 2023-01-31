@@ -5,7 +5,7 @@ import classnames from "classnames";
 import { Label } from "neetoui";
 import { EditorView } from "prosemirror-view";
 
-import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
+import { DIRECT_UPLOAD_ENDPOINT, EDITOR_OPTIONS } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import useEditorWarnings from "hooks/useEditorWarnings";
 import { noop, slugify } from "neetocommons/pure";
@@ -13,7 +13,8 @@ import { noop, slugify } from "neetocommons/pure";
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
 import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
-import ImageUploader from "./MediaUploader";
+import EmbedOption from "./EmbedOption";
+import MediaUploader from "./MediaUploader";
 import Menu from "./Menu";
 import {
   getEditorStyles,
@@ -59,11 +60,13 @@ const Editor = (
   ref
 ) => {
   const dragDropRef = useRef(null);
-  const isAttachmentsActive = addons.includes("attachments");
+  const isAttachmentsActive = addons.includes(EDITOR_OPTIONS.ATTACHMENTS);
+  const isVideoEmbedActive = addons.includes(EDITOR_OPTIONS.VIDEO_EMBED);
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = !!placeholder;
+  const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
   const [mediaUploader, setMediaUploader] = useState({
     image: false,
     video: false,
@@ -86,6 +89,7 @@ const Editor = (
     uploadEndpoint,
     config,
     setMediaUploader,
+    setIsEmbedModalOpen,
   });
   useEditorWarnings({ initialValue });
 
@@ -163,13 +167,20 @@ const Editor = (
             variables={variables}
           />
           <EditorContent editor={editor} {...otherProps} />
-          <ImageUploader
+          <MediaUploader
             editor={editor}
             mediaUploader={mediaUploader}
             unsplashApiKey={editorSecrets.unsplash}
             uploadEndpoint={uploadEndpoint}
             onClose={() => setMediaUploader({ image: false, video: false })}
           />
+          {isVideoEmbedActive && (
+            <EmbedOption
+              editor={editor}
+              isEmbedModalOpen={isEmbedModalOpen}
+              setIsEmbedModalOpen={setIsEmbedModalOpen}
+            />
+          )}
           {isAttachmentsActive && (
             <Attachments
               attachments={attachments}

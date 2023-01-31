@@ -9,10 +9,12 @@ import FixedMenu from "./Fixed";
 import HeadlessMenu from "./Headless";
 
 import { DEFAULT_EDITOR_OPTIONS } from "../constants";
+import EmbedOption from "../EmbedOption";
 import MediaUploader from "../MediaUploader";
 
 const Menu = props => {
   const [isEmojiPickerActive, setIsEmojiPickerActive] = useState(false);
+  const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
   const [mediaUploader, setMediaUploader] = useState({
     image: false,
     video: false,
@@ -70,6 +72,7 @@ const Menu = props => {
         handleUploadAttachments={handleUploadAttachments}
         isEmojiPickerActive={isEmojiPickerActive}
         options={menuOptions}
+        setIsEmbedModalOpen={setIsEmbedModalOpen}
         setIsEmojiPickerActive={setIsEmojiPickerActive}
         setMediaUploader={setMediaUploader}
       />
@@ -80,6 +83,13 @@ const Menu = props => {
         uploadEndpoint={uploadEndpoint}
         onClose={() => setMediaUploader({ image: false, video: false })}
       />
+      {addons.includes("video-embed") && (
+        <EmbedOption
+          editor={editor}
+          isEmbedModalOpen={isEmbedModalOpen}
+          setIsEmbedModalOpen={setIsEmbedModalOpen}
+        />
+      )}
     </>
   );
 };
