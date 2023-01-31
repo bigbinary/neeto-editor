@@ -9,7 +9,7 @@ import FixedMenu from "./Fixed";
 import HeadlessMenu from "./Headless";
 
 import { DEFAULT_EDITOR_OPTIONS } from "../constants";
-import EmbedOption from "../EmbedOption";
+import EmbedOption from "../CustomExtensions/Embeds";
 import MediaUploader from "../MediaUploader";
 
 const Menu = props => {
