@@ -83,7 +83,7 @@ const MediaEditor = ({
           label="Save changes"
           onClick={handleSubmit}
         />
-        <Button label="Cancel" style="secondary" onClick={onClose} />
+        <Button label="Cancel" style="text" onClick={onClose} />
       </div>
     </div>
   );
