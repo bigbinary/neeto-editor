@@ -54,13 +54,11 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
       onClose={handleClose}
     >
       <Modal.Header>
-        <Typography id="dialog1Title" style="h2">
-          Embed Video
-        </Typography>
+        <Typography style="h2">Embed Video</Typography>
       </Modal.Header>
       <Modal.Body className="space-y-2">
         <Input
-          error={error ? "Please enter a valid URL" : null}
+          error={error && "Please enter a valid URL"}
           label="Video URL:"
           ref={inputRef}
           size="medium"
