@@ -90,6 +90,7 @@ const Editor = (
     config,
     setMediaUploader,
     setIsEmbedModalOpen,
+    isVideoEmbedActive,
   });
   useEditorWarnings({ initialValue });
 
