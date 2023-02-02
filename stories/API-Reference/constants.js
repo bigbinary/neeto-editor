@@ -27,6 +27,10 @@ export const EDITOR_METHODS_TABLE_ROWS = [
     "isEmpty",
     "Returns a boolean value indicating whether the editor is empty or not.",
   ],
+  [
+    "isEditorOverlaysActive",
+    "Returns a boolean value indicating whether the editor overlays are active or not.",
+  ],
 ];
 
 export const EDITOR_PROPS = [
