@@ -5,8 +5,8 @@ import { is } from "ramda";
 
 import { isNilOrEmpty } from "utils/common";
 
-const ErrorWrapper = ({ error, isFixedMenuActive, children }) => {
-  const isError = !isNilOrEmpty(error) && isFixedMenuActive;
+const ErrorWrapper = ({ error, children }) => {
+  const isError = !isNilOrEmpty(error);
   const wrapperClasses = classnames({ "neeto-editor-error": isError });
 
   const getErrorMessage = () => {

@@ -151,7 +151,7 @@ const Editor = (
           {label}
         </Label>
       )}
-      <ErrorWrapper error={error} isFixedMenuActive={isFixedMenuActive}>
+      <ErrorWrapper error={error}>
         <CharacterCountWrapper
           editor={editor}
           isActive={isCharacterCountActive}
