@@ -53,30 +53,28 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
       isOpen={isEmbedModalOpen}
       onClose={handleClose}
     >
-      <div className="ne-embed-modal">
-        <Modal.Header>
-          <Typography style="h2">Embed Video</Typography>
-        </Modal.Header>
-        <Modal.Body className="space-y-2">
-          <Input
-            error={error && "Please enter a valid URL"}
-            label="Video URL:"
-            ref={inputRef}
-            size="medium"
-            type="text"
-            value={embedUrl}
-            onChange={handleChange}
-            onKeyDown={handleKeyDown}
-          />
-        </Modal.Body>
-        <Modal.Footer className="space-x-2">
-          <Button
-            disabled={error || isEmpty(embedUrl)}
-            label="Embed"
-            onClick={handleEmbed}
-          />
-        </Modal.Footer>
-      </div>
+      <Modal.Header>
+        <Typography style="h2">Embed Video</Typography>
+      </Modal.Header>
+      <Modal.Body className="space-y-2 ne-embed-modal">
+        <Input
+          error={error && "Please enter a valid URL"}
+          label="Video URL:"
+          ref={inputRef}
+          size="medium"
+          type="text"
+          value={embedUrl}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
+      </Modal.Body>
+      <Modal.Footer className="space-x-2">
+        <Button
+          disabled={error || isEmpty(embedUrl)}
+          label="Embed"
+          onClick={handleEmbed}
+        />
+      </Modal.Footer>
     </Modal>
   );
 };
