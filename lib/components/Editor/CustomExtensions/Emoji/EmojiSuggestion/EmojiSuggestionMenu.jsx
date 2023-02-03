@@ -43,18 +43,10 @@ class EmojiSuggestionMenu extends React.Component {
     }
   };
 
-  searchEmoji = async () => {
-    if (this.props.query) {
-      return (await SearchIndex.search(this.props.query)).slice(0, 5);
-    }
-
-    const defaultEmojis = [];
-    const results = await Promise.all(
-      defaultEmojis.map(emoji => SearchIndex.search(emoji))
-    );
-
-    return results.map(result => result[0]);
-  };
+  searchEmoji = async () =>
+    this.props.query
+      ? (await SearchIndex.search(this.props.query)).slice(0, 5)
+      : [];
 
   searchEmojiAndSetState = async () => {
     const suggestions = await this.searchEmoji();
