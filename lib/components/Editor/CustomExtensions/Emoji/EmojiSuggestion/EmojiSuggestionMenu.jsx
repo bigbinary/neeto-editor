@@ -2,10 +2,10 @@ import React from "react";
 
 import classnames from "classnames";
 import { init, SearchIndex } from "emoji-mart";
-import { Kbd, Spinner } from "neetoui";
+import { Spinner } from "neetoui";
+import { isEmpty } from "ramda";
 
 import emojiPickerApi from "apis/emoji_picker";
-import { isNilOrEmpty } from "utils/common";
 
 class EmojiSuggestionMenu extends React.Component {
   state = {
@@ -43,18 +43,10 @@ class EmojiSuggestionMenu extends React.Component {
     }
   };
 
-  searchEmoji = async () => {
-    if (this.props.query) {
-      return (await SearchIndex.search(this.props.query)).slice(0, 5);
-    }
-
-    const defaultEmojis = ["+1", "-1", "smile", "tada", "heart"];
-    const results = await Promise.all(
-      defaultEmojis.map(emoji => SearchIndex.search(emoji))
-    );
-
-    return results.map(result => result[0]);
-  };
+  searchEmoji = async () =>
+    this.props.query
+      ? (await SearchIndex.search(this.props.query)).slice(0, 5)
+      : [];
 
   searchEmojiAndSetState = async () => {
     const suggestions = await this.searchEmoji();
@@ -74,10 +66,11 @@ class EmojiSuggestionMenu extends React.Component {
   };
 
   onKeyDown = ({ event }) => {
-    if (
-      event.altKey &&
-      (event.key === "ArrowLeft" || event.key === "ArrowDown")
-    ) {
+    if (isEmpty(this.state.emojiSuggestions)) {
+      return false;
+    }
+
+    if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
       this.setState(({ selectedIndex, emojiSuggestions }) => ({
         selectedIndex:
           (selectedIndex + emojiSuggestions.length - 1) %
@@ -87,10 +80,7 @@ class EmojiSuggestionMenu extends React.Component {
       return true;
     }
 
-    if (
-      event.altKey &&
-      (event.key === "ArrowRight" || event.key === "ArrowUp")
-    ) {
+    if (event.key === "ArrowRight" || event.key === "ArrowUp") {
       this.setState(({ selectedIndex, emojiSuggestions }) => ({
         selectedIndex: (selectedIndex + 1) % emojiSuggestions.length,
       }));
@@ -100,16 +90,6 @@ class EmojiSuggestionMenu extends React.Component {
 
     if (event.key === "Enter") {
       this.selectItem(this.state.selectedIndex);
-
-      return true;
-    }
-
-    if (event.key === " ") {
-      if (isNilOrEmpty(this.props.query)) {
-        this.props.editor.chain().focus().insertContent(" ").run();
-      } else {
-        this.setEditorState();
-      }
 
       return true;
     }
@@ -133,6 +113,10 @@ class EmojiSuggestionMenu extends React.Component {
   };
 
   render() {
+    if (isEmpty(this.state.emojiSuggestions)) {
+      return null;
+    }
+
     return (
       <div className="neeto-editor-emoji-suggestion">
         {this.state.isLoading && <Spinner />}
@@ -154,8 +138,6 @@ class EmojiSuggestionMenu extends React.Component {
           ) : (
             <p>No results</p>
           ))}
-        (<Kbd keyName="⌥" />+
-        <Kbd keyName="↔" />)
       </div>
     );
   }
