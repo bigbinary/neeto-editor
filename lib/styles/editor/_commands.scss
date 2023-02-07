@@ -45,7 +45,8 @@
 
 .neeto-editor-mentions__wrapper {
   padding: 8px;
-  width: 208px;
+  width: auto;
+  min-width: 208px;
   max-height: 256px;
   overflow-y: auto;
 
