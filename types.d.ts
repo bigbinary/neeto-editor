@@ -69,8 +69,13 @@ interface Config {
   placeholder?: Partial<PlaceholderOptions>;
 }
 
-interface tooltips {
-[key: string]: string;
+interface Tooltip {
+  label: string;
+  keys: string[];
+}
+
+interface Tooltips {
+  [key: string]: Tooltip;
 }
 
 interface MenuProps {
@@ -81,7 +86,7 @@ interface MenuProps {
   addons?: string[];
   uploadEndpoint?: string;
   mentions?: Mention[];
-  variables: (VariableCategory | Variable)[];
+  variables?: (VariableCategory | Variable)[];
   addonCommands?: Command[];
   isIndependant?: boolean;
   className?: string;
@@ -112,7 +117,7 @@ interface EditorProps {
   onFocus?: EditorFocus;
   onBlur?: EditorFocus;
   onSubmit?: (htmlContent: string) => void;
-  variables: (VariableCategory | Variable)[];
+  variables?: (VariableCategory | Variable)[];
   mentions?: Mention[];
   placeholder?: string;
   extensions?: Array<Node | Extension>;
@@ -123,7 +128,7 @@ interface EditorProps {
   error?: string;
   config?: Config;
   attachments?: Array<attachment>;
-  onChangeAttachments: (attachments: attachment[]) => void;
+  onChangeAttachments?: (attachments: attachment[]) => void;
   [otherProps: string]: any;
 }
 
@@ -156,3 +161,10 @@ export function EditorContent(props: {
 export function Menu(props: MenuProps): JSX.Element;
 
 export function isEditorEmpty(htmlContent: string | null | undefined): boolean;
+
+export function isEditorOverlaysActive(): boolean;
+
+export function substituteVariables(
+  highlightedContent: string,
+  variables: (VariableCategory | Variable)[]
+): string;
