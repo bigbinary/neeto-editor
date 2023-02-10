@@ -69,13 +69,13 @@ interface Config {
   placeholder?: Partial<PlaceholderOptions>;
 }
 
-interface Tooltip {
+interface tooltip {
   label: string;
   keys: string[];
 }
 
-interface Tooltips {
-  [key: string]: Tooltip;
+interface tooltips {
+  [key: string]: tooltip;
 }
 
 interface MenuProps {
