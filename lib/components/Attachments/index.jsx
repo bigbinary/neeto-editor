@@ -10,7 +10,7 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import { DEFAULT_UPPY_CONFIG } from "./constants";
+import { buildUppyConfig } from "./utils";
 
 const Attachments = (
   {
@@ -21,6 +21,7 @@ const Attachments = (
     isIndependent = true,
     disabled = false,
     dragDropRef = null,
+    config = {},
   },
   ref
 ) => {
@@ -30,7 +31,7 @@ const Attachments = (
 
   const { uppy, isUploading } = useUppyUploader({
     endpoint,
-    uppyConfig: DEFAULT_UPPY_CONFIG,
+    uppyConfig: buildUppyConfig(config),
   });
 
   const handleAddFile = event => {
@@ -151,8 +152,9 @@ const Attachments = (
           />
         )}
         <input
-          multiple
+          accept={config?.allowedFileTypes?.join(",")}
           disabled={isUploading}
+          multiple={config?.maxNumberOfFiles !== 1}
           ref={attachmentInputRef}
           type="file"
           onChange={handleAddFile}

@@ -87,14 +87,21 @@ interface MenuProps {
   className?: string;
 }
 
-type attachment = {
+interface attachment {
   filename?: string;
   signedId?: string;
   url?: string;
   [otherProps: string]: any;
 };
 
+interface attachmentsConfig {
+  maxFileSize?: number,
+  maxNumberOfFiles?: number,
+  allowedFileTypes?: string[],
+}
+
 interface EditorProps {
+  attachmentsConfig?: attachmentsConfig;
   tooltips?: tooltips;
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "headless" | "none";
@@ -131,10 +138,11 @@ interface FormikEditorProps extends EditorProps {
   name: string;
 }
 interface AttachmentsProps {
+  config?: attachmentsConfig;
   endpoint?: string;
   attachments?: Array<attachment>;
   dragDropRef?: React.RefObject<HTMLDivElement>;
-  onChange: (attachments: attachment[]) => void;
+  onChange?: (attachments: attachment[]) => void;
   isIndependent?: boolean;
   disabled?: boolean;
   className?: string;

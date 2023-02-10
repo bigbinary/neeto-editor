@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 
-import { Editor, Menu } from "../../lib";
+import { Editor, Menu, Attachments } from "../../lib";
 
 const IndependantMenuComponent = () => {
   const [editor, setEditor] = useState(null);
@@ -12,6 +12,13 @@ const IndependantMenuComponent = () => {
     <div className="space-y-4">
       <Menu editor={editor} />
       <h2>Other components</h2>
+      <Attachments
+        config={{
+          maxFileSize: 100 * 1024 * 1024,
+          maxNumberOfFiles: 1,
+          allowedFileTypes: [".pdf"],
+        }}
+      />
       <Editor
         autoFocus
         contentClassName="border"

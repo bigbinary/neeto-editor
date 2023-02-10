@@ -20,6 +20,10 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
     "disabled",
     "If true, the options to download, rename and delete the attachments will be disabled.",
   ],
+  [
+    "config",
+    "Object to customize Attachments component, It has 3 properties: allowedFileTypes, maxNumberOfFiles and maxFileSize.",
+  ],
 ];
 
 export const attachments = [
