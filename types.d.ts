@@ -69,19 +69,25 @@ interface Config {
   placeholder?: Partial<PlaceholderOptions>;
 }
 
+interface tooltip {
+  label: string;
+  keys: string[];
+}
+
 interface tooltips {
-[key: string]: string;
+  [key: string]: tooltip;
 }
 
 interface MenuProps {
   tooltips?: tooltips;
-  editor: string;
+  editor: TiptapEditor | null;
   menuType?: "fixed" | "bubble" | "headless" | "none";
   defaults?: string[];
   addons?: string[];
   uploadEndpoint?: string;
   mentions?: Mention[];
-  variables: (VariableCategory | Variable)[];
+  editorSecrets?: Array<{ unsplash?: string }>;
+  variables?: (VariableCategory | Variable)[];
   addonCommands?: Command[];
   isIndependant?: boolean;
   className?: string;
@@ -112,7 +118,7 @@ interface EditorProps {
   onFocus?: EditorFocus;
   onBlur?: EditorFocus;
   onSubmit?: (htmlContent: string) => void;
-  variables: (VariableCategory | Variable)[];
+  variables?: (VariableCategory | Variable)[];
   mentions?: Mention[];
   placeholder?: string;
   extensions?: Array<Node | Extension>;
@@ -123,7 +129,7 @@ interface EditorProps {
   error?: string;
   config?: Config;
   attachments?: Array<attachment>;
-  onChangeAttachments: (attachments: attachment[]) => void;
+  onChangeAttachments?: (attachments: attachment[]) => void;
   [otherProps: string]: any;
 }
 
@@ -149,10 +155,17 @@ export function Attachments(props: AttachmentsProps): JSX.Element;
 export function EditorContent(props: {
   content?: string;
   className?: string;
-  variables: (VariableCategory | Variable)[];
+  variables?: (VariableCategory | Variable)[];
   [otherProps: string]: any;
 }): JSX.Element;
 
 export function Menu(props: MenuProps): JSX.Element;
 
 export function isEditorEmpty(htmlContent: string | null | undefined): boolean;
+
+export function isEditorOverlaysActive(): boolean;
+
+export function substituteVariables(
+  highlightedContent: string,
+  variables: (VariableCategory | Variable)[]
+): string;
