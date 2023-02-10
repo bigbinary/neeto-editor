@@ -26,34 +26,35 @@ import Attachments from "../Attachments";
 
 const Editor = (
   {
-    initialValue = "",
-    menuType = "fixed",
-    label = "",
-    required = false,
-    autoFocus = false,
-    hideSlashCommands = false,
-    defaults = DEFAULT_EDITOR_OPTIONS,
-    addons = [],
     addonCommands = [],
-    tooltips = {},
+    addons = [],
+    attachments = [],
+    attachmentsConfig = {},
+    autoFocus = false,
     className,
+    config = {},
     contentClassName,
+    defaults = DEFAULT_EDITOR_OPTIONS,
+    editorSecrets = {},
+    error = null,
+    extensions = [],
+    hideSlashCommands = false,
+    initialValue = "",
+    isCharacterCountActive = false,
+    keyboardShortcuts = [],
+    label = "",
+    mentions = [],
+    menuType = "fixed",
+    placeholder,
+    required = false,
+    rows = 6,
+    tooltips = {},
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
+    variables = [],
     onChange = noop,
     onFocus = noop,
     onBlur = noop,
     onSubmit = noop,
-    variables = [],
-    mentions = [],
-    placeholder,
-    extensions = [],
-    editorSecrets = {},
-    rows = 6,
-    isCharacterCountActive = false,
-    keyboardShortcuts = [],
-    error = null,
-    config = {},
-    attachments = [],
     onChangeAttachments = noop,
     ...otherProps
   },
@@ -189,6 +190,7 @@ const Editor = (
             <Attachments
               attachments={attachments}
               className="ne-attachments--integrated"
+              config={attachmentsConfig}
               dragDropRef={dragDropRef}
               isIndependent={false}
               ref={addAttachmentsRef}

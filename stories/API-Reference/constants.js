@@ -187,4 +187,15 @@ export const EDITOR_PROPS = [
     }
     `,
   ],
+  [
+    "attachmentsConfig",
+    "Accepts an object value. This can be used to configure the attachments addon.",
+    `
+    {
+      maxFileSize: 100 * 1024 * 1024,
+      maxNumberOfFiles: 1,
+      allowedFileTypes: [".pdf"],
+    }
+    `,
+  ],
 ];
