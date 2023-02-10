@@ -80,7 +80,7 @@ interface tooltips {
 
 interface MenuProps {
   tooltips?: tooltips;
-  editor: string;
+  editor: TiptapEditor | null;
   menuType?: "fixed" | "bubble" | "headless" | "none";
   defaults?: string[];
   addons?: string[];
