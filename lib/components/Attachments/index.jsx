@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState, useImperativeHandle } from "react";
 import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
 import { Button, Toastr } from "neetoui";
-import { isNil } from "ramda";
+import { isEmpty, isNil } from "ramda";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
@@ -152,12 +152,17 @@ const Attachments = (
           />
         )}
         <input
-          accept={config?.allowedFileTypes?.join(",")}
-          disabled={isUploading}
-          multiple={config?.maxNumberOfFiles !== 1}
+          accept={config.allowedFileTypes?.join(",")}
+          multiple={config.maxNumberOfFiles !== 1}
           ref={attachmentInputRef}
           type="file"
           onChange={handleAddFile}
+          onClick={event => {
+            if (!isEmpty(attachments) && config.maxNumberOfFiles === 1) {
+              event.preventDefault();
+              Toastr.warning("Only one attachment is allowed");
+            }
+          }}
         />
       </div>
     </div>
