@@ -86,6 +86,7 @@ interface MenuProps {
   addons?: string[];
   uploadEndpoint?: string;
   mentions?: Mention[];
+  editorSecrets?: Array<{ unsplash?: string }>;
   variables?: (VariableCategory | Variable)[];
   addonCommands?: Command[];
   isIndependant?: boolean;
@@ -154,7 +155,7 @@ export function Attachments(props: AttachmentsProps): JSX.Element;
 export function EditorContent(props: {
   content?: string;
   className?: string;
-  variables: (VariableCategory | Variable)[];
+  variables?: (VariableCategory | Variable)[];
   [otherProps: string]: any;
 }): JSX.Element;
 
