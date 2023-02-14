@@ -10,7 +10,7 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import { buildUppyConfig } from "./utils";
+import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
 
 const Attachments = (
   {
@@ -35,7 +35,12 @@ const Attachments = (
   });
 
   const handleAddFile = event => {
-    const files = Array.from(event.target.files);
+    const files = selectFiles({
+      previousAttachmentsCount: attachments.length,
+      config,
+      files: event.target.files,
+    });
+
     files.forEach(file => {
       uppy.addFile({
         name: file.name,
@@ -43,10 +48,26 @@ const Attachments = (
         data: file,
       });
     });
+
+    afterAddingFiles();
+  };
+
+  const onDrop = () => {
+    handleDrop({
+      uppy,
+      config,
+      previousAtachmentsCount: attachments.length,
+    });
     afterAddingFiles();
   };
 
   const afterAddingFiles = () => {
+    if (isEmpty(uppy.getFiles())) {
+      uppy.reset();
+
+      return;
+    }
+
     const newlyAddedFiles = uppy.getFiles().map(file => ({
       id: file.id,
       filename: file.name,
@@ -75,6 +96,8 @@ const Attachments = (
       onChange([...attachments, ...uploadedFiles]);
     } catch (error) {
       Toastr.error(error);
+    } finally {
+      uppy.reset();
     }
   };
 
@@ -105,7 +128,7 @@ const Attachments = (
     if (dragDropRef?.current) {
       uppy.use(DropTarget, {
         target: dragDropRef.current,
-        onDrop: afterAddingFiles,
+        onDrop,
       });
     }
 
