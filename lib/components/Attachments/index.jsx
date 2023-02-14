@@ -68,7 +68,7 @@ const Attachments = (
       url: "",
       progress: 0,
     }));
-    if (newlyAddedFiles) {
+    if (isEmpty(newlyAddedFiles)) {
       uppy.reset();
 
       return;
