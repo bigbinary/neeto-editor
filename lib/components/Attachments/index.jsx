@@ -10,7 +10,7 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import { buildUppyConfig } from "./utils";
+import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
 
 const Attachments = (
   {
@@ -35,7 +35,12 @@ const Attachments = (
   });
 
   const handleAddFile = event => {
-    const files = Array.from(event.target.files);
+    const files = selectFiles({
+      previousAttachmentsCount: attachments.length,
+      config,
+      files: event.target.files,
+    });
+
     files.forEach(file => {
       uppy.addFile({
         name: file.name,
@@ -43,7 +48,16 @@ const Attachments = (
         data: file,
       });
     });
+
     afterAddingFiles();
+  };
+
+  const onDrop = () => {
+    handleDrop({
+      uppy,
+      config,
+      previousAttachmentsCount: attachments.length,
+    }) && afterAddingFiles();
   };
 
   const afterAddingFiles = () => {
@@ -54,6 +68,11 @@ const Attachments = (
       url: "",
       progress: 0,
     }));
+    if (isEmpty(newlyAddedFiles)) {
+      uppy.reset();
+
+      return;
+    }
     setPendingAttachments(prevState => [...prevState, ...newlyAddedFiles]);
     attachmentInputRef.current.value = null;
     handleUpload();
@@ -75,6 +94,8 @@ const Attachments = (
       onChange([...attachments, ...uploadedFiles]);
     } catch (error) {
       Toastr.error(error);
+    } finally {
+      uppy.reset();
     }
   };
 
@@ -105,7 +126,7 @@ const Attachments = (
     if (dragDropRef?.current) {
       uppy.use(DropTarget, {
         target: dragDropRef.current,
-        onDrop: afterAddingFiles,
+        onDrop,
       });
     }
 
