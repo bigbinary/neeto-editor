@@ -7,6 +7,8 @@ import { isEmpty } from "ramda";
 
 import emojiPickerApi from "apis/emoji_picker";
 
+import { filterEmojiSuggestions } from "./utils";
+
 class EmojiSuggestionMenu extends React.Component {
   state = {
     isLoading: false,
@@ -45,13 +47,13 @@ class EmojiSuggestionMenu extends React.Component {
 
   searchEmoji = async () =>
     this.props.query
-      ? (await SearchIndex.search(this.props.query)).slice(0, 5)
+      ? (await SearchIndex.search(this.props.query)).slice(0, 10)
       : [];
 
   searchEmojiAndSetState = async () => {
     const suggestions = await this.searchEmoji();
     this.setState({
-      emojiSuggestions: suggestions,
+      emojiSuggestions: filterEmojiSuggestions(suggestions),
     });
   };
 
