@@ -56,18 +56,11 @@ const Attachments = (
     handleDrop({
       uppy,
       config,
-      previousAtachmentsCount: attachments.length,
-    });
-    afterAddingFiles();
+      previousAttachmentsCount: attachments.length,
+    }) && afterAddingFiles();
   };
 
   const afterAddingFiles = () => {
-    if (isEmpty(uppy.getFiles())) {
-      uppy.reset();
-
-      return;
-    }
-
     const newlyAddedFiles = uppy.getFiles().map(file => ({
       id: file.id,
       filename: file.name,
@@ -75,6 +68,11 @@ const Attachments = (
       url: "",
       progress: 0,
     }));
+    if (newlyAddedFiles) {
+      uppy.reset();
+
+      return;
+    }
     setPendingAttachments(prevState => [...prevState, ...newlyAddedFiles]);
     attachmentInputRef.current.value = null;
     handleUpload();
