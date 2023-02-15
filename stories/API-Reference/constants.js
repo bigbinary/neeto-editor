@@ -179,15 +179,6 @@ export const EDITOR_PROPS = [
     "This field is required",
   ],
   [
-    "config",
-    "Accepts an object value. This can be used to overrride the default properties of the different extensions used with the editor.",
-    `
-    {
-      focus: { mode: "deepest" }
-    }
-    `,
-  ],
-  [
     "attachmentsConfig",
     "Accepts an object value. This can be used to configure the attachments addon.",
     `
