@@ -85,6 +85,10 @@ export const CUSTOM_SLASH_COMMANDS_TABLE_ROWS = [
     "items",
     "Accepts an array of items with all the above keys to create a nested command.",
   ],
+  [
+    "tooltip",
+    "Accepts a string value. It is used to show a tooltip on hover of the menu icon.",
+  ],
 ];
 
 export const WELCOME_PAGE_CARDS = [
