@@ -74,13 +74,15 @@
 }
 
 .ne-attachments__wrapper.uppy-is-drag-over::after {
-    position: absolute;
-    inset: 7px;
-    border-radius: 5px;
-    background-color: rgba(var(--neeto-ui-primary-100), 0.3);
-    border: 3px dashed rgb(var(--neeto-ui-primary-100));
-    content: 'Drop the file here';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  position: absolute;
+  inset: 7px;
+  border-radius: 5px;
+  background-color: rgba(var(--neeto-ui-gray-400), 0.6);
+  border: 3px dashed rgb(var(--neeto-ui-gray-500));
+  content: 'Drop the file here';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
