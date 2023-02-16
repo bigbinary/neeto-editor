@@ -6,6 +6,7 @@ import { Spinner } from "neetoui";
 import { isEmpty } from "ramda";
 
 import emojiPickerApi from "apis/emoji_picker";
+import { isNotEmpty } from "neetocommons/pure";
 
 import { filterEmojiSuggestions } from "./utils";
 
@@ -132,7 +133,7 @@ class EmojiSuggestionMenu extends React.Component {
       <div className="neeto-editor-emoji-suggestion">
         {this.state.isLoading && <Spinner />}
         {!this.state.isLoading &&
-          (this.state.emojiSuggestions.length > 0 ? (
+          (isNotEmpty(this.state.emojiSuggestions) ? (
             this.state.emojiSuggestions.map((emoji, index) => (
               <div
                 data-cy={`neeto-editor-emoji-suggestion-${emoji.id}`}

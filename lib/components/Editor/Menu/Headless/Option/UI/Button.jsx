@@ -3,9 +3,11 @@ import React from "react";
 import classnames from "classnames";
 import { Tooltip } from "neetoui";
 
+import { noop } from "neetocommons/pure";
+
 const Button = ({
   icon = null,
-  onClick = () => {},
+  onClick = noop,
   disabled = false,
   className,
   tooltipProps,

@@ -3,6 +3,7 @@ import React from "react";
 import classnames from "classnames";
 
 import { EDITOR_OPTIONS } from "common/constants";
+import { isNotEmpty } from "neetocommons/pure";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
@@ -50,7 +51,7 @@ const Fixed = ({
     setIsEmbedModalOpen,
   });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
-  const isFontSizeActive = fontSizeOptions.length > 0;
+  const isFontSizeActive = isNotEmpty(fontSizeOptions);
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
   const addonCommandOptions = buildOptionsFromAddonCommands({

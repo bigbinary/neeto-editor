@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Tippy from "@tippyjs/react";
 import classnames from "classnames";
 
+import { noop } from "neetocommons/pure";
+
 import Button from "./Button";
 
 const hideOnEsc = {
@@ -30,7 +32,7 @@ const hideOnEsc = {
 const Dropdown = ({
   icon,
   isOpen,
-  onClose = () => {},
+  onClose = noop,
   children,
   className,
   onClick,
