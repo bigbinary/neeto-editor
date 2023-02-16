@@ -52,23 +52,6 @@ type EditorFocus = (props: {
   transaction: Transaction;
 }) => void;
 
-interface Config {
-  code?: Partial<CodeOptions>;
-  underline?: Partial<UnderlineOptions>;
-  highlight?: Partial<HighlightOptions>;
-  codeBlock?: Partial<CodeBlockLowlightOptions>;
-  figCaption?: Partial<any>;
-  embeds?: Partial<any>;
-  link?: Partial<any>;
-  emojiSuggestion?: Partial<any>;
-  emojiPicker?: Partial<any>;
-  customCommands?: Partial<any>;
-  characterCount?: Partial<CharacterCountOptions>;
-  focus?: Partial<FocusOptions>;
-  starterKit?: Partial<StarterKitOptions>;
-  placeholder?: Partial<PlaceholderOptions>;
-}
-
 interface tooltip {
   label: string;
   keys: string[];
@@ -134,7 +117,6 @@ interface EditorProps {
   isCharacterCountActive?: boolean;
   keyboardShortcuts?: KeyboardShortcuts;
   error?: string;
-  config?: Config;
   attachments?: Array<attachment>;
   onChangeAttachments?: (attachments: attachment[]) => void;
   [otherProps: string]: any;
