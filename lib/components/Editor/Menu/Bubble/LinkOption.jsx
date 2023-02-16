@@ -11,7 +11,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
 
   useEffect(() => {
     setLink(editor.getAttributes("link").href || "");
-  }, []);
+  }, [editor]);
 
   const handleKeyDown = event => {
     if (event.key === "Escape") {

@@ -14,6 +14,7 @@ import {
 import { isEmpty, assoc } from "ramda";
 
 import directUploadsApi from "apis/direct_uploads";
+import { removeBy } from "neetocommons/pure";
 
 import { ATTACHMENT_OPTIONS } from "./constants";
 import FileIcon from "./FileIcon";
@@ -67,9 +68,7 @@ const Attachment = ({
     try {
       const { signedId } = attachment;
       await directUploadsApi.destroy(endpoint, signedId);
-      onChange(
-        attachments.filter(attachment => attachment.signedId !== signedId)
-      );
+      onChange(removeBy({ signedId }, attachments));
     } catch (error) {
       Toastr.error(error);
     }

@@ -3,10 +3,11 @@ import React, { useRef, useEffect, useState, useImperativeHandle } from "react";
 import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
 import { Button, Toastr } from "neetoui";
-import { isEmpty, isNil } from "ramda";
+import { concat, isEmpty, isNil } from "ramda";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
+import { removeById, noop } from "neetocommons/pure";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
@@ -17,7 +18,7 @@ const Attachments = (
     endpoint = DIRECT_UPLOAD_ENDPOINT,
     attachments = [],
     className = "",
-    onChange = _ => {},
+    onChange = noop,
     isIndependent = true,
     disabled = false,
     dragDropRef = null,
@@ -73,7 +74,7 @@ const Attachments = (
 
       return;
     }
-    setPendingAttachments(prevState => [...prevState, ...newlyAddedFiles]);
+    setPendingAttachments(concat(newlyAddedFiles));
     attachmentInputRef.current.value = null;
     handleUpload();
   };
@@ -112,9 +113,7 @@ const Attachments = (
   };
 
   const removeUploadingFile = id => {
-    setPendingAttachments(prevState =>
-      prevState.filter(uploadingFile => uploadingFile.id !== id)
-    );
+    setPendingAttachments(prevState => removeById(id, prevState));
   };
 
   const handleUploadAttachments = () => attachmentInputRef.current.click();
