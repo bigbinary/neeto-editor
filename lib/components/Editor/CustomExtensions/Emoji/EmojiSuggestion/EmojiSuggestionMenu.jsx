@@ -14,9 +14,16 @@ class EmojiSuggestionMenu extends React.Component {
     isLoading: false,
     selectedIndex: 0,
     emojiSuggestions: [],
+    frequentlyUsedEmojis: {},
   };
 
   componentDidMount() {
+    this.setState({
+      frequentlyUsedEmojis: Object.keys(
+        JSON.parse(localStorage.getItem("emoji-mart.frequently") || "{}")
+      ),
+    });
+
     init({
       data: this.fetchEmojiData,
       theme: "light",
@@ -46,14 +53,16 @@ class EmojiSuggestionMenu extends React.Component {
   };
 
   searchEmoji = async () =>
-    this.props.query
-      ? (await SearchIndex.search(this.props.query)).slice(0, 10)
-      : [];
+    this.props.query ? SearchIndex.search(this.props.query) : [];
 
   searchEmojiAndSetState = async () => {
     const suggestions = await this.searchEmoji();
+    const frequentlyUsedEmojis = this.state.frequentlyUsedEmojis;
     this.setState({
-      emojiSuggestions: filterEmojiSuggestions(suggestions),
+      emojiSuggestions: filterEmojiSuggestions(
+        suggestions,
+        frequentlyUsedEmojis
+      ),
     });
   };
 
