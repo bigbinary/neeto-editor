@@ -12,17 +12,12 @@ module.exports = {
    * unless you're sure of it.
    */
   extends: [
-    "plugin:cypress/recommended",
     "plugin:json/recommended",
     "eslint:recommended",
     "plugin:react/recommended",
     "./.eslint-rules/globals",
     "./.eslint-rules/imports/order",
     "./.eslint-rules/overrides",
-    // ensure that you don't add custom rules
-    // without taking permission from team leads.
-    "./.eslint-rules/custom",
-    // custom rules cannot override the following rules.
     "./.eslint-rules/imports/enforced",
     "./.eslint-rules/react",
     "./.eslint-rules/promise",
@@ -157,5 +152,13 @@ module.exports = {
     "no-var": "error",
     // auto-fixable: This rule conflicts with prettier rules. Thus we've NOT kept this rule in react file. This rule ensures we don't add blank lines in JSX.
     "react/jsx-newline": ["error", { prevent: true }],
+    "@bigbinary/neeto/neetocommons-tips": "warn",
+    "@bigbinary/neeto/no-blacklisted-imports": "warn",
+    "@bigbinary/neeto/no-dangling-constants": "error",
+    "@bigbinary/neeto/no-excess-function-arguments": "warn",
+    "@bigbinary/neeto/no-namespace-specifier-import-for-ramda": "error",
+    "@bigbinary/neeto/no-redundant-jsx-expression": "error",
+    "@bigbinary/neeto/no-redundant-string-templates": "error",
+    "@bigbinary/neeto/ramda-tips": "warn",
   },
 };
