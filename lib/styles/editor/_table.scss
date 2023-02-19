@@ -1,0 +1,71 @@
+.neeto-editor-table {
+  display: relative;
+  width: fit-content;
+
+  table {
+    th,
+    td {
+      p {
+        margin: 0;
+      }
+    }
+
+    .column-resize-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0px;
+      right: -2px;
+      width: 4px;
+      background-color: rgb(var(--neeto-ui-gray-300));
+    }
+
+    .selectedCell:after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: rgba(var(--neeto-ui-primary-500), 0.1);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__add-row,
+  &__add-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--neeto-ui-gray-200));
+    border-radius: var(--neeto-ui-rounded-sm);
+    transition: var(--neeto-ui-transition);
+    cursor: pointer;
+
+    p {
+      background: white;
+      color: rgb(var(--neeto-ui-gray-800));
+      font-size: var(--neeto-ui-text-xl);
+      line-height: 16px;
+      padding: 4px;
+    }
+
+    &:hover {
+      background: rgba(var(--neeto-ui-gray-300));
+    }
+  }
+
+  &__add-row {
+    margin: 4px 20px 4px 0;
+    height: 16px;
+  }
+
+  &__add-column {
+    flex-direction: column;
+    width: 16px;
+  }
+}
+
+.ProseMirror.resize-cursor {
+  cursor: col-resize;
+}

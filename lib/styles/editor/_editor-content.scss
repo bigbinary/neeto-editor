@@ -133,6 +133,38 @@
   [data-type="special-mention"] {
     color: rgb(var(--neeto-ui-primary-800));
   }
+
+  table {
+    overflow: hidden;
+    border: 1px solid rgba(var(--neeto-ui-gray-300));
+    border-collapse: separate;
+    border-radius: var(--neeto-ui-rounded-sm);
+    border-spacing: 0;
+    table-layout: fixed;
+    min-width: 300px;
+
+    th,
+    td {
+      border-left: 1px solid rgba(var(--neeto-ui-gray-300));
+      border-top: 1px solid rgba(var(--neeto-ui-gray-300));
+      padding: 8px 12px;
+      position: relative;
+    }
+
+    td:first-child,
+    th:first-child {
+      border-left: none;
+    }
+
+    th {
+      background: rgb(var(--neeto-ui-gray-100));
+      border-top: none;
+    }
+
+    td {
+      background: rgb(var(--neeto-ui-white));
+    }
+  }
 }
 
 .neeto-editor-content--hidden {
