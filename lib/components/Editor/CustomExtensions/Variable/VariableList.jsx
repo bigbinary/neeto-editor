@@ -41,7 +41,7 @@ const VariableCategory = ({ index, title, variables, onClickItem }) => (
           label={item.label}
           style="secondary"
           className="neeto-ui-text-black
-                    neeto-ui-border-gray-300 hover:neeto-ui-text-primary-800 hover:neeto-ui-border-primary-800 neeto-ui-leading-snug cursor-pointer rounded-md px-2"
+                    neeto-ui-border-gray-300 hover:neeto-ui-text-primary-800 hover:neeto-ui-border-primary-800 neeto-ui-leading-snug cursor-pointer px-2 ne_variable-tag"
           onClick={() => onClickItem(item)}
         />
       ))}
