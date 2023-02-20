@@ -4,7 +4,7 @@
     "cancel": "Cancel",
     "caption": "Caption",
     "embed": "Embed",
-    "save-changes": "Save Changes",
+    "save-changes": "Save changes",
     "unlink": "Unlink",
     "video-url": "Video URL:"
   },
@@ -22,27 +22,27 @@
   },
   "menu": {
     "attachments": "Attachments",
-    "block-quote": "Block Quote",
+    "block-quote": "Block quote",
     "bold": "Bold",
-    "bulleted-list": "Bulleted List",
+    "bulleted-list": "Bulleted list",
     "code": "Code",
-    "embed-video": "Embed Video",
+    "embed-video": "Embed video",
     "emoji": "Emoji",
     "font-size": "Font size",
     "highlight": "Highlight",
-    "image-upload": "Image Upload",
+    "image-upload": "Image upload",
     "italic": "Italic",
     "link": "Link",
     "mention": "Mention",
-    "ordered-list": "Ordered List",
+    "ordered-list": "Ordered list",
     "redo": "Redo",
     "strike": "Strike",
     "table": "Table",
     "underline": "Underline",
     "undo": "Undo",
     "variables": "Variables",
-    "video-embed": "Video Embed",
-    "video-upload": "Video Upload"
+    "video-embed": "Video embed",
+    "video-upload": "Video upload"
   },
   "placeholders": {
     "url": "Paste URL"
