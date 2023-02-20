@@ -97,6 +97,7 @@
     "formik": "2.2.9",
     "fuse.js": "6.6.2",
     "husky": "8.0.1",
+    "i18next": "22.4.10",
     "lint-staged": "13.0.3",
     "lodash.isplainobject": "4.0.6",
     "lowlight": "2.7.0",
@@ -179,5 +180,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bigbinary/neeto-editor.git"
+  },
+  "dependencies": {
+    "react-i18next": "^12.1.5"
   }
 }
