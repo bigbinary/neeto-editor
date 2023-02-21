@@ -12,6 +12,7 @@ import {
   Alert,
 } from "neetoui";
 import { isEmpty, assoc } from "ramda";
+import { useTranslation } from "react-i18next";
 
 import directUploadsApi from "apis/direct_uploads";
 import { removeBy } from "neetocommons/pure";
@@ -28,6 +29,8 @@ const Attachment = ({
   attachments,
   disabled,
 }) => {
+  const { t } = useTranslation();
+
   const [isRenaming, setIsRenaming] = useState(false);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -114,7 +117,7 @@ const Attachment = ({
             <Tooltip content={newFilename} position="top">
               <Input
                 autoFocus
-                error={isEmpty(newFilename) ? "Filename cannot be empty" : ""}
+                error={isEmpty(newFilename) ? t("attachments.name-empty") : ""}
                 size="small"
                 value={newFilename}
                 onChange={e => setNewFilename(e.target.value)}
@@ -140,7 +143,7 @@ const Attachment = ({
               <Typography style="body2">{attachment.filename}</Typography>
             </Tooltip>
             <Tooltip
-              content="You are not permitted to update or delete attachments"
+              content={t("attachments.actions-blocked")}
               disabled={!disabled}
               position="top"
             >
@@ -170,8 +173,8 @@ const Attachment = ({
       <Alert
         isOpen={isDeleteAlertOpen}
         isSubmitting={isDeleting}
-        message={`Are you sure you want to remove ${newFilename}?`}
-        title="Remove Attachment?"
+        message={t("attachments.delete-confirmation", { entity: newFilename })}
+        title={t("attachments.delete-title")}
         onClose={() => setIsDeleteAlertOpen(false)}
         onSubmit={handleDelete}
       />

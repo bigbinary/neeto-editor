@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import classNames from "classnames";
 import { Button, Input } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import { URL_REGEXP } from "common/constants";
 
@@ -11,6 +12,8 @@ const URLForm = ({
   onSubmit,
   className,
 }) => {
+  const { t } = useTranslation();
+
   const [urlString, setUrlString] = useState("");
   const [error, setError] = useState("");
 
@@ -19,7 +22,7 @@ const URLForm = ({
     if (URL_REGEXP.test(urlString)) {
       onSubmit(urlString);
     } else {
-      setError("Please enter a valid url");
+      setError(t("error.invalid-url"));
     }
   };
 
