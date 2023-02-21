@@ -46,5 +46,5 @@
     "jsx": "preserve"
   },
   "exclude": ["**/node_modules", "**/.*/"],
-  "include": ["./**/*.js", "./**/*.jsx", "./**/*.d.ts"]
+  "include": ["./**/*.js", "./**/*.jsx", "./**/*.d.ts", "./**/*.ts"]
 }

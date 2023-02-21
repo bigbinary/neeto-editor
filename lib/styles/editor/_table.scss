@@ -56,14 +56,19 @@
   }
 
   &__add-row {
-    margin: 4px 20px 4px 0;
+    margin: 10px 24px 4px 0;
     height: 16px;
   }
 
   &__add-column {
+    margin-left: 10px;
     flex-direction: column;
     width: 16px;
   }
+}
+
+.tableWrapper {
+  display: flex;
 }
 
 .ProseMirror.resize-cursor {

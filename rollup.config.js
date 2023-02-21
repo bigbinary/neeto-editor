@@ -24,7 +24,7 @@ const plugins = [
   }),
   resolve({
     preferBuiltins: true,
-    extensions: [".js", ".jsx", ".svg", ".json"],
+    extensions: [".js", ".jsx", ".svg", ".json", ".ts"],
     moduleDirectories: ["node_modules"],
   }),
   commonjs({ include: /\**node_modules\**/ }),
