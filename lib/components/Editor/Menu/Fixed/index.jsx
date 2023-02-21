@@ -1,6 +1,7 @@
 import React from "react";
 
 import classnames from "classnames";
+import { useTranslation } from "react-i18next";
 
 import { EDITOR_OPTIONS } from "common/constants";
 import { isNotEmpty } from "neetocommons/pure";
@@ -32,6 +33,8 @@ const Fixed = ({
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
 }) => {
+  const { t } = useTranslation();
+
   if (!editor) {
     return null;
   }
@@ -70,7 +73,7 @@ const Fixed = ({
         {isFontSizeActive && (
           <FontSizeOption
             editor={editor}
-            tooltipContent={tooltips.fontSize || "Font size"}
+            tooltipContent={tooltips.fontSize || t("menu.font-size")}
           />
         )}
         {fontStyleOptions.map(renderOptionButton)}
@@ -80,21 +83,21 @@ const Fixed = ({
             editor={editor}
             isActive={isEmojiPickerActive}
             setActive={setIsEmojiPickerActive}
-            tooltipContent={tooltips.emoji || "Emoji"}
+            tooltipContent={tooltips.emoji || t("menu.emoji")}
           />
         )}
         {listStyleOptions.map(renderOptionButton)}
         {isLinkActive && (
           <LinkOption
             editor={editor}
-            tooltipContent={tooltips.link || "Link"}
+            tooltipContent={tooltips.link || t("menu.link")}
           />
         )}
         {miscOptions.map(renderOptionButton)}
         <Mentions
           editor={editor}
           mentions={mentions}
-          tooltipContent={tooltips.mention || "Mention"}
+          tooltipContent={tooltips.mention || t("menu.mention")}
         />
         {addonCommandOptions.map(renderOptionButton)}
         <div className="neeto-editor-fixed-menu__right-options">
@@ -104,7 +107,7 @@ const Fixed = ({
       <div className="neeto-editor-fixed-menu__variables">
         <Variables
           editor={editor}
-          tooltipContent={tooltips.variables || "Variables"}
+          tooltipContent={tooltips.variables || t("menu.variables")}
           variables={variables}
         />
       </div>

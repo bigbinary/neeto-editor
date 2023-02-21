@@ -2,12 +2,15 @@ import React, { useState } from "react";
 
 import { Link } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import { URL_REGEXP } from "common/constants";
 
 const { Menu } = Dropdown;
 
 const LinkOption = ({ editor, tooltipContent }) => {
+  const { t } = useTranslation();
+
   const [error, setError] = useState("");
   const [urlString, setUrlString] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -38,7 +41,7 @@ const LinkOption = ({ editor, tooltipContent }) => {
       editor.chain().focus().setLink({ href: urlString }).run();
       handleClose();
     } else {
-      setError("Please enter a valid url");
+      setError(t("errors.invalid-url"));
     }
   };
 
@@ -69,20 +72,20 @@ const LinkOption = ({ editor, tooltipContent }) => {
           data-cy="neeto-editor-fixed-menu-link-option-input"
           error={error}
           name="url"
-          placeholder="Paste URL"
+          placeholder={t("placeholders.url")}
           value={urlString}
           onChange={({ target: { value } }) => setUrlString(value)}
           onFocus={() => setError("")}
         />
         <Button
           data-cy="neeto-editor-fixed-menu-link-option-link-button"
-          label="Link"
+          label={t("menu.link")}
           onClick={handleLink}
         />
         {isActive && (
           <Button
             data-cy="neeto-editor-fixed-menu-link-option-unlink-button"
-            label="Unlink"
+            label={t("common.unlink")}
             style="text"
             onClick={handleUnlink}
           />

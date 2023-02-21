@@ -2,6 +2,7 @@ import React from "react";
 
 import { Dropdown } from "@bigbinary/neetoui";
 import { Link } from "neetoicons";
+import { useTranslation } from "react-i18next";
 
 import { EDITOR_OPTIONS } from "common/constants";
 
@@ -30,6 +31,7 @@ const Options = ({
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
 }) => {
+  const { t } = useTranslation();
   const { Menu, MenuItem } = Dropdown;
 
   const dropdownOptions = getTextMenuDropdownOptions({ editor });
@@ -89,7 +91,7 @@ const Options = ({
           editor={editor}
           isActive={isEmojiPickerActive}
           setActive={setIsEmojiPickerActive}
-          tooltipContent={tooltips.emoji || "Emoji"}
+          tooltipContent={tooltips.emoji || t("menu.emoji")}
         />
       )}
       {listStyleOptions.map(renderOptionButton)}
@@ -100,12 +102,12 @@ const Options = ({
           active: editor.isActive("link"),
           optionName: "link",
           highlight: false,
-          tooltip: tooltips.link || "Link",
+          tooltip: tooltips.link || t("menu.link"),
         })}
       <Mentions
         editor={editor}
         mentions={mentions}
-        tooltipContent={tooltips.mention || "Mention"}
+        tooltipContent={tooltips.mention || t("menu.mention")}
       />
     </>
   );

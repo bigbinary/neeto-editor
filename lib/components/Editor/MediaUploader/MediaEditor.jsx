@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { LeftArrow } from "@bigbinary/neeto-icons";
 import { Button, Input } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 const MediaEditor = ({
   isImage,
@@ -11,6 +12,8 @@ const MediaEditor = ({
   alt = "",
   setMediaUrl,
 }) => {
+  const { t } = useTranslation();
+
   const [altText, setAltText] = useState(alt || "");
   const [isError, setIsError] = useState(false);
 
@@ -38,7 +41,7 @@ const MediaEditor = ({
       <Button
         icon={LeftArrow}
         iconPosition="left"
-        label="back"
+        label={t("common.back")}
         size="small"
         style="text"
         onClick={() => setMediaUrl("")}
@@ -70,7 +73,7 @@ const MediaEditor = ({
           )}
           <Input
             autoFocus
-            label="Caption"
+            label={t("common.caption")}
             placeholder="Enter a caption"
             value={altText}
             onChange={e => setAltText(e.target.value)}
@@ -80,10 +83,10 @@ const MediaEditor = ({
       <div className="ne-media-editor__footer">
         <Button
           disabled={isError}
-          label="Save changes"
+          label={t("common.save-changes")}
           onClick={handleSubmit}
         />
-        <Button label="Cancel" style="text" onClick={onClose} />
+        <Button label={t("common.cancel")} style="text" onClick={onClose} />
       </div>
     </div>
   );

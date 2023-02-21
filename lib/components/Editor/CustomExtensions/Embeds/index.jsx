@@ -2,10 +2,13 @@ import React, { useRef, useState } from "react";
 
 import { Button, Input, Modal, Typography } from "neetoui";
 import { isEmpty } from "ramda";
+import { useTranslation } from "react-i18next";
 
 import { validateUrl } from "./utils";
 
 const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
+  const { t } = useTranslation();
+
   const [embedUrl, setEmbedUrl] = useState("");
   const [error, setError] = useState(false);
 
@@ -59,7 +62,7 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
       <Modal.Body className="space-y-2 ne-embed-modal">
         <Input
           error={error && "Please enter a valid URL"}
-          label="Video URL:"
+          label={t("common.video-url")}
           ref={inputRef}
           size="medium"
           type="text"
@@ -71,7 +74,7 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
       <Modal.Footer className="space-x-2">
         <Button
           disabled={error || isEmpty(embedUrl)}
-          label="Embed"
+          label={t("common.embed")}
           onClick={handleEmbed}
         />
       </Modal.Footer>

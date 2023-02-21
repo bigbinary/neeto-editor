@@ -4,6 +4,7 @@ import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
 import { Button, Toastr } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
+import { useTranslation } from "react-i18next";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
@@ -26,6 +27,8 @@ const Attachments = (
   },
   ref
 ) => {
+  const { t } = useTranslation();
+
   const [pendingAttachments, setPendingAttachments] = useState([]);
 
   const attachmentInputRef = useRef(null);
@@ -164,7 +167,7 @@ const Attachments = (
         {isIndependent && (
           <Button
             disabled={isUploading}
-            label="Add attachments"
+            label={t("attachments.add")}
             loading={isUploading}
             size="medium"
             style="link"
@@ -180,7 +183,7 @@ const Attachments = (
           onClick={event => {
             if (!isEmpty(attachments) && config.maxNumberOfFiles === 1) {
               event.preventDefault();
-              Toastr.warning("Only one attachment is allowed");
+              Toastr.warning(t("attachments.one-attachment-allowed"));
             }
           }}
         />

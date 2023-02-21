@@ -1,0 +1,50 @@
+{
+  "common": {
+    "back": "back",
+    "cancel": "Cancel",
+    "caption": "Caption",
+    "embed": "Embed",
+    "save-changes": "Save changes",
+    "unlink": "Unlink",
+    "video-url": "Video URL:"
+  },
+  "attachments": {
+    "actions-blocked": "You are not permitted to update or delete attachments",
+    "add": "Add Attachment",
+    "delete-confirmation": "Are you sure you want to remove {{entity}}?",
+    "delete-title": "Remove Attachment?",
+    "max-files": "You can only attach {{entity}} files",
+    "name-empty": "Filename cannot be empty",
+    "one-attachment-allowed": "Only one attachment is allowed"
+  },
+  "error": {
+    "invalid-url": "Please enter a valid URL"
+  },
+  "menu": {
+    "attachments": "Attachments",
+    "block-quote": "Block quote",
+    "bold": "Bold",
+    "bulleted-list": "Bulleted list",
+    "code": "Code",
+    "embed-video": "Embed video",
+    "emoji": "Emoji",
+    "font-size": "Font size",
+    "highlight": "Highlight",
+    "image-upload": "Image upload",
+    "italic": "Italic",
+    "link": "Link",
+    "mention": "Mention",
+    "ordered-list": "Ordered list",
+    "redo": "Redo",
+    "strike": "Strike",
+    "table": "Table",
+    "underline": "Underline",
+    "undo": "Undo",
+    "variables": "Variables",
+    "video-embed": "Video embed",
+    "video-upload": "Video upload"
+  },
+  "placeholders": {
+    "url": "Paste URL"
+  }
+}

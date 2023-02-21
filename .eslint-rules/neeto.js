@@ -12,6 +12,7 @@ module.exports = {
     "@bigbinary/neeto/no-namespace-specifier-import-for-ramda": "error",
     "@bigbinary/neeto/no-redundant-jsx-expression": "error",
     "@bigbinary/neeto/no-redundant-string-templates": "error",
+    "@bigbinary/neeto/no-missing-localization": "error",
     // "@bigbinary/neeto/no-routes-destructure-and-reassignment": "error",
     "@bigbinary/neeto/ramda-tips": "warn",
     // "@bigbinary/neeto/routes-should-be-declared-and-default-exported": "error",
