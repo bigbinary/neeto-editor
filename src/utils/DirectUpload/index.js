@@ -13,7 +13,8 @@ class DirectUpload {
 
   create = async () => {
     const response = await this.generateUrl();
-    const { url, headers } = response.directUpload;
+    const { url, headers } =
+      response.direct_upload || response.data.direct_upload;
     await this.uploadToCloud(url, headers);
 
     return response;
@@ -23,8 +24,8 @@ class DirectUpload {
     const payload = {
       blob: {
         filename: this.file.name,
-        byteSize: this.file.size,
-        contentType: this.file.type,
+        byte_size: this.file.size,
+        content_type: this.file.type,
         checksum: await generateChecksum(this.file),
       },
     };

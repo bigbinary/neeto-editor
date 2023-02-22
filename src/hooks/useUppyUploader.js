@@ -38,7 +38,10 @@ const useUppyUploader = ({ endpoint, uppyConfig, onSuccess = noop }) => {
         ...UPPY_UPLOAD_CONFIG,
       })
       .on("upload", () => setIsUploading(true))
-      .on("upload-success", (_, { blobUrl }) => onSuccess?.(blobUrl))
+      .on("upload-success", (_, res) => {
+        const blobUrl = res.data?.blob_url || res.blob_url;
+        onSuccess?.(blobUrl);
+      })
       .on("cancel-all", () => setIsUploading(false))
       .on("complete", () => {
         uppy.reset();
