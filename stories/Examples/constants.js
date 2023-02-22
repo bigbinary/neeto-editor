@@ -59,6 +59,11 @@ export const MENU_PROPS = [
      }`,
   ],
   [
+    "children",
+    "Accepts React nodes to be rendered within the Menu.",
+    `<Button icon={Camera} />`,
+  ],
+  [
     "tooltips",
     "Accepts an object. Use this prop to pass down custom tooltips for the options.",
     `{
