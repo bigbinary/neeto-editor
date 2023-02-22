@@ -32,6 +32,7 @@ const Fixed = ({
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
+  children,
 }) => {
   const { t } = useTranslation();
 
@@ -100,6 +101,7 @@ const Fixed = ({
           tooltipContent={tooltips.mention || t("menu.mention")}
         />
         {addonCommandOptions.map(renderOptionButton)}
+        {children}
         <div className="neeto-editor-fixed-menu__right-options">
           {rightOptions.map(renderOptionButton)}
         </div>
