@@ -30,6 +30,7 @@ const Options = ({
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
+  children,
 }) => {
   const { t } = useTranslation();
   const { Menu, MenuItem } = Dropdown;
@@ -109,6 +110,7 @@ const Options = ({
         mentions={mentions}
         tooltipContent={tooltips.mention || t("menu.mention")}
       />
+      {children}
     </>
   );
 };

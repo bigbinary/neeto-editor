@@ -20,6 +20,7 @@ const Bubble = ({
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
+  children,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
@@ -70,7 +71,9 @@ const Bubble = ({
           setIsLinkOptionActive={setIsLinkOptionActive}
           setMediaUploader={setMediaUploader}
           tooltips={tooltips}
-        />
+        >
+          {children}
+        </Options>
       </BubbleMenuTipTap>
     </div>
   );
