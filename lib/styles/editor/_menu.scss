@@ -148,9 +148,10 @@
       gap: 8px;
 
       button {
-        padding: 6px;
         border: solid 1px rgb(var(--neeto-ui-gray-300));
         border-radius: var(--neeto-ui-rounded-md);
+        color: rgb(var(--neeto-ui-black));
+        padding: 6px;
         user-select: none;
       }
 
