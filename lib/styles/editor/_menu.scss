@@ -173,6 +173,26 @@
   padding: 8px !important;
 }
 
+.neeto-editor-table__item {
+  display: flex !important;
+  flex-direction: row;
+  gap: 8px;
+  padding: 8px !important;
+
+  input {
+    max-width: 60px !important;
+  }
+}
+
+.neeto-editor-table__options-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px !important;
+  max-height: 150px !important;
+  overflow: scroll;
+}
+
 .neeto-editor-font-size__wrapper {
   font-weight: var(--neeto-ui-font-normal) !important;
   padding: 8px !important;
@@ -250,6 +270,35 @@
       }
     }
   }
+
+  .neeto-editor-bubble-menu__table {
+    width: 256px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    gap: 6px;
+
+    input {
+      background-color: rgba(var(--neeto-ui-gray-400), 0.2);
+      outline: none;
+      line-height: 20px;
+      width: 60px;
+      height: 24px;
+
+      &::placeholder {
+        color: rgba(var(--neeto-ui-white, 0.4));
+      }
+    }
+
+    &_buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+    }
+  }
+
 
   .neeto-editor-bubble-menu__dropdown-target {
     display: flex;

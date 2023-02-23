@@ -3,6 +3,7 @@
     "back": "back",
     "cancel": "Cancel",
     "caption": "Caption",
+    "create": "Create",
     "embed": "Embed",
     "save-changes": "Save changes",
     "unlink": "Unlink",
@@ -45,6 +46,8 @@
     "video-upload": "Video upload"
   },
   "placeholders": {
-    "url": "Paste URL"
+    "url": "Paste URL",
+    "rows": "Enter rows",
+    "columns": "Enter columns"
   }
 }
