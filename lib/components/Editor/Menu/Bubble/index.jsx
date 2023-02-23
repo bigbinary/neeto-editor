@@ -24,6 +24,7 @@ const Bubble = ({
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
+  const [isTableOptionActive, setIsTableOptionActive] = useState(false);
   const selectedNode = editor && editor.view.state.selection.node;
   const isImageNodeSelected =
     selectedNode && selectedNode.type.name === "image";
@@ -53,7 +54,10 @@ const Bubble = ({
         tippyOptions={{
           arrow: roundArrow,
           zIndex: 99999,
-          onHide: () => setIsLinkOptionActive(false),
+          onHide: () => {
+            setIsLinkOptionActive(false);
+            setIsTableOptionActive(false);
+          },
           theme: "neeto-editor-bubble-menu",
           maxWidth: 500,
         }}
@@ -63,12 +67,14 @@ const Bubble = ({
           handleUploadAttachments={handleUploadAttachments}
           isEmojiPickerActive={isEmojiPickerActive}
           isLinkOptionActive={isLinkOptionActive}
+          isTableOptionActive={isTableOptionActive}
           mentions={mentions}
           options={textOptions}
           setIsEmbedModalOpen={setIsEmbedModalOpen}
           setIsEmojiPickerActive={setIsEmojiPickerActive}
           setIsInvalidLink={setIsInvalidLink}
           setIsLinkOptionActive={setIsLinkOptionActive}
+          setIsTableOptionActive={setIsTableOptionActive}
           setMediaUploader={setMediaUploader}
           tooltips={tooltips}
         >
