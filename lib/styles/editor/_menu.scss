@@ -151,10 +151,16 @@
         padding: 6px;
         border: solid 1px rgb(var(--neeto-ui-gray-300));
         border-radius: var(--neeto-ui-rounded-md);
+        user-select: none;
       }
 
       button:hover {
-        background-color: rgb(var(--neeto-ui-gray-200));
+        color: rgb(var(--neeto-ui-primary-800));
+        border-color: rgb(var(--neeto-ui-primary-800));
+      }
+
+      button:focus {
+        color: rgb(var(--neeto-ui-primary-800));
       }
     }
   }
