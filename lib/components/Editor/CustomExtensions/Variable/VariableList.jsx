@@ -35,10 +35,8 @@ const VariableCategory = ({ index, title, variables, onClickItem }) => (
     <div className="neeto-editor-variables-row">
       {variables.map(item => (
         <button
-          className="neeto-editor-variable"
           data-cy={`neeto-editor-variable-option-item-${item.label}--${item.value}`}
           key={`${item.label}--${item.value}`}
-          type="button"
           onClick={() => onClickItem(item)}
         >
           {item.label}
