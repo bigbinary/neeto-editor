@@ -1,12 +1,13 @@
 import React from "react";
 
 import { Dropdown } from "@bigbinary/neetoui";
-import { Link } from "neetoicons";
+import { Link, NeetoChangelog } from "neetoicons";
 import { useTranslation } from "react-i18next";
 
 import { EDITOR_OPTIONS } from "common/constants";
 
 import LinkOption from "./LinkOption";
+import TableOption from "./TableOption";
 import {
   getNodeType,
   getTextMenuDropdownOptions,
@@ -24,7 +25,9 @@ const Options = ({
   tooltips,
   setIsInvalidLink,
   isLinkOptionActive,
+  isTableOptionActive,
   setIsLinkOptionActive,
+  setIsTableOptionActive,
   setMediaUploader,
   handleUploadAttachments,
   isEmojiPickerActive,
@@ -39,6 +42,8 @@ const Options = ({
   const nodeType = getNodeType(dropdownOptions);
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
+  const isTableActive = options.includes(EDITOR_OPTIONS.TABLE);
+
   const {
     font: fontStyleOptions,
     block: blockStyleOptions,
@@ -65,6 +70,15 @@ const Options = ({
         editor={editor}
         handleAnimateInvalidLink={handleAnimateInvalidLink}
         handleClose={() => setIsLinkOptionActive(false)}
+      />
+    );
+  }
+
+  if (isTableOptionActive) {
+    return (
+      <TableOption
+        editor={editor}
+        handleClose={() => setIsTableOptionActive(false)}
       />
     );
   }
@@ -104,6 +118,15 @@ const Options = ({
           optionName: "link",
           highlight: false,
           tooltip: tooltips.link || t("menu.link"),
+        })}
+      {isTableActive &&
+        renderOptionButton({
+          Icon: NeetoChangelog,
+          command: () => setIsTableOptionActive(true),
+          active: editor.isActive("table"),
+          optionName: "table",
+          highlight: false,
+          tooltip: tooltips.table || t("menu.table"),
         })}
       <Mentions
         editor={editor}

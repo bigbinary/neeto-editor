@@ -9,6 +9,7 @@ import { isNotEmpty } from "neetocommons/pure";
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
+import TableOption from "./TableOption";
 import {
   buildMenuOptions,
   buildOptionsFromAddonCommands,
@@ -58,6 +59,7 @@ const Fixed = ({
   const isFontSizeActive = isNotEmpty(fontSizeOptions);
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
+  const isTableActive = options.includes(EDITOR_OPTIONS.TABLE);
   const addonCommandOptions = buildOptionsFromAddonCommands({
     editor,
     commands: addonCommands,
@@ -92,6 +94,12 @@ const Fixed = ({
           <LinkOption
             editor={editor}
             tooltipContent={tooltips.link || t("menu.link")}
+          />
+        )}
+        {isTableActive && (
+          <TableOption
+            editor={editor}
+            tooltipContent={tooltips.table || t("menu.table")}
           />
         )}
         {miscOptions.map(renderOptionButton)}
