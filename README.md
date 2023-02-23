@@ -9,7 +9,7 @@ yarn add @bigbinary/neeto-editor
 ```
 
 For setting up image upload refer
-https://neeto-editor.onrender.com/?path=/docs/examples-customize-options-addons--addons.
+https://neeto-editor.neeto.com/?path=/docs/examples-customize-options-addons--addons.
 
 ## Development
 
