@@ -47,6 +47,7 @@ const TableOption = ({ editor, tooltipContent }) => {
         <Input
           autoFocus
           data-cy="neeto-editor-fixed-menu-table-option-input"
+          min="1"
           placeholder={t("placeholders.rows")}
           size="small"
           type="number"
@@ -55,6 +56,7 @@ const TableOption = ({ editor, tooltipContent }) => {
         />
         <Input
           data-cy="neeto-editor-fixed-menu-table-option-input"
+          min="1"
           placeholder={t("placeholders.rows")}
           size="small"
           type="number"
@@ -63,7 +65,7 @@ const TableOption = ({ editor, tooltipContent }) => {
         />
         <Button
           data-cy="neeto-editor-fixed-menu-table-option-create-button"
-          label="Create"
+          label={t("common.create")}
           size="small"
           onClick={handleSubmit}
         />

@@ -27,6 +27,7 @@ const TableOption = ({ editor, handleClose }) => {
         autoFocus
         className="neeto-editor-bubble-menu-table__input"
         data-cy="neeto-editor-fixed-menu-table-option-input"
+        min="1"
         placeholder={t("placeholders.rows")}
         type="number"
         value={rows}
@@ -35,6 +36,7 @@ const TableOption = ({ editor, handleClose }) => {
       <input
         className="neeto-editor-bubble-menu-table__input"
         data-cy="neeto-editor-fixed-menu-table-option-input"
+        min="1"
         placeholder={t("placeholders.columns")}
         type="number"
         value={columns}
