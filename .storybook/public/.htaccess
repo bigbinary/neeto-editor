@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^$ /?path=/docs/welcome--page [L]
