@@ -46,11 +46,17 @@ const Attachments = (
     });
 
     files.forEach(file => {
-      uppy.addFile({
-        name: file.name,
-        type: file.type,
-        data: file,
-      });
+      try {
+        uppy.addFile({
+          name: file.name,
+          type: file.type,
+          data: file,
+        });
+      } catch (error) {
+        if (error.message !== t("error.on-before-file-added-return")) {
+          Toastr.error(t("error.cannot-add-files"));
+        }
+      }
     });
 
     afterAddingFiles();
