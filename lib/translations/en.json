@@ -19,7 +19,9 @@
     "one-attachment-allowed": "Only one attachment is allowed"
   },
   "error": {
-    "invalid-url": "Please enter a valid URL"
+    "invalid-url": "Please enter a valid URL",
+    "cannot-add-files": "Cannot add files",
+    "on-before-file-added-return": "Cannot add the file because onBeforeFileAdded returned false."
   },
   "menu": {
     "attachments": "Attachments",
