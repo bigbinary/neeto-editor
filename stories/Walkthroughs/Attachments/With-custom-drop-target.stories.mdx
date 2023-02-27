@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import CustomDragDropDemo from "./CustomDragDropDemo";
 import { Button } from "neetoui";
-import { Attachments } from "../../../lib";
+import { Attachments } from "../../../src";
 
 <Meta
   title="Walkthroughs/Attachments"
@@ -16,11 +16,11 @@ import { Attachments } from "../../../lib";
   component={Attachments}
 />
 
-
-
 # Custom drop zone for attachments
 
-The drop zone can be specified by providing a ref (`dragDropRef`) to the wrapper component and passing it as a prop to the `Attachments` component. In the below example, the entire `Pane` body is a drop zone.
+The drop zone can be specified by providing a ref (`dragDropRef`) to the wrapper
+component and passing it as a prop to the `Attachments` component. In the below
+example, the entire `Pane` body is a drop zone.
 
 <Canvas>
   <Story name="Custom drop zone">
@@ -46,20 +46,25 @@ const CustomDragDropDemo = () => {
   return (
     <>
       <Button label="Show Pane" onClick={() => setShowPane(true)} />
-        <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
-          <Pane.Header>
-            <Typography style="h2" weight="semibold">
-              Typography
-            </Typography>
-          </Pane.Header>
-          <div className="flex justify-center w-full h-full ne-attachments__wrapper" ref={dragDropRef}>
-            <Attachments dragDropRef={dragDropRef} attachments={attachments} onChange={setAttachments} />
-          </div>
-        </Pane>
+      <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
+        <Pane.Header>
+          <Typography style="h2" weight="semibold">
+            Typography
+          </Typography>
+        </Pane.Header>
+        <div
+          className="flex justify-center w-full h-full ne-attachments__wrapper"
+          ref={dragDropRef}
+        >
+          <Attachments
+            dragDropRef={dragDropRef}
+            attachments={attachments}
+            onChange={setAttachments}
+          />
+        </div>
+      </Pane>
     </>
   );
 };
 export default CustomDragDropDemo;
-
-
 ```

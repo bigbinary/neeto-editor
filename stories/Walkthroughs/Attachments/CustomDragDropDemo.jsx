@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 
 import { Button, Pane, Typography } from "@bigbinary/neetoui";
 
-import { Attachments } from "../../../lib";
+import { Attachments } from "../../../src";
 
 const CustomDragDropDemo = () => {
   const [showPane, setShowPane] = useState(false);

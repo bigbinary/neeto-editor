@@ -47,7 +47,7 @@ const plugins = [
 
 export default [
   {
-    input: "./lib/index.js",
+    input: "./src/index.js",
     external: peerDependencies,
     output: {
       file: "./index.js",
@@ -59,7 +59,7 @@ export default [
     plugins,
   },
   {
-    input: "./lib/styles/editor-output.scss",
+    input: "./src/styles/editor-output.scss",
     output: {
       dir: `${__dirname}/dist`,
       format: "esm",
@@ -74,7 +74,7 @@ export default [
     ],
   },
   {
-    input: "./lib/components/EditorContent/codeBlockHighlight.js",
+    input: "./src/components/EditorContent/codeBlockHighlight.js",
     output: {
       dir: `${__dirname}/dist`,
       format: "cjs",

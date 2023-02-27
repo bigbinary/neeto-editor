@@ -17,7 +17,7 @@ import {
 } from "neetoicons";
 import { assoc } from "ramda";
 
-import { FileAttachments } from "lib/icons/FileAttachments";
+import { FileAttachments } from "src/icons/FileAttachments";
 
 const { t } = i18n;
 

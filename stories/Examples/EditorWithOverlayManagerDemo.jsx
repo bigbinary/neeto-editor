@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 
 import { Button, Pane, Typography } from "@bigbinary/neetoui";
 
-import { Editor } from "../../lib";
+import { Editor } from "../../src";
 
 const EditorWithOverlayManager = () => {
   const [showPane, setShowPane] = useState(false);

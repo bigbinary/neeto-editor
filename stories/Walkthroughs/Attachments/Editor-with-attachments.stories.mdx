@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
-import { Editor } from "../../../lib";
+import { Editor } from "../../../src";
 import { Button } from "neetoui";
-import { Attachments } from "../../../lib";
+import { Attachments } from "../../../src";
 
 <Meta
   title="Walkthroughs/Attachments"
@@ -16,14 +16,12 @@ import { Attachments } from "../../../lib";
   component={Attachments}
 />
 
-
-
 # Integrated to neetoEditor
 
-File attachment feature can be enabled in neetoEditor by adding the `attachments`
-addon to the list of addons. All the files are uploaded using a pre-signed URL
-from the backend.
-This addon also enables the drag and drop feature to upload files.
+File attachment feature can be enabled in neetoEditor by adding the
+`attachments` addon to the list of addons. All the files are uploaded using a
+pre-signed URL from the backend. This addon also enables the drag and drop
+feature to upload files.
 
 <Canvas>
   <Story name="Integrated to neetoEditor">

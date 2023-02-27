@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { noop } from "@bigbinary/neeto-commons-frontend/pure";
 import { Button } from "@bigbinary/neetoui";
 
-import { Attachments } from "../../../lib";
+import { Attachments } from "../../../src";
 
 const CustomAttachmentsDemo = () => {
   const attachmentsRef = useRef(null);
