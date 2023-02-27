@@ -1,9 +1,9 @@
 const path = require("path");
 
-const absolutePath = basePath => path.resolve(__dirname, `lib/${basePath}`);
+const absolutePath = basePath => path.resolve(__dirname, `src/${basePath}`);
 
 module.exports = {
-  lib: absolutePath(""),
+  src: absolutePath(""),
   apis: absolutePath("apis"),
   assets: absolutePath("assets"),
   components: absolutePath("components"),

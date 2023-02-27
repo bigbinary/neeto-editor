@@ -1,4 +1,4 @@
-import "../lib/index.scss";
+import "../src/index.scss";
 import "./style.scss";
 
 export const parameters = {

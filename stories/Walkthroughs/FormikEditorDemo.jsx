@@ -4,7 +4,7 @@ import { Formik, Form } from "formik";
 import { Button } from "neetoui";
 import * as yup from "yup";
 
-import { isEditorEmpty, FormikEditor } from "../../lib";
+import { isEditorEmpty, FormikEditor } from "../../src";
 
 const INITIAL_VALUES = {
   description: "<p></p>",

@@ -7,10 +7,10 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "NodeNext",
-    "baseUrl": "./lib",
+    "baseUrl": "./src",
     "paths": {
-      "lib/*": ["lib/*"],
-      "lib": ["lib"],
+      "src/*": ["src/*"],
+      "src": ["src"],
       "apis/*": ["apis/*"],
       "apis": ["apis"],
       "assets/*": ["assets/*"],

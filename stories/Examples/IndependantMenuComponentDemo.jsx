@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 
-import { Editor, Menu } from "../../lib";
+import { Editor, Menu } from "../../src";
 
 const IndependantMenuComponent = () => {
   const [editor, setEditor] = useState(null);

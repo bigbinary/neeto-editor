@@ -161,7 +161,7 @@
     "serve": "http-server storybook-static"
   },
   "lint-staged": {
-    "{lib,example}/**/*.{js,jsx,json}": [
+    "{src,example}/**/*.{js,jsx,json}": [
       "prettier --write",
       "eslint --fix"
     ],

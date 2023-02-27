@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import CustomAttachmentsDemo from "./CustomAttachmentsDemo";
 import { Button } from "neetoui";
-import { Attachments } from "../../../lib";
+import { Attachments } from "../../../src";
 
 <Meta
   title="Walkthroughs/Attachments"
@@ -16,15 +16,14 @@ import { Attachments } from "../../../lib";
   component={Attachments}
 />
 
-
-
 # Custom Attachments
 
-The Upload function of the `Attachments` component can be mapped to different components.
+The Upload function of the `Attachments` component can be mapped to different
+components.
 
 <Canvas>
   <Story name="With Custom Upload Button">
-    <CustomAttachmentsDemo/>
+    <CustomAttachmentsDemo />
   </Story>
 </Canvas>
 
@@ -49,11 +48,16 @@ const CustomAttachmentsDemo = () => {
   return (
     <>
       <Button label="Custom upload button" onClick={handleUpload} />
-      <Attachments className="pt-2" isIndependent={false} ref={attachmentsRef} attachments={attachments} onChange={setAttachments}/>
+      <Attachments
+        className="pt-2"
+        isIndependent={false}
+        ref={attachmentsRef}
+        attachments={attachments}
+        onChange={setAttachments}
+      />
     </>
   );
 };
 
 export default CustomAttachmentsDemo;
-
 ```

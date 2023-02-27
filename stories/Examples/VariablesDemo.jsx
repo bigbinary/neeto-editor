@@ -5,7 +5,7 @@ import * as yup from "yup";
 
 import { VARIABLES } from "./constants";
 
-import { isEditorEmpty, FormikEditor, EditorContent } from "../../lib";
+import { isEditorEmpty, FormikEditor, EditorContent } from "../../src";
 
 const INITIAL_VALUES = {
   description: "<p></p>",
