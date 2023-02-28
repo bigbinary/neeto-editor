@@ -5,17 +5,22 @@ import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import svgr from "@svgr/rollup";
+import { mergeDeepLeft } from "ramda";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
 import { terser } from "rollup-plugin-terser";
 
 import packageJson from "./package.json";
 
+const commonResolve = require("@bigbinary/neeto-commons-frontend/configs/nanos/webpack/resolve.js");
+const projectResolve = require("./resolve.js");
+
+const { alias: aliasEntries } = mergeDeepLeft(projectResolve, commonResolve);
 const peerDependencies = Object.keys(packageJson.peerDependencies);
 
 const plugins = [
   peerDepsExternal(),
-  alias({ entries: require("./alias") }),
+  alias({ entries: aliasEntries }),
   json(),
   svgr(),
   replace({
@@ -30,13 +35,6 @@ const plugins = [
   commonjs({ include: /\**node_modules\**/ }),
   babel({
     exclude: "node_modules/**",
-    presets: ["@babel/preset-env", "@babel/preset-react"],
-    plugins: [
-      "@babel/plugin-transform-runtime",
-      "@babel/plugin-proposal-nullish-coalescing-operator",
-      "@babel/plugin-proposal-class-properties",
-      "ramda",
-    ],
     babelHelpers: "runtime",
   }),
   styles({

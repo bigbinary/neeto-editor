@@ -1,3 +1,9 @@
+const commonResolve = require("@bigbinary/neeto-commons-frontend/configs/nanos/webpack/resolve.js");
+const projectResolve = require("../resolve.js");
+const { mergeDeepLeft } = require("ramda");
+
+const { alias } = mergeDeepLeft(projectResolve, commonResolve);
+
 module.exports = {
   core: {
     builder: "webpack5",
@@ -20,7 +26,7 @@ module.exports = {
     plugins: ["@babel/plugin-proposal-class-properties"],
   }),
   webpackFinal: async (config, { configType }) => {
-    config.resolve.alias = require("../alias");
+    config.resolve.alias = alias;
     return config;
   },
 };

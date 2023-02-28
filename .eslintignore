@@ -10,4 +10,9 @@ tmp
 .vscode
 babel.config.js
 app/javascript/packs
-jsconfig.json
+dist
+webpack.config.js
+rollup.config.js
+tailwind.config.js
+.eslintrc.js
+.prettierrc.js
