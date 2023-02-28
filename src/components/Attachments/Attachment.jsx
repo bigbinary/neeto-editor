@@ -49,7 +49,7 @@ const Attachment = ({
 
       const {
         blob: { filename },
-      } = await directUploadsApi.update(endpoint, signedId, payload);
+      } = await directUploadsApi.update({ url: endpoint, signedId, payload });
 
       onChange(
         attachments.map(attachment =>
