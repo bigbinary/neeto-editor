@@ -1,13 +1,6 @@
 import { noop } from "neetocommons/pure";
 
-function updateColumns(
-  node,
-  colgroup,
-  table,
-  cellMinWidth,
-  overrideCol,
-  overrideValue
-) {
+function updateColumns(node, colgroup, table, cellMinWidth) {
   let totalWidth = 0;
   let fixedWidth = true;
   let nextDOM = colgroup.firstChild;
@@ -17,8 +10,7 @@ function updateColumns(
     const { colspan, colwidth } = row.child(i).attrs;
 
     for (let j = 0; j < colspan; j += 1, col += 1) {
-      const hasWidth =
-        overrideCol === col ? overrideValue : colwidth && colwidth[j];
+      const hasWidth = colwidth && colwidth[j];
       const cssWidth = hasWidth ? `${hasWidth}px` : "";
 
       totalWidth += hasWidth || cellMinWidth;
