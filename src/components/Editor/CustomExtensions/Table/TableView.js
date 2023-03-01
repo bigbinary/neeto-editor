@@ -116,10 +116,16 @@ export class TableView {
   };
 
   insertColumn = () => {
-    const cell = document.createElement("td");
-    cell.appendChild(document.createElement("p"));
-    this.table
-      .querySelectorAll("tr:not(:first-child)")
-      .forEach(tr => tr.appendChild(cell.cloneNode(true)));
+    this.table.querySelectorAll("tr").forEach(tr => {
+      if (tr.firstChild?.nodeName === "TH") {
+        const th = document.createElement("th");
+        th.appendChild(document.createElement("p"));
+        tr.appendChild(th);
+      } else {
+        const td = document.createElement("td");
+        td.appendChild(document.createElement("p"));
+        tr.appendChild(td);
+      }
+    });
   };
 }
