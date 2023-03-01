@@ -51,5 +51,15 @@
     "url": "Paste URL",
     "rows": "Enter rows",
     "columns": "Enter columns"
+  },
+  "table": {
+    "delete": "Delete table",
+    "delete-column": "Delete column",
+    "delete-row": "Delete row",
+    "insert-column": "Insert column",
+    "insert-row": "Insert row",
+    "merge-split": "Merge/Split cell",
+    "toggle-header-column": "Toggle header column",
+    "toggle-header-row": "Toggle header row"
   }
 }

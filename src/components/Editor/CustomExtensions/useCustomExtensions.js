@@ -63,13 +63,18 @@ const useCustomExtensions = ({
       shortcuts: keyboardShortcuts,
     }),
     Placeholder.configure({ placeholder }),
-    Table.configure({ resizable: true }),
-    TableRow,
-    TableHeader,
-    TableCell,
   ];
   if (isVideoEmbedActive) {
     customExtensions.push(Embeds);
+  }
+
+  if (options.includes("table")) {
+    customExtensions.push(
+      Table.configure({ resizable: true }),
+      TableRow,
+      TableHeader,
+      TableCell
+    );
   }
 
   if (isSlashCommandsActive) {

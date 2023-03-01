@@ -300,6 +300,14 @@
       justify-content: space-between;
       gap: 4px;
     }
+
+    &_options {
+      display: flex;
+      align-items: center;
+      overflow: scroll;
+      justify-content: space-between;
+      gap: 2px;
+    }
   }
 
 
