@@ -47,7 +47,7 @@ const TableOption = ({ editor, handleClose }) => {
             value={columns}
             onChange={e => setColumns(e.target.value)}
           />
-          <div>
+          <div className="neeto-editor-bubble-menu__table__buttons">
             <Button
               data-cy="neeto-editor-bubble-menu-table-option-create-button"
               icon={Check}
