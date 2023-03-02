@@ -62,6 +62,9 @@ const Editor = (
   const dragDropRef = useRef(null);
   const isAttachmentsActive = addons.includes(EDITOR_OPTIONS.ATTACHMENTS);
   const isVideoEmbedActive = addons.includes(EDITOR_OPTIONS.VIDEO_EMBED);
+  const isMediaUploaderActive = addons.includes(
+    EDITOR_OPTIONS.VIDEO_UPLOAD || EDITOR_OPTIONS.IMAGE_UPLOAD
+  );
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
@@ -170,13 +173,15 @@ const Editor = (
             variables={variables}
           />
           <EditorContent editor={editor} {...otherProps} />
-          <MediaUploader
-            editor={editor}
-            mediaUploader={mediaUploader}
-            unsplashApiKey={editorSecrets.unsplash}
-            uploadEndpoint={uploadEndpoint}
-            onClose={() => setMediaUploader({ image: false, video: false })}
-          />
+          {isMediaUploaderActive && (
+            <MediaUploader
+              editor={editor}
+              mediaUploader={mediaUploader}
+              unsplashApiKey={editorSecrets.unsplash}
+              uploadEndpoint={uploadEndpoint}
+              onClose={() => setMediaUploader({ image: false, video: false })}
+            />
+          )}
           {isVideoEmbedActive && (
             <EmbedOption
               editor={editor}

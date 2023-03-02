@@ -9,6 +9,7 @@ import { isNotEmpty } from "neetocommons/pure";
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
+import TableActions from "./TableActions";
 import TableOption from "./TableOption";
 import {
   buildMenuOptions,
@@ -109,6 +110,10 @@ const Fixed = ({
           tooltipContent={tooltips.mention || t("menu.mention")}
         />
         {addonCommandOptions.map(renderOptionButton)}
+        <TableActions
+          editor={editor}
+          tooltipContent={tooltips.table || t("menu.table")}
+        />
         {children}
         <div className="neeto-editor-fixed-menu__right-options">
           {rightOptions.map(renderOptionButton)}
