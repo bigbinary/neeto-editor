@@ -1,9 +1,8 @@
 import React from "react";
 
+import { humanize } from "neetocommons/pure";
 import { MenuHorizontal } from "neetoicons";
 import { Button, Dropdown } from "neetoui";
-
-import { humanize } from "neetocommons/pure";
 
 import { buildImageOptions } from "../../MediaUploader/utils";
 

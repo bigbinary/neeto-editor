@@ -1,3 +1,4 @@
+// eslint-disable-next-line @bigbinary/neeto/no-axios-import-outside-apis
 import axios from "axios";
 
 const generate = (url, payload, config) =>

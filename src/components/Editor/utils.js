@@ -1,7 +1,6 @@
+import { isNotEmpty } from "neetocommons/pure";
 import { Slice, Fragment, Node } from "prosemirror-model";
 import { Selection } from "prosemirror-state";
-
-import { isNotEmpty } from "neetocommons/pure";
 
 import {
   EDITOR_LINE_HEIGHT,
@@ -42,7 +41,7 @@ export const setInitialPosition = editor => {
   view.dispatch(transaction);
 };
 
-export const isEditorOverlaysActive = /*#__PURE__*/ () => {
+export const isEditorOverlaysActive = () => {
   const active = document.querySelector(
     ".ne-media-uploader,.ne-embed-modal,.tippy-content"
   );

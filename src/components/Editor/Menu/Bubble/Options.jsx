@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Dropdown } from "@bigbinary/neetoui";
 import { Link, NeetoChangelog } from "neetoicons";
+import { Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
 
 import { EDITOR_OPTIONS } from "common/constants";

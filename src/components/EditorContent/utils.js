@@ -1,9 +1,8 @@
 import React from "react";
 
 import { lowlight } from "lowlight";
-import { renderToString } from "react-dom/server";
-
 import { findBy } from "neetocommons/pure";
+import { renderToString } from "react-dom/server";
 
 import { CODE_BLOCK_REGEX, VARIABLE_SPAN_REGEX } from "./constants";
 
@@ -32,10 +31,7 @@ export const highlightCode = content =>
     return `<pre><code>${renderToString(highlightedNode)}</code></pre>`;
   });
 
-export const substituteVariables = /*#__PURE__*/ (
-  highlightedContent,
-  variables
-) =>
+export const substituteVariables = (highlightedContent, variables) =>
   highlightedContent.replace(VARIABLE_SPAN_REGEX, (matchedSpan, dataLabel) => {
     const dataLabelSplitted = dataLabel.split(".");
     if (dataLabelSplitted.length > 1) {

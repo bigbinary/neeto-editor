@@ -1,3 +1,4 @@
+import { noop } from "neetocommons/pure";
 import {
   Paragraph,
   TextH1,
@@ -17,7 +18,6 @@ import {
 } from "neetoicons";
 
 import { EDITOR_OPTIONS } from "common/constants";
-import { noop } from "neetocommons/pure";
 
 export const MENU_ITEMS = [
   {

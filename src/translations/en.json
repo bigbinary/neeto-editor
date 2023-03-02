@@ -14,7 +14,7 @@
     "add": "Add Attachment",
     "delete-confirmation": "Are you sure you want to remove {{entity}}?",
     "delete-title": "Remove Attachment?",
-    "max-files": "You can only attach {{entity}} files",
+    "maxNumberOfFiles": "You can only attach {{entity}} files",
     "name-empty": "Filename cannot be empty",
     "one-attachment-allowed": "Only one attachment is allowed"
   },

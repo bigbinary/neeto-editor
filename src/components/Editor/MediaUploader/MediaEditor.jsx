@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { LeftArrow } from "@bigbinary/neeto-icons";
+import { LeftArrow } from "neetoicons";
 import { Button, Input } from "neetoui";
 import { useTranslation } from "react-i18next";
 

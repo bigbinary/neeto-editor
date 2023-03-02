@@ -4,8 +4,6 @@ import { Field } from "formik";
 
 import Editor from ".";
 
-import "../../index.scss";
-
 const FormikEditor = ({ name, ...otherProps }, ref) => (
   <Field name={name}>
     {({ field, form, meta }) => (

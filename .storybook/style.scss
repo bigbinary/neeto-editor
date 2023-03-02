@@ -1,4 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "@bigbinary/neetoui";
+@import "react-toastify/dist/ReactToastify.min.css";
 
 /* Hiding certain control columns from argstable */
 #hide-controls-column > div > table > thead > tr > th:last-child,

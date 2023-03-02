@@ -2,11 +2,11 @@ import { useState } from "react";
 
 import Uppy from "@uppy/core";
 import { useUppy } from "@uppy/react";
+import { noop } from "neetocommons/pure";
 import { Toastr } from "neetoui";
 
 import { UPPY_UPLOAD_CONFIG } from "components/Editor/MediaUploader/constants";
 import { convertToFileSize } from "components/Editor/MediaUploader/utils";
-import { noop } from "neetocommons/pure";
 import ActiveStorageUpload from "utils/ActiveStorageUpload";
 
 const useUppyUploader = ({ endpoint, uppyConfig, onSuccess = noop }) => {

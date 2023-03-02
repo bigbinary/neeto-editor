@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import saveAs from "file-saver";
+import { removeBy } from "neetocommons/pure";
 import { MenuVertical, Close } from "neetoicons";
 import {
   Dropdown,
@@ -15,7 +16,6 @@ import { isEmpty, assoc } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import directUploadsApi from "apis/direct_uploads";
-import { removeBy } from "neetocommons/pure";
 
 import { ATTACHMENT_OPTIONS } from "./constants";
 import FileIcon from "./FileIcon";

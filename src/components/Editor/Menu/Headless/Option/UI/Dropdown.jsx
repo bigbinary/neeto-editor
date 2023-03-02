@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import Tippy from "@tippyjs/react";
 import classnames from "classnames";
-
 import { noop } from "neetocommons/pure";
 
 import Button from "./Button";

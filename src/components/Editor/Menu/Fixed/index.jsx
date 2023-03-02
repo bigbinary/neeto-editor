@@ -1,10 +1,10 @@
 import React from "react";
 
 import classnames from "classnames";
+import { isNotEmpty } from "neetocommons/pure";
 import { useTranslation } from "react-i18next";
 
 import { EDITOR_OPTIONS } from "common/constants";
-import { isNotEmpty } from "neetocommons/pure";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
