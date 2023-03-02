@@ -153,3 +153,38 @@ export const FONT_SIZE_OPTIONS = [
   { label: "Heading 2", value: 2 },
   { label: "Heading 3", value: 3 },
 ];
+
+export const TABLE_ACTIONS = ({ editor }) => [
+  {
+    label: t("table.insert-row"),
+    command: () => editor.commands.addRowAfter(),
+  },
+  {
+    label: t("table.insert-column"),
+    command: () => editor.commands.addColumnAfter(),
+  },
+  {
+    label: t("table.delete-row"),
+    command: () => editor.chain().focus().deleteRow().run(),
+  },
+  {
+    label: t("table.delete-column"),
+    command: () => editor.chain().focus().deleteColumn().run(),
+  },
+  {
+    label: t("table.merge-split"),
+    command: () => editor.chain().focus().mergeOrSplit().run(),
+  },
+  {
+    label: t("table.toggle-header-row"),
+    command: () => editor.chain().focus().toggleHeaderRow().run(),
+  },
+  {
+    label: t("table.toggle-header-column"),
+    command: () => editor.chain().focus().toggleHeaderColumn().run(),
+  },
+  {
+    label: t("table.delete"),
+    command: () => editor.commands.deleteTable(),
+  },
+];

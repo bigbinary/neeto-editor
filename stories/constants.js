@@ -1,19 +1,20 @@
 export const EDITOR_ADDONS_TABLE_COLUMNS = ["Prop", "Description"];
 
 export const EDITOR_ADDONS_TABLE_ROWS = [
-  ["highlight", "Emphasize important texts by marking it with a color."],
-  ["emoji", "Add emojis to your content using an emoji picker."],
-  ["code-block", "Provide syntax highlighting for code snippets."],
-  ["block-quote", "Highlight a block of text as a quote."],
   ["attachments", "Add attachments to the editor."],
-  ["video-upload", "Upload videos to the editor."],
+  ["block-quote", "Highlight a block of text as a quote."],
+  ["code-block", "Provide syntax highlighting for code snippets."],
+  ["divider", "Add a horizontal line to separate different sections."],
+  ["emoji", "Add emojis to your content using an emoji picker."],
+  ["highlight", "Emphasize important texts by marking it with a color."],
   ["image-upload", "Upload images to the editor."],
   ["image-upload-unsplash", "Add unsplash integration to the image upload."],
-  ["divider", "Add a horizontal line to separate different sections."],
-  ["video-embed", "Embed videos from YouTube, Loom and Vimeo."],
   ["paste-unformatted", "Paste by removing all styles."],
-  ["undo", "Undo last performed action."],
   ["redo", "Redo last performed action."],
+  ["table", "Add a table to the editor."],
+  ["undo", "Undo last performed action."],
+  ["video-upload", "Upload videos to the editor."],
+  ["video-embed", "Embed videos from YouTube, Loom and Vimeo."],
 ];
 
 export const EDITOR_PROP_TABLE_COLUMNS = [
@@ -47,18 +48,19 @@ export const EDITOR_SHORTCUTS_TABLE_COLUMNS = [
 ];
 
 export const EDITOR_SHORTCUTS_TABLE_ROWS = [
-  ["Bold", "Ctrl + B", "Cmd + B"],
-  ["Italicize", "Ctrl + I", "Cmd + I"],
-  ["Underline", "Ctrl + U", "Cmd + U"],
-  ["Strikethrough", "Ctrl + Shift + X", "Cmd + Shift + X"],
-  ["Highlight", "Ctrl + Shift + H", "Cmd + Shift + H"],
-  ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
-  ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
   ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
+  ["Bold", "Ctrl + B", "Cmd + B"],
+  ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
   ["Emoji", "Ctrl + Alt + E", "Cmd + Opt + E"],
-  ["Video uploader", "Ctrl + Alt + V", "Cmd + Opt + V"],
+  ["Highlight", "Ctrl + Shift + H", "Cmd + Shift + H"],
   ["Image uploader", "Ctrl + Alt + I", "Cmd + Opt + K"],
+  ["Italicize", "Ctrl + I", "Cmd + I"],
+  ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
+  ["Strikethrough", "Ctrl + Shift + X", "Cmd + Shift + X"],
+  ["Table", "Ctrl + Alt + T", "Cmd + Opt + T"],
+  ["Underline", "Ctrl + U", "Cmd + U"],
   ["Upload attachments", "Ctrl + Alt + A", "Cmd + Opt + A"],
+  ["Video uploader", "Ctrl + Alt + V", "Cmd + Opt + V"],
 ];
 
 export const CUSTOM_SLASH_COMMANDS_TABLE_COLUMNS = ["Property", "Description"];

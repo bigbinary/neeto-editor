@@ -76,13 +76,15 @@ const Menu = props => {
         setIsEmojiPickerActive={setIsEmojiPickerActive}
         setMediaUploader={setMediaUploader}
       />
-      <MediaUploader
-        editor={editor}
-        mediaUploader={mediaUploader}
-        unsplashApiKey={editorSecrets.unsplash}
-        uploadEndpoint={uploadEndpoint}
-        onClose={() => setMediaUploader({ image: false, video: false })}
-      />
+      {addons.includes("image-upload" || "video-upload") && (
+        <MediaUploader
+          editor={editor}
+          mediaUploader={mediaUploader}
+          unsplashApiKey={editorSecrets.unsplash}
+          uploadEndpoint={uploadEndpoint}
+          onClose={() => setMediaUploader({ image: false, video: false })}
+        />
+      )}
       {addons.includes("video-embed") && (
         <EmbedOption
           editor={editor}
