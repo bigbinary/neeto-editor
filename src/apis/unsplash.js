@@ -1,3 +1,4 @@
+// eslint-disable-next-line @bigbinary/neeto/no-axios-import-outside-apis
 import axios from "axios";
 
 import { UNSPLASH_BASE_URL } from "common/constants";

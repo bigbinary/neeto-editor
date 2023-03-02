@@ -2,13 +2,13 @@ import React, { useRef, useEffect, useState, useImperativeHandle } from "react";
 
 import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
+import { removeById, noop } from "neetocommons/pure";
 import { Button, Toastr } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
-import { removeById, noop } from "neetocommons/pure";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";

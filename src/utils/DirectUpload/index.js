@@ -1,5 +1,6 @@
-import directUploadsApi from "apis/direct_uploads";
 import { noop } from "neetocommons/pure";
+
+import directUploadsApi from "apis/direct_uploads";
 
 import { generateChecksum } from "./utils";
 

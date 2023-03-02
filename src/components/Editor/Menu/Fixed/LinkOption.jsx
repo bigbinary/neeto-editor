@@ -41,7 +41,7 @@ const LinkOption = ({ editor, tooltipContent }) => {
       editor.chain().focus().setLink({ href: urlString }).run();
       handleClose();
     } else {
-      setError(t("errors.invalid-url"));
+      setError(t("error.invalid-url"));
     }
   };
 

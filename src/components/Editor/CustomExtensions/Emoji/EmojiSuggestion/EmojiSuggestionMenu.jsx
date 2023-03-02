@@ -2,11 +2,11 @@ import React from "react";
 
 import classnames from "classnames";
 import { init, SearchIndex } from "emoji-mart";
+import { isNotEmpty } from "neetocommons/pure";
 import { Spinner } from "neetoui";
 import { isEmpty } from "ramda";
 
 import emojiPickerApi from "apis/emoji_picker";
-import { isNotEmpty } from "neetocommons/pure";
 
 import { filterEmojiSuggestions } from "./utils";
 

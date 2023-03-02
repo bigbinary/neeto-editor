@@ -89,7 +89,7 @@ export const MENU_OPTIONS = ({
       active: editor.isActive("bulletList"),
       optionName: "bullet-list",
       highlight: true,
-      tooltip: tooltips.bulletList || t("menu.bullet-list"),
+      tooltip: tooltips.bulletList || t("menu.bulleted-list"),
     },
     {
       Icon: ListNumber,

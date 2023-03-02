@@ -2,13 +2,13 @@ import React, { useImperativeHandle, useState, useRef } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
+import { noop, slugify } from "neetocommons/pure";
 import { Label } from "neetoui";
 import { EditorView } from "prosemirror-view";
 
 import { DIRECT_UPLOAD_ENDPOINT, EDITOR_OPTIONS } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import useEditorWarnings from "hooks/useEditorWarnings";
-import { noop, slugify } from "neetocommons/pure";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";

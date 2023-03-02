@@ -1,4 +1,5 @@
 import i18n from "i18next";
+import { noop } from "neetocommons/pure";
 import {
   TextBold,
   TextItalic,
@@ -19,8 +20,6 @@ import {
   NeetoChangelog,
 } from "neetoicons";
 import { assoc } from "ramda";
-
-import { noop } from "neetocommons/pure";
 
 const { t } = i18n;
 
@@ -87,7 +86,7 @@ export const MENU_OPTIONS = ({
     command: () => editor.chain().focus().toggleBulletList().run(),
     active: editor.isActive("bulletList"),
     optionName: "bullet-list",
-    tooltip: tooltips.bulletList || t("menu.bullet-list"),
+    tooltip: tooltips.bulletList || t("menu.bulleted-list"),
   },
   {
     Icon: ListNumber,
