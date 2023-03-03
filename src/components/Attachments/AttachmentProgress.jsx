@@ -21,7 +21,13 @@ const AttachmentProgress = ({ attachment, uppy, removeUploadingFile }) => {
         <Typography style="body2">{attachment.filename}</Typography>
         <Typography style="body2">{progressPercentage}</Typography>
       </div>
-      <Button icon={Close} size="small" style="text" onClick={handleCancel} />
+      <Button
+        data-cy="neeto-editor-attachment-upload-cancel-button"
+        icon={Close}
+        size="small"
+        style="text"
+        onClick={handleCancel}
+      />
     </div>
   );
 };

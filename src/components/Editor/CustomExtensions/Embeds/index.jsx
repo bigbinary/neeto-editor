@@ -61,6 +61,7 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
       </Modal.Header>
       <Modal.Body className="ne-embed-modal space-y-2">
         <Input
+          data-cy="neeto-editor-embed-input"
           error={error && "Please enter a valid URL"}
           label={t("common.video-url")}
           ref={inputRef}
@@ -73,6 +74,7 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
       </Modal.Body>
       <Modal.Footer className="space-x-2">
         <Button
+          data-cy="neeto-editor-embed-cancel"
           disabled={error || isEmpty(embedUrl)}
           label={t("common.embed")}
           onClick={handleEmbed}

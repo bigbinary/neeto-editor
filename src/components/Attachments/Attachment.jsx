@@ -117,6 +117,7 @@ const Attachment = ({
             <Tooltip content={newFilename} position="top">
               <Input
                 autoFocus
+                data-cy="neeto-editor-attachment-rename-input"
                 error={isEmpty(newFilename) ? t("attachments.name-empty") : ""}
                 size="small"
                 value={newFilename}
@@ -130,6 +131,7 @@ const Attachment = ({
               />
             </Tooltip>
             <Button
+              data-cy="neeto-editor-attachment-rename-cancel-button"
               icon={Close}
               size="small"
               style="text"
@@ -157,6 +159,7 @@ const Attachment = ({
                   <Menu>
                     {Object.entries(handlers).map(([label, handler]) => (
                       <MenuItem.Button
+                        data-cy={`neeto-editor-attachment-${label.toLowerCase()}-button`}
                         key={label}
                         onClick={() => onMenuItemClick({ key: label, handler })}
                       >

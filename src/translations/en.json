@@ -48,9 +48,13 @@
     "video-upload": "Video upload"
   },
   "placeholders": {
-    "url": "Paste URL",
+    "caption-input": "Enter a caption",
+    "columns": "Enter columns",
+    "link-input": "Paste or type a link...",
+    "paste-link": "Paste the link here...",
     "rows": "Enter rows",
-    "columns": "Enter columns"
+    "search-unsplash": "Search Unsplash",
+    "url": "Paste URL"
   },
   "table": {
     "delete": "Delete table",

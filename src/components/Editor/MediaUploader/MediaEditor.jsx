@@ -74,7 +74,7 @@ const MediaEditor = ({
           <Input
             autoFocus
             label={t("common.caption")}
-            placeholder="Enter a caption"
+            placeholder={t("placeholders.caption-input")}
             value={altText}
             onChange={e => setAltText(e.target.value)}
           />
