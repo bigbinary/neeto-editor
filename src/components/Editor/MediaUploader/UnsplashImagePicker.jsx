@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 
 import { Input, Spinner } from "neetoui";
+import { useTranslation } from "react-i18next";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 
 import { searchUnsplashImages } from "apis/unsplash";
@@ -8,6 +9,7 @@ import useDebounce from "hooks/useDebounce";
 import { isNilOrEmpty } from "utils/common";
 
 const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
+  const { t } = useTranslation();
   const masonryRef = useRef(null);
 
   const [query, setQuery] = useState("");
@@ -72,7 +74,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
         className="neeto-editor-unsplash-search"
         data-cy="neeto-editor-unsplash-image-picker-search-input"
         name="text"
-        placeholder="Search Unsplash"
+        placeholder={t("placeholders.search-unsplash")}
         value={query}
         onChange={({ target: { value } }) => {
           setQuery(value);

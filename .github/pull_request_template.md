@@ -1,4 +1,4 @@
-- Fixes #issue-number
+- Fixes #issue_number
 
 **Description**
 
