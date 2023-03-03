@@ -1727,15 +1727,15 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bigbinary/eslint-plugin-neeto@^1.0.20":
-  version "1.0.20"
-  resolved "https://registry.yarnpkg.com/@bigbinary/eslint-plugin-neeto/-/eslint-plugin-neeto-1.0.20.tgz#46b3fee9a2203386b97c4c4aae8045d0d3e8f485"
-  integrity sha512-i4hgncjEkw9Davuetc0Hhvq/0k3VUv3baGlHtjH23kzfmlZnGeNpOqTk+ol8YmSuRInYpZwsTkFscTxjGWpfCA==
+"@bigbinary/eslint-plugin-neeto@^1.0.21":
+  version "1.0.21"
+  resolved "https://registry.yarnpkg.com/@bigbinary/eslint-plugin-neeto/-/eslint-plugin-neeto-1.0.21.tgz#e0d77c7b4155ddd8223d62bee220aac29b5ba682"
+  integrity sha512-MHMFOlziPpqvy971Oid9464LnmesKdddFolUZLuBy7smHmr3pmvBTOln8xlsunu4zbZx+gHjgtOThuSIo11z5A==
 
-"@bigbinary/neeto-commons-frontend@^2.0.38":
-  version "2.0.39"
-  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.39.tgz#acad1dc52c9ce78a56fefc4561acfdf9be2af740"
-  integrity sha512-jvBGAozGjhmoAmk/09/eOwvLRC7pQq5YLV+9Cfrw4xEEy8a2EwS46OOW3p/KeQ2shCTEKHHXcmCK8N135v2D9A==
+"@bigbinary/neeto-commons-frontend@^2.0.40":
+  version "2.0.40"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.40.tgz#f4a2864086e4b11aa9c71b7fee8aff9b1bb2e0d7"
+  integrity sha512-vyt7awSKQnngXPunaL4PjN7akahN+i/A7YrVwgVffrmB91MJhiz//wUGGbjnB2I91MUGRFShs+uD2OM2YFBlbw==
 
 "@bigbinary/neeto-icons@1.9.12":
   version "1.9.12"
