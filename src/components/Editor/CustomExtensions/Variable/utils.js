@@ -1,5 +1,4 @@
-import { isEmpty } from "lodash";
-import { assoc } from "ramda";
+import { assoc, isEmpty } from "ramda";
 
 /*  Helper function that accepts an array of variables and injects category to each item in the group
     And also performs grouping of indvidual variables under common category as 'Others'. */
