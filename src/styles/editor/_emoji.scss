@@ -6,7 +6,7 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
 
 .emoji-mart.emoji-mart-light {
   font-size: 14px;
-  color: rgb(var(--neeto-ui-gray-800));
+  color: rgb(var(--neeto-ui-gray-700));
   border: none;
 
   .emoji-mart-bar {
@@ -19,11 +19,11 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
         }
 
         .emoji-mart-anchor-bar {
-          background-color: rgb(var(--neeto-ui-gray-800)) !important;
+          background-color: rgb(var(--neeto-ui-gray-700)) !important;
         }
 
         &.emoji-mart-anchor-selected {
-          color: rgb(var(--neeto-ui-gray-800)) !important;
+          color: rgb(var(--neeto-ui-gray-700)) !important;
         }
       }
     }
@@ -71,7 +71,7 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
 
   p {
     font-size: var(--neeto-ui-text-xs);
-    color: rgb(var(--neeto-ui-gray-800));
+    color: rgb(var(--neeto-ui-gray-700));
   }
 
   span {

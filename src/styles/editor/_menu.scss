@@ -43,11 +43,11 @@
     .neeto-editor-menu__item {
       padding: 4px;
       border-radius: var(--neeto-ui-rounded-sm);
-      background-color: rgb(var(--neeto-ui-gray-800));
+      background-color: rgb(var(--neeto-ui-gray-700));
 
       &:hover,
       &.active {
-        background-color: rgb(var(--neeto-ui-gray-700));
+        background-color: rgb(var(--neeto-ui-gray-600));
       }
     }
   }
@@ -89,7 +89,7 @@
   border-radius: 2px;
 
   p {
-    color: rgb(var(--neeto-ui-gray-700));
+    color: rgb(var(--neeto-ui-gray-600));
     font-size: var(--neeto-ui-text-xs);
     line-height: 1;
     white-space: nowrap;
@@ -230,7 +230,7 @@
   }
 
   .neeto-ui-dropdown__popup {
-    background-color: rgb(var(--neeto-ui-gray-800));
+    background-color: rgb(var(--neeto-ui-gray-700));
 
     &-menu-item-btn {
       color: rgb(var(--neeto-ui-gray-200)) !important;

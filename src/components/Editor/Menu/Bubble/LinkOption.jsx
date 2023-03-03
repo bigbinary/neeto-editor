@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 
 import { Close } from "neetoicons";
 import { Button } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import { URL_REGEXP } from "common/constants";
 import { isNilOrEmpty } from "utils/common";
 
 const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
+  const { t } = useTranslation();
+
   const [link, setLink] = useState("");
 
   useEffect(() => {
@@ -50,7 +53,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
         className="neeto-editor-bubble-menu-link__input"
         data-cy="neeto-editor-link-input"
         name="url"
-        placeholder="Paste or type a link..."
+        placeholder={t("placeholders.link-input")}
         value={link}
         onChange={({ target: { value } }) => setLink(value)}
       />

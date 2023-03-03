@@ -1,0 +1,34 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Editor } from "../../src";
+
+<Meta
+  title="Examples/Table"
+  parameters={{
+    layout: "padded",
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+  }}
+  component={Editor}
+/>
+
+# Table
+
+The "table" add-on in neetoEditor allows you to display data in a tabular format.
+You have a menu that includes an icon to insert a table. When a table is in focus (i.e., the user has selected a table), an additional settings icon appears in the menu. Clicking on this settings icon reveals a dropdown menu with various table commands that the user can apply to the selected table.
+
+The insert table icon in the menu allows the user to quickly add a new table to the document. It is automatically given default dimensions (e.g., 3 columns by 3 rows) which can be customized. A default table can also be added to the document by typing the following command in the editor: `Mod-alt-t`.
+
+The settings icon that appears when a table is in focus allows the user to access a variety of table commands. When the user selects a command from the dropdown menu, the table is updated to reflect the chosen action.
+
+<Canvas>
+  <Story name="Table">
+    <Editor
+      addons={[
+        "table",
+      ]}
+    />
+  </Story>
+</Canvas>

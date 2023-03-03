@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Modal, Tab } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import { isNilOrEmpty } from "utils/common";
 
@@ -17,6 +18,8 @@ const MediaUploader = ({
   uploadEndpoint,
   unsplashApiKey,
 }) => {
+  const { t } = useTranslation();
+
   const [activeTab, setActiveTab] = useState("local");
   const [mediaUrl, setMediaUrl] = useState("");
   const isOpen = mediaUploader.image || mediaUploader.video;
@@ -71,7 +74,7 @@ const MediaUploader = ({
               )}
               {activeTab === "link" && (
                 <URLForm
-                  placeholder="Paste the link here..."
+                  placeholder={t("placeholders.paste-link")}
                   buttonLabel={
                     mediaUploader.image ? "Upload image" : "Upload video"
                   }

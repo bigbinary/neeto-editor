@@ -171,6 +171,7 @@ const Attachments = (
       <div>
         {isIndependent && (
           <Button
+            data-cy="neeto-editor-attachments-upload-button"
             disabled={isUploading}
             label={t("attachments.add")}
             loading={isUploading}
