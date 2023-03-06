@@ -18,6 +18,8 @@ const projectResolve = require("./resolve.js");
 const { alias: aliasEntries } = mergeDeepLeft(projectResolve, commonResolve);
 const peerDependencies = Object.keys(packageJson.peerDependencies);
 
+const formats = ["esm", "cjs"];
+
 const plugins = [
   peerDepsExternal(),
   alias({ entries: aliasEntries }),
@@ -47,13 +49,13 @@ export default [
   {
     input: "./src/index.js",
     external: peerDependencies,
-    output: {
-      file: "./index.js",
-      format: "esm",
+    output: formats.map((format) => ({
+      file: format === "esm" ? "./index.js" : "./index.cjs.js",
+      format,
       sourcemap: false,
       name: "neetoEditor",
       assetFileNames: "[name][extname]",
-    },
+    })),
     plugins,
   },
   {
