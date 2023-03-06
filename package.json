@@ -1,7 +1,7 @@
 {
   "name": "@bigbinary/neeto-editor",
   "version": "1.23.1",
-  "main": "./index.js",
+  "main": "./index.cjs.js",
   "module": "./index.js",
   "types": "./types.d.ts",
   "description": "neetoEditor is the library that drives the rich text experience in all neeto products built at BigBinary",
@@ -12,7 +12,7 @@
     "react"
   ],
   "files": [
-    "index.js",
+    "index.*",
     "types.d.ts"
   ],
   "author": "BigBinary",
