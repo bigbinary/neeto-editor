@@ -153,9 +153,10 @@
   },
   "scripts": {
     "start": "yarn storybook",
-    "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "build": "yarn build-storybook",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
+    "build-bundle": "NODE_ENV=production rollup -c rollup.config.js",
     "build-storybook": "build-storybook",
     "serve": "http-server storybook-static"
   },
