@@ -25,5 +25,6 @@ yarn-error.log*
 
 /editor-content.js
 /index.js
+/index.cjs.js
 /formik.js
 storybook-static
