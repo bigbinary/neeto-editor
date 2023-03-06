@@ -31,7 +31,7 @@ jobs:
         run: yarn install
 
       - name: Generate production build
-        run: yarn build
+        run: yarn build-bundle
 
       - name: Prefix version tag with "v"
         run: yarn config set version-tag-prefix "v"
