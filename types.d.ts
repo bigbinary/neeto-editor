@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import {
   Editor as TiptapEditor,
   Extension,
@@ -75,7 +76,6 @@ interface MenuProps {
   isIndependant?: boolean;
   className?: string;
 }
-
 interface attachment {
   filename?: string;
   signedId?: string;
@@ -91,6 +91,8 @@ interface attachmentsConfig {
 
 interface EditorProps {
   attachmentsConfig?: attachmentsConfig;
+  isMenuIndependent?: boolean;
+  menuClassName?: string;
   tooltips?: tooltips;
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "headless" | "none";
@@ -119,6 +121,7 @@ interface EditorProps {
   error?: string;
   attachments?: Array<attachment>;
   onChangeAttachments?: (attachments: attachment[]) => void;
+  children?: ReactNode;
   [otherProps: string]: any;
 }
 
