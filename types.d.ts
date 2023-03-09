@@ -93,6 +93,7 @@ interface EditorProps {
   attachmentsConfig?: attachmentsConfig;
   isMenuIndependent?: boolean;
   menuClassName?: string;
+  attachmentsClassName?: string;
   tooltips?: tooltips;
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "headless" | "none";

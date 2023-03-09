@@ -34,6 +34,7 @@ const Editor = (
     className,
     contentClassName,
     menuClassName,
+    attachmentsClassName,
     isMenuIndependent = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     editorSecrets = {},
@@ -197,7 +198,7 @@ const Editor = (
           {isAttachmentsActive && (
             <Attachments
               attachments={attachments}
-              className="ne-attachments--integrated"
+              className={`ne-attachments--integrated ${attachmentsClassName}`}
               config={attachmentsConfig}
               dragDropRef={dragDropRef}
               isIndependent={false}
