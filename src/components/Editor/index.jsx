@@ -33,6 +33,9 @@ const Editor = (
     autoFocus = false,
     className,
     contentClassName,
+    menuClassName,
+    attachmentsClassName,
+    isMenuIndependent = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     editorSecrets = {},
     error = null,
@@ -55,6 +58,7 @@ const Editor = (
     onBlur = noop,
     onSubmit = noop,
     onChangeAttachments = noop,
+    children,
     ...otherProps
   },
   ref
@@ -161,17 +165,19 @@ const Editor = (
           <Menu
             addonCommands={addonCommands}
             addons={addons}
+            className={menuClassName}
             defaults={defaults}
             editor={editor}
             editorSecrets={editorSecrets}
             handleUploadAttachments={handleUploadAttachments}
-            isIndependant={false}
+            isIndependant={isMenuIndependent}
             mentions={mentions}
             menuType={menuType}
             tooltips={tooltips}
             uploadEndpoint={uploadEndpoint}
             variables={variables}
           />
+          {children}
           <EditorContent editor={editor} {...otherProps} />
           {isMediaUploaderActive && (
             <MediaUploader
@@ -192,11 +198,13 @@ const Editor = (
           {isAttachmentsActive && (
             <Attachments
               attachments={attachments}
-              className="ne-attachments--integrated"
               config={attachmentsConfig}
               dragDropRef={dragDropRef}
               isIndependent={false}
               ref={addAttachmentsRef}
+              className={classnames("ne-attachments", {
+                [attachmentsClassName]: attachmentsClassName,
+              })}
               onChange={onChangeAttachments}
             />
           )}
