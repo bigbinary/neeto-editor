@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Dropdown } from "neetoui";
+import { Dropdown, Typography } from "neetoui";
 
 import { FONT_SIZE_OPTIONS } from "./constants";
 
@@ -34,13 +34,13 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
       }}
     >
       <Menu>
-        {FONT_SIZE_OPTIONS.map(({ label, value }) => (
+        {FONT_SIZE_OPTIONS.map(({ label, value, key }) => (
           <MenuItem.Button
             data-cy={`neeto-editor-fixed-menu-font-size-option-${label}`}
             key={value}
             onClick={() => handleClick(value)}
           >
-            {label}
+            <Typography style={key}>{label}</Typography>
           </MenuItem.Button>
         ))}
       </Menu>

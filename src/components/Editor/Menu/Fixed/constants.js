@@ -148,10 +148,10 @@ export const MENU_OPTIONS = ({
 });
 
 export const FONT_SIZE_OPTIONS = [
-  { label: "Paragraph", value: 0 },
-  { label: "Heading 1", value: 1 },
-  { label: "Heading 2", value: 2 },
-  { label: "Heading 3", value: 3 },
+  { label: "Heading 1", value: 1, key: "h1" },
+  { label: "Heading 2", value: 2, key: "h2" },
+  { label: "Heading 3", value: 3, key: "h3" },
+  { label: "Paragraph", value: 0, key: "body2" },
 ];
 
 export const TABLE_ACTIONS = ({ editor }) => [
