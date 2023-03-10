@@ -12,7 +12,7 @@
   h4,
   h5,
   h6 {
-    margin: 0 0 8px 0;
+    margin: 1rem 0 0.5rem 0;
   }
 
   // Paragraph
@@ -101,7 +101,7 @@
   .video-wrapper {
     width: 560px;
     height: 315px;
-    margin: auto;
+    margin: 8px auto;
   }
 
   mark {
@@ -136,6 +136,7 @@
     border-spacing: 0;
     table-layout: fixed;
     min-width: 300px;
+    margin: 8px 0;
 
     th,
     td {
@@ -166,6 +167,7 @@
 }
 
 .neeto-editor__image-wrapper {
+  margin: 8px 0;
   display: flex;
 
   figure {
