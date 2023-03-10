@@ -84,7 +84,7 @@
   ul,
   ol {
     list-style: revert;
-    padding: revert;
+    padding-left: 28px;
 
     li::before {
       background-color: rgb(var(--neeto-ui-black));
