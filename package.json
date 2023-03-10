@@ -17,6 +17,11 @@
   ],
   "author": "BigBinary",
   "license": "MIT",
+  "engines": {
+    "node": ">=18.12",
+    "npm": ">=9",
+    "yarn": ">=1.22"
+  },
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@babel/eslint-parser": "7.17.0",
