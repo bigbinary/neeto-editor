@@ -101,7 +101,7 @@
   .video-wrapper {
     width: 560px;
     height: 315px;
-    margin: 8px auto;
+    margin: 16px auto;
   }
 
   mark {
@@ -136,7 +136,6 @@
     border-spacing: 0;
     table-layout: fixed;
     min-width: 300px;
-    margin: 8px 0;
 
     th,
     td {
@@ -167,7 +166,7 @@
 }
 
 .neeto-editor__image-wrapper {
-  margin: 8px 0;
+  margin: 16px 0;
   display: flex;
 
   figure {
