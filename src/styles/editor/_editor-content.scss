@@ -12,12 +12,12 @@
   h4,
   h5,
   h6 {
-    font-size: revert;
     margin: 0 0 16px 0;
   }
 
   // Paragraph
   p {
+    font-size: var(--neeto-ui-text-body2);
     line-height: var(--neeto-ui-leading-normal);
     color: rgb(var(--neeto-ui-gray-700));
     margin-bottom: 8px;
