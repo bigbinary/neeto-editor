@@ -202,7 +202,7 @@ const Editor = (
               dragDropRef={dragDropRef}
               isIndependent={false}
               ref={addAttachmentsRef}
-              className={classnames("ne-attachments", {
+              className={classnames("ne-attachments--integrated", {
                 [attachmentsClassName]: attachmentsClassName,
               })}
               onChange={onChangeAttachments}
