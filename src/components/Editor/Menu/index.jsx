@@ -76,7 +76,7 @@ const Menu = props => {
         setIsEmojiPickerActive={setIsEmojiPickerActive}
         setMediaUploader={setMediaUploader}
       />
-      {addons.includes("image-upload" || "video-upload") && (
+      {menuOptions.includes("image-upload" || "video-upload") && (
         <MediaUploader
           editor={editor}
           mediaUploader={mediaUploader}
@@ -85,7 +85,7 @@ const Menu = props => {
           onClose={() => setMediaUploader({ image: false, video: false })}
         />
       )}
-      {addons.includes("video-embed") && (
+      {menuOptions.includes("video-embed") && (
         <EmbedOption
           editor={editor}
           isEmbedModalOpen={isEmbedModalOpen}
