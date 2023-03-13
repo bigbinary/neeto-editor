@@ -1,10 +1,6 @@
 import { Node, mergeAttributes } from "@tiptap/core";
-import { ReactRenderer } from "@tiptap/react";
 import Suggestion from "@tiptap/suggestion";
 import { PluginKey } from "prosemirror-state";
-import tippy from "tippy.js";
-
-import VariableSuggestion from "./VariableSuggestion";
 
 const VariablePluginKey = new PluginKey("variables");
 const Variable = Node.create({
@@ -116,34 +112,6 @@ const Variable = Node.create({
     };
   },
 
-  addKeyboardShortcuts() {
-    return {
-      Backspace: () =>
-        this.editor.commands.command(({ tr, state }) => {
-          let isVariable = false;
-          const { selection } = state;
-          const { empty, anchor } = selection;
-
-          if (!empty) {
-            return false;
-          }
-
-          state.doc.nodesBetween(anchor - 1, anchor, (node, pos) => {
-            if (node.type.name === this.name) {
-              isVariable = true;
-              tr.insertText("", pos, pos + node.nodeSize);
-
-              return false;
-            }
-
-            return undefined;
-          });
-
-          return isVariable;
-        }),
-    };
-  },
-
   addProseMirrorPlugins() {
     return [
       Suggestion({
@@ -154,58 +122,6 @@ const Variable = Node.create({
   },
 });
 
-const suggestionConfig = {
-  char: "{{",
-  startOfLine: false,
-  pluginKey: VariablePluginKey,
-  command: ({ editor, range, props }) => {
-    editor.chain().focus().deleteRange(range).setVariable(props).run();
-  },
-
-  items: () => [],
-  render: () => {
-    let reactRenderer;
-    let popup;
-
-    return {
-      onStart: props => {
-        reactRenderer = new ReactRenderer(VariableSuggestion, {
-          props,
-          editor: props.editor,
-        });
-
-        popup = tippy("body", {
-          getReferenceClientRect: props.clientRect,
-          appendTo: () => document.body,
-          content: reactRenderer.element,
-          showOnCreate: true,
-          interactive: true,
-          trigger: "manual",
-          placement: "bottom-start",
-          zIndex: 99999,
-        });
-      },
-      onUpdate(props) {
-        reactRenderer.updateProps(props);
-
-        popup[0].setProps({
-          getReferenceClientRect: props.clientRect,
-        });
-      },
-
-      onExit() {
-        popup[0].destroy();
-        reactRenderer.destroy();
-      },
-    };
-  },
-};
-
-export default {
-  configure: ({ suggestion = {} }) =>
-    Variable.configure({
-      suggestion: { ...suggestionConfig, ...suggestion },
-    }),
-};
+export default Variable;
 
 export { VariablePluginKey };

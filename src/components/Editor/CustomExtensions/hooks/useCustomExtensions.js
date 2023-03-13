@@ -11,21 +11,21 @@ import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import { isEmpty } from "ramda";
 
-import CodeBlock from "./CodeBlock/ExtensionConfig";
-import CustomCommands from "./CustomCommands/ExtensionConfig";
-import Embeds from "./Embeds/ExtensionConfig";
-import EmojiPicker from "./Emoji/EmojiPicker/ExtensionConfig";
-import EmojiSuggestion from "./Emoji/EmojiSuggestion/ExtensionConfig";
-import ImageExtension from "./Image/ExtensionConfig";
-import FigCaption from "./Image/FigCaption";
-import KeyboardShortcuts from "./KeyboardShortcuts/ExtensionConfig";
-import Mention, { createMentionSuggestions } from "./Mention/ExtensionConfig";
-import Placeholder from "./Placeholder/ExtensionConfig";
-import SlashCommands from "./SlashCommands/ExtensionConfig";
-import SpecialMentions from "./SpecialMentions/ExtensionConfig";
-import Table from "./Table/ExtensionConfig";
-import Variable from "./Variable/ExtensionConfig";
-import VideoExtension from "./Video/ExtensionConfig";
+import CodeBlock from "../CodeBlock/ExtensionConfig";
+import CustomCommands from "../CustomCommands/ExtensionConfig";
+import Embeds from "../Embeds/ExtensionConfig";
+import EmojiPicker from "../Emoji/EmojiPicker/ExtensionConfig";
+import EmojiSuggestion from "../Emoji/EmojiSuggestion/ExtensionConfig";
+import ImageExtension from "../Image/ExtensionConfig";
+import FigCaption from "../Image/FigCaption";
+import KeyboardShortcuts from "../KeyboardShortcuts/ExtensionConfig";
+import Mention, { createMentionSuggestions } from "../Mention/ExtensionConfig";
+import Placeholder from "../Placeholder/ExtensionConfig";
+import SlashCommands from "../SlashCommands/ExtensionConfig";
+import SpecialMentions from "../SpecialMentions/ExtensionConfig";
+import Table from "../Table/ExtensionConfig";
+import Variable from "../Variable/ExtensionConfig";
+import VideoExtension from "../Video/ExtensionConfig";
 
 const useCustomExtensions = ({
   placeholder,
@@ -109,9 +109,7 @@ const useCustomExtensions = ({
   }
 
   if (!isEmpty(variables)) {
-    customExtensions.push(
-      Variable.configure({ suggestion: { items: () => variables } })
-    );
+    customExtensions.push(Variable);
   }
 
   customExtensions = customExtensions.concat(extensions);

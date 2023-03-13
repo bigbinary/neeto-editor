@@ -13,7 +13,7 @@ import useEditorWarnings from "hooks/useEditorWarnings";
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
 import EmbedOption from "./CustomExtensions/Embeds";
-import useCustomExtensions from "./CustomExtensions/useCustomExtensions";
+import useCustomExtensions from "./CustomExtensions/hooks/useCustomExtensions";
 import MediaUploader from "./MediaUploader";
 import Menu from "./Menu";
 import {

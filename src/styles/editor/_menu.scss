@@ -117,56 +117,6 @@
   }
 }
 
-.neeto-editor-variables-suggestion {
-  padding: 4px 0;
-}
-
-.neeto-editor-variables-list {
-  padding: 4px 8px;
-  min-width: 184px;
-  max-width: 360px;
-
-  .neeto-editor-variables-block {
-    &:not(:last-child) {
-      margin-bottom: 12px;
-    }
-
-    h6 {
-      font-size: var(--neeto-ui-text-xs);
-      font-weight: var(--neeto-ui-font-medium);
-      color: rgb(var(--neeto-ui-black));
-      margin-bottom: 10px;
-      margin-right: 0px;
-    }
-
-    .neeto-editor-variables-row {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-
-      button {
-        border: solid 1px rgb(var(--neeto-ui-gray-300));
-        border-radius: var(--neeto-ui-rounded-md);
-        color: rgb(var(--neeto-ui-black));
-        padding: 6px;
-        user-select: none;
-      }
-
-      button:focus-visible,
-      button:focus,
-      button:hover {
-        color: rgb(var(--neeto-ui-primary-800));
-        border-color: rgb(var(--neeto-ui-primary-800));
-        outline: none;
-        box-shadow: none;
-      }
-    }
-  }
-}
-
 .neeto-editor-link__item {
   display: flex !important;
   flex-direction: row;
