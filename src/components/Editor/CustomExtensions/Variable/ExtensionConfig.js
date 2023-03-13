@@ -1,5 +1,4 @@
 import { Node, mergeAttributes } from "@tiptap/core";
-import Suggestion from "@tiptap/suggestion";
 import { PluginKey } from "prosemirror-state";
 
 const VariablePluginKey = new PluginKey("variables");
@@ -110,15 +109,6 @@ const Variable = Node.create({
             .run();
         },
     };
-  },
-
-  addProseMirrorPlugins() {
-    return [
-      Suggestion({
-        editor: this.editor,
-        ...this.options.suggestion,
-      }),
-    ];
   },
 });
 
