@@ -1,10 +1,9 @@
-// eslint-disable-next-line @bigbinary/neeto/no-axios-import-outside-apis
-import axios from "axios";
-
 import { UNSPLASH_BASE_URL } from "common/constants";
 
+import axiosEditorInstance from "./axios";
+
 export const searchUnsplashImages = ({ pageNo, query, apiKey }) =>
-  axios.get(UNSPLASH_BASE_URL, {
+  axiosEditorInstance.get(UNSPLASH_BASE_URL, {
     headers: {
       Authorization: `Client-ID ${apiKey}`,
     },
