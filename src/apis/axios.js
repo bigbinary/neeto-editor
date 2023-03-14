@@ -7,4 +7,15 @@ const axiosEditorInstance = axios.create({
   },
 });
 
+axiosEditorInstance.interceptors.response.use(
+  response => pullDataFromResponse(response),
+  error => Promise.reject(error)
+);
+
+const pullDataFromResponse = response => {
+  const { includeMetadataInResponse = false } = response.config;
+
+  return includeMetadataInResponse ? response : response.data;
+};
+
 export default axiosEditorInstance;
