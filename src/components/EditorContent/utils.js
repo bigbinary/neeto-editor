@@ -35,14 +35,10 @@ export const substituteVariables = (highlightedContent, variables) =>
   highlightedContent.replace(VARIABLE_SPAN_REGEX, (matchedSpan, dataLabel) => {
     const dataLabelSplitted = dataLabel.split(".");
     if (dataLabelSplitted.length > 1) {
-      const category = findBy(
-        { category_key: dataLabelSplitted[0] },
-        variables
-      );
-
+      const category = findBy({ category: dataLabelSplitted[0] }, variables);
       const variable = findBy(
         { key: dataLabelSplitted[1] },
-        category?.variables
+        category?.variables || []
       );
 
       return variable?.value ? variable.value : matchedSpan;

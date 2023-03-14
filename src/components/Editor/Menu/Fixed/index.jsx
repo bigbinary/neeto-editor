@@ -1,7 +1,9 @@
 import React from "react";
 
+import DynamicVariables from "@bigbinary/neeto-molecules/DynamicVariables";
 import classnames from "classnames";
 import { isNotEmpty } from "neetocommons/pure";
+import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { EDITOR_OPTIONS } from "common/constants";
@@ -18,7 +20,6 @@ import {
 } from "./utils";
 
 import Mentions from "../../CustomExtensions/Mention";
-import Variables from "../../CustomExtensions/Variable";
 
 const Fixed = ({
   editor,
@@ -65,6 +66,12 @@ const Fixed = ({
     editor,
     commands: addonCommands,
   });
+
+  const handleVariableClick = item => {
+    const { category, key } = item;
+    const variableName = category ? `${category}.${key}` : key;
+    editor.chain().focus().setVariable({ label: variableName }).run();
+  };
 
   return (
     <div
@@ -119,13 +126,23 @@ const Fixed = ({
           {rightOptions.map(renderOptionButton)}
         </div>
       </div>
-      <div className="neeto-editor-fixed-menu__variables">
-        <Variables
-          editor={editor}
-          tooltipContent={tooltips.variables || t("menu.variables")}
-          variables={variables}
-        />
-      </div>
+      {!isEmpty(variables) && (
+        <div className="neeto-editor-fixed-menu__variables">
+          <DynamicVariables
+            variables={variables}
+            dropdownProps={{
+              buttonSize: "small",
+              buttonProps: {
+                tooltipProps: {
+                  content: t("menu.variables"),
+                  position: "bottom",
+                },
+              },
+            }}
+            onVariableClick={handleVariableClick}
+          />
+        </div>
+      )}
     </div>
   );
 };

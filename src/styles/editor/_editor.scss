@@ -78,6 +78,15 @@
     transition: background-color 200ms ease;
   }
 
+  [data-variable] {
+    display: inline-flex;
+    color: rgb(var(--neeto-ui-gray-700));
+    background-color: rgb(var(--neeto-ui-gray-200));
+    border-radius: var(--neeto-ui-rounded-sm);
+    line-height: 1;
+    padding: 4px;
+  }
+
   @extend .neeto-editor-content;
 }
 

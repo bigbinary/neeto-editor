@@ -87,8 +87,8 @@ export const MENU_PROPS = [
 
 export const VARIABLES = [
   {
-    category_key: "ticket",
-    category_label: "Ticket",
+    category: "ticket",
+    label: "Ticket",
     variables: [
       {
         label: "ID",
@@ -112,8 +112,8 @@ export const VARIABLES = [
     key: "user",
   },
   {
-    category_key: "organisation",
-    category_label: "Organisation",
+    category: "organisation",
+    label: "Organisation",
     variables: [
       {
         label: "ID",

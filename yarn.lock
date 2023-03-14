@@ -1746,6 +1746,11 @@
     react "^17.0.2"
     react-dom "^17.0.2"
 
+"@bigbinary/neeto-molecules@1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-molecules/-/neeto-molecules-1.0.7.tgz#06305c0400aaff96c8d12bf9607cd217290100db"
+  integrity sha512-vFXKSRD4wBaordNf3zk66SnS7+24HdVuwvJxrUBcNZ3gzCxHgX0jQVkA+k7VRKpIyLrTkFQy8zZ782MOZmgwuw==
+
 "@bigbinary/neetoui@4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@bigbinary/neetoui/-/neetoui-4.4.0.tgz#b49093c465193cb6c754aac74a610128c3c5a21d"
