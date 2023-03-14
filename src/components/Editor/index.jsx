@@ -66,9 +66,9 @@ const Editor = (
   const dragDropRef = useRef(null);
   const isAttachmentsActive = addons.includes(EDITOR_OPTIONS.ATTACHMENTS);
   const isVideoEmbedActive = addons.includes(EDITOR_OPTIONS.VIDEO_EMBED);
-  const isMediaUploaderActive = addons.includes(
-    EDITOR_OPTIONS.VIDEO_UPLOAD || EDITOR_OPTIONS.IMAGE_UPLOAD
-  );
+  const isMediaUploaderActive =
+    addons.includes(EDITOR_OPTIONS.IMAGE_UPLOAD) ||
+    addons.includes(EDITOR_OPTIONS.VIDEO_UPLOAD);
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
   const isSlashCommandsActive = !hideSlashCommands;
