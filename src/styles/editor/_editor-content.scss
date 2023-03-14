@@ -111,15 +111,6 @@
     color: inherit;
   }
 
-  [data-variable] {
-    display: inline-flex;
-    color: rgb(var(--neeto-ui-gray-700));
-    background-color: rgb(var(--neeto-ui-gray-200));
-    border-radius: var(--neeto-ui-rounded-sm);
-    line-height: 1;
-    padding: 4px 6px;
-  }
-
   [data-type="mention"] {
     color: rgb(var(--neeto-ui-primary-800));
   }

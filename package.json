@@ -145,7 +145,6 @@
   },
   "peerDependencies": {
     "@bigbinary/neeto-commons-frontend": "latest",
-    "@bigbinary/neeto-molecules": "latest",
     "@bigbinary/neeto-icons": "latest",
     "@bigbinary/neetoui": "latest",
     "antd": "4.24.3",

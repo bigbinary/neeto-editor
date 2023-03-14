@@ -130,6 +130,15 @@ const Fixed = ({
         <div className="neeto-editor-fixed-menu__variables">
           <DynamicVariables
             variables={variables}
+            dropdownProps={{
+              buttonSize: "small",
+              buttonProps: {
+                tooltipProps: {
+                  content: t("menu.variables"),
+                  position: "bottom",
+                },
+              },
+            }}
             onVariableClick={handleVariableClick}
           />
         </div>
