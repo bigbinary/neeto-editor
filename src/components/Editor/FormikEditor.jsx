@@ -1,11 +1,11 @@
 import React, { forwardRef } from "react";
 
-import { Field } from "formik";
+import { FastField } from "formik";
 
 import Editor from ".";
 
 const FormikEditor = ({ name, ...otherProps }, ref) => (
-  <Field name={name}>
+  <FastField name={name}>
     {({ field, form, meta }) => (
       <Editor
         error={meta.touched ? meta.error : ""}
@@ -16,7 +16,7 @@ const FormikEditor = ({ name, ...otherProps }, ref) => (
         {...otherProps}
       />
     )}
-  </Field>
+  </FastField>
 );
 
 export default forwardRef(FormikEditor);
