@@ -4,7 +4,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
-import terser from "@rollup/plugin-terser"
 import svgr from "@svgr/rollup";
 import { mergeDeepLeft } from "ramda";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -42,14 +41,13 @@ const plugins = [
   styles({
     extensions: [".css", ".scss", ".min.css"],
   }),
-  terser({ compress: { evaluate: false } }),
 ];
 
 export default [
   {
     input: "./src/index.js",
     external: peerDependencies,
-    output: formats.map((format) => ({
+    output: formats.map(format => ({
       file: format === "esm" ? "./index.js" : "./index.cjs.js",
       format,
       sourcemap: false,
