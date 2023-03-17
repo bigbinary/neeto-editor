@@ -10,6 +10,7 @@ import HeadlessMenu from "./Headless";
 
 import EmbedOption from "../CustomExtensions/Embeds";
 import MediaUploader from "../MediaUploader";
+import { DEFAULT_EDITOR_OPTIONS } from "../constants";
 
 const Menu = props => {
   const [isEmojiPickerActive, setIsEmojiPickerActive] = useState(false);
@@ -27,7 +28,7 @@ const Menu = props => {
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
     handleUploadAttachments,
-    defaults,
+    defaults = DEFAULT_EDITOR_OPTIONS,
   } = props;
 
   const menuComponent = {
