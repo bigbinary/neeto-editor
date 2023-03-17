@@ -8,7 +8,6 @@ import BubbleMenu from "./Bubble";
 import FixedMenu from "./Fixed";
 import HeadlessMenu from "./Headless";
 
-import { DEFAULT_EDITOR_OPTIONS } from "../constants";
 import EmbedOption from "../CustomExtensions/Embeds";
 import MediaUploader from "../MediaUploader";
 
@@ -28,6 +27,7 @@ const Menu = props => {
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
     handleUploadAttachments,
+    defaults,
   } = props;
 
   const menuComponent = {
@@ -38,9 +38,7 @@ const Menu = props => {
   };
 
   const MenuComponent = menuComponent[menuType];
-  const menuOptions = isEmpty(options)
-    ? [...DEFAULT_EDITOR_OPTIONS, ...addons]
-    : options;
+  const menuOptions = isEmpty(options) ? [...defaults, ...addons] : options;
 
   useEffect(() => {
     const handleKeyDown = e => {
