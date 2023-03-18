@@ -1,20 +1,27 @@
-import axiosEditorInstance from "./axios";
+import axios from "axios";
 
 const generate = (url, payload, config) =>
-  axiosEditorInstance.post(url, payload, {
+  axios.post(url, payload, {
     ...config,
+    transformRequestCase: false,
+    transformResponseCase: false,
   });
 
 const create = (url, file, config) =>
-  axiosEditorInstance.put(url, file, {
+  axios.put(url, file, {
     ...config,
+    transformRequestCase: false,
+    transformResponseCase: false,
+    showToastr: false,
   });
 
 const update = ({ url, signedId, payload }) =>
-  axiosEditorInstance.patch(`${url}/${signedId}/`, payload);
+  axios.patch(`${url}/${signedId}/`, payload, {
+    transformRequestCase: false,
+    transformResponseCase: false,
+  });
 
-const destroy = (url, signedId) =>
-  axiosEditorInstance.delete(`${url}/${signedId}`);
+const destroy = (url, signedId) => axios.delete(`${url}/${signedId}`);
 
 const directUploadsApi = { generate, create, update, destroy };
 

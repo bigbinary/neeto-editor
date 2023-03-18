@@ -158,12 +158,10 @@
     "yup": "0.32.11"
   },
   "scripts": {
-    "start": "yarn storybook",
-    "build": "yarn build-storybook",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006",
-    "build-bundle": "NODE_ENV=production rollup -c rollup.config.js",
-    "build-storybook": "build-storybook",
+    "bundle": "NODE_ENV=production rollup -c rollup.config.js",
+    "build": "build-storybook",
     "serve": "http-server storybook-static"
   },
   "lint-staged": {
