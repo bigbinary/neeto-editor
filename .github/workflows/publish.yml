@@ -20,7 +20,7 @@ jobs:
         run: yarn install
 
       - name: Generate production build
-        run: yarn build-bundle
+        run: yarn bundle
 
       - name: Publish the package on NPM
         uses: JS-DevTools/npm-publish@v1
