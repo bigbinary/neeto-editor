@@ -65,5 +65,10 @@
     "merge-split": "Merge/Split cell",
     "toggle-header-column": "Toggle header column",
     "toggle-header-row": "Toggle header row"
+  },
+  "unsplash": {
+    "error-message": "Something went wrong! Please try again later.",
+    "no-results": "No results",
+    "end": "End of results"
   }
 }

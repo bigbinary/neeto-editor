@@ -30,15 +30,11 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
       setLoading(true);
       setError(false);
 
-      const response = await searchUnsplashImages({
+      const { results, total_pages } = await searchUnsplashImages({
         page,
         query: debouncedQuery,
         apiKey: unsplashApiKey,
       });
-
-      const {
-        data: { results, total_pages },
-      } = response;
 
       if (page === 1) {
         setImages(results);
@@ -85,7 +81,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           className="neeto-editor-unsplash-gallery__text"
           data-cy="neeto-editor-unsplash-image-picker-error"
         >
-          Something went wrong! Please try again later.
+          {t("unsplash.error-message")}
         </p>
       )}
       {!error && !loading && isNilOrEmpty(images) && (
@@ -93,7 +89,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           className="neeto-editor-unsplash-gallery__text"
           data-cy="neeto-editor-unsplash-image-picker-no-results-error"
         >
-          No results
+          {t("unsplash.no-results")}
         </p>
       )}
       {!error && (
@@ -149,7 +145,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           </MasonryInfiniteScroller>
           {!hasMore && (
             <p className="neeto-editor-unsplash-gallery__text">
-              End of results
+              {t("unsplash.end")}
             </p>
           )}
         </div>
