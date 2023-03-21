@@ -20,6 +20,7 @@
     font-size: var(--neeto-ui-text-body2);
     line-height: var(--neeto-ui-leading-normal);
     color: rgb(var(--neeto-ui-gray-700));
+    margin-bottom: 0.5em;
 
     &:empty::after {
       content: "\00a0";
@@ -28,6 +29,12 @@
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  br:not(.ProseMirror-trailingBreak) {
+    content: "";
+    display: block;
+    margin-bottom: 0.5em;
   }
 
   // Code
@@ -45,8 +52,8 @@
     overflow-x: auto;
     font-size: 14px;
     line-height: 20px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     border-radius: var(--neeto-ui-rounded-sm);
     padding: 16px;
   }
@@ -85,6 +92,19 @@
   ol {
     list-style: revert;
     padding-left: 28px;
+    margin-bottom: 1em;
+
+    li {
+      margin-bottom: 0.5rem;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0.5rem;
+      }
+    }
 
     li::before {
       background-color: rgb(var(--neeto-ui-black));
@@ -105,10 +125,8 @@
   }
 
   mark {
-    background: rgb(var(--neeto-ui-pastel-green));
     border-radius: var(--neeto-ui-rounded-sm);
     padding: 0px 4px;
-    color: inherit;
   }
 
   [data-type="mention"] {
