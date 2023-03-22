@@ -30,11 +30,12 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
       setLoading(true);
       setError(false);
 
-      const { results, total_pages } = await searchUnsplashImages({
+      const response = await searchUnsplashImages({
         page,
         query: debouncedQuery,
         apiKey: unsplashApiKey,
       });
+      const { results, total_pages } = response.data || response;
 
       if (page === 1) {
         setImages(results);
