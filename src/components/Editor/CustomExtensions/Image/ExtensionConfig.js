@@ -40,13 +40,13 @@ const ImageExtension = Node.create({
       },
 
       figheight: {
-        default: 288,
+        default: "auto",
         parseHTML: element =>
           element.querySelector("img")?.getAttribute("figheight"),
       },
 
       figwidth: {
-        default: "fit-content",
+        default: 400,
         parseHTML: element =>
           element.querySelector("img")?.getAttribute("figwidth"),
       },
