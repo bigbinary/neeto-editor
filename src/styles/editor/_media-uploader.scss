@@ -15,95 +15,76 @@
     padding: 16px;
   }
 
-  .ne-media-uploader__progress {
+  .ne-media-uploader__dnd {
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    text-align: center;
+    border: 1px dashed rgb(var(--neeto-ui-gray-400));
+    box-sizing: border-box;
+    border-radius: var(--neeto-ui-rounded);
+
+    &-input {
+      display: none;
+    }
   }
 
-  .ne-media-uploader__progress-title {
-    color: rgb(var(--neeto-ui-gray-700));
-    font-size: var(--neeto-ui-text-sm);
-    margin-bottom: 4px;
+  .ne-media-uploader__dnd:hover {
+    cursor: pointer;
   }
 
-  .ne-media-uploader__progress-file {
-    color: rgb(var(--neeto-ui-gray-500));
-    font-size: var(--neeto-ui-text-xs);
+  .ne-media-uploader__dnd.uppy-is-drag-over {
+    background-color: rgba(var(--neeto-ui-gray-300), 0.5);
+    border: 3px dashed rgb(var(--neeto-ui-gray-500));
+    color: rgb(var(--neeto-ui-gray-600));
   }
 
-  .ne-media-uploader__dnd-wrapper {
+  .ne-media-uploader__wrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    gap: 8px;
     width: 100%;
+    flex-wrap: wrap;
 
-    .ne-media-uploader__dnd {
+    .ne-media-uploader__media {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      flex-grow: 1;
-      border: 1px dashed rgb(var(--neeto-ui-gray-400));
-      box-sizing: border-box;
-      border-radius: var(--neeto-ui-rounded);
+      padding: 4px 2px 4px 8px;
+      border-radius: var(--neeto-ui-rounded-sm);
+      border: 1px solid rgb(var(--neeto-ui-gray-200));
+      background-color: rgb(var(--neeto-ui-white));
+      width: 218px;
+      max-height: 38px;
 
-      // DragDrop
-      .uppy-Root {
-        width: 100%;
-        height: 100%;
-        background-color: rgb(var(--neeto-ui-white));
-        cursor: pointer;
-
-        // firefox fix: removes thin dotted outline
-        &::-moz-focus-inner {
-          border: 0;
-        }
+      &-file-icon {
+        height: auto;
+        width: 15px;
       }
 
-      .uppy-DragDrop-inner {
+      &__progress {
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        line-height: 1.4;
-        text-align: center;
-        font-weight: var(--neeto-ui-font-normal);
-        margin: 0;
-      }
+        opacity: 0.5;
+        justify-content: space-between;
+        width: 76%;
 
-      .uppy-DragDrop-arrow {
-        visibility: hidden;
-        display: none;
-      }
+        p {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: block;
+          max-width: 80%;
+        }
 
-      .uppy-DragDrop--isDraggingOver {
-        background-color: rgb(var(--neeto-ui-gray-200));
-        border: 2px dashed rgb(var(--neeto-ui-primary-500));
-      }
+        p:nth-child(2) {
+          width: fit-content;
+        }
 
-      .uppy-DragDrop-label {
-        @extend .ne-media-uploader__progress-title;
-      }
-
-      .uppy-DragDrop-browse {
-        color: rgb(var(--neeto-ui-primary-500));
-        font-size: var(--neeto-ui-text-sm);
-        font-weight: var(--neeto-ui-font-semibold);
-        cursor: pointer;
-      }
-
-      .uppy-DragDrop-note {
-        @extend .ne-media-uploader__progress-file;
-      }
-
-      &--error {
-        color: rgb(var(--neeto-ui-error));
-        font-size: var(--neeto-ui-text-xs);
-        margin-top: 12px;
-        text-align: center;
+        &-icon {
+          width: 15px;
+          height: auto;
+        }
       }
     }
   }
@@ -194,40 +175,6 @@
       text-align: center;
       margin-top: 12px;
     }
-  }
-}
-
-// ProgressBar
-.neeto-editor-progress-bar__wrapper {
-  width: 100%;
-  max-width: 256px;
-  margin-top: 10px;
-
-  .neeto-editor-progress-bar__percent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    p {
-      font-size: var(--neeto-ui-text-xs);
-      color: rgb(var(--neeto-ui-gray-700));
-    }
-  }
-
-  .neeto-editor-progress-bar__indicator {
-    position: relative;
-    width: 100%;
-    height: 6px;
-    border-radius: var(--neeto-ui-rounded-full);
-    overflow: hidden;
-    background-color: rgba(var(--neeto-ui-primary-500), 0.2);
-    margin-top: 4px;
-  }
-
-  .neeto-editor-progress-bar__indicator-inner {
-    height: 100%;
-    background-color: rgb(var(--neeto-ui-primary-500));
   }
 }
 
