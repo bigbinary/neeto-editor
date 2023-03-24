@@ -19,9 +19,11 @@
     "one-attachment-allowed": "Only one attachment is allowed"
   },
   "error": {
+    "cancel": "CanceledError",
     "invalid-url": "Please enter a valid URL",
     "cannot-add-files": "Cannot add files",
-    "on-before-file-added-return": "Cannot add the file because onBeforeFileAdded returned false."
+    "on-before-file-added-return": "Cannot add the file because onBeforeFileAdded returned false.",
+    "cancelled": "Upload cancelled"
   },
   "menu": {
     "attachments": "Attachments",
@@ -43,7 +45,7 @@
     "table": "Table",
     "underline": "Underline",
     "undo": "Undo",
-    "variables": "Variables",
+    "dynamic-variables": "Dynamic variables",
     "video-embed": "Video embed",
     "video-upload": "Video upload"
   },

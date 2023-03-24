@@ -1,8 +1,12 @@
+import i18n from "i18next";
 import { noop } from "neetocommons/pure";
+import { Toastr } from "neetoui";
 
 import directUploadsApi from "apis/direct_uploads";
 
 import { generateChecksum } from "./utils";
+
+const { t } = i18n;
 
 class DirectUpload {
   constructor({ url, file, progress = noop }) {
@@ -14,9 +18,17 @@ class DirectUpload {
 
   create = async () => {
     const response = await this.generateUrl();
-    const { url, headers } =
-      response.direct_upload || response.data.direct_upload;
-    await this.uploadToCloud(url, headers);
+    try {
+      const { url, headers } =
+        response.direct_upload || response.data.direct_upload;
+      await this.uploadToCloud(url, headers);
+
+      return response;
+    } catch (error) {
+      error.name === t("error.cancel")
+        ? Toastr.error(t("error.cancelled"))
+        : Toastr.error(error.message);
+    }
 
     return response;
   };
