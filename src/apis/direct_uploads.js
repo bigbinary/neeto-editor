@@ -1,10 +1,9 @@
 import axios from "axios";
 
-const axiosWithoutShowErrorInterceptor = axios.create();
+const axiosInstanceWithoutShowErrorInterceptor = axios.create();
 
-// remove the showErrorToaster interceptor from the interceptors list
-axiosWithoutShowErrorInterceptor.interceptors.request.use(config => {
-  const interceptors = axiosWithoutShowErrorInterceptor.interceptors;
+axiosInstanceWithoutShowErrorInterceptor.interceptors.request.use(config => {
+  const interceptors = axiosInstanceWithoutShowErrorInterceptor.interceptors;
   const showErrorInterceptor = interceptors.request.handlers.find(
     interceptor => interceptor.fulfilled.name === "showErrorToaster"
   );
@@ -22,7 +21,7 @@ const generate = (url, payload, config) =>
   });
 
 const create = (url, file, config) =>
-  axiosWithoutShowErrorInterceptor.put(url, file, {
+  axiosInstanceWithoutShowErrorInterceptor.put(url, file, {
     ...config,
     transformRequestCase: false,
     transformResponseCase: false,
