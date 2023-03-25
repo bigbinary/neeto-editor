@@ -36,7 +36,7 @@ const Progress = ({ uppy, pendingUploads, setPendingUploads }) => {
     <div className="ne-media-uploader__wrapper">
       {pendingUploads.map(({ id, filename, progress }) => (
         <div className="ne-media-uploader__media" key={id}>
-          <Image />
+          <Image size={14} />
           <div className="ne-media-uploader__media__progress">
             <Typography style="body2">{filename}</Typography>
             <Typography style="body2">
