@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 
-// import { DragDrop } from "@uppy/react";
 import DropTarget from "@uppy/drop-target";
 import { Toastr, Typography } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
@@ -49,10 +48,10 @@ const LocalUploader = ({ isImage, endpoint, onClose, insertImageToEditor }) => {
       }
     });
 
-    onDrop();
+    afterAddingFiles();
   };
 
-  const onDrop = () => {
+  const afterAddingFiles = () => {
     const newlyAddedFiles = uppy.getFiles().map(file => ({
       id: file.id,
       filename: file.name,
@@ -93,14 +92,12 @@ const LocalUploader = ({ isImage, endpoint, onClose, insertImageToEditor }) => {
   useEffect(() => {
     uppy.use(DropTarget, {
       target: dropTargetRef?.current,
-      onDrop,
+      afterAddingFiles,
     });
 
     return () => {
       const instance = uppy.getPlugin("DropTarget");
-      if (instance) {
-        uppy.removePlugin(instance);
-      }
+      instance && uppy.removePlugin(instance);
     };
   }, []);
 

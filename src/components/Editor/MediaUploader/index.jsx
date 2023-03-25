@@ -59,9 +59,7 @@ const MediaUploader = ({
               <Tab.Item
                 active={activeTab === key}
                 key={key}
-                onClick={() => {
-                  setActiveTab(key);
-                }}
+                onClick={() => setActiveTab(key)}
               >
                 {title}
               </Tab.Item>
