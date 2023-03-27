@@ -72,7 +72,8 @@
     "end": "End of results"
   },
   "local-uploader": {
-    "drop-files-here": "Drop your file(s) here or browse",
-    "max-file-size": "Max. File Size: {{entity}}"
+    "drop-files-here": "Drop your file(s) here or Browse.",
+    "max-file-size": "Max. File Size: {{entity}}",
+    "completed": "Completed"
   }
 }

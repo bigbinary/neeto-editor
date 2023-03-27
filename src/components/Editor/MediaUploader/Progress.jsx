@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 
 import { removeById } from "neetocommons/pure";
-import { Close, Image } from "neetoicons";
+import { Close } from "neetoicons";
 import { Button, Typography } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 const Progress = ({ uppy, pendingUploads, setPendingUploads }) => {
+  const { t } = useTranslation();
+
   const handleUploadProgress = (file, progress) => {
     setPendingUploads(prevState =>
       prevState.map(uploadingFile => ({
@@ -30,26 +33,34 @@ const Progress = ({ uppy, pendingUploads, setPendingUploads }) => {
     };
   }, [uppy]);
 
-  const progressPercentage = progress => `${progress}%`;
-
   return (
     <div className="ne-media-uploader__wrapper">
       {pendingUploads.map(({ id, filename, progress }) => (
         <div className="ne-media-uploader__media" key={id}>
-          <Image size={14} />
-          <div className="ne-media-uploader__media__progress">
+          <div className="ne-media-uploader__media__info">
             <Typography style="body2">{filename}</Typography>
-            <Typography style="body2">
-              {progressPercentage(progress)}
-            </Typography>
+            <Button
+              data-cy="neeto-editor-image-upload-cancel-button"
+              icon={Close}
+              size="small"
+              style="text"
+              onClick={() => removeUploadingFile(id)}
+            />
           </div>
-          <Button
-            data-cy="neeto-editor-image-upload-cancel-button"
-            icon={Close}
-            size="small"
-            style="text"
-            onClick={() => removeUploadingFile(id)}
-          />
+          {progress !== 100 ? (
+            <div className="ne-media-uploader__media__progress">
+              <div
+                className="ne-media-uploader__media__progress-bar"
+                style={{ width: `${progress}%` }}
+              >
+                {progress}%
+              </div>
+            </div>
+          ) : (
+            <Typography style="body3">
+              {t("local-uploader.completed")}
+            </Typography>
+          )}
         </div>
       ))}
     </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import DropTarget from "@uppy/drop-target";
+import { ImageUpload } from "neetoicons";
 import { Toastr, Typography } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
@@ -119,7 +120,7 @@ const LocalUploader = ({
     <div
       className="ne-media-uploader__dnd"
       ref={dropTargetRef}
-      onClick={() => fileInputRef.current.click()}
+      onClick={() => fileInputRef.current?.click()}
     >
       <input
         multiple
@@ -133,7 +134,10 @@ const LocalUploader = ({
         }
         onChange={handleAddFile}
       />
-      <Typography style="h5">{t("local-uploader.drop-files-here")}</Typography>
+      <ImageUpload className="ne-media-uploader__dnd-icon" size={24} />
+      <Typography style="body2">
+        {t("local-uploader.drop-files-here")}
+      </Typography>
       <Typography style="body3">
         {t("local-uploader.max-file-size", {
           entity: convertToFileSize(uppyConfig.restrictions.maxFileSize),

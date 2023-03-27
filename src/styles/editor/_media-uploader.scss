@@ -22,12 +22,22 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    border: 1px dashed rgb(var(--neeto-ui-gray-400));
+    gap: 2px;
+    border: 1px dashed rgb(var(--neeto-ui-primary-600));
     box-sizing: border-box;
     border-radius: var(--neeto-ui-rounded);
 
+    &-icon {
+      color: rgb(var(--neeto-ui-primary-600));
+      margin-bottom: 6px;
+    }
+
     &-input {
       display: none;
+    }
+
+    &:hover {
+      background-color: rgb(var(--neeto-ui-gray-100));
     }
   }
 
@@ -49,41 +59,51 @@
 
     .ne-media-uploader__media {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: center;
-      padding: 4px 2px 4px 8px;
+      padding: 4px 8px;
       border-radius: var(--neeto-ui-rounded-sm);
       border: 1px solid rgb(var(--neeto-ui-gray-200));
       background-color: rgb(var(--neeto-ui-white));
-      width: 218px;
-      max-height: 38px;
+      width: 220px;
+      height: 58px;
+      align-self: start;
 
-      &-file-icon {
-        height: auto;
-        width: 15px;
-      }
-
-      &__progress {
+      &__info {
         display: flex;
-        opacity: 0.5;
         justify-content: space-between;
-        width: 76%;
+        align-items: center;
+        gap: 4px;
 
-        p {
+      p {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
           display: block;
           max-width: 80%;
         }
+      }
 
-        p:nth-child(2) {
-          width: fit-content;
-        }
+      &__progress {
+        align-self: flex-end;
+        width: 100%;
+        background-color: rgb(var(--neeto-ui-gray-200));
+        overflow: hidden;
+        border-radius: var(--neeto-ui-rounded-full);
 
-        &-icon {
-          width: 15px;
-          height: auto;
+        &-bar {
+          display: flex;
+          height: 12px;
+          align-items: center;
+          justify-content: center;
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          border-radius: var(--neeto-ui-rounded-full);
+          font-weight: 500px;
+          background-color: rgb(var(--neeto-ui-primary-600));
+          font-size: 12px;
+          color: rgb(var(--neeto-ui-primary-100));
+          line-height: 1;
+          transition: var(--neeto-ui-transition);
         }
       }
     }
