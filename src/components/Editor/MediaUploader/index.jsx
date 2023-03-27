@@ -20,6 +20,7 @@ const MediaUploader = ({
   const { t } = useTranslation();
 
   const [activeTab, setActiveTab] = useState("local");
+  const [isUploading, setIsUploading] = useState(false);
   const isOpen = mediaUploader.image || mediaUploader.video;
 
   let tabs = unsplashApiKey
@@ -51,7 +52,11 @@ const MediaUploader = ({
       .run();
 
   return (
-    <Modal closeButton={false} isOpen={isOpen} onClose={handleClose}>
+    <Modal
+      closeButton={false}
+      isOpen={isOpen}
+      onClose={!isUploading && handleClose}
+    >
       <div className="ne-media-uploader">
         {!isNilOrEmpty(tabs) && (
           <Tab>
@@ -72,6 +77,7 @@ const MediaUploader = ({
               endpoint={uploadEndpoint}
               insertImageToEditor={insertImageToEditor}
               isImage={mediaUploader.image}
+              setIsUploading={setIsUploading}
               onClose={handleClose}
             />
           )}

@@ -16,7 +16,13 @@ import {
 import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
 
-const LocalUploader = ({ isImage, endpoint, onClose, insertImageToEditor }) => {
+const LocalUploader = ({
+  isImage,
+  endpoint,
+  onClose,
+  insertImageToEditor,
+  setIsUploading,
+}) => {
   const { t } = useTranslation();
 
   const [pendingUploads, setPendingUploads] = useState([]);
@@ -32,6 +38,8 @@ const LocalUploader = ({ isImage, endpoint, onClose, insertImageToEditor }) => {
     endpoint,
     uppyConfig,
   });
+
+  setIsUploading(isUploading);
 
   const handleAddFile = ({ target: { files } }) => {
     Array.from(files).forEach(file => {
