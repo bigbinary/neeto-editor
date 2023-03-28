@@ -10,7 +10,7 @@ const URLForm = ({
   buttonLabel = "Submit",
   placeholder,
   onSubmit,
-  className,
+  className = "",
 }) => {
   const { t } = useTranslation();
 
@@ -19,11 +19,9 @@ const URLForm = ({
 
   const handleSubmit = event => {
     event.preventDefault();
-    if (URL_REGEXP.test(urlString)) {
-      onSubmit(urlString);
-    } else {
-      setError(t("error.invalid-url"));
-    }
+    URL_REGEXP.test(urlString)
+      ? onSubmit(urlString)
+      : setError(t("error.invalid-url"));
   };
 
   return (

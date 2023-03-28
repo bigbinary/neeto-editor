@@ -15070,13 +15070,13 @@ hljs.HighlightJS = hljs;
 hljs.default = hljs;
 var common = hljs;
 
-function cov_1ah9bessw2() {
-  var path = "/home/runner/work/neeto-editor/neeto-editor/src/components/EditorContent/codeBlockHighlight.js";
-  var hash = "7c78a5dd785a278e46ddf58d789e4d5c33935fcb";
+function cov_su53come2() {
+  var path = "/Users/gaagul/BigBinary/neeto-products/neeto-editor/src/components/EditorContent/codeBlockHighlight.js";
+  var hash = "40e0410c8ad8dc6fa5a3558c4b87b75b5f213663";
   var global = new Function("return this")();
   var gcv = "__coverage__";
   var coverageData = {
-    path: "/home/runner/work/neeto-editor/neeto-editor/src/components/EditorContent/codeBlockHighlight.js",
+    path: "/Users/gaagul/BigBinary/neeto-products/neeto-editor/src/components/EditorContent/codeBlockHighlight.js",
     statementMap: {
       "0": {
         start: {
@@ -15171,7 +15171,7 @@ function cov_1ah9bessw2() {
     },
     b: {},
     _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    hash: "7c78a5dd785a278e46ddf58d789e4d5c33935fcb"
+    hash: "40e0410c8ad8dc6fa5a3558c4b87b75b5f213663"
   };
   var coverage = global[gcv] || (global[gcv] = {});
   if (!coverage[path] || coverage[path].hash !== hash) {
@@ -15180,20 +15180,20 @@ function cov_1ah9bessw2() {
   var actualCoverage = coverage[path];
   {
     // @ts-ignore
-    cov_1ah9bessw2 = function () {
+    cov_su53come2 = function () {
       return actualCoverage;
     };
   }
   return actualCoverage;
 }
-cov_1ah9bessw2();
-cov_1ah9bessw2().s[0]++;
+cov_su53come2();
+cov_su53come2().s[0]++;
 document.addEventListener("DOMContentLoaded", function () {
-  cov_1ah9bessw2().f[0]++;
-  cov_1ah9bessw2().s[1]++;
+  cov_su53come2().f[0]++;
+  cov_su53come2().s[1]++;
   document.querySelectorAll("pre code").forEach(function (element) {
-    cov_1ah9bessw2().f[1]++;
-    cov_1ah9bessw2().s[2]++;
+    cov_su53come2().f[1]++;
+    cov_su53come2().s[2]++;
     return common.highlightElement(element);
   });
 });

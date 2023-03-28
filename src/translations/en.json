@@ -70,5 +70,10 @@
     "error-message": "Something went wrong! Please try again later.",
     "no-results": "No results",
     "end": "End of results"
+  },
+  "local-uploader": {
+    "drop-files-here": "Drop your file(s) here or Browse.",
+    "max-file-size": "Max. File Size: {{entity}}",
+    "completed": "Completed"
   }
 }
