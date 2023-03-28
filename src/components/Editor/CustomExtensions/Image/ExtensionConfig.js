@@ -135,9 +135,9 @@ const ImageExtension = Node.create({
 const upload = async (file, url) => {
   if (file.size <= MAX_IMAGE_SIZE) {
     const uploader = new DirectUpload({ file, url });
-    const { blobUrl } = await uploader.create();
+    const response = await uploader.create();
 
-    return blobUrl;
+    return response.data?.blob_url || response.blob_url;
   }
 
   const imageSizeInMB = MAX_IMAGE_SIZE / (1024 * 1024);
