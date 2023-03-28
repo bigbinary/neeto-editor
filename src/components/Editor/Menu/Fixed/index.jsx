@@ -134,7 +134,7 @@ const Fixed = ({
               buttonSize: "small",
               buttonProps: {
                 tooltipProps: {
-                  content: t("menu.variables"),
+                  content: t("menu.dynamic-variables"),
                   position: "bottom",
                 },
               },
