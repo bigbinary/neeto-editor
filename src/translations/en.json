@@ -21,7 +21,8 @@
   "error": {
     "invalid-url": "Please enter a valid URL",
     "cannot-add-files": "Cannot add files",
-    "on-before-file-added-return": "Cannot add the file because onBeforeFileAdded returned false."
+    "on-before-file-added-return": "Cannot add the file because onBeforeFileAdded returned false.",
+    "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize}}."
   },
   "menu": {
     "attachments": "Attachments",

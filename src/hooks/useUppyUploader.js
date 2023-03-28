@@ -4,6 +4,7 @@ import Uppy from "@uppy/core";
 import { useUppy } from "@uppy/react";
 import { noop } from "neetocommons/pure";
 import { Toastr } from "neetoui";
+import { useTranslation } from "react-i18next";
 
 import { UPPY_UPLOAD_CONFIG } from "components/Editor/MediaUploader/constants";
 import { convertToFileSize } from "components/Editor/MediaUploader/utils";
@@ -11,15 +12,16 @@ import ActiveStorageUpload from "utils/ActiveStorageUpload";
 
 const useUppyUploader = ({ endpoint, uppyConfig, onSuccess = noop }) => {
   const [isUploading, setIsUploading] = useState(false);
+  const { t } = useTranslation();
 
   const onBeforeFileAdded = file => {
     const { maxFileSize } = uppyConfig.restrictions;
 
     if (file.size > maxFileSize) {
       Toastr.error(
-        `File size is too large. Max size is  ${convertToFileSize(
-          uppyConfig.restrictions.maxFileSize
-        )}.`
+        t("error.fileIsTooLarge", {
+          maxFileSize: convertToFileSize(uppyConfig.restrictions.maxFileSize),
+        })
       );
 
       return false;
