@@ -1,4 +1,5 @@
 import { Extension } from "@tiptap/core";
+import { t } from "i18next";
 import { Plugin } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
 
@@ -10,7 +11,7 @@ const Placeholder = Extension.create({
       excludeNodeTypes: ["variable", "codeBlock"],
       emptyEditorClass: "is-editor-empty",
       emptyNodeClass: "is-empty",
-      placeholder: "Write something …",
+      placeholder: t("placeholders.writeSomething"),
       showOnlyWhenEditable: true,
       showOnlyCurrent: false,
       includeChildren: false,

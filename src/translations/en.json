@@ -7,7 +7,8 @@
     "embed": "Embed",
     "save-changes": "Save changes",
     "unlink": "Unlink",
-    "video-url": "Video URL:"
+    "video-url": "Video URL:",
+    "browse": "Browse"
   },
   "attachments": {
     "actions-blocked": "You are not permitted to update or delete attachments",
@@ -16,13 +17,16 @@
     "delete-title": "Remove Attachment?",
     "maxNumberOfFiles": "You can only attach {{entity}} files",
     "name-empty": "Filename cannot be empty",
-    "one-attachment-allowed": "Only one attachment is allowed"
+    "one-attachment-allowed": "Only one attachment is allowed",
+    "maxFileSize": "Max. File Size: {{fileSize}}",
+    "dropYourFilesHere": "Drop your file(s) here or {{browse}}"
   },
   "error": {
     "invalid-url": "Please enter a valid URL",
     "cannot-add-files": "Cannot add files",
     "on-before-file-added-return": "Cannot add the file because onBeforeFileAdded returned false.",
-    "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize}}."
+    "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize}}.",
+    "imageSizeIsShouldBeLess": "Image size should be less than {{limit}} MB"
   },
   "menu": {
     "attachments": "Attachments",
@@ -55,7 +59,8 @@
     "paste-link": "Paste the link here...",
     "rows": "Enter rows",
     "search-unsplash": "Search Unsplash",
-    "url": "Paste URL"
+    "url": "Paste URL",
+    "writeSomething": "Write something …"
   },
   "table": {
     "delete": "Delete table",
