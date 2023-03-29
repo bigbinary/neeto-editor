@@ -17,9 +17,7 @@
     "delete-title": "Remove Attachment?",
     "maxNumberOfFiles": "You can only attach {{entity}} files",
     "name-empty": "Filename cannot be empty",
-    "one-attachment-allowed": "Only one attachment is allowed",
-    "maxFileSize": "Max. File Size: {{fileSize}}",
-    "dropYourFilesHere": "Drop your file(s) here or {{browse}}"
+    "one-attachment-allowed": "Only one attachment is allowed"
   },
   "error": {
     "invalid-url": "Please enter a valid URL",
