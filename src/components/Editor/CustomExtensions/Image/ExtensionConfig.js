@@ -120,13 +120,6 @@ const ImageExtension = Node.create({
               attrs,
               content: caption ? [{ type: "text", text: caption }] : [],
             })
-            // set cursor at end of caption field
-            .command(({ tr, commands }) => {
-              const { doc, selection } = tr;
-              const position = doc.resolve(selection.to).end();
-
-              return commands.setTextSelection(position);
-            })
             .run(),
     };
   },

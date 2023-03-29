@@ -8,7 +8,6 @@ const KeyboardShortcuts = ({ onSubmit, shortcuts }) =>
       return {
         "Mod-Enter": () => {
           onSubmit?.(this.editor.getHTML());
-          this.editor.commands.blur();
 
           return true;
         },

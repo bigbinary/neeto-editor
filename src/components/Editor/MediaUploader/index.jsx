@@ -7,7 +7,6 @@ import { isNilOrEmpty } from "utils/common";
 
 import { MEDIA_UPLOAD_OPTIONS } from "./constants";
 import LocalUploader from "./LocalUploader";
-import MediaEditor from "./MediaEditor";
 import UnsplashImagePicker from "./UnsplashImagePicker";
 import URLForm from "./URLForm";
 
@@ -21,7 +20,7 @@ const MediaUploader = ({
   const { t } = useTranslation();
 
   const [activeTab, setActiveTab] = useState("local");
-  const [mediaUrl, setMediaUrl] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
   const isOpen = mediaUploader.image || mediaUploader.video;
 
   let tabs = unsplashApiKey
@@ -31,12 +30,33 @@ const MediaUploader = ({
 
   const handleClose = () => {
     onClose();
-    setMediaUrl("");
     setActiveTab("local");
   };
 
+  const handleSubmit = url => {
+    insertImageToEditor({ url });
+    handleClose();
+  };
+
+  const insertImageToEditor = ({ url, filename = "", caption = "" }) =>
+    editor
+      .chain()
+      .focus()
+      .setFigure({ src: url, caption, alt: filename })
+      .command(({ tr, commands }) => {
+        const { doc, selection } = tr;
+        const position = doc.resolve(selection.to).end() + 1;
+
+        return commands.insertContentAt(position, "<p></p>");
+      })
+      .run();
+
   return (
-    <Modal closeButton={false} isOpen={isOpen} onClose={handleClose}>
+    <Modal
+      closeButton={false}
+      isOpen={isOpen}
+      onClose={!isUploading && handleClose}
+    >
       <div className="ne-media-uploader">
         {!isNilOrEmpty(tabs) && (
           <Tab>
@@ -44,10 +64,7 @@ const MediaUploader = ({
               <Tab.Item
                 active={activeTab === key}
                 key={key}
-                onClick={() => {
-                  setMediaUrl("");
-                  setActiveTab(key);
-                }}
+                onClick={() => setActiveTab(key)}
               >
                 {title}
               </Tab.Item>
@@ -55,39 +72,29 @@ const MediaUploader = ({
           </Tab>
         )}
         <div className="ne-media-uploader__content">
-          {mediaUrl ? (
-            <MediaEditor
-              editor={editor}
+          {activeTab === "local" && (
+            <LocalUploader
+              endpoint={uploadEndpoint}
+              insertImageToEditor={insertImageToEditor}
               isImage={mediaUploader.image}
-              setMediaUrl={setMediaUrl}
-              url={mediaUrl}
+              setIsUploading={setIsUploading}
               onClose={handleClose}
             />
-          ) : (
-            <>
-              {activeTab === "local" && (
-                <LocalUploader
-                  endpoint={uploadEndpoint}
-                  isImage={mediaUploader.image}
-                  onSuccess={setMediaUrl}
-                />
-              )}
-              {activeTab === "link" && (
-                <URLForm
-                  placeholder={t("placeholders.paste-link")}
-                  buttonLabel={
-                    mediaUploader.image ? "Upload image" : "Upload video"
-                  }
-                  onSubmit={setMediaUrl}
-                />
-              )}
-              {activeTab === "unsplash" && (
-                <UnsplashImagePicker
-                  unsplashApiKey={unsplashApiKey}
-                  onSubmit={setMediaUrl}
-                />
-              )}
-            </>
+          )}
+          {activeTab === "link" && (
+            <URLForm
+              placeholder={t("placeholders.paste-link")}
+              buttonLabel={
+                mediaUploader.image ? "Upload image" : "Upload video"
+              }
+              onSubmit={handleSubmit}
+            />
+          )}
+          {activeTab === "unsplash" && (
+            <UnsplashImagePicker
+              unsplashApiKey={unsplashApiKey}
+              onSubmit={handleSubmit}
+            />
           )}
         </div>
       </div>
