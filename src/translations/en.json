@@ -50,7 +50,11 @@
     "undo": "Undo",
     "dynamic-variables": "Dynamic variables",
     "video-embed": "Video embed",
-    "video-upload": "Video upload"
+    "video-upload": "Video upload",
+    "alignLeft": "Align left",
+    "alignCenter": "Align center",
+    "alignRight": "Align right",
+    "delete": "Delete"
   },
   "placeholders": {
     "caption-input": "Enter a caption",

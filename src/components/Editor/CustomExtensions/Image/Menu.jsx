@@ -1,6 +1,5 @@
 import React from "react";
 
-import { humanize } from "neetocommons/pure";
 import { MenuHorizontal } from "neetoicons";
 import { Button, Dropdown } from "neetoui";
 
@@ -26,7 +25,7 @@ const Menu = ({ align, updateAttributes, deleteNode }) => {
           icon={Icon}
           key={optionName}
           style={alignPos === align ? "secondary" : "text"}
-          tooltipProps={{ content: humanize(optionName), position: "top" }}
+          tooltipProps={{ content: optionName, position: "top" }}
           onClick={() => handleClick(alignPos)}
         />
       ))}
