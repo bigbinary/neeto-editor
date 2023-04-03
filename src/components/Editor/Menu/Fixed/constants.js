@@ -14,6 +14,7 @@ import {
   Redo,
   MediaVideo,
   Video,
+  Braces,
 } from "neetoicons";
 import { assoc } from "ramda";
 
@@ -80,6 +81,13 @@ export const MENU_OPTIONS = ({
       active: editor.isActive("code"),
       optionName: "code",
       tooltip: tooltips.code || t("menu.code"),
+    },
+    {
+      Icon: Braces,
+      command: () => editor.chain().focus().toggleCodeBlock().run(),
+      active: editor.isActive("codeBlock"),
+      optionName: "code-block",
+      tooltip: tooltips.codeBlock || t("menu.code-block"),
     },
   ],
   list: [
