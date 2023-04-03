@@ -22,13 +22,6 @@
     pointer-events: none;
   }
 
-  mark {
-    background: rgb(var(--neeto-ui-pastel-green));
-    border-radius: var(--neeto-ui-rounded-sm);
-    padding: 0px 4px;
-    color: inherit;
-  }
-
   [data-variable] {
     display: inline-flex;
     color: rgb(var(--neeto-ui-gray-600));
