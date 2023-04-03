@@ -93,7 +93,7 @@ export default Node.create({
             });
             state.tr.insert(range.from, node);
             state.tr.setSelection(
-              TextSelection.create(state.tr.doc, range.from + 2)
+              TextSelection.create(state.tr.doc, range.from + node.nodeSize + 1)
             );
           }
         },
