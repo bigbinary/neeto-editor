@@ -18,7 +18,17 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
     const validatedUrl = validateUrl(embedUrl);
 
     if (validatedUrl) {
-      editor.chain().focus().setExternalVideo({ src: validatedUrl }).run();
+      editor
+        .chain()
+        .focus()
+        .setExternalVideo({ src: validatedUrl })
+        .command(({ tr, commands }) => {
+          const { doc, selection } = tr;
+          const position = doc.resolve(selection.to).end();
+
+          return commands.insertContentAt(position, { type: "paragraph" });
+        })
+        .run();
       setEmbedUrl("");
       setIsEmbedModalOpen(false);
     } else {
