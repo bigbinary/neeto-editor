@@ -92,6 +92,11 @@ export default Node.create({
               src: validatedUrl,
             });
             state.tr.insert(range.from, node);
+            state.tr.insert(
+              range.from + node.nodeSize + 1,
+              state.schema.nodes.paragraph.create()
+            );
+
             state.tr.setSelection(
               TextSelection.create(state.tr.doc, range.from + node.nodeSize + 1)
             );
