@@ -92,6 +92,10 @@ export default Node.create({
               src: validatedUrl,
             });
             state.tr.insert(range.from, node);
+            const nextPos = state.tr.selection.$to.pos;
+            const emptyParagraph = state.schema.nodes.paragraph.create();
+            state.tr.insert(nextPos, emptyParagraph);
+            state.tr.setSelection(TextSelection.create(state.tr.doc, nextPos));
           }
         },
       }),
