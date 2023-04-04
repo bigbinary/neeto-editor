@@ -118,7 +118,7 @@ const Attachment = ({
               <Input
                 autoFocus
                 data-cy="neeto-editor-attachment-rename-input"
-                error={isEmpty(newFilename) ? t("attachments.name-empty") : ""}
+                error={isEmpty(newFilename) ? t("attachments.nameEmpty") : ""}
                 size="small"
                 value={newFilename}
                 onChange={e => setNewFilename(e.target.value)}
@@ -145,7 +145,7 @@ const Attachment = ({
               <Typography style="body2">{attachment.filename}</Typography>
             </Tooltip>
             <Tooltip
-              content={t("attachments.actions-blocked")}
+              content={t("attachments.actionsBlocked")}
               disabled={!disabled}
               position="top"
             >
@@ -176,8 +176,8 @@ const Attachment = ({
       <Alert
         isOpen={isDeleteAlertOpen}
         isSubmitting={isDeleting}
-        message={t("attachments.delete-confirmation", { entity: newFilename })}
-        title={t("attachments.delete-title")}
+        message={t("attachments.deleteConfirmation", { entity: newFilename })}
+        title={t("attachments.deleteTitle")}
         onClose={() => setIsDeleteAlertOpen(false)}
         onSubmit={handleDelete}
       />

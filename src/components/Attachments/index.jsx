@@ -53,8 +53,8 @@ const Attachments = (
           data: file,
         });
       } catch (error) {
-        if (error.message !== t("error.on-before-file-added-return")) {
-          Toastr.error(t("error.cannot-add-files"));
+        if (error.message !== t("error.onBeforeFileAddedReturn")) {
+          Toastr.error(t("error.cannotAddFiles"));
         }
       }
     });
@@ -189,7 +189,7 @@ const Attachments = (
           onClick={event => {
             if (!isEmpty(attachments) && config.maxNumberOfFiles === 1) {
               event.preventDefault();
-              Toastr.warning(t("attachments.one-attachment-allowed"));
+              Toastr.warning(t("attachments.oneAttachmentAllowed"));
             }
           }}
         />

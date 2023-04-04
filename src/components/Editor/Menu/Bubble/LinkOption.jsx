@@ -53,7 +53,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
         className="neeto-editor-bubble-menu-link__input"
         data-cy="neeto-editor-link-input"
         name="url"
-        placeholder={t("placeholders.link-input")}
+        placeholder={t("placeholders.linkInput")}
         value={link}
         onChange={({ target: { value } }) => setLink(value)}
       />

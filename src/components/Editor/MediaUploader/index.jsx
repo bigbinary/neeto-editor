@@ -83,7 +83,7 @@ const MediaUploader = ({
           )}
           {activeTab === "link" && (
             <URLForm
-              placeholder={t("placeholders.paste-link")}
+              placeholder={t("placeholders.pasteLink")}
               buttonLabel={
                 mediaUploader.image ? "Upload image" : "Upload video"
               }
