@@ -5,7 +5,6 @@
     "caption": "Caption",
     "create": "Create",
     "embed": "Embed",
-    "save-changes": "Save changes",
     "unlink": "Unlink",
     "videoUrl": "Video URL:",
     "browse": "Browse"
@@ -33,7 +32,6 @@
     "bulletedList": "Bulleted list",
     "code": "Code",
     "codeBlock": "Code block",
-    "embed-video": "Embed video",
     "emoji": "Emoji",
     "fontSize": "Font size",
     "highlight": "Highlight",
@@ -56,7 +54,6 @@
     "delete": "Delete"
   },
   "placeholders": {
-    "caption-input": "Enter a caption",
     "columns": "Enter columns",
     "linkInput": "Paste or type a link...",
     "pasteLink": "Paste the link here...",
