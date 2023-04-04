@@ -21,7 +21,7 @@ const URLForm = ({
     event.preventDefault();
     URL_REGEXP.test(urlString)
       ? onSubmit(urlString)
-      : setError(t("error.invalid-url"));
+      : setError(t("error.invalidUrl"));
   };
 
   return (

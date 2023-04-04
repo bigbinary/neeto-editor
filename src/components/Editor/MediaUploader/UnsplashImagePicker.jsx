@@ -71,7 +71,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
         className="neeto-editor-unsplash-search"
         data-cy="neeto-editor-unsplash-image-picker-search-input"
         name="text"
-        placeholder={t("placeholders.search-unsplash")}
+        placeholder={t("placeholders.searchUnsplash")}
         value={query}
         onChange={({ target: { value } }) => {
           setQuery(value);
@@ -82,7 +82,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           className="neeto-editor-unsplash-gallery__text"
           data-cy="neeto-editor-unsplash-image-picker-error"
         >
-          {t("unsplash.error-message")}
+          {t("unsplash.errorMessage")}
         </p>
       )}
       {!error && !loading && isNilOrEmpty(images) && (
@@ -90,7 +90,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           className="neeto-editor-unsplash-gallery__text"
           data-cy="neeto-editor-unsplash-image-picker-no-results-error"
         >
-          {t("unsplash.no-results")}
+          {t("unsplash.noResults")}
         </p>
       )}
       {!error && (

@@ -1,5 +1,6 @@
 import { mergeAttributes, Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
+import { t } from "i18next";
 import { Toastr } from "neetoui";
 import { Plugin } from "prosemirror-state";
 import { isEmpty } from "ramda";
@@ -134,7 +135,7 @@ const upload = async (file, url) => {
   }
 
   const imageSizeInMB = MAX_IMAGE_SIZE / (1024 * 1024);
-  Toastr.error(`Image size should be less than ${imageSizeInMB} MB`);
+  Toastr.error(t("error.imageSizeIsShouldBeLess", { limit: imageSizeInMB }));
 
   return "";
 };

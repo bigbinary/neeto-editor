@@ -84,7 +84,7 @@ const Fixed = ({
         {isFontSizeActive && (
           <FontSizeOption
             editor={editor}
-            tooltipContent={tooltips.fontSize || t("menu.font-size")}
+            tooltipContent={tooltips.fontSize || t("menu.fontSize")}
           />
         )}
         {fontStyleOptions.map(renderOptionButton)}
@@ -134,7 +134,7 @@ const Fixed = ({
               buttonSize: "small",
               buttonProps: {
                 tooltipProps: {
-                  content: t("menu.dynamic-variables"),
+                  content: t("menu.dynamicVariables"),
                   position: "bottom",
                 },
               },

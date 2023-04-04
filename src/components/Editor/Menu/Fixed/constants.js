@@ -73,7 +73,7 @@ export const MENU_OPTIONS = ({
       active: editor.isActive("blockquote"),
       optionName: "block-quote",
       highlight: true,
-      tooltip: tooltips.blockQuote || t("menu.block-quote"),
+      tooltip: tooltips.blockQuote || t("menu.blockQuote"),
     },
     {
       Icon: Code,
@@ -87,7 +87,7 @@ export const MENU_OPTIONS = ({
       command: () => editor.chain().focus().toggleCodeBlock().run(),
       active: editor.isActive("codeBlock"),
       optionName: "code-block",
-      tooltip: tooltips.codeBlock || t("menu.code-block"),
+      tooltip: tooltips.codeBlock || t("menu.codeBlock"),
     },
   ],
   list: [
@@ -97,7 +97,7 @@ export const MENU_OPTIONS = ({
       active: editor.isActive("bulletList"),
       optionName: "bullet-list",
       highlight: true,
-      tooltip: tooltips.bulletList || t("menu.bulleted-list"),
+      tooltip: tooltips.bulletList || t("menu.bulletedList"),
     },
     {
       Icon: ListNumber,
@@ -105,7 +105,7 @@ export const MENU_OPTIONS = ({
       active: editor.isActive("orderedList"),
       optionName: "ordered-list",
       highlight: true,
-      tooltip: tooltips.orderedList || t("menu.ordered-list"),
+      tooltip: tooltips.orderedList || t("menu.orderedList"),
     },
   ],
   misc: [
@@ -120,19 +120,19 @@ export const MENU_OPTIONS = ({
       Icon: ImageUpload,
       command: () => setMediaUploader(assoc("image", true)),
       optionName: "image-upload",
-      tooltip: tooltips.imageUpload || t("menu.image-upload"),
+      tooltip: tooltips.imageUpload || t("menu.imageUpload"),
     },
     {
       Icon: Video,
       command: () => setMediaUploader(assoc("video", true)),
       optionName: "video-upload",
-      tooltip: tooltips.videoUpload || t("menu.video-upload"),
+      tooltip: tooltips.videoUpload || t("menu.videoUpload"),
     },
     {
       Icon: MediaVideo,
       command: () => setIsEmbedModalOpen(true),
       optionName: "video-embed",
-      tooltip: tooltips.videoEmbed || t("menu.video-embed"),
+      tooltip: tooltips.videoEmbed || t("menu.videoEmbed"),
     },
   ],
   right: [
@@ -164,31 +164,31 @@ export const FONT_SIZE_OPTIONS = [
 
 export const TABLE_ACTIONS = ({ editor }) => [
   {
-    label: t("table.insert-row"),
+    label: t("table.insertRow"),
     command: () => editor.commands.addRowAfter(),
   },
   {
-    label: t("table.insert-column"),
+    label: t("table.insertColumn"),
     command: () => editor.commands.addColumnAfter(),
   },
   {
-    label: t("table.delete-row"),
+    label: t("table.deleteRow"),
     command: () => editor.chain().focus().deleteRow().run(),
   },
   {
-    label: t("table.delete-column"),
+    label: t("table.deleteColumn"),
     command: () => editor.chain().focus().deleteColumn().run(),
   },
   {
-    label: t("table.merge-split"),
+    label: t("table.mergeSplit"),
     command: () => editor.chain().focus().mergeOrSplit().run(),
   },
   {
-    label: t("table.toggle-header-row"),
+    label: t("table.toggleHeaderRow"),
     command: () => editor.chain().focus().toggleHeaderRow().run(),
   },
   {
-    label: t("table.toggle-header-column"),
+    label: t("table.toggleHeaderColumn"),
     command: () => editor.chain().focus().toggleHeaderColumn().run(),
   },
   {

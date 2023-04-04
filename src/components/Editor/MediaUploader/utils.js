@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import { LeftAlign, CenterAlign, RightAlign, Delete } from "neetoicons";
 
 export const convertToFileSize = size => {
@@ -15,20 +16,20 @@ export const buildImageOptions = () => [
   {
     Icon: LeftAlign,
     alignPos: "left",
-    optionName: "Align left",
+    optionName: t("menu.alignLeft"),
   },
   {
     Icon: CenterAlign,
     alignPos: "center",
-    optionName: "Align Center",
+    optionName: t("menu.alignCenter"),
   },
   {
     Icon: RightAlign,
     alignPos: "right",
-    optionName: "Align right",
+    optionName: t("menu.alignRight"),
   },
   {
     Icon: Delete,
-    optionName: "Delete",
+    optionName: t("menu.delete"),
   },
 ];

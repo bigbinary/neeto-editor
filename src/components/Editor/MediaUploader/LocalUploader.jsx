@@ -51,8 +51,8 @@ const LocalUploader = ({
           data: file,
         });
       } catch (error) {
-        if (error.message !== t("error.on-before-file-added-return")) {
-          Toastr.error(t("error.cannot-add-files"));
+        if (error.message !== t("error.onBeforeFileAddedReturn")) {
+          Toastr.error(t("error.cannotAddFiles"));
         }
       }
     });
@@ -135,11 +135,9 @@ const LocalUploader = ({
         onChange={handleAddFile}
       />
       <ImageUpload className="ne-media-uploader__dnd-icon" size={24} />
-      <Typography style="body2">
-        {t("local-uploader.drop-files-here")}
-      </Typography>
+      <Typography style="body2">{t("localUploader.dropFilesHere")}</Typography>
       <Typography style="body3">
-        {t("local-uploader.max-file-size", {
+        {t("localUploader.maxFileSize", {
           entity: convertToFileSize(uppyConfig.restrictions.maxFileSize),
         })}
       </Typography>

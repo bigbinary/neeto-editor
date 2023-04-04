@@ -73,7 +73,7 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
         <Input
           data-cy="neeto-editor-embed-input"
           error={error && "Please enter a valid URL"}
-          label={t("common.video-url")}
+          label={t("common.videoUrl")}
           ref={inputRef}
           size="medium"
           type="text"
