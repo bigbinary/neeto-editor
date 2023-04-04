@@ -2,6 +2,7 @@ import React from "react";
 
 import { lowlight } from "lowlight";
 import { findBy } from "neetocommons/pure";
+import { isEmpty } from "ramda";
 import { renderToString } from "react-dom/server";
 
 import { CODE_BLOCK_REGEX, VARIABLE_SPAN_REGEX } from "./constants";
@@ -20,9 +21,13 @@ const buildReactElementFromAST = element => {
 
 export const highlightCode = content =>
   content.replace(CODE_BLOCK_REGEX, (_, code) => {
-    const highlightedAST = lowlight.highlightAuto(
+    let highlightedAST = lowlight.highlightAuto(
       code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")
     );
+
+    if (isEmpty(highlightedAST.children)) {
+      highlightedAST = lowlight.highlight("javascript", code);
+    }
 
     const highlightedNode = highlightedAST.children.map(
       buildReactElementFromAST
