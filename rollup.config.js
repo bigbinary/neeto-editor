@@ -50,7 +50,7 @@ export default [
     output: formats.map(format => ({
       file: format === "esm" ? "./index.js" : "./index.cjs.js",
       format,
-      sourcemap: false,
+      sourcemap: true,
       name: "neetoEditor",
       assetFileNames: "[name][extname]",
     })),
@@ -61,6 +61,7 @@ export default [
     output: {
       dir: `${__dirname}/dist`,
       format: "esm",
+      sourcemap: true,
       assetFileNames: "[name][extname]",
     },
     plugins: [
@@ -76,7 +77,7 @@ export default [
     output: {
       dir: `${__dirname}/dist`,
       format: "cjs",
-      sourcemap: false,
+      sourcemap: true,
       assetFileNames: "[name][extname]",
     },
     plugins,

@@ -11,6 +11,8 @@
 # production
 /build
 /dist/editor-output.js
+/dist/editor-output.js.map
+/dist/codeBlockHighlight.js.map
 
 # misc
 .DS_Store
@@ -26,5 +28,6 @@ yarn-error.log*
 /editor-content.js
 /index.js
 /index.cjs.js
+/index.*.map
 /formik.js
 storybook-static
