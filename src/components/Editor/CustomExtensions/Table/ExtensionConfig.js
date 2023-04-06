@@ -1,4 +1,5 @@
 import TiptapTable from "@tiptap/extension-table";
+import { mergeAttributes } from "@tiptap/react";
 
 import { TableView } from "./TableView";
 
@@ -14,6 +15,20 @@ const Table = TiptapTable.extend({
       allowTableNodeSelection: true,
     };
   },
+  renderHTML({ node, HTMLAttributes }) {
+    const colgroups = node?.content?.content?.[0]?.content?.content.map(col => [
+      "col",
+      { style: `width: ${col.attrs?.colwidth || 100}px;` },
+    ]);
+
+    return [
+      "table",
+      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes),
+      ["colgroup", ...colgroups],
+      ["tbody", 0],
+    ];
+  },
+
   addKeyboardShortcuts() {
     return {
       ...this.parent?.(),
