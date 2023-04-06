@@ -15,10 +15,9 @@ const Table = TiptapTable.extend({
     };
   },
   renderHTML({ node }) {
-    const colgroups = node?.content?.content?.[0]?.content?.content.map(col => [
-      "col",
-      { style: `width: ${col.attrs?.colwidth || 100}px;` },
-    ]);
+    const colgroups = node?.content?.content?.[0]?.content?.content?.map(
+      col => ["col", { style: `width: ${col.attrs?.colwidth || 100}px;` }]
+    );
 
     return ["table", {}, ["colgroup", ...colgroups], ["tbody", 0]];
   },
