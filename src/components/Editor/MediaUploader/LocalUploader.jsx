@@ -101,7 +101,7 @@ const LocalUploader = ({
   useEffect(() => {
     uppy.use(DropTarget, {
       target: dropTargetRef?.current,
-      afterAddingFiles,
+      onDrop: afterAddingFiles,
     });
 
     return () => {
