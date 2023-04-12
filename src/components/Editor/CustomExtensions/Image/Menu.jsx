@@ -5,11 +5,13 @@ import { Button, Dropdown } from "neetoui";
 
 import { buildImageOptions } from "../../MediaUploader/utils";
 
-const Menu = ({ align, updateAttributes, deleteNode }) => {
+const Menu = ({ align, editor, updateAttributes, deleteNode }) => {
   const menuOptions = buildImageOptions();
 
-  const handleClick = align =>
+  const handleClick = align => {
     align ? updateAttributes({ align }) : deleteNode();
+    editor.commands.focus();
+  };
 
   return (
     <Dropdown

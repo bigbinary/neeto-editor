@@ -43,6 +43,7 @@ const EmbedComponent = ({
         <Menu
           align={align}
           deleteNode={deleteNode}
+          editor={editor}
           updateAttributes={updateAttributes}
         />
         <iframe {...node.attrs} />
