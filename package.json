@@ -137,6 +137,7 @@
     "rollup-plugin-styles": "4.0.0",
     "sass": "1.55.0",
     "sass-loader": "13.0.2",
+    "storybook-dark-mode": "^2.1.1",
     "style-loader": "3.3.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "tippy.js": "6.3.7",

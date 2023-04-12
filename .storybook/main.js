@@ -19,6 +19,7 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/addon-postcss",
     "@storybook/preset-scss",
+    "storybook-dark-mode",
   ],
   framework: "@storybook/react",
   babel: async options => ({
