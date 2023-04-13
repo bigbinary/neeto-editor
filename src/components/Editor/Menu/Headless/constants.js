@@ -18,7 +18,7 @@ import {
   File,
   Video,
   NeetoChangelog,
-  Braces,
+  CodeBlock,
 } from "neetoicons";
 import { assoc } from "ramda";
 
@@ -83,7 +83,7 @@ export const MENU_OPTIONS = ({
     tooltip: tooltips.code || t("menu.code"),
   },
   {
-    Icon: Braces,
+    Icon: CodeBlock,
     command: () => editor.chain().focus().toggleCodeBlock().run(),
     active: editor.isActive("codeBlock"),
     optionName: "code-block",

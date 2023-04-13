@@ -1737,14 +1737,10 @@
   resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.40.tgz#f4a2864086e4b11aa9c71b7fee8aff9b1bb2e0d7"
   integrity sha512-vyt7awSKQnngXPunaL4PjN7akahN+i/A7YrVwgVffrmB91MJhiz//wUGGbjnB2I91MUGRFShs+uD2OM2YFBlbw==
 
-"@bigbinary/neeto-icons@1.9.12":
-  version "1.9.12"
-  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-icons/-/neeto-icons-1.9.12.tgz#0627aa5130884a4d020ae314398b6f1c260a8236"
-  integrity sha512-c6kU2bw204wX9cBIrDD1Ugaq96xNkYGbrvMok/oBBHmyIm/WEudAelWP+1dTFFNwzmPcAu3M2rtbhxwM6Ozfsg==
-  dependencies:
-    prop-types "^15.7.2"
-    react "^17.0.2"
-    react-dom "^17.0.2"
+"@bigbinary/neeto-icons@1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-icons/-/neeto-icons-1.11.0.tgz#d2c2b9ef1d3c82784ffba15fdf02af47aa37e3a7"
+  integrity sha512-K+BVWQpNeCLJAQLL9j7h2dbOTlUCLWkcN/1OTqUgLJveyq0T90MBE2Tyc8iWAnkCIsV3Yed4uIDiG6vH/fz9gA==
 
 "@bigbinary/neeto-molecules@1.0.7":
   version "1.0.7"
@@ -12625,7 +12621,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@17.0.2, react-dom@^17.0.2:
+react-dom@17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
   integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
@@ -12796,7 +12792,7 @@ react-toastify@8.0.2:
   dependencies:
     clsx "^1.1.1"
 
-react@17.0.2, react@^17.0.2:
+react@17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==

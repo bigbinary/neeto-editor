@@ -7,7 +7,7 @@ import {
   ListNumber,
   Blockquote,
   ImageUpload,
-  Code,
+  CodeBlock,
   Smiley,
   Minus,
   Video,
@@ -158,7 +158,7 @@ export const MENU_ITEMS = [
     optionName: EDITOR_OPTIONS.CODE_BLOCK,
     title: "Code block",
     description: "Add a code block with syntax highlighting.",
-    Icon: Code,
+    Icon: CodeBlock,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleCodeBlock().run();
     },
