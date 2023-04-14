@@ -99,10 +99,33 @@
   }
 
   // Embed
-  .video-wrapper {
-    width: 560px;
-    height: 315px;
-    margin: 16px auto;
+  .neeto-editor__video-wrapper {
+    display: flex;
+    margin: 16px 0px;
+
+    .neeto-editor__video-iframe {
+      display: inline-block;
+      border: 2px solid rgb(var(--neeto-ui-gray-300));
+      border-radius: var(--neeto-ui-rounded-lg);
+      padding: 4px;
+
+      iframe {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  .neeto-editor__video--left {
+    justify-content: flex-start;
+  }
+
+  .neeto-editor__video--right {
+    justify-content: flex-end;
+  }
+
+  .neeto-editor__video--center {
+    justify-content: center;
   }
 
   mark {

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
-import { isEmpty } from "ramda";
+import { isEmpty, mergeRight } from "ramda";
 import { Resizable } from "re-resizable";
 
 import Menu from "./Menu";
@@ -32,6 +32,7 @@ const ImageComponent = ({
         <Menu
           align={align}
           deleteNode={deleteNode}
+          editor={editor}
           updateAttributes={updateAttributes}
         />
         <Resizable
@@ -42,13 +43,16 @@ const ImageComponent = ({
             height = ref.offsetHeight;
             width = ref.offsetWidth;
             view.dispatch(
-              view.state.tr.setNodeMarkup(getPos(), undefined, {
-                ...node.attrs,
-                figheight: height,
-                figwidth: width,
-                height,
-                width,
-              })
+              view.state.tr.setNodeMarkup(
+                getPos(),
+                undefined,
+                mergeRight(node.attrs, {
+                  figheight: height,
+                  figwidth: width,
+                  height,
+                  width,
+                })
+              )
             );
             editor.commands.focus();
           }}

@@ -1,8 +1,10 @@
 import { Node, mergeAttributes, PasteRule } from "@tiptap/core";
+import { ReactNodeViewRenderer } from "@tiptap/react";
 import { TextSelection } from "prosemirror-state";
 
 import { COMBINED_REGEX } from "common/constants";
 
+import EmbedComponent from "./EmbedComponent";
 import { validateUrl } from "./utils";
 
 export default Node.create({
@@ -30,18 +32,37 @@ export default Node.create({
       src: {
         default: null,
       },
+
       title: {
         default: null,
       },
+
       frameborder: {
         default: "0",
       },
+
       allow: {
         default:
           "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
       },
+
       allowfullscreen: {
         default: "allowfullscreen",
+      },
+
+      figheight: {
+        default: 281,
+        parseHTML: element => element.getAttribute("figheight"),
+      },
+
+      figwidth: {
+        default: 500,
+        parseHTML: element => element.getAttribute("figwidth"),
+      },
+
+      align: {
+        default: "center",
+        parseHTML: element => element.getAttribute("align"),
       },
     };
   },
@@ -54,14 +75,32 @@ export default Node.create({
     ];
   },
 
-  renderHTML({ HTMLAttributes }) {
+  renderHTML({ HTMLAttributes, node }) {
+    const { align, figheight, figwidth } = node.attrs;
+
     return [
-      "iframe",
-      mergeAttributes(this.options.HTMLAttributes, {
-        ...HTMLAttributes,
-        class: "video-wrapper",
-      }),
+      "div",
+      {
+        class: `neeto-editor__video-wrapper neeto-editor__video--${align}`,
+      },
+      [
+        "div",
+        {
+          class: "neeto-editor__video-iframe",
+          style: `width: ${figwidth}px; height: ${figheight}px;`,
+        },
+        [
+          "iframe",
+          mergeAttributes(this.options.HTMLAttributes, {
+            ...HTMLAttributes,
+          }),
+        ],
+      ],
     ];
+  },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(EmbedComponent);
   },
 
   addCommands() {
