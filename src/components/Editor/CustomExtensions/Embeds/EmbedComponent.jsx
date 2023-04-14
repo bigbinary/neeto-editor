@@ -1,6 +1,7 @@
 import React from "react";
 
 import { NodeViewWrapper } from "@tiptap/react";
+import { mergeRight } from "ramda";
 import { Resizable } from "re-resizable";
 
 import Menu from "../Image/Menu";
@@ -29,13 +30,16 @@ const EmbedComponent = ({
           height = ref.offsetHeight;
           width = ref.offsetWidth;
           view.dispatch(
-            view.state.tr.setNodeMarkup(getPos(), undefined, {
-              ...node.attrs,
-              figheight: height,
-              figwidth: width,
-              height,
-              width,
-            })
+            view.state.tr.setNodeMarkup(
+              getPos(),
+              undefined,
+              mergeRight(node.attrs, {
+                figheight: height,
+                figwidth: width,
+                height,
+                width,
+              })
+            )
           );
           editor.commands.focus();
         }}
