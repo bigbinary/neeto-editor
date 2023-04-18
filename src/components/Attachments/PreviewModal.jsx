@@ -1,0 +1,108 @@
+import React, { useRef } from "react";
+
+import saveAs from "file-saver";
+import { findIndexBy } from "neetocommons/pure";
+import { Download, LeftArrow, RightArrow } from "neetoicons";
+import { Modal, Typography, Button } from "neetoui";
+import { useTranslation } from "react-i18next";
+
+const PreviewModal = ({
+  isOpen,
+  onClose,
+  attachments,
+  selectedAttachment,
+  setSelectedAttachment,
+}) => {
+  const { t } = useTranslation();
+  const downloadRef = useRef(null);
+
+  const {
+    filename = "",
+    contentType = "null",
+    url = "",
+    signedId = "",
+  } = selectedAttachment;
+
+  const handleRightArrowClick = () => {
+    const nextIndex = findIndexBy({ signedId }, attachments) + 1;
+    const newIndex = nextIndex >= attachments.length ? 0 : nextIndex;
+    setSelectedAttachment(attachments[newIndex]);
+    downloadRef.current?.focus();
+  };
+
+  const handleLeftArrowClick = () => {
+    const prevIndex = findIndexBy({ signedId }, attachments) - 1;
+    const newIndex = prevIndex < 0 ? attachments.length - 1 : prevIndex;
+    setSelectedAttachment(attachments[newIndex]);
+    downloadRef.current?.focus();
+  };
+
+  const handleDownload = () => {
+    saveAs(url, filename);
+  };
+
+  const setPreview = () => {
+    if (contentType.startsWith("image/")) {
+      return <img src={url} />;
+    } else if (contentType.startsWith("video/")) {
+      return <video controls src={url} />;
+    } else if (contentType === "application") {
+      return <iframe src={url} />;
+    }
+
+    return (
+      <Typography
+        className="ne-attachments-preview__body-message"
+        onClick={handleDownload}
+      >
+        {t("attachmentsPreview.noPreview")}
+      </Typography>
+    );
+  };
+
+  return (
+    <Modal
+      className="ne-attachments-preview"
+      isOpen={isOpen}
+      size="large"
+      onClose={onClose}
+      onKeyDown={event => {
+        if (event.key === "ArrowRight") {
+          handleRightArrowClick();
+        } else if (event.key === "ArrowLeft") {
+          handleLeftArrowClick();
+        }
+      }}
+    >
+      <Modal.Header className="ne-attachments-preview__header">
+        <Typography style="h2">{filename}</Typography>
+      </Modal.Header>
+      <Modal.Body className="ne-attachments-preview__body">
+        <Button
+          className="ne-attachments-preview__body-left"
+          icon={LeftArrow}
+          style="text"
+          onClick={handleLeftArrowClick}
+        />
+        <Button
+          className="ne-attachments-preview__body-right"
+          icon={RightArrow}
+          style="text"
+          onClick={handleRightArrowClick}
+        />
+        {setPreview()}
+      </Modal.Body>
+      <Modal.Footer className="ne-attachments-preview__footer">
+        <Button
+          icon={Download}
+          iconPosition="right"
+          label={t("attachmentsPreview.download")}
+          ref={downloadRef}
+          onClick={handleDownload}
+        />
+      </Modal.Footer>
+    </Modal>
+  );
+};
+
+export default PreviewModal;

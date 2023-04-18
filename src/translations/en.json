@@ -81,5 +81,9 @@
     "dropFilesHere": "Drop your file(s) here or Browse.",
     "maxFileSize": "Max. File Size: {{entity}}",
     "completed": "Completed"
+  },
+  "attachmentsPreview": {
+    "noPreview": "Preview not available, Click to download.",
+    "download": "Download"
   }
 }

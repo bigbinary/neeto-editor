@@ -52,12 +52,86 @@
       overflow: hidden;
       text-overflow: ellipsis;
       display: block;
-      width: 75%;
+      width: 80%;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
   input[type="file"] {
     display: none;
+  }
+
+  &-preview {
+    width: 75vw !important;
+    height: 75vh !important;
+    max-width: 1152px !important;
+    max-height: 576px !important;
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgb(var(--neeto-ui-gray-200));
+    }
+
+    &__body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90%;
+      width: 100%;
+      min-height: 10px;
+      padding-bottom: 8px !important;
+
+      &-message {
+        cursor: pointer;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      video {
+        height: 100%;
+        width: 100%;
+      }
+
+      iframe {
+        height: 100%;
+        width: 100%;
+        padding: 0 8px;
+      }
+
+      &-left, &-right {
+        height: 100%;
+        position: absolute;
+        top: 0;
+
+        &:hover {
+          background-color: rgba(var(--neeto-ui-gray-300), 0.4) !important;
+        }
+      }
+
+      &-left {
+        left: 24px;
+      }
+
+      &-right {
+        right: 24px;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      height: 10%;
+      justify-content: space-around;
+      padding-bottom: 12px;
+    }
   }
 }
 

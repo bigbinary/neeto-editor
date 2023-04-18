@@ -12,6 +12,7 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
+import PreviewModal from "./PreviewModal";
 import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
 
 const Attachments = (
@@ -30,6 +31,8 @@ const Attachments = (
   const { t } = useTranslation();
 
   const [pendingAttachments, setPendingAttachments] = useState([]);
+  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+  const [selectedAttachment, setSelectedAttachment] = useState({});
 
   const attachmentInputRef = useRef(null);
 
@@ -156,6 +159,8 @@ const Attachments = (
             disabled={disabled}
             endpoint={endpoint}
             key={attachment.signedId}
+            setIsPreviewModalOpen={setIsPreviewModalOpen}
+            setSelectedAttachment={setSelectedAttachment}
             onChange={onChange}
           />
         ))}
@@ -191,6 +196,16 @@ const Attachments = (
               event.preventDefault();
               Toastr.warning(t("attachments.oneAttachmentAllowed"));
             }
+          }}
+        />
+        <PreviewModal
+          attachments={attachments}
+          isOpen={isPreviewModalOpen}
+          selectedAttachment={selectedAttachment}
+          setSelectedAttachment={setSelectedAttachment}
+          onClose={() => {
+            setIsPreviewModalOpen(false);
+            setSelectedAttachment({});
           }}
         />
       </div>
