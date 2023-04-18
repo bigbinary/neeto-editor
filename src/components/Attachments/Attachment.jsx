@@ -24,10 +24,12 @@ const { Menu, MenuItem } = Dropdown;
 
 const Attachment = ({
   attachment,
-  endpoint,
-  onChange,
   attachments,
   disabled,
+  endpoint,
+  onChange,
+  setIsPreviewModalOpen,
+  setSelectedAttachment,
 }) => {
   const { t } = useTranslation();
 
@@ -37,7 +39,7 @@ const Attachment = ({
   const [newFilename, setNewFilename] = useState("");
 
   const handleDownload = () => {
-    saveAs(attachment.url, attachment.fileName);
+    saveAs(attachment.url, attachment.filename);
   };
 
   const handleRename = async () => {
@@ -142,7 +144,15 @@ const Attachment = ({
           <>
             <FileIcon fileName={attachment.filename} />
             <Tooltip content={attachment.filename} position="top">
-              <Typography style="body2">{attachment.filename}</Typography>
+              <Typography
+                style="body2"
+                onClick={() => {
+                  setSelectedAttachment(attachment);
+                  setIsPreviewModalOpen(true);
+                }}
+              >
+                {attachment.filename}
+              </Typography>
             </Tooltip>
             <Tooltip
               content={t("attachments.actionsBlocked")}

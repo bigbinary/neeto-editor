@@ -23,16 +23,16 @@ const PreviewModal = ({
     signedId = "",
   } = selectedAttachment;
 
+  const index = findIndexBy({ signedId }, attachments);
+
   const handleRightArrowClick = () => {
-    const nextIndex = findIndexBy({ signedId }, attachments) + 1;
-    const newIndex = nextIndex >= attachments.length ? 0 : nextIndex;
+    const newIndex = (index + 1) % attachments.length;
     setSelectedAttachment(attachments[newIndex]);
     downloadRef.current?.focus();
   };
 
   const handleLeftArrowClick = () => {
-    const prevIndex = findIndexBy({ signedId }, attachments) - 1;
-    const newIndex = prevIndex < 0 ? attachments.length - 1 : prevIndex;
+    const newIndex = (index - 1 + attachments.length) % attachments.length;
     setSelectedAttachment(attachments[newIndex]);
     downloadRef.current?.focus();
   };
@@ -42,22 +42,23 @@ const PreviewModal = ({
   };
 
   const setPreview = () => {
-    if (contentType.startsWith("image/")) {
-      return <img src={url} />;
-    } else if (contentType.startsWith("video/")) {
-      return <video controls src={url} />;
-    } else if (contentType === "application") {
-      return <iframe src={url} />;
+    switch (contentType.split("/")[0]) {
+      case "image":
+        return <img src={url} />;
+      case "video":
+        return <video controls src={url} />;
+      case "application":
+        return <iframe src={url} />;
+      default:
+        return (
+          <Typography
+            className="ne-attachments-preview__body-message"
+            onClick={handleDownload}
+          >
+            {t("attachmentsPreview.noPreview")}
+          </Typography>
+        );
     }
-
-    return (
-      <Typography
-        className="ne-attachments-preview__body-message"
-        onClick={handleDownload}
-      >
-        {t("attachmentsPreview.noPreview")}
-      </Typography>
-    );
   };
 
   return (
