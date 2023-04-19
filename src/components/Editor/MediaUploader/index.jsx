@@ -38,9 +38,9 @@ const MediaUploader = ({
     handleClose();
   };
 
-  const insertMediaToEditor = (file, isImage = true) => {
+  const insertMediaToEditor = file => {
     const { url, filename = "", caption = "" } = file;
-    isImage
+    mediaUploader.image
       ? editor
           .chain()
           .focus()
