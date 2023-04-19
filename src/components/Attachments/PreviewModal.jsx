@@ -23,16 +23,17 @@ const PreviewModal = ({
     signedId = "",
   } = selectedAttachment;
 
-  const index = findIndexBy({ signedId }, attachments);
+  const attachmentIndex = findIndexBy({ signedId }, attachments);
 
   const handleRightArrowClick = () => {
-    const newIndex = (index + 1) % attachments.length;
+    const newIndex = (attachmentIndex + 1) % attachments.length;
     setSelectedAttachment(attachments[newIndex]);
     downloadRef.current?.focus();
   };
 
   const handleLeftArrowClick = () => {
-    const newIndex = (index - 1 + attachments.length) % attachments.length;
+    const newIndex =
+      (attachmentIndex - 1 + attachments.length) % attachments.length;
     setSelectedAttachment(attachments[newIndex]);
     downloadRef.current?.focus();
   };
