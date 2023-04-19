@@ -17,7 +17,7 @@
     "deleteTitle": "Remove Attachment?",
     "maxNumberOfFiles": "You can only attach {{entity}} files",
     "nameEmpty": "Filename cannot be empty",
-    "noPreview": "Preview not available, click to ",
+    "noPreview": "There is no preview available, click to <span>download</span>.",
     "oneAttachmentAllowed": "Only one attachment is allowed"
   },
   "error": {

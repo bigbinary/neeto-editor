@@ -5,7 +5,7 @@ import { findIndexBy } from "neetocommons/pure";
 import { Download, Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
 import { isEmpty } from "ramda";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 const Preview = ({
   onClose,
@@ -52,12 +52,17 @@ const Preview = ({
         return <iframe src={url} />;
       default:
         return (
-          <Typography className="ne-attachments-preview__body-message">
-            {t("attachments.noPreview")}
-            <Button
-              label={t("common.download")}
-              style="link"
-              onClick={handleDownload}
+          <Typography>
+            <Trans
+              i18nKey="attachments.noPreview"
+              components={{
+                span: (
+                  <span
+                    className="ne-attachments-preview__body-download"
+                    onClick={handleDownload}
+                  />
+                ),
+              }}
             />
           </Typography>
         );

@@ -99,8 +99,9 @@
       min-height: 10px;
       padding-bottom: 8px !important;
 
-      &-message {
+      &-download {
         cursor: pointer;
+        color: rgb(var(--neeto-ui-primary-800));
       }
 
       img {
