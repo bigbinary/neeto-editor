@@ -2,12 +2,12 @@ import React, { useRef } from "react";
 
 import saveAs from "file-saver";
 import { findIndexBy } from "neetocommons/pure";
-import { Download, LeftArrow, RightArrow } from "neetoicons";
+import { Download, Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
+import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
 
-const PreviewModal = ({
-  isOpen,
+const Preview = ({
   onClose,
   attachments,
   selectedAttachment,
@@ -52,11 +52,13 @@ const PreviewModal = ({
         return <iframe src={url} />;
       default:
         return (
-          <Typography
-            className="ne-attachments-preview__body-message"
-            onClick={handleDownload}
-          >
-            {t("attachmentsPreview.noPreview")}
+          <Typography className="ne-attachments-preview__body-message">
+            {t("attachments.noPreview")}
+            <Button
+              label={t("common.download")}
+              style="link"
+              onClick={handleDownload}
+            />
           </Typography>
         );
     }
@@ -65,7 +67,7 @@ const PreviewModal = ({
   return (
     <Modal
       className="ne-attachments-preview"
-      isOpen={isOpen}
+      isOpen={!isEmpty(selectedAttachment)}
       size="large"
       onClose={onClose}
       onKeyDown={event => {
@@ -80,31 +82,27 @@ const PreviewModal = ({
         <Typography style="h2">{filename}</Typography>
       </Modal.Header>
       <Modal.Body className="ne-attachments-preview__body">
-        <Button
+        <Left
           className="ne-attachments-preview__body-left"
-          icon={LeftArrow}
-          style="text"
           onClick={handleLeftArrowClick}
         />
-        <Button
+        <Right
           className="ne-attachments-preview__body-right"
-          icon={RightArrow}
-          style="text"
           onClick={handleRightArrowClick}
         />
         {setPreview()}
       </Modal.Body>
-      <Modal.Footer className="ne-attachments-preview__footer">
+      <div className="ne-attachments-preview__footer">
         <Button
           icon={Download}
           iconPosition="right"
-          label={t("attachmentsPreview.download")}
+          label={t("common.download")}
           ref={downloadRef}
           onClick={handleDownload}
         />
-      </Modal.Footer>
+      </div>
     </Modal>
   );
 };
 
-export default PreviewModal;
+export default Preview;

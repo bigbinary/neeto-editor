@@ -4,6 +4,7 @@
     "cancel": "Cancel",
     "caption": "Caption",
     "create": "Create",
+    "download": "Download",
     "embed": "Embed",
     "unlink": "Unlink",
     "videoUrl": "Video URL:",
@@ -16,6 +17,7 @@
     "deleteTitle": "Remove Attachment?",
     "maxNumberOfFiles": "You can only attach {{entity}} files",
     "nameEmpty": "Filename cannot be empty",
+    "noPreview": "Preview not available, click to ",
     "oneAttachmentAllowed": "Only one attachment is allowed"
   },
   "error": {
@@ -81,9 +83,5 @@
     "dropFilesHere": "Drop your file(s) here or Browse.",
     "maxFileSize": "Max. File Size: {{entity}}",
     "completed": "Completed"
-  },
-  "attachmentsPreview": {
-    "noPreview": "Preview not available, Click to download.",
-    "download": "Download"
   }
 }

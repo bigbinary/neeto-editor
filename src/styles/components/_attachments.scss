@@ -19,9 +19,27 @@
     background-color: rgb(var(--neeto-ui-white));
     width: 256px;
 
-    &-file-icon {
-      height: auto;
-      width: 15px;
+    &__preview-wrapper {
+      display: flex;
+      gap: 8px;
+      width: 88%;
+
+      &__icon {
+        height: auto;
+        width: 15px;
+      }
+
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        width: 92%
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     &__progress {
@@ -35,6 +53,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         display: block;
+        width: 85%;
       }
 
       p:nth-child(2) {
@@ -47,16 +66,8 @@
       }
     }
 
-    p {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: block;
-      width: 80%;
-
-      &:hover {
-        cursor: pointer;
-      }
+    &:hover {
+      box-shadow: 0 0 0 1px rgb(var(--neeto-ui-gray-400));
     }
   }
 
@@ -70,6 +81,7 @@
     max-width: 1152px !important;
     max-height: 576px !important;
     display: flex;
+    gap: 8px;
     flex-direction: column;
 
     &__header {
@@ -82,8 +94,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 90%;
       width: 100%;
+      flex-grow: 1;
       min-height: 10px;
       padding-bottom: 8px !important;
 
@@ -108,12 +120,14 @@
       }
 
       &-left, &-right {
-        height: 100%;
-        position: absolute;
-        top: 0;
+        position: absolute !important;
+        z-index: 1;
+        top: 50%;
+        transform: translateY(-50%);
 
         &:hover {
-          background-color: rgba(var(--neeto-ui-gray-300), 0.4) !important;
+          cursor: pointer;
+          background-color: rgba(var(--neeto-ui-gray-100), 0.4) !important;
         }
       }
 
@@ -128,9 +142,9 @@
 
     &__footer {
       display: flex;
-      height: 10%;
       justify-content: space-around;
-      padding-bottom: 12px;
+      align-items: center;
+      padding-bottom: 24px !important;
     }
   }
 }

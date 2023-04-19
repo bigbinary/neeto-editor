@@ -28,7 +28,6 @@ const Attachment = ({
   disabled,
   endpoint,
   onChange,
-  setIsPreviewModalOpen,
   setSelectedAttachment,
 }) => {
   const { t } = useTranslation();
@@ -142,43 +141,43 @@ const Attachment = ({
           </>
         ) : (
           <>
-            <FileIcon fileName={attachment.filename} />
-            <Tooltip content={attachment.filename} position="top">
-              <Typography
-                style="body2"
-                onClick={() => {
-                  setSelectedAttachment(attachment);
-                  setIsPreviewModalOpen(true);
-                }}
-              >
-                {attachment.filename}
-              </Typography>
-            </Tooltip>
+            <div
+              className="ne-attachments__attachment__preview-wrapper"
+              onClick={() => setSelectedAttachment(attachment)}
+            >
+              <FileIcon fileName={attachment.filename} />
+              <Tooltip content={attachment.filename} position="top">
+                <Typography
+                  style="body2"
+                  onClick={() => setSelectedAttachment(attachment)}
+                >
+                  {attachment.filename}
+                </Typography>
+              </Tooltip>
+            </div>
             <Tooltip
               content={t("attachments.actionsBlocked")}
               disabled={!disabled}
               position="top"
             >
-              <span>
-                <Dropdown
-                  buttonSize="small"
-                  buttonStyle="text"
-                  disabled={disabled}
-                  icon={MenuVertical}
-                >
-                  <Menu>
-                    {Object.entries(handlers).map(([label, handler]) => (
-                      <MenuItem.Button
-                        data-cy={`neeto-editor-attachment-${label.toLowerCase()}-button`}
-                        key={label}
-                        onClick={() => onMenuItemClick({ key: label, handler })}
-                      >
-                        {label}
-                      </MenuItem.Button>
-                    ))}
-                  </Menu>
-                </Dropdown>
-              </span>
+              <Dropdown
+                buttonSize="small"
+                buttonStyle="text"
+                disabled={disabled}
+                icon={MenuVertical}
+              >
+                <Menu>
+                  {Object.entries(handlers).map(([label, handler]) => (
+                    <MenuItem.Button
+                      data-cy={`neeto-editor-attachment-${label.toLowerCase()}-button`}
+                      key={label}
+                      onClick={() => onMenuItemClick({ key: label, handler })}
+                    >
+                      {label}
+                    </MenuItem.Button>
+                  ))}
+                </Menu>
+              </Dropdown>
             </Tooltip>
           </>
         )}

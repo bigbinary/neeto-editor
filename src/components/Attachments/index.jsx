@@ -12,7 +12,7 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import PreviewModal from "./PreviewModal";
+import Preview from "./Preview";
 import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
 
 const Attachments = (
@@ -31,7 +31,6 @@ const Attachments = (
   const { t } = useTranslation();
 
   const [pendingAttachments, setPendingAttachments] = useState([]);
-  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
   const [selectedAttachment, setSelectedAttachment] = useState({});
 
   const attachmentInputRef = useRef(null);
@@ -100,6 +99,8 @@ const Attachments = (
         filename: file.name,
         signedId: file.response.data?.signed_id || file.response.signed_id,
         url: file.response.data?.blob_url || file.response.blob_url,
+        contentType:
+          file.response.data?.content_type || file.response.content_type,
       }));
 
       setPendingAttachments([]);
@@ -159,7 +160,6 @@ const Attachments = (
             disabled={disabled}
             endpoint={endpoint}
             key={attachment.signedId}
-            setIsPreviewModalOpen={setIsPreviewModalOpen}
             setSelectedAttachment={setSelectedAttachment}
             onChange={onChange}
           />
@@ -198,15 +198,11 @@ const Attachments = (
             }
           }}
         />
-        <PreviewModal
+        <Preview
           attachments={attachments}
-          isOpen={isPreviewModalOpen}
           selectedAttachment={selectedAttachment}
           setSelectedAttachment={setSelectedAttachment}
-          onClose={() => {
-            setIsPreviewModalOpen(false);
-            setSelectedAttachment({});
-          }}
+          onClose={() => setSelectedAttachment({})}
         />
       </div>
     </div>
