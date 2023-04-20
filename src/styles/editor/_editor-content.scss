@@ -181,6 +181,7 @@
 .neeto-editor__image-wrapper {
   margin: 16px 0;
   display: flex;
+  text-decoration: none;
 
   figure {
     position: relative;
@@ -193,7 +194,8 @@
     img,
     video {
       display: inline-block;
-      height: 100%;
+      width: 100%;
+      height: auto;
       border: 2px solid rgb(var(--neeto-ui-gray-300));
       border-radius: var(--neeto-ui-rounded-lg);
       padding: 4px;
@@ -209,6 +211,7 @@
     a {
       display: inline-block;
       text-align: center;
+      margin: 0;
     }
   }
 
