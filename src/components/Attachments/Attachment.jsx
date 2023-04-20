@@ -24,10 +24,11 @@ const { Menu, MenuItem } = Dropdown;
 
 const Attachment = ({
   attachment,
-  endpoint,
-  onChange,
   attachments,
   disabled,
+  endpoint,
+  onChange,
+  setSelectedAttachment,
 }) => {
   const { t } = useTranslation();
 
@@ -37,7 +38,7 @@ const Attachment = ({
   const [newFilename, setNewFilename] = useState("");
 
   const handleDownload = () => {
-    saveAs(attachment.url, attachment.fileName);
+    saveAs(attachment.url, attachment.filename);
   };
 
   const handleRename = async () => {
@@ -111,13 +112,13 @@ const Attachment = ({
 
   return (
     <>
-      <div className="ne-attachments__attachment">
+      <div className="ne-attachments__preview">
         {isRenaming ? (
           <>
             <Tooltip content={newFilename} position="top">
               <Input
                 autoFocus
-                data-cy="neeto-editor-attachment-rename-input"
+                data-cy="neeto-editor-preview-rename-input"
                 error={isEmpty(newFilename) ? t("attachments.nameEmpty") : ""}
                 size="small"
                 value={newFilename}
@@ -131,7 +132,7 @@ const Attachment = ({
               />
             </Tooltip>
             <Button
-              data-cy="neeto-editor-attachment-rename-cancel-button"
+              data-cy="neeto-editor-preview-rename-cancel-button"
               icon={Close}
               size="small"
               style="text"
@@ -140,35 +141,43 @@ const Attachment = ({
           </>
         ) : (
           <>
-            <FileIcon fileName={attachment.filename} />
-            <Tooltip content={attachment.filename} position="top">
-              <Typography style="body2">{attachment.filename}</Typography>
-            </Tooltip>
+            <div
+              className="ne-attachments__preview-wrapper"
+              onClick={() => setSelectedAttachment(attachment)}
+            >
+              <FileIcon fileName={attachment.filename} />
+              <Tooltip content={attachment.filename} position="top">
+                <Typography
+                  style="body2"
+                  onClick={() => setSelectedAttachment(attachment)}
+                >
+                  {attachment.filename}
+                </Typography>
+              </Tooltip>
+            </div>
             <Tooltip
               content={t("attachments.actionsBlocked")}
               disabled={!disabled}
               position="top"
             >
-              <span>
-                <Dropdown
-                  buttonSize="small"
-                  buttonStyle="text"
-                  disabled={disabled}
-                  icon={MenuVertical}
-                >
-                  <Menu>
-                    {Object.entries(handlers).map(([label, handler]) => (
-                      <MenuItem.Button
-                        data-cy={`neeto-editor-attachment-${label.toLowerCase()}-button`}
-                        key={label}
-                        onClick={() => onMenuItemClick({ key: label, handler })}
-                      >
-                        {label}
-                      </MenuItem.Button>
-                    ))}
-                  </Menu>
-                </Dropdown>
-              </span>
+              <Dropdown
+                buttonSize="small"
+                buttonStyle="text"
+                disabled={disabled}
+                icon={MenuVertical}
+              >
+                <Menu>
+                  {Object.entries(handlers).map(([label, handler]) => (
+                    <MenuItem.Button
+                      data-cy={`neeto-editor-preview-${label.toLowerCase()}-button`}
+                      key={label}
+                      onClick={() => onMenuItemClick({ key: label, handler })}
+                    >
+                      {label}
+                    </MenuItem.Button>
+                  ))}
+                </Menu>
+              </Dropdown>
             </Tooltip>
           </>
         )}

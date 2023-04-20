@@ -13,16 +13,16 @@ const AttachmentProgress = ({ attachment, uppy, removeUploadingFile }) => {
   };
 
   return (
-    <div className="ne-attachments__attachment">
-      <div className="ne-attachments__attachment__progress-icon">
+    <div className="ne-attachments__preview">
+      <div className="ne-attachments__preview__progress-icon">
         <FileIcon />
       </div>
-      <div className="ne-attachments__attachment__progress">
+      <div className="ne-attachments__preview__progress">
         <Typography style="body2">{attachment.filename}</Typography>
         <Typography style="body2">{progressPercentage}</Typography>
       </div>
       <Button
-        data-cy="neeto-editor-attachment-upload-cancel-button"
+        data-cy="neeto-editor-preview-upload-cancel-button"
         icon={Close}
         size="small"
         style="text"

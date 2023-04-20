@@ -12,6 +12,7 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
+import Preview from "./Preview";
 import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
 
 const Attachments = (
@@ -30,6 +31,7 @@ const Attachments = (
   const { t } = useTranslation();
 
   const [pendingAttachments, setPendingAttachments] = useState([]);
+  const [selectedAttachment, setSelectedAttachment] = useState({});
 
   const attachmentInputRef = useRef(null);
 
@@ -97,6 +99,8 @@ const Attachments = (
         filename: file.name,
         signedId: file.response.data?.signed_id || file.response.signed_id,
         url: file.response.data?.blob_url || file.response.blob_url,
+        contentType:
+          file.response.data?.content_type || file.response.content_type,
       }));
 
       setPendingAttachments([]);
@@ -156,6 +160,7 @@ const Attachments = (
             disabled={disabled}
             endpoint={endpoint}
             key={attachment.signedId}
+            setSelectedAttachment={setSelectedAttachment}
             onChange={onChange}
           />
         ))}
@@ -192,6 +197,12 @@ const Attachments = (
               Toastr.warning(t("attachments.oneAttachmentAllowed"));
             }
           }}
+        />
+        <Preview
+          attachments={attachments}
+          selectedAttachment={selectedAttachment}
+          setSelectedAttachment={setSelectedAttachment}
+          onClose={() => setSelectedAttachment({})}
         />
       </div>
     </div>

@@ -9,7 +9,7 @@
     gap: 8px;
   }
 
-  &__attachment {
+  &__preview {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,9 +19,27 @@
     background-color: rgb(var(--neeto-ui-white));
     width: 256px;
 
-    &-file-icon {
-      height: auto;
-      width: 15px;
+    &-wrapper {
+      display: flex;
+      gap: 8px;
+      width: 88%;
+
+      &__icon {
+        height: auto;
+        width: 15px;
+      }
+
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        width: 92%
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     &__progress {
@@ -35,6 +53,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         display: block;
+        width: 85%;
       }
 
       p:nth-child(2) {
@@ -47,17 +66,87 @@
       }
     }
 
-    p {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: block;
-      width: 75%;
+    &:hover {
+      box-shadow: 0 0 0 1px rgb(var(--neeto-ui-gray-400));
     }
   }
 
   input[type="file"] {
     display: none;
+  }
+
+  &-preview {
+    width: 75vw !important;
+    height: 75vh !important;
+    max-width: 1152px !important;
+    max-height: 576px !important;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+
+    &__header {
+      margin-bottom: 8px;
+      border-bottom: 1px solid rgb(var(--neeto-ui-gray-200));
+    }
+
+    &__body {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      flex-grow: 1;
+      min-height: 10px;
+      padding-bottom: 8px !important;
+
+      &-download {
+        cursor: pointer;
+        color: rgb(var(--neeto-ui-primary-800));
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      video {
+        height: 100%;
+        width: 100%;
+      }
+
+      iframe {
+        height: 100%;
+        width: 100%;
+        padding: 0 8px;
+      }
+
+      &-left, &-right {
+        position: absolute !important;
+        z-index: 1;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(var(--neeto-ui-gray-100), 0.4) !important;
+        }
+      }
+
+      &-left {
+        left: 24px;
+      }
+
+      &-right {
+        right: 24px;
+      }
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding-bottom: 24px !important;
+    }
   }
 }
 

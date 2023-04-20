@@ -4,6 +4,7 @@
     "cancel": "Cancel",
     "caption": "Caption",
     "create": "Create",
+    "download": "Download",
     "embed": "Embed",
     "unlink": "Unlink",
     "videoUrl": "Video URL:",
@@ -16,6 +17,7 @@
     "deleteTitle": "Remove Attachment?",
     "maxNumberOfFiles": "You can only attach {{entity}} files",
     "nameEmpty": "Filename cannot be empty",
+    "noPreview": "There is no preview available, click to <span>download</span>.",
     "oneAttachmentAllowed": "Only one attachment is allowed"
   },
   "error": {
