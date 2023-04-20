@@ -35,13 +35,13 @@ const VideoExtension = Node.create({
       },
 
       vidheight: {
-        default: 288,
+        default: "fit-content",
         parseHTML: element =>
           element.querySelector("video")?.getAttribute("vidheight"),
       },
 
       vidwidth: {
-        default: "fit-content",
+        default: 502,
         parseHTML: element =>
           element.querySelector("video")?.getAttribute("vidwidth"),
       },

@@ -34,15 +34,19 @@ const MediaUploader = ({
   };
 
   const handleSubmit = url => {
-    insertImageToEditor({ url });
+    insertMediaToEditor({ url });
     handleClose();
   };
 
-  const insertImageToEditor = ({ url, filename = "", caption = "" }) =>
-    editor
-      .chain()
+  const insertMediaToEditor = file => {
+    const { url, filename = "", caption = "" } = file;
+    const mediaAttrs = { src: url, caption, alt: filename };
+    const setMedia = mediaUploader.image
+      ? editor.chain().setFigure(mediaAttrs)
+      : editor.chain().setVideo(mediaAttrs);
+
+    setMedia
       .focus()
-      .setFigure({ src: url, caption, alt: filename })
       .command(({ tr, commands }) => {
         const { doc, selection } = tr;
         const position = doc.resolve(selection.to).end() + 1;
@@ -50,6 +54,7 @@ const MediaUploader = ({
         return commands.insertContentAt(position, "<p></p>");
       })
       .run();
+  };
 
   return (
     <Modal
@@ -75,7 +80,7 @@ const MediaUploader = ({
           {activeTab === "local" && (
             <LocalUploader
               endpoint={uploadEndpoint}
-              insertImageToEditor={insertImageToEditor}
+              insertMediaToEditor={insertMediaToEditor}
               isImage={mediaUploader.image}
               setIsUploading={setIsUploading}
               onClose={handleClose}

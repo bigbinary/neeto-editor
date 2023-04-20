@@ -32,6 +32,7 @@ const VideoComponent = ({
         <Menu
           align={align}
           deleteNode={deleteNode}
+          editor={editor}
           updateAttributes={updateAttributes}
         />
         <Resizable
