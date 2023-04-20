@@ -9,7 +9,7 @@
     gap: 8px;
   }
 
-  &__attachment {
+  &__preview {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,7 +19,7 @@
     background-color: rgb(var(--neeto-ui-white));
     width: 256px;
 
-    &__preview-wrapper {
+    &-wrapper {
       display: flex;
       gap: 8px;
       width: 88%;

@@ -6,7 +6,7 @@ const File = ({ fileName }) => {
   const extension = fileName.match(/([^.]+)$/)[1];
 
   return (
-    <div className="ne-attachments__attachment__preview-wrapper__icon">
+    <div className="ne-attachments__preview-wrapper__icon">
       <FileIcon
         extension={extension}
         labelColor="#4558f9"
