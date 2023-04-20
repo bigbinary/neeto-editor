@@ -49,7 +49,7 @@ const useCustomExtensions = ({
     Highlight,
     CodeBlock,
     FigCaption,
-    Link,
+    Link.configure({ autolink: false }),
     EmojiSuggestion,
     EmojiPicker,
     CustomCommands,
