@@ -89,7 +89,7 @@ const LocalUploader = ({
       }));
 
       setPendingUploads([]);
-      uploadedFiles.forEach(file => insertMediaToEditor(file));
+      uploadedFiles.forEach(insertMediaToEditor);
     } catch (error) {
       Toastr.error(error);
     } finally {

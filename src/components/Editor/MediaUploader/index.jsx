@@ -40,29 +40,20 @@ const MediaUploader = ({
 
   const insertMediaToEditor = file => {
     const { url, filename = "", caption = "" } = file;
-    mediaUploader.image
-      ? editor
-          .chain()
-          .focus()
-          .setFigure({ src: url, caption, alt: filename })
-          .command(({ tr, commands }) => {
-            const { doc, selection } = tr;
-            const position = doc.resolve(selection.to).end() + 1;
+    const mediaAttrs = { src: url, caption, alt: filename };
+    const setMedia = mediaUploader.image
+      ? editor.chain().setFigure(mediaAttrs)
+      : editor.chain().setVideo(mediaAttrs);
 
-            return commands.insertContentAt(position, "<p></p>");
-          })
-          .run()
-      : editor
-          .chain()
-          .focus()
-          .setVideo({ src: url, caption, alt: filename })
-          .command(({ tr, commands }) => {
-            const { doc, selection } = tr;
-            const position = doc.resolve(selection.to).end() + 1;
+    setMedia
+      .focus()
+      .command(({ tr, commands }) => {
+        const { doc, selection } = tr;
+        const position = doc.resolve(selection.to).end() + 1;
 
-            return commands.insertContentAt(position, "<p></p>");
-          })
-          .run();
+        return commands.insertContentAt(position, "<p></p>");
+      })
+      .run();
   };
 
   return (
