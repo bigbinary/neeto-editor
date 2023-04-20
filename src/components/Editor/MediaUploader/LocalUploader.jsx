@@ -21,7 +21,7 @@ const LocalUploader = ({
   isImage,
   endpoint,
   onClose,
-  insertImageToEditor,
+  insertMediaToEditor,
   setIsUploading,
 }) => {
   const { t } = useTranslation();
@@ -89,7 +89,7 @@ const LocalUploader = ({
       }));
 
       setPendingUploads([]);
-      uploadedFiles.forEach(file => insertImageToEditor(file));
+      uploadedFiles.forEach(insertMediaToEditor);
     } catch (error) {
       Toastr.error(error);
     } finally {
