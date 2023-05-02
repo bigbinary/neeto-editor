@@ -12,8 +12,8 @@ const TextColorOption = ({ editor, tooltipContent }) => {
   const { t } = useTranslation();
 
   const handleSubmit = () => {
-    setIsOpen(false);
     editor.commands.setColor(color);
+    setIsOpen(false);
     editor.commands.focus();
   };
 
