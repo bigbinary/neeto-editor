@@ -1,5 +1,6 @@
 import CharacterCount from "@tiptap/extension-character-count";
 import Code from "@tiptap/extension-code";
+import { Color } from "@tiptap/extension-color";
 import Document from "@tiptap/extension-document";
 import Focus from "@tiptap/extension-focus";
 import Highlight from "@tiptap/extension-highlight";
@@ -7,9 +8,12 @@ import Link from "@tiptap/extension-link";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
+import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
 import { isEmpty } from "ramda";
+
+import { EDITOR_OPTIONS } from "common/constants";
 
 import CodeBlock from "../CodeBlock/ExtensionConfig";
 import CustomCommands from "../CustomCommands/ExtensionConfig";
@@ -43,38 +47,42 @@ const useCustomExtensions = ({
   setIsEmbedModalOpen,
 }) => {
   let customExtensions = [
-    Document,
+    CharacterCount,
     Code,
-    Underline,
-    Highlight,
     CodeBlock,
-    FigCaption,
-    Link.configure({ autolink: false }),
+    CustomCommands,
+    Document,
     EmojiSuggestion,
     EmojiPicker,
-    CustomCommands,
-    CharacterCount,
+    FigCaption,
     Focus.configure({ mode: "shallowest" }),
-    VideoExtension,
+    Highlight,
     ImageExtension.configure({ uploadEndpoint }),
+    Link.configure({ autolink: false }),
+    Placeholder.configure({ placeholder }),
     StarterKit.configure({ document: false, codeBlock: false, code: false }),
+    Underline,
+    VideoExtension,
     KeyboardShortcuts.configure({
       onSubmit,
       shortcuts: keyboardShortcuts,
     }),
-    Placeholder.configure({ placeholder }),
   ];
   if (isVideoEmbedActive) {
     customExtensions.push(Embeds);
   }
 
-  if (options.includes("table")) {
+  if (options.includes(EDITOR_OPTIONS.TABLE)) {
     customExtensions.push(
       Table.configure({ resizable: true }),
       TableRow,
       TableHeader,
       TableCell
     );
+  }
+
+  if (options.includes(EDITOR_OPTIONS.TEXT_COLOR)) {
+    customExtensions.push(Color, TextStyle);
   }
 
   if (isSlashCommandsActive) {

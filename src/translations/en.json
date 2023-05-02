@@ -8,7 +8,10 @@
     "embed": "Embed",
     "unlink": "Unlink",
     "videoUrl": "Video URL:",
-    "browse": "Browse"
+    "hex": "Hex:",
+    "browse": "Browse",
+    "done": "Done",
+    "reset": "Reset"
   },
   "attachments": {
     "actionsBlocked": "You are not permitted to update or delete attachments",
@@ -45,6 +48,7 @@
     "redo": "Redo",
     "strike": "Strike",
     "table": "Table",
+    "textColor": "Text color",
     "underline": "Underline",
     "undo": "Undo",
     "dynamicVariables": "Dynamic variables",
@@ -59,6 +63,7 @@
     "columns": "Enter columns",
     "linkInput": "Paste or type a link...",
     "pasteLink": "Paste the link here...",
+    "pickColor": "Pick a color",
     "rows": "Enter rows",
     "searchUnsplash": "Search Unsplash",
     "url": "Paste URL",

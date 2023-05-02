@@ -58,7 +58,7 @@ const Progress = ({ uppy, pendingUploads, setPendingUploads }) => {
             </div>
           ) : (
             <Typography style="body3">
-              {t("local-uploader.completed")}
+              {t("localUploader.completed")}
             </Typography>
           )}
         </div>

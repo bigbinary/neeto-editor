@@ -30,6 +30,7 @@ export const EDITOR_OPTIONS = {
   VIDEO_EMBED: "video-embed",
   PASTE_UNFORMATTED: "paste-unformatted",
   TABLE: "table",
+  TEXT_COLOR: "text-color",
 };
 
 export const UNSPLASH_BASE_URL = "https://api.unsplash.com/search/photos";
