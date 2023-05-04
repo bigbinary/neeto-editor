@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
+import { useFuncDebounce } from "neetocommons/react-utils";
 import { Customize } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
+import { not } from "ramda";
 import { HexColorPicker } from "react-colorful";
 import { useTranslation } from "react-i18next";
 
@@ -11,11 +13,12 @@ const TextColorOption = ({ editor, tooltipContent }) => {
 
   const { t } = useTranslation();
 
-  const handleSubmit = () => {
+  const handleColorChange = useFuncDebounce(color => {
+    setColor(color);
     editor.commands.setColor(color);
     setIsOpen(false);
     editor.commands.focus();
-  };
+  }, 300);
 
   const handleReset = () => {
     editor.commands.unsetColor();
@@ -23,14 +26,9 @@ const TextColorOption = ({ editor, tooltipContent }) => {
     editor.commands.focus();
   };
 
-  useEffect(() => {
-    setColor(editor.getAttributes("textStyle").color);
-  }, [isOpen, editor]);
-
   return (
     <Dropdown
       buttonStyle={isOpen ? "secondary" : "text"}
-      closeOnOutsideClick={false}
       icon={Customize}
       isOpen={isOpen}
       buttonProps={{
@@ -38,20 +36,23 @@ const TextColorOption = ({ editor, tooltipContent }) => {
         className:
           "neeto-editor-fixed-menu__item neeto-editor-text-color-option",
       }}
-      onClick={() => setIsOpen(isOpen => !isOpen)}
+      onClick={() => {
+        setColor(editor.getAttributes("textStyle").color);
+        setIsOpen(not);
+      }}
     >
-      <HexColorPicker color={color || "#000000"} onChange={setColor} />
-      <Input
-        autoFocus
-        className="neeto-editor-text-color-option__input"
-        label={t("common.hex")}
-        placeholder={t("placeholders.pickColor")}
-        value={color}
-        onChange={e => setColor(e.target.value)}
-      />
-      <div className="neeto-editor-text-color-option__button-group">
-        <Button label={t("common.done")} size="small" onClick={handleSubmit} />
+      <HexColorPicker color={color || "#000000"} onChange={handleColorChange} />
+      <div className="neeto-editor-text-color-option__options-group">
+        <Input
+          autoFocus
+          className="neeto-editor-text-color-option__options-group__input"
+          placeholder={t("placeholders.pickColor")}
+          size="small"
+          value={color}
+          onChange={e => setColor(e.target.value)}
+        />
         <Button
+          className="neeto-editor-text-color-option__options-group__reset-button"
           label={t("common.reset")}
           size="small"
           style="text"

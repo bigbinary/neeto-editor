@@ -78,15 +78,19 @@
 }
 
 .neeto-editor-text-color-option {
-  &__input {
-    margin: 8px 8px;
-  }
-
-  &__button-group {
+  &__options-group {
+    margin: 8px 4px;
     display: flex;
-    justify-content: space-between;
-    margin: 8px 0;
-    padding: 0 8px;
+    gap: 8px;
+    align-items: center;
+
+    &__input {
+      max-width: 130px;
+    }
+
+    &__reset-button {
+      align-self: center;
+    }
   }
 }
 
