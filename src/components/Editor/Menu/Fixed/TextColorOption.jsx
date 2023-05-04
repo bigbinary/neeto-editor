@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
-import { useFuncDebounce } from "neetocommons/react-utils";
+import { useFuncDebounce, useOnClickOutside } from "neetocommons/react-utils";
 import { Customize } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
 import { not } from "ramda";
@@ -11,13 +11,13 @@ const TextColorOption = ({ editor, tooltipContent }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [color, setColor] = useState(editor.getAttributes("textStyle").color);
 
+  const dropdownWrapperRef = useRef(null);
   const { t } = useTranslation();
 
-  const handleDebouncedClose = useFuncDebounce(color => {
-    editor.commands.setColor(color);
-    setIsOpen(false);
-    editor.commands.focus();
-  }, 300);
+  const handleDebouncedClose = useFuncDebounce(
+    color => editor.commands.setColor(color),
+    300
+  );
 
   const handleReset = () => {
     editor.commands.unsetColor();
@@ -30,40 +30,51 @@ const TextColorOption = ({ editor, tooltipContent }) => {
     handleDebouncedClose(color);
   };
 
+  useOnClickOutside(dropdownWrapperRef, event => {
+    isOpen && event.preventDefault();
+    editor.commands.focus();
+    setIsOpen(false);
+  });
+
   return (
-    <Dropdown
-      buttonStyle={isOpen ? "secondary" : "text"}
-      icon={Customize}
-      isOpen={isOpen}
-      buttonProps={{
-        tooltipProps: { content: tooltipContent, position: "bottom" },
-        className:
-          "neeto-editor-fixed-menu__item neeto-editor-text-color-option",
-      }}
-      onClick={() => {
-        setColor(editor.getAttributes("textStyle").color);
-        setIsOpen(not);
-      }}
-    >
-      <HexColorPicker color={color || "#000000"} onChange={handleColorChange} />
-      <div className="neeto-editor-text-color-option__options-group">
-        <Input
-          autoFocus
-          className="neeto-editor-text-color-option__options-group__input"
-          placeholder={t("placeholders.pickColor")}
-          size="small"
-          value={color}
-          onChange={e => setColor(e.target.value)}
+    <div ref={dropdownWrapperRef}>
+      <Dropdown
+        buttonStyle={isOpen ? "secondary" : "text"}
+        icon={Customize}
+        isOpen={isOpen}
+        buttonProps={{
+          tooltipProps: { content: tooltipContent, position: "bottom" },
+          className:
+            "neeto-editor-fixed-menu__item neeto-editor-text-color-option",
+        }}
+        onClick={() => {
+          setColor(editor.getAttributes("textStyle").color);
+          setIsOpen(not);
+        }}
+      >
+        <HexColorPicker
+          color={color || "#000000"}
+          onChange={handleColorChange}
         />
-        <Button
-          className="neeto-editor-text-color-option__options-group__reset-button"
-          label={t("common.reset")}
-          size="small"
-          style="text"
-          onClick={handleReset}
-        />
-      </div>
-    </Dropdown>
+        <div className="neeto-editor-text-color-option__options-group">
+          <Input
+            autoFocus
+            className="neeto-editor-text-color-option__options-group__input"
+            placeholder={t("placeholders.pickColor")}
+            size="small"
+            value={color}
+            onChange={e => setColor(e.target.value)}
+          />
+          <Button
+            className="neeto-editor-text-color-option__options-group__reset-button"
+            label={t("common.reset")}
+            size="small"
+            style="text"
+            onClick={handleReset}
+          />
+        </div>
+      </Dropdown>
+    </div>
   );
 };
 
