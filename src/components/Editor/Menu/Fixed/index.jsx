@@ -13,6 +13,7 @@ import FontSizeOption from "./FontSizeOption";
 import LinkOption from "./LinkOption";
 import TableActions from "./TableActions";
 import TableOption from "./TableOption";
+import TextColorOption from "./TextColorOption";
 import {
   buildMenuOptions,
   buildOptionsFromAddonCommands,
@@ -62,6 +63,7 @@ const Fixed = ({
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
   const isTableActive = options.includes(EDITOR_OPTIONS.TABLE);
+  const isTextColorOptionActive = options.includes(EDITOR_OPTIONS.TEXT_COLOR);
   const addonCommandOptions = buildOptionsFromAddonCommands({
     editor,
     commands: addonCommands,
@@ -89,6 +91,12 @@ const Fixed = ({
         )}
         {fontStyleOptions.map(renderOptionButton)}
         {blockStyleOptions.map(renderOptionButton)}
+        {isTextColorOptionActive && (
+          <TextColorOption
+            editor={editor}
+            tooltipContent={tooltips.textColor || t("menu.textColor")}
+          />
+        )}
         {isEmojiActive && (
           <EmojiOption
             editor={editor}

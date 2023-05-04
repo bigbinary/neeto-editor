@@ -15,6 +15,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["undo", "Undo last performed action."],
   ["video-upload", "Upload videos to the editor."],
   ["video-embed", "Embed videos from YouTube, Loom and Vimeo."],
+  ["text-color", "Change the color of the text."],
 ];
 
 export const EDITOR_PROP_TABLE_COLUMNS = [

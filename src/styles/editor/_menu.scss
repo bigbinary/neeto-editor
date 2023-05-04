@@ -77,6 +77,23 @@
   }
 }
 
+.neeto-editor-text-color-option {
+  &__options-group {
+    margin: 8px 4px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &__input {
+      max-width: 130px;
+    }
+
+    &__reset-button {
+      align-self: center;
+    }
+  }
+}
+
 .neeto-editor-menu__item {
   display: flex;
   flex-direction: row;

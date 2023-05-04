@@ -16,6 +16,7 @@ import {
 
 import Mentions from "../../CustomExtensions/Mention";
 import EmojiOption from "../Fixed/EmojiOption";
+import TextColorOption from "../Fixed/TextColorOption";
 import { buildMenuOptions } from "../Fixed/utils";
 
 const Options = ({
@@ -41,6 +42,7 @@ const Options = ({
   const dropdownOptions = getTextMenuDropdownOptions({ editor });
   const nodeType = getNodeType(dropdownOptions);
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
+  const isTextColorOptionActive = options.includes(EDITOR_OPTIONS.TEXT_COLOR);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
   const isTableActive = options.includes(EDITOR_OPTIONS.TABLE);
 
@@ -101,6 +103,12 @@ const Options = ({
       </Dropdown>
       {fontStyleOptions.map(renderOptionButton)}
       {blockStyleOptions.map(renderOptionButton)}
+      {isTextColorOptionActive && (
+        <TextColorOption
+          editor={editor}
+          tooltipContent={tooltips.textColor || t("menu.textColor")}
+        />
+      )}
       {isEmojiActive && (
         <EmojiOption
           editor={editor}
