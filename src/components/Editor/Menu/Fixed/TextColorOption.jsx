@@ -13,8 +13,7 @@ const TextColorOption = ({ editor, tooltipContent }) => {
 
   const { t } = useTranslation();
 
-  const handleColorChange = useFuncDebounce(color => {
-    setColor(color);
+  const handleDebouncedClose = useFuncDebounce(color => {
     editor.commands.setColor(color);
     setIsOpen(false);
     editor.commands.focus();
@@ -24,6 +23,11 @@ const TextColorOption = ({ editor, tooltipContent }) => {
     editor.commands.unsetColor();
     setIsOpen(false);
     editor.commands.focus();
+  };
+
+  const handleColorChange = color => {
+    setColor(color);
+    handleDebouncedClose(color);
   };
 
   return (
