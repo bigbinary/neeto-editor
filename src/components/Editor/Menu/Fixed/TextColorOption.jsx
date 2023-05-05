@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useFuncDebounce, useOnClickOutside } from "neetocommons/react-utils";
 import { Customize } from "neetoicons";
@@ -31,10 +31,22 @@ const TextColorOption = ({ editor, tooltipContent }) => {
   };
 
   useOnClickOutside(dropdownWrapperRef, event => {
-    isOpen && event.preventDefault();
-    editor.commands.focus();
-    setIsOpen(false);
+    if (isOpen) {
+      event.preventDefault();
+      editor.commands.focus();
+      setIsOpen(false);
+    }
   });
+
+  useEffect(() => {
+    editor.commands.setBackgroundColor("#ACCEF7");
+
+    if (!isOpen) {
+      editor.commands.unsetBackgroundColor();
+      editor.commands.removeEmptyTextStyle();
+      editor.commands.focus();
+    }
+  }, [isOpen]);
 
   return (
     <div ref={dropdownWrapperRef}>

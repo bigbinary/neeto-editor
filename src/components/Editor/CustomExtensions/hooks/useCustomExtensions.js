@@ -1,6 +1,6 @@
 import CharacterCount from "@tiptap/extension-character-count";
 import Code from "@tiptap/extension-code";
-import { Color } from "@tiptap/extension-color";
+import Color from "@tiptap/extension-color";
 import Document from "@tiptap/extension-document";
 import Focus from "@tiptap/extension-focus";
 import Highlight from "@tiptap/extension-highlight";
@@ -15,6 +15,7 @@ import { isEmpty } from "ramda";
 
 import { EDITOR_OPTIONS } from "common/constants";
 
+import BackgroundColor from "../BackgroundColor/ExtensionConfig";
 import CodeBlock from "../CodeBlock/ExtensionConfig";
 import CustomCommands from "../CustomCommands/ExtensionConfig";
 import Embeds from "../Embeds/ExtensionConfig";
@@ -55,6 +56,7 @@ const useCustomExtensions = ({
     EmojiSuggestion,
     EmojiPicker,
     FigCaption,
+    BackgroundColor,
     Focus.configure({ mode: "shallowest" }),
     Highlight,
     ImageExtension.configure({ uploadEndpoint }),

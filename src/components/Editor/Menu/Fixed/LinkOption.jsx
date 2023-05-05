@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
@@ -50,6 +50,16 @@ const LinkOption = ({ editor, tooltipContent }) => {
     setUrlString("");
     handleClose();
   };
+
+  useEffect(() => {
+    editor.commands.setBackgroundColor("#ACCEF7");
+
+    if (!isOpen) {
+      editor.commands.unsetBackgroundColor();
+      editor.commands.removeEmptyTextStyle();
+      editor.commands.focus();
+    }
+  }, [isOpen]);
 
   return (
     <Dropdown
