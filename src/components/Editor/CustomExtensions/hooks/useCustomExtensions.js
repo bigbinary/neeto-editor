@@ -1,6 +1,6 @@
 import CharacterCount from "@tiptap/extension-character-count";
 import Code from "@tiptap/extension-code";
-import { Color } from "@tiptap/extension-color";
+import Color from "@tiptap/extension-color";
 import Document from "@tiptap/extension-document";
 import Focus from "@tiptap/extension-focus";
 import Highlight from "@tiptap/extension-highlight";
@@ -15,6 +15,7 @@ import { isEmpty } from "ramda";
 
 import { EDITOR_OPTIONS } from "common/constants";
 
+import HighlightInternal from "../BackgroundColor/ExtensionConfig";
 import CodeBlock from "../CodeBlock/ExtensionConfig";
 import CustomCommands from "../CustomCommands/ExtensionConfig";
 import Embeds from "../Embeds/ExtensionConfig";
@@ -55,12 +56,14 @@ const useCustomExtensions = ({
     EmojiSuggestion,
     EmojiPicker,
     FigCaption,
+    HighlightInternal,
     Focus.configure({ mode: "shallowest" }),
     Highlight,
     ImageExtension.configure({ uploadEndpoint }),
     Link.configure({ autolink: false }),
     Placeholder.configure({ placeholder }),
     StarterKit.configure({ document: false, codeBlock: false, code: false }),
+    TextStyle,
     Underline,
     VideoExtension,
     KeyboardShortcuts.configure({
@@ -82,7 +85,7 @@ const useCustomExtensions = ({
   }
 
   if (options.includes(EDITOR_OPTIONS.TEXT_COLOR)) {
-    customExtensions.push(Color, TextStyle);
+    customExtensions.push(Color);
   }
 
   if (isSlashCommandsActive) {
