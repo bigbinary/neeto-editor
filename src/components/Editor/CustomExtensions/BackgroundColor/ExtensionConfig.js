@@ -2,7 +2,7 @@ import { Extension } from "@tiptap/core";
 import "@tiptap/extension-text-style";
 
 export default Extension.create({
-  name: "BackgroundColor",
+  name: "HighlightInternal",
 
   addOptions() {
     return {
@@ -36,11 +36,11 @@ export default Extension.create({
 
   addCommands() {
     return {
-      setBackgroundColor:
+      setHighlightInternal:
         color =>
         ({ chain }) =>
           chain().setMark("textStyle", { backgroundColor: color }).run(),
-      unsetBackgroundColor:
+      unsetHighlightInternal:
         () =>
         ({ chain }) =>
           chain().setMark("textStyle", { backgroundColor: null }).run(),

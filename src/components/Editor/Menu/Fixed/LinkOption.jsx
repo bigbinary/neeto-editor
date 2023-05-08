@@ -52,10 +52,10 @@ const LinkOption = ({ editor, tooltipContent }) => {
   };
 
   useEffect(() => {
-    editor.commands.setBackgroundColor("#ACCEF7");
+    editor.commands.setHighlightInternal("#ACCEF7");
 
     if (!isOpen) {
-      editor.commands.unsetBackgroundColor();
+      editor.commands.unsetHighlightInternal();
       editor.commands.removeEmptyTextStyle();
       editor.commands.focus();
     }
