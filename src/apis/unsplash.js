@@ -10,7 +10,6 @@ export const searchUnsplashImages = ({ pageNo, query, apiKey }) =>
     params: {
       page: pageNo,
       per_page: 30,
-      order_by: "popular",
       query,
     },
   });
