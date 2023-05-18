@@ -44,7 +44,6 @@ const TextColorOption = ({ editor, tooltipContent }) => {
     if (!isOpen) {
       editor.commands.unsetHighlightInternal();
       editor.commands.removeEmptyTextStyle();
-      editor.commands.focus();
     }
   }, [isOpen]);
 
