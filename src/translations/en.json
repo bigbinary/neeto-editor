@@ -15,7 +15,7 @@
   },
   "attachments": {
     "actionsBlocked": "You are not permitted to update or delete attachments",
-    "add": "Add Attachment",
+    "add": "Add attachment",
     "deleteConfirmation": "Are you sure you want to remove {{entity}}?",
     "deleteTitle": "Remove Attachment?",
     "maxNumberOfFiles": "You can only attach {{entity}} files",
