@@ -1,5 +1,6 @@
 import React from "react";
 
+import hljs from "highlight.js/lib/common";
 import { lowlight } from "lowlight";
 import { findBy } from "neetocommons/pure";
 import { isEmpty } from "ramda";
@@ -21,9 +22,9 @@ const buildReactElementFromAST = element => {
 
 export const highlightCode = content =>
   content.replace(CODE_BLOCK_REGEX, (_, code) => {
-    let highlightedAST = lowlight.highlightAuto(
+    let highlightedAST = hljs.highlightAuto(
       code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")
-    );
+    )._emitter.root;
 
     if (isEmpty(highlightedAST.children)) {
       highlightedAST = lowlight.highlight("javascript", code);
