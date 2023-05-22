@@ -20,8 +20,10 @@ const buildReactElementFromAST = element => {
   return element.value;
 };
 
-export const highlightCode = content =>
-  content.replace(CODE_BLOCK_REGEX, (_, code) => {
+export const highlightCode = content => {
+  lowlight.highlightAuto("");
+
+  return content.replace(CODE_BLOCK_REGEX, (_, code) => {
     let highlightedAST = hljs.highlightAuto(
       code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")
     )._emitter.root;
@@ -36,7 +38,7 @@ export const highlightCode = content =>
 
     return `<pre><code>${renderToString(highlightedNode)}</code></pre>`;
   });
-
+};
 export const substituteVariables = (highlightedContent, variables) =>
   highlightedContent.replace(VARIABLE_SPAN_REGEX, (matchedSpan, dataLabel) => {
     const dataLabelSplitted = dataLabel.split(".");
