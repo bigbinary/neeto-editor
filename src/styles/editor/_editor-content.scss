@@ -13,6 +13,10 @@
   h5,
   h6 {
     margin: 1rem 0 0.5rem 0;
+
+    strong {
+      font-weight: bold !important;
+    }
   }
 
   // Paragraph
