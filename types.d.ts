@@ -122,6 +122,7 @@ interface EditorProps {
   error?: string;
   attachments?: Array<attachment>;
   onChangeAttachments?: (attachments: attachment[]) => void;
+  showAttachmentsToastr?: boolean;
   children?: ReactNode;
   [otherProps: string]: any;
 }
@@ -138,6 +139,7 @@ interface AttachmentsProps {
   isIndependent?: boolean;
   disabled?: boolean;
   className?: string;
+  showToastr?: boolean;
 }
 
 export function Editor(props: EditorProps): JSX.Element;

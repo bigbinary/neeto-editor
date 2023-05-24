@@ -1,6 +1,8 @@
-export const EDITOR_ADDONS_TABLE_COLUMNS = ["Prop", "Description"];
+import { noop } from "neetocommons/pure";
 
-export const EDITOR_ADDONS_TABLE_ROWS = [
+export const ATTACHMENTS_TABLE_COLUMNS = ["Prop", "Description"];
+
+export const ATTACHMENTS_TABLE_ROWS = [
   ["attachments", "An array of the metadata of all the attachments."],
   [
     "onChange",
@@ -24,6 +26,10 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
     "config",
     "Object to customize Attachments component, It has 3 properties: allowedFileTypes, maxNumberOfFiles and maxFileSize.",
   ],
+  [
+    "showToastr",
+    "Boolean to show/hide toastr when an attachment is deleted/renamed, default value is true.",
+  ],
 ];
 
 export const attachments = [
@@ -39,4 +45,4 @@ export const attachments = [
   },
 ];
 
-export const setAttachments = () => {};
+export const setAttachments = noop;

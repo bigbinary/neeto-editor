@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { withEventTargetValue } from "neetocommons/utils";
 import { Check, Close } from "neetoicons";
 import { Button, Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
@@ -37,7 +38,7 @@ const TableOption = ({ editor, handleClose }) => {
             placeholder={t("placeholders.rows")}
             type="number"
             value={rows}
-            onChange={e => setRows(e.target.value)}
+            onChange={withEventTargetValue(setRows)}
           />
           <input
             data-cy="neeto-editor-bubble-menu-table-option-input"
@@ -45,7 +46,7 @@ const TableOption = ({ editor, handleClose }) => {
             placeholder={t("placeholders.columns")}
             type="number"
             value={columns}
-            onChange={e => setColumns(e.target.value)}
+            onChange={withEventTargetValue(setColumns)}
           />
           <div className="neeto-editor-bubble-menu__table__buttons">
             <Button

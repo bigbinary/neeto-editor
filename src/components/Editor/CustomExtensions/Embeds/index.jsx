@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 
+import { withEventTargetValue } from "neetocommons/utils";
 import { Button, Input, Modal, Typography } from "neetoui";
 import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
@@ -36,13 +37,13 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
     }
   };
 
-  const handleChange = e => {
-    if (validateUrl(e.target.value)) {
+  const handleChange = url => {
+    if (validateUrl(url)) {
       setError(false);
-      setEmbedUrl(e.target.value);
+      setEmbedUrl(url);
     } else {
       setError(true);
-      setEmbedUrl(e.target.value);
+      setEmbedUrl(url);
     }
   };
 
@@ -78,7 +79,7 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
           size="medium"
           type="text"
           value={embedUrl}
-          onChange={handleChange}
+          onChange={withEventTargetValue(handleChange)}
           onKeyDown={handleKeyDown}
         />
       </Modal.Body>
