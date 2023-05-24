@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable unused-imports/no-unused-imports */
 import React from "react";
 
 import classnames from "classnames";
@@ -21,9 +23,9 @@ const EditorContent = ({
       className={classnames(EDITOR_CONTENT_CLASSNAME, {
         [className]: className,
       })}
-      dangerouslySetInnerHTML={{
-        __html: sanitize(htmlContent, SANITIZE_OPTIONS),
-      }}
+      // dangerouslySetInnerHTML={{
+      //   __html: sanitize(htmlContent, SANITIZE_OPTIONS),
+      // }}
       {...otherProps}
     />
   );
