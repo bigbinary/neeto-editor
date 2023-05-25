@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import saveAs from "file-saver";
 import { removeBy } from "neetocommons/pure";
+import { withEventTargetValue } from "neetocommons/utils";
 import { MenuVertical, Close } from "neetoicons";
 import {
   Dropdown,
@@ -29,6 +30,7 @@ const Attachment = ({
   endpoint,
   onChange,
   setSelectedAttachment,
+  showToastr,
 }) => {
   const { t } = useTranslation();
 
@@ -50,7 +52,12 @@ const Attachment = ({
 
       const {
         blob: { filename },
-      } = await directUploadsApi.update({ url: endpoint, signedId, payload });
+      } = await directUploadsApi.update({
+        url: endpoint,
+        signedId,
+        payload,
+        showToastr,
+      });
 
       onChange(
         attachments.map(attachment =>
@@ -71,7 +78,7 @@ const Attachment = ({
     setIsDeleting(true);
     try {
       const { signedId } = attachment;
-      await directUploadsApi.destroy(endpoint, signedId);
+      await directUploadsApi.destroy(endpoint, signedId, showToastr);
       onChange(removeBy({ signedId }, attachments));
     } catch (error) {
       Toastr.error(error);
@@ -122,7 +129,7 @@ const Attachment = ({
                 error={isEmpty(newFilename) ? t("attachments.nameEmpty") : ""}
                 size="small"
                 value={newFilename}
-                onChange={e => setNewFilename(e.target.value)}
+                onChange={withEventTargetValue(setNewFilename)}
                 onKeyDown={event =>
                   handleKeyDown({
                     event,

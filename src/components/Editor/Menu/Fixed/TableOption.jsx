@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { withEventTargetValue } from "neetocommons/utils";
 import { NeetoChangelog } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
 import { useTranslation } from "react-i18next";
@@ -52,7 +53,7 @@ const TableOption = ({ editor, tooltipContent }) => {
           size="small"
           type="number"
           value={rows}
-          onChange={e => setRows(e.target.value)}
+          onChange={withEventTargetValue(setRows)}
         />
         <Input
           data-cy="neeto-editor-fixed-menu-table-option-input"
@@ -61,7 +62,7 @@ const TableOption = ({ editor, tooltipContent }) => {
           size="small"
           type="number"
           value={columns}
-          onChange={e => setColumns(e.target.value)}
+          onChange={withEventTargetValue(setColumns)}
         />
         <Button
           data-cy="neeto-editor-fixed-menu-table-option-create-button"

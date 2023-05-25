@@ -60,6 +60,7 @@ const Editor = (
     onSubmit = noop,
     onChangeAttachments = noop,
     children,
+    showAttachmentsToastr = true,
     ...otherProps
   },
   ref
@@ -208,6 +209,7 @@ const Editor = (
               dragDropRef={dragDropRef}
               isIndependent={false}
               ref={addAttachmentsRef}
+              showToastr={showAttachmentsToastr}
               className={classnames("ne-attachments--integrated", {
                 [attachmentsClassName]: attachmentsClassName,
               })}
