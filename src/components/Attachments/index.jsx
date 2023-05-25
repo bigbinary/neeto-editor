@@ -25,6 +25,7 @@ const Attachments = (
     disabled = false,
     dragDropRef = null,
     config = {},
+    showToastr = true,
   },
   ref
 ) => {
@@ -161,6 +162,7 @@ const Attachments = (
             endpoint={endpoint}
             key={attachment.signedId}
             setSelectedAttachment={setSelectedAttachment}
+            showToastr={showToastr}
             onChange={onChange}
           />
         ))}

@@ -15,13 +15,17 @@ const create = (url, file, config) =>
     showToastr: false,
   });
 
-const update = ({ url, signedId, payload }) =>
+const update = ({ url, signedId, payload, showToastr }) =>
   axios.patch(`${url}/${signedId}/`, payload, {
     transformRequestCase: false,
     transformResponseCase: false,
+    showToastr,
   });
 
-const destroy = (url, signedId) => axios.delete(`${url}/${signedId}`);
+const destroy = (url, signedId, showToastr) =>
+  axios.delete(`${url}/${signedId}`, {
+    showToastr,
+  });
 
 const directUploadsApi = { generate, create, update, destroy };
 

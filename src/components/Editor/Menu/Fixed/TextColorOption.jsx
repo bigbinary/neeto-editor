@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { useFuncDebounce, useOnClickOutside } from "neetocommons/react-utils";
+import { withEventTargetValue } from "neetocommons/utils";
 import { Customize } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
 import { not } from "ramda";
@@ -74,7 +75,7 @@ const TextColorOption = ({ editor, tooltipContent }) => {
             placeholder={t("placeholders.pickColor")}
             size="small"
             value={color}
-            onChange={e => setColor(e.target.value)}
+            onChange={withEventTargetValue(setColor)}
           />
           <Button
             className="neeto-editor-text-color-option__options-group__reset-button"

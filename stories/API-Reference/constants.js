@@ -67,7 +67,7 @@ export const EDITOR_PROPS = [
   [
     "addons",
     "Accepts an array of strings, each corresponding to the name of an addon.",
-    `["highlight", "emoji", "code-block", "block-quote", "image-upload", "video-upload", "divider", "video-embed", "paste-unformatted"]`,
+    `["highlight", "emoji", "code-block", "block-quote", "image-upload", "video-upload", "divider", "video-embed", "paste-unformatted","attachments"]`,
   ],
   [
     "addonCommands",
@@ -103,7 +103,7 @@ export const EDITOR_PROPS = [
   ],
   [
     "onChange",
-    "Accepts a function. This function will be invoked whenever the editor content changes, with new the content as argument.",
+    "Accepts a function. This function will be invoked whenever the editor content changes, with the new content as argument.",
     `(newContent) => {}`,
   ],
   [
@@ -179,6 +179,15 @@ export const EDITOR_PROPS = [
     "This field is required",
   ],
   [
+    "attachments",
+    "Accepts an array of attachment objects. This array will be used to display the attachments in the editor.",
+  ],
+  [
+    "onChangeAttachments",
+    "Accepts a function. This function will be invoked whenever the attachments are changed, with the new attachments as argument.",
+    `(newContent) => {}`,
+  ],
+  [
     "attachmentsConfig",
     "Accepts an object value. This can be used to configure the attachments addon.",
     `
@@ -188,5 +197,9 @@ export const EDITOR_PROPS = [
       allowedFileTypes: [".pdf"],
     }
     `,
+  ],
+  [
+    "showAttachmentsToastr",
+    "Accepts a boolean value. If provided, it will show a toast message when the attachments are updated/deleted.",
   ],
 ];
