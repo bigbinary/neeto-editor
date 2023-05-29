@@ -61,28 +61,17 @@ const Menu = props => {
   }, []);
 
   return (
-    <>
-      <MenuComponent
-        {...props}
-        handleUploadAttachments={handleUploadAttachments}
-        isEmojiPickerActive={isEmojiPickerActive}
-        mediaUploader={mediaUploader}
-        options={menuOptions}
-        setIsEmojiPickerActive={setIsEmojiPickerActive}
-        setMediaUploader={setMediaUploader}
-        unsplashApiKey={editorSecrets.unsplash}
-        uploadEndpoint={uploadEndpoint}
-      />
-      {/* {menuOptions.includes("image-upload" || "video-upload") && (
-        <MediaUploader
-          editor={editor}
-          mediaUploader={mediaUploader}
-          unsplashApiKey={editorSecrets.unsplash}
-          uploadEndpoint={uploadEndpoint}
-          onClose={() => setMediaUploader({ image: false, video: false })}
-        />
-      )} */}
-    </>
+    <MenuComponent
+      {...props}
+      handleUploadAttachments={handleUploadAttachments}
+      isEmojiPickerActive={isEmojiPickerActive}
+      mediaUploader={mediaUploader}
+      options={menuOptions}
+      setIsEmojiPickerActive={setIsEmojiPickerActive}
+      setMediaUploader={setMediaUploader}
+      unsplashApiKey={editorSecrets.unsplash}
+      uploadEndpoint={uploadEndpoint}
+    />
   );
 };
 
