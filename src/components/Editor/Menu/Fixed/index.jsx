@@ -36,7 +36,7 @@ const Fixed = ({
   unsplashApiKey,
   uploadEndpoint,
   addonCommands = [],
-  isExpandedMenu,
+  isMenuCollapsible = false,
   isIndependant = true,
   className,
   tooltips = {},
@@ -46,7 +46,7 @@ const Fixed = ({
   children,
 }) => {
   const { t } = useTranslation();
-  const [isMenuExpanded, setIsMenuExpanded] = useState(isExpandedMenu);
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
 
   if (!editor) {
@@ -108,7 +108,7 @@ const Fixed = ({
           editor={editor}
           tooltipContent={tooltips.table || t("menu.table")}
         />
-        {isMenuExpanded && (
+        {(isMenuExpanded || not(isMenuCollapsible)) && (
           <>
             {blockStyleOptions.map(renderOptionButton)}
             {isTextColorOptionActive && (
@@ -169,17 +169,19 @@ const Fixed = ({
             {children}
           </>
         )}
-        <Button
-          className="neeto-editor-fixed-menu__item"
-          data-cy="neeto-editor-fixed-menu-arrow"
-          icon={isMenuExpanded ? Left : Right}
-          style="text"
-          tooltipProps={{
-            content: isMenuExpanded ? t("menu.collapse") : t("menu.expand"),
-            position: "bottom",
-          }}
-          onClick={() => setIsMenuExpanded(not)}
-        />
+        {isMenuCollapsible && (
+          <Button
+            className="neeto-editor-fixed-menu__item"
+            data-cy="neeto-editor-fixed-menu-arrow"
+            icon={isMenuExpanded ? Left : Right}
+            style="text"
+            tooltipProps={{
+              content: isMenuExpanded ? t("menu.collapse") : t("menu.expand"),
+              position: "bottom",
+            }}
+            onClick={() => setIsMenuExpanded(not)}
+          />
+        )}
       </div>
       {!isEmpty(variables) && (
         <div className="neeto-editor-fixed-menu__variables">
