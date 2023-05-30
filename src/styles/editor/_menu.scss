@@ -1,3 +1,13 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .neeto-editor-fixed-menu {
   border: thin solid rgb(var(--neeto-ui-gray-300));
   border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
@@ -15,6 +25,7 @@
   }
 
   button.neeto-editor-fixed-menu__item {
+    animation: fadeIn 0.3s ease-in;
     min-width: fit-content;
 
     .neeto-ui-btn__icon {
