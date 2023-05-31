@@ -15,18 +15,21 @@ const create = (url, file, config) =>
     showToastr: false,
   });
 
-const update = ({ url, signedId, payload, showToastr }) =>
+const update = ({ url, signedId, payload, showToastr = true }) =>
   axios.patch(`${url}/${signedId}/`, payload, {
     transformRequestCase: false,
     transformResponseCase: false,
     showToastr,
   });
 
-const destroy = (url, signedId, showToastr) =>
+const destroy = (url, signedId, showToastr = true) =>
   axios.delete(`${url}/${signedId}`, {
     showToastr,
   });
 
-const directUploadsApi = { generate, create, update, destroy };
+const attach = (url, payload, showToastr = true) =>
+  axios.post(`${url}/attach`, payload, { showToastr });
+
+const directUploadsApi = { generate, create, update, destroy, attach };
 
 export default directUploadsApi;

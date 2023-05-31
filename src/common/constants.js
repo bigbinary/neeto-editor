@@ -35,7 +35,7 @@ export const EDITOR_OPTIONS = {
 
 export const UNSPLASH_BASE_URL = "https://api.unsplash.com/search/photos";
 
-export const DIRECT_UPLOAD_ENDPOINT = "/api/direct_uploads";
+export const DIRECT_UPLOAD_ENDPOINT = "/neeto_editor/api/v1/direct_uploads";
 
 export const URL_REGEXP =
   /[(http(s)?)://(www.)?a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;

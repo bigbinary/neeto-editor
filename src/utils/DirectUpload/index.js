@@ -16,7 +16,9 @@ class DirectUpload {
     const response = await this.generateUrl();
     const { url, headers } =
       response.direct_upload || response.data.direct_upload;
+    const { id, signed_id } = response.data || response;
     await this.uploadToCloud(url, headers);
+    await directUploadsApi.attach(this.url, { id, signed_id });
 
     return response;
   };
