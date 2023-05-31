@@ -32,6 +32,16 @@
     width: 100%;
     padding: 2px;
     gap: 0 4px;
+
+    &--collapsible {
+      display: flex;
+
+      &--fade {
+        button.neeto-editor-fixed-menu__item {
+          animation: fade-in 0.3s ease-in;
+        }
+      }
+    }
   }
 
   &__variables {

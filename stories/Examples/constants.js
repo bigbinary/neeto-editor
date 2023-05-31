@@ -10,6 +10,10 @@ export const MENU_PROPS = [
     `"bubble"`,
   ],
   [
+    "isExpandedMenu",
+    "Accepts a boolean value. If true, the menu will be expanded by default.",
+  ],
+  [
     "defaults",
     "Accepts an array of strings, each corresponding to the name of a default option.",
     `["h1", "h2", "h3", "h4", "h5", "h6"]`,

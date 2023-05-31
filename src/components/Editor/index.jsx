@@ -37,6 +37,7 @@ const Editor = (
     menuClassName,
     attachmentsClassName,
     isMenuIndependent = false,
+    isMenuCollapsible = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     editorSecrets = {},
     error = null,
@@ -178,6 +179,7 @@ const Editor = (
             editorSecrets={editorSecrets}
             handleUploadAttachments={handleUploadAttachments}
             isIndependant={isMenuIndependent}
+            isMenuCollapsible={isMenuCollapsible}
             mentions={mentions}
             menuType={menuType}
             tooltips={tooltips}
