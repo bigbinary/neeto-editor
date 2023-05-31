@@ -8,13 +8,10 @@ import BubbleMenu from "./Bubble";
 import FixedMenu from "./Fixed";
 import HeadlessMenu from "./Headless";
 
-import EmbedOption from "../CustomExtensions/Embeds";
-import MediaUploader from "../MediaUploader";
 import { DEFAULT_EDITOR_OPTIONS } from "../constants";
 
 const Menu = props => {
   const [isEmojiPickerActive, setIsEmojiPickerActive] = useState(false);
-  const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
   const [mediaUploader, setMediaUploader] = useState({
     image: false,
     video: false,
@@ -24,7 +21,6 @@ const Menu = props => {
     menuType = "fixed",
     addons = [],
     options = [],
-    editor,
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
     handleUploadAttachments,
@@ -65,33 +61,17 @@ const Menu = props => {
   }, []);
 
   return (
-    <>
-      <MenuComponent
-        {...props}
-        handleUploadAttachments={handleUploadAttachments}
-        isEmojiPickerActive={isEmojiPickerActive}
-        options={menuOptions}
-        setIsEmbedModalOpen={setIsEmbedModalOpen}
-        setIsEmojiPickerActive={setIsEmojiPickerActive}
-        setMediaUploader={setMediaUploader}
-      />
-      {menuOptions.includes("image-upload" || "video-upload") && (
-        <MediaUploader
-          editor={editor}
-          mediaUploader={mediaUploader}
-          unsplashApiKey={editorSecrets.unsplash}
-          uploadEndpoint={uploadEndpoint}
-          onClose={() => setMediaUploader({ image: false, video: false })}
-        />
-      )}
-      {menuOptions.includes("video-embed") && (
-        <EmbedOption
-          editor={editor}
-          isEmbedModalOpen={isEmbedModalOpen}
-          setIsEmbedModalOpen={setIsEmbedModalOpen}
-        />
-      )}
-    </>
+    <MenuComponent
+      {...props}
+      handleUploadAttachments={handleUploadAttachments}
+      isEmojiPickerActive={isEmojiPickerActive}
+      mediaUploader={mediaUploader}
+      options={menuOptions}
+      setIsEmojiPickerActive={setIsEmojiPickerActive}
+      setMediaUploader={setMediaUploader}
+      unsplashApiKey={editorSecrets.unsplash}
+      uploadEndpoint={uploadEndpoint}
+    />
   );
 };
 

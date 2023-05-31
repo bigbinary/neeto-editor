@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import DynamicVariables from "@bigbinary/neeto-molecules/DynamicVariables";
-import classnames from "classnames";
+import classNames from "classnames";
 import { isNotEmpty } from "neetocommons/pure";
-import { isEmpty } from "ramda";
+import { Left, Right } from "neetoicons";
+import { Button } from "neetoui";
+import { isEmpty, not } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { EDITOR_OPTIONS } from "common/constants";
+import EmbedOption from "components/Editor/CustomExtensions/Embeds";
+import MediaUploader from "components/Editor/MediaUploader";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
@@ -28,17 +32,22 @@ const Fixed = ({
   mentions = [],
   variables = [],
   setMediaUploader,
+  mediaUploader,
+  unsplashApiKey,
+  uploadEndpoint,
   addonCommands = [],
+  isMenuCollapsible = false,
   isIndependant = true,
   className,
   tooltips = {},
   handleUploadAttachments,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
-  setIsEmbedModalOpen,
   children,
 }) => {
   const { t } = useTranslation();
+  const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
 
   if (!editor) {
     return null;
@@ -64,6 +73,11 @@ const Fixed = ({
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
   const isTableActive = options.includes(EDITOR_OPTIONS.TABLE);
   const isTextColorOptionActive = options.includes(EDITOR_OPTIONS.TEXT_COLOR);
+  const isEmbedOptionActive = options.includes(EDITOR_OPTIONS.VIDEO_EMBED);
+  const isMediaUploaderActive = options.includes(
+    EDITOR_OPTIONS.IMAGE_UPLOAD || EDITOR_OPTIONS.VIDEO_UPLOAD
+  );
+
   const addonCommandOptions = buildOptionsFromAddonCommands({
     editor,
     commands: addonCommands,
@@ -77,7 +91,7 @@ const Fixed = ({
 
   return (
     <div
-      className={classnames("neeto-editor-fixed-menu", {
+      className={classNames("neeto-editor-fixed-menu", {
         "neeto-editor-fixed-menu--independant": isIndependant,
         [className]: className,
       })}
@@ -90,49 +104,92 @@ const Fixed = ({
           />
         )}
         {fontStyleOptions.map(renderOptionButton)}
-        {blockStyleOptions.map(renderOptionButton)}
-        {isTextColorOptionActive && (
-          <TextColorOption
-            editor={editor}
-            tooltipContent={tooltips.textColor || t("menu.textColor")}
-          />
-        )}
-        {isEmojiActive && (
-          <EmojiOption
-            editor={editor}
-            isActive={isEmojiPickerActive}
-            setActive={setIsEmojiPickerActive}
-            tooltipContent={tooltips.emoji || t("menu.emoji")}
-          />
-        )}
-        {listStyleOptions.map(renderOptionButton)}
-        {isLinkActive && (
-          <LinkOption
-            editor={editor}
-            tooltipContent={tooltips.link || t("menu.link")}
-          />
-        )}
-        {isTableActive && (
-          <TableOption
-            editor={editor}
-            tooltipContent={tooltips.table || t("menu.table")}
-          />
-        )}
-        {miscOptions.map(renderOptionButton)}
-        <Mentions
-          editor={editor}
-          mentions={mentions}
-          tooltipContent={tooltips.mention || t("menu.mention")}
-        />
-        {addonCommandOptions.map(renderOptionButton)}
         <TableActions
           editor={editor}
           tooltipContent={tooltips.table || t("menu.table")}
         />
-        {children}
-        <div className="neeto-editor-fixed-menu__right-options">
-          {rightOptions.map(renderOptionButton)}
-        </div>
+        {(isMenuExpanded || not(isMenuCollapsible)) && (
+          <div
+            className={classNames(
+              "neeto-editor-fixed-menu__wrapper--collapsible",
+              {
+                "neeto-editor-fixed-menu__wrapper--collapsible--fade":
+                  isMenuCollapsible,
+              }
+            )}
+          >
+            {blockStyleOptions.map(renderOptionButton)}
+            {isTextColorOptionActive && (
+              <TextColorOption
+                editor={editor}
+                tooltipContent={tooltips.textColor || t("menu.textColor")}
+              />
+            )}
+            {isEmojiActive && (
+              <EmojiOption
+                editor={editor}
+                isActive={isEmojiPickerActive}
+                setActive={setIsEmojiPickerActive}
+                tooltipContent={tooltips.emoji || t("menu.emoji")}
+              />
+            )}
+            {listStyleOptions.map(renderOptionButton)}
+            {isLinkActive && (
+              <LinkOption
+                editor={editor}
+                tooltipContent={tooltips.link || t("menu.link")}
+              />
+            )}
+            {isTableActive && (
+              <TableOption
+                editor={editor}
+                tooltipContent={tooltips.table || t("menu.table")}
+              />
+            )}
+            {isMediaUploaderActive && (
+              <MediaUploader
+                editor={editor}
+                mediaUploader={mediaUploader}
+                unsplashApiKey={unsplashApiKey}
+                uploadEndpoint={uploadEndpoint}
+                onClose={() => setMediaUploader({ image: false, video: false })}
+              />
+            )}
+            {isEmbedOptionActive && (
+              <EmbedOption
+                editor={editor}
+                isEmbedModalOpen={isEmbedModalOpen}
+                setIsEmbedModalOpen={setIsEmbedModalOpen}
+              />
+            )}
+            {miscOptions.map(renderOptionButton)}
+            <Mentions
+              editor={editor}
+              mentions={mentions}
+              tooltipContent={tooltips.mention || t("menu.mention")}
+            />
+            {addonCommandOptions.map(renderOptionButton)}
+            {isNotEmpty(rightOptions) && (
+              <div className="neeto-editor-fixed-menu__right-options">
+                {rightOptions.map(renderOptionButton)}
+              </div>
+            )}
+            {children}
+          </div>
+        )}
+        {isMenuCollapsible && (
+          <Button
+            className="neeto-editor-fixed-menu__item"
+            data-cy="neeto-editor-fixed-menu-arrow"
+            icon={isMenuExpanded ? Left : Right}
+            style="text"
+            tooltipProps={{
+              content: isMenuExpanded ? t("menu.collapse") : t("menu.expand"),
+              position: "bottom",
+            }}
+            onClick={() => setIsMenuExpanded(not)}
+          />
+        )}
       </div>
       {!isEmpty(variables) && (
         <div className="neeto-editor-fixed-menu__variables">
