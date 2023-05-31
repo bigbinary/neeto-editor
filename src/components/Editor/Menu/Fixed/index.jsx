@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import DynamicVariables from "@bigbinary/neeto-molecules/DynamicVariables";
-import classnames from "classnames";
+import classNames from "classnames";
 import { isNotEmpty } from "neetocommons/pure";
 import { Left, Right } from "neetoicons";
 import { Button } from "neetoui";
@@ -91,7 +91,7 @@ const Fixed = ({
 
   return (
     <div
-      className={classnames("neeto-editor-fixed-menu", {
+      className={classNames("neeto-editor-fixed-menu", {
         "neeto-editor-fixed-menu--independant": isIndependant,
         [className]: className,
       })}
@@ -109,7 +109,15 @@ const Fixed = ({
           tooltipContent={tooltips.table || t("menu.table")}
         />
         {(isMenuExpanded || not(isMenuCollapsible)) && (
-          <>
+          <div
+            className={classNames(
+              "neeto-editor-fixed-menu__wrapper--collapsible",
+              {
+                "neeto-editor-fixed-menu__wrapper--collapsible--fade":
+                  isMenuCollapsible,
+              }
+            )}
+          >
             {blockStyleOptions.map(renderOptionButton)}
             {isTextColorOptionActive && (
               <TextColorOption
@@ -167,7 +175,7 @@ const Fixed = ({
               </div>
             )}
             {children}
-          </>
+          </div>
         )}
         {isMenuCollapsible && (
           <Button

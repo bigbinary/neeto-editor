@@ -1,13 +1,3 @@
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 .neeto-editor-fixed-menu {
   border: thin solid rgb(var(--neeto-ui-gray-300));
   border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
@@ -25,7 +15,6 @@
   }
 
   button.neeto-editor-fixed-menu__item {
-    animation: fadeIn 0.3s ease-in;
     min-width: fit-content;
 
     .neeto-ui-btn__icon {
@@ -43,6 +32,16 @@
     width: 100%;
     padding: 2px;
     gap: 0 4px;
+
+    &--collapsible {
+      display: flex;
+
+      &--fade {
+        button.neeto-editor-fixed-menu__item {
+          animation: fade-in 0.3s ease-in;
+        }
+      }
+    }
   }
 
   &__variables {
