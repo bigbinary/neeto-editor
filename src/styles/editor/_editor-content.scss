@@ -206,6 +206,16 @@
     }
   }
 
+  .neeto-editor__image-placeholder {
+    width: 400px;
+    height: 200px;
+    border: 1px solid;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   figcaption {
     text-align: center;
     font-size: var(--neeto-ui-text-sm);

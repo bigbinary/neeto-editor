@@ -30,6 +30,11 @@ const ImageExtension = Node.create({
 
   addAttributes() {
     return {
+      id: {
+        default: null,
+        parseHTML: element => element.getAttribute("id"),
+      },
+
       src: {
         default: null,
         parseHTML: element => element.querySelector("img")?.getAttribute("src"),
@@ -168,12 +173,24 @@ export default {
                   event.preventDefault();
 
                   images.forEach(async image => {
+                    const id = Math.random().toString(36).substring(7);
                     const node = schema.nodes.image.create({
-                      src: await upload(image, uploadEndpoint),
+                      id,
                     });
-                    if (node.attrs.src) {
-                      const transaction = view.state.tr.insert(pos, node);
-                      view.dispatch(transaction);
+                    const transaction = view.state.tr.insert(pos, node);
+                    view.dispatch(transaction);
+                    const url = await upload(image, uploadEndpoint);
+                    if (url) {
+                      view.state.doc.descendants((node, pos) => {
+                        if (node.attrs.id === id) {
+                          const transaction = view.state.tr.setNodeMarkup(
+                            pos,
+                            null,
+                            { src: url }
+                          );
+                          view.dispatch(transaction);
+                        }
+                      });
                     }
                   });
                 },
