@@ -174,13 +174,11 @@ export default {
 
                   images.forEach(async image => {
                     const id = Math.random().toString(36).substring(7);
-                    const node = schema.nodes.image.create({
-                      id,
-                    });
+                    const node = schema.nodes.image.create({ id });
                     const transaction = view.state.tr.insert(pos, node);
                     view.dispatch(transaction);
                     const url = await upload(image, uploadEndpoint);
-                    if (url) {
+                    url &&
                       view.state.doc.descendants((node, pos) => {
                         if (node.attrs.id === id) {
                           const transaction = view.state.tr.setNodeMarkup(
@@ -191,7 +189,6 @@ export default {
                           view.dispatch(transaction);
                         }
                       });
-                    }
                   });
                 },
               },
