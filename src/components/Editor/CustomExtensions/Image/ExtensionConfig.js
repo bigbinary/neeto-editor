@@ -174,24 +174,23 @@ export default {
 
                   images.forEach(async image => {
                     const id = Math.random().toString(36).substring(7);
-                    const node = schema.nodes.image.create({ id });
+                    const node = schema.nodes.image.create({
+                      id,
+                    });
                     const transaction = view.state.tr.insert(pos, node);
                     view.dispatch(transaction);
-                    try {
-                      const url = await upload(image, uploadEndpoint);
-                      url &&
-                        view.state.doc.descendants((node, pos) => {
-                          if (node.attrs.id === id) {
-                            const transaction = view.state.tr.setNodeMarkup(
-                              pos,
-                              null,
-                              { src: url }
-                            );
-                            view.dispatch(transaction);
-                          }
-                        });
-                    } catch {
-                      view.dispatch(view.state.tr.delete(pos, pos + 1));
+                    const url = await upload(image, uploadEndpoint);
+                    if (url) {
+                      view.state.doc.descendants((node, pos) => {
+                        if (node.attrs.id === id) {
+                          const transaction = view.state.tr.setNodeMarkup(
+                            pos,
+                            null,
+                            { src: url }
+                          );
+                          view.dispatch(transaction);
+                        }
+                      });
                     }
                   });
                 },
