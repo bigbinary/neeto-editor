@@ -89,9 +89,7 @@ const ImageExtension = Node.create({
       style: `height:${figheight}px;width:${figwidth}px;`,
     };
 
-    const captionAttrs = {
-      style: `width:${figwidth}px;`,
-    };
+    const captionAttrs = { style: `width:${figwidth}px;` };
 
     return [
       "a",

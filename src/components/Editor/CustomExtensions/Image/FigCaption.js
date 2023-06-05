@@ -10,10 +10,6 @@ export default Node.create({
   draggable: false,
 
   parseHTML() {
-    return [
-      {
-        tag: "figcaption",
-      },
-    ];
+    return [{ tag: "figcaption" }];
   },
 });
