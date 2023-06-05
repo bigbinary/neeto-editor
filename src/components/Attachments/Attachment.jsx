@@ -107,6 +107,7 @@ const Attachment = ({
     const handler = handlers[key];
 
     if (event.key === "Enter" && handler && !isEmpty(newFilename)) {
+      event.stopPropagation();
       event.preventDefault();
       handler();
     }
