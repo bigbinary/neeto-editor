@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
+import { Spinner } from "neetoui";
 import { isEmpty, mergeRight } from "ramda";
 import { Resizable } from "re-resizable";
 
@@ -35,30 +36,36 @@ const ImageComponent = ({
           editor={editor}
           updateAttributes={updateAttributes}
         />
-        <Resizable
-          lockAspectRatio
-          className="neeto-editor__image"
-          size={{ height, width }}
-          onResizeStop={(_event, _direction, ref) => {
-            height = ref.offsetHeight;
-            width = ref.offsetWidth;
-            view.dispatch(
-              view.state.tr.setNodeMarkup(
-                getPos(),
-                undefined,
-                mergeRight(node.attrs, {
-                  figheight: height,
-                  figwidth: width,
-                  height,
-                  width,
-                })
-              )
-            );
-            editor.commands.focus();
-          }}
-        >
-          <img {...node.attrs} alt={caption} src={src} />
-        </Resizable>
+        {src ? (
+          <Resizable
+            lockAspectRatio
+            className="neeto-editor__image"
+            size={{ height, width }}
+            onResizeStop={(_event, _direction, ref) => {
+              height = ref.offsetHeight;
+              width = ref.offsetWidth;
+              view.dispatch(
+                view.state.tr.setNodeMarkup(
+                  getPos(),
+                  undefined,
+                  mergeRight(node.attrs, {
+                    figheight: height,
+                    figwidth: width,
+                    height,
+                    width,
+                  })
+                )
+              );
+              editor.commands.focus();
+            }}
+          >
+            <img {...node.attrs} alt={caption} src={src} />
+          </Resizable>
+        ) : (
+          <div className="neeto-editor__image-placeholder">
+            <Spinner />
+          </div>
+        )}
         <NodeViewContent
           as="figcaption"
           className={classNames({ "is-empty": isEmpty(caption) })}
