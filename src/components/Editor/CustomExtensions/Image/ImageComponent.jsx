@@ -69,6 +69,7 @@ const ImageComponent = ({
         <NodeViewContent
           as="figcaption"
           className={classNames({ "is-empty": isEmpty(caption) })}
+          style={{ width: `${width}px` }}
         />
       </figure>
     </NodeViewWrapper>
