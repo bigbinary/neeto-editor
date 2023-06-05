@@ -41,7 +41,7 @@ const ImageComponent = ({
             lockAspectRatio
             className="neeto-editor__image"
             size={{ height, width }}
-            onResizeStop={(_event, _direction, ref) => {
+            onResize={(_event, _direction, ref) => {
               height = ref.offsetHeight;
               width = ref.offsetWidth;
               view.dispatch(
