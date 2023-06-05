@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
@@ -15,9 +15,12 @@ const ImageComponent = ({
   updateAttributes,
   deleteNode,
 }) => {
+  const { alt, src, figheight, figwidth, align } = node.attrs;
+
+  const [captionWidth, setCaptionWidth] = useState(figwidth || 0);
+
   const figureRef = useRef(null);
 
-  const { alt, src, figheight, figwidth, align } = node.attrs;
   const { view } = editor;
   let height = figheight;
   let width = figwidth;
@@ -41,6 +44,9 @@ const ImageComponent = ({
             lockAspectRatio
             className="neeto-editor__image"
             size={{ height, width }}
+            onResize={(_event, _direction, ref) =>
+              setCaptionWidth(ref.offsetWidth)
+            }
             onResizeStop={(_event, _direction, ref) => {
               height = ref.offsetHeight;
               width = ref.offsetWidth;
@@ -69,6 +75,7 @@ const ImageComponent = ({
         <NodeViewContent
           as="figcaption"
           className={classNames({ "is-empty": isEmpty(caption) })}
+          style={{ width: `${captionWidth}px` }}
         />
       </figure>
     </NodeViewWrapper>
