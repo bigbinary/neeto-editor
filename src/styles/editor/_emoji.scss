@@ -1,4 +1,6 @@
-$emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android emoji, emojisymbols, emojione mozilla, twemoji mozilla, segoe ui symbol;
+$emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji,
+  android emoji, emojisymbols, emojione mozilla, twemoji mozilla,
+  segoe ui symbol;
 
 .neeto-editor-emoji {
   font-family: $emoji-font-family;
@@ -6,7 +8,7 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
 
 .emoji-mart.emoji-mart-light {
   font-size: 14px;
-  color: rgb(var(--neeto-ui-gray-700));
+  color: rgb(var(--neeto-ui-gray-800));
   border: none;
 
   .emoji-mart-bar {
@@ -71,7 +73,7 @@ $emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji, android
 
   p {
     font-size: var(--neeto-ui-text-xs);
-    color: rgb(var(--neeto-ui-gray-700));
+    color: rgb(var(--neeto-ui-black));
   }
 
   span {

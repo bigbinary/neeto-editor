@@ -23,7 +23,7 @@
   p {
     font-size: var(--neeto-ui-text-body2);
     line-height: var(--neeto-ui-leading-normal);
-    color: rgb(var(--neeto-ui-gray-700));
+    color: rgb(var(--neeto-ui-black));
 
     &:empty::after {
       content: "\00a0";
