@@ -62,6 +62,13 @@ export default {
 
               return {
                 onStart: props => {
+                  if (
+                    props.editor.isActive("image") ||
+                    props.editor.isActive("codeBlock")
+                  ) {
+                    return;
+                  }
+
                   reactRenderer = new ReactRenderer(CommandsList, {
                     props,
                     editor: props.editor,
