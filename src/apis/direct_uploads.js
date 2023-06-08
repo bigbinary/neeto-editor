@@ -28,7 +28,9 @@ const destroy = (url, signedId, showToastr = true) =>
   });
 
 const attach = (url, payload, showToastr = true) =>
-  axios.post(`${url}/attach`, payload, { showToastr });
+  axios.post("/neeto_editor/api/v1/direct_uploads/attach", payload, {
+    showToastr,
+  });
 
 const directUploadsApi = { generate, create, update, destroy, attach };
 
