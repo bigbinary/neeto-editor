@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { noop } from "neetocommons/pure";
 import { assoc, isEmpty } from "ramda";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
@@ -23,7 +24,7 @@ const Menu = props => {
     options = [],
     uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
-    handleUploadAttachments,
+    handleUploadAttachments = noop,
     defaults = DEFAULT_EDITOR_OPTIONS,
   } = props;
 
