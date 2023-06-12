@@ -38,7 +38,12 @@ const LinkOption = ({ editor, tooltipContent }) => {
 
   const handleLink = () => {
     if (URL_REGEXP.test(urlString)) {
-      editor.chain().focus().setLink({ href: urlString }).run();
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange("link")
+        .setLink({ href: urlString })
+        .run();
       handleClose();
     } else {
       setError(t("error.invalidUrl"));
@@ -46,7 +51,7 @@ const LinkOption = ({ editor, tooltipContent }) => {
   };
 
   const handleUnlink = () => {
-    editor.chain().focus().unsetLink().run();
+    editor.chain().focus().extendMarkRange("link").unsetLink().run();
     setUrlString("");
     handleClose();
   };
