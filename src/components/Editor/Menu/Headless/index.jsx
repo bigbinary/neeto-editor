@@ -2,6 +2,9 @@ import React from "react";
 
 import classnames from "classnames";
 
+import { EDITOR_OPTIONS } from "common/constants";
+import MediaUploader from "components/Editor/MediaUploader";
+
 import Option from "./Option";
 import { buildMenuOptions } from "./utils";
 
@@ -12,6 +15,9 @@ const Headless = ({
   options,
   tooltips = {},
   setMediaUploader,
+  mediaUploader,
+  unsplashApiKey,
+  uploadEndpoint,
   addonCommands = [],
   children,
   className,
@@ -23,6 +29,10 @@ const Headless = ({
   if (!editor) {
     return null;
   }
+
+  const isMediaUploaderActive = options.includes(
+    EDITOR_OPTIONS.IMAGE_UPLOAD || EDITOR_OPTIONS.VIDEO_UPLOAD
+  );
 
   const menuOptions = buildMenuOptions({
     tooltips,
@@ -47,6 +57,15 @@ const Headless = ({
         <Option editor={editor} key={option.optionName} {...option} />
       ))}
       {children}
+      {isMediaUploaderActive && (
+        <MediaUploader
+          editor={editor}
+          mediaUploader={mediaUploader}
+          unsplashApiKey={unsplashApiKey}
+          uploadEndpoint={uploadEndpoint}
+          onClose={() => setMediaUploader({ image: false, video: false })}
+        />
+      )}
     </div>
   );
 };
