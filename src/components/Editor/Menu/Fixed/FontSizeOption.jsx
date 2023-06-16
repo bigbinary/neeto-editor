@@ -20,7 +20,6 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
   return (
     <Dropdown
       autoWidth
-      buttonStyle="text"
       data-cy="neeto-editor-fixed-menu-font-size-option"
       label={label}
       placement="bottom-start"
@@ -29,6 +28,8 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
           content: tooltipContent,
           position: "bottom",
         },
+        style: "text",
+        size: "small",
         className:
           "neeto-editor-fixed-menu__item neeto-editor-font-size__wrapper",
       }}

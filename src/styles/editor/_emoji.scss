@@ -1,6 +1,5 @@
-$emoji-font-family: apple color emoji, segoe ui emoji, noto color emoji,
-  android emoji, emojisymbols, emojione mozilla, twemoji mozilla,
-  segoe ui symbol;
+$emoji-font-family: "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji,
+  "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols;
 
 .neeto-editor-emoji {
   font-family: $emoji-font-family;
