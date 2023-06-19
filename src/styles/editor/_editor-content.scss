@@ -45,6 +45,7 @@
   }
 
   pre {
+    position: relative;
     background-color: #f6f8fa;
     overflow-x: auto;
     font-size: 14px;
@@ -53,6 +54,12 @@
     margin-bottom: 16px;
     border-radius: var(--neeto-ui-rounded-sm);
     padding: 16px;
+
+    .copy-button {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+    }
   }
 
   pre > code {
