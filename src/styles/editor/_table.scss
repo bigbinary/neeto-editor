@@ -1,7 +1,7 @@
 .neeto-editor-table {
   display: relative;
   width: fit-content;
-  margin: 16px 0;
+  margin: 8px 0 0;
 
   table {
     th,
@@ -41,18 +41,24 @@
     background: rgba(var(--neeto-ui-gray-200));
     border-radius: var(--neeto-ui-rounded-sm);
     transition: var(--neeto-ui-transition);
+    visibility: hidden;
     cursor: pointer;
 
     p {
-      background: rgb(var(--neeto-ui-white));
       color: rgb(var(--neeto-ui-black));
-      font-size: var(--neeto-ui-text-xl);
-      line-height: 16px;
-      padding: 4px;
+      font-size: var(--neeto-ui-text-xs);
+      line-height: 12px;
     }
 
     &:hover {
       background: rgba(var(--neeto-ui-gray-300));
+    }
+  }
+
+  &:hover {
+    .neeto-editor-table__add-row,
+    .neeto-editor-table__add-column {
+      visibility: visible;
     }
   }
 
