@@ -4,6 +4,7 @@ import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
 import { copyToClipboard } from "neetocommons/utils";
 import { Copy, Down } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
+import { equals } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
@@ -23,7 +24,7 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
     copyToClipboard(node?.content?.content[0]?.text);
 
   const handleLanguageSelect = language => {
-    updateAttributes({ language: language === "auto" ? null : language });
+    updateAttributes({ language: equals(language, "auto") ? null : language });
     setKeyword("");
   };
 
@@ -42,7 +43,6 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
               autoFocus
               className="neeto-editor-codeblock-options__input"
               placeholder={t("placeholders.searchLanguages")}
-              prefix={<s />}
               size="small"
               value={keyword}
               onChange={e => setKeyword(e.target.value)}
