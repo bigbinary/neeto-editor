@@ -69,7 +69,8 @@
     "rows": "Enter rows",
     "searchUnsplash": "Search Unsplash",
     "url": "Paste URL",
-    "writeSomething": "Write something …"
+    "writeSomething": "Write something …",
+    "searchLanguages": "Search languages"
   },
   "table": {
     "delete": "Delete table",

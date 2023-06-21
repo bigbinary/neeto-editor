@@ -84,10 +84,23 @@
     border-radius: var(--neeto-ui-rounded-sm);
     padding: 34px 16px 32px 32px;
 
-    .copy-button {
+    .neeto-editor-codeblock-options {
       position: absolute;
-      top: 2px;
-      right: 2px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      top: 4px;
+      right: 4px;
+
+      &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      &__input {
+        margin: 4px 4px;
+      }
     }
   }
 

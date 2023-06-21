@@ -7,11 +7,15 @@ import { Copy } from "neetoicons";
 import { Button } from "neetoui";
 import ReactDOM from "react-dom";
 
-import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
+import {
+  EDITOR_CODE_BLOCK_CLASSNAME,
+  EDITOR_CONTENT_CLASSNAME,
+  SANITIZE_OPTIONS,
+} from "./constants";
 import { highlightCode, substituteVariables } from "./utils";
 
 const CopyButton = ({ onClick }) => (
-  <Button icon={Copy} size="small" style="secondary" onClick={onClick} />
+  <Button icon={Copy} size="small" style="text" onClick={onClick} />
 );
 
 const EditorContent = ({
@@ -21,23 +25,28 @@ const EditorContent = ({
   ...otherProps
 }) => {
   const editorContentRef = useRef(null);
+
   const htmlContent = substituteVariables(highlightCode(content), variables);
   const sanitize = DOMPurify.sanitize;
 
-  useEffect(() => {
+  const injectCopyButtonToCodeBlocks = () => {
     const preTags = editorContentRef.current?.querySelectorAll(
       ".neeto-editor-content pre"
     );
 
     preTags.forEach(preTag => {
       const button = document.createElement("div");
-      button.className = "copy-button";
+      button.className = EDITOR_CODE_BLOCK_CLASSNAME;
       const handleButtonClick = () => {
         copyToClipboard(preTag.textContent);
       };
       ReactDOM.render(<CopyButton onClick={handleButtonClick} />, button);
       preTag.appendChild(button);
     });
+  };
+
+  useEffect(() => {
+    injectCopyButtonToCodeBlocks();
   }, [content]);
 
   return (
