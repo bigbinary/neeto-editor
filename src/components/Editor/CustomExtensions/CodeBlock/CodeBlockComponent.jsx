@@ -19,9 +19,8 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
     language.includes(keyword)
   );
 
-  const handleCopyClick = () => {
+  const handleCopyClick = () =>
     copyToClipboard(node?.content?.content[0]?.text);
-  };
 
   const handleLanguageSelect = language => {
     updateAttributes({ language: language === "auto" ? null : language });
@@ -37,7 +36,7 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
             buttonStyle="secondary"
             closeOnOutsideClick={false}
             icon={Down}
-            label={node.attrs?.language || "auto"}
+            label={node.attrs?.language || t("common.auto")}
           >
             <Input
               autoFocus
@@ -58,7 +57,7 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
                   key={language}
                   onClick={() => handleLanguageSelect(language)}
                 >
-                  {language || "auto"}
+                  {language || t("common.auto")}
                 </MenuItem.Button>
               ))}
             </Menu>

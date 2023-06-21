@@ -11,7 +11,8 @@
     "hex": "Hex:",
     "browse": "Browse",
     "done": "Done",
-    "reset": "Reset"
+    "reset": "Reset",
+    "auto": "Auto"
   },
   "attachments": {
     "actionsBlocked": "You are not permitted to update or delete attachments",
