@@ -10,6 +10,7 @@ const FormikEditor = ({ name, ...otherProps }, ref) => (
       <Editor
         error={meta.touched ? meta.error : ""}
         initialValue={field.value}
+        name={name}
         ref={ref}
         onBlur={() => form.setFieldTouched(name, true)}
         onChange={value => form.setFieldValue(name, value)}
