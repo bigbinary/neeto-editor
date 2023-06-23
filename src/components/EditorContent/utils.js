@@ -22,14 +22,19 @@ const buildReactElementFromAST = element => {
 
 export const highlightCode = content => {
   lowlight.highlightAuto("");
+  let highlightedAST = {};
 
-  return content.replace(CODE_BLOCK_REGEX, (_, code) => {
-    let highlightedAST = hljs.highlightAuto(
-      code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")
-    )._emitter.root;
+  return content.replace(CODE_BLOCK_REGEX, (_, language, code) => {
+    if (language) {
+      highlightedAST = lowlight.highlight(language, code);
+    } else {
+      highlightedAST = hljs.highlightAuto(
+        code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")
+      )._emitter.root;
 
-    if (isEmpty(highlightedAST.children)) {
-      highlightedAST = lowlight.highlight("javascript", code);
+      if (isEmpty(highlightedAST.children)) {
+        highlightedAST = lowlight.highlight("javascript", code);
+      }
     }
 
     const highlightedNode = highlightedAST.children.map(

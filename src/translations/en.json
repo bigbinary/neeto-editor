@@ -11,7 +11,8 @@
     "hex": "Hex:",
     "browse": "Browse",
     "done": "Done",
-    "reset": "Reset"
+    "reset": "Reset",
+    "auto": "Auto"
   },
   "attachments": {
     "actionsBlocked": "You are not permitted to update or delete attachments",
@@ -69,7 +70,8 @@
     "rows": "Enter rows",
     "searchUnsplash": "Search Unsplash",
     "url": "Paste URL",
-    "writeSomething": "Write something …"
+    "writeSomething": "Write something …",
+    "searchLanguages": "Search languages"
   },
   "table": {
     "delete": "Delete table",
