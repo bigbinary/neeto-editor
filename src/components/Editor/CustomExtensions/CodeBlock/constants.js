@@ -1,6 +1,5 @@
 import { lowlight } from "lowlight";
 
-export const SORTED_LANGUAGE_LIST = lowlight
-  .listLanguages()
-  .sort()
-  .unshift("auto");
+export const SORTED_LANGUAGE_LIST = ["auto"].concat(
+  lowlight.listLanguages().sort()
+);
