@@ -7,11 +7,7 @@ import { Copy } from "neetoicons";
 import { Button } from "neetoui";
 import ReactDOM from "react-dom";
 
-import {
-  EDITOR_CODE_BLOCK_CLASSNAME,
-  EDITOR_CONTENT_CLASSNAME,
-  SANITIZE_OPTIONS,
-} from "./constants";
+import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
 import { highlightCode, substituteVariables } from "./utils";
 
 const CopyButton = ({ onClick }) => (
@@ -36,7 +32,7 @@ const EditorContent = ({
 
     preTags.forEach(preTag => {
       const button = document.createElement("div");
-      button.className = EDITOR_CODE_BLOCK_CLASSNAME;
+      button.className = "neeto-editor-codeblock-options";
       const handleButtonClick = () => {
         copyToClipboard(preTag.textContent);
       };
