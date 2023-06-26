@@ -85,11 +85,6 @@ export const EDITOR_PROPS = [
     `"neeto-editor-content"`,
   ],
   [
-    "uploadEndpoint",
-    "Accepts an URL endpoint string. This URL will be used for XHR image uploads.",
-    `"/api/direct_uploads"`,
-  ],
-  [
     "uploadConfig",
     "Accepts an object. This object will be used to configure the image uploader.",
     `{
