@@ -27,7 +27,6 @@ const Attachment = ({
   attachment,
   attachments,
   disabled,
-  endpoint,
   onChange,
   setSelectedAttachment,
   showToastr,
@@ -53,7 +52,6 @@ const Attachment = ({
       const {
         blob: { filename },
       } = await directUploadsApi.update({
-        url: endpoint,
         signedId,
         payload,
         showToastr,
@@ -78,7 +76,7 @@ const Attachment = ({
     setIsDeleting(true);
     try {
       const { signedId } = attachment;
-      await directUploadsApi.destroy(endpoint, signedId, showToastr);
+      await directUploadsApi.destroy(signedId, showToastr);
       onChange(removeBy({ signedId }, attachments));
     } catch (error) {
       Toastr.error(error);

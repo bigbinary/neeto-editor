@@ -5,13 +5,28 @@ import { Toastr } from "neetoui";
 import { Plugin } from "prosemirror-state";
 import { isEmpty } from "ramda";
 
+import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import DirectUpload from "utils/DirectUpload";
 
 import ImageComponent from "./ImageComponent";
 
 import { MAX_IMAGE_SIZE } from "../../MediaUploader/constants";
 
-const ImageExtension = Node.create({
+const upload = async (file, url) => {
+  if (file.size <= MAX_IMAGE_SIZE) {
+    const uploader = new DirectUpload({ file, url });
+    const response = await uploader.create();
+
+    return response.data?.blob_url || response.blob_url;
+  }
+
+  const imageSizeInMB = MAX_IMAGE_SIZE / (1024 * 1024);
+  Toastr.error(t("error.imageSizeIsShouldBeLess", { limit: imageSizeInMB }));
+
+  return "";
+};
+
+export default Node.create({
   name: "image",
 
   addOptions() {
@@ -131,76 +146,57 @@ const ImageExtension = Node.create({
             .run(),
     };
   },
-});
 
-const upload = async (file, url) => {
-  if (file.size <= MAX_IMAGE_SIZE) {
-    const uploader = new DirectUpload({ file, url });
-    const response = await uploader.create();
-
-    return response.data?.blob_url || response.blob_url;
-  }
-
-  const imageSizeInMB = MAX_IMAGE_SIZE / (1024 * 1024);
-  Toastr.error(t("error.imageSizeIsShouldBeLess", { limit: imageSizeInMB }));
-
-  return "";
-};
-
-export default {
-  configure: ({ uploadEndpoint }) =>
-    ImageExtension.extend({
-      addProseMirrorPlugins() {
-        return [
-          new Plugin({
-            props: {
-              handleDOMEvents: {
-                paste(view, event) {
-                  const {
-                    schema,
-                    selection: {
-                      $anchor: { pos },
-                    },
-                  } = view.state;
-                  const hasFiles = event.clipboardData?.files?.length;
-
-                  if (!hasFiles) return;
-
-                  const images = Array.from(event.clipboardData.files).filter(
-                    file => /image/i.test(file.type)
-                  );
-
-                  if (isEmpty(images)) return;
-
-                  event.preventDefault();
-
-                  images.forEach(async image => {
-                    const id = Math.random().toString(36).substring(7);
-                    const node = schema.nodes.image.create({ id });
-                    const transaction = view.state.tr.insert(pos, node);
-                    view.dispatch(transaction);
-                    try {
-                      const url = await upload(image, uploadEndpoint);
-                      url &&
-                        view.state.doc.descendants((node, pos) => {
-                          if (node.attrs.id === id) {
-                            const transaction = view.state.tr.setNodeMarkup(
-                              pos,
-                              null,
-                              { src: url }
-                            );
-                            view.dispatch(transaction);
-                          }
-                        });
-                    } catch {
-                      view.dispatch(view.state.tr.delete(pos, pos + 1));
-                    }
-                  });
+  addProseMirrorPlugins() {
+    return [
+      new Plugin({
+        props: {
+          handleDOMEvents: {
+            paste(view, event) {
+              const {
+                schema,
+                selection: {
+                  $anchor: { pos },
                 },
-              },
+              } = view.state;
+              const hasFiles = event.clipboardData?.files?.length;
+
+              if (!hasFiles) return;
+
+              const images = Array.from(event.clipboardData.files).filter(
+                file => /image/i.test(file.type)
+              );
+
+              if (isEmpty(images)) return;
+
+              event.preventDefault();
+
+              images.forEach(async image => {
+                const id = Math.random().toString(36).substring(7);
+                const node = schema.nodes.image.create({ id });
+                const transaction = view.state.tr.insert(pos, node);
+                view.dispatch(transaction);
+                try {
+                  const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
+                  url &&
+                    view.state.doc.descendants((node, pos) => {
+                      if (node.attrs.id === id) {
+                        const transaction = view.state.tr.setNodeMarkup(
+                          pos,
+                          null,
+                          { src: url }
+                        );
+                        view.dispatch(transaction);
+                      }
+                    });
+                } catch {
+                  view.dispatch(view.state.tr.delete(pos, pos + 1));
+                }
+              });
             },
-          }),
-        ];
-      },
-    }),
-};
+          },
+        },
+      }),
+    ];
+  },
+});

@@ -10,13 +10,7 @@ import LocalUploader from "./LocalUploader";
 import UnsplashImagePicker from "./UnsplashImagePicker";
 import URLForm from "./URLForm";
 
-const MediaUploader = ({
-  mediaUploader,
-  onClose,
-  editor,
-  uploadEndpoint,
-  unsplashApiKey,
-}) => {
+const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
   const { t } = useTranslation();
 
   const [activeTab, setActiveTab] = useState("local");
@@ -79,7 +73,6 @@ const MediaUploader = ({
         <div className="ne-media-uploader__content">
           {activeTab === "local" && (
             <LocalUploader
-              endpoint={uploadEndpoint}
               insertMediaToEditor={insertMediaToEditor}
               isImage={mediaUploader.image}
               setIsUploading={setIsUploading}

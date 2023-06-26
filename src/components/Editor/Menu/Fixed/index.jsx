@@ -34,7 +34,6 @@ const Fixed = ({
   setMediaUploader,
   mediaUploader,
   unsplashApiKey,
-  uploadEndpoint,
   addonCommands = [],
   isMenuCollapsible = false,
   isIndependant = true,
@@ -151,7 +150,6 @@ const Fixed = ({
                 editor={editor}
                 mediaUploader={mediaUploader}
                 unsplashApiKey={unsplashApiKey}
-                uploadEndpoint={uploadEndpoint}
                 onClose={() => setMediaUploader({ image: false, video: false })}
               />
             )}

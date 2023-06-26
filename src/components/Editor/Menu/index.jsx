@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import { noop } from "neetocommons/pure";
 import { assoc, isEmpty } from "ramda";
 
-import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
-
 import BubbleMenu from "./Bubble";
 import FixedMenu from "./Fixed";
 import HeadlessMenu from "./Headless";
@@ -22,7 +20,6 @@ const Menu = props => {
     menuType = "fixed",
     addons = [],
     options = [],
-    uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     editorSecrets = {},
     handleUploadAttachments = noop,
     defaults = DEFAULT_EDITOR_OPTIONS,
@@ -71,7 +68,6 @@ const Menu = props => {
       setIsEmojiPickerActive={setIsEmojiPickerActive}
       setMediaUploader={setMediaUploader}
       unsplashApiKey={editorSecrets.unsplash}
-      uploadEndpoint={uploadEndpoint}
     />
   );
 };
