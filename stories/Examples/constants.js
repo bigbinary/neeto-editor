@@ -10,7 +10,7 @@ export const MENU_PROPS = [
     `"bubble"`,
   ],
   [
-    "isExpandedMenu",
+    "isMenuCollapsible",
     "Accepts a boolean value. If true, the menu will be expanded by default.",
   ],
   [

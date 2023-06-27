@@ -91,6 +91,7 @@ interface attachmentsConfig {
 interface EditorProps {
   attachmentsConfig?: attachmentsConfig;
   isMenuIndependent?: boolean;
+  isMenuCollapsible?: boolean;
   menuClassName?: string;
   attachmentsClassName?: string;
   tooltips?: tooltips;

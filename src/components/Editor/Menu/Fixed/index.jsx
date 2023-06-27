@@ -103,6 +103,7 @@ const Fixed = ({
           />
         )}
         {fontStyleOptions.map(renderOptionButton)}
+        {listStyleOptions.map(renderOptionButton)}
         <TableActions
           editor={editor}
           tooltipContent={tooltips.table || t("menu.table")}
@@ -132,7 +133,6 @@ const Fixed = ({
                 tooltipContent={tooltips.emoji || t("menu.emoji")}
               />
             )}
-            {listStyleOptions.map(renderOptionButton)}
             {isLinkActive && (
               <LinkOption
                 editor={editor}
