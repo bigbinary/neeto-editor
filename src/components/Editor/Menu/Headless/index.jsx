@@ -17,7 +17,6 @@ const Headless = ({
   setMediaUploader,
   mediaUploader,
   unsplashApiKey,
-  uploadEndpoint,
   addonCommands = [],
   children,
   className,
@@ -62,7 +61,6 @@ const Headless = ({
           editor={editor}
           mediaUploader={mediaUploader}
           unsplashApiKey={unsplashApiKey}
-          uploadEndpoint={uploadEndpoint}
           onClose={() => setMediaUploader({ image: false, video: false })}
         />
       )}

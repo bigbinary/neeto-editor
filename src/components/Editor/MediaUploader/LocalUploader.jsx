@@ -19,7 +19,6 @@ import { convertToFileSize } from "./utils";
 
 const LocalUploader = ({
   isImage,
-  endpoint,
   onClose,
   insertMediaToEditor,
   setIsUploading,
@@ -36,7 +35,6 @@ const LocalUploader = ({
     : DEFAULT_VIDEO_UPPY_CONFIG;
 
   const { uppy, isUploading } = useUppyUploader({
-    endpoint,
     uppyConfig,
   });
 

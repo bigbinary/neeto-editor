@@ -10,7 +10,7 @@ export const MENU_PROPS = [
     `"bubble"`,
   ],
   [
-    "isExpandedMenu",
+    "isMenuCollapsible",
     "Accepts a boolean value. If true, the menu will be expanded by default.",
   ],
   [
@@ -27,11 +27,6 @@ export const MENU_PROPS = [
     "className",
     "Accepts a string value. Can be used for further customisation of the editor wrapper layout.",
     `"neeto-editor-content"`,
-  ],
-  [
-    "uploadEndpoint",
-    "Accepts an URL endpoint string. This URL will be used for XHR image uploads.",
-    `"/api/direct_uploads"`,
   ],
   [
     "uploadConfig",

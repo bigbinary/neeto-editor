@@ -7,7 +7,6 @@ import { Button, Toastr } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
-import { DIRECT_UPLOAD_ENDPOINT } from "common/constants";
 import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
@@ -17,7 +16,6 @@ import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
 
 const Attachments = (
   {
-    endpoint = DIRECT_UPLOAD_ENDPOINT,
     attachments = [],
     className = "",
     onChange = noop,
@@ -37,7 +35,6 @@ const Attachments = (
   const attachmentInputRef = useRef(null);
 
   const { uppy, isUploading } = useUppyUploader({
-    endpoint,
     uppyConfig: buildUppyConfig(config),
   });
 
@@ -159,7 +156,6 @@ const Attachments = (
             attachment={attachment}
             attachments={attachments}
             disabled={disabled}
-            endpoint={endpoint}
             key={attachment.signedId}
             setSelectedAttachment={setSelectedAttachment}
             showToastr={showToastr}

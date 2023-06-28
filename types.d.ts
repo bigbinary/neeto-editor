@@ -68,7 +68,6 @@ interface MenuProps {
   menuType?: "fixed" | "bubble" | "headless" | "none";
   defaults?: string[];
   addons?: string[];
-  uploadEndpoint?: string;
   mentions?: Mention[];
   editorSecrets?: Array<{ unsplash?: string }>;
   variables?: (VariableCategory | Variable)[];
@@ -92,6 +91,7 @@ interface attachmentsConfig {
 interface EditorProps {
   attachmentsConfig?: attachmentsConfig;
   isMenuIndependent?: boolean;
+  isMenuCollapsible?: boolean;
   menuClassName?: string;
   attachmentsClassName?: string;
   tooltips?: tooltips;
@@ -106,7 +106,6 @@ interface EditorProps {
   addonCommands?: Command[];
   className?: string;
   contentClassName?: string;
-  uploadEndpoint?: string;
   onChange?: (htmlContent: string) => void;
   onFocus?: EditorFocus;
   onBlur?: EditorFocus;

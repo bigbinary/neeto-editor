@@ -8,9 +8,10 @@ import { useTranslation } from "react-i18next";
 
 import { UPPY_UPLOAD_CONFIG } from "components/Editor/MediaUploader/constants";
 import { convertToFileSize } from "components/Editor/MediaUploader/utils";
+import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import ActiveStorageUpload from "utils/ActiveStorageUpload";
 
-const useUppyUploader = ({ endpoint, uppyConfig, onSuccess = noop }) => {
+const useUppyUploader = ({ uppyConfig, onSuccess = noop }) => {
   const [isUploading, setIsUploading] = useState(false);
   const { t } = useTranslation();
 
@@ -36,7 +37,7 @@ const useUppyUploader = ({ endpoint, uppyConfig, onSuccess = noop }) => {
       onBeforeFileAdded,
     })
       .use(ActiveStorageUpload, {
-        directUploadUrl: endpoint,
+        directUploadUrl: DIRECT_UPLOAD_ENDPOINT,
         ...UPPY_UPLOAD_CONFIG,
       })
       .on("upload", () => setIsUploading(true))

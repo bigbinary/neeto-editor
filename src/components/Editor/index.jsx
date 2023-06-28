@@ -7,7 +7,7 @@ import { useFuncDebounce } from "neetocommons/react-utils";
 import { Label } from "neetoui";
 import { EditorView } from "prosemirror-view";
 
-import { DIRECT_UPLOAD_ENDPOINT, EDITOR_OPTIONS } from "common/constants";
+import { EDITOR_OPTIONS } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import useEditorWarnings from "hooks/useEditorWarnings";
 
@@ -53,7 +53,6 @@ const Editor = (
     required = false,
     rows = 6,
     tooltips = {},
-    uploadEndpoint = DIRECT_UPLOAD_ENDPOINT,
     variables = [],
     onChange = noop,
     onFocus = noop,
@@ -96,7 +95,6 @@ const Editor = (
     addonCommands,
     onSubmit,
     keyboardShortcuts,
-    uploadEndpoint,
     setMediaUploader,
     setIsEmbedModalOpen,
     isVideoEmbedActive,
@@ -183,7 +181,6 @@ const Editor = (
             mentions={mentions}
             menuType={menuType}
             tooltips={tooltips}
-            uploadEndpoint={uploadEndpoint}
             variables={variables}
           />
           {children}
@@ -192,8 +189,7 @@ const Editor = (
             <MediaUploader
               editor={editor}
               mediaUploader={mediaUploader}
-              unsplashApiKey={editorSecrets.unsplash}
-              uploadEndpoint={uploadEndpoint}
+              unsplashApiKey={editorSecrets?.unsplash}
               onClose={() => setMediaUploader({ image: false, video: false })}
             />
           )}
