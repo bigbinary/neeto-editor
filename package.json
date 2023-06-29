@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-editor",
-  "version": "1.27.2",
+  "version": "1.27.3",
   "main": "./index.cjs.js",
   "module": "./index.js",
   "types": "./types.d.ts",
@@ -152,8 +152,8 @@
   "peerDependencies": {
     "@bigbinary/neeto-commons-frontend": "latest",
     "@bigbinary/neeto-icons": "latest",
-    "@bigbinary/neetoui": "latest",
     "@bigbinary/neeto-molecules": "latest",
+    "@bigbinary/neetoui": "latest",
     "@honeybadger-io/react": "2.0.1",
     "antd": "4.24.3",
     "axios": "0.27.2",
