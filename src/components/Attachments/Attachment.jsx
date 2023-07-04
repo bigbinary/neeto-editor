@@ -14,7 +14,7 @@ import {
   Alert,
 } from "neetoui";
 import { isEmpty, assoc } from "ramda";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import directUploadsApi from "apis/direct_uploads";
 
@@ -191,8 +191,14 @@ const Attachment = ({
       <Alert
         isOpen={isDeleteAlertOpen}
         isSubmitting={isDeleting}
-        message={t("attachments.deleteConfirmation", { entity: newFilename })}
+        submitButtonLabel={t("menu.delete")}
         title={t("attachments.deleteTitle")}
+        message={
+          <Trans
+            i18nKey="attachments.deleteConfirmation"
+            values={{ entity: newFilename }}
+          />
+        }
         onClose={() => setIsDeleteAlertOpen(false)}
         onSubmit={handleDelete}
       />

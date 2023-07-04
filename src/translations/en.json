@@ -17,8 +17,8 @@
   "attachments": {
     "actionsBlocked": "You are not permitted to update or delete attachments",
     "add": "Add attachment",
-    "deleteConfirmation": "Are you sure you want to remove {{entity}}?",
-    "deleteTitle": "Remove Attachment?",
+    "deleteConfirmation": "You are permanently deleting the attachment <strong>{{entity}}</strong>. This can't be undone.",
+    "deleteTitle": "Delete attachment?",
     "maxNumberOfFiles": "You can only attach {{entity}} files",
     "nameEmpty": "Filename cannot be empty",
     "noPreview": "There is no preview available, click to <span>download</span>.",
