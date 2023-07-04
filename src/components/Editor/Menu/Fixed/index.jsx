@@ -103,7 +103,6 @@ const Fixed = ({
           />
         )}
         {fontStyleOptions.map(renderOptionButton)}
-        {listStyleOptions.map(renderOptionButton)}
         <TableActions
           editor={editor}
           tooltipContent={tooltips.table || t("menu.table")}
@@ -118,6 +117,7 @@ const Fixed = ({
               }
             )}
           >
+            {listStyleOptions.map(renderOptionButton)}
             {blockStyleOptions.map(renderOptionButton)}
             {isTextColorOptionActive && (
               <TextColorOption

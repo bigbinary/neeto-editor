@@ -23,6 +23,7 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
       data-cy="neeto-editor-fixed-menu-font-size-option"
       label={label}
       placement="bottom-start"
+      strategy="fixed"
       buttonProps={{
         tooltipProps: {
           content: tooltipContent,
