@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
 import { copyToClipboard } from "neetocommons/utils";
@@ -28,6 +28,10 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
     setKeyword("");
   };
 
+  useEffect(() => {
+    updateAttributes({ language: "plaintext" });
+  }, []);
+
   return (
     <NodeViewWrapper data-cy="neeto-editor-code-block">
       <pre>
@@ -38,7 +42,6 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
             closeOnOutsideClick={false}
             icon={Down}
             label={node.attrs?.language || t("common.auto")}
-            strategy="fixed"
           >
             <Input
               autoFocus

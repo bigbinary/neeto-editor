@@ -8,6 +8,9 @@ import { renderToString } from "react-dom/server";
 
 import { CODE_BLOCK_REGEX, VARIABLE_SPAN_REGEX } from "./constants";
 
+const transformCode = code =>
+  code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&");
+
 const buildReactElementFromAST = element => {
   if (element.tagName) {
     const children = element.children
@@ -26,14 +29,11 @@ export const highlightCode = content => {
 
   return content.replace(CODE_BLOCK_REGEX, (_, language, code) => {
     if (language) {
-      highlightedAST = lowlight.highlight(language, code);
+      highlightedAST = lowlight.highlight(language, transformCode(code));
     } else {
-      highlightedAST = hljs.highlightAuto(
-        code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")
-      )._emitter.root;
-
+      highlightedAST = hljs.highlightAuto(transformCode(code))._emitter.root;
       if (isEmpty(highlightedAST.children)) {
-        highlightedAST = lowlight.highlight("javascript", code);
+        highlightedAST = lowlight.highlight("javascript", transformCode(code));
       }
     }
 
@@ -44,6 +44,7 @@ export const highlightCode = content => {
     return `<pre><code>${renderToString(highlightedNode)}</code></pre>`;
   });
 };
+
 export const substituteVariables = (highlightedContent, variables) =>
   highlightedContent.replace(VARIABLE_SPAN_REGEX, (matchedSpan, dataLabel) => {
     const dataLabelSplitted = dataLabel.split(".");
