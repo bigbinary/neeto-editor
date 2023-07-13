@@ -4,7 +4,7 @@ import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
 import { copyToClipboard } from "neetocommons/utils";
 import { Copy, Down } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
-import { equals } from "ramda";
+import { equals, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
@@ -29,7 +29,7 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
   };
 
   useEffect(() => {
-    updateAttributes({ language: "plaintext" });
+    isNil(node.attrs?.language) && updateAttributes({ language: "plaintext" });
   }, []);
 
   return (
