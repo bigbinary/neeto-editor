@@ -267,8 +267,9 @@
 
   figcaption {
     text-align: center;
-    font-size: var(--neeto-ui-text-sm);
+    font-size: 13px;
     font-weight: var(--neeto-ui-font-normal);
+    color: rgb(var(--neeto-ui-gray-600));
 
     a {
       display: inline-block;
