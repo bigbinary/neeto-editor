@@ -42,6 +42,7 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
             closeOnOutsideClick={false}
             icon={Down}
             label={node.attrs?.language || t("common.auto")}
+            strategy="fixed"
           >
             <Input
               autoFocus
