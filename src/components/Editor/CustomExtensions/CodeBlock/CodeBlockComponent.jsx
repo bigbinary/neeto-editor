@@ -4,7 +4,7 @@ import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
 import { copyToClipboard } from "neetocommons/utils";
 import { Copy, Down } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
-import { equals, isNil } from "ramda";
+import { isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
@@ -24,7 +24,7 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
     copyToClipboard(node?.content?.content[0]?.text);
 
   const handleLanguageSelect = language => {
-    updateAttributes({ language: equals(language, "auto") ? null : language });
+    updateAttributes({ language });
     setKeyword("");
   };
 
@@ -39,7 +39,6 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
           <Dropdown
             buttonSize="small"
             buttonStyle="secondary"
-            closeOnOutsideClick={false}
             icon={Down}
             label={node.attrs?.language || t("common.auto")}
             strategy="fixed"
