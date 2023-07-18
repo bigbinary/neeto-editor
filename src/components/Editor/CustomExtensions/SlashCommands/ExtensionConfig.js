@@ -98,7 +98,7 @@ export default {
                   });
                 },
                 onKeyDown(props) {
-                  return reactRenderer.ref?.onKeyDown(props);
+                  return reactRenderer && reactRenderer?.ref?.onKeyDown(props);
                 },
                 onExit() {
                   popup && popup[0].destroy();
