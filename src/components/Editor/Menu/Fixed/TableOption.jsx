@@ -38,6 +38,7 @@ const TableOption = ({ editor, tooltipContent }) => {
       isOpen={isOpen}
       position="bottom"
       buttonProps={{
+        tabIndex: -1,
         tooltipProps: { content: tooltipContent, position: "bottom" },
         className: "neeto-editor-fixed-menu__item",
       }}

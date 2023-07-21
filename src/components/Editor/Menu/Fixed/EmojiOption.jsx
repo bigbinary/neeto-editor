@@ -15,6 +15,7 @@ const EmojiOption = ({ editor, isActive, setActive, tooltipContent }) => (
     position="bottom-start"
     strategy="fixed"
     buttonProps={{
+      tabIndex: -1,
       tooltipProps: { content: tooltipContent, position: "bottom" },
       className: "neeto-editor-fixed-menu__item",
     }}
