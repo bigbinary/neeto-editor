@@ -1,16 +1,10 @@
 {
   "common": {
-    "back": "back",
-    "cancel": "Cancel",
-    "caption": "Caption",
     "create": "Create",
     "download": "Download",
     "embed": "Embed",
     "unlink": "Unlink",
     "videoUrl": "Video URL:",
-    "hex": "Hex:",
-    "browse": "Browse",
-    "done": "Done",
     "reset": "Reset",
     "auto": "Auto"
   },
