@@ -44,7 +44,7 @@ const Fixed = ({
   setIsEmojiPickerActive,
   children,
 }) => {
-  const [focusedButtonIndex, setFocusedButtonIndex] = useState(-1);
+  const [focusedButtonIndex, setFocusedButtonIndex] = useState(0);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
 
@@ -55,9 +55,7 @@ const Fixed = ({
   const handleArrowNavigation = event => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
-      setFocusedButtonIndex(prevIndex =>
-        prevIndex === -1 ? prevIndex + 2 : (prevIndex + 1) % menuButtons.length
-      );
+      setFocusedButtonIndex(prevIndex => (prevIndex + 1) % menuButtons.length);
     } else if (event.key === "ArrowLeft") {
       event.preventDefault();
       setFocusedButtonIndex(
@@ -66,23 +64,25 @@ const Fixed = ({
     }
   };
 
-  const menuButtons = useMemo(() => {
-    const buttons = menuRef.current?.querySelectorAll(
-      ".neeto-editor-fixed-menu__item"
-    );
-
-    buttons?.forEach(menuItem => {
-      menuItem.addEventListener("keydown", handleArrowNavigation);
-    });
-
-    return buttons;
-  }, [menuRef.current]);
+  const menuButtons = useMemo(
+    () => menuRef.current?.querySelectorAll(".neeto-editor-fixed-menu__item"),
+    [menuRef.current]
+  );
 
   useEffect(() => {
-    if (focusedButtonIndex >= 0 && focusedButtonIndex < menuButtons.length) {
-      menuButtons[focusedButtonIndex]?.focus();
-    }
+    menuButtons?.[focusedButtonIndex].focus();
   }, [focusedButtonIndex]);
+
+  useEffect(() => {
+    menuButtons?.forEach(menuItem =>
+      menuItem.addEventListener("keydown", handleArrowNavigation)
+    );
+
+    return () =>
+      menuButtons?.forEach(menuItem =>
+        menuItem.removeEventListener("keydown", handleArrowNavigation)
+      );
+  }, [menuButtons]);
 
   if (!editor) {
     return null;
