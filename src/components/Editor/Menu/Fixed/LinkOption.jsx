@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { Link } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
+import { min } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { URL_REGEXP } from "common/constants";
 
 const { Menu } = Dropdown;
 
-const LinkOption = ({ editor, tooltipContent }) => {
-  const { t } = useTranslation();
-
+const LinkOption = ({ editor, tooltipContent, menuRef }) => {
   const [error, setError] = useState("");
   const [urlString, setUrlString] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  const { t } = useTranslation();
+
+  const linkOptionRef = useRef(null);
+
   const isActive = editor.isActive("link");
+
+  const handleDropDownClick = () => {
+    setUrlString(editor.getAttributes("link").href);
+    setIsOpen(open => !open);
+  };
 
   const handleClose = () => {
     setIsOpen(false);
@@ -29,11 +37,6 @@ const LinkOption = ({ editor, tooltipContent }) => {
     } else if (event.key === "Enter") {
       handleLink();
     }
-  };
-
-  const handleDropDownClick = () => {
-    setUrlString(editor.getAttributes("link").href);
-    setIsOpen(open => !open);
   };
 
   const handleLink = () => {
@@ -56,6 +59,14 @@ const LinkOption = ({ editor, tooltipContent }) => {
     handleClose();
   };
 
+  const handleWidthChange = () => {
+    linkOptionRef.current.style.width = "auto";
+    linkOptionRef.current.style.width = `${min(
+      menuRef.current?.offsetWidth * 0.6,
+      linkOptionRef.current?.scrollWidth
+    )}px`;
+  };
+
   useEffect(() => {
     editor.commands.setHighlightInternal("#ACCEF7");
 
@@ -63,11 +74,15 @@ const LinkOption = ({ editor, tooltipContent }) => {
       editor.commands.unsetHighlightInternal();
       editor.commands.removeEmptyTextStyle();
     }
+  }, [isOpen, editor]);
+
+  useEffect(() => {
+    isOpen && linkOptionRef.current && handleWidthChange();
   }, [isOpen]);
 
   return (
     <Dropdown
-      buttonStyle={isActive ? "secondary" : "text"}
+      buttonStyle={isOpen || isActive ? "secondary" : "text"}
       closeOnSelect={false}
       data-cy="neeto-editor-fixed-menu-link-option"
       icon={Link}
@@ -88,9 +103,13 @@ const LinkOption = ({ editor, tooltipContent }) => {
           error={error}
           name="url"
           placeholder={t("placeholders.url")}
+          ref={linkOptionRef}
           value={urlString}
-          onChange={({ target: { value } }) => setUrlString(value)}
           onFocus={() => setError("")}
+          onChange={({ target: { value } }) => {
+            setUrlString(value);
+            handleWidthChange();
+          }}
         />
         <Button
           data-cy="neeto-editor-fixed-menu-link-option-link-button"

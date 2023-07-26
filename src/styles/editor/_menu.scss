@@ -14,12 +14,40 @@
     border-radius: var(--neeto-ui-rounded-sm) !important;
   }
 
+  .vertical-divider {
+    border-left: 1px solid rgb(var(--neeto-ui-gray-300));
+    margin: 0 12px;
+
+    height: 20px;
+
+    &.no-margin {
+      margin: 0;
+    }
+  }
+
   button.neeto-editor-fixed-menu__item {
     min-width: fit-content;
 
     .neeto-ui-btn__icon {
-      height: 18px !important;
-      width: 18px !important;
+      height: 20px !important;
+      width: 20px !important;
+      color: rgb(var(--neeto-ui-gray-800));
+    }
+
+    &:hover {
+      background-color: rgb(var(--neeto-ui-primary-100));
+
+      .neeto-ui-btn__icon {
+          color: rgb(var(--neeto-ui-primary-800));
+        }
+    }
+  }
+
+  button.neeto-editor-fixed-menu__item.neeto-ui-btn--style-secondary {
+    background-color: rgb(var(--neeto-ui-primary-100));
+
+    .neeto-ui-btn__icon {
+      color: rgb(var(--neeto-ui-primary-800));
     }
   }
 
@@ -34,6 +62,7 @@
 
     &--collapsible {
       display: flex;
+      align-items: center;
       gap: 0 4px;
 
       &--fade {

@@ -132,14 +132,16 @@ const Fixed = ({
         [className]: className,
       })}
     >
-      <div className="neeto-editor-fixed-menu__wrapper">
+      <div className="neeto-editor-fixed-menu__wrapper" ref={menuRef}>
         {isFontSizeActive && (
           <FontSizeOption
             editor={editor}
             tooltipContent={tooltips.fontSize || t("menu.fontSize")}
           />
         )}
+        <div className="vertical-divider no-margin" />
         {fontStyleOptions.map(renderOptionButton)}
+        <div className="vertical-divider" />
         <TableActions
           editor={editor}
           tooltipContent={tooltips.table || t("menu.table")}
@@ -155,7 +157,23 @@ const Fixed = ({
             )}
           >
             {listStyleOptions.map(renderOptionButton)}
+            <div className="vertical-divider" />
             {blockStyleOptions.map(renderOptionButton)}
+            <div className="vertical-divider" />
+            {isLinkActive && (
+              <LinkOption
+                editor={editor}
+                menuRef={menuRef}
+                tooltipContent={tooltips.link || t("menu.link")}
+              />
+            )}
+            {isTableActive && (
+              <TableOption
+                editor={editor}
+                tooltipContent={tooltips.table || t("menu.table")}
+              />
+            )}
+            {miscOptions.map(renderOptionButton)}
             {isTextColorOptionActive && (
               <TextColorOption
                 editor={editor}
@@ -168,18 +186,6 @@ const Fixed = ({
                 isActive={isEmojiPickerActive}
                 setActive={setIsEmojiPickerActive}
                 tooltipContent={tooltips.emoji || t("menu.emoji")}
-              />
-            )}
-            {isLinkActive && (
-              <LinkOption
-                editor={editor}
-                tooltipContent={tooltips.link || t("menu.link")}
-              />
-            )}
-            {isTableActive && (
-              <TableOption
-                editor={editor}
-                tooltipContent={tooltips.table || t("menu.table")}
               />
             )}
             {isMediaUploaderActive && (
@@ -197,7 +203,6 @@ const Fixed = ({
                 setIsEmbedModalOpen={setIsEmbedModalOpen}
               />
             )}
-            {miscOptions.map(renderOptionButton)}
             <Mentions
               editor={editor}
               mentions={mentions}
