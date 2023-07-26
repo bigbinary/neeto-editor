@@ -55,6 +55,7 @@ const TextColorOption = ({ editor, tooltipContent }) => {
         icon={Customize}
         isOpen={isOpen}
         buttonProps={{
+          tabIndex: -1,
           tooltipProps: { content: tooltipContent, position: "bottom" },
           className:
             "neeto-editor-fixed-menu__item neeto-editor-text-color-option",

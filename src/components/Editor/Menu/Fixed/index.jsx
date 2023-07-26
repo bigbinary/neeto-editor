@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import DynamicVariables from "@bigbinary/neeto-molecules/DynamicVariables";
 import classNames from "classnames";
@@ -44,9 +44,45 @@ const Fixed = ({
   setIsEmojiPickerActive,
   children,
 }) => {
-  const { t } = useTranslation();
+  const [focusedButtonIndex, setFocusedButtonIndex] = useState(0);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
+
+  const menuRef = useRef(null);
+
+  const { t } = useTranslation();
+
+  const handleArrowNavigation = event => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      setFocusedButtonIndex(prevIndex => (prevIndex + 1) % menuButtons.length);
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      setFocusedButtonIndex(
+        prevIndex => (prevIndex - 1 + menuButtons.length) % menuButtons.length
+      );
+    }
+  };
+
+  const menuButtons = useMemo(
+    () => menuRef.current?.querySelectorAll(".neeto-editor-fixed-menu__item"),
+    [menuRef.current]
+  );
+
+  useEffect(() => {
+    menuButtons?.[focusedButtonIndex].focus();
+  }, [focusedButtonIndex]);
+
+  useEffect(() => {
+    menuButtons?.forEach(menuItem =>
+      menuItem.addEventListener("keydown", handleArrowNavigation)
+    );
+
+    return () =>
+      menuButtons?.forEach(menuItem =>
+        menuItem.removeEventListener("keydown", handleArrowNavigation)
+      );
+  }, [menuButtons]);
 
   if (!editor) {
     return null;
@@ -90,6 +126,7 @@ const Fixed = ({
 
   return (
     <div
+      ref={menuRef}
       className={classNames("neeto-editor-fixed-menu", {
         "neeto-editor-fixed-menu--independant": isIndependant,
         [className]: className,
