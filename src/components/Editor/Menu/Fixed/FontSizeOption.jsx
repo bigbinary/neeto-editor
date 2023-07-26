@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import { Dropdown, Typography } from "neetoui";
+import { last } from "ramda";
 
 import { FONT_SIZE_OPTIONS } from "./constants";
 
 const { Menu, MenuItem } = Dropdown;
 
 const FontSizeOption = ({ editor, tooltipContent }) => {
+  const dropdownRef = useRef(null);
+
   const isActive = level => editor.isActive("heading", { level });
-  const label =
-    FONT_SIZE_OPTIONS.find(({ value }) => isActive(value))?.label ||
-    "Paragraph";
+  const activeOption =
+    FONT_SIZE_OPTIONS.find(({ value }) => isActive(value)) ||
+    last(FONT_SIZE_OPTIONS);
 
   const handleClick = level =>
     level
@@ -21,10 +24,13 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
     <Dropdown
       autoWidth
       data-cy="neeto-editor-fixed-menu-font-size-option"
-      label={label}
+      label={activeOption?.label}
       placement="bottom-start"
       strategy="fixed"
       buttonProps={{
+        ref: dropdownRef,
+        onKeyDown: event =>
+          event.key === "ArrowDown" && dropdownRef.current?.click(),
         tooltipProps: {
           content: tooltipContent,
           position: "bottom",
@@ -35,7 +41,9 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
           "neeto-editor-fixed-menu__item neeto-editor-font-size__wrapper",
       }}
     >
-      <Menu>
+      <Menu
+        onKeyDown={event => event.key === "Escape" && editor.commands?.focus()}
+      >
         {FONT_SIZE_OPTIONS.map(({ label, value, key }) => (
           <MenuItem.Button
             data-cy={`neeto-editor-fixed-menu-font-size-option-${label}`}

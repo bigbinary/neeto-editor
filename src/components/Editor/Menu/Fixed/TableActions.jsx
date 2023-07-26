@@ -19,6 +19,7 @@ const TableActions = ({ editor, tooltipContent }) => {
         icon={Settings}
         position="bottom"
         buttonProps={{
+          tabIndex: -1,
           tooltipProps: { content: tooltipContent, position: "bottom" },
           className: "neeto-editor-fixed-menu__item",
         }}
