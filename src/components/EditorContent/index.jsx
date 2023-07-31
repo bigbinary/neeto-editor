@@ -60,4 +60,4 @@ const EditorContent = ({
   );
 };
 
-export default EditorContent;
+export default React.memo(EditorContent);
