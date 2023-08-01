@@ -16,21 +16,18 @@
 
   .vertical-divider {
     border-left: 1px solid rgb(var(--neeto-ui-gray-300));
-    margin: 0 12px;
+    margin: 0 11.5px;
 
-    height: 20px;
-
-    &.no-margin {
-      margin: 0;
-    }
+    height: 24px;
   }
 
   button.neeto-editor-fixed-menu__item {
     min-width: fit-content;
+    padding: 4px;
 
     .neeto-ui-btn__icon {
-      height: 20px !important;
-      width: 20px !important;
+      height: 16px !important;
+      width: 16px !important;
       color: rgb(var(--neeto-ui-gray-800));
     }
 
@@ -57,19 +54,23 @@
     align-items: center;
     overflow: auto;
     width: 100%;
-    padding: 2px;
-    gap: 0 4px;
+    padding: 4px;
 
     &--collapsible {
       display: flex;
+      flex-grow: 1;
       align-items: center;
-      gap: 0 4px;
 
       &--fade {
         button.neeto-editor-fixed-menu__item {
           animation: fade-in 0.3s ease-in;
         }
       }
+    }
+
+    &__button-group {
+      display: flex;
+      gap: 4px;
     }
   }
 
@@ -94,6 +95,7 @@
   &__right-options {
     display: flex;
     justify-self: flex-end;
+    gap: 8px;
     margin-left: auto;
   }
 
@@ -204,6 +206,7 @@
 
 .neeto-editor-font-size__wrapper {
   font-weight: var(--neeto-ui-font-normal) !important;
+  gap: 15px !important;
 }
 
 .neeto-editor-bubble-menu {

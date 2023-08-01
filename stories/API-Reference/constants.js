@@ -47,7 +47,12 @@ export const EDITOR_PROPS = [
   [
     "menuType",
     "Describes the menu type that editor should display. value should be one of ['fixed', 'bubble', 'none']. Defaults to 'fixed'.",
-    `"bubble"`,
+    `"fixed"`,
+  ],
+  [
+    "isMenuCollapsible",
+    "Accepts a boolean value. When true, the editor menu will be collapsible.",
+    "false",
   ],
   [
     "autoFocus",

@@ -139,13 +139,15 @@ const Fixed = ({
             tooltipContent={tooltips.fontSize || t("menu.fontSize")}
           />
         )}
-        <div className="vertical-divider no-margin" />
-        {fontStyleOptions.map(renderOptionButton)}
         <div className="vertical-divider" />
-        <TableActions
-          editor={editor}
-          tooltipContent={tooltips.table || t("menu.table")}
-        />
+        <div className="neeto-editor-fixed-menu__wrapper__button-group">
+          {fontStyleOptions.map(renderOptionButton)}
+          <TableActions
+            editor={editor}
+            tooltipContent={tooltips.table || t("menu.table")}
+          />
+        </div>
+        <div className="vertical-divider" />
         {(isMenuExpanded || not(isMenuCollapsible)) && (
           <div
             className={classNames(
@@ -156,59 +158,67 @@ const Fixed = ({
               }
             )}
           >
-            {listStyleOptions.map(renderOptionButton)}
+            <div className="neeto-editor-fixed-menu__wrapper__button-group">
+              {listStyleOptions.map(renderOptionButton)}
+            </div>
             <div className="vertical-divider" />
-            {blockStyleOptions.map(renderOptionButton)}
+            <div className="neeto-editor-fixed-menu__wrapper__button-group">
+              {blockStyleOptions.map(renderOptionButton)}
+            </div>
             <div className="vertical-divider" />
-            {isLinkActive && (
-              <LinkOption
+            <div className="neeto-editor-fixed-menu__wrapper__button-group">
+              {isLinkActive && (
+                <LinkOption
+                  editor={editor}
+                  menuRef={menuRef}
+                  tooltipContent={tooltips.link || t("menu.link")}
+                />
+              )}
+              {isTableActive && (
+                <TableOption
+                  editor={editor}
+                  tooltipContent={tooltips.table || t("menu.table")}
+                />
+              )}
+              {miscOptions.map(renderOptionButton)}
+              {isTextColorOptionActive && (
+                <TextColorOption
+                  editor={editor}
+                  tooltipContent={tooltips.textColor || t("menu.textColor")}
+                />
+              )}
+              {isEmojiActive && (
+                <EmojiOption
+                  editor={editor}
+                  isActive={isEmojiPickerActive}
+                  setActive={setIsEmojiPickerActive}
+                  tooltipContent={tooltips.emoji || t("menu.emoji")}
+                />
+              )}
+              {isMediaUploaderActive && (
+                <MediaUploader
+                  editor={editor}
+                  mediaUploader={mediaUploader}
+                  unsplashApiKey={unsplashApiKey}
+                  onClose={() =>
+                    setMediaUploader({ image: false, video: false })
+                  }
+                />
+              )}
+              {isEmbedOptionActive && (
+                <EmbedOption
+                  editor={editor}
+                  isEmbedModalOpen={isEmbedModalOpen}
+                  setIsEmbedModalOpen={setIsEmbedModalOpen}
+                />
+              )}
+              <Mentions
                 editor={editor}
-                menuRef={menuRef}
-                tooltipContent={tooltips.link || t("menu.link")}
+                mentions={mentions}
+                tooltipContent={tooltips.mention || t("menu.mention")}
               />
-            )}
-            {isTableActive && (
-              <TableOption
-                editor={editor}
-                tooltipContent={tooltips.table || t("menu.table")}
-              />
-            )}
-            {miscOptions.map(renderOptionButton)}
-            {isTextColorOptionActive && (
-              <TextColorOption
-                editor={editor}
-                tooltipContent={tooltips.textColor || t("menu.textColor")}
-              />
-            )}
-            {isEmojiActive && (
-              <EmojiOption
-                editor={editor}
-                isActive={isEmojiPickerActive}
-                setActive={setIsEmojiPickerActive}
-                tooltipContent={tooltips.emoji || t("menu.emoji")}
-              />
-            )}
-            {isMediaUploaderActive && (
-              <MediaUploader
-                editor={editor}
-                mediaUploader={mediaUploader}
-                unsplashApiKey={unsplashApiKey}
-                onClose={() => setMediaUploader({ image: false, video: false })}
-              />
-            )}
-            {isEmbedOptionActive && (
-              <EmbedOption
-                editor={editor}
-                isEmbedModalOpen={isEmbedModalOpen}
-                setIsEmbedModalOpen={setIsEmbedModalOpen}
-              />
-            )}
-            <Mentions
-              editor={editor}
-              mentions={mentions}
-              tooltipContent={tooltips.mention || t("menu.mention")}
-            />
-            {addonCommandOptions.map(renderOptionButton)}
+              {addonCommandOptions.map(renderOptionButton)}
+            </div>
             {isNotEmpty(rightOptions) && (
               <div className="neeto-editor-fixed-menu__right-options">
                 {rightOptions.map(renderOptionButton)}
