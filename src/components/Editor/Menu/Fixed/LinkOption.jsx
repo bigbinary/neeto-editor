@@ -60,6 +60,8 @@ const LinkOption = ({ editor, tooltipContent, menuRef }) => {
   };
 
   const handleWidthChange = () => {
+    if (!linkOptionRef.current) return;
+
     linkOptionRef.current.style.width = "auto";
     linkOptionRef.current.style.width = `${min(
       menuRef.current?.offsetWidth * 0.6,
@@ -77,8 +79,8 @@ const LinkOption = ({ editor, tooltipContent, menuRef }) => {
   }, [isOpen, editor]);
 
   useEffect(() => {
-    isOpen && linkOptionRef.current && handleWidthChange();
-  }, [isOpen]);
+    isOpen && handleWidthChange();
+  }, [linkOptionRef.current]);
 
   return (
     <Dropdown
@@ -99,6 +101,7 @@ const LinkOption = ({ editor, tooltipContent, menuRef }) => {
       <Menu className="neeto-editor-link__item" onKeyDown={handleKeyDown}>
         <Input
           autoFocus
+          on
           data-cy="neeto-editor-fixed-menu-link-option-input"
           error={error}
           name="url"

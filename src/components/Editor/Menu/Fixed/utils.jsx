@@ -47,7 +47,7 @@ export const renderOptionButton = ({
     icon={Icon}
     key={optionName}
     style={active ? "secondary" : "text"}
-    tabindex="-1"
+    tabIndex="-1"
     tooltipProps={{ content: tooltip, position: "bottom" }}
     onClick={command}
     {...generateFocusProps(highlight)}
