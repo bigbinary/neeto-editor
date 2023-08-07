@@ -92,14 +92,14 @@ export default Node.create({
   renderHTML({ node, HTMLAttributes }) {
     const { align, src, figheight, figwidth } = node.attrs;
 
-    const linkAttrs = {
-      href: src,
-      target: "_blank",
-      rel: "noopener noreferrer",
+    const wrapperDivAttrs = {
       class: `neeto-editor__image-wrapper neeto-editor__image--${align}`,
     };
 
-    const resizeAttrs = {
+    const wrapperLinkAttrs = {
+      href: src,
+      target: "_blank",
+      rel: "noopener noreferrer",
       class: "neeto-editor__image",
       style: `height:${figheight}px;width:${figwidth}px;`,
     };
@@ -107,14 +107,14 @@ export default Node.create({
     const captionAttrs = { style: `width:${figwidth}px;` };
 
     return [
-      "a",
-      linkAttrs,
+      "div",
+      wrapperDivAttrs,
       [
         "figure",
         this.options.HTMLAttributes,
         [
-          "div",
-          resizeAttrs,
+          "a",
+          wrapperLinkAttrs,
           [
             "img",
             mergeAttributes(HTMLAttributes, {

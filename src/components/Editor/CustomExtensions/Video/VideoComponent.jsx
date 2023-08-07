@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
-import { isEmpty } from "ramda";
+import { isEmpty, mergeRight } from "ramda";
 import { Resizable } from "re-resizable";
 
 import Menu from "../Image/Menu";
@@ -14,9 +14,12 @@ const VideoComponent = ({
   updateAttributes,
   deleteNode,
 }) => {
+  const { alt, src, vidheight, vidwidth, align } = node.attrs;
+
+  const [captionWidth, setCaptionWidth] = useState(vidwidth || 0);
+
   const figureRef = useRef(null);
 
-  const { alt, src, vidheight, vidwidth, align } = node.attrs;
   const { view } = editor;
   let height = vidheight;
   let width = vidwidth;
@@ -39,17 +42,23 @@ const VideoComponent = ({
           lockAspectRatio
           className="neeto-editor__image"
           size={{ height, width }}
+          onResize={(_event, _direction, ref) =>
+            setCaptionWidth(ref.offsetWidth)
+          }
           onResizeStop={(_event, _direction, ref) => {
             height = ref.offsetHeight;
             width = ref.offsetWidth;
             view.dispatch(
-              view.state.tr.setNodeMarkup(getPos(), undefined, {
-                ...node.attrs,
-                vidheight: height,
-                vidwidth: width,
-                height,
-                width,
-              })
+              view.state.tr.setNodeMarkup(
+                getPos(),
+                undefined,
+                mergeRight(node.attrs, {
+                  vidheight: height,
+                  vidwidth: width,
+                  height,
+                  width,
+                })
+              )
             );
             editor.commands.focus();
           }}
@@ -65,6 +74,7 @@ const VideoComponent = ({
         <NodeViewContent
           as="figcaption"
           className={classNames({ "is-empty": isEmpty(caption) })}
+          style={{ width: `${captionWidth}px` }}
         />
       </figure>
     </NodeViewWrapper>

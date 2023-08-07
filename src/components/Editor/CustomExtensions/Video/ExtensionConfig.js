@@ -67,27 +67,29 @@ const VideoExtension = Node.create({
   renderHTML({ node, HTMLAttributes }) {
     const { align, src, vidheight, vidwidth } = node.attrs;
 
-    const linkAttrs = {
-      href: src,
-      target: "_blank",
-      rel: "noopener noreferrer",
+    const wrapperDivAttrs = {
       class: `neeto-editor__image-wrapper neeto-editor__image--${align}`,
     };
 
-    const resizeAttrs = {
+    const wrapperLinkAttrs = {
+      href: src,
+      target: "_blank",
+      rel: "noopener noreferrer",
       class: "neeto-editor__image",
       style: `height:${vidheight}px;width:${vidwidth}px;`,
     };
 
+    const captionAttrs = { style: `width:${vidwidth}px;` };
+
     return [
-      "a",
-      linkAttrs,
+      "div",
+      wrapperDivAttrs,
       [
         "figure",
         mergeAttributes(this.options.HTMLAttributes, { "data-video": "" }),
         [
-          "div",
-          resizeAttrs,
+          "a",
+          wrapperLinkAttrs,
           [
             "video",
             mergeAttributes(HTMLAttributes, {
@@ -98,7 +100,7 @@ const VideoExtension = Node.create({
             }),
           ],
         ],
-        ["figcaption", 0],
+        ["figcaption", captionAttrs, 0],
       ],
     ];
   },
