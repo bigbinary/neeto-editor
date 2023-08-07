@@ -1,4 +1,4 @@
-import { Node } from "@tiptap/core";
+import { mergeAttributes, Node } from "@tiptap/core";
 
 export default Node.create({
   name: "figcaption",
@@ -11,5 +11,9 @@ export default Node.create({
 
   parseHTML() {
     return [{ tag: "figcaption" }];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return ["figcaption", mergeAttributes(HTMLAttributes), 0];
   },
 });
