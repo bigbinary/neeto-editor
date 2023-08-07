@@ -64,8 +64,11 @@ const LinkOption = ({ editor, tooltipContent, menuRef }) => {
 
     linkOptionRef.current.style.width = "auto";
     linkOptionRef.current.style.width = `${min(
-      menuRef.current?.offsetWidth * 0.4,
-      linkOptionRef.current?.scrollWidth
+      550,
+      min(
+        menuRef.current?.offsetWidth * 0.5,
+        linkOptionRef.current?.scrollWidth
+      )
     )}px`;
   };
 
