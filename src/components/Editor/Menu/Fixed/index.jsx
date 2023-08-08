@@ -139,7 +139,7 @@ const Fixed = ({
             tooltipContent={tooltips.fontSize || t("menu.fontSize")}
           />
         )}
-        <div className="vertical-divider" />
+        {isFontSizeActive && <div className="vertical-divider" />}
         <div className="neeto-editor-fixed-menu__wrapper__button-group">
           {fontStyleOptions.map(renderOptionButton)}
           <TableActions
@@ -147,7 +147,7 @@ const Fixed = ({
             tooltipContent={tooltips.table || t("menu.table")}
           />
         </div>
-        <div className="vertical-divider" />
+        {isNotEmpty(fontStyleOptions) && <div className="vertical-divider" />}
         {(isMenuExpanded || not(isMenuCollapsible)) && (
           <div
             className={classNames(
@@ -161,11 +161,15 @@ const Fixed = ({
             <div className="neeto-editor-fixed-menu__wrapper__button-group">
               {listStyleOptions.map(renderOptionButton)}
             </div>
-            <div className="vertical-divider" />
+            {isNotEmpty(listStyleOptions) && (
+              <div className="vertical-divider" />
+            )}
             <div className="neeto-editor-fixed-menu__wrapper__button-group">
               {blockStyleOptions.map(renderOptionButton)}
             </div>
-            <div className="vertical-divider" />
+            {isNotEmpty(blockStyleOptions) && (
+              <div className="vertical-divider" />
+            )}
             <div className="neeto-editor-fixed-menu__wrapper__button-group">
               {isLinkActive && (
                 <LinkOption
