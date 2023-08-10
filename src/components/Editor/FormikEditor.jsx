@@ -1,10 +1,11 @@
 import React, { forwardRef } from "react";
 
 import { FastField } from "formik";
+import { noop } from "neetocommons/pure";
 
 import Editor from ".";
 
-const FormikEditor = ({ name, ...otherProps }, ref) => (
+const FormikEditor = ({ name, onChange = noop, ...otherProps }, ref) => (
   <FastField name={name}>
     {({ field, form, meta }) => (
       <Editor
@@ -13,7 +14,10 @@ const FormikEditor = ({ name, ...otherProps }, ref) => (
         name={name}
         ref={ref}
         onBlur={() => form.setFieldTouched(name, true)}
-        onChange={value => form.setFieldValue(name, value)}
+        onChange={value => {
+          form.setFieldValue(name, value);
+          onChange?.(value);
+        }}
         {...otherProps}
       />
     )}
