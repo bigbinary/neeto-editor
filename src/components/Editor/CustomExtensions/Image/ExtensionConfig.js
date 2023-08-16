@@ -102,12 +102,13 @@ export default Node.create({
       ? ""
       : "pointer-events:none;";
 
+    const heightStyle = figheight === "auto" ? "auto" : `${figheight}px`;
     const wrapperLinkAttrs = {
       href: src,
       target: "_blank",
       rel: "noopener noreferrer",
       class: "neeto-editor__image",
-      style: `height:${figheight}px;width:${figwidth}px;${wrapperLinkPointerEventsStyle}`,
+      style: `height:${heightStyle};width:${figwidth}px;${wrapperLinkPointerEventsStyle}`,
     };
 
     const captionAttrs = { style: `width:${figwidth}px;` };
