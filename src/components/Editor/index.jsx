@@ -61,6 +61,7 @@ const Editor = (
     onChangeAttachments = noop,
     children,
     showAttachmentsToastr = true,
+    openImageInNewTab = true,
     ...otherProps
   },
   ref
@@ -98,6 +99,7 @@ const Editor = (
     setMediaUploader,
     setIsEmbedModalOpen,
     isVideoEmbedActive,
+    openImageInNewTab,
   });
   useEditorWarnings({ initialValue });
 

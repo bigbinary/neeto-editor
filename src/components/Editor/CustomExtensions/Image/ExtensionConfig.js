@@ -32,6 +32,7 @@ export default Node.create({
   addOptions() {
     return {
       HTMLAttributes: {},
+      openImageInNewTab: true,
     };
   },
 
@@ -91,17 +92,22 @@ export default Node.create({
 
   renderHTML({ node, HTMLAttributes }) {
     const { align, src, figheight, figwidth } = node.attrs;
+    const openImageInNewTab = this.options.openImageInNewTab;
 
     const wrapperDivAttrs = {
       class: `neeto-editor__image-wrapper neeto-editor__image--${align}`,
     };
+
+    const wrapperLinkPointerEventsStyle = openImageInNewTab
+      ? ""
+      : "pointer-events:none;";
 
     const wrapperLinkAttrs = {
       href: src,
       target: "_blank",
       rel: "noopener noreferrer",
       class: "neeto-editor__image",
-      style: `height:${figheight}px;width:${figwidth}px;`,
+      style: `height:${figheight}px;width:${figwidth}px;${wrapperLinkPointerEventsStyle}`,
     };
 
     const captionAttrs = { style: `width:${figwidth}px;` };
