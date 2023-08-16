@@ -123,6 +123,7 @@ interface EditorProps {
   onChangeAttachments?: (attachments: attachment[]) => void;
   showAttachmentsToastr?: boolean;
   children?: ReactNode;
+  openImageInNewTab?: boolean;
   [otherProps: string]: any;
 }
 

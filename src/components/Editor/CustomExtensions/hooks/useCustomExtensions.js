@@ -45,6 +45,7 @@ const useCustomExtensions = ({
   isVideoEmbedActive,
   setMediaUploader,
   setIsEmbedModalOpen,
+  openImageInNewTab,
 }) => {
   let customExtensions = [
     CharacterCount,
@@ -59,7 +60,7 @@ const useCustomExtensions = ({
     Focus.configure({ mode: "shallowest" }),
     Highlight,
     VideoExtension,
-    ImageExtension,
+    ImageExtension.configure({ openImageInNewTab }),
     Link.configure({ autolink: false }),
     Placeholder.configure({ placeholder }),
     StarterKit.configure({ document: false, codeBlock: false, code: false }),
