@@ -77,7 +77,7 @@ const VideoExtension = Node.create({
     const wrapperLinkAttrs = {
       rel: "noopener noreferrer",
       class: "neeto-editor__image",
-      style: `height:${heightStyle};width:${vidwidth}px;`,
+      style: `height:${heightStyle};width:${vidwidth}px;display:inline-block;`,
     };
 
     const captionAttrs = { style: `width:${vidwidth}px;` };
