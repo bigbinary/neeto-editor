@@ -108,7 +108,7 @@ export default Node.create({
       target: "_blank",
       rel: "noopener noreferrer",
       class: "neeto-editor__image",
-      style: `height:${heightStyle};width:${figwidth}px;display:block;${wrapperLinkPointerEventsStyle}`,
+      style: `height:${heightStyle};width:${figwidth}px;display:inline-block;${wrapperLinkPointerEventsStyle}`,
     };
 
     const captionAttrs = { style: `width:${figwidth}px;` };
