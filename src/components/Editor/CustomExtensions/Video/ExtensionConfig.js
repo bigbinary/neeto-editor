@@ -72,7 +72,7 @@ const VideoExtension = Node.create({
     };
 
     const heightStyle =
-      vidheight === "fit-content" ? "fit-content" : `${vidheight}px;`;
+      vidheight === "fit-content" ? "fit-content" : `${vidheight}px`;
 
     const wrapperLinkAttrs = {
       rel: "noopener noreferrer",
