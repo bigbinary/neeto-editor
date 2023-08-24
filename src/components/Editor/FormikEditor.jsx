@@ -6,13 +6,20 @@ import { noop } from "neetocommons/pure";
 import Editor from ".";
 
 const FormikEditor = (
-  { name, onChange = noop, shouldUpdate, mentions, variables, ...otherProps },
+  {
+    name,
+    onChange = noop,
+    shouldFormikEditorUpdate,
+    mentions,
+    variables,
+    ...otherProps
+  },
   ref
 ) => (
   <FastField
     mentions={mentions}
     name={name}
-    shouldUpdate={shouldUpdate}
+    shouldUpdate={shouldFormikEditorUpdate}
     variables={variables}
   >
     {({ field, form, meta }) => (
