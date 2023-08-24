@@ -28,6 +28,30 @@ export const Template = args => <Editor {...args} />;
   <ArgsTable story="All Props" />
 </div>
 
+# **FormikEditor Props**
+
+#### **shouldUpdate**
+
+The `shouldUpdate` prop in the `neeto-editor`, specifically for FormikEditor, is used to determine whether the field should re-render when its props change. It takes a function as its value, and this function is called with two arguments:
+
+- `nextProps`: The next set of props that the field is going to receive.
+- `prevProps`: The previous set of props that the field had.
+
+The function you provide to `shouldUpdate` should return `true` if you want the field to re-render based on a comparison of the specific props you are interested in. For instance, you can use this prop to make the field re-render when the `variables` or `mentions` props change.
+
+**Example:**
+
+```javascript
+<Editor
+  // Other props...
+  shouldUpdate={(nextProps, prevProps) => {
+    // Compare specific props and return true if re-render is needed.
+    return nextProps.variables !== prevProps.variables || nextProps.mentions !== prevProps.mentions;
+  }}
+/>
+```
+
+
 #### **Note**
 
 > The empty value or initialValue should should always be `<p></p>`.
