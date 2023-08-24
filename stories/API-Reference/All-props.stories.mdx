@@ -50,7 +50,7 @@ The function you provide to `shouldFormikEditorUpdate` should return `true` if y
   }}
 />
 ```
-
+Please note that, as of now, the `shouldFormikEditorUpdate` prop specifically considers changes in the `mentions` and `variables` props for determining whether the field should re-render. Other props will not be available for comparison through this prop.
 
 #### **Note**
 
