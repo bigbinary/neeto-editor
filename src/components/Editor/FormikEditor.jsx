@@ -9,9 +9,9 @@ const FormikEditor = (
   {
     name,
     onChange = noop,
-    shouldFormikEditorUpdate,
-    mentions,
-    variables,
+    shouldUpdate,
+    mentions = [],
+    variables = [],
     ...otherProps
   },
   ref
@@ -19,15 +19,17 @@ const FormikEditor = (
   <FastField
     mentions={mentions}
     name={name}
-    shouldUpdate={shouldFormikEditorUpdate}
+    shouldUpdate={shouldUpdate}
     variables={variables}
   >
     {({ field, form, meta }) => (
       <Editor
         error={meta.touched ? meta.error : ""}
         initialValue={field.value}
+        mentions={mentions}
         name={name}
         ref={ref}
+        variables={variables}
         onBlur={() => form.setFieldTouched(name, true)}
         onChange={value => {
           form.setFieldValue(name, value);

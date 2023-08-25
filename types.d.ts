@@ -124,12 +124,12 @@ interface EditorProps {
   showAttachmentsToastr?: boolean;
   children?: ReactNode;
   openImageInNewTab?: boolean;
-  shouldFormikEditorUpdate?: (nextProps: EditorProps, prevProps: EditorProps) => boolean;
   [otherProps: string]: any;
 }
 
 interface FormikEditorProps extends EditorProps {
   name: string;
+  shouldUpdate?: (nextProps: EditorProps, prevProps: EditorProps) => boolean;
 }
 interface AttachmentsProps {
   config?: attachmentsConfig;
