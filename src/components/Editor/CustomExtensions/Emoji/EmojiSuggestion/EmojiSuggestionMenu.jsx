@@ -57,14 +57,18 @@ class EmojiSuggestionMenu extends React.Component {
     this.props.query ? SearchIndex.search(this.props.query) : [];
 
   searchEmojiAndSetState = async () => {
-    const suggestions = await this.searchEmoji();
-    const frequentlyUsedEmojis = this.state.frequentlyUsedEmojis;
-    this.setState({
-      emojiSuggestions: filterEmojiSuggestions(
-        suggestions,
-        frequentlyUsedEmojis
-      ),
-    });
+    try {
+      const suggestions = await this.searchEmoji();
+      const frequentlyUsedEmojis = this.state.frequentlyUsedEmojis;
+      this.setState({
+        emojiSuggestions: filterEmojiSuggestions(
+          suggestions,
+          frequentlyUsedEmojis
+        ),
+      });
+    } catch {
+      this.setState({ emojiSuggestions: [] });
+    }
   };
 
   setEditorState = async () => {
