@@ -129,6 +129,7 @@ interface EditorProps {
 
 interface FormikEditorProps extends EditorProps {
   name: string;
+  shouldUpdate?: (nextProps: EditorProps, prevProps: EditorProps) => boolean;
 }
 interface AttachmentsProps {
   config?: attachmentsConfig;
