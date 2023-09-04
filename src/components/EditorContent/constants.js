@@ -1,3 +1,5 @@
+import { lowlight } from "lowlight";
+
 export const EDITOR_CONTENT_CLASSNAME = "neeto-editor-content";
 
 export const SANITIZE_OPTIONS = {
@@ -10,3 +12,5 @@ export const CODE_BLOCK_REGEX =
 
 export const VARIABLE_SPAN_REGEX =
   /<span data-variable="" [^>]*data-label="([^"]+)">{{([^}]+)}}<\/span>/g;
+
+export const LANGUAGE_LIST = lowlight.listLanguages();
