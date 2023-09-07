@@ -50,8 +50,9 @@ function updateColumns(node, colgroup, table, cellMinWidth) {
 
 export class TableView {
   constructor(node, cellMinWidth) {
+    const isDosAndDonts = node.attrs["data-dos-and-donts"];
     this.node = node;
-    this.cellMinWidth = cellMinWidth;
+    this.cellMinWidth = isDosAndDonts ? 200 : cellMinWidth;
     this.dom = document.createElement("div");
     this.dom.className = "neeto-editor-table";
     this.wrapper = document.createElement("div");
@@ -60,19 +61,23 @@ export class TableView {
       .appendChild(this.wrapper)
       .appendChild(document.createElement("table"));
     this.colgroup = this.table.appendChild(document.createElement("colgroup"));
-    this.wrapper.appendChild(
-      this.buildController({
-        className: "neeto-editor-table__add-column",
-        handleClick: this.insertColumn,
-      })
-    );
+    if (isDosAndDonts) {
+      this.table.setAttribute("data-dos-and-donts", "");
+    } else {
+      this.wrapper.appendChild(
+        this.buildController({
+          className: "neeto-editor-table__add-column",
+          handleClick: this.insertColumn,
+        })
+      );
 
-    this.dom.appendChild(
-      this.buildController({
-        className: "neeto-editor-table__add-row",
-        handleClick: () => this.table.insertRow(),
-      })
-    );
+      this.dom.appendChild(
+        this.buildController({
+          className: "neeto-editor-table__add-row",
+          handleClick: () => this.table.insertRow(),
+        })
+      );
+    }
     updateColumns(node, this.colgroup, this.table, cellMinWidth);
     this.contentDOM = this.table.appendChild(document.createElement("tbody"));
   }

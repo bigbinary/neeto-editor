@@ -75,7 +75,8 @@
     "insertRow": "Insert row",
     "mergeSplit": "Merge/Split cell",
     "toggleHeaderColumn": "Toggle header column",
-    "toggleHeaderRow": "Toggle header row"
+    "toggleHeaderRow": "Toggle header row",
+    "triggerDosAndDonts": "Trigger Dos and Donts Table"
   },
   "unsplash": {
     "errorMessage": "Something went wrong! Please try again later.",

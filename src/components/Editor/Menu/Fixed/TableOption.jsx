@@ -5,6 +5,8 @@ import { NeetoChangelog } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
 import { useTranslation } from "react-i18next";
 
+import { TABLE_HTML } from "./constants";
+
 const { Menu } = Dropdown;
 
 const TableOption = ({ editor, tooltipContent }) => {
@@ -13,6 +15,20 @@ const TableOption = ({ editor, tooltipContent }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [rows, setRows] = useState(3);
   const [columns, setColumns] = useState(3);
+
+  const triggerDosAndDonts = () => {
+    editor.isActive("table") && editor.commands.deleteTable();
+    editor
+      .chain()
+      .focus()
+      .insertContent(TABLE_HTML, {
+        parseOptions: {
+          preserveWhitespace: false,
+        },
+      })
+      .run(),
+      handleClose();
+  };
 
   const handleClose = () => {
     setRows(3);
@@ -70,6 +86,14 @@ const TableOption = ({ editor, tooltipContent }) => {
           label={t("common.create")}
           size="small"
           onClick={handleSubmit}
+        />
+      </Menu>
+      <Menu className="neeto-editor-table__item">
+        <Button
+          label={t("table.triggerDosAndDonts")}
+          size="small"
+          style="secondary"
+          onClick={triggerDosAndDonts}
         />
       </Menu>
     </Dropdown>

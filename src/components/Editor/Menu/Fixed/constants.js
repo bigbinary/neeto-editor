@@ -198,3 +198,16 @@ export const TABLE_ACTIONS = ({ editor }) => [
     command: () => editor.commands.deleteTable(),
   },
 ];
+
+export const TABLE_HTML = `
+  <table data-dos-and-donts="true" >
+    <tr>
+      <th>Do</th>
+      <th>Don't</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+`;

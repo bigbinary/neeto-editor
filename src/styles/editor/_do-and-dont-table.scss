@@ -1,0 +1,46 @@
+table[data-dos-and-donts] {
+  border: none;
+  background-color: rgb(var(--neeto-ui-gray-100));
+  border-collapse: collapse;
+
+  th {
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid rgb(var(--neeto-ui-gray-300));
+    background-color: rgb(var(--neeto-ui-white));
+
+    &:nth-child(2) {
+      p {
+        white-space: nowrap;
+        color: red;
+        vertical-align: top;
+      }
+    }
+
+    &:first-child {
+      p {
+        white-space: nowrap;
+        color: green;
+        vertical-align: top;
+      }
+    }
+  }
+
+  th,
+  td {
+    border: none;
+    border-right: 10px solid rgb(var(--neeto-ui-white));
+    background-color: transparent;
+    vertical-align: top;
+    padding: 10px;
+  }
+
+  th {
+    border-bottom: 8px solid rgb(var(--neeto-ui-white));
+  }
+
+  td {
+    background-color: rgb(var(--neeto-ui-gray-100));
+  }
+}
