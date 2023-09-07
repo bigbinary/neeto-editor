@@ -30,6 +30,8 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
 
   useEffect(() => {
     isNil(node.attrs?.language) && updateAttributes({ language: "plaintext" });
+    node.attrs?.language === "javascriptreact" &&
+      updateAttributes({ language: "javascript" });
   }, []);
 
   return (
