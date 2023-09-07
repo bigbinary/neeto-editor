@@ -6,7 +6,11 @@ import { findBy } from "neetocommons/pure";
 import { isEmpty } from "ramda";
 import { renderToString } from "react-dom/server";
 
-import { CODE_BLOCK_REGEX, VARIABLE_SPAN_REGEX } from "./constants";
+import {
+  CODE_BLOCK_REGEX,
+  LANGUAGE_LIST,
+  VARIABLE_SPAN_REGEX,
+} from "./constants";
 
 const transformCode = code =>
   code.replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&");
@@ -28,7 +32,7 @@ export const highlightCode = content => {
   let highlightedAST = {};
 
   return content.replace(CODE_BLOCK_REGEX, (_, language, code) => {
-    if (language) {
+    if (language && LANGUAGE_LIST.includes(language)) {
       highlightedAST = lowlight.highlight(language, transformCode(code));
     } else {
       highlightedAST = hljs.highlightAuto(transformCode(code))._emitter.root;
