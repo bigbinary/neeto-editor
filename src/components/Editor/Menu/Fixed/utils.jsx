@@ -1,5 +1,6 @@
 import React from "react";
 
+import { dynamicArray } from "neetocommons/pure";
 import { Button } from "neetoui";
 import { fromPairs } from "ramda";
 
@@ -62,4 +63,20 @@ export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
     active: option.active?.({ editor }),
     command: () => option.command?.({ editor, range: { from: to, to } }),
   }));
+};
+
+export const createTableHtml = (rows = 1, columns = 2) => {
+  const rowsHtml = dynamicArray(rows, () => {
+    const cellsHtml = dynamicArray(columns, () => `<td><p></p></td>`).join("");
+
+    return `<tr>${cellsHtml}</tr>`;
+  });
+
+  const tableHtml = `
+    <table data-dos-and-donts="true">
+      ${rowsHtml.join("")}
+    </table>
+  `;
+
+  return tableHtml;
 };

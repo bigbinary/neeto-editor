@@ -76,7 +76,9 @@
     "mergeSplit": "Merge/Split cell",
     "toggleHeaderColumn": "Toggle header column",
     "toggleHeaderRow": "Toggle header row",
-    "triggerDosAndDonts": "Trigger Dos and Donts Table"
+    "createDosAndDonts": "Create Dos and Dont's table",
+    "rows": "Rows:",
+    "columns": "Columns:"
   },
   "unsplash": {
     "errorMessage": "Something went wrong! Please try again later.",
