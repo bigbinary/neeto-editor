@@ -85,7 +85,6 @@ export default Node.create({
     return [
       {
         tag: "figure",
-        contentElement: "figcaption",
       },
     ];
   },
