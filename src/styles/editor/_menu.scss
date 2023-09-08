@@ -193,6 +193,15 @@
   input {
     max-width: 60px !important;
   }
+  
+  &--button{
+    margin-top: auto !important;
+  }
+
+  div[data-tippy-root] {
+    margin: 0 auto auto 0 !important;
+    transform: translate3d(32px, 45.3636px, 0px) !important;
+  }
 }
 
 .neeto-editor-table__options-menu {

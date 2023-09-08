@@ -85,6 +85,7 @@ const TableOption = ({ editor, tooltipContent }) => {
         />
         <ActionDropdown
           buttonSize="small"
+          className="neeto-editor-table__item--button"
           data-cy="neeto-editor-fixed-menu-table-option-create-button"
           label={t("common.create")}
           onClick={handleSubmit}
