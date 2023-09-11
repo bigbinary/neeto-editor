@@ -104,7 +104,6 @@ const LinkOption = ({ editor, tooltipContent, menuRef }) => {
       <Menu className="neeto-editor-link__item" onKeyDown={handleKeyDown}>
         <Input
           autoFocus
-          on
           data-cy="neeto-editor-fixed-menu-link-option-input"
           error={error}
           name="url"

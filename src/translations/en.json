@@ -6,7 +6,9 @@
     "unlink": "Unlink",
     "videoUrl": "Video URL:",
     "reset": "Reset",
-    "auto": "Auto"
+    "auto": "Auto",
+    "edit": "Edit",
+    "cancel": "Cancel"
   },
   "attachments": {
     "actionsBlocked": "You are not permitted to update or delete attachments",

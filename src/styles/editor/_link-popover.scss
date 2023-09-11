@@ -1,0 +1,55 @@
+.link-popover {
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
+  color: #333;
+  padding: 10px 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+
+  a {
+    float: left;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tooltip-option {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__edit-prompt-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  /* Tooltip arrow styles */
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 10%;
+    margin-left: -5px;
+    border-style: solid;
+  }
+
+  &:before {
+    border-width: 5px;
+    border-color: #fff transparent transparent transparent;
+  }
+
+  /* Tooltip arrow styles for shadow */
+  &:after {
+    border-width: 6px;
+    border-color: rgba(0, 0, 0, 0.2) transparent transparent transparent;
+  }
+}
