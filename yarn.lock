@@ -1727,25 +1727,33 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@bigbinary/babel-preset-neeto@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@bigbinary/babel-preset-neeto/-/babel-preset-neeto-1.0.4.tgz#efcb8804b2820ebf408498a45c7d469dbe66d2f1"
+  integrity sha512-B2Yx+v19E+YNE0Ndfh9HpC/4lj5kpbU/kfBJW4u8i2xfCD2cGQ6CNeNRC0VviTbaNGAS+IbDkrXjgWZv7Gj/eg==
+  dependencies:
+    "@bigbinary/neeto-commons-frontend" "^2.0.63"
+    ramda "^0.29.0"
+
 "@bigbinary/eslint-plugin-neeto@^1.0.21":
   version "1.0.21"
   resolved "https://registry.yarnpkg.com/@bigbinary/eslint-plugin-neeto/-/eslint-plugin-neeto-1.0.21.tgz#e0d77c7b4155ddd8223d62bee220aac29b5ba682"
   integrity sha512-MHMFOlziPpqvy971Oid9464LnmesKdddFolUZLuBy7smHmr3pmvBTOln8xlsunu4zbZx+gHjgtOThuSIo11z5A==
 
-"@bigbinary/neeto-commons-frontend@^2.0.40":
-  version "2.0.40"
-  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.40.tgz#f4a2864086e4b11aa9c71b7fee8aff9b1bb2e0d7"
-  integrity sha512-vyt7awSKQnngXPunaL4PjN7akahN+i/A7YrVwgVffrmB91MJhiz//wUGGbjnB2I91MUGRFShs+uD2OM2YFBlbw==
+"@bigbinary/neeto-commons-frontend@^2.0.128", "@bigbinary/neeto-commons-frontend@^2.0.63":
+  version "2.0.128"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.128.tgz#10e80349e8a276eb44d00af6476ff0b48b860601"
+  integrity sha512-+Ktm07BxHEsMWhnAQUMcxbN25T7RwbuB2C4jkZYgRQ8OnTbVcDfUdwJ+rQVGDklekqShYIzNBTgpNYbDXcJf3A==
 
 "@bigbinary/neeto-icons@1.11.0":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@bigbinary/neeto-icons/-/neeto-icons-1.11.0.tgz#d2c2b9ef1d3c82784ffba15fdf02af47aa37e3a7"
   integrity sha512-K+BVWQpNeCLJAQLL9j7h2dbOTlUCLWkcN/1OTqUgLJveyq0T90MBE2Tyc8iWAnkCIsV3Yed4uIDiG6vH/fz9gA==
 
-"@bigbinary/neeto-molecules@1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-molecules/-/neeto-molecules-1.0.7.tgz#06305c0400aaff96c8d12bf9607cd217290100db"
-  integrity sha512-vFXKSRD4wBaordNf3zk66SnS7+24HdVuwvJxrUBcNZ3gzCxHgX0jQVkA+k7VRKpIyLrTkFQy8zZ782MOZmgwuw==
+"@bigbinary/neeto-molecules@^1.0.94":
+  version "1.0.94"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-molecules/-/neeto-molecules-1.0.94.tgz#50c1ccb01bc16d753fb6226b033f005512e4d91a"
+  integrity sha512-cdc7BmJR5tZ/BiotbBPWdEkKld6Z4HyfYjxi7wFcJUPQcxTCXAPp5TwxKaL29pVU3CoFdUpscGh7fySuRJKlHA==
 
 "@bigbinary/neetoui@4.4.0":
   version "4.4.0"
@@ -12160,7 +12168,7 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-ramda@0.29.0:
+ramda@0.29.0, ramda@^0.29.0:
   version "0.29.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.29.0.tgz#fbbb67a740a754c8a4cbb41e2a6e0eb8507f55fb"
   integrity sha512-BBea6L67bYLtdbOqfp8f58fPMqEwx0doL+pAi8TZyp2YWz8R9G8z9x75CZI8W+ftqhFHCpEX2cRnUUXK130iKA==

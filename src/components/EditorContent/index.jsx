@@ -2,17 +2,11 @@ import React, { useEffect, useRef } from "react";
 
 import classnames from "classnames";
 import DOMPurify from "dompurify";
-import { copyToClipboard } from "neetocommons/utils";
-import { Copy } from "neetoicons";
-import { Button } from "neetoui";
+import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
 import ReactDOM from "react-dom";
 
 import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
 import { highlightCode, substituteVariables } from "./utils";
-
-const CopyButton = ({ onClick }) => (
-  <Button icon={Copy} size="small" style="text" onClick={onClick} />
-);
 
 const EditorContent = ({
   content = "",
@@ -33,10 +27,14 @@ const EditorContent = ({
     preTags.forEach(preTag => {
       const button = document.createElement("div");
       button.className = "neeto-editor-codeblock-options";
-      const handleButtonClick = () => {
-        copyToClipboard(preTag.textContent);
-      };
-      ReactDOM.render(<CopyButton onClick={handleButtonClick} />, button);
+      ReactDOM.render(
+        <CopyToClipboardButton
+          size="small"
+          style="text"
+          value={preTag.textContent}
+        />,
+        button
+      );
       preTag.appendChild(button);
     });
   };
