@@ -36,6 +36,8 @@
       "neetoteam": ["node_modules/@bigbinary/neeto-team-members-frontend"],
       "neetoeditor": ["node_modules/@bigbinary/neeto-editor"],
       "neetofilters": ["node_modules/@bigbinary/neeto-filters-frontend"],
+      "neetomolecules": ["node_modules/@bigbinary/neeto-molecules"],
+      "neetomolecules/*": ["node_modules/@bigbinary/neeto-molecules/*"],
       // You can add custom project specific paths below this comment
       "common": ["src/common"],
       "common/*": ["src/common/*"]

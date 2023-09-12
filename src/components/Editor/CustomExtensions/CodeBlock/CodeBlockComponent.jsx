@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
-import { copyToClipboard } from "neetocommons/utils";
-import { Copy, Down } from "neetoicons";
-import { Button, Dropdown, Input } from "neetoui";
+import { Down } from "neetoicons";
+import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
+import { Dropdown, Input } from "neetoui";
 import { isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
@@ -19,9 +19,6 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
   const filteredAndSortedLanguageList = SORTED_LANGUAGE_LIST.filter(language =>
     language.includes(keyword)
   );
-
-  const handleCopyClick = () =>
-    copyToClipboard(node?.content?.content[0]?.text);
 
   const handleLanguageSelect = language => {
     updateAttributes({ language });
@@ -68,11 +65,10 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
               ))}
             </Menu>
           </Dropdown>
-          <Button
-            icon={Copy}
+          <CopyToClipboardButton
             size="small"
             style="secondary"
-            onClick={handleCopyClick}
+            value={node?.content?.content[0]?.text}
           />
         </div>
         <NodeViewContent as="code" />
