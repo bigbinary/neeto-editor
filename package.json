@@ -33,7 +33,7 @@
     "@bigbinary/eslint-plugin-neeto": "^1.0.21",
     "@bigbinary/neeto-commons-frontend": "^2.0.40",
     "@bigbinary/neeto-icons": "1.11.0",
-    "@bigbinary/neeto-molecules": "1.0.7",
+    "@bigbinary/neeto-molecules": "^1.0.94",
     "@bigbinary/neetoui": "4.4.0",
     "@honeybadger-io/react": "2.0.1",
     "@rollup/plugin-alias": "3.1.9",
