@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import classnames from "classnames";
 import DOMPurify from "dompurify";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
 import { highlightCode, substituteVariables } from "./utils";
@@ -27,13 +27,13 @@ const EditorContent = ({
     preTags.forEach(preTag => {
       const button = document.createElement("div");
       button.className = "neeto-editor-codeblock-options";
-      ReactDOM.render(
+      const root = createRoot(button);
+      root.render(
         <CopyToClipboardButton
           size="small"
           style="text"
           value={preTag.textContent}
-        />,
-        button
+        />
       );
       preTag.appendChild(button);
     });
