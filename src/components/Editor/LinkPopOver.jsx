@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { Button, Input } from "neetoui";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
 import { URL_REGEXP } from "src/common/constants";
@@ -10,6 +11,9 @@ const LinkPopOver = ({ editor }) => {
   const [urlString, setUrlString] = useState("");
   const [error, setError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [isLinkActive, setIsLinkActive] = useState(editor?.isActive("link"));
+
+  const popOverRef = useRef(null);
 
   const { t } = useTranslation();
 
@@ -17,11 +21,25 @@ const LinkPopOver = ({ editor }) => {
   const linkAttributes = editor?.getAttributes("link");
 
   const updatePopoverPosition = () => {
-    if (view) {
+    if (view && popOverRef.current) {
       const newPos = view.coordsAtPos(view.state.selection.$to.pos);
+
+      const popoverRect = popOverRef.current?.getBoundingClientRect();
+
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      const maxLeft = screenWidth - popoverRect.width;
+      const maxTop = screenHeight - popoverRect.height;
+
+      const adjustedLeft = newPos?.left
+        ? Math.min(newPos.left - 50, maxLeft)
+        : 0;
+      const adjustedTop = newPos?.top ? Math.min(newPos.top - 22, maxTop) : 0;
+
       setPopoverPosition({
-        top: newPos?.top ? `${newPos.top - 22}px` : 0,
-        left: newPos?.left ? `${newPos.left - 50}px` : 0,
+        top: `${adjustedTop}px`,
+        left: `${adjustedLeft}px`,
       });
     }
   };
@@ -56,17 +74,29 @@ const LinkPopOver = ({ editor }) => {
     setError("");
   };
 
+  const removePopover = () => {
+    setIsEditing(false);
+    setIsLinkActive(false);
+  };
+
   useEffect(() => {
-    setUrlString(linkAttributes?.href || "");
-    window.addEventListener("scroll", updatePopoverPosition);
-    window.addEventListener("resize", updatePopoverPosition);
-    updatePopoverPosition();
+    window.addEventListener("resize", removePopover);
+    window.addEventListener("wheel", removePopover);
 
     return () => {
-      window.removeEventListener("scroll", updatePopoverPosition);
-      window.removeEventListener("resize", updatePopoverPosition);
+      window.removeEventListener("resize", removePopover);
+      window.removeEventListener("wheel", removePopover);
     };
-  }, [editor, view]);
+  }, []);
+
+  useEffect(() => {
+    const isActive = editor?.isActive("link");
+    setIsLinkActive(isActive);
+    if (isActive) {
+      updatePopoverPosition();
+      setUrlString(linkAttributes?.href || "");
+    }
+  }, [view?.state?.selection?.$from?.pos, isEditing]);
 
   const popoverStyle = {
     display: "block",
@@ -78,11 +108,12 @@ const LinkPopOver = ({ editor }) => {
   };
 
   const renderEditingMode = () => (
-    <div>
+    <>
       <Input
         autoFocus
-        error={error}
+        {...{ error }}
         label={t("menu.link")}
+        placeholder={t("placeholders.url")}
         style={{ width: "400px" }}
         value={urlString}
         onChange={({ target: { value } }) => setUrlString(value)}
@@ -101,7 +132,7 @@ const LinkPopOver = ({ editor }) => {
           }}
         />
       </div>
-    </div>
+    </>
   );
 
   const renderViewMode = () => (
@@ -123,10 +154,18 @@ const LinkPopOver = ({ editor }) => {
     </>
   );
 
-  return (
-    <div className="link-popover" style={popoverStyle}>
-      {isEditing ? renderEditingMode() : renderViewMode()}
-    </div>
+  return createPortal(
+    isLinkActive ? (
+      <div
+        className="link-popover"
+        id="link-popover"
+        ref={popOverRef}
+        style={popoverStyle}
+      >
+        {isEditing ? renderEditingMode() : renderViewMode()}
+      </div>
+    ) : null,
+    document.body
   );
 };
 

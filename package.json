@@ -31,7 +31,7 @@
     "@babel/preset-typescript": "^7.18.6",
     "@babel/runtime": "^7.19.0",
     "@bigbinary/babel-preset-neeto": "^1.0.4",
-    "@bigbinary/eslint-plugin-neeto": "^1.0.21",
+    "@bigbinary/eslint-plugin-neeto": "^1.0.54",
     "@bigbinary/neeto-commons-frontend": "^2.0.128",
     "@bigbinary/neeto-icons": "1.11.0",
     "@bigbinary/neeto-molecules": "^1.0.94",
