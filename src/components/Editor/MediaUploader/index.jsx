@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Modal, Tab } from "neetoui";
+import { not } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { isNilOrEmpty } from "utils/common";
@@ -53,8 +54,10 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
   return (
     <Modal
       closeButton={false}
-      isOpen={isOpen}
-      onClose={!isUploading && handleClose}
+      {...{ isOpen }}
+      closeOnEsc={not(isUploading)}
+      closeOnOutsideClick={not(isUploading)}
+      onClose={handleClose}
     >
       <div className="ne-media-uploader">
         {!isNilOrEmpty(tabs) && (
@@ -73,9 +76,8 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
         <div className="ne-media-uploader__content">
           {activeTab === "local" && (
             <LocalUploader
-              insertMediaToEditor={insertMediaToEditor}
+              {...{ insertMediaToEditor, setIsUploading }}
               isImage={mediaUploader.image}
-              setIsUploading={setIsUploading}
               onClose={handleClose}
             />
           )}
@@ -90,7 +92,7 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
           )}
           {activeTab === "unsplash" && (
             <UnsplashImagePicker
-              unsplashApiKey={unsplashApiKey}
+              {...{ unsplashApiKey }}
               onSubmit={handleSubmit}
             />
           )}
