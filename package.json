@@ -195,8 +195,5 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bigbinary/neeto-editor.git"
-  },
-  "dependencies": {
-    "react_ujs": "^3.1.1"
   }
 }
