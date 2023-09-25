@@ -47,7 +47,7 @@ export const VIMEO_URL_REGEXP =
   /((?:http|https):\/\/)?(www\.|player\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^/]*)\/videos\/|(?:manage\/)?videos?\/|)(\d+)(?:(?:\/|\?h=)(\w+))?(?:|\/\?)/;
 
 export const LOOM_URL_REGEXP =
-  /((?:http|https):\/\/)?(www\.)?loom\.com\/(share|embed)\/((?:\w|\d)*)\/?(?:\?(?:t=)?(\d+)?)?/;
+  /((?:http|https):\/\/)?(www\.)?loom\.com\/(share|embed)\/([a-f0-9]{32})(?:\?sid=([a-f0-9-]{36}))?(?:\?t=(\d+))?/;
 
 export const COMBINED_REGEX = new RegExp(
   pluck("source", [YOUTUBE_URL_REGEXP, VIMEO_URL_REGEXP, LOOM_URL_REGEXP]).join(
