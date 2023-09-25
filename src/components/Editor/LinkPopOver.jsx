@@ -120,12 +120,12 @@ const LinkPopOver = ({ editor }) => {
         onFocus={() => setError("")}
         onKeyDown={handleKeyDown}
       />
-      <div className="link-popover__edit-prompt-buttons">
+      <div className="ne-link-popover__edit-prompt-buttons">
         <Button label={t("menu.link")} size="small" onClick={handleLink} />
         <Button
           label={t("common.cancel")}
           size="small"
-          style="secondary"
+          style="text"
           onClick={() => {
             resetLink();
             setIsEditing(false);
@@ -141,24 +141,29 @@ const LinkPopOver = ({ editor }) => {
         {linkAttributes?.href}
       </a>
       {" - "}
-      <button
-        className="link-popover-option"
+      <Button
+        className="ne-link-popover__option-button"
+        label={t("common.edit")}
+        size="small"
+        style="link"
         onClick={() => setIsEditing(true)}
-      >
-        {t("common.edit")}
-      </button>
+      />
       <span>|</span>
-      <button className="link-popover-option" onClick={handleUnlink}>
-        {t("common.unlink")}
-      </button>
+      <Button
+        className="ne-link-popover__option-button"
+        label={t("common.unlink")}
+        size="small"
+        style="link"
+        onClick={handleUnlink}
+      />
     </>
   );
 
   return createPortal(
     isLinkActive ? (
       <div
-        className="link-popover"
-        id="link-popover"
+        className="ne-link-popover"
+        id="ne-link-popover"
         ref={popOverRef}
         style={popoverStyle}
       >

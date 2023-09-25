@@ -1,4 +1,4 @@
-.link-popover {
+.ne-link-popover {
   position: fixed;
   z-index: 999;
   background-color: #fff;
@@ -9,20 +9,8 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
 
-  a {
-    float: left;
-    max-width: 300px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .tooltip-option {
-    cursor: pointer;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  &__option-button {
+    margin: 0 4px;
   }
 
   &__edit-prompt-buttons {
@@ -31,13 +19,22 @@
     margin-top: 8px;
   }
 
+  a {
+    float: left;
+    max-width: 300px;
+    white-space: nowrap;
+    color: rgb(var(--neeto-ui-primary-800));
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   /* Tooltip arrow styles */
   &:before,
   &:after {
     content: "";
     position: absolute;
     bottom: 100%;
-    left: 10%;
+    left: 50%;
     margin-left: -5px;
     border-style: solid;
   }
