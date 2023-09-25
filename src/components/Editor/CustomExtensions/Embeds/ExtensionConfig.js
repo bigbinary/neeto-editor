@@ -11,10 +11,7 @@ export default Node.create({
   name: "external-video",
 
   addOptions() {
-    return {
-      inline: false,
-      HTMLAttributes: {},
-    };
+    return { inline: false, HTMLAttributes: {} };
   },
 
   inline() {
@@ -29,26 +26,18 @@ export default Node.create({
 
   addAttributes() {
     return {
-      src: {
-        default: null,
-      },
+      src: { default: null },
 
-      title: {
-        default: null,
-      },
+      title: { default: null },
 
-      frameborder: {
-        default: "0",
-      },
+      frameBorder: { default: "0" },
 
       allow: {
         default:
           "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture",
       },
 
-      allowfullscreen: {
-        default: "allowfullscreen",
-      },
+      allowfullscreen: { default: "allowfullscreen" },
 
       figheight: {
         default: 281,
@@ -68,11 +57,7 @@ export default Node.create({
   },
 
   parseHTML() {
-    return [
-      {
-        tag: "iframe[src]",
-      },
-    ];
+    return [{ tag: "iframe[src]" }];
   },
 
   renderHTML({ HTMLAttributes, node }) {
@@ -108,10 +93,7 @@ export default Node.create({
       setExternalVideo:
         options =>
         ({ commands }) =>
-          commands.insertContent({
-            type: this.name,
-            attrs: options,
-          }),
+          commands.insertContent({ type: this.name, attrs: options }),
     };
   },
 

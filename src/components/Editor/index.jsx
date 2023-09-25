@@ -15,6 +15,7 @@ import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
 import EmbedOption from "./CustomExtensions/Embeds";
 import useCustomExtensions from "./CustomExtensions/hooks/useCustomExtensions";
+import LinkPopOver from "./LinkPopOver";
 import MediaUploader from "./MediaUploader";
 import Menu from "./Menu";
 import {
@@ -216,6 +217,7 @@ const Editor = (
               onChange={onChangeAttachments}
             />
           )}
+          {editor?.isActive("link") && <LinkPopOver editor={editor} />}
         </CharacterCountWrapper>
       </ErrorWrapper>
     </div>

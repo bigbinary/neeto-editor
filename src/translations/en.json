@@ -6,7 +6,9 @@
     "unlink": "Unlink",
     "videoUrl": "Video URL:",
     "reset": "Reset",
-    "auto": "Auto"
+    "auto": "Auto",
+    "edit": "Edit",
+    "cancel": "Cancel"
   },
   "attachments": {
     "actionsBlocked": "You are not permitted to update or delete attachments",
@@ -63,7 +65,7 @@
     "pickColor": "Pick a color",
     "rows": "Enter rows",
     "searchUnsplash": "Search Unsplash",
-    "url": "Paste URL",
+    "url": "Enter URL",
     "writeSomething": "Write something …",
     "searchLanguages": "Search languages"
   },
