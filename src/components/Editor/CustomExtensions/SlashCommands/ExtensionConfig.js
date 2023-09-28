@@ -35,9 +35,7 @@ export default {
 
       addOptions() {
         return {
-          HTMLAttributes: {
-            class: "commands",
-          },
+          HTMLAttributes: { class: "commands" },
           suggestion: {
             char: "/",
             startOfLine: false,
@@ -91,7 +89,13 @@ export default {
                   highlightFocussedNode();
                 },
                 onUpdate(props) {
-                  reactRenderer.updateProps(props);
+                  if (
+                    props.editor.isActive("image") ||
+                    props.editor.isActive("codeBlock")
+                  ) {
+                    return;
+                  }
+                  reactRenderer?.updateProps(props);
 
                   popup[0].setProps({
                     getReferenceClientRect: props.clientRect,
