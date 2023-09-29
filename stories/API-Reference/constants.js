@@ -90,6 +90,11 @@ export const EDITOR_PROPS = [
     `"neeto-editor-content"`,
   ],
   [
+    "contentAttributes",
+    "Accepts an object. Can be used to add additional attributes to the editor content.",
+    `{ "data-gramm": false }`,
+  ],
+  [
     "uploadConfig",
     "Accepts an object. This object will be used to configure the image uploader.",
     `{
