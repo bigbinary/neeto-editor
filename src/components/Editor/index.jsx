@@ -35,6 +35,7 @@ const Editor = (
     autoFocus = false,
     className,
     contentClassName,
+    contentAttributes = {},
     menuClassName,
     attachmentsClassName,
     isMenuIndependent = false,
@@ -127,6 +128,7 @@ const Editor = (
       attributes: {
         class: editorClasses,
         style: getEditorStyles({ rows }),
+        ...contentAttributes,
       },
       clipboardTextParser,
     },
@@ -161,53 +163,51 @@ const Editor = (
         <Label
           className="neeto-ui-mb-2"
           data-cy={`${slugify(label)}-editor-label`}
-          required={required}
+          {...{ required }}
         >
           {label}
         </Label>
       )}
-      <ErrorWrapper error={error}>
+      <ErrorWrapper {...{ error }}>
         <CharacterCountWrapper
-          editor={editor}
+          {...{ editor }}
           isActive={isCharacterCountActive}
         >
           <Menu
-            addonCommands={addonCommands}
-            addons={addons}
             className={menuClassName}
-            defaults={defaults}
-            editor={editor}
-            editorSecrets={editorSecrets}
-            handleUploadAttachments={handleUploadAttachments}
+            {...{
+              addonCommands,
+              addons,
+              defaults,
+              editor,
+              editorSecrets,
+              handleUploadAttachments,
+              isMenuCollapsible,
+              mentions,
+              menuType,
+              tooltips,
+              variables,
+            }}
             isIndependant={isMenuIndependent}
-            isMenuCollapsible={isMenuCollapsible}
-            mentions={mentions}
-            menuType={menuType}
-            tooltips={tooltips}
-            variables={variables}
           />
           {children}
-          <EditorContent editor={editor} {...otherProps} />
+          <EditorContent {...{ editor, ...otherProps }} />
           {isMediaUploaderActive && (
             <MediaUploader
-              editor={editor}
-              mediaUploader={mediaUploader}
+              {...{ editor, mediaUploader }}
               unsplashApiKey={editorSecrets?.unsplash}
               onClose={() => setMediaUploader({ image: false, video: false })}
             />
           )}
           {isVideoEmbedActive && (
             <EmbedOption
-              editor={editor}
-              isEmbedModalOpen={isEmbedModalOpen}
-              setIsEmbedModalOpen={setIsEmbedModalOpen}
+              {...{ editor, isEmbedModalOpen, setIsEmbedModalOpen }}
             />
           )}
           {isAttachmentsActive && (
             <Attachments
-              attachments={attachments}
+              {...{ attachments, dragDropRef }}
               config={attachmentsConfig}
-              dragDropRef={dragDropRef}
               isIndependent={false}
               ref={addAttachmentsRef}
               showToastr={showAttachmentsToastr}
@@ -217,7 +217,7 @@ const Editor = (
               onChange={onChangeAttachments}
             />
           )}
-          {editor?.isActive("link") && <LinkPopOver editor={editor} />}
+          {editor?.isActive("link") && <LinkPopOver {...{ editor }} />}
         </CharacterCountWrapper>
       </ErrorWrapper>
     </div>
