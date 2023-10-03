@@ -63,6 +63,14 @@
     }
   }
 
+  // Div
+  div {
+    font-size: var(--neeto-ui-text-body1);
+    font-weight: var(--neeto-ui-font-normal);
+    line-height: var(--neeto-ui-leading-normal);
+    color: rgb(var(--neeto-ui-black));
+  }
+
   // Code
   code {
     padding: 0.2em 0.4em;
@@ -266,7 +274,7 @@
     align-items: center;
   }
 
-  figcaption {
+  figcaption div {
     text-align: center;
     font-size: 13px;
     font-weight: var(--neeto-ui-font-normal);
