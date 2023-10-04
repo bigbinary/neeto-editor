@@ -38,6 +38,14 @@ const Preview = ({
     downloadRef.current?.focus();
   };
 
+  const handleKeyDown = event => {
+    if (event.key === "ArrowRight") {
+      handleRightArrowClick();
+    } else if (event.key === "ArrowLeft") {
+      handleLeftArrowClick();
+    }
+  };
+
   const handleDownload = () => {
     saveAs(url, filename);
   };
@@ -74,14 +82,8 @@ const Preview = ({
       className="ne-attachments-preview"
       isOpen={!isEmpty(selectedAttachment)}
       size="large"
-      onClose={onClose}
-      onKeyDown={event => {
-        if (event.key === "ArrowRight") {
-          handleRightArrowClick();
-        } else if (event.key === "ArrowLeft") {
-          handleLeftArrowClick();
-        }
-      }}
+      {...{ onClose }}
+      onKeyDown={handleKeyDown}
     >
       <Modal.Header className="ne-attachments-preview__header">
         <Typography style="h2">{filename}</Typography>
