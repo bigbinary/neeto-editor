@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 
-import saveAs from "file-saver";
 import { findIndexBy } from "neetocommons/pure";
 import { Download, Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
 import { isEmpty } from "ramda";
 import { Trans, useTranslation } from "react-i18next";
+
+import { downloadFile } from "./utils";
 
 const Preview = ({
   onClose,
@@ -46,9 +47,7 @@ const Preview = ({
     }
   };
 
-  const handleDownload = () => {
-    saveAs(url, filename);
-  };
+  const handleDownload = () => downloadFile(url, filename);
 
   const setPreview = () => {
     switch (contentType.split("/")[0]) {
