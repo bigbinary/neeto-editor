@@ -46,8 +46,7 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
 
     const tr = state.tr.replaceWith(from, to, linkTextWithMark);
     dispatch(tr);
-    editor.view.focus();
-    setIsAddLinkActive(false);
+    removePopover();
   };
 
   const removePopover = () => {
@@ -58,6 +57,8 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
   const handleKeyDown = e => {
     if (e.key === "Enter") {
       handleAddLink();
+    } else if (e.key === "Escape") {
+      removePopover();
     }
   };
 
