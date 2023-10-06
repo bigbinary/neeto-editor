@@ -163,7 +163,7 @@ const LinkPopOver = ({ editor }) => {
     isLinkActive ? (
       <div
         className="ne-link-popover"
-        id="ne-link-popover"
+        id="ne-link-view-popover"
         ref={popOverRef}
         style={popoverStyle}
       >

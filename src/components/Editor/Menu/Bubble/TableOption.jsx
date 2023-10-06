@@ -5,7 +5,7 @@ import { Check, Close } from "neetoicons";
 import { Button, Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
 
-import { TABLE_ACTIONS } from "../Fixed/constants";
+import { tableActions } from "../Fixed/utils";
 
 const TableOption = ({ editor, handleClose }) => {
   const { t } = useTranslation();
@@ -65,8 +65,8 @@ const TableOption = ({ editor, handleClose }) => {
         </>
       ) : (
         <Menu className="neeto-editor-bubble-menu__table-options">
-          {TABLE_ACTIONS({ editor }).map(({ label, command }) => (
-            <Button key={label} label={label} style="text" onClick={command} />
+          {tableActions({ editor }).map(({ label, command }) => (
+            <Button key={label} {...{ label }} style="text" onClick={command} />
           ))}
         </Menu>
       )}

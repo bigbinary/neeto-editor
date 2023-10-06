@@ -3,7 +3,7 @@ import React from "react";
 import { Settings } from "neetoicons";
 import { Button, Dropdown } from "neetoui";
 
-import { TABLE_ACTIONS } from "./constants";
+import { tableActions } from "./utils";
 
 const { Menu } = Dropdown;
 
@@ -25,10 +25,10 @@ const TableActions = ({ editor, tooltipContent }) => {
         }}
       >
         <Menu className="neeto-editor-table__options-menu">
-          {TABLE_ACTIONS({ editor }).map(({ label, command }) => (
+          {tableActions({ editor }).map(({ label, command }) => (
             <Button
               key={label}
-              label={label}
+              {...{ label }}
               size="small"
               style="text"
               onClick={command}
