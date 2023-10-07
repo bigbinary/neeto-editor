@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 
-import saveAs from "file-saver";
 import { findIndexBy } from "neetocommons/pure";
 import { Download, Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
 import { isEmpty } from "ramda";
 import { Trans, useTranslation } from "react-i18next";
+
+import { downloadFile } from "./utils";
 
 const Preview = ({
   onClose,
@@ -38,9 +39,15 @@ const Preview = ({
     downloadRef.current?.focus();
   };
 
-  const handleDownload = () => {
-    saveAs(url, filename);
+  const handleKeyDown = event => {
+    if (event.key === "ArrowRight") {
+      handleRightArrowClick();
+    } else if (event.key === "ArrowLeft") {
+      handleLeftArrowClick();
+    }
   };
+
+  const handleDownload = () => downloadFile(url, filename);
 
   const setPreview = () => {
     switch (contentType.split("/")[0]) {
@@ -74,14 +81,8 @@ const Preview = ({
       className="ne-attachments-preview"
       isOpen={!isEmpty(selectedAttachment)}
       size="large"
-      onClose={onClose}
-      onKeyDown={event => {
-        if (event.key === "ArrowRight") {
-          handleRightArrowClick();
-        } else if (event.key === "ArrowLeft") {
-          handleLeftArrowClick();
-        }
-      }}
+      {...{ onClose }}
+      onKeyDown={handleKeyDown}
     >
       <Modal.Header className="ne-attachments-preview__header">
         <Typography style="h2">{filename}</Typography>

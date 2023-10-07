@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import saveAs from "file-saver";
 import { removeBy } from "neetocommons/pure";
 import { withEventTargetValue } from "neetocommons/utils";
 import { MenuVertical, Close } from "neetoicons";
@@ -20,6 +19,7 @@ import directUploadsApi from "apis/direct_uploads";
 
 import { ATTACHMENT_OPTIONS } from "./constants";
 import FileIcon from "./FileIcon";
+import { downloadFile } from "./utils";
 
 const { Menu, MenuItem } = Dropdown;
 
@@ -38,16 +38,13 @@ const Attachment = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [newFilename, setNewFilename] = useState("");
 
-  const handleDownload = () => {
-    saveAs(attachment.url, attachment.filename);
-  };
+  const handleDownload = () =>
+    downloadFile(attachment.url, attachment.filename);
 
   const handleRename = async () => {
     try {
       const { signedId } = attachment;
-      const payload = {
-        blob: { filename: newFilename },
-      };
+      const payload = { blob: { filename: newFilename } };
 
       const {
         blob: { filename },
@@ -169,7 +166,7 @@ const Attachment = ({
               <Dropdown
                 buttonSize="small"
                 buttonStyle="text"
-                disabled={disabled}
+                {...{ disabled }}
                 icon={MenuVertical}
               >
                 <Menu>

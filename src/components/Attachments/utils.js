@@ -2,6 +2,8 @@ import i18n from "i18next";
 import { Toastr } from "neetoui";
 import { mergeRight } from "ramda";
 
+import fileDownloadApi from "apis/file_download";
+
 import { DEFAULT_UPPY_CONFIG } from "./constants";
 
 const { t } = i18n;
@@ -55,4 +57,26 @@ export const handleDrop = ({ uppy, config, previousAttachmentsCount }) => {
   }
 
   return true;
+};
+
+export const downloadFile = async (fileUrl, filename) => {
+  try {
+    const response = await fileDownloadApi.getFile(fileUrl);
+    const blob = new Blob([response.data]);
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.setAttribute("download", filename);
+
+    a.style.display = "none";
+    document.body.appendChild(a);
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  } catch (error) {
+    Toastr.error(error);
+  }
 };
