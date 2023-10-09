@@ -34,9 +34,7 @@ const LocalUploader = ({
     ? DEFAULT_IMAGE_UPPY_CONFIG
     : DEFAULT_VIDEO_UPPY_CONFIG;
 
-  const { uppy, isUploading } = useUppyUploader({
-    uppyConfig,
-  });
+  const { uppy, isUploading } = useUppyUploader({ uppyConfig });
 
   setIsUploading(isUploading);
 
@@ -109,20 +107,18 @@ const LocalUploader = ({
   }, []);
 
   return !isEmpty(pendingUploads) || isUploading ? (
-    <Progress
-      pendingUploads={pendingUploads}
-      setPendingUploads={setPendingUploads}
-      uppy={uppy}
-    />
+    <Progress {...{ pendingUploads, setPendingUploads, uppy }} />
   ) : (
     <div
       className="ne-media-uploader__dnd"
+      data-cy="neeto-editor-media-uploader-dnd"
       ref={dropTargetRef}
       onClick={() => fileInputRef.current?.click()}
     >
       <input
         multiple
         className="ne-media-uploader__dnd-input"
+        data-cy="neeto-editor-media-uploader-input"
         ref={fileInputRef}
         type="file"
         accept={
