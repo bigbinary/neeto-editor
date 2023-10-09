@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-import DynamicVariables from "@bigbinary/neeto-molecules/DynamicVariables";
 import classNames from "classnames";
 import { isNotEmpty } from "neetocommons/pure";
 import { Left, Right } from "neetoicons";
+import DynamicVariables from "neetomolecules/DynamicVariables";
 import { Button } from "neetoui";
 import { isEmpty, not } from "ramda";
 import { useTranslation } from "react-i18next";
@@ -132,10 +132,14 @@ const Fixed = ({
         [className]: className,
       })}
     >
-      <div className="neeto-editor-fixed-menu__wrapper" ref={menuRef}>
+      <div
+        className="neeto-editor-fixed-menu__wrapper"
+        data-cy="neeto-editor-fixed-menu-wrapper"
+        ref={menuRef}
+      >
         {isFontSizeActive && (
           <FontSizeOption
-            editor={editor}
+            {...{ editor }}
             tooltipContent={tooltips.fontSize || t("menu.fontSize")}
           />
         )}
@@ -143,7 +147,7 @@ const Fixed = ({
         <div className="neeto-editor-fixed-menu__wrapper__button-group">
           {fontStyleOptions.map(renderOptionButton)}
           <TableActions
-            editor={editor}
+            {...{ editor }}
             tooltipContent={tooltips.table || t("menu.table")}
           />
         </div>
@@ -173,27 +177,26 @@ const Fixed = ({
             <div className="neeto-editor-fixed-menu__wrapper__button-group">
               {isLinkActive && (
                 <LinkOption
-                  editor={editor}
-                  menuRef={menuRef}
+                  {...{ editor, menuRef }}
                   tooltipContent={tooltips.link || t("menu.link")}
                 />
               )}
               {isTableActive && (
                 <TableOption
-                  editor={editor}
+                  {...{ editor }}
                   tooltipContent={tooltips.table || t("menu.table")}
                 />
               )}
               {miscOptions.map(renderOptionButton)}
               {isTextColorOptionActive && (
                 <TextColorOption
-                  editor={editor}
+                  {...{ editor }}
                   tooltipContent={tooltips.textColor || t("menu.textColor")}
                 />
               )}
               {isEmojiActive && (
                 <EmojiOption
-                  editor={editor}
+                  {...{ editor }}
                   isActive={isEmojiPickerActive}
                   setActive={setIsEmojiPickerActive}
                   tooltipContent={tooltips.emoji || t("menu.emoji")}
@@ -201,9 +204,7 @@ const Fixed = ({
               )}
               {isMediaUploaderActive && (
                 <MediaUploader
-                  editor={editor}
-                  mediaUploader={mediaUploader}
-                  unsplashApiKey={unsplashApiKey}
+                  {...{ editor, mediaUploader, unsplashApiKey }}
                   onClose={() =>
                     setMediaUploader({ image: false, video: false })
                   }
@@ -211,14 +212,11 @@ const Fixed = ({
               )}
               {isEmbedOptionActive && (
                 <EmbedOption
-                  editor={editor}
-                  isEmbedModalOpen={isEmbedModalOpen}
-                  setIsEmbedModalOpen={setIsEmbedModalOpen}
+                  {...{ editor, isEmbedModalOpen, setIsEmbedModalOpen }}
                 />
               )}
               <Mentions
-                editor={editor}
-                mentions={mentions}
+                {...{ editor, mentions }}
                 tooltipContent={tooltips.mention || t("menu.mention")}
               />
               {addonCommandOptions.map(renderOptionButton)}
@@ -248,7 +246,7 @@ const Fixed = ({
       {!isEmpty(variables) && (
         <div className="neeto-editor-fixed-menu__variables">
           <DynamicVariables
-            variables={variables}
+            {...{ variables }}
             dropdownProps={{
               buttonSize: "small",
               buttonProps: {

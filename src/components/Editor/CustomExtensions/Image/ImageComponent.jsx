@@ -28,44 +28,42 @@ const ImageComponent = ({
     ? figureRef.current.querySelector("figcaption>div")?.textContent
     : alt;
 
+  const handleResizeStop = (_event, _direction, ref) => {
+    height = ref.offsetHeight;
+    width = ref.offsetWidth;
+    view.dispatch(
+      view.state.tr.setNodeMarkup(
+        getPos(),
+        undefined,
+        mergeRight(node.attrs, {
+          figheight: height,
+          figwidth: width,
+          height,
+          width,
+        })
+      )
+    );
+    editor.commands.focus();
+  };
+
   return (
     <NodeViewWrapper
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
+      data-cy="neeto-editor-image-wrapper"
     >
       <figure ref={figureRef}>
-        <Menu
-          align={align}
-          deleteNode={deleteNode}
-          editor={editor}
-          updateAttributes={updateAttributes}
-        />
+        <Menu {...{ align, deleteNode, editor, updateAttributes }} />
         {src ? (
           <Resizable
             lockAspectRatio
             className="neeto-editor__image"
             size={{ height, width }}
+            onResizeStop={handleResizeStop}
             onResize={(_event, _direction, ref) =>
               setCaptionWidth(ref.offsetWidth)
             }
-            onResizeStop={(_event, _direction, ref) => {
-              height = ref.offsetHeight;
-              width = ref.offsetWidth;
-              view.dispatch(
-                view.state.tr.setNodeMarkup(
-                  getPos(),
-                  undefined,
-                  mergeRight(node.attrs, {
-                    figheight: height,
-                    figwidth: width,
-                    height,
-                    width,
-                  })
-                )
-              );
-              editor.commands.focus();
-            }}
           >
-            <img {...node.attrs} alt={caption} src={src} />
+            <img {...node.attrs} alt={caption} {...{ src }} />
           </Resizable>
         ) : (
           <div className="neeto-editor__image-placeholder">
