@@ -248,6 +248,8 @@
   figure {
     position: relative;
     display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .neeto-editor__image {
