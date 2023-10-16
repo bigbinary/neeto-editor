@@ -9,6 +9,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
 
+  &__url-input{
+    margin: 8px 0;
+  }
+
   &__option-button {
     margin: 0 4px;
   }
@@ -27,26 +31,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+}
 
-  /* Tooltip arrow styles */
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-style: solid;
-  }
-
-  &:before {
-    border-width: 5px;
-    border-color: #fff transparent transparent transparent;
-  }
-
-  /* Tooltip arrow styles for shadow */
-  &:after {
-    border-width: 6px;
-    border-color: rgba(0, 0, 0, 0.2) transparent transparent transparent;
-  }
+.ne-link-arrow {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-style: solid;
+  border-width: 6px;
+  border-color: rgba(0, 0, 0, 0.2) transparent transparent transparent;
 }

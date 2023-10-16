@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import { useOnClickOutside } from "neetocommons/react-utils";
 import { Button, Input } from "neetoui";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
@@ -15,12 +16,16 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
   const [linkUrl, setLinkUrl] = useState("");
   const [error, setError] = useState("");
   const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
+  const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
 
   const popOverRef = useRef(null);
 
   const { t } = useTranslation();
 
   const isLinkTextPresent = !isNilOrEmpty(linkText);
+  const isLinlUrlPresent = !isNilOrEmpty(linkUrl);
+  const isSubmitDisabled = !isLinkTextPresent || !isLinlUrlPresent;
+
   const popoverStyle = {
     display: "block",
     position: "fixed",
@@ -55,7 +60,9 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
   };
 
   const handleKeyDown = e => {
+    e.stopPropagation();
     if (e.key === "Enter") {
+      e.preventDefault();
       handleAddLink();
     } else if (e.key === "Escape") {
       removePopover();
@@ -67,6 +74,11 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
       const newPos = editor.view.coordsAtPos(
         editor.view.state.selection.$to.pos
       );
+
+      setArrowPosition({
+        top: `${newPos.top + 20}px`,
+        left: `${newPos.left - 10}px`,
+      });
 
       const popoverRect = popOverRef.current?.getBoundingClientRect();
 
@@ -87,6 +99,7 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
       });
     }
   };
+  useOnClickOutside(popOverRef, removePopover);
 
   useEffect(() => {
     if (editor && isAddLinkActive) {
@@ -103,45 +116,58 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
 
   return isAddLinkActive
     ? createPortal(
-        <div
-          className="ne-link-popover"
-          id="ne-link-add-popover"
-          ref={popOverRef}
-          style={popoverStyle}
-        >
-          <Input
-            autoFocus={!isLinkTextPresent}
-            label={t("common.text")}
-            placeholder={t("placeholders.enterText")}
-            style={{ width: "400px" }}
-            value={linkText}
-            onChange={({ target: { value } }) => setLinkText(value)}
+        <>
+          <div
+            className="ne-link-arrow"
+            style={{ top: arrowPosition.top, left: arrowPosition.left }}
           />
-          <Input
-            autoFocus={isLinkTextPresent}
-            label={t("menu.link")}
-            {...{ error }}
-            placeholder={t("placeholders.url")}
-            style={{ width: "400px" }}
-            value={linkUrl}
-            onChange={({ target: { value } }) => setLinkUrl(value)}
-            onFocus={() => setError("")}
-            onKeyDown={handleKeyDown}
-          />
-          <div className="ne-link-popover__edit-prompt-buttons">
-            <Button
-              label={t("menu.link")}
+          <div
+            className="ne-link-popover"
+            id="ne-link-add-popover"
+            ref={popOverRef}
+            style={popoverStyle}
+          >
+            <Input
+              required
+              autoFocus={!isLinkTextPresent}
+              label={t("common.text")}
+              placeholder={t("placeholders.enterText")}
               size="small"
-              onClick={handleAddLink}
+              style={{ width: "250px" }}
+              value={linkText}
+              onChange={({ target: { value } }) => setLinkText(value)}
+              onKeyDown={handleKeyDown}
             />
-            <Button
-              label={t("common.cancel")}
+            <Input
+              required
+              autoFocus={isLinkTextPresent}
+              className="ne-link-popover__url-input"
+              label={t("common.url")}
               size="small"
-              style="text"
-              onClick={removePopover}
+              {...{ error }}
+              placeholder={t("placeholders.url")}
+              style={{ width: "250px" }}
+              value={linkUrl}
+              onChange={({ target: { value } }) => setLinkUrl(value)}
+              onFocus={() => setError("")}
+              onKeyDown={handleKeyDown}
             />
+            <div className="ne-link-popover__edit-prompt-buttons">
+              <Button
+                disabled={isSubmitDisabled}
+                label={t("common.done")}
+                size="small"
+                onClick={handleAddLink}
+              />
+              <Button
+                label={t("common.cancel")}
+                size="small"
+                style="text"
+                onClick={removePopover}
+              />
+            </div>
           </div>
-        </div>,
+        </>,
         document.body
       )
     : null;

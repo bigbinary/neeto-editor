@@ -9,7 +9,9 @@
     "auto": "Auto",
     "edit": "Edit",
     "cancel": "Cancel",
-    "text": "Text"
+    "text": "Text:",
+    "done": "Done",
+    "url": "Url:"
   },
   "attachments": {
     "actionsBlocked": "You are not permitted to update or delete attachments",
