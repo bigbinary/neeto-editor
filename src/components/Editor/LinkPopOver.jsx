@@ -114,7 +114,7 @@ const LinkPopOver = ({ editor }) => {
         {...{ error }}
         label={t("menu.link")}
         placeholder={t("placeholders.url")}
-        style={{ width: "400px" }}
+        style={{ width: "250px" }}
         value={urlString}
         onChange={({ target: { value } }) => setUrlString(value)}
         onFocus={() => setError("")}
