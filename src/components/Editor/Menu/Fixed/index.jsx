@@ -176,12 +176,6 @@ const Fixed = ({
               <div className="vertical-divider" />
             )}
             <div className="neeto-editor-fixed-menu__wrapper__button-group">
-              {isLinkActive && (
-                <LinkOption
-                  {...{ editor, menuRef }}
-                  tooltipContent={tooltips.link || t("menu.link")}
-                />
-              )}
               {isTableActive && (
                 <TableOption
                   {...{ editor }}
