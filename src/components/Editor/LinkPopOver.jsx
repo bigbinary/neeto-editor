@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
+import { useOnClickOutside } from "neetocommons/react-utils";
 import { Button, Input } from "neetoui";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
@@ -80,6 +81,8 @@ const LinkPopOver = ({ editor }) => {
     setIsEditing(false);
     setIsLinkActive(false);
   };
+
+  useOnClickOutside(popOverRef, removePopover);
 
   useEffect(() => {
     window.addEventListener("resize", removePopover);
