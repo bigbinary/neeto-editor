@@ -32,7 +32,6 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
     position: "fixed",
     top: popoverPosition.top,
     left: popoverPosition.left,
-    zIndex: 999,
     transform: "translateY(52px) translateX(8px)",
   };
 
@@ -88,7 +87,7 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
       const screenHeight = window.innerHeight;
 
       const maxLeft = screenWidth - popoverRect.width;
-      const maxTop = screenHeight - popoverRect.height;
+      const maxTop = screenHeight - popoverRect.height - 50;
 
       const adjustedLeft = newPos?.left
         ? Math.min(newPos.left - 50, maxLeft)

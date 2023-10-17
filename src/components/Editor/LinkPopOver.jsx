@@ -105,7 +105,6 @@ const LinkPopOver = ({ editor }) => {
     position: "fixed",
     top: popoverPosition.top,
     left: popoverPosition.left,
-    zIndex: 999,
     transform: `translateY(52px) translateX(${isEditing ? "8px" : "3px"})`,
   };
 
