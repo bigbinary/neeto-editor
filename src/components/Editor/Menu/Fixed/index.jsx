@@ -14,7 +14,7 @@ import MediaUploader from "components/Editor/MediaUploader";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
-import LinkOption from "./LinkOption";
+import LinkAddPopOver from "./LinkAddPopOver";
 import TableActions from "./TableActions";
 import TableOption from "./TableOption";
 import TextColorOption from "./TextColorOption";
@@ -47,6 +47,7 @@ const Fixed = ({
   const [focusedButtonIndex, setFocusedButtonIndex] = useState(0);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
+  const [isAddLinkActive, setIsAddLinkActive] = useState(false);
 
   const menuRef = useRef(null);
 
@@ -101,11 +102,11 @@ const Fixed = ({
     setMediaUploader,
     handleUploadAttachments,
     setIsEmbedModalOpen,
+    setIsAddLinkActive,
   });
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
   const isFontSizeActive = isNotEmpty(fontSizeOptions);
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
-  const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
   const isTableActive = options.includes(EDITOR_OPTIONS.TABLE);
   const isTextColorOptionActive = options.includes(EDITOR_OPTIONS.TEXT_COLOR);
   const isEmbedOptionActive = options.includes(EDITOR_OPTIONS.VIDEO_EMBED);
@@ -175,12 +176,6 @@ const Fixed = ({
               <div className="vertical-divider" />
             )}
             <div className="neeto-editor-fixed-menu__wrapper__button-group">
-              {isLinkActive && (
-                <LinkOption
-                  {...{ editor, menuRef }}
-                  tooltipContent={tooltips.link || t("menu.link")}
-                />
-              )}
               {isTableActive && (
                 <TableOption
                   {...{ editor }}
@@ -259,6 +254,9 @@ const Fixed = ({
             onVariableClick={handleVariableClick}
           />
         </div>
+      )}
+      {isAddLinkActive && (
+        <LinkAddPopOver {...{ editor, isAddLinkActive, setIsAddLinkActive }} />
       )}
     </div>
   );

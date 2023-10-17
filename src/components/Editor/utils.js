@@ -2,6 +2,8 @@ import { isNotEmpty } from "neetocommons/pure";
 import { Slice, Fragment, Node } from "prosemirror-model";
 import { Selection } from "prosemirror-state";
 
+import { URL_REGEXP } from "src/common/constants";
+
 import {
   EDITOR_LINE_HEIGHT,
   EDITOR_BORDER_SIZE,
@@ -47,4 +49,16 @@ export const isEditorOverlaysActive = () => {
   );
 
   return active;
+};
+
+export const validateAndFormatUrl = url => {
+  if (!URL_REGEXP.test(url)) {
+    return null;
+  }
+
+  if (!/^(https?:\/\/)/i.test(url)) {
+    return `https://${url}`;
+  }
+
+  return url;
 };

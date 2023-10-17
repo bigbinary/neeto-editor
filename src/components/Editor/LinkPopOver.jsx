@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 
+import { useOnClickOutside } from "neetocommons/react-utils";
 import { Button, Input } from "neetoui";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
-import { URL_REGEXP } from "src/common/constants";
+import { validateAndFormatUrl } from "./utils";
 
 const LinkPopOver = ({ editor }) => {
   const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
@@ -48,12 +49,14 @@ const LinkPopOver = ({ editor }) => {
     editor.chain().focus().extendMarkRange("link").unsetLink().run();
 
   const handleLink = () => {
-    if (URL_REGEXP.test(urlString)) {
+    const formattedUrl = validateAndFormatUrl(urlString);
+
+    if (formattedUrl) {
       editor
         .chain()
         .focus()
         .extendMarkRange("link")
-        .setLink({ href: urlString })
+        .setLink({ href: formattedUrl })
         .run();
       setIsEditing(false);
     } else {
@@ -79,6 +82,8 @@ const LinkPopOver = ({ editor }) => {
     setIsLinkActive(false);
   };
 
+  useOnClickOutside(popOverRef, removePopover);
+
   useEffect(() => {
     window.addEventListener("resize", removePopover);
     window.addEventListener("wheel", removePopover);
@@ -103,7 +108,6 @@ const LinkPopOver = ({ editor }) => {
     position: "fixed",
     top: popoverPosition.top,
     left: popoverPosition.left,
-    zIndex: 999,
     transform: `translateY(52px) translateX(${isEditing ? "8px" : "3px"})`,
   };
 
@@ -114,7 +118,7 @@ const LinkPopOver = ({ editor }) => {
         {...{ error }}
         label={t("menu.link")}
         placeholder={t("placeholders.url")}
-        style={{ width: "400px" }}
+        style={{ width: "250px" }}
         value={urlString}
         onChange={({ target: { value } }) => setUrlString(value)}
         onFocus={() => setError("")}
@@ -163,7 +167,7 @@ const LinkPopOver = ({ editor }) => {
     isLinkActive ? (
       <div
         className="ne-link-popover"
-        id="ne-link-popover"
+        id="ne-link-view-popover"
         ref={popOverRef}
         style={popoverStyle}
       >
