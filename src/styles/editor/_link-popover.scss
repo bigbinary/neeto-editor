@@ -1,6 +1,6 @@
 .ne-link-popover {
   position: fixed;
-  z-index: 999;
+  z-index: 99999;
   background-color: #fff;
   color: #333;
   padding: 10px 16px;
@@ -30,10 +30,12 @@
     color: rgb(var(--neeto-ui-primary-800));
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-right: 8px;
   }
 }
 
 .ne-link-arrow {
+  z-index: 99999;
   content: "";
   position: absolute;
   top: 0;

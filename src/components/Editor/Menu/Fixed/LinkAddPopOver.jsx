@@ -5,6 +5,7 @@ import { Button, Input } from "neetoui";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
+import { validateAndFormatUrl } from "components/Editor/utils";
 import { URL_REGEXP } from "src/common/constants";
 import { isNilOrEmpty } from "utils/common";
 
@@ -38,13 +39,14 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
   const handleAddLink = () => {
     const { state, dispatch } = editor.view;
     const { from, to } = state.selection;
-    const attrs = { href: linkUrl };
+    const formattedUrl = validateAndFormatUrl(linkUrl);
 
-    if (!URL_REGEXP.test(linkUrl)) {
+    if (!URL_REGEXP.test(formattedUrl)) {
       setError(t("error.invalidUrl"));
 
       return;
     }
+    const attrs = { href: formattedUrl };
 
     const linkMark = state.schema.marks.link.create(attrs);
     const linkTextWithMark = state.schema.text(linkText, [linkMark]);
@@ -99,6 +101,7 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
       });
     }
   };
+
   useOnClickOutside(popOverRef, removePopover);
 
   useEffect(() => {

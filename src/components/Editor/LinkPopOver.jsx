@@ -4,7 +4,7 @@ import { Button, Input } from "neetoui";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
-import { URL_REGEXP } from "src/common/constants";
+import { validateAndFormatUrl } from "./utils";
 
 const LinkPopOver = ({ editor }) => {
   const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
@@ -48,12 +48,14 @@ const LinkPopOver = ({ editor }) => {
     editor.chain().focus().extendMarkRange("link").unsetLink().run();
 
   const handleLink = () => {
-    if (URL_REGEXP.test(urlString)) {
+    const formattedUrl = validateAndFormatUrl(urlString);
+
+    if (formattedUrl) {
       editor
         .chain()
         .focus()
         .extendMarkRange("link")
-        .setLink({ href: urlString })
+        .setLink({ href: formattedUrl })
         .run();
       setIsEditing(false);
     } else {
