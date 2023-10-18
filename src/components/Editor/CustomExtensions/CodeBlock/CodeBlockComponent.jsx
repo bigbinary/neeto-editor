@@ -11,7 +11,7 @@ import { SORTED_LANGUAGE_LIST } from "./constants";
 
 const { Menu, MenuItem } = Dropdown;
 
-const CodeBlockComponent = ({ node, updateAttributes }) => {
+const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   const [keyword, setKeyword] = useState("");
 
   const { t } = useTranslation();
@@ -23,6 +23,7 @@ const CodeBlockComponent = ({ node, updateAttributes }) => {
   const handleLanguageSelect = language => {
     updateAttributes({ language });
     setKeyword("");
+    editor?.commands?.focus();
   };
 
   useEffect(() => {
