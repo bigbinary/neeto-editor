@@ -76,12 +76,8 @@
   }
 
   &-preview {
-    width: 75vw !important;
-    height: 75vh !important;
-    max-width: 1152px !important;
-    max-height: 576px !important;
-    display: flex;
     gap: 8px;
+    display: flex;
     flex-direction: column;
 
     &__header {
@@ -94,7 +90,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
+      width: 100vw;
       flex-grow: 1;
       min-height: 10px;
       padding-bottom: 8px !important;
