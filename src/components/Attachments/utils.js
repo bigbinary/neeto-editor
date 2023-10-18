@@ -8,6 +8,29 @@ import { DEFAULT_UPPY_CONFIG } from "./constants";
 
 const { t } = i18n;
 
+const parseUserAgent = userAgent => {
+  const browsers = {
+    Chrome: /Chrome/i,
+    Firefox: /Firefox/i,
+    Safari: /Safari/i,
+    Edge: /Edg/i,
+    IE: /MSIE|Trident/i,
+  };
+
+  for (const browser in browsers) {
+    if (browsers[browser].test(userAgent)) {
+      const version = userAgent.match(new RegExp(`${browser}/[0-9.]+`, "i"));
+
+      return {
+        name: browser,
+        version: version ? version[0].split("/")[1] : "Unknown",
+      };
+    }
+  }
+
+  return { name: "Unknown", version: "Unknown" };
+};
+
 export const buildUppyConfig = restrictions =>
   mergeRight(DEFAULT_UPPY_CONFIG, { restrictions });
 
@@ -80,3 +103,14 @@ export const downloadFile = async (fileUrl, filename) => {
     Toastr.error(error);
   }
 };
+
+export const getBrowserDetails = () => {
+  const userAgent = navigator.userAgent;
+
+  return parseUserAgent(userAgent);
+};
+
+export const checkPreviewAvailability = contentType =>
+  contentType.startsWith("image/") ||
+  contentType.startsWith("video/") ||
+  (contentType === "application/pdf" && getBrowserDetails()?.name === "Chrome");

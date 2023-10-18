@@ -133,10 +133,7 @@ const Attachments = (
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
     if (dragDropRef?.current) {
-      uppy.use(DropTarget, {
-        target: dragDropRef.current,
-        onDrop,
-      });
+      uppy.use(DropTarget, { target: dragDropRef.current, onDrop });
     }
 
     return () => {
@@ -153,21 +150,21 @@ const Attachments = (
       <div className="ne-attachments__items">
         {attachments.map(attachment => (
           <Attachment
-            attachment={attachment}
-            attachments={attachments}
-            disabled={disabled}
+            {...{
+              attachment,
+              attachments,
+              disabled,
+              onChange,
+              setSelectedAttachment,
+              showToastr,
+            }}
             key={attachment.signedId}
-            setSelectedAttachment={setSelectedAttachment}
-            showToastr={showToastr}
-            onChange={onChange}
           />
         ))}
         {pendingAttachments.map(attachment => (
           <AttachmentProgress
-            attachment={attachment}
+            {...{ attachment, removeUploadingFile, uppy }}
             key={attachment.id}
-            removeUploadingFile={removeUploadingFile}
-            uppy={uppy}
           />
         ))}
       </div>
@@ -197,9 +194,7 @@ const Attachments = (
           }}
         />
         <Preview
-          attachments={attachments}
-          selectedAttachment={selectedAttachment}
-          setSelectedAttachment={setSelectedAttachment}
+          {...{ attachments, selectedAttachment, setSelectedAttachment }}
           onClose={() => setSelectedAttachment({})}
         />
       </div>
