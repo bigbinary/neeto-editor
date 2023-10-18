@@ -102,21 +102,9 @@ const useCustomExtensions = ({
   if (!isEmpty(mentions)) {
     const items = createMentionSuggestions(mentions);
 
-    customExtensions.push(
-      Mention.configure({
-        suggestion: {
-          items,
-        },
-      })
-    );
+    customExtensions.push(Mention.configure({ suggestion: { items } }));
 
-    customExtensions.push(
-      SpecialMentions.configure({
-        suggestion: {
-          items,
-        },
-      })
-    );
+    customExtensions.push(SpecialMentions.configure({ suggestion: { items } }));
   }
 
   if (!isEmpty(variables)) {

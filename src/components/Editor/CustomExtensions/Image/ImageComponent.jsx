@@ -28,9 +28,19 @@ const ImageComponent = ({
     ? figureRef.current.querySelector("figcaption>div")?.textContent
     : alt;
 
+  const editorElement = figureRef.current?.closest(".neeto-editor");
+  const maxImageWidth = editorElement?.offsetWidth - 50;
+
   const handleResizeStop = (_event, _direction, ref) => {
     height = ref.offsetHeight;
     width = ref.offsetWidth;
+
+    if (width > maxImageWidth) {
+      width = maxImageWidth;
+      const aspectRatio = ref.offsetHeight / ref.offsetWidth;
+      height = width * aspectRatio;
+    }
+    setCaptionWidth(width);
     view.dispatch(
       view.state.tr.setNodeMarkup(
         getPos(),
@@ -57,6 +67,7 @@ const ImageComponent = ({
           <Resizable
             lockAspectRatio
             className="neeto-editor__image"
+            minWidth="100px"
             size={{ height, width }}
             onResizeStop={handleResizeStop}
             onResize={(_event, _direction, ref) =>
