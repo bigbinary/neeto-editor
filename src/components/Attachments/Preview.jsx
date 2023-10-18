@@ -80,7 +80,7 @@ const Preview = ({
     <Modal
       className="ne-attachments-preview"
       isOpen={!isEmpty(selectedAttachment)}
-      size="large"
+      size="fullScreen"
       {...{ onClose }}
       onKeyDown={handleKeyDown}
     >
