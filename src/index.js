@@ -1,4 +1,7 @@
-import { isEditorOverlaysActive } from "components/Editor/utils";
+import {
+  isEditorOverlaysActive,
+  transformEditorContent,
+} from "components/Editor/utils";
 import { substituteVariables } from "components/EditorContent/utils";
 import { isEditorEmpty } from "utils/common";
 import { initializeI18n } from "utils/i18next";
@@ -22,4 +25,5 @@ export {
   FormikEditor,
   Attachments,
   isEditorOverlaysActive,
+  transformEditorContent,
 };

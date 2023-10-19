@@ -18,3 +18,10 @@ export const EDITOR_PADDING_SIZE = 12;
 export const EDITOR_BORDER_SIZE = 1;
 
 export const EDITOR_LINE_HEIGHT = 21;
+
+export const IMAGE_REGEX = new RegExp(/(<img[^>]*?>)(?![\s\S]*<\/figure>)/g);
+export const IMAGE_REPLACEMENT_PATTERN = "<figure>$1</figure>";
+export const EMPTY_DIV_REGEX = new RegExp(
+  /<div[^>]*?>\s*(?:<br[^>]*?>)\s*<\/div>/g
+);
+export const TRAILING_BR_REGEX = new RegExp(/\s*(?:<br[^>]*?>)+\s*$/);
