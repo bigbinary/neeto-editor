@@ -163,6 +163,8 @@ export function isEditorEmpty(htmlContent: string | null | undefined): boolean;
 
 export function isEditorOverlaysActive(): boolean;
 
+export function transformEditorContent(content: string): string;
+
 export function substituteVariables(
   highlightedContent: string,
   variables: (VariableCategory | Variable)[]
