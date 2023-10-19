@@ -31,6 +31,10 @@ export const EDITOR_METHODS_TABLE_ROWS = [
     "isEditorOverlaysActive",
     "Returns a boolean value indicating whether the editor overlays are active or not.",
   ],
+  [
+    "transformEditorContent",
+    "Modifies the editor's content by performing specific operations, such as replacing <img> tags with <figure> tags, removing empty <div> tags containing line breaks, and eliminating trailing line breaks."
+  ]
 ];
 
 export const EDITOR_PROPS = [

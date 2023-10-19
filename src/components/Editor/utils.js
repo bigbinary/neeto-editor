@@ -8,6 +8,10 @@ import {
   EDITOR_LINE_HEIGHT,
   EDITOR_BORDER_SIZE,
   EDITOR_PADDING_SIZE,
+  IMAGE_REGEX,
+  IMAGE_REPLACEMENT_PATTERN,
+  EMPTY_DIV_REGEX,
+  TRAILING_BR_REGEX,
 } from "./constants";
 
 export const getEditorStyles = ({ rows }) => {
@@ -62,3 +66,9 @@ export const validateAndFormatUrl = url => {
 
   return url;
 };
+
+export const transformEditorContent = content =>
+  content
+    ?.replaceAll(IMAGE_REGEX, IMAGE_REPLACEMENT_PATTERN)
+    ?.replaceAll(EMPTY_DIV_REGEX, "")
+    ?.replace(TRAILING_BR_REGEX, "");
