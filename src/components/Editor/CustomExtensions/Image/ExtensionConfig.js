@@ -30,10 +30,7 @@ export default Node.create({
   name: "image",
 
   addOptions() {
-    return {
-      HTMLAttributes: {},
-      openImageInNewTab: true,
-    };
+    return { HTMLAttributes: {}, openImageInNewTab: true };
   },
 
   group: "block",
@@ -82,11 +79,7 @@ export default Node.create({
   },
 
   parseHTML() {
-    return [
-      {
-        tag: "figure",
-      },
-    ];
+    return [{ tag: "figure" }];
   },
 
   renderHTML({ node, HTMLAttributes }) {
