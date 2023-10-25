@@ -81,47 +81,47 @@
       Courier, monospace;
   }
 
-pre {
-  position: relative;
-  background-color: #f7f6f3;
-  overflow-x: auto;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  border-radius: var(--neeto-ui-rounded-sm);
-  padding: 34px 16px 32px 32px;
+  pre {
+    position: relative;
+    background-color: #f7f6f3;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border-radius: var(--neeto-ui-rounded-sm);
+    padding: 34px 16px 32px 32px;
 
-  .neeto-editor-codeblock-options {
-    position: absolute;
-    display: none;
-    gap: 4px;
-    align-items: center;
-    top: 4px;
-    right: 4px;
-    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-    transform: scale(0);
-    transition-delay: 50ms;
-
-    &__menu {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    &__input {
-      margin: 4px 4px;
-    }
-  }
-
-  &:hover {
     .neeto-editor-codeblock-options {
-      display: flex;
-      opacity: 1;
-      transform: scale(1);
+      position: absolute;
+      display: none;
+      gap: 4px;
+      align-items: center;
+      top: 4px;
+      right: 4px;
+      transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+      transform: scale(0);
+      transition-delay: 50ms;
+
+      &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      &__input {
+        margin: 4px 4px;
+      }
+    }
+
+    &:hover {
+      .neeto-editor-codeblock-options {
+        display: flex;
+        opacity: 1;
+        transform: scale(1);
+      }
     }
   }
-}
 
   pre > code {
     background-color: transparent;
