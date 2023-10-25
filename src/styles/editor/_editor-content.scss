@@ -94,11 +94,14 @@
 
     .neeto-editor-codeblock-options {
       position: absolute;
-      display: flex;
+      display: none;
       gap: 4px;
       align-items: center;
       top: 4px;
       right: 4px;
+      transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+      transform: scale(0);
+      transition-delay: 50ms;
 
       &__menu {
         display: flex;
@@ -108,6 +111,14 @@
 
       &__input {
         margin: 4px 4px;
+      }
+    }
+
+    &:hover {
+      .neeto-editor-codeblock-options {
+        display: flex;
+        opacity: 1;
+        transform: scale(1);
       }
     }
   }

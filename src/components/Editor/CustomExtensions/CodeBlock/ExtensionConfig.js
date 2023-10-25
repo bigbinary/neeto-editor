@@ -6,6 +6,6 @@ import CodeBlockComponent from "./CodeBlockComponent";
 
 export default CodeBlockLowlight.extend({
   addNodeView() {
-    return new ReactNodeViewRenderer(CodeBlockComponent);
+    return ReactNodeViewRenderer(CodeBlockComponent);
   },
 }).configure({ lowlight });
