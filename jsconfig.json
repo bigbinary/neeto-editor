@@ -38,8 +38,8 @@
       "neetofilters": ["node_modules/@bigbinary/neeto-filters-frontend"],
       "neetomolecules": ["node_modules/@bigbinary/neeto-molecules"],
       "neetomolecules/*": ["node_modules/@bigbinary/neeto-molecules/*"],
-      "neetocist": ["../../node_modules/@bigbinary/neeto-cist"],
-      "neetocist/*": ["../../node_modules/@bigbinary/neeto-cist/*"],
+      "neetocist": ["node_modules/@bigbinary/neeto-cist"],
+      "neetocist/*": ["node_modules/@bigbinary/neeto-cist/*"],
       // You can add custom project specific paths below this comment
       "common": ["src/common"],
       "common/*": ["src/common/*"]
