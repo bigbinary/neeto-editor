@@ -34,7 +34,7 @@
     "@bigbinary/eslint-plugin-neeto": "^1.0.54",
     "@bigbinary/neeto-audit-frontend": "2.0.1",
     "@bigbinary/neeto-cist": "^1.0.2",
-    "@bigbinary/neeto-commons-frontend": "^2.0.128",
+    "@bigbinary/neeto-commons-frontend": "^2.1.27",
     "@bigbinary/neeto-icons": "1.11.0",
     "@bigbinary/neeto-molecules": "^1.0.94",
     "@bigbinary/neetoui": "4.4.0",

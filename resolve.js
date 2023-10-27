@@ -1,8 +1,5 @@
 const path = require("path");
 
 module.exports = {
-  alias: {
-    common: path.resolve(__dirname, "./src/common"),
-    neetocist: "@bigbinary/neeto-cist",
-  },
+  alias: { common: path.resolve(__dirname, "./src/common") },
 };
