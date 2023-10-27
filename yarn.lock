@@ -1752,6 +1752,11 @@
     ramda "0.29.0"
     simple-git "3.19.1"
 
+"@bigbinary/neeto-cist@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-cist/-/neeto-cist-1.0.2.tgz#555b53938a18d705764d2d31460317bd9c1a16ae"
+  integrity sha512-DF8gV10co1APpC4086uEHBwR9rtLqxCACEYRwgET7vdqDjp6WtuqpR0XEjgC621D22XDrRW4ADTZgxHWVNUvbA==
+
 "@bigbinary/neeto-commons-frontend@2.0.101":
   version "2.0.101"
   resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.101.tgz#5ff5a0c8b894d05a7925ffa4875199822360aae1"

@@ -1,4 +1,4 @@
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 
 export const ATTACHMENTS_TABLE_COLUMNS = ["Prop", "Description"];
 

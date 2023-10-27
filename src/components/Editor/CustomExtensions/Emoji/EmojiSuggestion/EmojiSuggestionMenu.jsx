@@ -2,7 +2,7 @@ import React from "react";
 
 import classnames from "classnames";
 import { init, SearchIndex } from "emoji-mart";
-import { isNotEmpty } from "neetocommons/pure";
+import { isNotEmpty } from "neetocist";
 import { Spinner } from "neetoui";
 import { isEmpty } from "ramda";
 

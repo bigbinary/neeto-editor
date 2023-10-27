@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 
-import { findIndexBy } from "neetocommons/pure";
+import { findIndexBy } from "neetocist";
 import { Download, Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
 import { isEmpty } from "ramda";

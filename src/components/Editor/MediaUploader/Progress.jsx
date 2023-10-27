@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { removeById } from "neetocommons/pure";
+import { removeById } from "neetocist";
 import { Close } from "neetoicons";
 import { Button, Typography } from "neetoui";
 import { useTranslation } from "react-i18next";
