@@ -27,6 +27,12 @@ module.exports = {
     plugins: ["@babel/plugin-proposal-class-properties"],
   }),
   webpackFinal: async (config, { configType }) => {
+    config.module.rules.push({
+      test: /\.js$/,
+      include: /node_modules\/@bigbinary\/neeto-commons-frontend\/initializers/,
+      use: { loader: "babel-loader", options: { plugins: ["preval"] } },
+    });
+
     config.resolve.alias = alias;
     return config;
   },
