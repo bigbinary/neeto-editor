@@ -4,6 +4,7 @@ import { findIndexBy } from "neetocommons/pure";
 import { Download, Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
 import { isEmpty } from "ramda";
+import DocViewer, { PDFRenderer, TXTRenderer } from "react-doc-viewer";
 import { Trans, useTranslation } from "react-i18next";
 
 import { checkPreviewAvailability, downloadFile } from "./utils";
@@ -59,7 +60,17 @@ const Preview = ({
         case "video":
           return <video controls src={url} />;
         case "application":
-          return <iframe src={url} />;
+        case "text":
+          return (
+            <DocViewer
+              className="h-full w-full"
+              documents={[{ uri: url }]}
+              pluginRenderers={[PDFRenderer, TXTRenderer]}
+              config={{
+                header: { disableHeader: true, disableFileName: true },
+              }}
+            />
+          );
         default:
           return null;
       }
