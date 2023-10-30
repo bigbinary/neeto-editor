@@ -1,4 +1,4 @@
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 
 function updateColumns(node, colgroup, table, cellMinWidth) {
   let totalWidth = 0;

@@ -33,7 +33,8 @@
     "@bigbinary/babel-preset-neeto": "^1.0.4",
     "@bigbinary/eslint-plugin-neeto": "^1.0.54",
     "@bigbinary/neeto-audit-frontend": "2.0.1",
-    "@bigbinary/neeto-commons-frontend": "^2.0.128",
+    "@bigbinary/neeto-cist": "^1.0.2",
+    "@bigbinary/neeto-commons-frontend": "^2.1.29",
     "@bigbinary/neeto-icons": "1.11.0",
     "@bigbinary/neeto-molecules": "^1.0.94",
     "@bigbinary/neetoui": "4.4.0",
@@ -154,6 +155,7 @@
   },
   "peerDependencies": {
     "@bigbinary/babel-preset-neeto": "latest",
+    "@bigbinary/neeto-cist": "latest",
     "@bigbinary/neeto-commons-frontend": "latest",
     "@bigbinary/neeto-icons": "latest",
     "@bigbinary/neeto-molecules": "latest",

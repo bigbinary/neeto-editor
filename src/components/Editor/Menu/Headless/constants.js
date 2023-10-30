@@ -1,5 +1,5 @@
 import i18n from "i18next";
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 import {
   TextBold,
   TextItalic,
@@ -24,6 +24,7 @@ import { assoc } from "ramda";
 
 const { t } = i18n;
 
+// eslint-disable-next-line @bigbinary/neeto/use-camel-case-or-pascal-case-for-function-names
 export const MENU_OPTIONS = ({
   editor,
   tooltips,

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import classNames from "classnames";
-import { isNotEmpty } from "neetocommons/pure";
+import { isNotEmpty } from "neetocist";
 import { Left, Right } from "neetoicons";
 import DynamicVariables from "neetomolecules/DynamicVariables";
 import { Button } from "neetoui";

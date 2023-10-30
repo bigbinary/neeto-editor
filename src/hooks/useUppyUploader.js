@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Uppy from "@uppy/core";
 import { useUppy } from "@uppy/react";
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 import { Toastr } from "neetoui";
 import { useTranslation } from "react-i18next";
 
@@ -32,10 +32,7 @@ const useUppyUploader = ({ uppyConfig, onSuccess = noop }) => {
   };
 
   const uppy = useUppy(() =>
-    new Uppy({
-      ...uppyConfig,
-      onBeforeFileAdded,
-    })
+    new Uppy({ ...uppyConfig, onBeforeFileAdded })
       .use(ActiveStorageUpload, {
         directUploadUrl: DIRECT_UPLOAD_ENDPOINT,
         ...UPPY_UPLOAD_CONFIG,

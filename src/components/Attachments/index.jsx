@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useImperativeHandle } from "react";
 
 import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
-import { removeById, noop } from "neetocommons/pure";
+import { removeById, noop } from "neetocist";
 import { Button, Toastr } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";

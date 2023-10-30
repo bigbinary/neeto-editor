@@ -1,4 +1,4 @@
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 
 import directUploadsApi from "apis/direct_uploads";
 
