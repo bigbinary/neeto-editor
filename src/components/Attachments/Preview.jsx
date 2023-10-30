@@ -4,9 +4,10 @@ import { findIndexBy } from "neetocist";
 import { Download, Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
 import { isEmpty } from "ramda";
+import DocViewer, { PDFRenderer, TXTRenderer } from "react-doc-viewer";
 import { Trans, useTranslation } from "react-i18next";
 
-import { downloadFile } from "./utils";
+import { checkPreviewAvailability, downloadFile } from "./utils";
 
 const Preview = ({
   onClose,
@@ -50,30 +51,46 @@ const Preview = ({
   const handleDownload = () => downloadFile(url, filename);
 
   const setPreview = () => {
-    switch (contentType.split("/")[0]) {
-      case "image":
-        return <img src={url} />;
-      case "video":
-        return <video controls src={url} />;
-      case "application":
-        return <iframe src={url} />;
-      default:
-        return (
-          <Typography>
-            <Trans
-              i18nKey="neetoEditor.attachments.noPreview"
-              components={{
-                span: (
-                  <span
-                    className="ne-attachments-preview__body-download"
-                    onClick={handleDownload}
-                  />
-                ),
+    const isPreviewAvailable = checkPreviewAvailability(contentType);
+
+    if (isPreviewAvailable) {
+      switch (contentType.split("/")[0]) {
+        case "image":
+          return <img src={url} />;
+        case "video":
+          return <video controls src={url} />;
+        case "application":
+        case "text":
+          return (
+            <DocViewer
+              className="h-full w-full"
+              documents={[{ uri: url }]}
+              pluginRenderers={[PDFRenderer, TXTRenderer]}
+              config={{
+                header: { disableHeader: true, disableFileName: true },
               }}
             />
-          </Typography>
-        );
+          );
+        default:
+          return null;
+      }
     }
+
+    return (
+      <Typography>
+        <Trans
+          i18nKey="neetoEditor.attachments.noPreview"
+          components={{
+            span: (
+              <span
+                className="ne-attachments-preview__body-download"
+                onClick={handleDownload}
+              />
+            ),
+          }}
+        />
+      </Typography>
+    );
   };
 
   return (
