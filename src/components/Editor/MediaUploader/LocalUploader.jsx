@@ -47,8 +47,8 @@ const LocalUploader = ({
           data: file,
         });
       } catch (error) {
-        if (error.message !== t("error.onBeforeFileAddedReturn")) {
-          Toastr.error(t("error.cannotAddFiles"));
+        if (error.message !== t("neetoEditor.error.onBeforeFileAddedReturn")) {
+          Toastr.error(t("neetoEditor.error.cannotAddFiles"));
         }
       }
     });
@@ -129,9 +129,11 @@ const LocalUploader = ({
         onChange={handleAddFile}
       />
       <ImageUpload className="ne-media-uploader__dnd-icon" size={24} />
-      <Typography style="body2">{t("localUploader.dropFilesHere")}</Typography>
+      <Typography style="body2">
+        {t("neetoEditor.localUploader.dropFilesHere")}
+      </Typography>
       <Typography style="body3">
-        {t("localUploader.maxFileSize", {
+        {t("neetoEditor.localUploader.maxFileSize", {
           entity: convertToFileSize(uppyConfig.restrictions.maxFileSize),
         })}
       </Typography>

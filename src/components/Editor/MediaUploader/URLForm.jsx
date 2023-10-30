@@ -21,7 +21,7 @@ const URLForm = ({
     event.preventDefault();
     URL_REGEXP.test(urlString)
       ? onSubmit(urlString)
-      : setError(t("error.invalidUrl"));
+      : setError(t("neetoEditor.error.invalidUrl"));
   };
 
   return (
@@ -33,9 +33,8 @@ const URLForm = ({
       <Input
         autoFocus
         data-cy="neeto-editor-media-upload-url-input"
-        error={error}
+        {...{ error, placeholder }}
         name="url"
-        placeholder={placeholder}
         value={urlString}
         onChange={({ target: { value } }) => setUrlString(value)}
         onFocus={() => setError("")}

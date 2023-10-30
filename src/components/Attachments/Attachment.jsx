@@ -129,9 +129,13 @@ const Attachment = ({
               <Input
                 autoFocus
                 data-cy="neeto-editor-preview-rename-input"
-                error={isEmpty(newFilename) ? t("attachments.nameEmpty") : ""}
                 size="small"
                 value={newFilename}
+                error={
+                  isEmpty(newFilename)
+                    ? t("neetoEditor.attachments.nameEmpty")
+                    : ""
+                }
                 onChange={withEventTargetValue(setNewFilename)}
                 onKeyDown={event =>
                   handleKeyDown({
@@ -161,7 +165,7 @@ const Attachment = ({
               </Tooltip>
             </div>
             <Tooltip
-              content={t("attachments.actionsBlocked")}
+              content={t("neetoEditor.attachments.actionsBlocked")}
               disabled={!disabled}
               position="top"
             >
@@ -190,11 +194,11 @@ const Attachment = ({
       <Alert
         isOpen={isDeleteAlertOpen}
         isSubmitting={isDeleting}
-        submitButtonLabel={t("menu.delete")}
-        title={t("attachments.deleteTitle")}
+        submitButtonLabel={t("neetoEditor.menu.delete")}
+        title={t("neetoEditor.attachments.deleteTitle")}
         message={
           <Trans
-            i18nKey="attachments.deleteConfirmation"
+            i18nKey="neetoEditor.attachments.deleteConfirmation"
             values={{ entity: newFilename }}
           />
         }

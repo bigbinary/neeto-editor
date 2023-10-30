@@ -60,7 +60,7 @@ const LinkPopOver = ({ editor }) => {
         .run();
       setIsEditing(false);
     } else {
-      setError(t("error.invalidUrl"));
+      setError(t("neetoEditor.error.invalidUrl"));
     }
   };
 
@@ -116,8 +116,8 @@ const LinkPopOver = ({ editor }) => {
       <Input
         autoFocus
         {...{ error }}
-        label={t("menu.link")}
-        placeholder={t("placeholders.url")}
+        label={t("neetoEditor.menu.link")}
+        placeholder={t("neetoEditor.placeholders.url")}
         style={{ width: "250px" }}
         value={urlString}
         onChange={({ target: { value } }) => setUrlString(value)}
@@ -125,9 +125,13 @@ const LinkPopOver = ({ editor }) => {
         onKeyDown={handleKeyDown}
       />
       <div className="ne-link-popover__edit-prompt-buttons">
-        <Button label={t("menu.link")} size="small" onClick={handleLink} />
         <Button
-          label={t("common.cancel")}
+          label={t("neetoEditor.menu.link")}
+          size="small"
+          onClick={handleLink}
+        />
+        <Button
+          label={t("neetoEditor.common.cancel")}
           size="small"
           style="text"
           onClick={() => {
@@ -147,7 +151,7 @@ const LinkPopOver = ({ editor }) => {
       {" - "}
       <Button
         className="ne-link-popover__option-button"
-        label={t("common.edit")}
+        label={t("neetoEditor.common.edit")}
         size="small"
         style="link"
         onClick={() => setIsEditing(true)}
@@ -155,7 +159,7 @@ const LinkPopOver = ({ editor }) => {
       <span>|</span>
       <Button
         className="ne-link-popover__option-button"
-        label={t("common.unlink")}
+        label={t("neetoEditor.common.unlink")}
         size="small"
         style="link"
         onClick={handleUnlink}

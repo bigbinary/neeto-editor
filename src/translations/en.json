@@ -1,96 +1,98 @@
 {
-  "common": {
-    "create": "Create",
-    "download": "Download",
-    "embed": "Embed",
-    "unlink": "Unlink",
-    "videoUrl": "Video URL:",
-    "reset": "Reset",
-    "auto": "Auto",
-    "edit": "Edit",
-    "cancel": "Cancel",
-    "text": "Text:",
-    "done": "Done",
-    "url": "Url:"
-  },
-  "attachments": {
-    "actionsBlocked": "You are not permitted to update or delete attachments",
-    "add": "Add attachment",
-    "deleteConfirmation": "You are permanently deleting the attachment <strong>{{entity}}</strong>. This can't be undone.",
-    "deleteTitle": "Delete attachment?",
-    "maxNumberOfFiles": "You can only attach {{entity}} files",
-    "nameEmpty": "Filename cannot be empty",
-    "noPreview": "There is no preview available, click to <span>download</span>.",
-    "oneAttachmentAllowed": "Only one attachment is allowed"
-  },
-  "error": {
-    "invalidUrl": "Please enter a valid URL",
-    "cannotAddFiles": "Cannot add files",
-    "onBeforeFileAddedReturn": "Cannot add the file because onBeforeFileAdded returned false.",
-    "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize}}.",
-    "imageSizeIsShouldBeLess": "Image size should be less than {{limit}} MB"
-  },
-  "menu": {
-    "attachments": "Attachments",
-    "blockQuote": "Block quote",
-    "bold": "Bold",
-    "bulletedList": "Bulleted list",
-    "code": "Code",
-    "codeBlock": "Code block",
-    "collapse": "Collapse",
-    "emoji": "Emoji",
-    "expand": "Expand",
-    "fontSize": "Font size",
-    "highlight": "Highlight",
-    "imageUpload": "Image upload",
-    "italic": "Italic",
-    "link": "Link",
-    "mention": "Mention",
-    "orderedList": "Ordered list",
-    "redo": "Redo",
-    "strike": "Strike",
-    "table": "Table",
-    "textColor": "Text color",
-    "underline": "Underline",
-    "undo": "Undo",
-    "dynamicVariables": "Dynamic variables",
-    "videoEmbed": "Video embed",
-    "videoUpload": "Video upload",
-    "alignLeft": "Align left",
-    "alignCenter": "Align center",
-    "alignRight": "Align right",
-    "delete": "Delete"
-  },
-  "placeholders": {
-    "columns": "Enter columns",
-    "linkInput": "Paste or type a link...",
-    "pasteLink": "Paste the link here...",
-    "pickColor": "Pick a color",
-    "rows": "Enter rows",
-    "searchUnsplash": "Search Unsplash",
-    "url": "Enter URL",
-    "enterText": "Enter text",
-    "writeSomething": "Write something …",
-    "searchLanguages": "Search languages"
-  },
-  "table": {
-    "delete": "Delete table",
-    "deleteColumn": "Delete column",
-    "deleteRow": "Delete row",
-    "insertColumn": "Insert column",
-    "insertRow": "Insert row",
-    "mergeSplit": "Merge/Split cell",
-    "toggleHeaderColumn": "Toggle header column",
-    "toggleHeaderRow": "Toggle header row"
-  },
-  "unsplash": {
-    "errorMessage": "Something went wrong! Please try again later.",
-    "noResults": "No results",
-    "end": "End of results"
-  },
-  "localUploader": {
-    "dropFilesHere": "Drop your file(s) here or Browse.",
-    "maxFileSize": "Max. File Size: {{entity}}",
-    "completed": "Completed"
+  "neetoEditor": {
+    "common": {
+      "create": "Create",
+      "download": "Download",
+      "embed": "Embed",
+      "unlink": "Unlink",
+      "videoUrl": "Video URL:",
+      "reset": "Reset",
+      "auto": "Auto",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "text": "Text:",
+      "done": "Done",
+      "url": "Url:"
+    },
+    "attachments": {
+      "actionsBlocked": "You are not permitted to update or delete attachments",
+      "add": "Add attachment",
+      "deleteConfirmation": "You are permanently deleting the attachment <strong>{{entity}}</strong>. This can't be undone.",
+      "deleteTitle": "Delete attachment?",
+      "maxNumberOfFiles": "You can only attach {{entity}} files",
+      "nameEmpty": "Filename cannot be empty",
+      "noPreview": "There is no preview available, click to <span>download</span>.",
+      "oneAttachmentAllowed": "Only one attachment is allowed"
+    },
+    "error": {
+      "invalidUrl": "Please enter a valid URL",
+      "cannotAddFiles": "Cannot add files",
+      "onBeforeFileAddedReturn": "Cannot add the file because onBeforeFileAdded returned false.",
+      "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize}}.",
+      "imageSizeIsShouldBeLess": "Image size should be less than {{limit}} MB"
+    },
+    "menu": {
+      "attachments": "Attachments",
+      "blockQuote": "Block quote",
+      "bold": "Bold",
+      "bulletedList": "Bulleted list",
+      "code": "Code",
+      "codeBlock": "Code block",
+      "collapse": "Collapse",
+      "emoji": "Emoji",
+      "expand": "Expand",
+      "fontSize": "Font size",
+      "highlight": "Highlight",
+      "imageUpload": "Image upload",
+      "italic": "Italic",
+      "link": "Link",
+      "mention": "Mention",
+      "orderedList": "Ordered list",
+      "redo": "Redo",
+      "strike": "Strike",
+      "table": "Table",
+      "textColor": "Text color",
+      "underline": "Underline",
+      "undo": "Undo",
+      "dynamicVariables": "Dynamic variables",
+      "videoEmbed": "Video embed",
+      "videoUpload": "Video upload",
+      "alignLeft": "Align left",
+      "alignCenter": "Align center",
+      "alignRight": "Align right",
+      "delete": "Delete"
+    },
+    "placeholders": {
+      "columns": "Enter columns",
+      "linkInput": "Paste or type a link...",
+      "pasteLink": "Paste the link here...",
+      "pickColor": "Pick a color",
+      "rows": "Enter rows",
+      "searchUnsplash": "Search Unsplash",
+      "url": "Enter URL",
+      "enterText": "Enter text",
+      "writeSomething": "Write something …",
+      "searchLanguages": "Search languages"
+    },
+    "table": {
+      "delete": "Delete table",
+      "deleteColumn": "Delete column",
+      "deleteRow": "Delete row",
+      "insertColumn": "Insert column",
+      "insertRow": "Insert row",
+      "mergeSplit": "Merge/Split cell",
+      "toggleHeaderColumn": "Toggle header column",
+      "toggleHeaderRow": "Toggle header row"
+    },
+    "unsplash": {
+      "errorMessage": "Something went wrong! Please try again later.",
+      "noResults": "No results",
+      "end": "End of results"
+    },
+    "localUploader": {
+      "dropFilesHere": "Drop your file(s) here or Browse.",
+      "maxFileSize": "Max. File Size: {{entity}}",
+      "completed": "Completed"
+    }
   }
 }

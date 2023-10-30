@@ -40,13 +40,13 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
             buttonSize="small"
             buttonStyle="secondary"
             icon={Down}
-            label={node.attrs?.language || t("common.auto")}
+            label={node.attrs?.language || t("neetoEditor.common.auto")}
             strategy="fixed"
           >
             <Input
               autoFocus
               className="neeto-editor-codeblock-options__input"
-              placeholder={t("placeholders.searchLanguages")}
+              placeholder={t("neetoEditor.placeholders.searchLanguages")}
               size="small"
               value={keyword}
               onChange={e => setKeyword(e.target.value)}
@@ -61,7 +61,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
                   key={language}
                   onClick={() => handleLanguageSelect(language)}
                 >
-                  {language || t("common.auto")}
+                  {language || t("neetoEditor.common.auto")}
                 </MenuItem.Button>
               ))}
             </Menu>
