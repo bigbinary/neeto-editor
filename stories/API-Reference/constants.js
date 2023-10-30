@@ -99,18 +99,6 @@ export const EDITOR_PROPS = [
     `{ "data-gramm": false }`,
   ],
   [
-    "uploadConfig",
-    "Accepts an object. This object will be used to configure the image uploader.",
-    `{
-      autoProceed: true,
-      allowMultipleUploads: false,
-      restrictions: {
-        maxFileSize: 1048576,
-        allowedFileTypes: [".jpg"]
-      },
-    }`,
-  ],
-  [
     "onChange",
     "Accepts a function. This function will be invoked whenever the editor content changes, with the new content as argument.",
     `(newContent) => {}`,

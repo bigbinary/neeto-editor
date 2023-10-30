@@ -100,35 +100,15 @@ Unsplash image picker. Pass the Unsplash access key to the editor via the
 
 ### **Upload configuration**
 
-neetoEditor provides an option edit the upload configuration. The configuration
-can be passed as a prop to the editor. The default configuration is:
+The default configuration for uploads is:
 
 ```json
 {
   autoProceed: true,
   allowMultipleUploads: false,
   restrictions: {
-    maxFileSize: 5242880, // 5MB
+    maxFileSize: globalProps.endUserUploadedFileSizeLimitInMb,
     allowedFileTypes: [".jpg", ".jpeg", ".png", ".gif"]],
   },
 }
 ```
-
-This can be overridden by passing the `uploadConfig` prop. Refer
-[Uppy official documentation](https://uppy.io/docs/uppy/#Options) for the list
-of available options.
-
-<Canvas>
-  <Editor
-    addons={["image-upload"]}
-    uploadConfig={{
-      autoProceed: true,
-      allowMultipleUploads: false,
-      restrictions: {
-        maxFileSize: 1 * 1024 * 1024, // 1 MB
-        allowedFileTypes: [".jpg", ".jpeg"],
-      },
-    }}
-    defaults={[]}
-  />
-</Canvas>

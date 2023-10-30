@@ -29,18 +29,6 @@ export const MENU_PROPS = [
     `"neeto-editor-content"`,
   ],
   [
-    "uploadConfig",
-    "Accepts an object. This object will be used to configure the image uploader.",
-    `{
-      autoProceed: true,
-      allowMultipleUploads: false,
-      restrictions: {
-        maxFileSize: 1048576,
-        allowedFileTypes: [".jpg"]
-      },
-    }`,
-  ],
-  [
     "variables",
     "Accepts an array of variable suggestions.",
     `[{ label: "Subdomain", key: "subdomain" }]`,

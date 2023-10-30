@@ -1,7 +1,7 @@
 import { t } from "i18next";
 import { LeftAlign, CenterAlign, RightAlign, Delete } from "neetoicons";
 
-export const convertToFileSize = size => {
+export const convertToFileSize = (size = 10 * 1024 * 1024) => {
   const units = ["B", "KB", "MB", "GB"];
   let i = 0;
   while (size >= 1024 && i < units.length) {
