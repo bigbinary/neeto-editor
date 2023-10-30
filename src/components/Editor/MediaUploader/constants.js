@@ -1,16 +1,16 @@
+import { globalProps } from "neetocommons/initializers";
+
 const MAX_VIDEO_SIZE = 100 * 1024 * 1024; // 100 MB
 
 export const ALLOWED_IMAGE_TYPES = [".jpg", ".jpeg", ".png", ".gif"];
 export const ALLOWED_VIDEO_TYPES = [".mp4", ".mov", ".avi", ".mkv"];
-
-export const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5 MB
 
 export const DEFAULT_IMAGE_UPPY_CONFIG = {
   autoProceed: false,
   allowMultipleUploads: true,
   restrictions: {
     maxNumberOfFiles: 5,
-    maxFileSize: MAX_IMAGE_SIZE,
+    maxFileSize: globalProps.endUserUploadedFileSizeLimitInMb * 1024 * 1024,
     allowedFileTypes: ALLOWED_IMAGE_TYPES,
   },
 };

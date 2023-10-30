@@ -1,6 +1,7 @@
 import { mergeAttributes, Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 import { t } from "i18next";
+import { globalProps } from "neetocommons/initializers";
 import { Toastr } from "neetoui";
 import { Plugin } from "prosemirror-state";
 import { isEmpty } from "ramda";
@@ -10,19 +11,18 @@ import DirectUpload from "utils/DirectUpload";
 
 import ImageComponent from "./ImageComponent";
 
-import { MAX_IMAGE_SIZE } from "../../MediaUploader/constants";
-
 const upload = async (file, url) => {
-  if (file.size <= MAX_IMAGE_SIZE) {
+  if (file.size <= globalProps.endUserUploadedFileSizeLimitInMb * 1024 * 1024) {
     const uploader = new DirectUpload({ file, url });
     const response = await uploader.create();
 
     return response.data?.blob_url || response.blob_url;
   }
 
-  const imageSizeInMB = MAX_IMAGE_SIZE / (1024 * 1024);
   Toastr.error(
-    t("neetoEditor.error.imageSizeIsShouldBeLess", { limit: imageSizeInMB })
+    t("neetoEditor.error.imageSizeIsShouldBeLess", {
+      limit: globalProps.endUserUploadedFileSizeLimitInMb,
+    })
   );
 
   return "";

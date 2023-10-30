@@ -1,14 +1,12 @@
-const MAX_FILE_SIZE = 100 * 1024 * 1024; // 100 MB
+import { globalProps } from "neetocommons/initializers";
 
 export const DEFAULT_UPPY_CONFIG = {
   autoProceed: false,
   allowMultipleUploads: false,
   restrictions: {
-    maxFileSize: MAX_FILE_SIZE,
+    maxFileSize: globalProps.endUserUploadedFileSizeLimitInMb * 1024 * 1024,
   },
 };
-
-export const UPPY_UPLOAD_CONFIG = { formData: true, fieldName: "blob" };
 
 export const ATTACHMENT_OPTIONS = {
   DOWNLOAD: "Download",
