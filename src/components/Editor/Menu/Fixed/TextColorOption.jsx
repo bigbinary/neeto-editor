@@ -53,7 +53,7 @@ const TextColorOption = ({ editor, tooltipContent }) => {
       <Dropdown
         buttonStyle={isOpen ? "secondary" : "text"}
         icon={Customize}
-        isOpen={isOpen}
+        {...{ isOpen }}
         buttonProps={{
           tabIndex: -1,
           tooltipProps: { content: tooltipContent, position: "bottom" },
@@ -73,14 +73,14 @@ const TextColorOption = ({ editor, tooltipContent }) => {
           <Input
             autoFocus
             className="neeto-editor-text-color-option__options-group__input"
-            placeholder={t("placeholders.pickColor")}
+            placeholder={t("neetoEditor.placeholders.pickColor")}
             size="small"
             value={color}
             onChange={withEventTargetValue(setColor)}
           />
           <Button
             className="neeto-editor-text-color-option__options-group__reset-button"
-            label={t("common.reset")}
+            label={t("neetoEditor.common.reset")}
             size="small"
             style="text"
             onClick={handleReset}

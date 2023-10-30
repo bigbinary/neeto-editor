@@ -35,7 +35,7 @@ const TableOption = ({ editor, tooltipContent }) => {
       closeOnSelect={false}
       data-cy="neeto-editor-fixed-menu-link-option"
       icon={NeetoChangelog}
-      isOpen={isOpen}
+      {...{ isOpen }}
       position="bottom"
       buttonProps={{
         tabIndex: -1,
@@ -50,7 +50,7 @@ const TableOption = ({ editor, tooltipContent }) => {
           autoFocus
           data-cy="neeto-editor-fixed-menu-table-option-input"
           min="1"
-          placeholder={t("placeholders.rows")}
+          placeholder={t("neetoEditor.placeholders.rows")}
           size="small"
           type="number"
           value={rows}
@@ -59,7 +59,7 @@ const TableOption = ({ editor, tooltipContent }) => {
         <Input
           data-cy="neeto-editor-fixed-menu-table-option-input"
           min="1"
-          placeholder={t("placeholders.rows")}
+          placeholder={t("neetoEditor.placeholders.rows")}
           size="small"
           type="number"
           value={columns}
@@ -67,7 +67,7 @@ const TableOption = ({ editor, tooltipContent }) => {
         />
         <Button
           data-cy="neeto-editor-fixed-menu-table-option-create-button"
-          label={t("common.create")}
+          label={t("neetoEditor.common.create")}
           size="small"
           onClick={handleSubmit}
         />

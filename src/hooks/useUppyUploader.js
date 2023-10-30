@@ -20,7 +20,7 @@ const useUppyUploader = ({ uppyConfig, onSuccess = noop }) => {
 
     if (file.size > maxFileSize) {
       Toastr.error(
-        t("error.fileIsTooLarge", {
+        t("neetoEditor.error.fileIsTooLarge", {
           maxFileSize: convertToFileSize(uppyConfig.restrictions.maxFileSize),
         })
       );

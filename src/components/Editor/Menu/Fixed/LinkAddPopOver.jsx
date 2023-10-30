@@ -41,7 +41,7 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
     const formattedUrl = validateAndFormatUrl(linkUrl);
 
     if (!URL_REGEXP.test(formattedUrl)) {
-      setError(t("error.invalidUrl"));
+      setError(t("neetoEditor.error.invalidUrl"));
 
       return;
     }
@@ -132,8 +132,8 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
             <Input
               required
               autoFocus={!isLinkTextPresent}
-              label={t("common.text")}
-              placeholder={t("placeholders.enterText")}
+              label={t("neetoEditor.common.text")}
+              placeholder={t("neetoEditor.placeholders.enterText")}
               size="small"
               style={{ width: "250px" }}
               value={linkText}
@@ -144,10 +144,10 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
               required
               autoFocus={isLinkTextPresent}
               className="ne-link-popover__url-input"
-              label={t("common.url")}
+              label={t("neetoEditor.common.url")}
               size="small"
               {...{ error }}
-              placeholder={t("placeholders.url")}
+              placeholder={t("neetoEditor.placeholders.url")}
               style={{ width: "250px" }}
               value={linkUrl}
               onChange={({ target: { value } }) => setLinkUrl(value)}
@@ -157,12 +157,12 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
             <div className="ne-link-popover__edit-prompt-buttons">
               <Button
                 disabled={isSubmitDisabled}
-                label={t("common.done")}
+                label={t("neetoEditor.common.done")}
                 size="small"
                 onClick={handleAddLink}
               />
               <Button
-                label={t("common.cancel")}
+                label={t("neetoEditor.common.cancel")}
                 size="small"
                 style="text"
                 onClick={removePopover}
