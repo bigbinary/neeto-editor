@@ -61,7 +61,7 @@ const Preview = ({
         return (
           <Typography>
             <Trans
-              i18nKey="attachments.noPreview"
+              i18nKey="neetoEditor.attachments.noPreview"
               components={{
                 span: (
                   <span
@@ -102,7 +102,7 @@ const Preview = ({
         <Button
           icon={Download}
           iconPosition="right"
-          label={t("common.download")}
+          label={t("neetoEditor.common.download")}
           ref={downloadRef}
           onClick={handleDownload}
         />

@@ -58,7 +58,7 @@ const Progress = ({ uppy, pendingUploads, setPendingUploads }) => {
             </div>
           ) : (
             <Typography style="body3">
-              {t("localUploader.completed")}
+              {t("neetoEditor.localUploader.completed")}
             </Typography>
           )}
         </div>

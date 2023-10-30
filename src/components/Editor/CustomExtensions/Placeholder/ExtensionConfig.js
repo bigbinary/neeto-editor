@@ -11,7 +11,7 @@ const Placeholder = Extension.create({
       excludeNodeTypes: ["variable", "codeBlock"],
       emptyEditorClass: "is-editor-empty",
       emptyNodeClass: "is-empty",
-      placeholder: t("placeholders.writeSomething"),
+      placeholder: t("neetoEditor.placeholders.writeSomething"),
       showOnlyWhenEditable: true,
       showOnlyCurrent: false,
       includeChildren: false,

@@ -19,7 +19,9 @@ export const selectFiles = ({ previousAttachmentsCount, config, files }) => {
 
     if (remainingAttachments <= 0) {
       Toastr.warning(
-        t("attachments.maxNumberOfFiles", { entity: maxNumberOfFiles })
+        t("neetoEditor.attachments.maxNumberOfFiles", {
+          entity: maxNumberOfFiles,
+        })
       );
 
       return [];
@@ -29,7 +31,9 @@ export const selectFiles = ({ previousAttachmentsCount, config, files }) => {
 
     if (selectedFiles.length < files.length) {
       Toastr.warning(
-        t("attachments.maxNumberOfFiles", { entity: maxNumberOfFiles })
+        t("neetoEditor.attachments.maxNumberOfFiles", {
+          entity: maxNumberOfFiles,
+        })
       );
     }
 
@@ -48,7 +52,9 @@ export const handleDrop = ({ uppy, config, previousAttachmentsCount }) => {
 
     if (totalAttachments > maxNumberOfFiles) {
       Toastr.warning(
-        t("attachments.maxNumberOfFiles", { entity: maxNumberOfFiles })
+        t("neetoEditor.attachments.maxNumberOfFiles", {
+          entity: maxNumberOfFiles,
+        })
       );
       uppy.reset();
 

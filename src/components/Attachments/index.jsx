@@ -53,8 +53,8 @@ const Attachments = (
           data: file,
         });
       } catch (error) {
-        if (error.message !== t("error.onBeforeFileAddedReturn")) {
-          Toastr.error(t("error.cannotAddFiles"));
+        if (error.message !== t("neetoEditor.error.onBeforeFileAddedReturn")) {
+          Toastr.error(t("neetoEditor.error.cannotAddFiles"));
         }
       }
     });
@@ -173,7 +173,7 @@ const Attachments = (
           <Button
             data-cy="neeto-editor-attachments-upload-button"
             disabled={isUploading}
-            label={t("attachments.add")}
+            label={t("neetoEditor.attachments.add")}
             loading={isUploading}
             size="medium"
             style="link"
@@ -189,7 +189,7 @@ const Attachments = (
           onClick={event => {
             if (!isEmpty(attachments) && config.maxNumberOfFiles === 1) {
               event.preventDefault();
-              Toastr.warning(t("attachments.oneAttachmentAllowed"));
+              Toastr.warning(t("neetoEditor.attachments.oneAttachmentAllowed"));
             }
           }}
         />

@@ -141,7 +141,7 @@ const Fixed = ({
         {isFontSizeActive && (
           <FontSizeOption
             {...{ editor }}
-            tooltipContent={tooltips.fontSize || t("menu.fontSize")}
+            tooltipContent={tooltips.fontSize || t("neetoEditor.menu.fontSize")}
           />
         )}
         {isFontSizeActive && <div className="vertical-divider" />}
@@ -149,7 +149,7 @@ const Fixed = ({
           {fontStyleOptions.map(renderOptionButton)}
           <TableActions
             {...{ editor }}
-            tooltipContent={tooltips.table || t("menu.table")}
+            tooltipContent={tooltips.table || t("neetoEditor.menu.table")}
           />
         </div>
         {isNotEmpty(fontStyleOptions) && <div className="vertical-divider" />}
@@ -179,14 +179,16 @@ const Fixed = ({
               {isTableActive && (
                 <TableOption
                   {...{ editor }}
-                  tooltipContent={tooltips.table || t("menu.table")}
+                  tooltipContent={tooltips.table || t("neetoEditor.menu.table")}
                 />
               )}
               {miscOptions.map(renderOptionButton)}
               {isTextColorOptionActive && (
                 <TextColorOption
                   {...{ editor }}
-                  tooltipContent={tooltips.textColor || t("menu.textColor")}
+                  tooltipContent={
+                    tooltips.textColor || t("neetoEditor.menu.textColor")
+                  }
                 />
               )}
               {isEmojiActive && (
@@ -194,7 +196,7 @@ const Fixed = ({
                   {...{ editor }}
                   isActive={isEmojiPickerActive}
                   setActive={setIsEmojiPickerActive}
-                  tooltipContent={tooltips.emoji || t("menu.emoji")}
+                  tooltipContent={tooltips.emoji || t("neetoEditor.menu.emoji")}
                 />
               )}
               {isMediaUploaderActive && (
@@ -212,7 +214,9 @@ const Fixed = ({
               )}
               <Mentions
                 {...{ editor, mentions }}
-                tooltipContent={tooltips.mention || t("menu.mention")}
+                tooltipContent={
+                  tooltips.mention || t("neetoEditor.menu.mention")
+                }
               />
               {addonCommandOptions.map(renderOptionButton)}
             </div>
@@ -231,7 +235,9 @@ const Fixed = ({
             icon={isMenuExpanded ? Left : Right}
             style="text"
             tooltipProps={{
-              content: isMenuExpanded ? t("menu.collapse") : t("menu.expand"),
+              content: isMenuExpanded
+                ? t("neetoEditor.menu.collapse")
+                : t("neetoEditor.menu.expand"),
               position: "bottom",
             }}
             onClick={() => setIsMenuExpanded(not)}
@@ -246,7 +252,7 @@ const Fixed = ({
               buttonSize: "small",
               buttonProps: {
                 tooltipProps: {
-                  content: t("menu.dynamicVariables"),
+                  content: t("neetoEditor.menu.dynamicVariables"),
                   position: "bottom",
                 },
               },

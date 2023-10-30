@@ -83,7 +83,7 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
           )}
           {activeTab === "link" && (
             <URLForm
-              placeholder={t("placeholders.pasteLink")}
+              placeholder={t("neetoEditor.placeholders.pasteLink")}
               buttonLabel={
                 mediaUploader.image ? "Upload image" : "Upload video"
               }

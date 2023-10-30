@@ -71,7 +71,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
         className="neeto-editor-unsplash-search"
         data-cy="neeto-editor-unsplash-image-picker-search-input"
         name="text"
-        placeholder={t("placeholders.searchUnsplash")}
+        placeholder={t("neetoEditor.placeholders.searchUnsplash")}
         value={query}
         onChange={({ target: { value } }) => {
           setQuery(value);
@@ -82,7 +82,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           className="neeto-editor-unsplash-gallery__text"
           data-cy="neeto-editor-unsplash-image-picker-error"
         >
-          {t("unsplash.errorMessage")}
+          {t("neetoEditor.unsplash.errorMessage")}
         </p>
       )}
       {!error && !loading && isNilOrEmpty(images) && (
@@ -90,7 +90,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           className="neeto-editor-unsplash-gallery__text"
           data-cy="neeto-editor-unsplash-image-picker-no-results-error"
         >
-          {t("unsplash.noResults")}
+          {t("neetoEditor.unsplash.noResults")}
         </p>
       )}
       {!error && (
@@ -99,8 +99,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
             pack
             position
             className="neeto-editor-unsplash-gallery"
-            hasMore={hasMore}
-            loadMore={loadMore}
+            {...{ hasMore, loadMore }}
             loader={Loader}
             ref={masonryRef}
             style={{ width: "100%" }}
@@ -146,7 +145,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           </MasonryInfiniteScroller>
           {!hasMore && (
             <p className="neeto-editor-unsplash-gallery__text">
-              {t("unsplash.end")}
+              {t("neetoEditor.unsplash.end")}
             </p>
           )}
         </div>

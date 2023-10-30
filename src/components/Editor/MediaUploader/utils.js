@@ -16,20 +16,17 @@ export const buildImageOptions = () => [
   {
     Icon: LeftAlign,
     alignPos: "left",
-    optionName: t("menu.alignLeft"),
+    optionName: t("neetoEditor.menu.alignLeft"),
   },
   {
     Icon: CenterAlign,
     alignPos: "center",
-    optionName: t("menu.alignCenter"),
+    optionName: t("neetoEditor.menu.alignCenter"),
   },
   {
     Icon: RightAlign,
     alignPos: "right",
-    optionName: t("menu.alignRight"),
+    optionName: t("neetoEditor.menu.alignRight"),
   },
-  {
-    Icon: Delete,
-    optionName: t("menu.delete"),
-  },
+  { Icon: Delete, optionName: t("neetoEditor.menu.delete") },
 ];

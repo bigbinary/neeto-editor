@@ -21,7 +21,9 @@ const upload = async (file, url) => {
   }
 
   const imageSizeInMB = MAX_IMAGE_SIZE / (1024 * 1024);
-  Toastr.error(t("error.imageSizeIsShouldBeLess", { limit: imageSizeInMB }));
+  Toastr.error(
+    t("neetoEditor.error.imageSizeIsShouldBeLess", { limit: imageSizeInMB })
+  );
 
   return "";
 };

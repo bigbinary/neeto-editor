@@ -69,8 +69,7 @@ const Options = ({
   if (isLinkOptionActive) {
     return (
       <LinkOption
-        editor={editor}
-        handleAnimateInvalidLink={handleAnimateInvalidLink}
+        {...{ editor, handleAnimateInvalidLink }}
         handleClose={() => setIsLinkOptionActive(false)}
       />
     );
@@ -79,7 +78,7 @@ const Options = ({
   if (isTableOptionActive) {
     return (
       <TableOption
-        editor={editor}
+        {...{ editor }}
         handleClose={() => setIsTableOptionActive(false)}
       />
     );
@@ -105,16 +104,16 @@ const Options = ({
       {blockStyleOptions.map(renderOptionButton)}
       {isTextColorOptionActive && (
         <TextColorOption
-          editor={editor}
-          tooltipContent={tooltips.textColor || t("menu.textColor")}
+          {...{ editor }}
+          tooltipContent={tooltips.textColor || t("neetoEditor.menu.textColor")}
         />
       )}
       {isEmojiActive && (
         <EmojiOption
-          editor={editor}
+          {...{ editor }}
           isActive={isEmojiPickerActive}
           setActive={setIsEmojiPickerActive}
-          tooltipContent={tooltips.emoji || t("menu.emoji")}
+          tooltipContent={tooltips.emoji || t("neetoEditor.menu.emoji")}
         />
       )}
       {listStyleOptions.map(renderOptionButton)}
@@ -125,7 +124,7 @@ const Options = ({
           active: editor.isActive("link"),
           optionName: "link",
           highlight: false,
-          tooltip: tooltips.link || t("menu.link"),
+          tooltip: tooltips.link || t("neetoEditor.menu.link"),
         })}
       {isTableActive &&
         renderOptionButton({
@@ -134,12 +133,11 @@ const Options = ({
           active: editor.isActive("table"),
           optionName: "table",
           highlight: false,
-          tooltip: tooltips.table || t("menu.table"),
+          tooltip: tooltips.table || t("neetoEditor.menu.table"),
         })}
       <Mentions
-        editor={editor}
-        mentions={mentions}
-        tooltipContent={tooltips.mention || t("menu.mention")}
+        {...{ editor, mentions }}
+        tooltipContent={tooltips.mention || t("neetoEditor.menu.mention")}
       />
       {children}
     </>
