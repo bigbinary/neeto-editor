@@ -80,3 +80,12 @@ export const downloadFile = async (fileUrl, filename) => {
     Toastr.error(error);
   }
 };
+
+export const checkPreviewAvailability = contentType =>
+  contentType.startsWith("video/") ||
+  contentType === "application/pdf" ||
+  contentType === "image/jpeg" ||
+  contentType === "image/gif" ||
+  contentType === "image/png" ||
+  contentType === "image/webp" ||
+  contentType === "text/plain";
