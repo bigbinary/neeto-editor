@@ -1776,15 +1776,25 @@
     ramda "0.29.0"
     simple-git "3.19.1"
 
+"@bigbinary/neeto-cist@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-cist/-/neeto-cist-1.0.2.tgz#555b53938a18d705764d2d31460317bd9c1a16ae"
+  integrity sha512-DF8gV10co1APpC4086uEHBwR9rtLqxCACEYRwgET7vdqDjp6WtuqpR0XEjgC621D22XDrRW4ADTZgxHWVNUvbA==
+
 "@bigbinary/neeto-commons-frontend@2.0.101":
   version "2.0.101"
   resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.101.tgz#5ff5a0c8b894d05a7925ffa4875199822360aae1"
   integrity sha512-vfoiZp25hKGFw+Ex8yPsFv7lOxDqJ8njfAdDmSGdIpOJH+tqdSRudZLizMPca288swoaBB64PzmqH8jmFNFPMg==
 
-"@bigbinary/neeto-commons-frontend@^2.0.128", "@bigbinary/neeto-commons-frontend@^2.0.63":
+"@bigbinary/neeto-commons-frontend@^2.0.63":
   version "2.0.128"
   resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.0.128.tgz#10e80349e8a276eb44d00af6476ff0b48b860601"
   integrity sha512-+Ktm07BxHEsMWhnAQUMcxbN25T7RwbuB2C4jkZYgRQ8OnTbVcDfUdwJ+rQVGDklekqShYIzNBTgpNYbDXcJf3A==
+
+"@bigbinary/neeto-commons-frontend@^2.1.29":
+  version "2.1.29"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-commons-frontend/-/neeto-commons-frontend-2.1.29.tgz#4ab5408381818ccfa670aaa2a6bb8cfa5041c2c3"
+  integrity sha512-AAgDrymCSPCnH7Swh/KYsRXpjFBmiOsytay1Rw2zmykhjhov6lVCLtri0Mqm8aXoN1ZJD1kMX+kyULMzAfSnBw==
 
 "@bigbinary/neeto-icons@1.11.0":
   version "1.11.0"

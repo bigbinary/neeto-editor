@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Tippy from "@tippyjs/react";
 import classnames from "classnames";
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 
 import Button from "./Button";
 
@@ -63,13 +63,13 @@ const Dropdown = ({
         mounted && <div className="ne-headless-dropdown__popup">{children}</div>
       }
       onClickOutside={onClose}
-      onClose={onClose}
+      {...{ onClose }}
       onHidden={() => setMounted(false)}
       onMount={() => setMounted(true)}
       {...otherProps}
     >
       <span>
-        <Button icon={icon} onClick={onClick} {...buttonProps} />
+        <Button {...{ icon, onClick, ...buttonProps }} />
       </span>
     </Tippy>
   );

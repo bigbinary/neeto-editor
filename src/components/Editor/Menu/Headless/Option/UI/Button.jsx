@@ -1,7 +1,7 @@
 import React from "react";
 
 import classnames from "classnames";
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 import { Tooltip } from "neetoui";
 
 const Button = ({
@@ -22,10 +22,8 @@ const Button = ({
     >
       <button
         className={classnames("ne-headless-btn", { [className]: className })}
-        disabled={disabled}
         type="button"
-        onClick={onClick}
-        {...otherProps}
+        {...{ disabled, onClick, ...otherProps }}
       >
         {icon && <Icon aria-hidden="true" key="2" size={18} />}
       </button>

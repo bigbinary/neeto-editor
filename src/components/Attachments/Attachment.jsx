@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { removeBy } from "neetocommons/pure";
+import { removeBy } from "neetocist";
 import { withEventTargetValue } from "neetocommons/utils";
 import { MenuVertical, Close } from "neetoicons";
 import {

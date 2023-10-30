@@ -1,5 +1,5 @@
 import i18n from "i18next";
-import { findBy, noop } from "neetocommons/pure";
+import { findBy, noop } from "neetocist";
 import {
   TextBold,
   TextItalic,

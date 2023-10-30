@@ -2,7 +2,7 @@ import React from "react";
 
 import hljs from "highlight.js/lib/common";
 import { lowlight } from "lowlight";
-import { findBy } from "neetocommons/pure";
+import { findBy } from "neetocist";
 import { isEmpty } from "ramda";
 import { renderToString } from "react-dom/server";
 

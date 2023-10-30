@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 import { assoc, isEmpty } from "ramda";
 
 import BubbleMenu from "./Bubble";
@@ -60,13 +60,15 @@ const Menu = props => {
 
   return (
     <MenuComponent
-      {...props}
-      handleUploadAttachments={handleUploadAttachments}
-      isEmojiPickerActive={isEmojiPickerActive}
-      mediaUploader={mediaUploader}
+      {...{
+        ...props,
+        handleUploadAttachments,
+        isEmojiPickerActive,
+        mediaUploader,
+        setIsEmojiPickerActive,
+        setMediaUploader,
+      }}
       options={menuOptions}
-      setIsEmojiPickerActive={setIsEmojiPickerActive}
-      setMediaUploader={setMediaUploader}
       unsplashApiKey={editorSecrets.unsplash}
     />
   );

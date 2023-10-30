@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 
 import { FastField } from "formik";
-import { noop } from "neetocommons/pure";
+import { noop } from "neetocist";
 
 import Editor from ".";
 
@@ -16,20 +16,12 @@ const FormikEditor = (
   },
   ref
 ) => (
-  <FastField
-    mentions={mentions}
-    name={name}
-    shouldUpdate={shouldUpdate}
-    variables={variables}
-  >
+  <FastField {...{ mentions, name, shouldUpdate, variables }}>
     {({ field, form, meta }) => (
       <Editor
         error={meta.touched ? meta.error : ""}
         initialValue={field.value}
-        mentions={mentions}
-        name={name}
-        ref={ref}
-        variables={variables}
+        {...{ mentions, name, ref, variables }}
         onBlur={() => form.setFieldTouched(name, true)}
         onChange={value => {
           form.setFieldValue(name, value);
