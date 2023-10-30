@@ -1,4 +1,4 @@
-import { isNotEmpty } from "neetocommons/pure";
+import { isNotEmpty } from "neetocist";
 import { Slice, Fragment, Node } from "prosemirror-model";
 import { Selection } from "prosemirror-state";
 

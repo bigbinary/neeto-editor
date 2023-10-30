@@ -2,7 +2,7 @@ import React, { useImperativeHandle, useState, useRef } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
-import { noop, slugify } from "neetocommons/pure";
+import { noop, slugify } from "neetocist";
 import { useFuncDebounce } from "neetocommons/react-utils";
 import { Label } from "neetoui";
 import { EditorView } from "prosemirror-view";

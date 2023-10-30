@@ -2,7 +2,7 @@ import React from "react";
 
 import classnames from "classnames";
 import { init, SearchIndex } from "emoji-mart";
-import { isNotEmpty } from "neetocommons/pure";
+import { isNotEmpty } from "neetocist";
 import { Spinner } from "neetoui";
 import { isEmpty } from "ramda";
 
@@ -53,7 +53,7 @@ class EmojiSuggestionMenu extends React.Component {
     }
   };
 
-  searchEmoji = async () =>
+  searchEmoji = () =>
     this.props.query ? SearchIndex.search(this.props.query) : [];
 
   searchEmojiAndSetState = async () => {
