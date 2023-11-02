@@ -26,10 +26,7 @@ const TextColor = props => {
   );
 };
 
-TextColor.defaultProps = {
-  color: "currentColor",
-  size: 24,
-};
+TextColor.defaultProps = { color: "currentColor", size: 24 };
 
 TextColor.propTypes = {
   color: PropTypes.string,

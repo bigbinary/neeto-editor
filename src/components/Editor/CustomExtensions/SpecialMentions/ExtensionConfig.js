@@ -76,10 +76,7 @@ const SpecialMentions = Mention.extend({
         this.options.HTMLAttributes,
         HTMLAttributes
       ),
-      renderLabel({
-        options: this.options,
-        node,
-      }),
+      renderLabel({ options: this.options, node }),
     ];
   },
 });

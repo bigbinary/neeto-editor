@@ -21,7 +21,7 @@ const Emoji = ({ editor, isActive, setActive, tooltipContent }) => (
     onClick={() => setActive(active => !active)}
     onClose={() => setActive(false)}
   >
-    <EmojiPicker editor={editor} setActive={setActive} />
+    <EmojiPicker {...{ editor, setActive }} />
   </Dropdown>
 );
 export default Emoji;

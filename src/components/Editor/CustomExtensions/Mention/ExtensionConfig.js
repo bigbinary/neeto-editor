@@ -64,17 +64,8 @@ const Mentions = Mention.extend({
           chain()
             .focus()
             .insertContent([
-              {
-                type: this.name,
-                attrs: {
-                  id,
-                  label,
-                },
-              },
-              {
-                type: "text",
-                text: " ",
-              },
+              { type: this.name, attrs: { id, label } },
+              { type: "text", text: " " },
             ])
             .run();
         },

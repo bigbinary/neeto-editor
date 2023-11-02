@@ -39,20 +39,14 @@ const EmojiSuggestion = Node.create({
             return {};
           }
 
-          return {
-            "data-label": attributes.label,
-          };
+          return { "data-label": attributes.label };
         },
       },
     };
   },
 
   parseHTML() {
-    return [
-      {
-        tag: "span[data-emoji]",
-      },
-    ];
+    return [{ tag: "span[data-emoji]" }];
   },
 
   renderHTML({ node, HTMLAttributes }) {
@@ -85,10 +79,7 @@ const EmojiSuggestion = Node.create({
                   label: emoji?.native || emoji?.skins[0]?.native || "",
                 },
               },
-              {
-                type: "text",
-                text: " ",
-              },
+              { type: "text", text: " " },
             ])
             .run();
         },
@@ -96,12 +87,7 @@ const EmojiSuggestion = Node.create({
   },
 
   addProseMirrorPlugins() {
-    return [
-      Suggestion({
-        editor: this.editor,
-        ...this.options.suggestion,
-      }),
-    ];
+    return [Suggestion({ editor: this.editor, ...this.options.suggestion })];
   },
 });
 

@@ -8,7 +8,7 @@ const File = ({ fileName }) => {
   return (
     <div className="ne-attachments__preview-wrapper__icon">
       <FileIcon
-        extension={extension}
+        {...{ extension }}
         labelColor="#4558f9"
         {...defaultStyles[extension]}
       />

@@ -57,10 +57,7 @@ class EmojiPickerMenu extends React.Component {
   }
 }
 
-EmojiPickerMenu.defaultProps = {
-  editor: {},
-  range: {},
-};
+EmojiPickerMenu.defaultProps = { editor: {}, range: {} };
 
 EmojiPickerMenu.propTypes = {
   editor: PropTypes.object.isRequired,
