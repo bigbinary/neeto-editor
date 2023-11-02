@@ -19,10 +19,7 @@ const Mentions = ({ editor, mentions, tooltipContent }) => {
       icon={Email}
       strategy="fixed"
       buttonProps={{
-        tooltipProps: {
-          content: tooltipContent,
-          position: "bottom",
-        },
+        tooltipProps: { content: tooltipContent, position: "bottom" },
         className: "neeto-editor-fixed-menu__item",
       }}
     >

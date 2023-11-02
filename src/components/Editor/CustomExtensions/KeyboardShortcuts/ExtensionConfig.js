@@ -18,8 +18,5 @@ const KeyboardShortcuts = ({ onSubmit, shortcuts }) =>
 
 export default {
   configure: ({ onSubmit, shortcuts }) =>
-    KeyboardShortcuts({
-      onSubmit,
-      shortcuts,
-    }),
+    KeyboardShortcuts({ onSubmit, shortcuts }),
 };

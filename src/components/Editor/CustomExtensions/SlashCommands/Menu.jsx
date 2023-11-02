@@ -105,8 +105,7 @@ class Menu extends React.Component {
 
           const nodeElement = (
             <MenuItem
-              index={index}
-              item={item}
+              {...{ index, item }}
               key={item.title}
               selectItem={() => isLeafNode && this.selectItem(index)}
               selectedIndex={isCurrentMenuActive ? selectedIndex : -1}
@@ -154,7 +153,7 @@ const MenuItem = forwardRef(
     return (
       <div
         data-cy={`neeto-editor-command-list-item-${index}`}
-        ref={ref}
+        {...{ ref }}
         className={classnames("neeto-editor-slash-commands__item", {
           active: index === selectedIndex,
         })}

@@ -18,9 +18,7 @@ const Option = ({
   if (optionName === EDITOR_OPTIONS.EMOJI) {
     return (
       <Emoji
-        editor={editor}
-        isActive={isActive}
-        setActive={setActive}
+        {...{ editor, isActive, setActive }}
         tooltipContent={tooltip || "Emoji"}
       />
     );
@@ -29,7 +27,7 @@ const Option = ({
   return (
     <Button
       className={isActive ? "ne-headless-btn--active" : ""}
-      disabled={disabled}
+      {...{ disabled }}
       icon={Icon}
       tooltipProps={{
         content: tooltip,

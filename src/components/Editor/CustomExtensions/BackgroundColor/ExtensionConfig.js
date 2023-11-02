@@ -5,9 +5,7 @@ export default Extension.create({
   name: "HighlightInternal",
 
   addOptions() {
-    return {
-      types: ["textStyle"],
-    };
+    return { types: ["textStyle"] };
   },
 
   addGlobalAttributes() {

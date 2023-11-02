@@ -53,14 +53,12 @@ const Headless = ({
   return (
     <div className={classnames("ne-headless", { [className]: className })}>
       {allOptions.map(option => (
-        <Option editor={editor} key={option.optionName} {...option} />
+        <Option {...{ editor }} key={option.optionName} {...option} />
       ))}
       {children}
       {isMediaUploaderActive && (
         <MediaUploader
-          editor={editor}
-          mediaUploader={mediaUploader}
-          unsplashApiKey={unsplashApiKey}
+          {...{ editor, mediaUploader, unsplashApiKey }}
           onClose={() => setMediaUploader({ image: false, video: false })}
         />
       )}

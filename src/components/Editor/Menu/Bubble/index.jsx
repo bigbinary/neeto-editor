@@ -47,7 +47,7 @@ const Bubble = ({
   return (
     <div>
       <BubbleMenuTipTap
-        editor={editor}
+        {...{ editor }}
         className={classnames("neeto-editor-bubble-menu", {
           "neeto-editor-bubble-menu-animate-shake": isInvalidLink,
         })}
@@ -63,20 +63,22 @@ const Bubble = ({
         }}
       >
         <Options
-          editor={editor}
-          handleUploadAttachments={handleUploadAttachments}
-          isEmojiPickerActive={isEmojiPickerActive}
-          isLinkOptionActive={isLinkOptionActive}
-          isTableOptionActive={isTableOptionActive}
-          mentions={mentions}
+          {...{
+            editor,
+            handleUploadAttachments,
+            isEmojiPickerActive,
+            isLinkOptionActive,
+            isTableOptionActive,
+            mentions,
+            setIsEmbedModalOpen,
+            setIsEmojiPickerActive,
+            setIsInvalidLink,
+            setIsLinkOptionActive,
+            setIsTableOptionActive,
+            setMediaUploader,
+            tooltips,
+          }}
           options={textOptions}
-          setIsEmbedModalOpen={setIsEmbedModalOpen}
-          setIsEmojiPickerActive={setIsEmojiPickerActive}
-          setIsInvalidLink={setIsInvalidLink}
-          setIsLinkOptionActive={setIsLinkOptionActive}
-          setIsTableOptionActive={setIsTableOptionActive}
-          setMediaUploader={setMediaUploader}
-          tooltips={tooltips}
         >
           {children}
         </Options>

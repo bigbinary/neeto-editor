@@ -10,11 +10,6 @@ export default Extension.create({
   defaultOptions: {},
 
   addProseMirrorPlugins() {
-    return [
-      Suggestion({
-        editor: this.editor,
-        ...this.options.suggestion,
-      }),
-    ];
+    return [Suggestion({ editor: this.editor, ...this.options.suggestion })];
   },
 });

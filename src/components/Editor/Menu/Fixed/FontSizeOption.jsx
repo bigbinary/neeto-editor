@@ -31,10 +31,7 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
         ref: dropdownRef,
         onKeyDown: event =>
           event.key === "ArrowDown" && dropdownRef.current?.click(),
-        tooltipProps: {
-          content: tooltipContent,
-          position: "bottom",
-        },
+        tooltipProps: { content: tooltipContent, position: "bottom" },
         style: "text",
         size: "small",
         className:

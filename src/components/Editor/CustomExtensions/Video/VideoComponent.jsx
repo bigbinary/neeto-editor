@@ -27,48 +27,45 @@ const VideoComponent = ({
     ? figureRef.current.querySelector("figcaption>div")?.textContent
     : alt;
 
+  const handleResize = (_event, _direction, ref) => {
+    height = ref.offsetHeight;
+    width = ref.offsetWidth;
+    view.dispatch(
+      view.state.tr.setNodeMarkup(
+        getPos(),
+        undefined,
+        mergeRight(node.attrs, {
+          vidheight: height,
+          vidwidth: width,
+          height,
+          width,
+        })
+      )
+    );
+    editor.commands.focus();
+  };
+
   return (
     <NodeViewWrapper
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
     >
       <figure ref={figureRef}>
-        <Menu
-          align={align}
-          deleteNode={deleteNode}
-          editor={editor}
-          updateAttributes={updateAttributes}
-        />
+        <Menu {...{ align, deleteNode, editor, updateAttributes }} />
         <Resizable
           lockAspectRatio
           className="neeto-editor__image"
           size={{ height, width }}
+          onResizeStop={handleResize}
           onResize={(_event, _direction, ref) =>
             setCaptionWidth(ref.offsetWidth)
           }
-          onResizeStop={(_event, _direction, ref) => {
-            height = ref.offsetHeight;
-            width = ref.offsetWidth;
-            view.dispatch(
-              view.state.tr.setNodeMarkup(
-                getPos(),
-                undefined,
-                mergeRight(node.attrs, {
-                  vidheight: height,
-                  vidwidth: width,
-                  height,
-                  width,
-                })
-              )
-            );
-            editor.commands.focus();
-          }}
         >
           <video
             controls
             {...node.attrs}
             alt={caption}
             preload="metadata"
-            src={src}
+            {...{ src }}
           />
         </Resizable>
         <NodeViewContent

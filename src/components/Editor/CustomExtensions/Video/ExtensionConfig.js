@@ -7,9 +7,7 @@ const VideoExtension = Node.create({
   name: "video",
 
   addOptions() {
-    return {
-      HTMLAttributes: {},
-    };
+    return { HTMLAttributes: {} };
   },
 
   group: "block",

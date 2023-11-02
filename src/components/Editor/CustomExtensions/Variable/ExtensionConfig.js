@@ -37,9 +37,7 @@ const Variable = Node.create({
             return {};
           }
 
-          return {
-            "data-id": attributes.id,
-          };
+          return { "data-id": attributes.id };
         },
       },
 
@@ -51,20 +49,14 @@ const Variable = Node.create({
             return {};
           }
 
-          return {
-            "data-label": attributes.label,
-          };
+          return { "data-label": attributes.label };
         },
       },
     };
   },
 
   parseHTML() {
-    return [
-      {
-        tag: "span[data-variable]",
-      },
-    ];
+    return [{ tag: "span[data-variable]" }];
   },
 
   renderHTML({ node, HTMLAttributes }) {
@@ -75,18 +67,12 @@ const Variable = Node.create({
         this.options.HTMLAttributes,
         HTMLAttributes
       ),
-      this.options.renderLabel({
-        options: this.options,
-        node,
-      }),
+      this.options.renderLabel({ options: this.options, node }),
     ];
   },
 
   renderText({ node }) {
-    return this.options.renderLabel({
-      options: this.options,
-      node,
-    });
+    return this.options.renderLabel({ options: this.options, node });
   },
 
   addCommands() {
@@ -97,14 +83,8 @@ const Variable = Node.create({
           chain()
             .focus()
             .insertContent([
-              {
-                type: this.name,
-                attrs: attributes,
-              },
-              {
-                type: "text",
-                text: " ",
-              },
+              { type: this.name, attrs: attributes },
+              { type: "text", text: " " },
             ])
             .run();
         },

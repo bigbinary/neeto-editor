@@ -42,9 +42,7 @@ export class MentionList extends React.Component {
       const nextSelectedIndex =
         (selectedIndex + items.length - 1) % items.length;
 
-      return {
-        selectedIndex: nextSelectedIndex,
-      };
+      return { selectedIndex: nextSelectedIndex };
     });
   };
 
@@ -54,9 +52,7 @@ export class MentionList extends React.Component {
       const { selectedIndex } = prevState;
       const nextSelectedIndex = (selectedIndex + 1) % items.length;
 
-      return {
-        selectedIndex: nextSelectedIndex,
-      };
+      return { selectedIndex: nextSelectedIndex };
     });
   };
 

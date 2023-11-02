@@ -23,9 +23,7 @@ const update = ({ signedId, payload, showToastr = true }) =>
   });
 
 const destroy = (signedId, showToastr = true) =>
-  axios.delete(`/api/direct_uploads/${signedId}`, {
-    showToastr,
-  });
+  axios.delete(`/api/direct_uploads/${signedId}`, { showToastr });
 
 const attach = (payload, showToastr = true) =>
   axios.post("/neeto_editor/api/v1/direct_uploads/attach", payload, {

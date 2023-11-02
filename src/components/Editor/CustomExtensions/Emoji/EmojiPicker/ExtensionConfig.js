@@ -66,12 +66,7 @@ const EmojiPicker = Node.create({
   },
 
   addProseMirrorPlugins() {
-    return [
-      Suggestion({
-        editor: this.editor,
-        ...this.options.suggestion,
-      }),
-    ];
+    return [Suggestion({ editor: this.editor, ...this.options.suggestion })];
   },
 });
 
