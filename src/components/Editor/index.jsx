@@ -128,7 +128,7 @@ const Editor = (
       attributes: {
         class: editorClasses,
         style: getEditorStyles({ rows }),
-        "data-cy": "neetoEditorActiveBorder",
+        "data-cy": "neeto-editor",
         ...contentAttributes,
       },
       clipboardTextParser,
