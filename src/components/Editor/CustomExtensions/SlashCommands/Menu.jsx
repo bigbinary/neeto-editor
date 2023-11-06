@@ -162,8 +162,12 @@ const MenuItem = forwardRef(
       >
         {Icon && <Icon size={20} />}
         <div className="neeto-editor-slash-commands__item-content">
-          <h5>{item.title}</h5>
-          <p>{item.description}</p>
+          <h5 data-cy="neeto-editor-command-list-item-block-heading">
+            {item.title}
+          </h5>
+          <p data-cy="neeto-editor-command-list-item-block-description">
+            {item.description}
+          </p>
         </div>
       </div>
     );
