@@ -30,7 +30,9 @@
       "cannotAddFiles": "Cannot add files",
       "onBeforeFileAddedReturn": "Cannot add the file because onBeforeFileAdded returned false.",
       "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize}}.",
-      "imageSizeIsShouldBeLess": "Image size should be less than {{limit}} MB"
+      "imageSizeIsShouldBeLess": "Image size should be less than {{limit}} MB",
+      "urlRequired": "URL is required",
+      "textRequired": "Text is required"
     },
     "menu": {
       "attachments": "Attachments",

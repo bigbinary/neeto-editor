@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import * as yup from "yup";
 
 import { EDITOR_OPTIONS, URL_REGEXP } from "common/constants";
@@ -29,9 +30,9 @@ export const EMPTY_DIV_REGEX = new RegExp(
 export const TRAILING_BR_REGEX = new RegExp(/\s*(?:<br[^>]*?>)+\s*$/);
 
 export const LINK_VALIDATION_SCHEMA = yup.object().shape({
-  textContent: yup.string().required("Text content is required"),
+  textContent: yup.string().required(t("neetoEditor.error.textRequired")),
   urlString: yup
     .string()
-    .matches(URL_REGEXP, "Invalid URL")
-    .required("URL is required"),
+    .matches(URL_REGEXP, t("neetoEditor.error.invalidUrl"))
+    .required(t("neetoEditor.error.urlRequired")),
 });
