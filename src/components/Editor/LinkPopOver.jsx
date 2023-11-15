@@ -13,7 +13,7 @@ import { validateAndFormatUrl } from "./utils";
 
 const LinkPopOver = ({ editor }) => {
   const { view } = editor || {};
-  const { $from, from } = editor.state.selection;
+  const { from } = editor.state.selection;
   const initialTextContent = view?.state?.doc?.nodeAt(from)?.text || "";
 
   const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
@@ -81,7 +81,8 @@ const LinkPopOver = ({ editor }) => {
     }
     const { state, dispatch } = editor.view;
     const type = getMarkType("link", state.schema);
-    const { from = null, to = null } = getMarkRange($from, type) || {};
+    const { $to } = state.selection;
+    const { from = null, to = null } = getMarkRange($to, type) || {};
 
     if (isNil(from) || isNil(to)) return;
 
