@@ -12,7 +12,8 @@
       "cancel": "Cancel",
       "text": "Text:",
       "done": "Done",
-      "url": "Url:"
+      "url": "Url:",
+      "editLink": "Edit link"
     },
     "attachments": {
       "actionsBlocked": "You are not permitted to update or delete attachments",

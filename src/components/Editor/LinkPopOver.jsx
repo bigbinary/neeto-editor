@@ -1,16 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
 
+import { getMarkRange, getMarkType } from "@tiptap/react";
 import { useOnClickOutside } from "neetocommons/react-utils";
-import { Button, Input } from "neetoui";
+import { Button } from "neetoui";
+import { Form, Input } from "neetoui/formik";
+import { equals, isNil } from "ramda";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
+import { LINK_VALIDATION_SCHEMA } from "./constants";
 import { validateAndFormatUrl } from "./utils";
 
 const LinkPopOver = ({ editor }) => {
+  const { view } = editor || {};
+  const { $from, from } = editor.state.selection;
+  const initialTextContent = view?.state?.doc?.nodeAt(from)?.text || "";
+
   const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
-  const [urlString, setUrlString] = useState("");
-  const [error, setError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [isLinkActive, setIsLinkActive] = useState(editor?.isActive("link"));
 
@@ -18,7 +24,6 @@ const LinkPopOver = ({ editor }) => {
 
   const { t } = useTranslation();
 
-  const { view } = editor || {};
   const linkAttributes = editor?.getAttributes("link");
 
   const updatePopoverPosition = () => {
@@ -48,10 +53,22 @@ const LinkPopOver = ({ editor }) => {
   const handleUnlink = () =>
     editor.chain().focus().extendMarkRange("link").unsetLink().run();
 
-  const handleLink = () => {
-    const formattedUrl = validateAndFormatUrl(urlString);
+  const removePopover = () => {
+    setIsEditing(false);
+    setIsLinkActive(false);
+  };
 
-    if (formattedUrl) {
+  const popoverStyle = {
+    display: "block",
+    position: "fixed",
+    top: popoverPosition.top,
+    left: popoverPosition.left,
+    transform: `translateY(52px) translateX(${isEditing ? "8px" : "3px"})`,
+  };
+
+  const handleSubmit = ({ textContent, urlString }) => {
+    const formattedUrl = validateAndFormatUrl(urlString);
+    if (equals(textContent, initialTextContent)) {
       editor
         .chain()
         .focus()
@@ -59,28 +76,29 @@ const LinkPopOver = ({ editor }) => {
         .setLink({ href: formattedUrl })
         .run();
       setIsEditing(false);
-    } else {
-      setError(t("neetoEditor.error.invalidUrl"));
+
+      return;
     }
-  };
+    const { state, dispatch } = editor.view;
+    const type = getMarkType("link", state.schema);
+    const { from = null, to = null } = getMarkRange($from, type) || {};
 
-  const handleKeyDown = event => {
-    if (event.key === "Escape") {
-      setIsEditing(false);
-    } else if (event.key === "Enter") {
-      handleLink();
-    }
-  };
+    if (isNil(from) || isNil(to)) return;
 
-  const resetLink = () => {
-    setUrlString(linkAttributes?.href || "");
-    setError("");
-  };
+    const attrs = { href: formattedUrl };
+    const linkMark = state.schema.marks.link.create(attrs);
+    const linkTextWithMark = state.schema.text(textContent, [linkMark]);
 
-  const removePopover = () => {
+    const tr = state.tr.replaceWith(from, to, linkTextWithMark);
+    dispatch(tr);
+
     setIsEditing(false);
-    setIsLinkActive(false);
+    editor.view.focus();
+    editor.commands.extendMarkRange("link");
   };
+
+  const handleKeyDown = event =>
+    equals(event.key, "Escape") && setIsEditing(false);
 
   useOnClickOutside(popOverRef, removePopover);
 
@@ -99,48 +117,58 @@ const LinkPopOver = ({ editor }) => {
     setIsLinkActive(isActive);
     if (isActive) {
       updatePopoverPosition();
-      setUrlString(linkAttributes?.href || "");
     }
   }, [view?.state?.selection?.$from?.pos, isEditing]);
 
-  const popoverStyle = {
-    display: "block",
-    position: "fixed",
-    top: popoverPosition.top,
-    left: popoverPosition.left,
-    transform: `translateY(52px) translateX(${isEditing ? "8px" : "3px"})`,
-  };
-
   const renderEditingMode = () => (
-    <>
-      <Input
-        autoFocus
-        {...{ error }}
-        label={t("neetoEditor.menu.link")}
-        placeholder={t("neetoEditor.placeholders.url")}
-        style={{ width: "250px" }}
-        value={urlString}
-        onChange={({ target: { value } }) => setUrlString(value)}
-        onFocus={() => setError("")}
-        onKeyDown={handleKeyDown}
-      />
-      <div className="ne-link-popover__edit-prompt-buttons">
-        <Button
-          label={t("neetoEditor.menu.link")}
-          size="small"
-          onClick={handleLink}
-        />
-        <Button
-          label={t("neetoEditor.common.cancel")}
-          size="small"
-          style="text"
-          onClick={() => {
-            resetLink();
-            setIsEditing(false);
-          }}
-        />
-      </div>
-    </>
+    <Form
+      formikProps={{
+        initialValues: {
+          textContent: initialTextContent,
+          urlString: linkAttributes?.href || "",
+        },
+        onSubmit: handleSubmit,
+        validationSchema: LINK_VALIDATION_SCHEMA,
+      }}
+    >
+      {({ dirty, isSubmitting }) => (
+        <>
+          <Input
+            required
+            label={t("neetoEditor.common.text")}
+            name="textContent"
+            placeholder={t("neetoEditor.placeholders.enterText")}
+            style={{ width: "250px" }}
+            onKeyDown={handleKeyDown}
+          />
+          <Input
+            autoFocus
+            required
+            className="ne-link-popover__url-input"
+            label={t("neetoEditor.common.url")}
+            name="urlString"
+            placeholder={t("neetoEditor.placeholders.url")}
+            style={{ width: "250px" }}
+            onKeyDown={handleKeyDown}
+          />
+          <div className="ne-link-popover__edit-prompt-buttons">
+            <Button
+              disabled={!dirty}
+              label={t("neetoEditor.menu.link")}
+              loading={isSubmitting}
+              size="small"
+              type="submit"
+            />
+            <Button
+              label={t("neetoEditor.common.cancel")}
+              size="small"
+              style="text"
+              onClick={() => setIsEditing(false)}
+            />
+          </div>
+        </>
+      )}
+    </Form>
   );
 
   const renderViewMode = () => (
