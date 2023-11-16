@@ -64,6 +64,7 @@ const Editor = (
     children,
     showAttachmentsToastr = true,
     openImageInNewTab = true,
+    openLinkInNewTab = true,
     ...otherProps
   },
   ref
@@ -102,6 +103,7 @@ const Editor = (
     setIsEmbedModalOpen,
     isVideoEmbedActive,
     openImageInNewTab,
+    openLinkInNewTab,
   });
   useEditorWarnings({ initialValue });
 

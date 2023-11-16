@@ -46,6 +46,7 @@ const useCustomExtensions = ({
   setMediaUploader,
   setIsEmbedModalOpen,
   openImageInNewTab,
+  openLinkInNewTab,
 }) => {
   let customExtensions = [
     CharacterCount,
@@ -61,7 +62,10 @@ const useCustomExtensions = ({
     Highlight,
     VideoExtension,
     ImageExtension.configure({ openImageInNewTab }),
-    Link.configure({ autolink: false }),
+    Link.configure({
+      autolink: false,
+      HTMLAttributes: { target: openLinkInNewTab ? "_blank" : null },
+    }),
     Placeholder.configure({ placeholder }),
     StarterKit.configure({ document: false, codeBlock: false, code: false }),
     TextStyle,
