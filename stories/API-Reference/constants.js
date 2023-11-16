@@ -204,4 +204,9 @@ export const EDITOR_PROPS = [
     "Accepts a boolean value. When set to 'false', it prevents images from opening in new tabs for preview.",
     "true",
   ],
+  [
+    "openLinkInNewTab",
+    "Accepts a boolean value. When set to 'false', it prevents links from opening in new tabs for preview.",
+    "true",
+  ],
 ];

@@ -125,6 +125,7 @@ interface EditorProps {
   showAttachmentsToastr?: boolean;
   children?: ReactNode;
   openImageInNewTab?: boolean;
+  openLinkInNewTab?: boolean;
   [otherProps: string]: any;
 }
 
