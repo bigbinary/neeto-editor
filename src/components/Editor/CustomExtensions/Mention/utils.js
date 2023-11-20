@@ -1,13 +1,9 @@
 import Fuse from "fuse.js";
 import { pluck } from "ramda";
 
-export const formatMentions = (users = []) =>
-  users.sort((user1, user2) => user1.name.localeCompare(user2.name));
-
-export const createMentionSuggestions = (users = []) => {
-  const mentions = formatMentions(users);
-
-  return ({ query }) => {
+export const createMentionSuggestions =
+  (mentions = []) =>
+  ({ query }) => {
     if (!query) {
       return mentions.slice(0, 10);
     }
@@ -18,4 +14,3 @@ export const createMentionSuggestions = (users = []) => {
 
     return pluck("item", results);
   };
-};
