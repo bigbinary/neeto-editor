@@ -4,13 +4,10 @@ import { Email } from "neetoicons";
 import { Avatar, Dropdown, Typography } from "neetoui";
 import { isEmpty } from "ramda";
 
-import { formatMentions } from "./utils";
-
 const Mentions = ({ editor, mentions, tooltipContent }) => {
-  const formattedMentions = formatMentions(mentions);
   const { Menu, MenuItem } = Dropdown;
 
-  if (isEmpty(formattedMentions)) return null;
+  if (isEmpty(mentions)) return null;
 
   return (
     <Dropdown
@@ -24,7 +21,7 @@ const Mentions = ({ editor, mentions, tooltipContent }) => {
       }}
     >
       <Menu>
-        {formattedMentions.map(({ key, name, imageUrl }) => (
+        {mentions.map(({ key, name, imageUrl }) => (
           <MenuItem.Button
             data-cy={`neeto-editor-mention-option-${key}`}
             key={key}
