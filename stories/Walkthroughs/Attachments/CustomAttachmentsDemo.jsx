@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 
-import { noop } from "@bigbinary/neeto-commons-frontend/pure";
-import { Button } from "@bigbinary/neetoui";
+import { noop } from "neetocist";
+import { Button } from "neetoui";
 
-import { Attachments } from "../../../src";
+import { Attachments } from "src";
 
 const CustomAttachmentsDemo = () => {
   const attachmentsRef = useRef(null);
