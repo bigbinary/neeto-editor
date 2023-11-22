@@ -164,6 +164,8 @@ export function isEditorEmpty(htmlContent: string | null | undefined): boolean;
 
 export function isEditorOverlaysActive(): boolean;
 
+export function isEmojiSuggestionsMenuActive(): boolean;
+
 export function transformEditorContent(content: string): string;
 
 export function substituteVariables(

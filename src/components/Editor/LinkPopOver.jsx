@@ -136,6 +136,7 @@ const LinkPopOver = ({ editor }) => {
         <>
           <Input
             required
+            data-cy="neeto-editor-edit-link-text-input"
             label={t("neetoEditor.common.text")}
             name="textContent"
             placeholder={t("neetoEditor.placeholders.enterText")}
@@ -146,6 +147,7 @@ const LinkPopOver = ({ editor }) => {
             autoFocus
             required
             className="ne-link-popover__url-input"
+            data-cy="neeto-editor-edit-link-url-input"
             label={t("neetoEditor.common.url")}
             name="urlString"
             placeholder={t("neetoEditor.placeholders.url")}
@@ -154,6 +156,7 @@ const LinkPopOver = ({ editor }) => {
           />
           <div className="ne-link-popover__edit-prompt-buttons">
             <Button
+              data-cy="neeto-editor-edit-link"
               disabled={!dirty}
               label={t("neetoEditor.menu.link")}
               loading={isSubmitting}
@@ -161,6 +164,7 @@ const LinkPopOver = ({ editor }) => {
               type="submit"
             />
             <Button
+              data-cy="neeto-editor-edit-link-cancel"
               label={t("neetoEditor.common.cancel")}
               size="small"
               style="text"
@@ -180,6 +184,7 @@ const LinkPopOver = ({ editor }) => {
       {" - "}
       <Button
         className="ne-link-popover__option-button"
+        data-cy="neeto-editor-link-popover-edit"
         label={t("neetoEditor.common.edit")}
         size="small"
         style="link"
@@ -188,6 +193,7 @@ const LinkPopOver = ({ editor }) => {
       <span>|</span>
       <Button
         className="ne-link-popover__option-button"
+        data-cy="neeto-editor-link-popover-unlink"
         label={t("neetoEditor.common.unlink")}
         size="small"
         style="link"
