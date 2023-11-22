@@ -72,3 +72,6 @@ export const transformEditorContent = content =>
     ?.replaceAll(IMAGE_REGEX, IMAGE_REPLACEMENT_PATTERN)
     ?.replaceAll(EMPTY_DIV_REGEX, "")
     ?.replace(TRAILING_BR_REGEX, "");
+
+export const isEmojiSuggestionsMenuActive = () =>
+  !!document.querySelector(".neeto-editor-emoji-suggestion");

@@ -32,9 +32,13 @@ export const EDITOR_METHODS_TABLE_ROWS = [
     "Returns a boolean value indicating whether the editor overlays are active or not.",
   ],
   [
+    "isEmojiSuggestionsMenuActive",
+    "Returns a boolean value indicating whether the editor emoji suggestions menu is open or not.",
+  ],
+  [
     "transformEditorContent",
     "Modifies the editor's content by performing specific operations, such as replacing <img> tags with <figure> tags, removing empty <div> tags containing line breaks, and eliminating trailing line breaks."
-  ]
+  ],
 ];
 
 export const EDITOR_PROPS = [

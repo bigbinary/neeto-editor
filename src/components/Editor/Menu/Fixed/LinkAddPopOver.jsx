@@ -132,6 +132,7 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
             <Input
               required
               autoFocus={!isLinkTextPresent}
+              data-cy="neeto-editor-add-link-text-input"
               label={t("neetoEditor.common.text")}
               placeholder={t("neetoEditor.placeholders.enterText")}
               size="small"
@@ -144,6 +145,7 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
               required
               autoFocus={isLinkTextPresent}
               className="ne-link-popover__url-input"
+              data-cy="neeto-editor-add-link-url-input"
               label={t("neetoEditor.common.url")}
               size="small"
               {...{ error }}
@@ -156,12 +158,14 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
             />
             <div className="ne-link-popover__edit-prompt-buttons">
               <Button
+                data-cy="neeto-editor-add-link"
                 disabled={isSubmitDisabled}
                 label={t("neetoEditor.common.done")}
                 size="small"
                 onClick={handleAddLink}
               />
               <Button
+                data-cy="neeto-editor-link-popover-cancel"
                 label={t("neetoEditor.common.cancel")}
                 size="small"
                 style="text"

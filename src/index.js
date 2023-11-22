@@ -1,6 +1,8 @@
+/* eslint-disable @bigbinary/neeto/file-name-and-export-name-standards */
 import {
   isEditorOverlaysActive,
   transformEditorContent,
+  isEmojiSuggestionsMenuActive,
 } from "components/Editor/utils";
 import { substituteVariables } from "components/EditorContent/utils";
 import { isEditorEmpty } from "utils/common";
@@ -21,5 +23,6 @@ export {
   FormikEditor,
   Attachments,
   isEditorOverlaysActive,
+  isEmojiSuggestionsMenuActive,
   transformEditorContent,
 };
