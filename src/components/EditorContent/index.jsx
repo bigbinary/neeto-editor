@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import classnames from "classnames";
 import DOMPurify from "dompurify";
@@ -6,6 +6,7 @@ import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
 import { createRoot } from "react-dom/client";
 
 import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
+import ImagePreview from "./ImagePreview";
 import { highlightCode, substituteVariables } from "./utils";
 
 const EditorContent = ({
@@ -14,6 +15,7 @@ const EditorContent = ({
   className,
   ...otherProps
 }) => {
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   const editorContentRef = useRef(null);
 
   const htmlContent = substituteVariables(highlightCode(content), variables);
@@ -37,6 +39,16 @@ const EditorContent = ({
       );
       preTag.appendChild(button);
     });
+
+    const figureTags = editorContentRef.current?.querySelectorAll("figure");
+    figureTags.forEach(figureTag => {
+      const image = figureTag.querySelector("img");
+      if (!image) return;
+      figureTag.style.cursor = "pointer";
+      figureTag.addEventListener("click", () => {
+        setImagePreviewUrl(image.src);
+      });
+    });
   };
 
   useEffect(() => {
@@ -44,17 +56,22 @@ const EditorContent = ({
   }, [content]);
 
   return (
-    <div
-      data-cy="neeto-editor-content"
-      ref={editorContentRef}
-      className={classnames(EDITOR_CONTENT_CLASSNAME, {
-        [className]: className,
-      })}
-      dangerouslySetInnerHTML={{
-        __html: sanitize(htmlContent, SANITIZE_OPTIONS),
-      }}
-      {...otherProps}
-    />
+    <>
+      <div
+        data-cy="neeto-editor-content"
+        ref={editorContentRef}
+        className={classnames(EDITOR_CONTENT_CLASSNAME, {
+          [className]: className,
+        })}
+        dangerouslySetInnerHTML={{
+          __html: sanitize(htmlContent, SANITIZE_OPTIONS),
+        }}
+        {...otherProps}
+      />
+      {imagePreviewUrl && (
+        <ImagePreview {...{ imagePreviewUrl, setImagePreviewUrl }} />
+      )}
+    </>
   );
 };
 
