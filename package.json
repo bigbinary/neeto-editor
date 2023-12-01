@@ -164,7 +164,6 @@
     "@bigbinary/neetoui": "latest",
     "@honeybadger-io/react": "2.0.1",
     "antd": "4.24.3",
-    "axios": "0.27.2",
     "formik": "2.2.9",
     "i18next": "23.2.7",
     "js-logger": "^1.6.1",
