@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useOnClickOutside } from "neetocommons/react-utils";
-import { CloseCircle } from "neetoicons";
+import { Close } from "neetoicons";
 import { Button, Spinner } from "neetoui";
+import { createPortal } from "react-dom";
 
 const ImagePreview = ({ imagePreviewUrl, setImagePreviewUrl }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,11 +14,24 @@ const ImagePreview = ({ imagePreviewUrl, setImagePreviewUrl }) => {
     enabled: true,
   });
 
-  return (
+  useEffect(() => {
+    document.addEventListener(
+      "keydown",
+      e => e.key === "Escape" && setImagePreviewUrl(null)
+    );
+
+    return () =>
+      document.removeEventListener(
+        "keydown",
+        e => e.key === "Escape" && setImagePreviewUrl(null)
+      );
+  }, []);
+
+  return createPortal(
     <div className="image-preview-wrapper">
       <div className="close-button">
         <Button
-          icon={CloseCircle}
+          icon={Close}
           style="secondary"
           onClick={() => setImagePreviewUrl(null)}
         />
@@ -30,7 +44,8 @@ const ImagePreview = ({ imagePreviewUrl, setImagePreviewUrl }) => {
         src={imagePreviewUrl}
         onLoad={() => setIsLoading(false)}
       />
-    </div>
+    </div>,
+    document.body
   );
 };
 
