@@ -64,7 +64,7 @@ const Preview = ({
           return (
             <DocViewer
               className="h-full w-full"
-              documents={[{ uri: url }]}
+              documents={[{ uri: url, fileType: contentType }]}
               pluginRenderers={[PDFRenderer, TXTRenderer]}
               config={{
                 header: { disableHeader: true, disableFileName: true },
