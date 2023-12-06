@@ -13,6 +13,7 @@
   h5,
   h6 {
     color: rgb(var(--neeto-ui-black));
+    font-weight: var(--neeto-ui-font-semibold);
 
     strong {
       font-weight: var(--neeto-ui-font-semibold) !important;
@@ -20,27 +21,58 @@
   }
 
   h1 {
+    font-size: var(--neeto-ui-text-h1);
     margin: 2rem 0 0.25rem;
   }
 
   h2 {
+    font-size: var(--neeto-ui-text-h2);
     margin: 1.5rem 0 0.25rem;
   }
 
   h3 {
+    font-size: var(--neeto-ui-text-h3);
     margin: 1rem 0 0.25rem;
   }
 
   h4 {
-    margin: 0.875rem 0 0.25rem;
-  }
-
-  h5 {
+    font-size: var(--neeto-ui-text-h4);
     margin: 0.75rem 0 0.25rem;
   }
 
+  h5 {
+    font-size: var(--neeto-ui-text-h5);
+    margin: 0.75rem 0 0.25rem;
+  }
   h6 {
-    margin: 0.5rem 0 0.25rem;
+    font-size: var(--neeto-ui-text-h6);
+    margin: 0.75rem 0 0.25rem;
+  }
+
+  @media only screen and (max-width: 720px) {
+    h1 {
+      font-size: 22px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    h4 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 14px;
+    }
+
+    h6 {
+      font-size: 12px;
+    }
   }
 
   // Paragraph
