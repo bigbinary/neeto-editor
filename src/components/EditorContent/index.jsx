@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import DOMPurify from "dompurify";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
+import { not } from "ramda";
 import { createRoot } from "react-dom/client";
 
 import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
@@ -43,7 +44,13 @@ const EditorContent = ({
     const figureTags = editorContentRef.current?.querySelectorAll("figure");
     figureTags.forEach(figureTag => {
       const image = figureTag.querySelector("img");
-      if (!image) return;
+      const link = figureTag.querySelector("a");
+      if (
+        !image ||
+        not(window.getComputedStyle(link).pointerEvents === "none")
+      ) {
+        return;
+      }
       figureTag.style.cursor = "pointer";
       figureTag.addEventListener("click", () => {
         setImagePreviewUrl(image.src);
