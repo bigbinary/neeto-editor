@@ -13,7 +13,10 @@
       "text": "Text:",
       "done": "Done",
       "url": "Url:",
-      "editLink": "Edit link"
+      "editLink": "Edit link",
+      "save": "Save",
+      "close": "Close",
+      "resetToDefault": "Reset to default"
     },
     "attachments": {
       "actionsBlocked": "You are not permitted to update or delete attachments",
