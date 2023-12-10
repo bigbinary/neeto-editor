@@ -126,13 +126,17 @@
     align-items: center;
 
     &__input {
-      max-width: 130px;
+      max-width: 120px;
     }
 
     &__reset-button {
       align-self: center;
     }
   }
+}
+
+.react-colorful {
+  width: 100% !important;
 }
 
 .neeto-editor-menu__item {

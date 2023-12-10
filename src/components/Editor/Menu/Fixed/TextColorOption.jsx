@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { useFuncDebounce, useOnClickOutside } from "neetocommons/react-utils";
+import { useOnClickOutside } from "neetocommons/react-utils";
 import { withEventTargetValue } from "neetocommons/utils";
-import { Customize } from "neetoicons";
+import { Check, Close, Customize, Refresh } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
 import { not } from "ramda";
 import { HexColorPicker } from "react-colorful";
@@ -10,25 +10,20 @@ import { useTranslation } from "react-i18next";
 
 const TextColorOption = ({ editor, tooltipContent }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [color, setColor] = useState(editor.getAttributes("textStyle").color);
+  const [color, setColor] = useState(null);
 
   const dropdownWrapperRef = useRef(null);
   const { t } = useTranslation();
 
-  const handleDebouncedClose = useFuncDebounce(
-    color => editor.commands.setColor(color),
-    300
-  );
-
-  const handleReset = () => {
-    editor.commands.unsetColor();
+  const handleSave = () => {
+    editor.chain().focus().setColor(color).run();
     setIsOpen(false);
-    editor.commands.focus();
   };
 
-  const handleColorChange = color => {
-    setColor(color);
-    handleDebouncedClose(color);
+  const handleUnset = () => {
+    editor.chain().focus().unsetColor().run();
+    setColor(null);
+    setIsOpen(false);
   };
 
   useOnClickOutside(dropdownWrapperRef, event => {
@@ -40,18 +35,13 @@ const TextColorOption = ({ editor, tooltipContent }) => {
   });
 
   useEffect(() => {
-    editor.commands.setHighlightInternal("#ACCEF7");
-
-    if (!isOpen) {
-      editor.commands.unsetHighlightInternal();
-      editor.commands.removeEmptyTextStyle();
-    }
-  }, [isOpen]);
+    setColor(editor.getAttributes("textStyle").color);
+  }, [isOpen, editor.getAttributes("textStyle").color]);
 
   return (
     <div ref={dropdownWrapperRef}>
       <Dropdown
-        buttonStyle={isOpen ? "secondary" : "text"}
+        buttonStyle={isOpen || color ? "secondary" : "text"}
         icon={Customize}
         {...{ isOpen }}
         buttonProps={{
@@ -65,10 +55,7 @@ const TextColorOption = ({ editor, tooltipContent }) => {
           setIsOpen(not);
         }}
       >
-        <HexColorPicker
-          color={color || "#000000"}
-          onChange={handleColorChange}
-        />
+        <HexColorPicker color={color || "#000000"} onChange={setColor} />
         <div className="neeto-editor-text-color-option__options-group">
           <Input
             autoFocus
@@ -77,13 +64,27 @@ const TextColorOption = ({ editor, tooltipContent }) => {
             size="small"
             value={color}
             onChange={withEventTargetValue(setColor)}
+            onClick={event => event.stopPropagation()}
           />
+          <Button icon={Check} size="small" onClick={handleSave} />
           <Button
-            className="neeto-editor-text-color-option__options-group__reset-button"
-            label={t("neetoEditor.common.reset")}
+            icon={Close}
             size="small"
             style="text"
-            onClick={handleReset}
+            onClick={() => {
+              editor.commands.focus();
+              setIsOpen(false);
+            }}
+          />
+          <Button
+            icon={Refresh}
+            size="small"
+            style="text"
+            tooltipProps={{
+              content: t("neetoEditor.common.resetToDefault"),
+              position: "top",
+            }}
+            onClick={handleUnset}
           />
         </div>
       </Dropdown>
