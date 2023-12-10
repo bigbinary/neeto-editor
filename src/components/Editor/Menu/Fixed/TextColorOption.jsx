@@ -66,23 +66,11 @@ const TextColorOption = ({ editor, tooltipContent }) => {
             onChange={withEventTargetValue(setColor)}
             onClick={event => event.stopPropagation()}
           />
-          <Button
-            icon={Check}
-            size="small"
-            tooltipProps={{
-              content: t("neetoEditor.common.save"),
-              position: "top",
-            }}
-            onClick={handleSave}
-          />
+          <Button icon={Check} size="small" onClick={handleSave} />
           <Button
             icon={Close}
             size="small"
             style="text"
-            tooltipProps={{
-              content: t("neetoEditor.common.close"),
-              position: "top",
-            }}
             onClick={() => {
               editor.commands.focus();
               setIsOpen(false);
