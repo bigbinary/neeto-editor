@@ -35,6 +35,7 @@ const Editor = (
     autoFocus = false,
     className,
     contentClassName,
+    errorWrapperClassName,
     contentAttributes = {},
     menuClassName,
     attachmentsClassName,
@@ -171,7 +172,7 @@ const Editor = (
           {label}
         </Label>
       )}
-      <ErrorWrapper {...{ error }}>
+      <ErrorWrapper className={errorWrapperClassName} {...{ error }}>
         <CharacterCountWrapper
           {...{ editor }}
           isActive={isCharacterCountActive}

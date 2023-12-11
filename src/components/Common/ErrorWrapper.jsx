@@ -5,9 +5,12 @@ import { is } from "ramda";
 
 import { isNilOrEmpty } from "utils/common";
 
-const ErrorWrapper = ({ error, children }) => {
+const ErrorWrapper = ({ error, children, className }) => {
   const isError = !isNilOrEmpty(error);
-  const wrapperClasses = classnames({ "neeto-editor-error": isError });
+  const wrapperClasses = classnames({
+    "neeto-editor-error": isError,
+    [className]: className,
+  });
 
   const getErrorMessage = () => {
     if (!error) return null;

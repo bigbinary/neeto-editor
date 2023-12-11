@@ -180,6 +180,11 @@ export const EDITOR_PROPS = [
     "This field is required",
   ],
   [
+    "errorWrapperClassName",
+    "Accepts a string value. Can be used for further customisation of the error wrapper layout.",
+    `"neeto-editor-error-wrapper"`,
+  ],
+  [
     "attachments",
     "Accepts an array of attachment objects. This array will be used to display the attachments in the editor.",
   ],

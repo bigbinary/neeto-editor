@@ -94,6 +94,7 @@ interface EditorProps {
   isMenuCollapsible?: boolean;
   menuClassName?: string;
   attachmentsClassName?: string;
+  errorWrapperClassName?: string;
   tooltips?: tooltips;
   initialValue?: string;
   menuType?: "fixed" | "bubble" | "headless" | "none";
