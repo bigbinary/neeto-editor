@@ -2,6 +2,8 @@ import { globalProps } from "neetocommons/initializers";
 
 const MAX_VIDEO_SIZE = 100 * 1024 * 1024; // 100 MB
 
+export const FILE_SIZE_UNITS = ["B", "KB", "MB", "GB"];
+
 export const ALLOWED_IMAGE_TYPES = [".jpg", ".jpeg", ".png", ".gif"];
 export const ALLOWED_VIDEO_TYPES = [".mp4", ".mov", ".avi", ".mkv"];
 
