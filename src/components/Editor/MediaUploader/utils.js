@@ -1,15 +1,17 @@
 import { t } from "i18next";
 import { LeftAlign, CenterAlign, RightAlign, Delete } from "neetoicons";
 
+import { FILE_SIZE_UNITS } from "./constants";
+
 export const convertToFileSize = (size = 10 * 1024 * 1024) => {
-  const units = ["B", "KB", "MB", "GB"];
+  let fileSize = size;
   let i = 0;
-  while (size >= 1024 && i < units.length) {
-    size /= 1024;
+  while (fileSize >= 1024 && i < FILE_SIZE_UNITS.length) {
+    fileSize /= 1024;
     ++i;
   }
 
-  return `${size.toFixed(1)} ${units[i]}`;
+  return `${fileSize.toFixed(1)} ${FILE_SIZE_UNITS[i]}`;
 };
 
 export const buildImageOptions = () => [

@@ -30,7 +30,7 @@
       "invalidUrl": "Please enter a valid URL",
       "cannotAddFiles": "Cannot add files",
       "onBeforeFileAddedReturn": "Cannot add the file because onBeforeFileAdded returned false.",
-      "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize}}.",
+      "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize, anyCase}}.",
       "imageSizeIsShouldBeLess": "Image size should be less than {{limit}} MB",
       "urlRequired": "URL is required",
       "textRequired": "Text is required"
