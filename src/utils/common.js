@@ -16,3 +16,14 @@ export const isEditorEmpty = htmlContent => {
 
   return editorIsEmpty;
 };
+
+export const isEditorContentWithinLimit = (htmlContent, maxLength) => {
+  if (isNilOrEmpty(htmlContent)) return true;
+
+  const element = document.createElement("div");
+  element.innerHTML = htmlContent;
+  const isLengthWithinLimit = element.textContent?.trim().length <= maxLength;
+  element.remove();
+
+  return isLengthWithinLimit;
+};

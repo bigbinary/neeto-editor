@@ -163,6 +163,8 @@ export function Menu(props: MenuProps): JSX.Element;
 
 export function isEditorEmpty(htmlContent: string | null | undefined): boolean;
 
+export function isEditorContentWithinLimit(htmlContent: string | null | undefined, maxLength: number): boolean;
+
 export function isEditorOverlaysActive(): boolean;
 
 export function isEmojiSuggestionsMenuActive(): boolean;
