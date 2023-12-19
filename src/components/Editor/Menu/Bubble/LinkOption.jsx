@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+import { isNotPresent } from "neetocist";
 import { Close } from "neetoicons";
 import { Button } from "neetoui";
 import { useTranslation } from "react-i18next";
 
 import { URL_REGEXP } from "common/constants";
-import { isNilOrEmpty } from "utils/common";
 
 const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
   const { t } = useTranslation();
@@ -28,7 +28,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
     if (URL_REGEXP.test(link)) {
       editor.chain().focus().setLink({ href: link }).run();
       handleClose();
-    } else if (isNilOrEmpty(link)) {
+    } else if (isNotPresent(link)) {
       editor.chain().focus().unsetLink().run();
       handleClose();
     } else {

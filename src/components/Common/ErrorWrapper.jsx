@@ -1,12 +1,11 @@
 import React from "react";
 
 import classnames from "classnames";
+import { isNotPresent } from "neetocist";
 import { is } from "ramda";
 
-import { isNilOrEmpty } from "utils/common";
-
 const ErrorWrapper = ({ error, children, className }) => {
-  const isError = !isNilOrEmpty(error);
+  const isError = !isNotPresent(error);
   const wrapperClasses = classnames({
     "neeto-editor-error": isError,
     [className]: className,
@@ -25,7 +24,7 @@ const ErrorWrapper = ({ error, children, className }) => {
       message = error.message;
     }
 
-    if (isNilOrEmpty(message)) return null;
+    if (isNotPresent(message)) return null;
 
     return message;
   };

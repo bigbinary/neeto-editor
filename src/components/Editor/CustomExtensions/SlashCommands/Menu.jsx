@@ -2,8 +2,8 @@ import React, { forwardRef } from "react";
 
 import Tippy from "@tippyjs/react";
 import classnames from "classnames";
+import { isNotPresent } from "neetocist";
 
-import { isNilOrEmpty } from "utils/common";
 import { scrollHandler } from "utils/scrollhandler";
 
 class Menu extends React.Component {
@@ -57,7 +57,7 @@ class Menu extends React.Component {
     const { items, editor, range } = this.props;
     const selectedItem = items[index];
     const hasCommand = selectedItem && selectedItem.command;
-    const isLeafNode = isNilOrEmpty(selectedItem.items);
+    const isLeafNode = isNotPresent(selectedItem.items);
     if (hasCommand && isLeafNode) selectedItem.command({ editor, range });
   };
 
@@ -89,7 +89,7 @@ class Menu extends React.Component {
     const { menuIndex, setActiveMenuIndex, items } = this.props;
     const { selectedIndex } = this.state;
     const selectedItem = items[selectedIndex];
-    const hasSubItems = selectedItem && !isNilOrEmpty(selectedItem.items);
+    const hasSubItems = selectedItem && !isNotPresent(selectedItem.items);
     if (hasSubItems) setActiveMenuIndex(menuIndex + 1);
   };
 
@@ -101,7 +101,7 @@ class Menu extends React.Component {
     return (
       <div className="neeto-editor-slash-commands__wrapper" ref={this.menuRef}>
         {items.map((item, index) => {
-          const isLeafNode = isNilOrEmpty(item.items);
+          const isLeafNode = isNotPresent(item.items);
 
           const nodeElement = (
             <MenuItem

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import { isNotPresent } from "neetocist";
 import { useOnClickOutside } from "neetocommons/react-utils";
 import { Button, Input } from "neetoui";
 import { createPortal } from "react-dom";
@@ -7,7 +8,6 @@ import { useTranslation } from "react-i18next";
 
 import { validateAndFormatUrl } from "components/Editor/utils";
 import { URL_REGEXP } from "src/common/constants";
-import { isNilOrEmpty } from "utils/common";
 
 const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
   const { from, to } = editor.state.selection;
@@ -23,8 +23,8 @@ const LinkAddPopOver = ({ isAddLinkActive, setIsAddLinkActive, editor }) => {
 
   const { t } = useTranslation();
 
-  const isLinkTextPresent = !isNilOrEmpty(linkText);
-  const isLinlUrlPresent = !isNilOrEmpty(linkUrl);
+  const isLinkTextPresent = !isNotPresent(linkText);
+  const isLinlUrlPresent = !isNotPresent(linkUrl);
   const isSubmitDisabled = !isLinkTextPresent || !isLinlUrlPresent;
 
   const popoverStyle = {
