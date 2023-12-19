@@ -122,6 +122,15 @@ const Editor = (
     [contentClassName]: contentClassName,
   });
 
+  const ariaAttributes = {
+    role: "textbox",
+    "aria-label": "editor-content",
+    "aria-multiline": "true",
+    "aria-labelledby": "labelId",
+    "aria-required": required,
+    "aria-roledescription": "editor",
+  };
+
   const editor = useEditor({
     extensions: customExtensions,
     content: initialValue,
@@ -132,6 +141,7 @@ const Editor = (
         class: editorClasses,
         style: getEditorStyles({ rows }),
         "data-cy": "neeto-editor-content",
+        ...ariaAttributes,
         ...contentAttributes,
       },
       clipboardTextParser,
