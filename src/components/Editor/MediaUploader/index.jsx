@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
+import { isNotPresent } from "neetocist";
 import { Modal, Tab } from "neetoui";
 import { not } from "ramda";
 import { useTranslation } from "react-i18next";
-
-import { isNilOrEmpty } from "utils/common";
 
 import { MEDIA_UPLOAD_OPTIONS } from "./constants";
 import LocalUploader from "./LocalUploader";
@@ -60,7 +59,7 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
       onClose={handleClose}
     >
       <div className="ne-media-uploader">
-        {!isNilOrEmpty(tabs) && (
+        {!isNotPresent(tabs) && (
           <Tab>
             {tabs.map(({ key, title }) => (
               <Tab.Item

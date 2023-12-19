@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 
+import { isNotPresent } from "neetocist";
 import { Input, Spinner } from "neetoui";
 import { useTranslation } from "react-i18next";
 import MasonryInfiniteScroller from "react-masonry-infinite";
 
 import { searchUnsplashImages } from "apis/unsplash";
 import useDebounce from "hooks/useDebounce";
-import { isNilOrEmpty } from "utils/common";
 
 const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
   const { t } = useTranslation();
@@ -85,7 +85,7 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
           {t("neetoEditor.unsplash.errorMessage")}
         </p>
       )}
-      {!error && !loading && isNilOrEmpty(images) && (
+      {!error && !loading && isNotPresent(images) && (
         <p
           className="neeto-editor-unsplash-gallery__text"
           data-cy="neeto-editor-unsplash-image-picker-no-results-error"

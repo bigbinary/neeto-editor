@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import { BubbleMenu as BubbleMenuTipTap } from "@tiptap/react";
 import classnames from "classnames";
+import { isNotPresent } from "neetocist";
 import { roundArrow } from "tippy.js";
 import "tippy.js/dist/svg-arrow.css";
 
 import { EDITOR_OPTIONS } from "common/constants";
-import { isNilOrEmpty } from "utils/common";
 
 import Options from "./Options";
 
@@ -37,7 +37,7 @@ const Bubble = ({
     EDITOR_OPTIONS.LINK,
   ];
 
-  const noTextOptions = isNilOrEmpty(
+  const noTextOptions = isNotPresent(
     textOptions.filter(option => bubbleMenuOptions.includes(option))
   );
   if (!editor || (!isImageNodeSelected && noTextOptions)) {
