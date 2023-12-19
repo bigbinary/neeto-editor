@@ -132,6 +132,7 @@ const Editor = (
         class: editorClasses,
         style: getEditorStyles({ rows }),
         "data-cy": "neeto-editor-content",
+        "aria-label": "editor-content",
         ...contentAttributes,
       },
       clipboardTextParser,
