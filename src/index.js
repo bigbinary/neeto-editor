@@ -5,7 +5,7 @@ import {
   isEmojiSuggestionsMenuActive,
 } from "components/Editor/utils";
 import { substituteVariables } from "components/EditorContent/utils";
-import { isEditorEmpty } from "utils/common";
+import { isEditorEmpty, isEditorContentWithinLimit } from "utils/common";
 
 import Attachments from "./components/Attachments";
 import Editor from "./components/Editor";
@@ -19,6 +19,7 @@ export {
   EditorContent,
   Menu,
   isEditorEmpty,
+  isEditorContentWithinLimit,
   substituteVariables,
   FormikEditor,
   Attachments,
