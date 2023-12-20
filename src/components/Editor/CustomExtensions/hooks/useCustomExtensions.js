@@ -4,7 +4,6 @@ import Color from "@tiptap/extension-color";
 import Document from "@tiptap/extension-document";
 import Focus from "@tiptap/extension-focus";
 import Highlight from "@tiptap/extension-highlight";
-import Link from "@tiptap/extension-link";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
@@ -24,6 +23,7 @@ import EmojiSuggestion from "../Emoji/EmojiSuggestion/ExtensionConfig";
 import ImageExtension from "../Image/ExtensionConfig";
 import FigCaption from "../Image/FigCaption";
 import KeyboardShortcuts from "../KeyboardShortcuts/ExtensionConfig";
+import Link from "../Link/ExtensionConfig";
 import Mention, { createMentionSuggestions } from "../Mention/ExtensionConfig";
 import Placeholder from "../Placeholder/ExtensionConfig";
 import SlashCommands from "../SlashCommands/ExtensionConfig";
@@ -63,7 +63,6 @@ const useCustomExtensions = ({
     VideoExtension,
     ImageExtension.configure({ openImageInNewTab }),
     Link.configure({
-      autolink: false,
       HTMLAttributes: { target: openLinkInNewTab ? "_blank" : null },
     }),
     Placeholder.configure({ placeholder }),
