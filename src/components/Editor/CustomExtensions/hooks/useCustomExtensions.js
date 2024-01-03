@@ -66,7 +66,13 @@ const useCustomExtensions = ({
       HTMLAttributes: { target: openLinkInNewTab ? "_blank" : null },
     }),
     Placeholder.configure({ placeholder }),
-    StarterKit.configure({ document: false, codeBlock: false, code: false }),
+    StarterKit.configure({
+      document: false,
+      codeBlock: false,
+      code: false,
+      orderedList: options.includes(EDITOR_OPTIONS.LIST_ORDERED),
+      bulletList: options.includes(EDITOR_OPTIONS.LIST_BULLETS),
+    }),
     TextStyle,
     Underline,
     KeyboardShortcuts.configure({
