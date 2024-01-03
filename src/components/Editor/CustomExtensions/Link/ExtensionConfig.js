@@ -1,15 +1,17 @@
-const {
+import {
   InputRule,
   markInputRule,
   markPasteRule,
   PasteRule,
-} = require("@tiptap/core");
-const { Link } = require("@tiptap/extension-link");
+} from "@tiptap/core";
+import { Link } from "@tiptap/extension-link";
 
-const inputRegex = /(?:^|\s)\[([^\]]*)?\]\((\S+)(?: ["“](.+)["”])?\)$/i;
-const pasteRegex = /(?:^|\s)\[([^\]]*)?\]\((\S+)(?: ["“](.+)["”])?\)/gi;
+import {
+  LINK_MARKDOWN_INPUT_REGEX,
+  LINK_MARKDOWN_PASTE_REGEX,
+} from "./constants";
 
-function linkInputRule(config) {
+const linkInputRule = config => {
   const defaultMarkInputRule = markInputRule(config);
 
   return new InputRule({
@@ -21,9 +23,9 @@ function linkInputRule(config) {
       tr.setMeta("preventAutolink", true);
     },
   });
-}
+};
 
-function linkPasteRule(config) {
+const linkPasteRule = config => {
   const defaultMarkPasteRule = markPasteRule(config);
 
   return new PasteRule({
@@ -35,9 +37,9 @@ function linkPasteRule(config) {
       tr.setMeta("preventAutolink", true);
     },
   });
-}
+};
 
-const RichTextLink = Link.extend({
+export default Link.extend({
   inclusive: false,
   addAttributes() {
     return { ...this.parent?.(), title: { default: null } };
@@ -45,7 +47,7 @@ const RichTextLink = Link.extend({
   addInputRules() {
     return [
       linkInputRule({
-        find: inputRegex,
+        find: LINK_MARKDOWN_INPUT_REGEX,
         type: this.type,
         getAttributes(match) {
           return {
@@ -59,7 +61,7 @@ const RichTextLink = Link.extend({
   addPasteRules() {
     return [
       linkPasteRule({
-        find: pasteRegex,
+        find: LINK_MARKDOWN_PASTE_REGEX,
         type: this.type,
         getAttributes(match) {
           return {
@@ -71,5 +73,3 @@ const RichTextLink = Link.extend({
     ];
   },
 });
-
-export default RichTextLink;
