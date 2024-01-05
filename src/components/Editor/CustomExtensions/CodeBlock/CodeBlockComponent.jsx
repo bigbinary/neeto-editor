@@ -37,6 +37,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
       <pre>
         <div className="neeto-editor-codeblock-options">
           <Dropdown
+            appendTo={() => document.body}
             buttonSize="small"
             buttonStyle="secondary"
             icon={Down}
