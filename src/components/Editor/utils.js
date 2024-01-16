@@ -49,7 +49,7 @@ export const setInitialPosition = editor => {
 
 export const isEditorOverlaysActive = () => {
   const active = document.querySelector(
-    ".ne-media-uploader,.ne-embed-modal,.tippy-content"
+    ".ne-media-uploader,.ne-embed-modal,.tippy-content,.ne-link-popover"
   );
 
   return active;
