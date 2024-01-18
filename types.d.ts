@@ -161,6 +161,8 @@ export function EditorContent(props: {
 
 export function Menu(props: MenuProps): JSX.Element;
 
+export function removeEmptyTags(html: string): string;
+
 export function isEditorEmpty(htmlContent: string | null | undefined): boolean;
 
 export function isEditorContentWithinLimit(htmlContent: string | null | undefined, maxLength: number): boolean;
