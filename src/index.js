@@ -5,7 +5,11 @@ import {
   isEmojiSuggestionsMenuActive,
 } from "components/Editor/utils";
 import { substituteVariables } from "components/EditorContent/utils";
-import { isEditorEmpty, isEditorContentWithinLimit } from "utils/common";
+import {
+  isEditorEmpty,
+  isEditorContentWithinLimit,
+  removeEmptyTags,
+} from "utils/common";
 
 import Attachments from "./components/Attachments";
 import Editor from "./components/Editor";
@@ -18,6 +22,7 @@ export {
   Editor,
   EditorContent,
   Menu,
+  removeEmptyTags,
   isEditorEmpty,
   isEditorContentWithinLimit,
   substituteVariables,
