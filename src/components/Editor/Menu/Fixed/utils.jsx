@@ -25,41 +25,6 @@ import { fromPairs, not, assoc } from "ramda";
 
 import { generateFocusProps } from "utils/focusHighlighter";
 
-export const tableActions = ({ editor }) => [
-  {
-    label: t("neetoEditor.table.insertRow"),
-    command: () => editor.commands.addRowAfter(),
-  },
-  {
-    label: t("neetoEditor.table.insertColumn"),
-    command: () => editor.commands.addColumnAfter(),
-  },
-  {
-    label: t("neetoEditor.table.deleteRow"),
-    command: () => editor.chain().focus().deleteRow().run(),
-  },
-  {
-    label: t("neetoEditor.table.deleteColumn"),
-    command: () => editor.chain().focus().deleteColumn().run(),
-  },
-  {
-    label: t("neetoEditor.table.mergeSplit"),
-    command: () => editor.chain().focus().mergeOrSplit().run(),
-  },
-  {
-    label: t("neetoEditor.table.toggleHeaderRow"),
-    command: () => editor.chain().focus().toggleHeaderRow().run(),
-  },
-  {
-    label: t("neetoEditor.table.toggleHeaderColumn"),
-    command: () => editor.chain().focus().toggleHeaderColumn().run(),
-  },
-  {
-    label: t("neetoEditor.table.delete"),
-    command: () => editor.commands.deleteTable(),
-  },
-];
-
 export const createMenuOptions = ({
   tooltips,
   editor,
