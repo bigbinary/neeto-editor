@@ -20,7 +20,7 @@ const Preview = ({
 
   const {
     filename = "",
-    contentType = "null",
+    contentType = null,
     url = "",
     signedId = "",
   } = selectedAttachment;
