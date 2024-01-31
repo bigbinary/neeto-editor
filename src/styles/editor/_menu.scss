@@ -35,8 +35,8 @@
       background-color: rgb(var(--neeto-ui-primary-100));
 
       .neeto-ui-btn__icon {
-          color: rgb(var(--neeto-ui-primary-800));
-        }
+        color: rgb(var(--neeto-ui-primary-800));
+      }
     }
   }
 
@@ -316,7 +316,6 @@
       display: flex;
       max-height: 190px;
       flex-direction: column;
-      align-items: center;
       overflow: scroll;
       gap: 2px;
     }

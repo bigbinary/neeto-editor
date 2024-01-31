@@ -37,14 +37,6 @@ export const getRenderContainer = (editor, nodeType) => {
 
 export const tableActions = ({ editor }) => [
   {
-    label: t("neetoEditor.table.insertRow"),
-    command: () => editor.commands.addRowAfter(),
-  },
-  {
-    label: t("neetoEditor.table.insertColumn"),
-    command: () => editor.commands.addColumnAfter(),
-  },
-  {
     label: t("neetoEditor.table.deleteRow"),
     command: () => editor.chain().focus().deleteRow().run(),
   },
@@ -53,19 +45,23 @@ export const tableActions = ({ editor }) => [
     command: () => editor.chain().focus().deleteColumn().run(),
   },
   {
+    label: t("neetoEditor.table.delete"),
+    command: () => editor.commands.deleteTable(),
+  },
+  {
+    label: t("neetoEditor.table.insertRow"),
+    command: () => editor.commands.addRowAfter(),
+  },
+  {
+    label: t("neetoEditor.table.insertColumn"),
+    command: () => editor.commands.addColumnAfter(),
+  },
+  {
     label: t("neetoEditor.table.mergeSplit"),
     command: () => editor.chain().focus().mergeOrSplit().run(),
   },
   {
     label: t("neetoEditor.table.toggleHeaderRow"),
     command: () => editor.chain().focus().toggleHeaderRow().run(),
-  },
-  {
-    label: t("neetoEditor.table.toggleHeaderColumn"),
-    command: () => editor.chain().focus().toggleHeaderColumn().run(),
-  },
-  {
-    label: t("neetoEditor.table.delete"),
-    command: () => editor.commands.deleteTable(),
   },
 ];

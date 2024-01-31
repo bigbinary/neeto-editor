@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 
 import { BubbleMenu } from "@tiptap/react";
-import { Settings } from "neetoicons";
 import { Button, Dropdown } from "neetoui";
 import { sticky } from "tippy.js";
 
@@ -39,8 +38,9 @@ const TableActionMenu = ({ editor }) => {
       }}
     >
       <Dropdown
+        buttonSize="small"
         buttonStyle="text"
-        icon={Settings}
+        label="Options"
         position="auto"
         strategy="fixed"
         onClose={() => editor?.commands.focus()}
