@@ -15,7 +15,6 @@ import MediaUploader from "components/Editor/MediaUploader";
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
 import LinkAddPopOver from "./LinkAddPopOver";
-import TableActions from "./TableActions";
 import TableOption from "./TableOption";
 import TextColorOption from "./TextColorOption";
 import {
@@ -147,10 +146,6 @@ const Fixed = ({
         {isFontSizeActive && <div className="vertical-divider" />}
         <div className="neeto-editor-fixed-menu__wrapper__button-group">
           {fontStyleOptions.map(renderOptionButton)}
-          <TableActions
-            {...{ editor }}
-            tooltipContent={tooltips.table || t("neetoEditor.menu.table")}
-          />
         </div>
         {isNotEmpty(fontStyleOptions) && <div className="vertical-divider" />}
         {(isMenuExpanded || not(isMenuCollapsible)) && (

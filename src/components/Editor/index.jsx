@@ -15,6 +15,7 @@ import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
 import EmbedOption from "./CustomExtensions/Embeds";
 import useCustomExtensions from "./CustomExtensions/hooks/useCustomExtensions";
+import TableActionMenu from "./CustomExtensions/Table/TableActionMenu";
 import LinkPopOver from "./LinkPopOver";
 import MediaUploader from "./MediaUploader";
 import Menu from "./Menu";
@@ -232,6 +233,7 @@ const Editor = (
             />
           )}
           {editor?.isActive("link") && <LinkPopOver {...{ editor }} />}
+          <TableActionMenu {...{ editor }} appendTo={dragDropRef} />
         </CharacterCountWrapper>
       </ErrorWrapper>
     </div>
