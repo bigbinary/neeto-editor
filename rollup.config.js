@@ -1,3 +1,5 @@
+import path from "path";
+
 import alias from "@rollup/plugin-alias";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
@@ -8,6 +10,7 @@ import svgr from "@svgr/rollup";
 import { mergeDeepLeft } from "ramda";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
+import copy from "rollup-plugin-copy";
 
 import packageJson from "./package.json";
 
@@ -43,43 +46,65 @@ const plugins = [
   }),
 ];
 
-export default [
-  {
-    input: "./src/index.js",
-    external: peerDependencies,
-    output: formats.map(format => ({
-      file: format === "esm" ? "./index.js" : "./index.cjs.js",
+const config = args => {
+  const destination = args.app
+    ? path.resolve(__dirname, args.app, "node_modules", packageJson.name)
+    : __dirname;
+    const output = formats.map(format => ({
+      assetFileNames: "[name][extname]",
+      dir: path.join(destination),
+      entryFileNames: format === "esm" ? "index.js" : "index.cjs.js",
       format,
+      name: "NeetoEditor",
       sourcemap: true,
-      name: "neetoEditor",
-      assetFileNames: "[name][extname]",
-    })),
-    plugins,
-  },
-  {
-    input: "./src/styles/editor-output.scss",
-    output: {
-      dir: `${__dirname}/dist`,
-      format: "esm",
-      sourcemap: true,
-      assetFileNames: "[name][extname]",
+    }));
+
+  return [
+    {
+      input: "./src/index.js",
+      external: peerDependencies,
+      output,
+      plugins: [ ...plugins,
+        args.app && copy({
+          targets: [
+            { src: "package.json", dest: destination },
+            { src: "types.d.ts", dest: destination },
+            { src: "LICENSE.md", dest: destination },
+            {
+              src: "src/translations",
+              dest: path.join(destination, "src/translations"),
+            },
+          ],
+        }),
+      ].filter(Boolean),
     },
-    plugins: [
-      styles({
-        extensions: [".css", ".scss", ".min.css"],
-        mode: ["extract", "editor-content.min.css"],
-        minimize: true,
-      }),
-    ],
-  },
-  {
-    input: "./src/components/EditorContent/codeBlockHighlight.js",
-    output: {
-      dir: `${__dirname}/dist`,
-      format: "cjs",
-      sourcemap: true,
-      assetFileNames: "[name][extname]",
+    {
+      input: "./src/styles/editor-output.scss",
+      output: {
+        dir: `${__dirname}/dist`,
+        format: "esm",
+        sourcemap: true,
+        assetFileNames: "[name][extname]",
+      },
+      plugins: [
+        styles({
+          extensions: [".css", ".scss", ".min.css"],
+          mode: ["extract", "editor-content.min.css"],
+          minimize: true,
+        }),
+      ],
     },
-    plugins,
-  },
-];
+    {
+      input: "./src/components/EditorContent/codeBlockHighlight.js",
+      output: {
+        dir: `${__dirname}/dist`,
+        format: "cjs",
+        sourcemap: true,
+        assetFileNames: "[name][extname]",
+      },
+      plugins,
+    },
+  ]
+}
+
+export default config;
