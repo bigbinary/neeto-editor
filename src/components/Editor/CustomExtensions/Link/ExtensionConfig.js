@@ -1,15 +1,7 @@
-import {
-  InputRule,
-  markInputRule,
-  markPasteRule,
-  PasteRule,
-} from "@tiptap/core";
+import { InputRule, markInputRule } from "@tiptap/core";
 import { Link } from "@tiptap/extension-link";
 
-import {
-  LINK_MARKDOWN_INPUT_REGEX,
-  LINK_MARKDOWN_PASTE_REGEX,
-} from "./constants";
+import { LINK_MARKDOWN_INPUT_REGEX } from "./constants";
 
 const linkInputRule = config => {
   const defaultMarkInputRule = markInputRule(config);
@@ -25,20 +17,6 @@ const linkInputRule = config => {
   });
 };
 
-const linkPasteRule = config => {
-  const defaultMarkPasteRule = markPasteRule(config);
-
-  return new PasteRule({
-    find: config.find,
-    handler(props) {
-      const { tr } = props.state;
-
-      defaultMarkPasteRule.handler(props);
-      tr.setMeta("preventAutolink", true);
-    },
-  });
-};
-
 export default Link.extend({
   inclusive: false,
   addAttributes() {
@@ -48,20 +26,6 @@ export default Link.extend({
     return [
       linkInputRule({
         find: LINK_MARKDOWN_INPUT_REGEX,
-        type: this.type,
-        getAttributes(match) {
-          return {
-            title: match.pop()?.trim(),
-            href: match.pop()?.trim(),
-          };
-        },
-      }),
-    ];
-  },
-  addPasteRules() {
-    return [
-      linkPasteRule({
-        find: LINK_MARKDOWN_PASTE_REGEX,
         type: this.type,
         getAttributes(match) {
           return {
