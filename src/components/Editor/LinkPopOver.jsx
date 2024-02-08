@@ -36,7 +36,7 @@ const LinkPopOver = ({ editor }) => {
       const screenHeight = window.innerHeight;
 
       const maxLeft = screenWidth - popoverRect.width;
-      const maxTop = screenHeight - popoverRect.height;
+      const maxTop = screenHeight - popoverRect.height - 50;
 
       const adjustedLeft = newPos?.left
         ? Math.min(newPos.left - 50, maxLeft)
