@@ -1,10 +1,15 @@
-import Table from "../components/Table";
+import React from "react";
+
 import {
   EDITOR_METHODS_TABLE_COLUMNS,
   EDITOR_METHODS_TABLE_ROWS,
   EDITOR_COMMANDS_TABLE_COLUMNS,
   EDITOR_COMMANDS_TABLE_ROWS,
+  UTILITIES,
+  UTILITIES_TABLE_COLUMNS,
 } from "./constants";
+
+import Table from "../components/Table";
 
 export const MethodsTable = () => (
   <Table
@@ -17,4 +22,8 @@ export const CommandsTable = () => (
     columns={EDITOR_COMMANDS_TABLE_COLUMNS}
     rows={EDITOR_COMMANDS_TABLE_ROWS}
   />
+);
+
+export const UtilitesTable = () => (
+  <Table columns={UTILITIES_TABLE_COLUMNS} rows={UTILITIES} />
 );

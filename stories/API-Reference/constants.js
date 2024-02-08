@@ -27,18 +27,6 @@ export const EDITOR_METHODS_TABLE_ROWS = [
     "isEmpty",
     "Returns a boolean value indicating whether the editor is empty or not.",
   ],
-  [
-    "isEditorOverlaysActive",
-    "Returns a boolean value indicating whether the editor overlays are active or not.",
-  ],
-  [
-    "isEmojiSuggestionsMenuActive",
-    "Returns a boolean value indicating whether the editor emoji suggestions menu is open or not.",
-  ],
-  [
-    "transformEditorContent",
-    "Modifies the editor's content by performing specific operations, such as replacing <img> tags with <figure> tags, removing empty <div> tags containing line breaks, and eliminating trailing line breaks."
-  ],
 ];
 
 export const EDITOR_PROPS = [
@@ -217,5 +205,42 @@ export const EDITOR_PROPS = [
     "openLinkInNewTab",
     "Accepts a boolean value. When set to 'false', it prevents links from opening in new tabs for preview.",
     "true",
+  ],
+];
+
+export const UTILITIES_TABLE_COLUMNS = ["Name", "Arguments", "Description"];
+
+export const UTILITIES = [
+  [
+    "removeEmptyTags",
+    "removeEmptyTags(string)",
+    "Strips empty HTML tags from the beginning and end of the editor content.",
+  ],
+  [
+    "isEditorContentWithinLimit",
+    "isEditorContentWithinLimit(string, number)",
+    "Returns a boolean indicating whether the editor content's text length is within a specified maxLength.",
+  ],
+  [
+    "substituteVariables",
+    "substituteVariables(string, object)",
+    <a href="https://neeto-editor.neeto.com/?path=/docs/examples-variables--variables#substitutevariables-method">
+      substitute the variables of the editor content with the associated values.
+    </a>,
+  ],
+  [
+    "isEditorOverlaysActive",
+    "isEditorOverlaysActive()",
+    "Returns a boolean value indicating whether the editor overlays are active or not.",
+  ],
+  [
+    "isEmojiSuggestionsMenuActive",
+    "isEmojiSuggestionsMenuActive()",
+    "Returns a boolean value indicating whether the editor emoji suggestions menu is open or not.",
+  ],
+  [
+    "transformEditorContent",
+    "transformEditorContent(string)",
+    "Modifies the editor's content by performing specific operations, such as replacing <img> tags with <figure> tags, removing empty <div> tags containing line breaks, and eliminating trailing line breaks.",
   ],
 ];
