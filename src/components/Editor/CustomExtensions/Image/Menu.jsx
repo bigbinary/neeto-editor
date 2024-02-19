@@ -21,6 +21,7 @@ const Menu = ({ align, editor, updateAttributes, deleteNode }) => {
       className="neeto-editor__image-menu"
       icon={MenuHorizontal}
       position="top"
+      strategy="fixed"
     >
       {menuOptions.map(({ Icon, optionName, alignPos }) => (
         <Button
