@@ -49,17 +49,18 @@ export const EDITOR_SHORTCUTS_TABLE_COLUMNS = [
 ];
 
 export const EDITOR_SHORTCUTS_TABLE_ROWS = [
-  ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
   ["Bold", "Ctrl + B", "Cmd + B"],
-  ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
-  ["Emoji", "Ctrl + Alt + E", "Cmd + Opt + E"],
-  ["Highlight", "Ctrl + Shift + H", "Cmd + Shift + H"],
-  ["Image uploader", "Ctrl + Alt + I", "Cmd + Opt + K"],
   ["Italicize", "Ctrl + I", "Cmd + I"],
-  ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
-  ["Strikethrough", "Ctrl + Shift + X", "Cmd + Shift + X"],
-  ["Table", "Ctrl + Alt + T", "Cmd + Opt + T"],
   ["Underline", "Ctrl + U", "Cmd + U"],
+  ["Strikethrough", "Ctrl + Shift + X", "Cmd + Shift + X"],
+  ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
+  ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
+  ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
+  ["Table", "Ctrl + Alt + T", "Cmd + Opt + T"],
+  ["Highlight", "Ctrl + Shift + H", "Cmd + Shift + H"],
+  ["Emoji", "Ctrl + Alt + E", "Cmd + Opt + E"],
+  ["Code Block", "Ctrl + Alt + C", "Cmd + Opt + C"],
+  ["Image uploader", "Ctrl + Alt + I", "Cmd + Opt + K"],
   ["Upload attachments", "Ctrl + Alt + A", "Cmd + Opt + A"],
   ["Video uploader", "Ctrl + Alt + V", "Cmd + Opt + V"],
 ];
