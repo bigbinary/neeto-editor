@@ -70,6 +70,7 @@ const useCustomExtensions = ({
       document: false,
       codeBlock: false,
       code: false,
+      blockquote: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
       orderedList: options.includes(EDITOR_OPTIONS.LIST_ORDERED),
       bulletList: options.includes(EDITOR_OPTIONS.LIST_BULLETS),
     }),
@@ -78,6 +79,7 @@ const useCustomExtensions = ({
     KeyboardShortcuts.configure({
       onSubmit,
       shortcuts: keyboardShortcuts,
+      isBlockQuoteActive: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
     }),
   ];
   if (isVideoEmbedActive) {
