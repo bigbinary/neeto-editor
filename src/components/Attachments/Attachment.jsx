@@ -47,7 +47,9 @@ const Attachment = ({
       const payload = { blob: { filename: newFilename } };
 
       const {
-        blob: { filename },
+        data: {
+          blob: { filename },
+        },
       } = await directUploadsApi.update({
         signedId,
         payload,
