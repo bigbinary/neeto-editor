@@ -50,13 +50,16 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
       .run();
   };
 
+  const handleKeydown = event =>
+    not(isUploading) && event.key === "Escape" && handleClose();
+
   return (
     <Modal
       closeButton={false}
       {...{ isOpen }}
-      closeOnEsc={not(isUploading)}
       closeOnOutsideClick={not(isUploading)}
       onClose={handleClose}
+      onKeyDown={handleKeydown}
     >
       <div className="ne-media-uploader">
         {!isNotPresent(tabs) && (
