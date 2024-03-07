@@ -27,7 +27,7 @@ const Option = ({
   return (
     <Button
       className={isActive ? "ne-headless-btn--active" : ""}
-      {...{ disabled }}
+      {...{ disabled, optionName }}
       icon={Icon}
       tooltipProps={{
         content: tooltip,

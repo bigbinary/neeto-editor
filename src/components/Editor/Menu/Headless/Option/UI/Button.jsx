@@ -8,6 +8,7 @@ const Button = ({
   icon = null,
   onClick = noop,
   disabled = false,
+  optionName = "",
   className,
   tooltipProps,
   ...otherProps
@@ -22,6 +23,7 @@ const Button = ({
     >
       <button
         className={classnames("ne-headless-btn", { [className]: className })}
+        data-test-id={optionName.replace(/\s+/g, "-")}
         type="button"
         {...{ disabled, onClick, ...otherProps }}
       >
