@@ -27,7 +27,7 @@ const Option = ({
   return (
     <Button
       className={isActive ? "ne-headless-btn--active" : ""}
-      {...{ disabled, optionName }}
+      {...{ disabled }}
       data-cy={optionName.replace(/\s+/g, "-")}
       icon={Icon}
       tooltipProps={{
