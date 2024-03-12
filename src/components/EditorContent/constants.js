@@ -13,4 +13,4 @@ export const CODE_BLOCK_REGEX =
 export const VARIABLE_SPAN_REGEX =
   /<span data-variable="" [^>]*data-label="([^"]+)">{{([^}]+)}}<\/span>/g;
 
-export const LANGUAGE_LIST = lowlight.listLanguages();
+export const LANGUAGE_LIST = [...lowlight.listLanguages(), "html"];

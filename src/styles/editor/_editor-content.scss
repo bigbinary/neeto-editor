@@ -154,6 +154,12 @@
       &__input {
         margin: 4px 4px;
       }
+
+      &--open {
+      display: flex;
+      opacity: 1;
+      transform: scale(1);
+      }
     }
 
     &:hover {
