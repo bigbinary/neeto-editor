@@ -1,3 +1,6 @@
 import { lowlight } from "lowlight";
 
-export const SORTED_LANGUAGE_LIST = lowlight.listLanguages().sort();
+export const SORTED_LANGUAGE_LIST = [
+  ...lowlight.listLanguages(),
+  "html",
+].sort();

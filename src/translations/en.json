@@ -94,7 +94,7 @@
     },
     "localUploader": {
       "dropFilesHere": "Drop your file(s) here or Browse.",
-      "maxFileSize": "Max. File Size: {{entity}}",
+      "maxFileSize": "Max. File Size: {{entity, anyCase}}",
       "completed": "Completed"
     }
   }
