@@ -32,16 +32,21 @@ export const ATTACHMENTS_TABLE_ROWS = [
   ],
 ];
 
+//TODO: Undo the changes
 export const attachments = [
   {
-    filename: "Books.pdf",
-    url: "https://i.picsum.photos/id/24/4855/1803.jpg?hmac=ICVhP1pUXDLXaTkgwDJinSUS59UWalMxf4SOIWb9Ui4",
+    filename: "Dummy_file_generated_on_2022-01-01.pdf",
+    url: "https://ngdrs.tripura.gov.in/NGDRS_TR/pdf/dummy.pdf",
     signedId: "1",
+    contentType: "application/pdf",
+    size: 13264,
   },
   {
-    filename: "Headphones.jpg",
-    url: "https://i.picsum.photos/id/26/4209/2769.jpg?hmac=vcInmowFvPCyKGtV7Vfh7zWcA_Z0kStrPDW3ppP0iGI",
+    filename: "Dummy Image.jpg",
+    url: "https://dummyimage.com/600x400/8f898f/0011ff&text=This+is+a+dummy+image",
     signedId: "2",
+    contentType: "image/jpeg",
+    size: 1951,
   },
 ];
 
