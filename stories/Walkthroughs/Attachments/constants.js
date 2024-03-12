@@ -36,7 +36,7 @@ export const ATTACHMENTS_TABLE_ROWS = [
 export const attachments = [
   {
     filename: "Dummy_file_generated_on_2022-01-01.pdf",
-    url: "https://ngdrs.tripura.gov.in/NGDRS_TR/pdf/dummy.pdf",
+    url: "https://icseindia.org/document/sample.pdf",
     signedId: "1",
     contentType: "application/pdf",
     size: 13264,

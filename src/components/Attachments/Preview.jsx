@@ -64,6 +64,10 @@ const Preview = ({
           return <video controls src={url} />;
         case "application":
         case "text":
+          if (contentType === "application/pdf") {
+            return <iframe src={url} width="100%" />;
+          }
+
           return (
             <DocViewer
               className="h-full w-full"
