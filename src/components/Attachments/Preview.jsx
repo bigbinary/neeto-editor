@@ -51,9 +51,7 @@ const Preview = ({
     }
   };
 
-  const handleDownload = () => {
-    downloadFile(url, filename);
-  };
+  const handleDownload = () => downloadFile(url, filename);
 
   const setPreview = () => {
     const isPreviewAvailable = checkPreviewAvailability(contentType);
