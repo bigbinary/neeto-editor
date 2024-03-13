@@ -42,11 +42,33 @@ export const attachments = [
     size: 13264,
   },
   {
+    filename: "Dummy_doc1-01.docx",
+    url: "https://calibre-ebook.com/downloads/demos/demo.docx",
+    signedId: "3",
+    contentType:
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    size: 100264,
+  },
+  {
+    filename: "Dummy xl sheet",
+    url: "https://sample-videos.com/xls/Sample-Spreadsheet-10-rows.xls",
+    signedId: "4",
+    contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    size: 13264,
+  },
+  {
     filename: "Dummy Image.jpg",
     url: "https://dummyimage.com/600x400/8f898f/0011ff&text=This+is+a+dummy+image",
     signedId: "2",
     contentType: "image/jpeg",
     size: 1951,
+  },
+  {
+    filename: "Dummy_unsupported file.unsupported",
+    url: "https://example.com/dummy-database-dump.sql",
+    signedId: "5",
+    contentType: "application/unsupported",
+    size: 5242880,
   },
 ];
 

@@ -4,7 +4,7 @@ import { findIndexBy, truncate } from "neetocist";
 import { Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
 import { isEmpty } from "ramda";
-import DocViewer, { PDFRenderer, TXTRenderer } from "react-doc-viewer";
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 import { Trans, useTranslation } from "react-i18next";
 
 import { convertToFileSize } from "components/Editor/MediaUploader/utils";
@@ -51,7 +51,9 @@ const Preview = ({
     }
   };
 
-  const handleDownload = () => downloadFile(url, filename);
+  const handleDownload = () => {
+    downloadFile(url, filename);
+  };
 
   const setPreview = () => {
     const isPreviewAvailable = checkPreviewAvailability(contentType);
@@ -70,9 +72,9 @@ const Preview = ({
 
           return (
             <DocViewer
-              className="h-full w-full"
+              className="ne-attachments-preview__body-docviewer"
               documents={[{ uri: url, fileType: contentType }]}
-              pluginRenderers={[PDFRenderer, TXTRenderer]}
+              pluginRenderers={DocViewerRenderers}
               config={{
                 header: { disableHeader: true, disableFileName: true },
               }}
