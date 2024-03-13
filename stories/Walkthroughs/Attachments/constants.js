@@ -32,43 +32,16 @@ export const ATTACHMENTS_TABLE_ROWS = [
   ],
 ];
 
-//TODO: Undo the changes
 export const attachments = [
   {
-    filename: "Dummy_file_generated_on_2022-01-01.pdf",
-    url: "https://icseindia.org/document/sample.pdf",
+    filename: "Books.pdf",
+    url: "https://i.picsum.photos/id/24/4855/1803.jpg?hmac=ICVhP1pUXDLXaTkgwDJinSUS59UWalMxf4SOIWb9Ui4",
     signedId: "1",
-    contentType: "application/pdf",
-    size: 13264,
   },
   {
-    filename: "Dummy_doc1-01.docx",
-    url: "https://calibre-ebook.com/downloads/demos/demo.docx",
-    signedId: "3",
-    contentType:
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    size: 100264,
-  },
-  {
-    filename: "Dummy xl sheet",
-    url: "https://sample-videos.com/xls/Sample-Spreadsheet-10-rows.xls",
-    signedId: "4",
-    contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    size: 13264,
-  },
-  {
-    filename: "Dummy Image.jpg",
-    url: "https://dummyimage.com/600x400/8f898f/0011ff&text=This+is+a+dummy+image",
+    filename: "Headphones.jpg",
+    url: "https://i.picsum.photos/id/26/4209/2769.jpg?hmac=vcInmowFvPCyKGtV7Vfh7zWcA_Z0kStrPDW3ppP0iGI",
     signedId: "2",
-    contentType: "image/jpeg",
-    size: 1951,
-  },
-  {
-    filename: "Dummy_unsupported file.unsupported",
-    url: "https://example.com/dummy-database-dump.sql",
-    signedId: "5",
-    contentType: "application/unsupported",
-    size: 5242880,
   },
 ];
 
