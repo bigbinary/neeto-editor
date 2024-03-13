@@ -1,5 +1,7 @@
 import React from "react";
 
+import { hyphenate } from "neetocist";
+
 import { EDITOR_OPTIONS } from "common/constants";
 
 import Emoji from "./Emoji";
@@ -28,7 +30,7 @@ const Option = ({
     <Button
       className={isActive ? "ne-headless-btn--active" : ""}
       {...{ disabled }}
-      data-cy={optionName.replace(/\s+/g, "-")}
+      data-cy={hyphenate(optionName)}
       icon={Icon}
       tooltipProps={{
         content: tooltip,
