@@ -1,3 +1,4 @@
+/* eslint-disable @bigbinary/neeto/file-name-and-export-name-standards */
 import { BasePlugin } from "@uppy/core";
 import { isEmpty } from "ramda";
 
@@ -41,11 +42,10 @@ class ActiveStorageUpload extends BasePlugin {
     };
 
     this.uppy.on("file-removed", removedFile => {
-      if (removedFile.id === file.id) {
-        upload.abort();
-        if (isEmpty(this.uppy.getFiles())) {
-          this.uppy.emit("complete");
-        }
+      if (!(removedFile.id === file.id)) return;
+      upload.abort();
+      if (isEmpty(this.uppy.getFiles())) {
+        this.uppy.emit("complete");
       }
     });
 
