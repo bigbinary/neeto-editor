@@ -9,10 +9,8 @@ prevent_pushing_to_main() {
 ======================================================================================
 You are not authorized to push/commit directly to master/main branch in origin remote.
 Push from a new branch and make the PR.
-
 Or if you are 100% sure you want to push/commit to master/main branch,
 then pass in the optional --no-verify option with the git command.
-
 Example:
 # Warning: pushing to main is not recommended
 git push origin main --no-verify
