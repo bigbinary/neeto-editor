@@ -95,4 +95,18 @@ export const checkPreviewAvailability = contentType =>
     contentType === "image/gif" ||
     contentType === "image/png" ||
     contentType === "image/webp" ||
-    contentType === "text/plain");
+    contentType === "text/plain" ||
+    contentType === "image/bmp" ||
+    contentType === "application/msword" ||
+    contentType ===
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+    contentType === "text/htm" ||
+    contentType === "text/html" ||
+    contentType === "image/jpg" ||
+    contentType === "application/vnd.ms-powerpoint" ||
+    contentType ===
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation" ||
+    contentType === "image/tiff" ||
+    contentType === "application/vnd.ms-excel" ||
+    contentType ===
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");

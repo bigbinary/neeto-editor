@@ -1,11 +1,13 @@
 import React, { useRef } from "react";
 
-import { findIndexBy } from "neetocist";
-import { Download, Left, Right } from "neetoicons";
+import { findIndexBy, truncate } from "neetocist";
+import { Left, Right } from "neetoicons";
 import { Modal, Typography, Button } from "neetoui";
 import { isEmpty } from "ramda";
-import DocViewer, { PDFRenderer, TXTRenderer } from "react-doc-viewer";
+import DocViewer, { DocViewerRenderers } from "react-doc-viewer";
 import { Trans, useTranslation } from "react-i18next";
+
+import { convertToFileSize } from "components/Editor/MediaUploader/utils";
 
 import { checkPreviewAvailability, downloadFile } from "./utils";
 
@@ -23,6 +25,7 @@ const Preview = ({
     contentType = null,
     url = "",
     signedId = "",
+    size = undefined,
   } = selectedAttachment;
 
   const attachmentIndex = findIndexBy({ signedId }, attachments);
@@ -61,11 +64,15 @@ const Preview = ({
           return <video controls src={url} />;
         case "application":
         case "text":
+          if (contentType === "application/pdf") {
+            return <iframe src={url} width="100%" />;
+          }
+
           return (
             <DocViewer
-              className="h-full w-full"
+              className="ne-attachments-preview__body-docviewer"
               documents={[{ uri: url, fileType: contentType }]}
-              pluginRenderers={[PDFRenderer, TXTRenderer]}
+              pluginRenderers={DocViewerRenderers}
               config={{
                 header: { disableHeader: true, disableFileName: true },
               }}
@@ -102,7 +109,16 @@ const Preview = ({
       onKeyDown={handleKeyDown}
     >
       <Modal.Header className="ne-attachments-preview__header">
-        <Typography style="h2">{filename}</Typography>
+        <div className="ne-attachments-preview__header__fileinfo">
+          <Typography style="h3">{truncate(filename, 25)}</Typography>
+          <Typography style="body2">{convertToFileSize(size)}</Typography>
+        </div>
+        <Button
+          label={t("neetoEditor.common.download")}
+          ref={downloadRef}
+          style="link"
+          onClick={handleDownload}
+        />
       </Modal.Header>
       <Modal.Body className="ne-attachments-preview__body">
         <Left
@@ -115,15 +131,6 @@ const Preview = ({
         />
         {setPreview()}
       </Modal.Body>
-      <div className="ne-attachments-preview__footer">
-        <Button
-          icon={Download}
-          iconPosition="right"
-          label={t("neetoEditor.common.download")}
-          ref={downloadRef}
-          onClick={handleDownload}
-        />
-      </div>
     </Modal>
   );
 };

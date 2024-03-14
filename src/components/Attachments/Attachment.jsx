@@ -19,7 +19,7 @@ import directUploadsApi from "apis/direct_uploads";
 
 import { ATTACHMENT_OPTIONS } from "./constants";
 import FileIcon from "./FileIcon";
-import { checkPreviewAvailability, downloadFile } from "./utils";
+import { downloadFile } from "./utils";
 
 const { Menu, MenuItem } = Dropdown;
 
@@ -115,13 +115,6 @@ const Attachment = ({
     }
   };
 
-  const handleAttachmentSelection = () => {
-    const contentType = attachment?.contentType;
-    const hasPreview = checkPreviewAvailability(contentType);
-
-    hasPreview ? setSelectedAttachment(attachment) : handleDownload();
-  };
-
   return (
     <>
       <div className="ne-attachments__preview">
@@ -159,7 +152,7 @@ const Attachment = ({
           <>
             <div
               className="ne-attachments__preview-wrapper"
-              onClick={handleAttachmentSelection}
+              onClick={() => setSelectedAttachment(attachment)}
             >
               <FileIcon fileName={attachment.filename} />
               <Tooltip content={attachment.filename} position="top">
