@@ -1,5 +1,9 @@
 'use strict';
 
+function getDefaultExportFromCjs (x) {
+	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+}
+
 var deepFreezeEs6 = {exports: {}};
 
 function deepFreeze(obj) {
@@ -15070,9 +15074,11 @@ hljs.HighlightJS = hljs;
 hljs.default = hljs;
 var common = hljs;
 
+var HighlightJS = /*@__PURE__*/getDefaultExportFromCjs(common);
+
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("pre code").forEach(function (element) {
-    return common.highlightElement(element);
+    return HighlightJS.highlightElement(element);
   });
 });
 //# sourceMappingURL=codeBlockHighlight.js.map
