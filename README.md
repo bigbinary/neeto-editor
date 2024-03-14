@@ -47,3 +47,21 @@ https://youtu.be/F4zZFnrNTq8
 ## Documentation
 
 Read the docs here: https://neeto-editor.neeto.com.
+
+## Releasing beta versions
+
+- Push the changes to a target branch for releasing beta version.
+- Update the package version to `{latest-version}-beta` (if `1.2.34` is the
+  current latest version, it will be `1.2.34-beta`) in the target branch for
+  beta release.
+- [Draft a new release](https://github.com/bigbinary/neeto-filters-nano/releases/new)
+  from the repo with the target branch.
+- Add a new tag and title in the format: version prefixed with `v`, eg:
+  `v1.2.34-beta`.
+- Generate release notes.
+- Set the release as a pre-release and publish the release.
+  <img width="640" alt="image" src="https://private-user-images.githubusercontent.com/22348659/292095447-8bcb83f3-dc52-46f8-98f9-a388df33abf2.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDc0NTU4MDcsIm5iZiI6MTcwNzQ1NTUwNywicGF0aCI6Ii8yMjM0ODY1OS8yOTIwOTU0NDctOGJjYjgzZjMtZGM1Mi00NmY4LTk4ZjktYTM4OGRmMzNhYmYyLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAyMDklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMjA5VDA1MTE0N1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTljYjQwOGMwYTY3ZjhmZGM4N2VjNmMwMjhlYTIxY2MzYTNmZjZhMDRmZDU1OWZjMzkzNmVmZmFhNDVlZTNmMDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.GdDk-fZIuLoZhqSdWJkvvU8l1_N-lwQEgWm5ttc7Ebs">
+
+If we are releasing a beta version to a product, we have to inform the
+compliance team as well to avoid overwriting the version with latest version on
+the next compliance release.
