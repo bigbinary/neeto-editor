@@ -31,7 +31,7 @@ There are two ways to do this:
 
 2. Directly updating the node_modules of the host application.
 
-    1. start the host application server
+    1. Start the host application server
     2. Inside the package, execute the command:
 
         ```
