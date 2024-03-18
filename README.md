@@ -27,7 +27,7 @@ There are two ways to do this:
 
 1. Using yalc package manager: https://youtu.be/F4zZFnrNTq8
 
->> Note: If you are using yalc, you need to run `yarn bundle` after making changes to the package instead of `yarn build` which is described in the video.
+> Note: If you are using yalc, you need to run `yarn bundle` after making changes to the package instead of `yarn build` which is described in the video.
 
 2. Directly updating the node_modules of the host application.
 
@@ -51,7 +51,7 @@ There are two ways to do this:
 
     4. Translation File Changes (optional)
 
-        Modifications in the neeto-editor translation files won't automatically update the UI. To verify these changes, update your neeto-site-web/app/javascript/packs/application.js file with the following code:
+        Modifications in the neeto-editor translation files will not automatically update the UI. To verify these changes, update your neeto-site-web/app/javascript/packs/application.js file with the following code:
 
         ```
         import en from "translations/en.json";
@@ -77,7 +77,7 @@ You can checkout the Create and publish releases workflow in GitHub Actions to g
 
 If you missed adding the label, you can manually publish the package. For that first, you need to create a PR to update the version number in the package.json file and merge it into the main branch. After merging the PR, you need to create a [new GitHub release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) from the main branch. Whenever a new release is created with a new version number, the GitHub actions will automatically publish the built package to npm. You can check out the Publish to npm workflow in GitHub Actions to get a live update.
 
->> Note: before publishing the package, you must verify the functionality in host application [locally](#instructions-for-development).
+> Note: before publishing the package, you must verify the functionality in host application [locally](#instructions-for-development).
 
 ## Documentation
 
