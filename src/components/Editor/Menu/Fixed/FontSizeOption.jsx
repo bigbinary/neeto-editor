@@ -43,7 +43,7 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
       >
         {FONT_SIZE_OPTIONS.map(({ label, value, key }) => (
           <MenuItem.Button
-            data-cy={`neeto-editor-fixed-menu-font-size-option-${label}`}
+            data-cy={`neeto-editor-fixed-menu-font-size-option-${key}`}
             key={value}
             onClick={() => handleClick(value)}
           >
