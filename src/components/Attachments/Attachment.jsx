@@ -117,7 +117,7 @@ const Attachment = ({
 
   return (
     <>
-      <div className="ne-attachments__preview">
+      <div className="ne-attachments__preview" data-cy="ne-attachments-wrapper">
         {isRenaming ? (
           <>
             <Tooltip content={newFilename} position="top">
@@ -165,9 +165,9 @@ const Attachment = ({
               position="top"
             >
               <Dropdown
+                {...{ disabled }}
                 buttonSize="small"
                 buttonStyle="text"
-                {...{ disabled }}
                 icon={MenuVertical}
               >
                 <Menu>

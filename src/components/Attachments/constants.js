@@ -13,3 +13,5 @@ export const ATTACHMENT_OPTIONS = {
   RENAME: "Rename",
   DELETE: "Delete",
 };
+
+export const ATTACHMENTS_PREVIEW_DATA_CY = "ne-attachments-preview-content";
