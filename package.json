@@ -90,7 +90,7 @@
     "antd": "5.10.2",
     "autoprefixer": "10.4.16",
     "axios": "1.6.2",
-    "babel-loader": "9.1.3",
+    "babel-loader": "^8.2.5",
     "babel-plugin-istanbul": "6.1.1",
     "babel-plugin-js-logger": "1.0.17",
     "babel-plugin-macros": "3.1.0",
