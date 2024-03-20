@@ -9,6 +9,7 @@ import { Trans, useTranslation } from "react-i18next";
 
 import { convertToFileSize } from "components/Editor/MediaUploader/utils";
 
+import { ATTACHMENTS_PREVIEW_DATA_CY } from "./constants";
 import { checkPreviewAvailability, downloadFile } from "./utils";
 
 const Preview = ({
@@ -59,18 +60,27 @@ const Preview = ({
     if (isPreviewAvailable) {
       switch (contentType.split("/")[0]) {
         case "image":
-          return <img src={url} />;
+          return <img data-cy={ATTACHMENTS_PREVIEW_DATA_CY} src={url} />;
         case "video":
-          return <video controls src={url} />;
+          return (
+            <video controls data-cy={ATTACHMENTS_PREVIEW_DATA_CY} src={url} />
+          );
         case "application":
         case "text":
           if (contentType === "application/pdf") {
-            return <iframe src={url} width="100%" />;
+            return (
+              <iframe
+                data-cy={ATTACHMENTS_PREVIEW_DATA_CY}
+                src={url}
+                width="100%"
+              />
+            );
           }
 
           return (
             <DocViewer
               className="ne-attachments-preview__body-docviewer"
+              data-cy={ATTACHMENTS_PREVIEW_DATA_CY}
               documents={[{ uri: url, fileType: contentType }]}
               pluginRenderers={DocViewerRenderers}
               config={{
@@ -102,10 +112,10 @@ const Preview = ({
 
   return (
     <Modal
+      {...{ onClose }}
       className="ne-attachments-preview"
       isOpen={!isEmpty(selectedAttachment)}
       size="fullScreen"
-      {...{ onClose }}
       onKeyDown={handleKeyDown}
     >
       <Modal.Header className="ne-attachments-preview__header">
