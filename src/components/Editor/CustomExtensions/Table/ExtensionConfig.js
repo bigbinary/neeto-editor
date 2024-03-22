@@ -16,7 +16,12 @@ const Table = TiptapTable.extend({
   },
   renderHTML({ node }) {
     const colgroups = node?.content?.content?.[0]?.content?.content?.map(
-      col => ["col", { style: `width: ${col.attrs?.colwidth || 100}px;` }]
+      col => {
+        let style = "min-width: 100px;";
+        if (col.attrs?.colwidth) style += `width: ${col.attrs.colwidth}px;`;
+
+        return ["col", { style }];
+      }
     );
 
     return ["table", {}, ["colgroup", ...colgroups], ["tbody", 0]];
