@@ -68,12 +68,12 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
       onClose={handleClose}
     >
       <Modal.Header>
-        <Typography style="h2">Embed Video</Typography>
+        <Typography style="h2">{t("neetoEditor.menu.embedVideo")}</Typography>
       </Modal.Header>
       <Modal.Body className="ne-embed-modal space-y-2">
         <Input
           data-cy="neeto-editor-embed-input"
-          error={error && "Please enter a valid URL"}
+          error={error && t("neetoEditor.error.invalidEmbedUrl")}
           label={t("neetoEditor.common.videoUrl")}
           ref={inputRef}
           size="medium"

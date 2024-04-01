@@ -49,9 +49,15 @@ export const VIMEO_URL_REGEXP =
 export const LOOM_URL_REGEXP =
   /((?:http|https):\/\/)?(www\.)?loom\.com\/(share|embed)\/([a-f0-9]{32})(?:\?sid=([a-f0-9-]{36}))?(?:\?t=(\d+))?(\?[^#]*)?/;
 
+export const NEETO_RECORD_URL_REGEXP =
+  /((?:http|https):\/\/)?(www\.)?[a-zA-Z0-9-]+\.(neetorecord\.com)\/(watch)\/([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})/;
+
 export const COMBINED_REGEX = new RegExp(
-  pluck("source", [YOUTUBE_URL_REGEXP, VIMEO_URL_REGEXP, LOOM_URL_REGEXP]).join(
-    "|"
-  ),
+  pluck("source", [
+    YOUTUBE_URL_REGEXP,
+    VIMEO_URL_REGEXP,
+    LOOM_URL_REGEXP,
+    NEETO_RECORD_URL_REGEXP,
+  ]).join("|"),
   "g"
 );

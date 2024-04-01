@@ -2,15 +2,16 @@ import {
   YOUTUBE_URL_REGEXP,
   VIMEO_URL_REGEXP,
   LOOM_URL_REGEXP,
+  NEETO_RECORD_URL_REGEXP,
 } from "common/constants";
 
-export const validateUrl = url => {
-  const validatedUrl = url
-    ? validateYouTubeUrl(url) || validateLoomUrl(url) || validateVimeoUrl(url)
+export const validateUrl = url =>
+  url
+    ? validateNeetoRecordUrl(url) ||
+      validateYouTubeUrl(url) ||
+      validateLoomUrl(url) ||
+      validateVimeoUrl(url)
     : false;
-
-  return validatedUrl;
-};
 
 export const validateYouTubeUrl = url => {
   const match = url.match(YOUTUBE_URL_REGEXP);
@@ -28,4 +29,10 @@ export const validateLoomUrl = url => {
   const match = url.match(LOOM_URL_REGEXP);
 
   return match && `https://www.loom.com/embed/${match[4]}?t=${match[5] || ""}`;
+};
+
+export const validateNeetoRecordUrl = url => {
+  const match = url.match(NEETO_RECORD_URL_REGEXP);
+
+  return match && url.replace("watch", "embeds");
 };
