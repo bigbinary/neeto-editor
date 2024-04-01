@@ -28,6 +28,7 @@
     },
     "error": {
       "invalidUrl": "Please enter a valid URL",
+      "invalidEmbedUrl": "Supported sources: NeetoRecord, YouTube, Vimeo, Loom.",
       "cannotAddFiles": "Cannot add files",
       "onBeforeFileAddedReturn": "Cannot add the file because onBeforeFileAdded returned false.",
       "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize, anyCase}}.",
@@ -64,7 +65,8 @@
       "alignLeft": "Align left",
       "alignCenter": "Align center",
       "alignRight": "Align right",
-      "delete": "Delete"
+      "delete": "Delete",
+      "embedVideo": "Embed video"
     },
     "placeholders": {
       "columns": "Enter columns",
