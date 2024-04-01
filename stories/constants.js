@@ -14,7 +14,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
   ["table", "Add a table to the editor."],
   ["undo", "Undo last performed action."],
   ["video-upload", "Upload videos to the editor."],
-  ["video-embed", "Embed videos from YouTube, Loom and Vimeo."],
+  ["video-embed", "Embed videos from neetoRecord, YouTube, Loom and Vimeo."],
   ["text-color", "Change the color of the text."],
 ];
 
