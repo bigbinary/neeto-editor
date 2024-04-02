@@ -15,7 +15,7 @@ const ImageComponent = ({
   updateAttributes,
   deleteNode,
 }) => {
-  const { alt, src, figheight, figwidth, align } = node.attrs;
+  const { src, figheight, figwidth, align } = node.attrs;
 
   const [captionWidth, setCaptionWidth] = useState(figwidth || 0);
 
@@ -26,7 +26,7 @@ const ImageComponent = ({
   let width = figwidth;
   const caption = figureRef.current
     ? figureRef.current.querySelector("figcaption>div")?.textContent
-    : alt;
+    : "";
 
   const editorElement = figureRef.current?.closest(".neeto-editor");
   const maxImageWidth = editorElement?.offsetWidth - 50;
@@ -74,7 +74,7 @@ const ImageComponent = ({
               setCaptionWidth(ref.offsetWidth)
             }
           >
-            <img {...node.attrs} alt={caption} {...{ src }} />
+            <img {...{ ...node.attrs, src }} alt={caption} />
           </Resizable>
         ) : (
           <div className="neeto-editor__image-placeholder">
