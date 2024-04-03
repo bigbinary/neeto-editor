@@ -39,6 +39,8 @@ const Attachments = (
     uppyConfig: buildUppyConfig(config),
   });
 
+  setIsUploading(isUploading);
+
   const handleAddFile = event => {
     const files = selectFiles({
       previousAttachmentsCount: attachments.length,
@@ -138,10 +140,6 @@ const Attachments = (
   };
 
   useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
-
-  useEffect(() => {
-    setIsUploading(isUploading);
-  }, [isUploading]);
 
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
