@@ -24,6 +24,7 @@ const Attachments = (
     dragDropRef = null,
     config = {},
     showToastr = true,
+    setIsUploading = noop,
   },
   ref
 ) => {
@@ -128,7 +129,19 @@ const Attachments = (
 
   const handleUploadAttachments = () => attachmentInputRef.current.click();
 
+  const handleFileInputClick = event => {
+    if (!(!isEmpty(attachments) && config.maxNumberOfFiles === 1)) {
+      return;
+    }
+    event.preventDefault();
+    Toastr.warning(t("neetoEditor.attachments.oneAttachmentAllowed"));
+  };
+
   useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
+
+  useEffect(() => {
+    setIsUploading(isUploading);
+  }, [isUploading]);
 
   useEffect(() => {
     uppy.on("upload-progress", handleUploadProgress);
@@ -186,12 +199,7 @@ const Attachments = (
           ref={attachmentInputRef}
           type="file"
           onChange={handleAddFile}
-          onClick={event => {
-            if (!isEmpty(attachments) && config.maxNumberOfFiles === 1) {
-              event.preventDefault();
-              Toastr.warning(t("neetoEditor.attachments.oneAttachmentAllowed"));
-            }
-          }}
+          onClick={handleFileInputClick}
         />
         <Preview
           {...{ attachments, selectedAttachment, setSelectedAttachment }}

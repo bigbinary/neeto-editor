@@ -71,6 +71,8 @@ const Editor = (
   },
   ref
 ) => {
+  const [isAttachmentsUploading, setIsAttachmentsUploading] = useState(false);
+
   const dragDropRef = useRef(null);
   const isAttachmentsActive = addons.includes(EDITOR_OPTIONS.ATTACHMENTS);
   const isVideoEmbedActive = addons.includes(EDITOR_OPTIONS.VIDEO_EMBED);
@@ -88,8 +90,12 @@ const Editor = (
   });
 
   const addAttachmentsRef = useRef(null);
-  const handleUploadAttachments = () =>
-    addAttachmentsRef.current?.handleUploadAttachments() || noop();
+
+  const attachmentProps = {
+    handleUploadAttachments: () =>
+      addAttachmentsRef.current?.handleUploadAttachments(),
+    isDisabled: isAttachmentsUploading,
+  };
 
   const customExtensions = useCustomExtensions({
     placeholder,
@@ -176,33 +182,33 @@ const Editor = (
     >
       {label && (
         <Label
+          {...{ required }}
           className="neeto-ui-mb-2"
           data-cy={`${slugify(label)}-editor-label`}
-          {...{ required }}
         >
           {label}
         </Label>
       )}
-      <ErrorWrapper className={errorWrapperClassName} {...{ error }}>
+      <ErrorWrapper {...{ error }} className={errorWrapperClassName}>
         <CharacterCountWrapper
           {...{ editor }}
           isActive={isCharacterCountActive}
         >
           <Menu
-            className={menuClassName}
             {...{
               addonCommands,
               addons,
+              attachmentProps,
               defaults,
               editor,
               editorSecrets,
-              handleUploadAttachments,
               isMenuCollapsible,
               mentions,
               menuType,
               tooltips,
               variables,
             }}
+            className={menuClassName}
             isIndependant={isMenuIndependent}
           />
           {children}
@@ -225,6 +231,7 @@ const Editor = (
               config={attachmentsConfig}
               isIndependent={false}
               ref={addAttachmentsRef}
+              setIsUploading={setIsAttachmentsUploading}
               showToastr={showAttachmentsToastr}
               className={classnames("ne-attachments--integrated", {
                 [attachmentsClassName]: attachmentsClassName,

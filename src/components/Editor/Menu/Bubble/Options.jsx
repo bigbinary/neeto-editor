@@ -30,7 +30,7 @@ const Options = ({
   setIsLinkOptionActive,
   setIsTableOptionActive,
   setMediaUploader,
-  handleUploadAttachments,
+  attachmentProps,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
@@ -55,7 +55,7 @@ const Options = ({
     options,
     setMediaUploader,
     tooltips,
-    handleUploadAttachments,
+    attachmentProps,
     setIsEmbedModalOpen,
   });
 

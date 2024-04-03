@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { noop } from "neetocist";
-import { assoc, isEmpty } from "ramda";
+import { assoc, isEmpty, not } from "ramda";
 
 import BubbleMenu from "./Bubble";
 import FixedMenu from "./Fixed";
@@ -21,7 +20,7 @@ const Menu = props => {
     addons = [],
     options = [],
     editorSecrets = {},
-    handleUploadAttachments = noop,
+    attachmentProps,
     defaults = DEFAULT_EDITOR_OPTIONS,
   } = props;
 
@@ -41,7 +40,8 @@ const Menu = props => {
         if (e.code === "KeyE") {
           setIsEmojiPickerActive(prevState => !prevState);
         } else if (e.code === "KeyA") {
-          handleUploadAttachments();
+          not(attachmentProps?.isDisabled) &&
+            attachmentProps?.handleUploadAttachments();
         } else if (e.code === "KeyK") {
           setMediaUploader(assoc("image", true));
         } else if (e.code === "KeyV") {
@@ -62,7 +62,7 @@ const Menu = props => {
     <MenuComponent
       {...{
         ...props,
-        handleUploadAttachments,
+        attachmentProps,
         isEmojiPickerActive,
         mediaUploader,
         setIsEmojiPickerActive,

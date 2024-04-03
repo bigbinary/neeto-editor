@@ -38,7 +38,7 @@ const Fixed = ({
   isIndependant = true,
   className,
   tooltips = {},
-  handleUploadAttachments,
+  attachmentProps,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   children,
@@ -99,7 +99,7 @@ const Fixed = ({
     editor,
     options,
     setMediaUploader,
-    handleUploadAttachments,
+    attachmentProps,
     setIsEmbedModalOpen,
     setIsAddLinkActive,
   });

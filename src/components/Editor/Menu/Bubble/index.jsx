@@ -16,7 +16,7 @@ const Bubble = ({
   mentions = [],
   setMediaUploader,
   tooltips = {},
-  handleUploadAttachments,
+  attachmentProps,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
@@ -64,8 +64,8 @@ const Bubble = ({
       >
         <Options
           {...{
+            attachmentProps,
             editor,
-            handleUploadAttachments,
             isEmojiPickerActive,
             isLinkOptionActive,
             isTableOptionActive,
