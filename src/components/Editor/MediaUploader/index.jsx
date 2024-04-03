@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { isNotPresent } from "neetocist";
 import { Modal, Tab } from "neetoui";
 import { not } from "ramda";
 import { useTranslation } from "react-i18next";
 
-import { MEDIA_UPLOAD_OPTIONS } from "./constants";
 import LocalUploader from "./LocalUploader";
 import UnsplashImagePicker from "./UnsplashImagePicker";
 import URLForm from "./URLForm";
+import { getTabs } from "./utils";
 
 const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
   const { t } = useTranslation();
@@ -16,11 +16,11 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
   const [activeTab, setActiveTab] = useState("local");
   const [isUploading, setIsUploading] = useState(false);
   const isOpen = mediaUploader.image || mediaUploader.video;
+  const [tabs, setTabs] = useState([]);
 
-  let tabs = unsplashApiKey
-    ? MEDIA_UPLOAD_OPTIONS
-    : MEDIA_UPLOAD_OPTIONS.slice(0, 2);
-  if (mediaUploader.video) tabs = [];
+  useEffect(() => {
+    isOpen && setTabs(getTabs(mediaUploader, unsplashApiKey));
+  }, [mediaUploader]);
 
   const handleClose = () => {
     onClose();
@@ -55,8 +55,8 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
 
   return (
     <Modal
-      closeButton={false}
       {...{ isOpen }}
+      closeButton={false}
       closeOnOutsideClick={not(isUploading)}
       onClose={handleClose}
       onKeyDown={handleKeydown}
@@ -67,6 +67,7 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
             {tabs.map(({ key, title }) => (
               <Tab.Item
                 active={activeTab === key}
+                data-cy={`neeto-editor-media-uploader-${key}-tab`}
                 key={key}
                 onClick={() => setActiveTab(key)}
               >
@@ -87,7 +88,9 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
             <URLForm
               placeholder={t("neetoEditor.placeholders.pasteLink")}
               buttonLabel={
-                mediaUploader.image ? "Upload image" : "Upload video"
+                mediaUploader.image
+                  ? t("neetoEditor.localUploader.uploadImage")
+                  : t("neetoEditor.localUploader.uploadVideo")
               }
               onSubmit={handleSubmit}
             />
