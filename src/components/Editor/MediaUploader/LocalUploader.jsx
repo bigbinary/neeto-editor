@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import DropTarget from "@uppy/drop-target";
 import { ImageUpload } from "neetoicons";
@@ -27,12 +27,13 @@ const LocalUploader = ({
 
   const [pendingUploads, setPendingUploads] = useState([]);
 
+  const uppyConfig = useMemo(
+    () => (isImage ? DEFAULT_IMAGE_UPPY_CONFIG : DEFAULT_VIDEO_UPPY_CONFIG),
+    []
+  );
+
   const fileInputRef = useRef(null);
   const dropTargetRef = useRef(null);
-
-  const uppyConfig = isImage
-    ? DEFAULT_IMAGE_UPPY_CONFIG
-    : DEFAULT_VIDEO_UPPY_CONFIG;
 
   const { uppy, isUploading } = useUppyUploader({ uppyConfig });
 

@@ -1,7 +1,7 @@
 import { t } from "i18next";
 import { LeftAlign, CenterAlign, RightAlign, Delete } from "neetoicons";
 
-import { FILE_SIZE_UNITS } from "./constants";
+import { FILE_SIZE_UNITS, MEDIA_UPLOAD_OPTIONS } from "./constants";
 
 export const convertToFileSize = (size = 10 * 1024 * 1024) => {
   let fileSize = size;
@@ -32,3 +32,11 @@ export const buildImageOptions = () => [
   },
   { Icon: Delete, optionName: t("neetoEditor.menu.delete") },
 ];
+
+export const getTabs = (mediaUploader, unsplashApiKey) => {
+  if (mediaUploader.video) return [];
+
+  return unsplashApiKey
+    ? MEDIA_UPLOAD_OPTIONS
+    : MEDIA_UPLOAD_OPTIONS.slice(0, 2);
+};
