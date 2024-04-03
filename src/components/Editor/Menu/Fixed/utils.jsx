@@ -29,7 +29,7 @@ export const createMenuOptions = ({
   tooltips,
   editor,
   setMediaUploader,
-  handleUploadAttachments,
+  attachmentProps,
   setIsEmbedModalOpen,
   setIsAddLinkActive,
 }) => ({
@@ -121,7 +121,8 @@ export const createMenuOptions = ({
     },
     {
       Icon: Attachment,
-      command: handleUploadAttachments,
+      command: attachmentProps?.handleUploadAttachments,
+      disabled: attachmentProps?.isDisabled,
       active: false,
       optionName: "attachments",
       tooltip: tooltips.attachments || t("neetoEditor.menu.attachments"),
@@ -170,7 +171,7 @@ export const buildMenuOptions = ({
   editor,
   options,
   setMediaUploader,
-  handleUploadAttachments,
+  attachmentProps,
   setIsEmbedModalOpen,
   setIsAddLinkActive,
 }) => {
@@ -178,7 +179,7 @@ export const buildMenuOptions = ({
     tooltips,
     editor,
     setMediaUploader,
-    handleUploadAttachments,
+    attachmentProps,
     setIsEmbedModalOpen,
     setIsAddLinkActive,
   });
@@ -201,9 +202,9 @@ export const renderOptionButton = ({
   tooltip,
 }) => (
   <Button
+    {...{ disabled }}
     className="neeto-editor-fixed-menu__item"
     data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
-    {...{ disabled }}
     icon={Icon}
     key={optionName}
     style={active ? "secondary" : "text"}

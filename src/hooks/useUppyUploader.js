@@ -13,6 +13,7 @@ import ActiveStorageUpload from "utils/ActiveStorageUpload";
 
 const useUppyUploader = ({ uppyConfig, onSuccess = noop }) => {
   const [isUploading, setIsUploading] = useState(false);
+
   const { t } = useTranslation();
 
   const onBeforeFileAdded = file => {
