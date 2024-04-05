@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { withEventTargetValue } from "neetocommons/utils";
-import { NeetoChangelog } from "neetoicons";
+import { Column } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
 import { useTranslation } from "react-i18next";
 
@@ -25,17 +25,17 @@ const TableOption = ({ editor, tooltipContent }) => {
       .chain()
       .focus()
       .insertTable({ rows, cols: columns, withHeaderRow: true })
-      .run(),
-      handleClose();
+      .run();
+    handleClose();
   };
 
   return (
     <Dropdown
+      {...{ isOpen }}
       buttonStyle={isOpen ? "secondary" : "text"}
       closeOnSelect={false}
       data-cy="neeto-editor-fixed-menu-link-option"
-      icon={NeetoChangelog}
-      {...{ isOpen }}
+      icon={Column}
       position="bottom"
       buttonProps={{
         tabIndex: -1,

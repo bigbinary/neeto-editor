@@ -14,7 +14,7 @@ import {
   Text,
   Notes,
   MediaVideo,
-  NeetoChangelog,
+  Column,
 } from "neetoicons";
 
 import { EDITOR_OPTIONS } from "common/constants";
@@ -200,7 +200,7 @@ export const MENU_ITEMS = [
     optionName: EDITOR_OPTIONS.TABLE,
     title: "Table",
     description: "Add a table",
-    Icon: NeetoChangelog,
+    Icon: Column,
     command: ({ editor, range }) =>
       editor
         .chain()

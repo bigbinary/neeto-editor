@@ -17,7 +17,7 @@ import {
   Smiley,
   File,
   Video,
-  NeetoChangelog,
+  Column,
   CodeBlock,
 } from "neetoicons";
 import { assoc } from "ramda";
@@ -137,7 +137,7 @@ export const createMenuOptions = ({
     setActive: setIsEmojiPickerActive,
   },
   {
-    Icon: NeetoChangelog,
+    Icon: Column,
     command: () =>
       editor
         .chain()
