@@ -25,6 +25,7 @@ const Menu = ({ align, editor, updateAttributes, deleteNode }) => {
     >
       {menuOptions.map(({ Icon, optionName, alignPos }) => (
         <Button
+          data-cy={`neeto-editor-image-menu-${optionName}`}
           icon={Icon}
           key={optionName}
           style={alignPos === align ? "secondary" : "text"}

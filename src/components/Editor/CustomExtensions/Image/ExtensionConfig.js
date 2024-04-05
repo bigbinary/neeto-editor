@@ -39,7 +39,7 @@ export default Node.create({
 
   content: "inline*",
 
-  draggable: true,
+  draggable: false,
 
   isolating: true,
 
@@ -181,14 +181,13 @@ export default Node.create({
                   const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
                   url &&
                     view.state.doc.descendants((node, pos) => {
-                      if (node.attrs.id === id) {
-                        const transaction = view.state.tr.setNodeMarkup(
-                          pos,
-                          null,
-                          { src: url }
-                        );
-                        view.dispatch(transaction);
-                      }
+                      if (!(node.attrs.id === id)) return;
+                      const transaction = view.state.tr.setNodeMarkup(
+                        pos,
+                        null,
+                        { src: url }
+                      );
+                      view.dispatch(transaction);
                     });
                 } catch {
                   view.dispatch(view.state.tr.delete(pos, pos + 1));

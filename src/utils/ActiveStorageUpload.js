@@ -31,7 +31,7 @@ class ActiveStorageUpload extends BasePlugin {
 
   uploadFile = async file => {
     const handleProgress = xhr => {
-      if (xhr.lengthComputable) {
+      if (xhr.event.lengthComputable) {
         this.uppy.emit("upload-progress", file, {
           uploader: this,
           bytesUploaded: xhr.loaded,

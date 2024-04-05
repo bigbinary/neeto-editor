@@ -39,6 +39,7 @@ const EmbedComponent = ({
   return (
     <NodeViewWrapper
       className={`neeto-editor__video-wrapper neeto-editor__video--${align}`}
+      data-cy="neeto-editor-video-wrapper"
     >
       <Resizable
         lockAspectRatio
