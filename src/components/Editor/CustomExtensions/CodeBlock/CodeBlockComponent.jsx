@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
-import classNames from "classnames";
 import { Down } from "neetoicons";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
 import { Dropdown, Input } from "neetoui";
@@ -14,7 +13,6 @@ const { Menu, MenuItem } = Dropdown;
 
 const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   const [keyword, setKeyword] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const { t } = useTranslation();
 
@@ -37,21 +35,15 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   return (
     <NodeViewWrapper data-cy="neeto-editor-code-block">
       <pre>
-        <div
-          className={classNames("neeto-editor-codeblock-options", {
-            "neeto-editor-codeblock-options--open": isDropdownOpen,
-          })}
-        >
+        <div className="neeto-editor-codeblock-options" contentEditable={false}>
           <Dropdown
             appendTo={() => document.body}
             buttonSize="small"
             buttonStyle="secondary"
             icon={Down}
-            isOpen={isDropdownOpen}
             label={node.attrs?.language || t("neetoEditor.common.auto")}
             strategy="fixed"
-            onClick={() => setIsDropdownOpen(isOpen => !isOpen)}
-            onClose={() => setIsDropdownOpen(false)}
+            zIndex={99999}
           >
             <Input
               autoFocus
