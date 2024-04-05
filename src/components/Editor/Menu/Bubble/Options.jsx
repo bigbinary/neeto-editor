@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link, NeetoChangelog } from "neetoicons";
+import { Link, Column } from "neetoicons";
 import { Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
 
@@ -128,7 +128,7 @@ const Options = ({
         })}
       {isTableActive &&
         renderOptionButton({
-          Icon: NeetoChangelog,
+          Icon: Column,
           command: () => setIsTableOptionActive(true),
           active: editor.isActive("table"),
           optionName: "table",
