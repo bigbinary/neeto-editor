@@ -20,9 +20,9 @@ import { Editor } from "../../src";
 
 # **Props**
 
-export const Template = args => <Editor {...args} />;
-
-<Story name="All Props"> {Template.bind({})}</Story>
+<Story name="All Props">
+  <Editor autoFocus />
+</Story>
 
 <div id="hide-controls-column">
   <ArgsTable story="All Props" />

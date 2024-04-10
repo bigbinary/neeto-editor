@@ -23,6 +23,9 @@
     "npm": ">=9",
     "yarn": ">=1.22"
   },
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@babel/eslint-parser": "7.17.0",
@@ -49,17 +52,12 @@
     "@rollup/plugin-json": "6.0.1",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-replace": "5.0.4",
-    "@storybook/addon-actions": "6.5.16",
-    "@storybook/addon-docs": "6.5.16",
-    "@storybook/addon-essentials": "6.5.16",
-    "@storybook/addon-interactions": "6.5.16",
-    "@storybook/addon-links": "6.5.16",
-    "@storybook/addon-postcss": "2.0.0",
-    "@storybook/builder-webpack5": "6.5.16",
-    "@storybook/manager-webpack5": "6.5.16",
-    "@storybook/preset-scss": "1.0.3",
-    "@storybook/react": "6.5.16",
-    "@storybook/testing-library": "0.0.13",
+    "@storybook/addon-actions": "^7.5.3",
+    "@storybook/addon-essentials": "^7.5.3",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^7.5.3",
+    "@storybook/react-webpack5": "^7.5.3",
     "@svgr/rollup": "8.1.0",
     "@tippyjs/react": "4.2.6",
     "@tiptap/extension-bubble-menu": "2.0.0-beta.199",
@@ -80,6 +78,7 @@
     "@tiptap/extension-table-row": "2.0.0-beta.199",
     "@tiptap/extension-text-style": "2.0.3",
     "@tiptap/extension-underline": "2.0.0-beta.199",
+    "@tiptap/pm": "^2.3.0",
     "@tiptap/react": "2.0.0-beta.199",
     "@tiptap/starter-kit": "2.0.0-beta.199",
     "@tiptap/suggestion": "2.0.0-beta.197",
@@ -87,6 +86,7 @@
     "@uppy/drop-target": "2.0.1",
     "@uppy/react": "2.2.2",
     "@uppy/url": "2.2.0",
+    "@svgr/webpack": "^6.5.1",
     "antd": "5.10.2",
     "autoprefixer": "10.4.16",
     "axios": "1.6.2",
@@ -147,6 +147,7 @@
     "react-query": "3.39.3",
     "react-router-dom": "5.3.4",
     "react-toastify": "8.2.0",
+    "remark-gfm": "4.0.0",
     "rollup": "2.79.1",
     "rollup-plugin-analyzer": "4.0.0",
     "rollup-plugin-cleaner": "1.0.0",
@@ -155,7 +156,8 @@
     "rollup-plugin-styles": "4.0.0",
     "sass": "1.69.5",
     "sass-loader": "13.0.2",
-    "storybook-dark-mode": "^2.1.1",
+    "storybook": "^7.5.3",
+    "storybook-dark-mode": "^3.0.1",
     "style-loader": "3.3.1",
     "tailwindcss": "3.4.1",
     "tippy.js": "6.3.7",
@@ -192,11 +194,11 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "build": "build-storybook",
+    "build": "storybook build",
     "bundle": "NODE_ENV=production rollup -c rollup.config.js",
     "prepare": "husky install",
     "serve": "node .storybook/express",
-    "storybook": "start-storybook -p 6006"
+    "storybook": "storybook dev -p 6006"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json}": [

@@ -13,18 +13,14 @@ initializeApplication({
 export const parameters = {
   layout: "fullscreen",
   actions: { argTypesRegex: "^on[A-Z].*" },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
+  controls: { matchers: { color: /(background|color)$/i, date: /Date$/ } },
   options: {
     storySort: {
       order: [
         "Welcome",
         "Getting started",
         "Walkthroughs",
+        ["Menu", "MenuTypes"],
         "API Reference",
         ["Props", "Editor API"],
         "Examples",
