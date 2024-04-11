@@ -1,6 +1,6 @@
 const path = require("path");
 const commonResolve = require("@bigbinary/neeto-commons-frontend/configs/nanos/webpack/resolve.js");
-const projectResolve = require("../resolve.js");
+const projectResolve = require("../resolves.js");
 const { mergeDeepLeft } = require("ramda");
 const remarkGfm = require("remark-gfm");
 
@@ -11,6 +11,8 @@ module.exports = {
     "../stories/**/*.stories.mdx",
     "../stories/**/*.stories.@(js|jsx|ts|tsx|mdx)",
   ],
+
+  staticDirs: ["./public"],
 
   addons: [
     "@storybook/addon-essentials",
@@ -39,24 +41,8 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       ...alias,
-      "@bigbinary/neeto-editor": path.resolve(
-        __dirname,
-        "../src/components"
-      ),
+      "@bigbinary/neeto-editor": path.resolve(__dirname, "../src/components"),
     };
-
-    // config.resolve.fallback = {
-    //   ...config.resolve.fallback,
-    //   crypto: require.resolve("crypto-browserify"),
-    //   fs: false,
-    //   http: require.resolve("stream-http"),
-    //   https: require.resolve("https-browserify"),
-    //   os: require.resolve("os-browserify/browser"),
-    //   path: require.resolve("path-browserify"),
-    //   stream: require.resolve("stream-browserify"),
-    //   tty: require.resolve("tty-browserify"),
-    //   zlib: require.resolve("browserify-zlib"),
-    // };
 
     config.module.rules.find(
       rule => rule.test && rule.test.test(".svg")
