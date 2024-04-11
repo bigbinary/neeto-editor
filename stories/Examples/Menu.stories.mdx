@@ -2,6 +2,7 @@ import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
 import { MENU_PROPS } from "./constants";
 import { Editor, Menu } from "../../src";
 import { buildArgValues } from "../utils";
+import Table from "../components/Table";
 
 <Meta
   title="Walkthroughs/Menu"
@@ -13,7 +14,6 @@ import { buildArgValues } from "../utils";
     },
   }}
   component={Editor}
-  argTypes={buildArgValues(MENU_PROPS)}
 />
 
 # Use Menu as an independant component
@@ -23,13 +23,8 @@ content. In such cases use the `Menu` component.
 
 ### Props
 
-export const Template = args => <Menu {...args} />;
+<Table columns={["Name", "Description", "Default"]} rows={MENU_PROPS} />
 
-<Story name="Menu"> {Template.bind({})}</Story>
-
-<div id="hide-controls-column">
-  <ArgsTable story="Menu" />
-</div>
 
 [Independant menu component](https://neeto-editor.neeto.com/?path=/docs/examples-independent-menu-component--page)
 section shows an example with the `Menu` component in action.

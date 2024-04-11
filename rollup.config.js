@@ -15,7 +15,7 @@ import copy from "rollup-plugin-copy";
 import packageJson from "./package.json";
 
 const commonResolve = require("@bigbinary/neeto-commons-frontend/configs/nanos/webpack/resolve.js");
-const projectResolve = require("./resolve.js");
+const projectResolve = require("./resolves.js");
 
 const { alias: aliasEntries } = mergeDeepLeft(projectResolve, commonResolve);
 const peerDependencies = Object.keys(packageJson.peerDependencies);
