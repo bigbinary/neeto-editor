@@ -1,6 +1,6 @@
 import { Meta } from "@storybook/addon-docs";
 
-import Welcome from "./assets/welcome.svg";
+import Welcome from "./assets/welcome.jpg";
 import { WELCOME_PAGE_CARDS } from "./constants";
 
 <Meta
@@ -25,7 +25,8 @@ export const Card = ({ card }) => {
   );
 };
 
-<style>{`
+<style>
+{`
 
   .sbdocs .sbdocs-hero-banner{
     display:flex;
@@ -138,7 +139,8 @@ export const Card = ({ card }) => {
     opacity:0.5;
   }
 
-`}</style>
+`}
+</style>
 
 <div className="sbdocs-hero-banner">
   <div>
@@ -147,8 +149,8 @@ export const Card = ({ card }) => {
     </h1>
     <p className="sbdocs-hero-banner__desc">
       neetoEditor library drives the rich-text experience <br /> in all the
-      <a href="https://neeto.com">neeto</a> 
-      products. neetoEditor is an 
+      <a href="https://neeto.com">neeto</a>
+      products. neetoEditor is an
       <a href="">open source</a> project.
     </p>
   </div>

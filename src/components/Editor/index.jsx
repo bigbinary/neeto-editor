@@ -2,12 +2,11 @@ import React, { useImperativeHandle, useState, useRef } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
+import { EDITOR_OPTIONS } from "common/constants";
 import { noop, slugify } from "neetocist";
-import { useFuncDebounce } from "neetocommons/react-utils";
 import { Label } from "neetoui";
 import { EditorView } from "prosemirror-view";
 
-import { EDITOR_OPTIONS } from "common/constants";
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import useEditorWarnings from "hooks/useEditorWarnings";
 
@@ -115,11 +114,6 @@ const Editor = (
   });
   useEditorWarnings({ initialValue });
 
-  const handleChange = useFuncDebounce(
-    ({ editor }) => onChange(editor.getHTML()),
-    100
-  );
-
   const editorClasses = classnames("neeto-editor", {
     "slash-active": isSlashCommandsActive && !isPlaceholderActive,
     "fixed-menu-active border": isFixedMenuActive,
@@ -155,7 +149,7 @@ const Editor = (
     },
     parseOptions: { preserveWhitespace: true },
     onCreate: ({ editor }) => !autoFocus && setInitialPosition(editor),
-    onUpdate: handleChange,
+    onUpdate: ({ editor }) => onChange(editor.getHTML()),
     onFocus,
     onBlur,
   });
