@@ -1,8 +1,10 @@
 import { Extension } from "@tiptap/core";
+import { PluginKey } from "prosemirror-state";
 
 const KeyboardShortcuts = ({ onSubmit, shortcuts, isBlockQuoteActive }) =>
   Extension.create({
     name: "keyboard-shortcuts",
+    key: new PluginKey("keyboard-shortcuts"),
 
     addKeyboardShortcuts() {
       return {

@@ -1,10 +1,11 @@
 import { Extension } from "@tiptap/core";
 import { t } from "i18next";
-import { Plugin } from "prosemirror-state";
+import { Plugin, PluginKey } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
 
 const Placeholder = Extension.create({
   name: "placeholder",
+  key: new PluginKey("placeholder"),
 
   addOptions() {
     return {
@@ -21,6 +22,7 @@ const Placeholder = Extension.create({
   addProseMirrorPlugins() {
     return [
       new Plugin({
+        key: new PluginKey("placeholder-decoration-handler"),
         props: {
           decorations: ({ doc, selection }) => {
             const active =

@@ -7,9 +7,9 @@ import tippy from "tippy.js";
 
 import EmojiSuggestionMenu from "./EmojiSuggestionMenu";
 
-const EmojiSuggestionPluginKey = new PluginKey("emoji-suggestion");
 const EmojiSuggestion = Node.create({
-  name: "emojiSuggestion",
+  name: "emoji-suggestion",
+  key: new PluginKey("emoji-suggestion"),
 
   group: "inline",
 
@@ -94,7 +94,7 @@ const EmojiSuggestion = Node.create({
 const suggestionConfig = {
   char: ":",
   startOfLine: false,
-  pluginKey: EmojiSuggestionPluginKey,
+  pluginKey: new PluginKey("emoji-suggestion-suggestions"),
   command: ({ editor, range, props }) => {
     editor.chain().focus().deleteRange(range).setEmoji(props).run();
   },

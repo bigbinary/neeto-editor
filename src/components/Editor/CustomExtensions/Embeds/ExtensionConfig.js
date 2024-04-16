@@ -1,14 +1,14 @@
 import { Node, mergeAttributes, PasteRule } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import { TextSelection } from "prosemirror-state";
-
 import { COMBINED_REGEX } from "common/constants";
+import { TextSelection, PluginKey } from "prosemirror-state";
 
 import EmbedComponent from "./EmbedComponent";
 import { validateUrl } from "./utils";
 
 export default Node.create({
   name: "external-video",
+  key: new PluginKey("external-video"),
 
   addOptions() {
     return { inline: false, HTMLAttributes: {} };

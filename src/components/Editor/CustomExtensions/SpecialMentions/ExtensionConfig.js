@@ -7,14 +7,12 @@ import tippy from "tippy.js";
 import { MentionList } from "../Mention/MentionList";
 import { createMentionSuggestions } from "../Mention/utils";
 
-const SpecialMentionPluginKey = new PluginKey("special-mention");
-
 const renderLabel = ({ options, node }) =>
   `${options.suggestion.char}${node.attrs.label ?? node.attrs.id}`;
 
 const suggestion = {
   char: "@@",
-  pluginKey: SpecialMentionPluginKey,
+  pluginKey: new PluginKey("special-mention-suggestions"),
 
   render: () => {
     let reactRenderer;
@@ -66,7 +64,8 @@ const suggestion = {
 };
 
 const SpecialMentions = Mention.extend({
-  name: "special-mention",
+  name: "special-mentions",
+  key: new PluginKey("special-mentions"),
 
   renderHTML({ node, HTMLAttributes }) {
     return [

@@ -1,9 +1,9 @@
 import { Node, mergeAttributes } from "@tiptap/core";
 import { PluginKey } from "prosemirror-state";
 
-const VariablePluginKey = new PluginKey("variables");
 const Variable = Node.create({
-  name: "variable",
+  name: "variables",
+  key: new PluginKey("variables"),
 
   addOptions() {
     return {
@@ -93,5 +93,3 @@ const Variable = Node.create({
 });
 
 export default Variable;
-
-export { VariablePluginKey };

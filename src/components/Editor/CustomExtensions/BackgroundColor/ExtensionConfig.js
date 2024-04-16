@@ -1,8 +1,10 @@
 import { Extension } from "@tiptap/core";
 import "@tiptap/extension-text-style";
+import { PluginKey } from "prosemirror-state";
 
 export default Extension.create({
-  name: "HighlightInternal",
+  name: "highlight-internal",
+  key: new PluginKey("highlight-internal"),
 
   addOptions() {
     return { types: ["textStyle"] };

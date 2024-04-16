@@ -1,8 +1,12 @@
 import TiptapTable from "@tiptap/extension-table";
+import { PluginKey } from "prosemirror-state";
 
 import { TableView } from "./TableView";
 
 const Table = TiptapTable.extend({
+  name: "table",
+  key: new PluginKey("table"),
+
   addOptions() {
     return {
       HTMLAttributes: {},

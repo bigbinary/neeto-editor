@@ -14,8 +14,6 @@ import CommandsList from "./CommandsList";
 import { NO_RESULT_MENU_ITEM } from "./constants";
 import { buildCommandItems } from "./utils";
 
-const CommandsPluginKey = new PluginKey("commands");
-
 export default {
   configure: ({
     addonCommands,
@@ -32,6 +30,7 @@ export default {
 
     return Extension.create({
       name: "slash-commands",
+      key: new PluginKey("slash-commands"),
 
       addOptions() {
         return {
@@ -39,7 +38,7 @@ export default {
           suggestion: {
             char: "/",
             startOfLine: false,
-            pluginKey: CommandsPluginKey,
+            pluginKey: new PluginKey("command-options"),
             command: ({ editor, range, props }) => {
               props.command({ editor, range });
             },

@@ -3,7 +3,7 @@ import { ReactNodeViewRenderer } from "@tiptap/react";
 import { t } from "i18next";
 import { globalProps } from "neetocommons/initializers";
 import { Toastr } from "neetoui";
-import { Plugin } from "prosemirror-state";
+import { Plugin, PluginKey } from "prosemirror-state";
 import { isEmpty } from "ramda";
 
 import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
@@ -30,6 +30,7 @@ const upload = async (file, url) => {
 
 export default Node.create({
   name: "image",
+  key: new PluginKey("image"),
 
   addOptions() {
     return { HTMLAttributes: {}, openImageInNewTab: true };
@@ -151,6 +152,7 @@ export default Node.create({
   addProseMirrorPlugins() {
     return [
       new Plugin({
+        key: new PluginKey("image-dom-event-handler"),
         props: {
           handleDOMEvents: {
             paste(view, event) {

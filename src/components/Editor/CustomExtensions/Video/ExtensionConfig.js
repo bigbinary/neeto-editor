@@ -1,10 +1,12 @@
 import { mergeAttributes, Node } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
+import { PluginKey } from "prosemirror-state";
 
 import VideoComponent from "./VideoComponent";
 
 const VideoExtension = Node.create({
   name: "video",
+  key: new PluginKey("video"),
 
   addOptions() {
     return { HTMLAttributes: {} };

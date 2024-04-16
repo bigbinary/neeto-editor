@@ -2,6 +2,8 @@ import Document from "@tiptap/extension-document";
 import { Plugin, PluginKey } from "prosemirror-state";
 
 export default Document.extend({
+  name: "custom-document",
+  key: new PluginKey("custom-document"),
   content: "root",
 
   addProseMirrorPlugins() {
@@ -9,7 +11,7 @@ export default Document.extend({
 
     return [
       new Plugin({
-        key: new PluginKey("eventHandler"),
+        key: new PluginKey("event-handler"),
         props: {
           handleClick(view, pos) {
             const { state } = view;

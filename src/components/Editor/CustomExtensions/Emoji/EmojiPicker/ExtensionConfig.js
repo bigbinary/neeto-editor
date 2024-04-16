@@ -6,10 +6,9 @@ import tippy from "tippy.js";
 
 import EmojiPickerMenu from "./EmojiPickerMenu";
 
-const EmojiPickerPluginKey = new PluginKey("emoji-picker");
-
 const EmojiPicker = Node.create({
-  name: "emojiPicker",
+  name: "emoji-picker",
+  key: new PluginKey("emoji-picker"),
 
   group: "inline",
 
@@ -24,7 +23,7 @@ const EmojiPicker = Node.create({
       suggestion: {
         char: "::",
         startOfLine: false,
-        pluginKey: EmojiPickerPluginKey,
+        pluginKey: new PluginKey("emoji-picker-suggestions"),
         items: () => [],
 
         render: () => {
