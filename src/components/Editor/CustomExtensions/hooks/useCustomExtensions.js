@@ -4,15 +4,15 @@ import Color from "@tiptap/extension-color";
 import Document from "@tiptap/extension-document";
 import Focus from "@tiptap/extension-focus";
 import Highlight from "@tiptap/extension-highlight";
+import Placeholder from "@tiptap/extension-placeholder";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
-import { isEmpty } from "ramda";
-
 import { EDITOR_OPTIONS } from "common/constants";
+import { isEmpty } from "ramda";
 
 import HighlightInternal from "../BackgroundColor/ExtensionConfig";
 import CodeBlock from "../CodeBlock/ExtensionConfig";
@@ -25,7 +25,6 @@ import FigCaption from "../Image/FigCaption";
 import KeyboardShortcuts from "../KeyboardShortcuts/ExtensionConfig";
 import Link from "../Link/ExtensionConfig";
 import Mention, { createMentionSuggestions } from "../Mention/ExtensionConfig";
-import Placeholder from "../Placeholder/ExtensionConfig";
 import SlashCommands from "../SlashCommands/ExtensionConfig";
 import SpecialMentions from "../SpecialMentions/ExtensionConfig";
 import Table from "../Table/ExtensionConfig";
