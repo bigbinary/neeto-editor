@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import classNames from "classnames";
+import { EDITOR_OPTIONS } from "common/constants";
 import { isNotEmpty } from "neetocist";
 import { Left, Right } from "neetoicons";
 import DynamicVariables from "neetomolecules/DynamicVariables";
@@ -8,7 +9,6 @@ import { Button } from "neetoui";
 import { isEmpty, not } from "ramda";
 import { useTranslation } from "react-i18next";
 
-import { EDITOR_OPTIONS } from "common/constants";
 import EmbedOption from "components/Editor/CustomExtensions/Embeds";
 import MediaUploader from "components/Editor/MediaUploader";
 
@@ -240,7 +240,10 @@ const Fixed = ({
         )}
       </div>
       {!isEmpty(variables) && (
-        <div className="neeto-editor-fixed-menu__variables">
+        <div
+          className="neeto-editor-fixed-menu__variables"
+          data-cy="neeto-editor-fixed-menu-variables"
+        >
           <DynamicVariables
             {...{ variables }}
             dropdownProps={{
