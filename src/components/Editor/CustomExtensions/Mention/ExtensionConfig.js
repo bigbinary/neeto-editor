@@ -1,6 +1,5 @@
 import Mention from "@tiptap/extension-mention";
 import { ReactRenderer } from "@tiptap/react";
-import { PluginKey } from "prosemirror-state";
 import tippy from "tippy.js";
 
 import { MentionList } from "./MentionList";
@@ -57,9 +56,6 @@ const suggestion = {
 };
 
 const Mentions = Mention.extend({
-  name: "mentions",
-  key: new PluginKey("mentions"),
-
   addCommands() {
     return {
       setMention:
