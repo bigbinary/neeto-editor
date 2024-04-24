@@ -146,6 +146,11 @@ const Fixed = ({
         <div className="neeto-editor-fixed-menu__wrapper__button-group">
           {fontStyleOptions.map(renderOptionButton)}
         </div>
+        {isAddLinkActive && (
+          <LinkAddPopOver
+            {...{ editor, isAddLinkActive, setIsAddLinkActive }}
+          />
+        )}
         {(isMenuExpanded || not(isMenuCollapsible)) && (
           <div
             className={classNames(
@@ -250,9 +255,6 @@ const Fixed = ({
             onVariableClick={handleVariableClick}
           />
         </div>
-      )}
-      {isAddLinkActive && (
-        <LinkAddPopOver {...{ editor, isAddLinkActive, setIsAddLinkActive }} />
       )}
     </div>
   );
