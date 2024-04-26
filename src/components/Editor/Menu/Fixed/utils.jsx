@@ -56,6 +56,12 @@ export const createMenuOptions = ({
       tooltip: tooltips.underline || t("neetoEditor.menu.underline"),
     },
     {
+      Icon: Link,
+      command: () => setIsAddLinkActive(not),
+      optionName: "link",
+      tooltip: "Link",
+    },
+    {
       Icon: TextCross,
       command: () => editor.chain().focus().toggleStrike().run(),
       active: editor.isActive("strike"),
@@ -113,12 +119,6 @@ export const createMenuOptions = ({
     },
   ],
   misc: [
-    {
-      Icon: Link,
-      command: () => setIsAddLinkActive(not),
-      optionName: "link",
-      tooltip: "Link",
-    },
     {
       Icon: Attachment,
       command: attachmentProps?.handleUploadAttachments,

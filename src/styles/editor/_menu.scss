@@ -14,13 +14,6 @@
     border-radius: var(--neeto-ui-rounded-sm) !important;
   }
 
-  .vertical-divider {
-    border-left: 1px solid rgb(var(--neeto-ui-gray-300));
-    margin: 0 11.5px;
-    opacity: 0.5;
-    height: 24px;
-  }
-
   button.neeto-editor-fixed-menu__item {
     min-width: fit-content;
     padding: 2px;
@@ -210,7 +203,6 @@
 
 .neeto-editor-font-size__wrapper {
   font-weight: var(--neeto-ui-font-normal) !important;
-  gap: 15px !important;
 }
 
 .neeto-editor-bubble-menu {
