@@ -1,3 +1,5 @@
+import { EDITOR_OPTIONS } from "common/constants";
+import { t } from "i18next";
 import { noop } from "neetocist";
 import {
   Paragraph,
@@ -17,13 +19,11 @@ import {
   Column,
 } from "neetoicons";
 
-import { EDITOR_OPTIONS } from "common/constants";
-
 export const MENU_ITEMS = [
   {
     optionName: EDITOR_OPTIONS.PARAGRAPH,
-    title: "Paragraph",
-    description: "Add a plain text block.",
+    title: t("neetoEditor.menu.normalText"),
+    description: t("neetoEditor.menu.normalTextDescription"),
     Icon: Paragraph,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode("paragraph").run();
@@ -31,8 +31,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H1,
-    title: "H1",
-    description: "Add a big heading.",
+    title: t("neetoEditor.menu.h1"),
+    description: t("neetoEditor.menu.h1Description"),
     Icon: TextH1,
     command: ({ editor, range }) => {
       editor
@@ -45,8 +45,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H2,
-    title: "H2",
-    description: "Add a sub-heading.",
+    title: t("neetoEditor.menu.h2"),
+    description: t("neetoEditor.menu.h2Description"),
     Icon: TextH2,
     command: ({ editor, range }) => {
       editor
@@ -59,8 +59,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H3,
-    title: "H3",
-    description: "Add a sub-heading of level 3.",
+    title: t("neetoEditor.menu.h3"),
+    description: t("neetoEditor.menu.h3Description"),
     Icon: Text,
     command: ({ editor, range }) => {
       editor
@@ -73,8 +73,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H4,
-    title: "H4",
-    description: "Add a sub-heading of level 4.",
+    title: t("neetoEditor.menu.h4"),
+    description: t("neetoEditor.menu.h4Description"),
     Icon: Text,
     command: ({ editor, range }) => {
       editor
@@ -87,8 +87,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H5,
-    title: "H5",
-    description: "Add a sub-heading of level 5.",
+    title: t("neetoEditor.menu.h5"),
+    description: t("neetoEditor.menu.h5Description"),
     Icon: Text,
     command: ({ editor, range }) => {
       editor
@@ -101,8 +101,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H6,
-    title: "H6",
-    description: "Add a sub-heading of level 6.",
+    title: t("neetoEditor.menu.h6"),
+    description: t("neetoEditor.menu.h6Description"),
     Icon: Text,
     command: ({ editor, range }) => {
       editor
@@ -115,8 +115,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.LIST_ORDERED,
-    title: "Numbered list",
-    description: "Add a list with numbering.",
+    title: t("neetoEditor.menu.numberedList"),
+    description: t("neetoEditor.menu.numberedListDescription"),
     Icon: ListNumber,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleOrderedList().run();
@@ -124,8 +124,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.LIST_BULLETS,
-    title: "Bulleted list",
-    description: "Add a list with bullets.",
+    title: t("neetoEditor.menu.bulletList"),
+    description: t("neetoEditor.menu.bulletListDescription"),
     Icon: ListDot,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleBulletList().run();
@@ -133,22 +133,22 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.IMAGE_UPLOAD,
-    title: "Image",
-    description: "Add an image.",
+    title: t("neetoEditor.menu.image"),
+    description: t("neetoEditor.menu.imageDescription"),
     Icon: ImageUpload,
     command: noop,
   },
   {
     optionName: EDITOR_OPTIONS.VIDEO_UPLOAD,
-    title: "Video",
-    description: "Add a video.",
+    title: t("neetoEditor.menu.video"),
+    description: t("neetoEditor.menu.videoDescription"),
     Icon: Video,
     command: noop,
   },
   {
     optionName: EDITOR_OPTIONS.BLOCKQUOTE,
-    title: "Blockquote",
-    description: "Add a quote.",
+    title: t("neetoEditor.menu.blockQuote"),
+    description: t("neetoEditor.menu.blockQuoteDescription"),
     Icon: Blockquote,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleBlockquote().run();
@@ -156,8 +156,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.CODE_BLOCK,
-    title: "Code block",
-    description: "Add a code block with syntax highlighting.",
+    title: t("neetoEditor.menu.codeBlock"),
+    description: t("neetoEditor.menu.codeDescription"),
     Icon: CodeBlock,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleCodeBlock().run();
@@ -165,8 +165,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.EMOJI,
-    title: "Emoji",
-    description: "Add an emoji.",
+    title: t("neetoEditor.menu.emoji"),
+    description: t("neetoEditor.menu.emojiDescription"),
     Icon: Smiley,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).insertContent("::").run();
@@ -174,8 +174,8 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.DIVIDER,
-    title: "Divider",
-    description: "Add an horizontal line to separate sections.",
+    title: t("neetoEditor.menu.divider"),
+    description: t("neetoEditor.menu.dividerDescription"),
     Icon: Minus,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setHorizontalRule().run();
@@ -183,23 +183,23 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.VIDEO_EMBED,
-    title: "Embed Youtube/Loom/Vimeo",
-    description: "Embed a video from major services.",
+    title: t("neetoEditor.menu.embed"),
+    description: t("neetoEditor.menu.embedDescription"),
     Icon: MediaVideo,
     command: noop,
   },
   {
     optionName: EDITOR_OPTIONS.PASTE_UNFORMATTED,
-    title: "Paste Unformatted",
-    description: "Paste by removing all styles.",
+    title: t("neetoEditor.menu.pasteUnformatted"),
+    description: t("neetoEditor.menu.pasteUnformattedDescription"),
     Icon: Notes,
     command: ({ editor, range }) =>
       editor.chain().focus().deleteRange(range).pasteUnformatted().run(),
   },
   {
     optionName: EDITOR_OPTIONS.TABLE,
-    title: "Table",
-    description: "Add a table",
+    title: t("neetoEditor.menu.table"),
+    description: t("neetoEditor.menu.tableDescription"),
     Icon: Column,
     command: ({ editor, range }) =>
       editor
@@ -212,7 +212,7 @@ export const MENU_ITEMS = [
 ];
 
 export const NO_RESULT_MENU_ITEM = {
-  title: "No results",
+  title: t("neetoEditor.menu.noResults"),
   command: ({ editor, range }) => {
     editor.chain().focus().deleteRange(range).run();
   },

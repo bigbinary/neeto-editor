@@ -1,7 +1,6 @@
+import { EDITOR_OPTIONS, URL_REGEXP } from "common/constants";
 import { t } from "i18next";
 import * as yup from "yup";
-
-import { EDITOR_OPTIONS, URL_REGEXP } from "common/constants";
 
 export const DEFAULT_EDITOR_OPTIONS = [
   EDITOR_OPTIONS.BOLD,
