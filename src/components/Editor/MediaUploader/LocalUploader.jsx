@@ -114,6 +114,7 @@ const LocalUploader = ({
       className="ne-media-uploader__dnd"
       data-cy="neeto-editor-media-uploader-dnd"
       ref={dropTargetRef}
+      tabIndex={0}
       onClick={() => fileInputRef.current?.click()}
     >
       <input
