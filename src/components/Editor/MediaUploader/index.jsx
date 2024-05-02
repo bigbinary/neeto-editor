@@ -25,6 +25,7 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
   const handleClose = () => {
     onClose();
     setActiveTab("local");
+    editor.commands.focus();
   };
 
   const handleSubmit = url => {

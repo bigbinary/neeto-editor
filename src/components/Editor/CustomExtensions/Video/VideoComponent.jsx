@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
@@ -14,18 +14,14 @@ const VideoComponent = ({
   updateAttributes,
   deleteNode,
 }) => {
-  const { alt, src, vidheight, vidwidth, align } = node.attrs;
+  const { src, vidheight, vidwidth, align } = node.attrs;
 
   const [captionWidth, setCaptionWidth] = useState(vidwidth || 0);
-
-  const figureRef = useRef(null);
 
   const { view } = editor;
   let height = vidheight;
   let width = vidwidth;
-  const caption = figureRef.current
-    ? figureRef.current.querySelector("figcaption>div")?.textContent
-    : alt;
+  const caption = node?.content?.content[0]?.text || "";
 
   const handleResize = (_event, _direction, ref) => {
     height = ref.offsetHeight;
@@ -49,7 +45,7 @@ const VideoComponent = ({
     <NodeViewWrapper
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
     >
-      <figure ref={figureRef}>
+      <figure>
         <Menu {...{ align, deleteNode, editor, updateAttributes }} />
         <Resizable
           lockAspectRatio
@@ -62,10 +58,9 @@ const VideoComponent = ({
         >
           <video
             controls
-            {...node.attrs}
+            {...{ ...node.attrs, src }}
             alt={caption}
             preload="metadata"
-            {...{ src }}
           />
         </Resizable>
         <NodeViewContent
