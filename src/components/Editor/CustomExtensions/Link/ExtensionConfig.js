@@ -1,4 +1,4 @@
-import { InputRule, markInputRule } from "@tiptap/core";
+import { InputRule, markInputRule, mergeAttributes } from "@tiptap/core";
 import { Link } from "@tiptap/extension-link";
 
 import { LINK_MARKDOWN_INPUT_REGEX } from "./constants";
@@ -22,6 +22,25 @@ export default Link.extend({
   addAttributes() {
     return { ...this.parent?.(), title: { default: null } };
   },
+
+  parseHTML() {
+    return [
+      {
+        tag: 'a[href]:not([data-type="button"]):not([href *= "javascript:" i])',
+      },
+    ];
+  },
+
+  renderHTML({ HTMLAttributes }) {
+    return [
+      "a",
+      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
+        class: "link",
+      }),
+      0,
+    ];
+  },
+
   addInputRules() {
     return [
       linkInputRule({
