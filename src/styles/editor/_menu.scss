@@ -261,6 +261,7 @@
       outline: none;
       line-height: 20px;
       width: 100%;
+      color: rgb(var(--neeto-ui-gray-200));
 
       &::placeholder {
         color: rgba(var(--neeto-ui-white, 0.4));

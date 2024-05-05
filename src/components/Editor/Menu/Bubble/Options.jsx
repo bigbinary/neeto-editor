@@ -1,10 +1,9 @@
 import React from "react";
 
+import { EDITOR_OPTIONS } from "common/constants";
 import { Link, Column } from "neetoicons";
 import { Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
-
-import { EDITOR_OPTIONS } from "common/constants";
 
 import LinkOption from "./LinkOption";
 import TableOption from "./TableOption";
@@ -57,6 +56,7 @@ const Options = ({
     tooltips,
     attachmentProps,
     setIsEmbedModalOpen,
+    setIsAddLinkActive: setIsLinkOptionActive,
   });
 
   const handleAnimateInvalidLink = () => {
