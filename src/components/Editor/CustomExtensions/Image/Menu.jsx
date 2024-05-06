@@ -16,7 +16,8 @@ const Menu = ({ align, editor, updateAttributes, deleteNode }) => {
   return (
     <Dropdown
       buttonProps={{ className: "neeto-editor__image-menu-btn" }}
-      buttonStyle="secondary"
+      buttonSize="large"
+      buttonStyle="tertiary"
       className="neeto-editor__image-menu"
       icon={MenuHorizontal}
       position="top"
