@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 import { getMarkRange, getMarkType } from "@tiptap/react";
 import { useOnClickOutside } from "neetocommons/react-utils";
-import { Button, Switch } from "neetoui";
+import { Button, Checkbox } from "neetoui";
 import { Form, Input } from "neetoui/formik";
 import { equals, isNil } from "ramda";
 import { createPortal } from "react-dom";
@@ -70,7 +70,7 @@ const LinkPopOver = ({ editor }) => {
         .chain()
         .focus()
         .extendMarkRange("link")
-        .setLink({ href: formattedUrl, target: openInNewTab ? "_blank" : "" })
+        .setLink({ href: formattedUrl, target: openInNewTab ? "_blank" : null })
         .run();
       setIsEditing(false);
 
@@ -83,7 +83,10 @@ const LinkPopOver = ({ editor }) => {
 
     if (isNil(from) || isNil(to)) return;
 
-    const attrs = { href: formattedUrl, target: openInNewTab ? "_blank" : "" };
+    const attrs = {
+      href: formattedUrl,
+      target: openInNewTab ? "_blank" : null,
+    };
     const linkMark = state.schema.marks.link.create(attrs);
     const linkTextWithMark = state.schema.text(textContent, [linkMark]);
 
@@ -152,8 +155,9 @@ const LinkPopOver = ({ editor }) => {
             style={{ width: "250px" }}
             onKeyDown={handleKeyDown}
           />
-          <Switch
+          <Checkbox
             checked={values.openInNewTab}
+            className="ne-link-popover__checkbox"
             label={t("neetoEditor.common.openInNewTab")}
             onChange={() => {
               setFieldValue("openInNewTab", !values.openInNewTab);
