@@ -25,7 +25,7 @@ const LinkOption = ({ editor, handleClose, handleAnimateInvalidLink }) => {
 
   const handleSubmit = () => {
     if (URL_REGEXP.test(link)) {
-      editor.chain().focus().setLink({ href: link, target: "" }).run();
+      editor.chain().focus().setLink({ href: link }).run();
       handleClose();
     } else if (isNotPresent(link)) {
       editor.chain().focus().unsetLink().run();
