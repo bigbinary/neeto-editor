@@ -10,6 +10,8 @@ import { useTranslation } from "react-i18next";
 import { validateAndFormatUrl } from "components/Editor/utils";
 import { URL_REGEXP } from "src/common/constants";
 
+import { getCursorPos } from "./utils";
+
 const LinkAddPopOver = ({
   isAddLinkActive,
   setIsAddLinkActive,
@@ -23,7 +25,9 @@ const LinkAddPopOver = ({
   const [linkUrl, setLinkUrl] = useState("");
   const [openInNewTab, setOpenInNewTab] = useState(openLinkInNewTab);
   const [error, setError] = useState("");
-  const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
+  const [popoverPosition, setPopoverPosition] = useState(
+    getCursorPos(editor, to)
+  );
   const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
 
   const popOverRef = useRef(null);
