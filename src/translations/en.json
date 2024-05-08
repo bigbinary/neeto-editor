@@ -10,11 +10,12 @@
       "auto": "Auto",
       "edit": "Edit",
       "cancel": "Cancel",
-      "text": "Text:",
+      "text": "Text",
       "done": "Done",
-      "url": "Url:",
+      "url": "Link",
       "editLink": "Edit link",
-      "resetToDefault": "Reset to default"
+      "resetToDefault": "Reset to default",
+      "openInNewTab": "Open in new tab"
     },
     "attachments": {
       "actionsBlocked": "You are not permitted to update or delete attachments",

@@ -42,6 +42,7 @@ const Fixed = ({
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   children,
+  openLinkInNewTab,
 }) => {
   const [focusedButtonIndex, setFocusedButtonIndex] = useState(0);
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
@@ -148,7 +149,12 @@ const Fixed = ({
         </div>
         {isAddLinkActive && (
           <LinkAddPopOver
-            {...{ editor, isAddLinkActive, setIsAddLinkActive }}
+            {...{
+              editor,
+              isAddLinkActive,
+              openLinkInNewTab,
+              setIsAddLinkActive,
+            }}
           />
         )}
         {(isMenuExpanded || not(isMenuCollapsible)) && (

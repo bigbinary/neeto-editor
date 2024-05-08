@@ -224,3 +224,5 @@ export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
     command: () => option.command?.({ editor, range: { from: to, to } }),
   }));
 };
+
+export const getCursorPos = (editor, to) => editor?.view.coordsAtPos(to);

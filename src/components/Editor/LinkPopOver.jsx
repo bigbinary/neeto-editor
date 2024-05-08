@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 import { getMarkRange, getMarkType } from "@tiptap/react";
 import { useOnClickOutside } from "neetocommons/react-utils";
-import { Button } from "neetoui";
+import { Button, Checkbox } from "neetoui";
 import { Form, Input } from "neetoui/formik";
 import { equals, isNil } from "ramda";
 import { createPortal } from "react-dom";
@@ -27,27 +27,24 @@ const LinkPopOver = ({ editor }) => {
   const linkAttributes = editor?.getAttributes("link");
 
   const updatePopoverPosition = () => {
-    if (view && popOverRef.current) {
-      const newPos = view.coordsAtPos(view.state.selection.$to.pos);
+    if (!(view && popOverRef.current)) return;
+    const newPos = view.coordsAtPos(view.state.selection.$to.pos);
 
-      const popoverRect = popOverRef.current?.getBoundingClientRect();
+    const popoverRect = popOverRef.current?.getBoundingClientRect();
 
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
 
-      const maxLeft = screenWidth - popoverRect.width;
-      const maxTop = screenHeight - popoverRect.height - 50;
+    const maxLeft = screenWidth - popoverRect.width;
+    const maxTop = screenHeight - popoverRect.height - 50;
 
-      const adjustedLeft = newPos?.left
-        ? Math.min(newPos.left - 50, maxLeft)
-        : 0;
-      const adjustedTop = newPos?.top ? Math.min(newPos.top - 22, maxTop) : 0;
+    const adjustedLeft = newPos?.left ? Math.min(newPos.left - 50, maxLeft) : 0;
+    const adjustedTop = newPos?.top ? Math.min(newPos.top - 22, maxTop) : 0;
 
-      setPopoverPosition({
-        top: `${adjustedTop}px`,
-        left: `${adjustedLeft}px`,
-      });
-    }
+    setPopoverPosition({
+      top: `${adjustedTop}px`,
+      left: `${adjustedLeft}px`,
+    });
   };
 
   const handleUnlink = () =>
@@ -66,14 +63,14 @@ const LinkPopOver = ({ editor }) => {
     transform: `translateY(52px) translateX(${isEditing ? "8px" : "3px"})`,
   };
 
-  const handleSubmit = ({ textContent, urlString }) => {
+  const handleSubmit = ({ textContent, urlString, openInNewTab }) => {
     const formattedUrl = validateAndFormatUrl(urlString);
     if (equals(textContent, initialTextContent)) {
       editor
         .chain()
         .focus()
         .extendMarkRange("link")
-        .setLink({ href: formattedUrl })
+        .setLink({ href: formattedUrl, target: openInNewTab ? "_blank" : null })
         .run();
       setIsEditing(false);
 
@@ -86,7 +83,10 @@ const LinkPopOver = ({ editor }) => {
 
     if (isNil(from) || isNil(to)) return;
 
-    const attrs = { href: formattedUrl };
+    const attrs = {
+      href: formattedUrl,
+      target: openInNewTab ? "_blank" : null,
+    };
     const linkMark = state.schema.marks.link.create(attrs);
     const linkTextWithMark = state.schema.text(textContent, [linkMark]);
 
@@ -127,12 +127,13 @@ const LinkPopOver = ({ editor }) => {
         initialValues: {
           textContent: initialTextContent,
           urlString: linkAttributes?.href || "",
+          openInNewTab: linkAttributes?.target === "_blank",
         },
         onSubmit: handleSubmit,
         validationSchema: LINK_VALIDATION_SCHEMA,
       }}
     >
-      {({ dirty, isSubmitting }) => (
+      {({ dirty, isSubmitting, setFieldValue, values }) => (
         <>
           <Input
             required
@@ -153,6 +154,14 @@ const LinkPopOver = ({ editor }) => {
             placeholder={t("neetoEditor.placeholders.url")}
             style={{ width: "250px" }}
             onKeyDown={handleKeyDown}
+          />
+          <Checkbox
+            checked={values.openInNewTab}
+            className="ne-link-popover__checkbox"
+            label={t("neetoEditor.common.openInNewTab")}
+            onChange={() => {
+              setFieldValue("openInNewTab", !values.openInNewTab);
+            }}
           />
           <div className="ne-link-popover__edit-prompt-buttons">
             <Button
