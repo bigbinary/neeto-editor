@@ -2,12 +2,11 @@ import React, { useRef, useState } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
-import { isPresent } from "neetocist";
-import { Close } from "neetoicons";
-import { Button, Modal, Spinner } from "neetoui";
+import { Spinner } from "neetoui";
 import { isEmpty, mergeRight } from "ramda";
 import { Resizable } from "re-resizable";
 
+import ImagePreviewModal from "./ImagePreviewModal";
 import Menu from "./Menu";
 
 const ImageComponent = ({
@@ -95,22 +94,7 @@ const ImageComponent = ({
           style={{ width: `${captionWidth}px` }}
         />
       </figure>
-      <Modal
-        className="image-preview-neeto-ui-modal"
-        closeButton={false}
-        isOpen={isPresent(previewUrl)}
-        size="fullScreen"
-        onClose={() => setPreviewUrl(null)}
-      >
-        <Button
-          className="image-preview-neeto-ui-modal__close-btn"
-          icon={Close}
-          style="secondary"
-          onClick={() => setPreviewUrl(null)}
-          onKeyDown={e => e.key === "Escape" && setPreviewUrl(null)}
-        />
-        <img src={previewUrl} />
-      </Modal>
+      <ImagePreviewModal {...{ previewUrl, setPreviewUrl }} />
     </NodeViewWrapper>
   );
 };
