@@ -2,7 +2,9 @@ import React, { useRef, useState } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
-import { Spinner } from "neetoui";
+import { isPresent } from "neetocist";
+import { Close } from "neetoicons";
+import { Button, Modal, Spinner } from "neetoui";
 import { isEmpty, mergeRight } from "ramda";
 import { Resizable } from "re-resizable";
 
@@ -18,6 +20,7 @@ const ImageComponent = ({
   const { src, figheight, figwidth, align } = node.attrs;
 
   const [captionWidth, setCaptionWidth] = useState(figwidth || 0);
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   const figureRef = useRef(null);
 
@@ -72,7 +75,14 @@ const ImageComponent = ({
               setCaptionWidth(ref.offsetWidth)
             }
           >
-            <img {...{ ...node.attrs, src }} alt={caption} />
+            <img
+              {...{ ...node.attrs, src }}
+              alt={caption}
+              onClick={e => {
+                e.stopPropagation();
+                setPreviewUrl(src);
+              }}
+            />
           </Resizable>
         ) : (
           <div className="neeto-editor__image-placeholder">
@@ -85,6 +95,22 @@ const ImageComponent = ({
           style={{ width: `${captionWidth}px` }}
         />
       </figure>
+      <Modal
+        className="image-preview-neeto-ui-modal"
+        closeButton={false}
+        isOpen={isPresent(previewUrl)}
+        size="fullScreen"
+        onClose={() => setPreviewUrl(null)}
+      >
+        <Button
+          className="image-preview-neeto-ui-modal__close-btn"
+          icon={Close}
+          style="secondary"
+          onClick={() => setPreviewUrl(null)}
+          onKeyDown={e => e.key === "Escape" && setPreviewUrl(null)}
+        />
+        <img src={previewUrl} />
+      </Modal>
     </NodeViewWrapper>
   );
 };

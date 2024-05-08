@@ -27,3 +27,25 @@
     }
   }
 }
+
+.image-preview-neeto-ui-modal {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+
+  &__close-btn {
+    float: right;
+    border-radius: 100%;
+    margin: 10px 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: cover;
+    border: 10px solid rgb(var(--neeto-ui-gray-100));
+    border-radius: 10px;
+    opacity: 1;
+    transition: opacity 2s ease-in-out
+  }
+}

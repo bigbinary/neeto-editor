@@ -306,6 +306,10 @@
       border-radius: var(--neeto-ui-rounded-lg);
       padding: 4px;
     }
+
+    img {
+      cursor: zoom-in;
+    }
   }
 
   .neeto-editor__image-placeholder {
