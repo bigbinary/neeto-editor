@@ -349,6 +349,16 @@
   font-weight: normal !important;
 }
 
+.neeto-editor-content {
+  figcaption {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: normal;
+    color: #6b7280;
+  }
+}
+
 .neeto-editor__image--left {
   justify-content: flex-start;
 }
