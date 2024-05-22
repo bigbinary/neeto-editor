@@ -29,11 +29,11 @@ const Attachment = ({
   disabled,
   onChange,
   setSelectedAttachment,
-  showToastr,
 }) => {
   const { t } = useTranslation();
 
   const [isRenaming, setIsRenaming] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [newFilename, setNewFilename] = useState("");
@@ -43,18 +43,12 @@ const Attachment = ({
 
   const handleRename = async () => {
     try {
+      setIsUpdating(true);
       const { signedId } = attachment;
       const payload = { blob: { filename: newFilename } };
 
-      const {
-        data: {
-          blob: { filename },
-        },
-      } = await directUploadsApi.update({
-        signedId,
-        payload,
-        showToastr,
-      });
+      const response = await directUploadsApi.update({ signedId, payload });
+      const filename = response.data?.blob?.filename || response.blob.filename;
 
       onChange(
         attachments.map(attachment =>
@@ -67,6 +61,7 @@ const Attachment = ({
       Toastr.error(error);
     } finally {
       setIsRenaming(false);
+      setIsUpdating(false);
       setNewFilename("");
     }
   };
@@ -75,7 +70,7 @@ const Attachment = ({
     setIsDeleting(true);
     try {
       const { signedId } = attachment;
-      await directUploadsApi.destroy(signedId, showToastr);
+      await directUploadsApi.destroy(signedId);
       onChange(removeBy({ signedId }, attachments));
     } catch (error) {
       Toastr.error(error);
@@ -143,6 +138,7 @@ const Attachment = ({
             <Button
               data-cy="neeto-editor-preview-rename-cancel-button"
               icon={Close}
+              loading={isUpdating}
               size="small"
               style="text"
               onClick={() => setIsRenaming(false)}
