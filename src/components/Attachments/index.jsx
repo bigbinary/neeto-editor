@@ -23,7 +23,6 @@ const Attachments = (
     disabled = false,
     dragDropRef = null,
     config = {},
-    showToastr = true,
     setIsUploading = noop,
   },
   ref
@@ -167,7 +166,6 @@ const Attachments = (
               disabled,
               onChange,
               setSelectedAttachment,
-              showToastr,
             }}
             key={attachment.signedId}
           />

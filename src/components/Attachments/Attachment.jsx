@@ -29,7 +29,6 @@ const Attachment = ({
   disabled,
   onChange,
   setSelectedAttachment,
-  showToastr,
 }) => {
   const { t } = useTranslation();
 
@@ -50,11 +49,7 @@ const Attachment = ({
         data: {
           blob: { filename },
         },
-      } = await directUploadsApi.update({
-        signedId,
-        payload,
-        showToastr,
-      });
+      } = await directUploadsApi.update({ signedId, payload });
 
       onChange(
         attachments.map(attachment =>
@@ -75,7 +70,7 @@ const Attachment = ({
     setIsDeleting(true);
     try {
       const { signedId } = attachment;
-      await directUploadsApi.destroy(signedId, showToastr);
+      await directUploadsApi.destroy(signedId);
       onChange(removeBy({ signedId }, attachments));
     } catch (error) {
       Toastr.error(error);

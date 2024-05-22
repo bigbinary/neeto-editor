@@ -63,7 +63,6 @@ const Editor = (
     onSubmit = noop,
     onChangeAttachments = noop,
     children,
-    showAttachmentsToastr = true,
     openImageInNewTab = true,
     openLinkInNewTab = true,
     ...otherProps
@@ -227,7 +226,6 @@ const Editor = (
               isIndependent={false}
               ref={addAttachmentsRef}
               setIsUploading={setIsAttachmentsUploading}
-              showToastr={showAttachmentsToastr}
               className={classnames("ne-attachments--integrated", {
                 [attachmentsClassName]: attachmentsClassName,
               })}

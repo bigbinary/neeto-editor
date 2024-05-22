@@ -193,10 +193,6 @@ export const EDITOR_PROPS = [
     `,
   ],
   [
-    "showAttachmentsToastr",
-    "Accepts a boolean value. If provided, it will show a toast message when the attachments are updated/deleted.",
-  ],
-  [
     "openImageInNewTab",
     "Accepts a boolean value. When set to 'false', it prevents images from opening in new tabs for preview.",
     "true",

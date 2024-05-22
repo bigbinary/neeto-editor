@@ -15,19 +15,19 @@ const create = (url, file, config) =>
     showToastr: false,
   });
 
-const update = ({ signedId, payload, showToastr = true }) =>
+const update = ({ signedId, payload }) =>
   axios.patch(`/api/direct_uploads/${signedId}/`, payload, {
     transformRequestCase: false,
     transformResponseCase: false,
-    showToastr,
+    showToastr: false,
   });
 
-const destroy = (signedId, showToastr = true) =>
-  axios.delete(`/api/direct_uploads/${signedId}`, { showToastr });
+const destroy = signedId =>
+  axios.delete(`/api/direct_uploads/${signedId}`, { showToastr: false });
 
-const attach = (payload, showToastr = true) =>
+const attach = payload =>
   axios.post("/neeto_editor/api/v1/direct_uploads/attach", payload, {
-    showToastr,
+    showToastr: false,
   });
 
 const directUploadsApi = { generate, create, update, destroy, attach };
