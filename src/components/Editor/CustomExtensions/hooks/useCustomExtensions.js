@@ -10,9 +10,8 @@ import TableRow from "@tiptap/extension-table-row";
 import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
 import StarterKit from "@tiptap/starter-kit";
-import { isEmpty } from "ramda";
-
 import { EDITOR_OPTIONS } from "common/constants";
+import { isEmpty } from "ramda";
 
 import HighlightInternal from "../BackgroundColor/ExtensionConfig";
 import CodeBlock from "../CodeBlock/ExtensionConfig";
@@ -26,7 +25,6 @@ import KeyboardShortcuts from "../KeyboardShortcuts/ExtensionConfig";
 import Link from "../Link/ExtensionConfig";
 import Mention, { createMentionSuggestions } from "../Mention/ExtensionConfig";
 import Placeholder from "../Placeholder/ExtensionConfig";
-import SlashCommands from "../SlashCommands/ExtensionConfig";
 import SpecialMentions from "../SpecialMentions/ExtensionConfig";
 import Table from "../Table/ExtensionConfig";
 import Variable from "../Variable/ExtensionConfig";
@@ -37,14 +35,10 @@ const useCustomExtensions = ({
   extensions,
   mentions,
   variables,
-  isSlashCommandsActive,
   options,
-  addonCommands,
   onSubmit,
   keyboardShortcuts,
   isVideoEmbedActive,
-  setMediaUploader,
-  setIsEmbedModalOpen,
   openImageInNewTab,
   openLinkInNewTab,
 }) => {
@@ -97,17 +91,6 @@ const useCustomExtensions = ({
 
   if (options.includes(EDITOR_OPTIONS.TEXT_COLOR)) {
     customExtensions.push(Color);
-  }
-
-  if (isSlashCommandsActive) {
-    customExtensions.push(
-      SlashCommands.configure({
-        options,
-        addonCommands,
-        setMediaUploader,
-        setIsEmbedModalOpen,
-      })
-    );
   }
 
   if (!isEmpty(mentions)) {
