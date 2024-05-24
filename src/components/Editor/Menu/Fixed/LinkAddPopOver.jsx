@@ -130,11 +130,11 @@ const LinkAddPopOver = ({
     ? createPortal(
         <>
           <div
-            className="ne-link-arrow"
+            className="ne-link-arrow fade-in"
             style={{ top: arrowPosition.top, left: arrowPosition.left }}
           />
           <div
-            className="ne-link-popover"
+            className="ne-link-popover fade-in"
             id="ne-link-add-popover"
             ref={popOverRef}
             style={popoverStyle}

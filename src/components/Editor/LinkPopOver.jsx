@@ -214,7 +214,7 @@ const LinkPopOver = ({ editor }) => {
   return createPortal(
     isLinkActive ? (
       <div
-        className="ne-link-popover"
+        className="ne-link-popover fade-in"
         id="ne-link-view-popover"
         ref={popOverRef}
         style={popoverStyle}
