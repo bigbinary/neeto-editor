@@ -370,3 +370,7 @@
 .neeto-editor__image--right {
   justify-content: flex-end;
 }
+
+.selected-text {
+  background-color: rgb(var(--neeto-ui-gray-300));
+}
