@@ -227,7 +227,7 @@ export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
 
 export const getCursorPos = (editor, to) => editor?.view.coordsAtPos(to);
 
-export const getLinkPopoverPosition = editor => {
+export const getLinkPopoverPosition = (editor, popoverRef) => {
   const {
     selection: {
       $to: { pos: selectionEnd },
@@ -235,7 +235,47 @@ export const getLinkPopoverPosition = editor => {
     },
   } = editor.view.state;
   const selectionLength = selectionEnd - selectionStart;
-  const offSet = selectionLength > 0 ? selectionLength / 2 + 1 : 0;
+  let offset = 0;
+  if (selectionLength > 1) offset = Math.round(selectionLength / 2);
 
-  return editor.view.coordsAtPos(selectionStart + offSet);
+  if (selectionLength === 1) offset = 1;
+
+  // Calculate the arrow position
+  const arrowCoords = editor.view.coordsAtPos(selectionStart + offset);
+  const arrowPosition = {
+    top: `${arrowCoords.top + 21}px`,
+    left: `${arrowCoords.left - 8.5}px`,
+  };
+
+  // Calculate the popover position
+  const popoverCoords = editor.view.coordsAtPos(selectionStart);
+  let adjustedLeft = popoverCoords?.left,
+    adjustedTop = popoverCoords?.top;
+  if (popoverRef?.current) {
+    const popoverRect = popoverRef.current?.getBoundingClientRect();
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const maxLeft = screenWidth - popoverRect.width;
+    const maxTop = screenHeight - popoverRect.height - 50;
+
+    adjustedLeft = popoverCoords?.left
+      ? Math.min(popoverCoords.left - 50, maxLeft)
+      : 0;
+
+    adjustedTop = popoverCoords?.top
+      ? Math.min(popoverCoords.top - 22, maxTop)
+      : 0;
+  } else {
+    adjustedLeft = popoverCoords.left - 50;
+    adjustedTop = popoverCoords.top - 22;
+  }
+
+  const popoverPosition = {
+    top: `${adjustedTop}px`,
+    left: `${adjustedLeft}px`,
+  };
+
+  return { arrowPosition, popoverPosition };
 };

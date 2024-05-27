@@ -41,7 +41,7 @@
 .ne-link-arrow {
   z-index: 99999;
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   border-style: solid;

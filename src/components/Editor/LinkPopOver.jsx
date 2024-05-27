@@ -9,6 +9,7 @@ import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 
 import { LINK_VALIDATION_SCHEMA } from "./constants";
+import { getLinkPopoverPosition } from "./Menu/Fixed/utils";
 import { validateAndFormatUrl } from "./utils";
 
 const LinkPopOver = ({ editor }) => {
@@ -21,35 +22,28 @@ const LinkPopOver = ({ editor }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isLinkActive, setIsLinkActive] = useState(editor?.isActive("link"));
 
-  const popOverRef = useRef(null);
+  const popoverRef = useRef(null);
 
   const { t } = useTranslation();
 
   const linkAttributes = editor?.getAttributes("link");
 
   const updatePopoverPosition = () => {
-    if (!(view && popOverRef.current)) return;
-    const newPos = view.coordsAtPos(view.state.selection.$to.pos);
+    if (!view) return;
 
-    const popoverRect = popOverRef.current?.getBoundingClientRect();
-
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
-    const maxLeft = screenWidth - popoverRect.width;
-    const maxTop = screenHeight - popoverRect.height - 50;
-
-    const adjustedLeft = newPos?.left ? Math.min(newPos.left - 50, maxLeft) : 0;
-    const adjustedTop = newPos?.top ? Math.min(newPos.top - 22, maxTop) : 0;
-
-    setPopoverPosition({
-      top: `${adjustedTop}px`,
-      left: `${adjustedLeft}px`,
-    });
+    const { arrowPosition, popoverPosition } = getLinkPopoverPosition(
+      editor,
+      popoverRef
+    );
+    setPopoverPosition(popoverPosition);
+    setArrowPosition(arrowPosition);
   };
 
-  const handleUnlink = () =>
-    editor.chain().focus().extendMarkRange("link").unsetLink().run();
+  const handleUnlink = editor
+    .chain()
+    .focus()
+    .extendMarkRange("link")
+    .unsetLink().run;
 
   const removePopover = () => {
     setIsEditing(false);
@@ -102,7 +96,7 @@ const LinkPopOver = ({ editor }) => {
   const handleKeyDown = event =>
     equals(event.key, "Escape") && setIsEditing(false);
 
-  useOnClickOutside(popOverRef, removePopover);
+  useOnClickOutside(popoverRef, removePopover);
 
   useEffect(() => {
     window.addEventListener("resize", removePopover);
