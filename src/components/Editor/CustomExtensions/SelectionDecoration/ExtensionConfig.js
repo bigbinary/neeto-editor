@@ -10,27 +10,36 @@ export default Document.extend({
         key: new PluginKey("selectionDecorator"),
         state: {
           init() {
-            return DecorationSet.empty;
+            return {
+              decorations: DecorationSet.empty,
+              selectedTextDecoration: null,
+            };
           },
-          apply(tr) {
+          apply(tr, oldState) {
             const { doc, selection } = tr;
-            const decorations = [];
-            if (selection.empty) {
-              return DecorationSet.empty;
+            let { decorations, selectedTextDecoration } = oldState;
+
+            if (selectedTextDecoration) {
+              decorations = decorations.remove([selectedTextDecoration]);
             }
 
-            decorations.push(
-              Decoration.inline(selection.from, selection.to, {
-                class: "selected-text",
-              })
-            );
+            if (!selection.empty) {
+              selectedTextDecoration = Decoration.inline(
+                selection.from,
+                selection.to,
+                { class: "selected-text" }
+              );
+              decorations = decorations.add(doc, [selectedTextDecoration]);
+            } else {
+              selectedTextDecoration = null;
+            }
 
-            return DecorationSet.create(doc, decorations);
+            return { decorations, selectedTextDecoration };
           },
         },
         props: {
           decorations(state) {
-            return this.getState(state);
+            return this.getState(state).decorations;
           },
         },
       }),
