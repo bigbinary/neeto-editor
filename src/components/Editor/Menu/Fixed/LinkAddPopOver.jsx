@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { validateAndFormatUrl } from "components/Editor/utils";
 import { URL_REGEXP } from "src/common/constants";
 
-import { getCursorPos } from "./utils";
+import { getLinkPopoverPosition, getCursorPos } from "./utils";
 
 const LinkAddPopOver = ({
   isAddLinkActive,
@@ -87,7 +87,7 @@ const LinkAddPopOver = ({
 
   const updatePopoverPosition = () => {
     if (!popOverRef.current) return;
-    const newPos = editor.view.coordsAtPos(editor.view.state.selection.$to.pos);
+    const newPos = getLinkPopoverPosition(editor);
 
     setArrowPosition({
       top: `${newPos.top + 20}px`,

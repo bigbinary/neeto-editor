@@ -226,3 +226,16 @@ export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
 };
 
 export const getCursorPos = (editor, to) => editor?.view.coordsAtPos(to);
+
+export const getLinkPopoverPosition = editor => {
+  const {
+    selection: {
+      $to: { pos: selectionEnd },
+      $from: { pos: selectionStart },
+    },
+  } = editor.view.state;
+  const selectionLength = selectionEnd - selectionStart;
+  const offSet = selectionLength > 0 ? selectionLength / 2 + 1 : 0;
+
+  return editor.view.coordsAtPos(selectionStart + offSet);
+};
