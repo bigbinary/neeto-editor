@@ -11,25 +11,32 @@
   }
 
   &__item {
-    border-radius: var(--neeto-ui-rounded-sm) !important;
+    border-radius: 0;
   }
 
   button.neeto-editor-fixed-menu__item {
     min-width: fit-content;
-    padding: 2px;
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    --neeto-ui-btn-border-radius: 0;
+    --neeto-ui-btn-icon-size: 22px;
+    --neeto-ui-btn-padding-x: 0;
+    --neeto-ui-btn-padding-y: 0;
+    --neeto-ui-btn-focus-box-shadow: none;
 
     .neeto-ui-btn__icon {
-      height: 20px !important;
-      width: 20px !important;
       color: rgb(var(--neeto-ui-black));
+
+      path {
+        stroke-width: 1.8px;
+      }
     }
 
     &:hover {
-      background-color: rgb(var(--neeto-ui-primary-100));
-
-      .neeto-ui-btn__icon {
-        color: rgb(var(--neeto-ui-primary-800));
-      }
+      background-color: rgb(var(--neeto-ui-gray-100));
     }
   }
 
@@ -47,7 +54,8 @@
     align-items: center;
     overflow: auto;
     width: 100%;
-    padding: 4px;
+    padding: 0;
+    border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
 
     &--collapsible {
       display: flex;
@@ -63,7 +71,6 @@
 
     &__button-group {
       display: flex;
-      gap: 4px;
     }
   }
 
@@ -203,6 +210,9 @@
 
 .neeto-editor-font-size__wrapper {
   font-weight: var(--neeto-ui-font-normal) !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  border-top-left-radius: var(--neeto-ui-rounded) !important;
 }
 
 .neeto-editor-bubble-menu {
