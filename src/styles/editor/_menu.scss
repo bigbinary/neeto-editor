@@ -94,9 +94,6 @@
 
   &__right-options {
     display: flex;
-    justify-self: flex-end;
-    gap: 8px;
-    margin-left: auto;
   }
 
   &__emoji-dropdown {
@@ -212,7 +209,6 @@
   font-weight: var(--neeto-ui-font-normal) !important;
   padding-left: 4px !important;
   padding-right: 4px !important;
-  border-top-left-radius: var(--neeto-ui-rounded) !important;
 }
 
 .neeto-editor-bubble-menu {
