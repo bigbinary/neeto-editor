@@ -154,10 +154,11 @@ const Editor = (
   });
 
   /* Make editor object available to the parent */
-  useImperativeHandle(ref, () => ({
-    editor,
-    focus: () => editor?.commands?.focus?.(),
-  }));
+  useImperativeHandle(
+    ref,
+    () => ({ editor, focus: () => editor?.commands?.focus?.() }),
+    [editor]
+  );
 
   // https://github.com/ueberdosis/tiptap/issues/1451#issuecomment-953348865
   EditorView.prototype.updateState = function updateState(state) {
