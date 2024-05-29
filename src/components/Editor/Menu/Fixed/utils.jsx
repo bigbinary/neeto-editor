@@ -22,10 +22,12 @@ import {
   Link,
 } from "neetoicons";
 import { Button } from "neetoui";
-import { fromPairs, not, assoc } from "ramda";
+import { prop, not, assoc } from "ramda";
 
 import { EDITOR_OPTIONS } from "src/common/constants";
 import { generateFocusProps } from "utils/focusHighlighter";
+
+import { MENU_ELEMENT_TYPES } from "./constants";
 
 export const createMenuOptions = ({
   tooltips,
@@ -35,11 +37,16 @@ export const createMenuOptions = ({
   setIsEmbedModalOpen,
   setIsAddLinkActive,
   options,
+  mentions,
+  addonCommandOptions,
+  setIsEmojiPickerActive,
+  isEmojiPickerActive,
 }) => {
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
 
-  return {
-    history: [
+  return [
+    // history
+    [
       {
         icon: Undo,
         command: editor.chain().focus().undo().run,
@@ -48,6 +55,7 @@ export const createMenuOptions = ({
         disabled: !editor.can().undo(),
         optionName: EDITOR_OPTIONS.UNDO,
         label: tooltips.undo ?? t("neetoEditor.menu.undo"),
+        type: MENU_ELEMENT_TYPES.BUTTON,
       },
       {
         icon: Redo,
@@ -57,18 +65,20 @@ export const createMenuOptions = ({
         disabled: !editor.can().redo(),
         optionName: EDITOR_OPTIONS.REDO,
         label: tooltips.redo ?? t("neetoEditor.menu.redo"),
+        type: MENU_ELEMENT_TYPES.BUTTON,
       },
     ],
-    fontSize: [
+    // font
+    [
       {
-        type: "fontSize",
+        type: MENU_ELEMENT_TYPES.FONT_SIZE,
         options: fontSizeOptions,
         label: tooltips.fontSize ?? t("neetoEditor.menu.fontSize"),
         isEnabled: isNotEmpty(fontSizeOptions),
+        optionName: "fontSizeOptions",
       },
-    ],
-    font: [
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: TextBold,
         isEnabled: options.includes(EDITOR_OPTIONS.BOLD),
         command: editor.chain().focus().toggleBold().run,
@@ -77,6 +87,7 @@ export const createMenuOptions = ({
         label: tooltips.bold ?? t("neetoEditor.menu.bold"),
       },
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: TextItalic,
         isEnabled: options.includes(EDITOR_OPTIONS.ITALIC),
         command: editor.chain().focus().toggleItalic().run,
@@ -85,6 +96,7 @@ export const createMenuOptions = ({
         label: tooltips.italic ?? t("neetoEditor.menu.italic"),
       },
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Underline,
         isEnabled: options.includes(EDITOR_OPTIONS.UNDERLINE),
         command: editor.chain().focus().toggleUnderline().run,
@@ -93,6 +105,7 @@ export const createMenuOptions = ({
         label: tooltips.underline ?? t("neetoEditor.menu.underline"),
       },
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Link,
         isEnabled: options.includes(EDITOR_OPTIONS.LINK),
         active: false,
@@ -101,6 +114,7 @@ export const createMenuOptions = ({
         tooltip: tooltips.link ?? t("neetoEditor.menu.link"),
       },
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: TextCross,
         isEnabled: options.includes(EDITOR_OPTIONS.STRIKETHROUGH),
         command: editor.chain().focus().toggleStrike().run,
@@ -109,6 +123,7 @@ export const createMenuOptions = ({
         tooltip: tooltips.strike ?? t("neetoEditor.menu.strike"),
       },
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Highlight,
         isEnabled: options.includes(EDITOR_OPTIONS.HIGHLIGHT),
         command: editor.chain().focus().toggleHighlight().run,
@@ -117,8 +132,10 @@ export const createMenuOptions = ({
         tooltip: tooltips.highlight ?? t("neetoEditor.menu.highlight"),
       },
     ],
-    list: [
+    // list
+    [
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: ListDot,
         command: editor.chain().focus().toggleBulletList().run,
         active: editor.isActive("bulletList"),
@@ -128,6 +145,7 @@ export const createMenuOptions = ({
         tooltip: tooltips.bulletList ?? t("neetoEditor.menu.bulletedList"),
       },
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: ListNumber,
         command: editor.chain().focus().toggleOrderedList().run,
         active: editor.isActive("orderedList"),
@@ -137,8 +155,10 @@ export const createMenuOptions = ({
         tooltip: tooltips.orderedList ?? t("neetoEditor.menu.orderedList"),
       },
     ],
-    block: [
+    // block
+    [
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Quote,
         command: editor.chain().focus().toggleBlockquote().run,
         active: editor.isActive("blockquote"),
@@ -148,6 +168,7 @@ export const createMenuOptions = ({
         tooltip: tooltips.blockQuote ?? t("neetoEditor.menu.blockQuote"),
       },
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Code,
         command: editor.chain().focus().toggleCode().run,
         active: editor.isActive(EDITOR_OPTIONS.CODE),
@@ -156,6 +177,7 @@ export const createMenuOptions = ({
         tooltip: tooltips.code ?? t("neetoEditor.menu.code"),
       },
       {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: CodeBlock,
         command: editor.chain().focus().toggleCodeBlock().run,
         active: editor.isActive("codeBlock"),
@@ -164,35 +186,76 @@ export const createMenuOptions = ({
         tooltip: tooltips.codeBlock ?? t("neetoEditor.menu.codeBlock"),
       },
     ],
-    misc: [
+    // misc
+    [
       {
+        type: MENU_ELEMENT_TYPES.TABLE,
+        label: tooltips.table ?? t("neetoEditor.menu.table"),
+        isEnabled: options.includes(EDITOR_OPTIONS.TABLE),
+        optionName: EDITOR_OPTIONS.TABLE,
+      },
+      {
+        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Attachment,
         command: attachmentProps?.handleUploadAttachments,
         disabled: attachmentProps?.isDisabled,
         active: false,
-        optionName: "attachments",
-        tooltip: tooltips.attachments || t("neetoEditor.menu.attachments"),
+        isEnabled: options.includes(EDITOR_OPTIONS.ATTACHMENTS),
+        optionName: EDITOR_OPTIONS.ATTACHMENTS,
+        tooltip: tooltips.attachments ?? t("neetoEditor.menu.attachments"),
       },
       {
-        Icon: ImageUpload,
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: ImageUpload,
         command: () => setMediaUploader(assoc("image", true)),
-        optionName: "image-upload",
-        tooltip: tooltips.imageUpload || t("neetoEditor.menu.imageUpload"),
+        isEnabled: options.includes(EDITOR_OPTIONS.IMAGE_UPLOAD),
+        optionName: EDITOR_OPTIONS.IMAGE_UPLOAD,
+        tooltip: tooltips.imageUpload ?? t("neetoEditor.menu.imageUpload"),
       },
       {
-        Icon: Video,
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: Video,
         command: () => setMediaUploader(assoc("video", true)),
-        optionName: "video-upload",
-        tooltip: tooltips.videoUpload || t("neetoEditor.menu.videoUpload"),
+        isEnabled: options.includes(EDITOR_OPTIONS.VIDEO_UPLOAD),
+        optionName: EDITOR_OPTIONS.VIDEO_UPLOAD,
+        tooltip: tooltips.videoUpload ?? t("neetoEditor.menu.videoUpload"),
       },
       {
-        Icon: MediaVideo,
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: MediaVideo,
         command: () => setIsEmbedModalOpen(true),
-        optionName: "video-embed",
-        tooltip: tooltips.videoEmbed || t("neetoEditor.menu.videoEmbed"),
+        isEnabled: options.includes(EDITOR_OPTIONS.VIDEO_EMBED),
+        optionName: EDITOR_OPTIONS.VIDEO_EMBED,
+        tooltip: tooltips.videoEmbed ?? t("neetoEditor.menu.videoEmbed"),
       },
     ],
-  };
+    // extras
+    [
+      {
+        type: MENU_ELEMENT_TYPES.TEXT_COLOR,
+        label: tooltips.textColor ?? t("neetoEditor.menu.textColor"),
+        isEnabled: options.includes(EDITOR_OPTIONS.TEXT_COLOR),
+        optionName: EDITOR_OPTIONS.TEXT_COLOR,
+      },
+      {
+        type: MENU_ELEMENT_TYPES.EMOJI,
+        label: tooltips.emoji ?? t("neetoEditor.menu.emoji"),
+        isEnabled: options.includes(EDITOR_OPTIONS.EMOJI),
+        optionName: EDITOR_OPTIONS.EMOJI,
+        setIsEmojiPickerActive,
+        isEmojiPickerActive,
+      },
+      {
+        type: MENU_ELEMENT_TYPES.MENTIONS,
+        label: tooltips.mention ?? t("neetoEditor.menu.mention"),
+        isEnabled: isNotEmpty(mentions),
+        optionName: "mentions",
+        mentions,
+      },
+    ],
+    //addons
+    [...addonCommandOptions],
+  ];
 };
 
 export const buildMenuOptions = ({
@@ -203,7 +266,16 @@ export const buildMenuOptions = ({
   attachmentProps,
   setIsEmbedModalOpen,
   setIsAddLinkActive,
+  mentions,
+  addonCommands,
+  setIsEmojiPickerActive,
+  isEmojiPickerActive,
 }) => {
+  const addonCommandOptions = buildOptionsFromAddonCommands({
+    editor,
+    commands: addonCommands,
+  });
+
   const menuOptions = createMenuOptions({
     tooltips,
     editor,
@@ -211,18 +283,18 @@ export const buildMenuOptions = ({
     attachmentProps,
     setIsEmbedModalOpen,
     setIsAddLinkActive,
+    options,
+    mentions,
+    addonCommandOptions,
+    setIsEmojiPickerActive,
+    isEmojiPickerActive,
   });
 
-  return fromPairs(
-    ["font", "block", "list", "misc", "right"].map(option => [
-      option,
-      menuOptions[option].filter(item => options.includes(item.optionName)),
-    ])
-  );
+  return menuOptions.map(option => option.filter(prop("isEnabled")));
 };
 
 export const renderOptionButton = ({
-  Icon,
+  icon,
   command,
   active,
   optionName,
@@ -231,10 +303,9 @@ export const renderOptionButton = ({
   tooltip,
 }) => (
   <Button
-    {...{ disabled }}
+    {...{ disabled, icon }}
     className="neeto-editor-fixed-menu__item"
     data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
-    icon={Icon}
     key={optionName}
     style={active ? "secondary" : "text"}
     tabIndex="-1"
@@ -249,6 +320,7 @@ export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
 
   return commands.map(option => ({
     ...option,
+    type: MENU_ELEMENT_TYPES.BUTTON,
     active: option.active?.({ editor }),
     command: () => option.command?.({ editor, range: { from: to, to } }),
   }));

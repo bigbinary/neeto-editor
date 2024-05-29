@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 import classNames from "classnames";
 import { EDITOR_OPTIONS } from "common/constants";
-import { isNotEmpty } from "neetocist";
 import DynamicVariables from "neetomolecules/DynamicVariables";
 import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
@@ -10,18 +9,9 @@ import { useTranslation } from "react-i18next";
 import EmbedOption from "components/Editor/CustomExtensions/Embeds";
 import MediaUploader from "components/Editor/MediaUploader";
 
-import EmojiOption from "./EmojiOption";
-import FontSizeOption from "./FontSizeOption";
-import LinkAddPopOver from "./LinkAddPopOver";
-import TableOption from "./TableOption";
-import TextColorOption from "./TextColorOption";
-import {
-  buildMenuOptions,
-  buildOptionsFromAddonCommands,
-  renderOptionButton,
-} from "./utils";
-
-import Mentions from "../../CustomExtensions/Mention";
+import LinkAddPopOver from "./components/LinkAddPopOver";
+import { MENU_ELEMENTS } from "./constants";
+import { buildMenuOptions } from "./utils";
 
 const Fixed = ({
   editor,
@@ -85,13 +75,12 @@ const Fixed = ({
     return null;
   }
 
-  const {
-    font: fontStyleOptions,
-    block: blockStyleOptions,
-    list: listStyleOptions,
-    misc: miscOptions,
-    right: rightOptions,
-  } = buildMenuOptions({
+  const isEmbedOptionActive = options.includes(EDITOR_OPTIONS.VIDEO_EMBED);
+  const isMediaUploaderActive =
+    options.includes(EDITOR_OPTIONS.IMAGE_UPLOAD) ||
+    options.includes(EDITOR_OPTIONS.VIDEO_UPLOAD);
+
+  const menuGroups = buildMenuOptions({
     tooltips,
     editor,
     options,
@@ -99,20 +88,10 @@ const Fixed = ({
     attachmentProps,
     setIsEmbedModalOpen,
     setIsAddLinkActive,
-  });
-  const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
-  const isFontSizeActive = isNotEmpty(fontSizeOptions);
-  const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
-  const isTableActive = options.includes(EDITOR_OPTIONS.TABLE);
-  const isTextColorOptionActive = options.includes(EDITOR_OPTIONS.TEXT_COLOR);
-  const isEmbedOptionActive = options.includes(EDITOR_OPTIONS.VIDEO_EMBED);
-  const isMediaUploaderActive =
-    options.includes(EDITOR_OPTIONS.IMAGE_UPLOAD) ||
-    options.includes(EDITOR_OPTIONS.VIDEO_UPLOAD);
-
-  const addonCommandOptions = buildOptionsFromAddonCommands({
-    editor,
-    commands: addonCommands,
+    mentions,
+    addonCommands,
+    setIsEmojiPickerActive,
+    isEmojiPickerActive,
   });
 
   const handleVariableClick = item => {
@@ -134,56 +113,17 @@ const Fixed = ({
         data-cy="neeto-editor-fixed-menu-wrapper"
         ref={menuRef}
       >
-        {isNotEmpty(rightOptions) && (
-          <div className="neeto-editor-fixed-menu__right-options">
-            {rightOptions.map(renderOptionButton)}
-          </div>
+        {menuGroups.map(group =>
+          group.map(({ type, ...props }) => {
+            const Component = MENU_ELEMENTS[type];
+
+            if (!Component) return null;
+
+            return (
+              <Component key={props.optionName} {...{ ...props, editor }} />
+            );
+          })
         )}
-        {isFontSizeActive && (
-          <FontSizeOption
-            {...{ editor }}
-            tooltipContent={tooltips.fontSize || t("neetoEditor.menu.fontSize")}
-          />
-        )}
-        <div className="neeto-editor-fixed-menu__wrapper__button-group">
-          {fontStyleOptions.map(renderOptionButton)}
-        </div>
-        <div className="neeto-editor-fixed-menu__wrapper__button-group">
-          {listStyleOptions.map(renderOptionButton)}
-        </div>
-        <div className="neeto-editor-fixed-menu__wrapper__button-group">
-          {blockStyleOptions.map(renderOptionButton)}
-        </div>
-        <div className="neeto-editor-fixed-menu__wrapper__button-group">
-          {isTableActive && (
-            <TableOption
-              {...{ editor }}
-              tooltipContent={tooltips.table || t("neetoEditor.menu.table")}
-            />
-          )}
-          {miscOptions.map(renderOptionButton)}
-          {isTextColorOptionActive && (
-            <TextColorOption
-              {...{ editor }}
-              tooltipContent={
-                tooltips.textColor || t("neetoEditor.menu.textColor")
-              }
-            />
-          )}
-          {isEmojiActive && (
-            <EmojiOption
-              {...{ editor }}
-              isActive={isEmojiPickerActive}
-              setActive={setIsEmojiPickerActive}
-              tooltipContent={tooltips.emoji || t("neetoEditor.menu.emoji")}
-            />
-          )}
-          <Mentions
-            {...{ editor, mentions }}
-            tooltipContent={tooltips.mention || t("neetoEditor.menu.mention")}
-          />
-          {addonCommandOptions.map(renderOptionButton)}
-        </div>
         {children}
       </div>
       {!isEmpty(variables) && (
