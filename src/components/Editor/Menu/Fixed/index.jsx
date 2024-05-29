@@ -138,6 +138,11 @@ const Fixed = ({
         data-cy="neeto-editor-fixed-menu-wrapper"
         ref={menuRef}
       >
+        {isNotEmpty(rightOptions) && (
+          <div className="neeto-editor-fixed-menu__right-options">
+            {rightOptions.map(renderOptionButton)}
+          </div>
+        )}
         {isFontSizeActive && (
           <FontSizeOption
             {...{ editor }}
@@ -218,11 +223,6 @@ const Fixed = ({
               />
               {addonCommandOptions.map(renderOptionButton)}
             </div>
-            {isNotEmpty(rightOptions) && (
-              <div className="neeto-editor-fixed-menu__right-options">
-                {rightOptions.map(renderOptionButton)}
-              </div>
-            )}
             {children}
           </div>
         )}
