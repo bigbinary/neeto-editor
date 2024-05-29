@@ -14,8 +14,8 @@ import {
 } from "./utils";
 
 import Mentions from "../../CustomExtensions/Mention";
-import EmojiOption from "../Fixed/EmojiOption";
-import TextColorOption from "../Fixed/TextColorOption";
+import EmojiOption from "../Fixed/components/EmojiOption";
+import TextColorOption from "../Fixed/components/TextColorOption";
 import { buildMenuOptions } from "../Fixed/utils";
 
 const Options = ({
