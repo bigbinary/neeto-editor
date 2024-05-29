@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { Dropdown, Typography } from "neetoui";
 import { last } from "ramda";
 
-import { FONT_SIZE_OPTIONS } from "./constants";
+import { FONT_SIZE_OPTIONS } from "../constants";
 
 const { Menu, MenuItem } = Dropdown;
 

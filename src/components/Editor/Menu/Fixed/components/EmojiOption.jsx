@@ -3,7 +3,7 @@ import React from "react";
 import { Smiley } from "neetoicons";
 import { Dropdown } from "neetoui";
 
-import EmojiPickerMenu from "../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
+import EmojiPickerMenu from "../../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
 
 const EmojiOption = ({ editor, isActive, setActive, tooltipContent }) => (
   <Dropdown

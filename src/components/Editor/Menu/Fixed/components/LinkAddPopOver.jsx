@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { validateAndFormatUrl } from "components/Editor/utils";
 import { URL_REGEXP } from "src/common/constants";
 
-import { getCursorPos } from "./utils";
+import { getCursorPos } from "../utils";
 
 const LinkAddPopOver = ({
   isAddLinkActive,

@@ -27,11 +27,10 @@ const TextColorOption = ({ editor, tooltipContent }) => {
   };
 
   useOnClickOutside(dropdownWrapperRef, event => {
-    if (isOpen) {
-      event.preventDefault();
-      editor.commands.focus();
-      setIsOpen(false);
-    }
+    if (!isOpen) return;
+    event.preventDefault();
+    editor.commands.focus();
+    setIsOpen(false);
   });
 
   useEffect(() => {
@@ -41,9 +40,9 @@ const TextColorOption = ({ editor, tooltipContent }) => {
   return (
     <div ref={dropdownWrapperRef}>
       <Dropdown
+        {...{ isOpen }}
         buttonStyle={isOpen || color ? "secondary" : "text"}
         icon={Customize}
-        {...{ isOpen }}
         buttonProps={{
           tabIndex: -1,
           tooltipProps: { content: tooltipContent, position: "bottom" },
