@@ -57,18 +57,6 @@
     padding: 0;
     border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
 
-    &--collapsible {
-      display: flex;
-      flex-grow: 1;
-      align-items: center;
-
-      &--fade {
-        button.neeto-editor-fixed-menu__item {
-          animation: fade-in 0.3s ease-in;
-        }
-      }
-    }
-
     &__button-group {
       display: flex;
     }
