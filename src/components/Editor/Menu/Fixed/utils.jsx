@@ -111,7 +111,7 @@ export const createMenuOptions = ({
         active: false,
         command: () => setIsAddLinkActive(not),
         optionName: EDITOR_OPTIONS.LINK,
-        tooltip: tooltips.link ?? t("neetoEditor.menu.link"),
+        label: tooltips.link ?? t("neetoEditor.menu.link"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -120,7 +120,7 @@ export const createMenuOptions = ({
         command: editor.chain().focus().toggleStrike().run,
         active: editor.isActive(EDITOR_OPTIONS.STRIKETHROUGH),
         optionName: EDITOR_OPTIONS.STRIKETHROUGH,
-        tooltip: tooltips.strike ?? t("neetoEditor.menu.strike"),
+        label: tooltips.strike ?? t("neetoEditor.menu.strike"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -129,7 +129,7 @@ export const createMenuOptions = ({
         command: editor.chain().focus().toggleHighlight().run,
         active: editor.isActive(EDITOR_OPTIONS.HIGHLIGHT),
         optionName: EDITOR_OPTIONS.HIGHLIGHT,
-        tooltip: tooltips.highlight ?? t("neetoEditor.menu.highlight"),
+        label: tooltips.highlight ?? t("neetoEditor.menu.highlight"),
       },
     ],
     // list
@@ -142,7 +142,7 @@ export const createMenuOptions = ({
         isEnabled: options.includes(EDITOR_OPTIONS.LIST_BULLETS),
         optionName: EDITOR_OPTIONS.LIST_BULLETS,
         highlight: true,
-        tooltip: tooltips.bulletList ?? t("neetoEditor.menu.bulletedList"),
+        label: tooltips.bulletList ?? t("neetoEditor.menu.bulletedList"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -152,7 +152,7 @@ export const createMenuOptions = ({
         isEnabled: options.includes(EDITOR_OPTIONS.LIST_ORDERED),
         optionName: EDITOR_OPTIONS.LIST_ORDERED,
         highlight: true,
-        tooltip: tooltips.orderedList ?? t("neetoEditor.menu.orderedList"),
+        label: tooltips.orderedList ?? t("neetoEditor.menu.orderedList"),
       },
     ],
     // block
@@ -165,7 +165,7 @@ export const createMenuOptions = ({
         isEnabled: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
         optionName: EDITOR_OPTIONS.BLOCKQUOTE,
         highlight: true,
-        tooltip: tooltips.blockQuote ?? t("neetoEditor.menu.blockQuote"),
+        label: tooltips.blockQuote ?? t("neetoEditor.menu.blockQuote"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -174,7 +174,7 @@ export const createMenuOptions = ({
         active: editor.isActive(EDITOR_OPTIONS.CODE),
         isEnabled: options.includes(EDITOR_OPTIONS.CODE),
         optionName: EDITOR_OPTIONS.CODE,
-        tooltip: tooltips.code ?? t("neetoEditor.menu.code"),
+        label: tooltips.code ?? t("neetoEditor.menu.code"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -183,7 +183,7 @@ export const createMenuOptions = ({
         active: editor.isActive("codeBlock"),
         isEnabled: options.includes(EDITOR_OPTIONS.CODE_BLOCK),
         optionName: EDITOR_OPTIONS.CODE_BLOCK,
-        tooltip: tooltips.codeBlock ?? t("neetoEditor.menu.codeBlock"),
+        label: tooltips.codeBlock ?? t("neetoEditor.menu.codeBlock"),
       },
     ],
     // misc
@@ -202,7 +202,7 @@ export const createMenuOptions = ({
         active: false,
         isEnabled: options.includes(EDITOR_OPTIONS.ATTACHMENTS),
         optionName: EDITOR_OPTIONS.ATTACHMENTS,
-        tooltip: tooltips.attachments ?? t("neetoEditor.menu.attachments"),
+        label: tooltips.attachments ?? t("neetoEditor.menu.attachments"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -210,7 +210,7 @@ export const createMenuOptions = ({
         command: () => setMediaUploader(assoc("image", true)),
         isEnabled: options.includes(EDITOR_OPTIONS.IMAGE_UPLOAD),
         optionName: EDITOR_OPTIONS.IMAGE_UPLOAD,
-        tooltip: tooltips.imageUpload ?? t("neetoEditor.menu.imageUpload"),
+        label: tooltips.imageUpload ?? t("neetoEditor.menu.imageUpload"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -218,7 +218,7 @@ export const createMenuOptions = ({
         command: () => setMediaUploader(assoc("video", true)),
         isEnabled: options.includes(EDITOR_OPTIONS.VIDEO_UPLOAD),
         optionName: EDITOR_OPTIONS.VIDEO_UPLOAD,
-        tooltip: tooltips.videoUpload ?? t("neetoEditor.menu.videoUpload"),
+        label: tooltips.videoUpload ?? t("neetoEditor.menu.videoUpload"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -226,7 +226,7 @@ export const createMenuOptions = ({
         command: () => setIsEmbedModalOpen(true),
         isEnabled: options.includes(EDITOR_OPTIONS.VIDEO_EMBED),
         optionName: EDITOR_OPTIONS.VIDEO_EMBED,
-        tooltip: tooltips.videoEmbed ?? t("neetoEditor.menu.videoEmbed"),
+        label: tooltips.videoEmbed ?? t("neetoEditor.menu.videoEmbed"),
       },
     ],
     // extras
@@ -271,6 +271,8 @@ export const buildMenuOptions = ({
   setIsEmojiPickerActive,
   isEmojiPickerActive,
 }) => {
+  if (!editor) return [];
+
   const addonCommandOptions = buildOptionsFromAddonCommands({
     editor,
     commands: addonCommands,
