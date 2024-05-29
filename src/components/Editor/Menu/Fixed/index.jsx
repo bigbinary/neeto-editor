@@ -110,9 +110,9 @@ const Fixed = ({
   const isTableActive = options.includes(EDITOR_OPTIONS.TABLE);
   const isTextColorOptionActive = options.includes(EDITOR_OPTIONS.TEXT_COLOR);
   const isEmbedOptionActive = options.includes(EDITOR_OPTIONS.VIDEO_EMBED);
-  const isMediaUploaderActive = options.includes(
-    EDITOR_OPTIONS.IMAGE_UPLOAD || EDITOR_OPTIONS.VIDEO_UPLOAD
-  );
+  const isMediaUploaderActive =
+    options.includes(EDITOR_OPTIONS.IMAGE_UPLOAD) ||
+    options.includes(EDITOR_OPTIONS.VIDEO_UPLOAD);
 
   const addonCommandOptions = buildOptionsFromAddonCommands({
     editor,
