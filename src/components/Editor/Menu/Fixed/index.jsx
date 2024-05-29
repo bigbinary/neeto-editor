@@ -192,19 +192,6 @@ const Fixed = ({
                   tooltipContent={tooltips.emoji || t("neetoEditor.menu.emoji")}
                 />
               )}
-              {isMediaUploaderActive && (
-                <MediaUploader
-                  {...{ editor, mediaUploader, unsplashApiKey }}
-                  onClose={() =>
-                    setMediaUploader({ image: false, video: false })
-                  }
-                />
-              )}
-              {isEmbedOptionActive && (
-                <EmbedOption
-                  {...{ editor, isEmbedModalOpen, setIsEmbedModalOpen }}
-                />
-              )}
               <Mentions
                 {...{ editor, mentions }}
                 tooltipContent={
@@ -261,6 +248,15 @@ const Fixed = ({
             setIsAddLinkActive,
           }}
         />
+      )}
+      {isMediaUploaderActive && (
+        <MediaUploader
+          {...{ editor, mediaUploader, unsplashApiKey }}
+          onClose={() => setMediaUploader({ image: false, video: false })}
+        />
+      )}
+      {isEmbedOptionActive && (
+        <EmbedOption {...{ editor, isEmbedModalOpen, setIsEmbedModalOpen }} />
       )}
     </div>
   );
