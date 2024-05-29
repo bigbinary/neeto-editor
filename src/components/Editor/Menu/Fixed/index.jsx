@@ -148,45 +148,43 @@ const Fixed = ({
         <div className="neeto-editor-fixed-menu__wrapper__button-group">
           {fontStyleOptions.map(renderOptionButton)}
         </div>
-        <div className="neeto-editor-fixed-menu__wrapper--collapsible">
-          <div className="neeto-editor-fixed-menu__wrapper__button-group">
-            {listStyleOptions.map(renderOptionButton)}
-          </div>
-          <div className="neeto-editor-fixed-menu__wrapper__button-group">
-            {blockStyleOptions.map(renderOptionButton)}
-          </div>
-          <div className="neeto-editor-fixed-menu__wrapper__button-group">
-            {isTableActive && (
-              <TableOption
-                {...{ editor }}
-                tooltipContent={tooltips.table || t("neetoEditor.menu.table")}
-              />
-            )}
-            {miscOptions.map(renderOptionButton)}
-            {isTextColorOptionActive && (
-              <TextColorOption
-                {...{ editor }}
-                tooltipContent={
-                  tooltips.textColor || t("neetoEditor.menu.textColor")
-                }
-              />
-            )}
-            {isEmojiActive && (
-              <EmojiOption
-                {...{ editor }}
-                isActive={isEmojiPickerActive}
-                setActive={setIsEmojiPickerActive}
-                tooltipContent={tooltips.emoji || t("neetoEditor.menu.emoji")}
-              />
-            )}
-            <Mentions
-              {...{ editor, mentions }}
-              tooltipContent={tooltips.mention || t("neetoEditor.menu.mention")}
-            />
-            {addonCommandOptions.map(renderOptionButton)}
-          </div>
-          {children}
+        <div className="neeto-editor-fixed-menu__wrapper__button-group">
+          {listStyleOptions.map(renderOptionButton)}
         </div>
+        <div className="neeto-editor-fixed-menu__wrapper__button-group">
+          {blockStyleOptions.map(renderOptionButton)}
+        </div>
+        <div className="neeto-editor-fixed-menu__wrapper__button-group">
+          {isTableActive && (
+            <TableOption
+              {...{ editor }}
+              tooltipContent={tooltips.table || t("neetoEditor.menu.table")}
+            />
+          )}
+          {miscOptions.map(renderOptionButton)}
+          {isTextColorOptionActive && (
+            <TextColorOption
+              {...{ editor }}
+              tooltipContent={
+                tooltips.textColor || t("neetoEditor.menu.textColor")
+              }
+            />
+          )}
+          {isEmojiActive && (
+            <EmojiOption
+              {...{ editor }}
+              isActive={isEmojiPickerActive}
+              setActive={setIsEmojiPickerActive}
+              tooltipContent={tooltips.emoji || t("neetoEditor.menu.emoji")}
+            />
+          )}
+          <Mentions
+            {...{ editor, mentions }}
+            tooltipContent={tooltips.mention || t("neetoEditor.menu.mention")}
+          />
+          {addonCommandOptions.map(renderOptionButton)}
+        </div>
+        {children}
       </div>
       {!isEmpty(variables) && (
         <div
