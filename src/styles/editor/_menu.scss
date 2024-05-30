@@ -8,6 +8,10 @@
   &--independant {
     border-radius: unset;
     border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
+
+    .neeto-editor-fixed-menu__wrapper {
+      border-bottom: 0 !important;
+    }
   }
 
   &__item {
