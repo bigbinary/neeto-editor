@@ -18,8 +18,8 @@ import MediaUploader from "components/Editor/MediaUploader";
 
 import LinkAddPopOver from "./components/LinkAddPopOver";
 import MoreMenu from "./components/MoreMenu";
-import { MENU_ELEMENT_WIDTHS, MENU_ELEMENTS } from "./constants";
-import { buildMenuOptions } from "./utils";
+import { MENU_ELEMENTS } from "./constants";
+import { reGroupMenuItems, buildMenuOptions } from "./utils";
 
 const Fixed = ({
   editor,
@@ -101,26 +101,10 @@ const Fixed = ({
 
   const handleResize = useCallback(() => {
     if (!menuRef.current) return;
-    const toolbarWidth = menuRef.current.offsetWidth - 40;
-    let totalWidth = 0;
-    const visibleMenuGroups = [];
-    const invisibleMenuGroups = [];
-    menuGroups.forEach((group, groupIndex) => {
-      group.forEach((item, itemIndex) => {
-        const width = MENU_ELEMENT_WIDTHS[item.type];
-
-        if (totalWidth + width < toolbarWidth) {
-          totalWidth += width;
-          visibleMenuGroups[groupIndex] = visibleMenuGroups[groupIndex] ?? [];
-          visibleMenuGroups[groupIndex][itemIndex] = item;
-        } else {
-          const visibleMenuGroupsLength = visibleMenuGroups.length;
-          const index = groupIndex - visibleMenuGroupsLength + 1;
-          invisibleMenuGroups[index] = invisibleMenuGroups[index] ?? [];
-          invisibleMenuGroups[index][itemIndex] = item;
-        }
-      });
-    });
+    const { visibleMenuGroups, invisibleMenuGroups } = reGroupMenuItems(
+      menuRef,
+      menuGroups
+    );
     setMenuItems(visibleMenuGroups);
     setMoreMenuItems(invisibleMenuGroups);
   }, [menuGroups]);

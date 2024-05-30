@@ -27,7 +27,7 @@ import { prop, not, assoc } from "ramda";
 import { EDITOR_OPTIONS } from "src/common/constants";
 import { generateFocusProps } from "utils/focusHighlighter";
 
-import { MENU_ELEMENT_TYPES } from "./constants";
+import { MENU_ELEMENT_WIDTHS, MENU_ELEMENT_TYPES } from "./constants";
 
 export const createMenuOptions = ({
   tooltips,
@@ -315,3 +315,28 @@ export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
 };
 
 export const getCursorPos = (editor, to) => editor?.view.coordsAtPos(to);
+
+export const reGroupMenuItems = (menuRef, menuGroups) => {
+  const toolbarWidth = menuRef.current.offsetWidth - 45;
+  let totalWidth = 0;
+  const visibleMenuGroups = [];
+  const invisibleMenuGroups = [];
+  menuGroups.forEach((group, groupIndex) => {
+    group.forEach((item, itemIndex) => {
+      const width = MENU_ELEMENT_WIDTHS[item.type];
+
+      if (totalWidth + width < toolbarWidth) {
+        totalWidth += width;
+        visibleMenuGroups[groupIndex] = visibleMenuGroups[groupIndex] ?? [];
+        visibleMenuGroups[groupIndex][itemIndex] = item;
+      } else {
+        const visibleMenuGroupsLength = visibleMenuGroups.length;
+        const index = groupIndex - visibleMenuGroupsLength + 1;
+        invisibleMenuGroups[index] = invisibleMenuGroups[index] ?? [];
+        invisibleMenuGroups[index][itemIndex] = item;
+      }
+    });
+  });
+
+  return { visibleMenuGroups, invisibleMenuGroups };
+};
