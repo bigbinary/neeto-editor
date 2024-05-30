@@ -3,11 +3,19 @@ import React, { useState } from "react";
 import { withEventTargetValue } from "neetocommons/utils";
 import { Column } from "neetoicons";
 import { Button, Dropdown, Input } from "neetoui";
+import { not } from "ramda";
 import { useTranslation } from "react-i18next";
+
+import SecondaryMenuTarget from "./SecondayMenuTarget";
 
 const { Menu } = Dropdown;
 
-const TableOption = ({ editor, tooltipContent }) => {
+const TableOption = ({
+  editor,
+  tooltipContent,
+  isSecondaryMenu = false,
+  label,
+}) => {
   const { t } = useTranslation();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +37,11 @@ const TableOption = ({ editor, tooltipContent }) => {
     handleClose();
   };
 
+  const handleDropdownClick = e => {
+    isSecondaryMenu && e.stopPropagation();
+    setIsOpen(not);
+  };
+
   return (
     <Dropdown
       {...{ isOpen }}
@@ -36,13 +49,16 @@ const TableOption = ({ editor, tooltipContent }) => {
       closeOnSelect={false}
       data-cy="neeto-editor-fixed-menu-link-option"
       icon={Column}
-      position="bottom"
+      position={isSecondaryMenu ? "left-start" : "bottom"}
       buttonProps={{
         tabIndex: -1,
-        tooltipProps: { content: tooltipContent, position: "bottom" },
+        tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
         className: "neeto-editor-fixed-menu__item",
       }}
-      onClick={() => setIsOpen(isOpen => !isOpen)}
+      customTarget={
+        isSecondaryMenu && <SecondaryMenuTarget {...{ label }} icon={Column} />
+      }
+      onClick={handleDropdownClick}
       onClose={handleClose}
     >
       <Menu className="neeto-editor-table__item">
