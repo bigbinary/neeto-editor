@@ -3,15 +3,17 @@ import React from "react";
 import { MenuHorizontal } from "neetoicons";
 import { Dropdown } from "neetoui";
 
+import { generateFocusProps } from "utils/focusHighlighter";
+
 import { MENU_ELEMENTS, MENU_ELEMENT_TYPES } from "../constants";
 
 const { Menu, MenuItem } = Dropdown;
 
 const MoreMenu = ({ groups, editor }) => (
   <Dropdown
+    appendTo={() => document.body}
     buttonStyle="text"
     icon={MenuHorizontal}
-    onClick={e => e.stopPropagation()}
   >
     <Menu>
       {groups.map(group =>
@@ -22,7 +24,18 @@ const MoreMenu = ({ groups, editor }) => (
             const { icon: Icon } = props;
 
             return (
-              <MenuItem.Button key={props.optionName} {...{ ...props, editor }}>
+              <MenuItem.Button
+                data-cy={`neeto-editor-fixed-menu-${props.optionName}-option`}
+                isActive={props.active}
+                key={props.optionName}
+                tabIndex="-1"
+                onClick={props.command}
+                {...{
+                  ...generateFocusProps(props.highlight),
+                  ...props,
+                  editor,
+                }}
+              >
                 <Icon /> {props.label}
               </MenuItem.Button>
             );
@@ -31,7 +44,7 @@ const MoreMenu = ({ groups, editor }) => (
           return (
             <Component
               key={props.optionName}
-              {...{ ...props, editor }}
+              {...{ ...props, editor, ...generateFocusProps(props.highlight) }}
               isSecondaryMenu
             />
           );
