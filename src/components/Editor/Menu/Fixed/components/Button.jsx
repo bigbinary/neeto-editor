@@ -11,16 +11,15 @@ const MenuButton = ({
   optionName,
   highlight,
   disabled,
-  tooltip,
+  label,
 }) => (
   <Button
     {...{ disabled, icon }}
     className="neeto-editor-fixed-menu__item"
     data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
-    key={optionName}
     style={active ? "secondary" : "text"}
     tabIndex="-1"
-    tooltipProps={{ content: tooltip, position: "bottom" }}
+    tooltipProps={{ content: label, position: "bottom" }}
     onClick={command}
     {...generateFocusProps(highlight)}
   />
