@@ -96,19 +96,12 @@ const Fixed = ({
         setIsEmojiPickerActive,
         isEmojiPickerActive,
       }),
-    [
-      editor,
-      isEmojiPickerActive,
-      mentions,
-      setIsEmojiPickerActive,
-      setMediaUploader,
-      addonCommands,
-    ]
+    [editor, isEmojiPickerActive, mentions]
   );
 
   const handleResize = useCallback(() => {
     if (!menuRef.current) return;
-    const toolbarWidth = menuRef.current.offsetWidth;
+    const toolbarWidth = menuRef.current.offsetWidth - 40;
     let totalWidth = 0;
     const visibleMenuGroups = [];
     const invisibleMenuGroups = [];
