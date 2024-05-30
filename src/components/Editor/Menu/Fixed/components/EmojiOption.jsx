@@ -3,9 +3,9 @@ import React from "react";
 import { Smiley } from "neetoicons";
 import { Dropdown } from "neetoui";
 
-import EmojiPickerMenu from "../../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
+import SecondaryMenuTarget from "./SecondayMenuTarget";
 
-const { MenuItem } = Dropdown;
+import EmojiPickerMenu from "../../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
 
 const EmojiOption = ({
   editor,
@@ -21,7 +21,7 @@ const EmojiOption = ({
     dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
     icon={Smiley}
     isOpen={isActive}
-    position="bottom-start"
+    position={isSecondaryMenu ? "left-start" : "bottom-start"}
     strategy="fixed"
     buttonProps={{
       tabIndex: -1,
@@ -29,11 +29,7 @@ const EmojiOption = ({
       className: "neeto-editor-fixed-menu__item",
     }}
     customTarget={
-      isSecondaryMenu && (
-        <MenuItem.Button>
-          <Smiley /> {label}
-        </MenuItem.Button>
-      )
+      isSecondaryMenu && <SecondaryMenuTarget {...{ label }} icon={Smiley} />
     }
     onClose={() => setActive(false)}
     onClick={e => {
