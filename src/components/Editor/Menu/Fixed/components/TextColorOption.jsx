@@ -8,7 +8,7 @@ import { not } from "ramda";
 import { HexColorPicker } from "react-colorful";
 import { useTranslation } from "react-i18next";
 
-import SecondaryMenuTarget from "./SecondayMenuTarget";
+import SecondaryMenuTarget from "./SecondaryMenuTarget";
 
 const TextColorOption = ({
   editor,

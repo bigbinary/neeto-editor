@@ -3,7 +3,7 @@ import React from "react";
 import { Smiley } from "neetoicons";
 import { Dropdown } from "neetoui";
 
-import SecondaryMenuTarget from "./SecondayMenuTarget";
+import SecondaryMenuTarget from "./SecondaryMenuTarget";
 
 import EmojiPickerMenu from "../../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
 

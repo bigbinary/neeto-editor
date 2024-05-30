@@ -6,7 +6,7 @@ import { Button, Dropdown, Input } from "neetoui";
 import { not } from "ramda";
 import { useTranslation } from "react-i18next";
 
-import SecondaryMenuTarget from "./SecondayMenuTarget";
+import SecondaryMenuTarget from "./SecondaryMenuTarget";
 
 const { Menu } = Dropdown;
 

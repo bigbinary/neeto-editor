@@ -4,7 +4,7 @@ import { Email } from "neetoicons";
 import { Avatar, Dropdown, Typography } from "neetoui";
 import { isEmpty } from "ramda";
 
-import SecondaryMenuTarget from "components/Editor/Menu/Fixed/components/SecondayMenuTarget";
+import SecondaryMenuTarget from "components/Editor/Menu/Fixed/components/SecondaryMenuTarget";
 
 const { Menu, MenuItem } = Dropdown;
 
