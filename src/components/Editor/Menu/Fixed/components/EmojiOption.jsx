@@ -5,7 +5,16 @@ import { Dropdown } from "neetoui";
 
 import EmojiPickerMenu from "../../../CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
 
-const EmojiOption = ({ editor, isActive, setActive, tooltipContent }) => (
+const { MenuItem } = Dropdown;
+
+const EmojiOption = ({
+  editor,
+  isActive,
+  setActive,
+  tooltipContent,
+  isSecondaryMenu = false,
+  label,
+}) => (
   <Dropdown
     buttonStyle="text"
     closeOnSelect={false}
@@ -16,11 +25,21 @@ const EmojiOption = ({ editor, isActive, setActive, tooltipContent }) => (
     strategy="fixed"
     buttonProps={{
       tabIndex: -1,
-      tooltipProps: { content: tooltipContent, position: "bottom" },
+      tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
       className: "neeto-editor-fixed-menu__item",
     }}
-    onClick={() => setActive(active => !active)}
+    customTarget={
+      isSecondaryMenu && (
+        <MenuItem.Button>
+          <Smiley /> {label}
+        </MenuItem.Button>
+      )
+    }
     onClose={() => setActive(false)}
+    onClick={e => {
+      setActive(active => !active);
+      isSecondaryMenu && e.stopPropagation();
+    }}
   >
     <EmojiPickerMenu {...{ editor, setActive }} />
   </Dropdown>

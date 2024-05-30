@@ -242,8 +242,8 @@ export const createMenuOptions = ({
         label: tooltips.emoji ?? t("neetoEditor.menu.emoji"),
         isEnabled: options.includes(EDITOR_OPTIONS.EMOJI),
         optionName: EDITOR_OPTIONS.EMOJI,
-        setIsEmojiPickerActive,
-        isEmojiPickerActive,
+        setActive: setIsEmojiPickerActive,
+        isActive: isEmojiPickerActive,
       },
       {
         type: MENU_ELEMENT_TYPES.MENTIONS,
