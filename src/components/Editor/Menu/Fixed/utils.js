@@ -1,5 +1,3 @@
-import React from "react";
-
 import { t } from "i18next";
 import { isNotEmpty } from "neetocist";
 import {
@@ -21,15 +19,13 @@ import {
   Attachment,
   Link,
 } from "neetoicons";
-import { Button } from "neetoui";
 import { prop, not, assoc } from "ramda";
 
 import { EDITOR_OPTIONS } from "src/common/constants";
-import { generateFocusProps } from "utils/focusHighlighter";
 
 import { MENU_ELEMENT_WIDTHS, MENU_ELEMENT_TYPES } from "./constants";
 
-export const createMenuOptions = ({
+const createMenuOptions = ({
   tooltips,
   editor,
   setMediaUploader,
@@ -280,28 +276,6 @@ export const buildMenuOptions = ({
 
   return menuOptions.map(option => option.filter(prop("isEnabled")));
 };
-
-export const renderOptionButton = ({
-  icon,
-  command,
-  active,
-  optionName,
-  highlight,
-  disabled,
-  tooltip,
-}) => (
-  <Button
-    {...{ disabled, icon }}
-    className="neeto-editor-fixed-menu__item"
-    data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
-    key={optionName}
-    style={active ? "secondary" : "text"}
-    tabIndex="-1"
-    tooltipProps={{ content: tooltip, position: "bottom" }}
-    onClick={command}
-    {...generateFocusProps(highlight)}
-  />
-);
 
 export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
   const { to } = editor.state.selection;
