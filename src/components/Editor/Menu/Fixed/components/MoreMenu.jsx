@@ -26,7 +26,7 @@ const MoreMenu = ({ groups, editor }) => (
             return (
               <MenuItem.Button
                 data-cy={`neeto-editor-fixed-menu-${props.optionName}-option`}
-                isActive={props.active}
+                isActive={editor.isActive(props.optionName)}
                 key={props.optionName}
                 tabIndex="-1"
                 onClick={props.command}

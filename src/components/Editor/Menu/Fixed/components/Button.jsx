@@ -7,17 +7,17 @@ import { generateFocusProps } from "utils/focusHighlighter";
 const MenuButton = ({
   icon,
   command,
-  active,
   optionName,
   highlight,
   disabled,
   label,
+  editor,
 }) => (
   <Button
     {...{ disabled, icon }}
     className="neeto-editor-fixed-menu__item"
     data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
-    style={active ? "secondary" : "text"}
+    style={editor.isActive(optionName) ? "secondary" : "text"}
     tabIndex="-1"
     tooltipProps={{ content: label, position: "bottom" }}
     onClick={command}
