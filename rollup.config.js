@@ -11,6 +11,7 @@ import { mergeDeepLeft } from "ramda";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
 import copy from "rollup-plugin-copy";
+import cleaner from 'rollup-plugin-cleaner';
 
 import packageJson from "./package.json";
 
@@ -21,6 +22,8 @@ const { alias: aliasEntries } = mergeDeepLeft(projectResolve, commonResolve);
 const peerDependencies = Object.keys(packageJson.peerDependencies);
 
 const formats = ["esm", "cjs"];
+
+const cleanerTargets = ['./dist/', "index.cjs.js", "index.js", "index.cjs.js.map", "index.js.map"];
 
 const plugins = [
   peerDepsExternal(),
@@ -65,7 +68,9 @@ const config = args => {
       input: "./src/index.js",
       external: peerDependencies,
       output,
-      plugins: [ ...plugins,
+      plugins: [
+        cleaner({ targets: cleanerTargets }),
+        ...plugins,
         args.app && copy({
           targets: [
             { src: "package.json", dest: destination },
