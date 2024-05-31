@@ -23,7 +23,7 @@ const peerDependencies = Object.keys(packageJson.peerDependencies);
 
 const formats = ["esm", "cjs"];
 
-const cleanerTargets = ['./dist/', "index.cjs.js", "index.js", "index.cjs.js.map", "index.js.map"];
+const cleanerTargets = ["./dist/", "index.cjs.js", "index.js", "index.cjs.js.map", "index.js.map"];
 
 const plugins = [
   peerDepsExternal(),
