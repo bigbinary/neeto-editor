@@ -11,7 +11,7 @@ import { mergeDeepLeft } from "ramda";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
 import copy from "rollup-plugin-copy";
-import cleaner from 'rollup-plugin-cleaner';
+import cleaner from "rollup-plugin-cleaner";
 
 import packageJson from "./package.json";
 
@@ -56,8 +56,8 @@ const config = args => {
     const output = formats.map(format => ({
       assetFileNames: "[name][extname]",
       dir: path.join(destination),
-      entryFileNames: format === "esm" ? 'index.js' : 'index.cjs.js',
-      chunkFileNames: format === "esm" ? 'dist/chunk-[hash].js' : 'dist/chunk-[hash].cjs.js',
+      entryFileNames: format === "esm" ? "index.js" : "index.cjs.js",
+      chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/chunk-[hash].cjs.js",
       format,
       name: "NeetoEditor",
       sourcemap: true,

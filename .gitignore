@@ -12,7 +12,6 @@
 /build
 /dist/*.js
 /dist/*.map
-/dist/editor-stats.html
 /dist/editor-output.js
 /dist/editor-output.js.map
 /dist/codeBlockHighlight.js.map
