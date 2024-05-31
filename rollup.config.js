@@ -53,7 +53,8 @@ const config = args => {
     const output = formats.map(format => ({
       assetFileNames: "[name][extname]",
       dir: path.join(destination),
-      entryFileNames: format === "esm" ? "index.js" : "index.cjs.js",
+      entryFileNames: format === "esm" ? 'index.js' : 'index.cjs.js',
+      chunkFileNames: format === "esm" ? 'dist/chunk-[hash].js' : 'dist/chunk-[hash].cjs.js',
       format,
       name: "NeetoEditor",
       sourcemap: true,
