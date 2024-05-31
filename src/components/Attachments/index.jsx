@@ -1,4 +1,11 @@
-import React, { useRef, useEffect, useState, useImperativeHandle } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useImperativeHandle,
+  lazy,
+  Suspense,
+} from "react";
 
 import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
@@ -11,8 +18,9 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import Preview from "./Preview";
 import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
+
+const Preview = lazy(() => import("./Preview"));
 
 const Attachments = (
   {
@@ -197,10 +205,12 @@ const Attachments = (
           onChange={handleAddFile}
           onClick={handleFileInputClick}
         />
-        <Preview
-          {...{ attachments, selectedAttachment, setSelectedAttachment }}
-          onClose={() => setSelectedAttachment({})}
-        />
+        <Suspense fallback={<span />}>
+          <Preview
+            {...{ attachments, selectedAttachment, setSelectedAttachment }}
+            onClose={() => setSelectedAttachment({})}
+          />
+        </Suspense>
       </div>
     </div>
   );
