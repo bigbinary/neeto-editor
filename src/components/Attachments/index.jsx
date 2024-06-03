@@ -9,7 +9,7 @@ import React, {
 
 import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
-import { removeById, noop } from "neetocist";
+import { isPresent, removeById, noop } from "neetocist";
 import { Button, Toastr } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
@@ -206,10 +206,12 @@ const Attachments = (
           onClick={handleFileInputClick}
         />
         <Suspense fallback={<span />}>
-          <Preview
-            {...{ attachments, selectedAttachment, setSelectedAttachment }}
-            onClose={() => setSelectedAttachment({})}
-          />
+          {isPresent(selectedAttachment) && (
+            <Preview
+              {...{ attachments, selectedAttachment, setSelectedAttachment }}
+              onClose={() => setSelectedAttachment({})}
+            />
+          )}
         </Suspense>
       </div>
     </div>
