@@ -11,6 +11,7 @@ import { mergeDeepLeft } from "ramda";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
 import copy from "rollup-plugin-copy";
+import { visualizer } from "rollup-plugin-visualizer";
 
 import packageJson from "./package.json";
 
@@ -76,6 +77,7 @@ const config = args => {
             },
           ],
         }),
+        visualizer({ filename: "./dist/editor-stats.html" }),
       ].filter(Boolean),
     },
     {

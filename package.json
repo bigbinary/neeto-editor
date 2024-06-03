@@ -154,6 +154,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-styles": "4.0.0",
+    "rollup-plugin-visualizer": "^5.12.0",
     "sass": "1.69.5",
     "sass-loader": "13.0.2",
     "storybook": "^7.5.3",
