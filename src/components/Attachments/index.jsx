@@ -39,6 +39,7 @@ const Attachments = (
 
   const [pendingAttachments, setPendingAttachments] = useState([]);
   const [selectedAttachment, setSelectedAttachment] = useState({});
+  const [didFetchPreviewBundle, setDidFetchPreviewBundle] = useState(false);
 
   const attachmentInputRef = useRef(null);
 
@@ -176,6 +177,10 @@ const Attachments = (
               setSelectedAttachment,
             }}
             key={attachment.signedId}
+            isLoading={
+              !didFetchPreviewBundle &&
+              selectedAttachment.url === attachment.url
+            }
           />
         ))}
         {pendingAttachments.map(attachment => (
@@ -208,7 +213,12 @@ const Attachments = (
         <Suspense fallback={<span />}>
           {isPresent(selectedAttachment) && (
             <Preview
-              {...{ attachments, selectedAttachment, setSelectedAttachment }}
+              {...{
+                attachments,
+                selectedAttachment,
+                setDidFetchPreviewBundle,
+                setSelectedAttachment,
+              }}
               onClose={() => setSelectedAttachment({})}
             />
           )}
