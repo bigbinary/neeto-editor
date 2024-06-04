@@ -25,6 +25,7 @@ import KeyboardShortcuts from "../KeyboardShortcuts/ExtensionConfig";
 import Link from "../Link/ExtensionConfig";
 import Mention, { createMentionSuggestions } from "../Mention/ExtensionConfig";
 import Placeholder from "../Placeholder/ExtensionConfig";
+import SelectionDecoration from "../SelectionDecoration/ExtensionConfig";
 import SpecialMentions from "../SpecialMentions/ExtensionConfig";
 import Table from "../Table/ExtensionConfig";
 import Variable from "../Variable/ExtensionConfig";
@@ -52,6 +53,7 @@ const useCustomExtensions = ({
     EmojiPicker,
     FigCaption,
     HighlightInternal,
+    SelectionDecoration,
     Focus.configure({ mode: "shallowest" }),
     Highlight,
     VideoExtension,
