@@ -4,6 +4,7 @@
   border-bottom: none;
   background-color: rgb(var(--neeto-ui-white));
   position: relative;
+  display: flex;
 
   &--independant {
     border-radius: unset;
@@ -52,9 +53,9 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    overflow: auto;
+    flex-grow: 1;
     width: 100%;
-    padding: 0;
+    padding: 0 2px;
     border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
 
     &__button-group {

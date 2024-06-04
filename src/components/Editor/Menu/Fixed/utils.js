@@ -291,7 +291,7 @@ export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
 export const getCursorPos = (editor, to) => editor?.view.coordsAtPos(to);
 
 export const reGroupMenuItems = (menuRef, menuGroups) => {
-  const toolbarWidth = menuRef.current.offsetWidth - 45;
+  const toolbarWidth = menuRef.current.offsetWidth;
   let totalWidth = 0;
   const visibleMenuGroups = [];
   const invisibleMenuGroups = [];

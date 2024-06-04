@@ -12,6 +12,7 @@ const { Menu, MenuItem } = Dropdown;
 const MoreMenu = ({ groups, editor }) => (
   <Dropdown
     appendTo={() => document.body}
+    buttonProps={{ className: "flex-shrink-0" }}
     buttonStyle="text"
     icon={MenuHorizontal}
   >
