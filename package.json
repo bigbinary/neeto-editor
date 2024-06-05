@@ -14,8 +14,7 @@
   "files": [
     "index.*",
     "types.d.ts",
-    "src/translations",
-    "dist"
+    "src/translations"
   ],
   "author": "BigBinary",
   "license": "MIT",

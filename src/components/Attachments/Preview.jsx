@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 import { findIndexBy, truncate } from "neetocist";
 import { Left, Right } from "neetoicons";
@@ -17,7 +17,6 @@ const Preview = ({
   attachments,
   selectedAttachment,
   setSelectedAttachment,
-  setDidFetchPreviewBundle,
 }) => {
   const { t } = useTranslation();
   const downloadRef = useRef(null);
@@ -52,10 +51,6 @@ const Preview = ({
       handleLeftArrowClick();
     }
   };
-
-  useEffect(() => {
-    setDidFetchPreviewBundle(true);
-  }, []);
 
   const handleDownload = () => downloadFile(url, filename);
 
