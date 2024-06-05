@@ -48,6 +48,10 @@
   .tippy-content {
     padding: 0;
     max-height: none;
+
+    button.active {
+      background-color: var(--neeto-ui-dropdown-item-focus-bg-color);
+    }
   }
 }
 
