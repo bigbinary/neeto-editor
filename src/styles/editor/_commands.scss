@@ -43,36 +43,14 @@
   }
 }
 
-.neeto-editor-mentions__wrapper {
-  padding: 8px;
-  width: auto;
-  min-width: 208px;
-  max-height: 256px;
-  overflow-y: auto;
+.tippy-box[data-theme~="neeto-editor-mentions-tooltip"] {
+  border: 1px solid rgb(var(--neeto-ui-gray-400));
+  .tippy-content {
+    padding: 0;
+    max-height: none;
 
-  .neeto-editor-mentions__item {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    padding: 8px;
-    transition: var(--neeto-ui-transition);
-    cursor: pointer;
-    font-size: var(--neeto-ui-text-xs);
-    color: rgb(var(--neeto-ui-white));
-    border-radius: var(--neeto-ui-rounded);
-    gap: 8px;
-
-    p {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    &:hover,
-    &.active {
-      background-color: rgb(var(--neeto-ui-gray-700));
+    button.active {
+      background-color: var(--neeto-ui-dropdown-item-focus-bg-color);
     }
   }
 }
