@@ -10,6 +10,8 @@
 
 # production
 /build
+/dist/*.js
+/dist/*.map
 /dist/editor-output.js
 /dist/editor-output.js.map
 /dist/codeBlockHighlight.js.map
@@ -26,8 +28,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /editor-content.js
-/index.js
-/index.cjs.js
-/index.*.map
+/index.*
 /formik.js
 storybook-static
