@@ -6,7 +6,6 @@ import { MenuVertical, Close } from "neetoicons";
 import {
   Dropdown,
   Input,
-  Spinner,
   Toastr,
   Tooltip,
   Typography,
@@ -30,7 +29,6 @@ const Attachment = ({
   disabled,
   onChange,
   setSelectedAttachment,
-  isLoading,
 }) => {
   const { t } = useTranslation();
 
@@ -156,7 +154,6 @@ const Attachment = ({
               <Tooltip content={attachment.filename} position="top">
                 <Typography style="body2">{attachment.filename}</Typography>
               </Tooltip>
-              {isLoading && <Spinner className="attachment-button-loader" />}
             </div>
             <Tooltip
               content={t("neetoEditor.attachments.actionsBlocked")}
