@@ -1,8 +1,15 @@
-import React, { useRef, useEffect, useState, useImperativeHandle } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useImperativeHandle,
+  lazy,
+  Suspense,
+} from "react";
 
 import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
-import { removeById, noop } from "neetocist";
+import { isPresent, removeById, noop } from "neetocist";
 import { Button, Toastr } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
@@ -11,8 +18,9 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import Preview from "./Preview";
 import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
+
+const Preview = lazy(() => import("./Preview"));
 
 const Attachments = (
   {
@@ -31,6 +39,7 @@ const Attachments = (
 
   const [pendingAttachments, setPendingAttachments] = useState([]);
   const [selectedAttachment, setSelectedAttachment] = useState({});
+  const [didFetchPreviewBundle, setDidFetchPreviewBundle] = useState(false);
 
   const attachmentInputRef = useRef(null);
 
@@ -168,6 +177,10 @@ const Attachments = (
               setSelectedAttachment,
             }}
             key={attachment.signedId}
+            isLoading={
+              !didFetchPreviewBundle &&
+              selectedAttachment.url === attachment.url
+            }
           />
         ))}
         {pendingAttachments.map(attachment => (
@@ -197,10 +210,19 @@ const Attachments = (
           onChange={handleAddFile}
           onClick={handleFileInputClick}
         />
-        <Preview
-          {...{ attachments, selectedAttachment, setSelectedAttachment }}
-          onClose={() => setSelectedAttachment({})}
-        />
+        <Suspense fallback={<span />}>
+          {isPresent(selectedAttachment) && (
+            <Preview
+              {...{
+                attachments,
+                selectedAttachment,
+                setDidFetchPreviewBundle,
+                setSelectedAttachment,
+              }}
+              onClose={() => setSelectedAttachment({})}
+            />
+          )}
+        </Suspense>
       </div>
     </div>
   );

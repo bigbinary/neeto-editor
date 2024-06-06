@@ -28,6 +28,7 @@ const suggestion = {
         });
 
         popup = tippy("body", {
+          theme: "light neeto-editor-mentions-tooltip",
           getReferenceClientRect: props.clientRect,
           appendTo: () => document.body,
           content: reactRenderer.element,
@@ -36,6 +37,7 @@ const suggestion = {
           trigger: "manual",
           placement: "bottom-start",
           zIndex: 99999,
+          arrow: false,
         });
       },
 

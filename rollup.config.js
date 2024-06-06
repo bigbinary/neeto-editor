@@ -11,6 +11,8 @@ import { mergeDeepLeft } from "ramda";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import styles from "rollup-plugin-styles";
 import copy from "rollup-plugin-copy";
+import { visualizer } from "rollup-plugin-visualizer";
+import cleaner from "rollup-plugin-cleaner";
 
 import packageJson from "./package.json";
 
@@ -21,6 +23,8 @@ const { alias: aliasEntries } = mergeDeepLeft(projectResolve, commonResolve);
 const peerDependencies = Object.keys(packageJson.peerDependencies);
 
 const formats = ["esm", "cjs"];
+
+const cleanerTargets = ["./dist/", "index.cjs.js", "index.js", "index.cjs.js.map", "index.js.map"];
 
 const plugins = [
   peerDepsExternal(),
@@ -54,6 +58,7 @@ const config = args => {
       assetFileNames: "[name][extname]",
       dir: path.join(destination),
       entryFileNames: format === "esm" ? "index.js" : "index.cjs.js",
+      chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/chunk-[hash].cjs.js",
       format,
       name: "NeetoEditor",
       sourcemap: true,
@@ -64,7 +69,9 @@ const config = args => {
       input: "./src/index.js",
       external: peerDependencies,
       output,
-      plugins: [ ...plugins,
+      plugins: [
+        cleaner({ targets: cleanerTargets }),
+        ...plugins,
         args.app && copy({
           targets: [
             { src: "package.json", dest: destination },
@@ -76,6 +83,7 @@ const config = args => {
             },
           ],
         }),
+        visualizer({ filename: "./dist/editor-stats.html" }),
       ].filter(Boolean),
     },
     {
