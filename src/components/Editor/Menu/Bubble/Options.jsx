@@ -11,12 +11,12 @@ import {
   getNodeType,
   getTextMenuDropdownOptions,
   renderOptionButton,
+  buildBubbleMenuOptions,
 } from "./utils";
 
 import Mentions from "../../CustomExtensions/Mention";
-import EmojiOption from "../Fixed/EmojiOption";
-import TextColorOption from "../Fixed/TextColorOption";
-import { buildMenuOptions } from "../Fixed/utils";
+import EmojiOption from "../Fixed/components/EmojiOption";
+import TextColorOption from "../Fixed/components/TextColorOption";
 
 const Options = ({
   editor,
@@ -49,7 +49,7 @@ const Options = ({
     font: fontStyleOptions,
     block: blockStyleOptions,
     list: listStyleOptions,
-  } = buildMenuOptions({
+  } = buildBubbleMenuOptions({
     editor,
     options,
     setMediaUploader,

@@ -8,7 +8,14 @@ import { not } from "ramda";
 import { HexColorPicker } from "react-colorful";
 import { useTranslation } from "react-i18next";
 
-const TextColorOption = ({ editor, tooltipContent }) => {
+import SecondaryMenuTarget from "./SecondaryMenuTarget";
+
+const TextColorOption = ({
+  editor,
+  tooltipContent,
+  isSecondaryMenu = false,
+  label,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [color, setColor] = useState(null);
 
@@ -27,32 +34,46 @@ const TextColorOption = ({ editor, tooltipContent }) => {
   };
 
   useOnClickOutside(dropdownWrapperRef, event => {
-    if (isOpen) {
-      event.preventDefault();
-      editor.commands.focus();
-      setIsOpen(false);
-    }
+    if (!isOpen) return;
+    event.preventDefault();
+    editor.commands.focus();
+    setIsOpen(false);
   });
 
   useEffect(() => {
     setColor(editor.getAttributes("textStyle").color);
   }, [isOpen, editor.getAttributes("textStyle").color]);
 
+  const openColorPicker = e => {
+    isSecondaryMenu && e.stopPropagation();
+    setColor(editor.getAttributes("textStyle").color);
+    setIsOpen(not);
+  };
+
   return (
-    <div ref={dropdownWrapperRef}>
-      <Dropdown
-        buttonStyle={isOpen || color ? "secondary" : "text"}
-        icon={Customize}
-        {...{ isOpen }}
-        buttonProps={{
-          tabIndex: -1,
-          tooltipProps: { content: tooltipContent, position: "bottom" },
-          className:
-            "neeto-editor-fixed-menu__item neeto-editor-text-color-option",
-        }}
-        onClick={() => {
-          setColor(editor.getAttributes("textStyle").color);
-          setIsOpen(not);
+    <Dropdown
+      {...{ isOpen }}
+      buttonStyle={isOpen || color ? "secondary" : "text"}
+      icon={Customize}
+      position={isSecondaryMenu ? "left-start" : "bottom-start"}
+      buttonProps={{
+        tabIndex: -1,
+        tooltipProps: { content: tooltipContent ?? label },
+        className:
+          "neeto-editor-fixed-menu__item neeto-editor-text-color-option",
+      }}
+      customTarget={
+        isSecondaryMenu && (
+          <SecondaryMenuTarget {...{ label }} icon={Customize} />
+        )
+      }
+      onClick={openColorPicker}
+    >
+      <div
+        ref={dropdownWrapperRef}
+        style={{ "min-width": "236px" }}
+        onClick={e => {
+          e.stopPropagation();
         }}
       >
         <HexColorPicker color={color || "#000000"} onChange={setColor} />
@@ -87,8 +108,8 @@ const TextColorOption = ({ editor, tooltipContent }) => {
             onClick={handleUnset}
           />
         </div>
-      </Dropdown>
-    </div>
+      </div>
+    </Dropdown>
   );
 };
 
