@@ -10,6 +10,7 @@
 
 # production
 /build
+/dist/editor-stats.html
 /dist/*.js
 /dist/*.map
 /dist/editor-output.js
