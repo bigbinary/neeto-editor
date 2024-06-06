@@ -1,7 +1,7 @@
 import React from "react";
 
 import classNames from "classnames";
-import { Avatar } from "neetoui";
+import { Avatar, Dropdown, Typography } from "neetoui";
 import { isEmpty } from "ramda";
 
 import { scrollHandler } from "utils/scrollhandler";
@@ -80,6 +80,7 @@ export class MentionList extends React.Component {
   render() {
     const { selectedIndex } = this.state;
     const { items } = this.props;
+    const { Menu, MenuItem } = Dropdown;
 
     if (isEmpty(items)) {
       return (
@@ -90,25 +91,27 @@ export class MentionList extends React.Component {
     }
 
     return (
-      <div
-        className="neeto-editor-mentions__wrapper"
-        data-cy="neeto-editor-mention-list"
-        ref={this.mentionRef}
-      >
-        {items.map(({ key, name, imageUrl }, index) => (
-          <button
-            data-cy={`neeto-editor-mention-list-${name}`}
-            key={key}
-            type="button"
-            className={classNames("neeto-editor-mentions__item", {
-              active: index === selectedIndex,
-            })}
-            onClick={() => this.selectItem(index)}
-          >
-            <Avatar user={{ name, imageUrl }} />
-            <p>{name}</p>
-          </button>
-        ))}
+      <div className="neeto-ui-dropdown__popup">
+        <Menu
+          className="neeto-editor-mentions__wrapper"
+          data-cy="neeto-editor-mention-list"
+          ref={this.mentionRef}
+        >
+          {items.map(({ key, name, imageUrl }, index) => (
+            <MenuItem.Button
+              data-cy={`neeto-editor-mention-list-${name}`}
+              key={key}
+              type="button"
+              className={classNames("neeto-editor-mentions__item", {
+                active: index === selectedIndex,
+              })}
+              onClick={() => this.selectItem(index)}
+            >
+              <Avatar size="small" user={{ name, imageUrl }} />
+              <Typography style="body2">{name}</Typography>
+            </MenuItem.Button>
+          ))}
+        </Menu>
       </div>
     );
   }
