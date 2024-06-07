@@ -3,7 +3,7 @@ import { withImmutableActions } from "neetocommons/react-utils";
 import { create } from "zustand";
 
 /** @type {import("neetocommons/react-utils").ZustandStoreHook} */
-const useFormStore = create(
+const useFileUploadStore = create(
   withImmutableActions(set => ({
     files: [],
     isUploading: false,
@@ -34,4 +34,4 @@ const useFormStore = create(
   }))
 );
 
-export default useFormStore;
+export default useFileUploadStore;
