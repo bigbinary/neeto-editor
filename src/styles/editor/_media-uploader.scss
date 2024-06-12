@@ -1,7 +1,18 @@
+.ne-media-uploader-modal{
+  @media screen and (max-width: 767px) {
+    width: 95vw !important;
+  }
+}
+
 .ne-media-uploader {
   display: flex;
   flex-direction: column;
   min-height: 184px;
+  width: 100%;
+
+  .neeto-ui-tab__wrapper{
+    padding: 0 16px;
+  }
 
   .ne-tab__wrapper {
     .ne-tab {
@@ -26,6 +37,7 @@
     border: 1px dashed rgb(var(--neeto-ui-primary-600));
     box-sizing: border-box;
     border-radius: var(--neeto-ui-rounded);
+    padding: 16px;
 
     &:focus {
       outline: none;
