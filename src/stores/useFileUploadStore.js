@@ -27,6 +27,13 @@ const useFileUploadStore = create(
         ),
       })),
 
+    updateFileUploadProgress: (fileId, progress) =>
+      set(state => ({
+        files: state.files.map(file =>
+          file.id === fileId ? { ...file, progress } : file
+        ),
+      })),
+
     removeFile: fileId =>
       set(state => ({ files: removeById(fileId, state.files) })),
 
