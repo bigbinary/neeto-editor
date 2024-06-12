@@ -63,6 +63,7 @@ const EmbedOption = ({ isEmbedModalOpen, setIsEmbedModalOpen, editor }) => {
 
   return (
     <Modal
+      className="ne-embed-modal-wrapper"
       initialFocusRef={inputRef}
       isOpen={isEmbedModalOpen}
       onClose={handleClose}
