@@ -1,10 +1,10 @@
-import { removeById } from "neetocist";
+import { findBy, removeById } from "neetocist";
 import { withImmutableActions } from "neetocommons/react-utils";
 import { create } from "zustand";
 
 /** @type {import("neetocommons/react-utils").ZustandStoreHook} */
 const useFileUploadStore = create(
-  withImmutableActions(set => ({
+  withImmutableActions((set, get) => ({
     files: [],
     isUploading: false,
 
@@ -38,6 +38,14 @@ const useFileUploadStore = create(
       set(state => ({ files: removeById(fileId, state.files) })),
 
     setUploading: status => set({ isUploading: status }),
+
+    getNextQueuedFile: () => {
+      const { files } = get();
+
+      return findBy(({ status }) => status === "queued", files);
+    },
+
+    clearQueue: () => set({ files: [] }),
   }))
 );
 
