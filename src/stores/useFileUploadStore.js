@@ -9,16 +9,7 @@ const useFileUploadStore = create(
     isUploading: false,
 
     addFiles: newFiles =>
-      set(state => ({
-        files: [
-          ...state.files,
-          ...newFiles.map(file => ({
-            id: `${file.name}-${file.size}-${Date.now()}`, // To refactor before the final PR.
-            file,
-            status: "queued", // To refactor before the final PR.
-          })),
-        ],
-      })),
+      set(state => ({ files: [...state.files, ...newFiles] })),
 
     updateFileStatus: (fileId, status) =>
       set(state => ({
