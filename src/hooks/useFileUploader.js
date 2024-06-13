@@ -40,28 +40,29 @@ const useFileUploader = () => {
     }
   };
 
-  const uploadFiles = async () => {
+  const handleUploadFiles = async () => {
+    const queuedFile = getNextQueuedFile();
+
+    if (isNotPresent(queuedFile)) {
+      setIsUploading(false);
+
+      return [];
+    }
+
+    updateFileStatus(queuedFile.id, "uploading");
+    const [uploadedFile, remainingUploadedFiles] = await Promise.all([
+      uploadFile(queuedFile),
+      handleUploadFiles(),
+    ]);
+    clearQueue();
+
+    return [uploadedFile, ...remainingUploadedFiles];
+  };
+
+  const uploadFiles = () => {
     if (isUploading) return [];
 
-    const handleUploadFiles = async () => {
-      const queuedFile = getNextQueuedFile();
-
-      if (isNotPresent(queuedFile)) {
-        setUploading(false);
-
-        return [];
-      }
-
-      setUploading(true);
-      // eslint-disable-next-line @bigbinary/neeto/combine-multiple-independent-awaits
-      const uploadedFile = await uploadFile(queuedFile);
-
-      const remainingUploadedFiles = await handleUploadFiles();
-
-      clearQueue();
-
-      return [uploadedFile, ...remainingUploadedFiles];
-    };
+    setIsUploading(true);
 
     return handleUploadFiles();
   };
