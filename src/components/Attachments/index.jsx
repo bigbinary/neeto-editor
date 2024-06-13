@@ -7,24 +7,17 @@ import React, {
   Suspense,
 } from "react";
 
-import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
-import { isPresent, noop } from "neetocist";
+import { isNotEmpty, isPresent, noop } from "neetocist";
 import { Button, Toastr } from "neetoui";
-import { concat, isEmpty, isNil } from "ramda";
+import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import useFileUploader from "hooks/useFileUploader";
-import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import {
-  buildFileUploadConfig,
-  buildUppyConfig,
-  handleDrop,
-  selectFiles,
-} from "./utils";
+import { buildFileUploadConfig, selectFiles } from "./utils";
 
 const Preview = lazy(() => import("./Preview"));
 
@@ -43,7 +36,6 @@ const Attachments = (
 ) => {
   const { t } = useTranslation();
 
-  const [pendingAttachments, setPendingAttachments] = useState([]);
   const [selectedAttachment, setSelectedAttachment] = useState({});
   const [didFetchPreviewBundle, setDidFetchPreviewBundle] = useState(false);
 
@@ -62,81 +54,10 @@ const Attachments = (
       files: event.target.files,
     });
 
-    files.forEach(file => {
-      try {
-        uppy.addFile({
-          name: file.name,
-          type: file.type,
-          data: file,
-        });
-      } catch (error) {
-        if (error.message !== t("neetoEditor.error.onBeforeFileAddedReturn")) {
-          Toastr.error(t("neetoEditor.error.cannotAddFiles"));
-        }
-      }
-    });
-
-    afterAddingFiles();
-  };
-
-  const onDrop = () => {
-    handleDrop({
-      uppy,
-      config,
-      previousAttachmentsCount: attachments.length,
-    }) && afterAddingFiles();
-  };
-
-  const afterAddingFiles = () => {
-    const newlyAddedFiles = uppy.getFiles().map(file => ({
-      id: file.id,
-      filename: file.name,
-      signedId: "awaiting",
-      url: "",
-      progress: 0,
-    }));
-    if (isEmpty(newlyAddedFiles)) {
-      uppy.reset();
-
-      return;
-    }
-    setPendingAttachments(concat(newlyAddedFiles));
+    addFiles(files);
+    const uploadedFiles = await uploadFiles();
+    isNotEmpty(uploadedFiles) && onChange([...attachments, ...uploadedFiles]);
     attachmentInputRef.current.value = null;
-    handleUpload();
-  };
-
-  const handleUpload = async () => {
-    try {
-      const response = await uppy.upload();
-
-      if (isNil(response)) return;
-      const uploadedFiles = response.successful.map(file => ({
-        filename: file.name,
-        signedId: file.response.data?.signed_id || file.response.signed_id,
-        url: file.response.data?.blob_url || file.response.blob_url,
-        contentType:
-          file.response.data?.content_type || file.response.content_type,
-      }));
-
-      setPendingAttachments([]);
-      onChange([...attachments, ...uploadedFiles]);
-    } catch (error) {
-      Toastr.error(error);
-    } finally {
-      uppy.reset();
-    }
-  };
-
-  const handleUploadProgress = (file, progress) => {
-    setPendingAttachments(prevState =>
-      prevState.map(uploadingFile => ({
-        ...uploadingFile,
-        progress:
-          uploadingFile.filename !== file.name
-            ? uploadingFile.progress
-            : progress.progress,
-      }))
-    );
   };
 
   const handleUploadAttachments = () => attachmentInputRef.current.click();
@@ -165,7 +86,6 @@ const Attachments = (
     };
 
     const handleDragLeave = event => {
-      dropZone.classList.remove("uppy-is-drag-over");
       event.preventDefault();
       event.stopPropagation();
       if (!isDragging) {
@@ -181,7 +101,8 @@ const Attachments = (
 
       const files = Array.from(event.dataTransfer.files);
       addFiles(files);
-      /* const uploadedFiles =  */ await uploadFiles();
+      const uploadedFiles = await uploadFiles();
+      isNotEmpty(uploadedFiles) && onChange([...attachments, ...uploadedFiles]);
     };
 
     if (dropZone) {

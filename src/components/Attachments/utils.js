@@ -4,12 +4,12 @@ import { mergeRight } from "ramda";
 
 import fileDownloadApi from "apis/file_download";
 
-import { DEFAULT_UPPY_CONFIG } from "./constants";
+import { DEFAULT_FILE_UPLOAD_CONFIG } from "./constants";
 
 const { t } = i18n;
 
-export const buildUppyConfig = restrictions =>
-  mergeRight(DEFAULT_UPPY_CONFIG, { restrictions });
+export const buildFileUploadConfig = config =>
+  mergeRight(DEFAULT_FILE_UPLOAD_CONFIG, config);
 
 export const selectFiles = ({ previousAttachmentsCount, config, files }) => {
   const { maxNumberOfFiles } = config;
