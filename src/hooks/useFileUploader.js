@@ -1,4 +1,7 @@
-import { isNotPresent } from "neetocist";
+import { hyphenate, isNot, isNotPresent } from "neetocist";
+import { Toastr } from "neetoui";
+import { omit, pluck } from "ramda";
+import { useTranslation } from "react-i18next";
 
 import useFileUploadStore from "src/stores/useFileUploadStore";
 import DirectUpload from "utils/DirectUpload";
@@ -8,13 +11,15 @@ import { shouldAddFile } from "./utils/fileUploader";
 
 let uploadControllers = {};
 
-const useFileUploader = ({ config }) => {
+const useFileUploader = ({ config, setIsUploadingOnHost }) => {
+  const { t } = useTranslation();
+
   const {
     addFiles: addFilesToStore,
     isUploading,
     getNextQueuedFile,
     updateFileStatus,
-    clearQueue,
+    removeFilesFromQueue,
     setIsUploading,
     updateFileUploadProgress,
     files,
@@ -65,6 +70,7 @@ const useFileUploader = ({ config }) => {
 
     if (isNotPresent(queuedFile)) {
       setIsUploading(false);
+      setIsUploadingOnHost(false);
 
       return [];
     }
@@ -84,9 +90,8 @@ const useFileUploader = ({ config }) => {
   };
 
   const uploadFiles = () => {
-    if (isUploading) return [];
-
     setIsUploading(true);
+    setIsUploadingOnHost(true);
 
     return handleUploadFiles();
   };
@@ -109,7 +114,13 @@ const useFileUploader = ({ config }) => {
     removeFile(fileId);
   };
 
-  return { addFiles, uploadFiles, queuedFiles: files, cancelUpload };
+  return {
+    addFiles,
+    uploadFiles,
+    queuedFiles: files,
+    cancelUpload,
+    isUploading,
+  };
 };
 
 export default useFileUploader;

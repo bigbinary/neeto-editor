@@ -49,15 +49,11 @@ const Attachments = (
 
   const attachmentInputRef = useRef(null);
 
-  const { uppy, isUploading } = useUppyUploader({
-    uppyConfig: buildUppyConfig(config),
-  });
-
-  const { addFiles, uploadFiles, queuedFiles, cancelUpload } = useFileUploader({
-    config: buildFileUploadConfig(config),
-  });
-
-  setIsUploading(isUploading);
+  const { addFiles, uploadFiles, queuedFiles, cancelUpload, isUploading } =
+    useFileUploader({
+      config: buildFileUploadConfig(config),
+      setIsUploadingOnHost: setIsUploading,
+    });
 
   const handleAddFile = async event => {
     const files = selectFiles({
