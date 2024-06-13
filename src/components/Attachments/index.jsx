@@ -156,17 +156,43 @@ const Attachments = (
   useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
 
   useEffect(() => {
-    if (dragDropRef?.current) {
-      uppy.use(DropTarget, { target: dragDropRef.current, onDrop });
+    const dropZone = dragDropRef.current;
+
+    const handleDragOver = event => {
+      event.preventDefault();
+      event.stopPropagation();
+      dropZone.classList.add("uppy-is-drag-over");
+    };
+
+    const handleDragLeave = event => {
+      dropZone.classList.remove("uppy-is-drag-over");
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
+    const handleDrop = async event => {
+      event.preventDefault();
+      event.stopPropagation();
+      dropZone.classList.remove("uppy-is-drag-over");
+
+      const files = Array.from(event.dataTransfer.files);
+      addFiles(files);
+      /* const uploadedFiles =  */ await uploadFiles();
+    };
+
+    if (dropZone) {
+      dropZone.addEventListener("dragover", handleDragOver);
+      dropZone.addEventListener("dragleave", handleDragLeave);
+      dropZone.addEventListener("drop", handleDrop);
     }
 
     return () => {
-      const instance = uppy.getPlugin("DropTarget");
-      if (instance) {
-        uppy.removePlugin(instance);
-      }
+      if (!dropZone) return;
+      dropZone.removeEventListener("dragover", handleDragOver);
+      dropZone.removeEventListener("dragleave", handleDragLeave);
+      dropZone.removeEventListener("drop", handleDrop);
     };
-  }, [attachments]);
+  }, [dragDropRef]);
 
   return (
     <div className={classnames("ne-attachments", { [className]: className })}>
