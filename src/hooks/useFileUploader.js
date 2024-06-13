@@ -30,18 +30,33 @@ const useFileUploader = ({ config }) => {
   };
 
   const uploadFile = async file => {
-
     const upload = new DirectUpload({
       file: file.data,
-      url: "http://spinkart.lvh.me:9005/api/direct_uploads",
+      url: config.directUploadEndpoint,
       progress: xhr => handleUploadProgress(xhr, file),
     });
 
     uploadControllers[file.id] = upload;
 
     try {
+      const { data = {}, ...response } = await upload.create();
       updateFileStatus(file.id, FILE_UPLOAD_STATUS.UPLOADED);
+
+      return {
+        id: file.id,
+        filename: file.filename,
+        signedId: data.signed_id ?? response.signed_id,
+        url: data.blob_url ?? response.blob_url,
+        contentType: data.content_type ?? response.content_type,
+      };
+    } catch (error) {
       updateFileStatus(file.id, FILE_UPLOAD_STATUS.ERROR);
+      // eslint-disable-next-line no-console
+      console.error("Failed to upload attachment", error);
+      Toastr.error(t("neetoEditor.error.uploadFileFailed"));
+      removeFile(file.id);
+
+      return null;
     }
   };
 
@@ -59,10 +74,13 @@ const useFileUploader = ({ config }) => {
       uploadFile(queuedFile),
       handleUploadFiles(),
     ]);
-    clearQueue();
-    uploadControllers = {};
 
-    return [uploadedFile, ...remainingUploadedFiles];
+    const uploadedFiles = [uploadedFile, ...remainingUploadedFiles];
+    const uploadedFileIds = pluck("id", uploadedFiles);
+    removeFilesFromQueue(uploadedFileIds);
+    uploadControllers = omit(uploadedFileIds, uploadControllers);
+
+    return uploadedFiles.filter(isNot(null));
   };
 
   const uploadFiles = () => {
@@ -75,7 +93,7 @@ const useFileUploader = ({ config }) => {
 
   const addFiles = files => {
     const filesToAdd = files.filter(shouldAddFile(config)).map(file => ({
-      id: `${file.name}-${file.size}-${Date.now()}`, // To refactor before the final PR.
+      id: hyphenate(`${file.name.toLowerCase()}-${Date.now()}`),
       data: file,
       filename: file.name,
       signedId: "awaiting",
