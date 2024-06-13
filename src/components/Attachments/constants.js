@@ -7,8 +7,7 @@ export const DEFAULT_FILE_UPLOAD_CONFIG = {
   allowMultipleUploads: false,
   directUploadEndpoint: DIRECT_UPLOAD_ENDPOINT,
   restrictions: {
-    maxFileSize:
-      (globalProps?.endUserUploadedFileSizeLimitInMb ?? 2) * 1024 * 1024,
+    maxFileSize: globalProps?.endUserUploadedFileSizeLimitInMb * 1024 * 1024,
   },
 };
 

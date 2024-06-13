@@ -43,28 +43,6 @@ export const selectFiles = ({ previousAttachmentsCount, config, files }) => {
   return Array.from(files);
 };
 
-export const handleDrop = ({ uppy, config, previousAttachmentsCount }) => {
-  const { maxNumberOfFiles } = config;
-
-  if (maxNumberOfFiles) {
-    const files = uppy.getFiles();
-    const totalAttachments = files.length + previousAttachmentsCount;
-
-    if (totalAttachments > maxNumberOfFiles) {
-      Toastr.warning(
-        t("neetoEditor.attachments.maxNumberOfFiles", {
-          entity: maxNumberOfFiles,
-        })
-      );
-      uppy.reset();
-
-      return false;
-    }
-  }
-
-  return true;
-};
-
 export const downloadFile = async (fileUrl, filename) => {
   try {
     const response = await fileDownloadApi.getFile(fileUrl);

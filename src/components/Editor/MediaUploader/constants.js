@@ -31,8 +31,6 @@ export const DEFAULT_VIDEO_UPLOAD_CONFIG = {
   },
 };
 
-export const UPPY_UPLOAD_CONFIG = { formData: true, fieldName: "blob" };
-
 export const MEDIA_UPLOAD_OPTIONS = [
   { title: "Upload", key: "local" },
   { title: "Link", key: "link" },

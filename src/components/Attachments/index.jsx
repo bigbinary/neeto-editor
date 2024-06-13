@@ -5,6 +5,7 @@ import React, {
   useImperativeHandle,
   lazy,
   Suspense,
+  useMemo,
 } from "react";
 
 import classnames from "classnames";
@@ -41,16 +42,21 @@ const Attachments = (
 
   const attachmentInputRef = useRef(null);
 
+  const fileUploadConfig = useMemo(
+    () => buildFileUploadConfig(config),
+    [config]
+  );
+
   const { addFiles, uploadFiles, queuedFiles, cancelUpload, isUploading } =
     useFileUploader({
-      config: buildFileUploadConfig(config),
+      config: fileUploadConfig,
       setIsUploadingOnHost: setIsUploading,
     });
 
   const handleAddFile = async event => {
     const files = selectFiles({
       previousAttachmentsCount: attachments.length,
-      config,
+      config: fileUploadConfig,
       files: event.target.files,
     });
 
@@ -63,7 +69,7 @@ const Attachments = (
   const handleUploadAttachments = () => attachmentInputRef.current.click();
 
   const handleFileInputClick = event => {
-    if (!(!isEmpty(attachments) && config.maxNumberOfFiles === 1)) {
+    if (!(!isEmpty(attachments) && fileUploadConfig.maxNumberOfFiles === 1)) {
       return;
     }
     event.preventDefault();
@@ -99,7 +105,11 @@ const Attachments = (
       isDragging = false;
       dropZone.classList.remove("uppy-is-drag-over");
 
-      const files = Array.from(event.dataTransfer.files);
+      const files = selectFiles({
+        previousAttachmentsCount: attachments.length,
+        config: fileUploadConfig,
+        files: Array.from(event.dataTransfer.files),
+      });
       addFiles(files);
       const uploadedFiles = await uploadFiles();
       isNotEmpty(uploadedFiles) && onChange([...attachments, ...uploadedFiles]);
@@ -158,8 +168,8 @@ const Attachments = (
           />
         )}
         <input
-          accept={config.allowedFileTypes?.join(",")}
-          multiple={config.maxNumberOfFiles !== 1}
+          accept={fileUploadConfig.allowedFileTypes?.join(",")}
+          multiple={fileUploadConfig.maxNumberOfFiles !== 1}
           ref={attachmentInputRef}
           type="file"
           onChange={handleAddFile}
