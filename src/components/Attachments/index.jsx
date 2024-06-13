@@ -157,22 +157,30 @@ const Attachments = (
 
   useEffect(() => {
     const dropZone = dragDropRef.current;
+    let isDragging = false;
 
     const handleDragOver = event => {
       event.preventDefault();
       event.stopPropagation();
-      dropZone.classList.add("uppy-is-drag-over");
+      if (!isDragging) {
+        isDragging = true;
+        dropZone.classList.add("uppy-is-drag-over");
+      }
     };
 
     const handleDragLeave = event => {
       dropZone.classList.remove("uppy-is-drag-over");
       event.preventDefault();
       event.stopPropagation();
+      if (!isDragging) {
+        dropZone.classList.remove("uppy-is-drag-over");
+      }
     };
 
     const handleDrop = async event => {
       event.preventDefault();
       event.stopPropagation();
+      isDragging = false;
       dropZone.classList.remove("uppy-is-drag-over");
 
       const files = Array.from(event.dataTransfer.files);
