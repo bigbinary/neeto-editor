@@ -5,7 +5,7 @@ import DirectUpload from "utils/DirectUpload";
 
 const useFileUploader = () => {
   const {
-    addFiles,
+    addFiles: addFilesToStore,
     isUploading,
     getNextQueuedFile,
     updateFileStatus,
@@ -67,7 +67,19 @@ const useFileUploader = () => {
     return handleUploadFiles();
   };
 
-  return { addFiles, uploadFiles };
+  const addFiles = files => {
+    const filesToAdd = files.map(file => ({
+      id: `${file.name}-${file.size}-${Date.now()}`, // To refactor before the final PR.
+      data: file,
+      filename: file.name,
+      signedId: "awaiting",
+      url: "",
+      type: file.type,
+      status: "queued", // To refactor before the final PR.
+    }));
+    addFilesToStore(filesToAdd);
+  };
+
 };
 
 export default useFileUploader;
