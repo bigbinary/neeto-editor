@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import { ImageUpload } from "neetoicons";
 import { Typography } from "neetoui";
@@ -10,8 +10,8 @@ import useFileUploader from "hooks/useFileUploader";
 import {
   ALLOWED_IMAGE_TYPES,
   ALLOWED_VIDEO_TYPES,
-  DEFAULT_IMAGE_UPPY_CONFIG,
-  DEFAULT_VIDEO_UPPY_CONFIG,
+  DEFAULT_IMAGE_UPLOAD_CONFIG,
+  DEFAULT_VIDEO_UPLOAD_CONFIG,
 } from "./constants";
 import Progress from "./Progress";
 import { convertToFileSize } from "./utils";
@@ -24,10 +24,9 @@ const LocalUploader = ({
 }) => {
   const { t } = useTranslation();
 
-  const uploadConfig = useMemo(
-    () => (isImage ? DEFAULT_IMAGE_UPPY_CONFIG : DEFAULT_VIDEO_UPPY_CONFIG),
-    []
-  );
+  const uploadConfig = isImage
+    ? DEFAULT_IMAGE_UPLOAD_CONFIG
+    : DEFAULT_VIDEO_UPLOAD_CONFIG;
 
   const fileInputRef = useRef(null);
   const dropTargetRef = useRef(null);
