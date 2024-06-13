@@ -14,6 +14,7 @@ import { Button, Toastr } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
+import useFileUploader from "hooks/useFileUploader";
 import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
@@ -47,9 +48,11 @@ const Attachments = (
     uppyConfig: buildUppyConfig(config),
   });
 
+  const { addFiles, uploadFiles, queuedFiles } = useFileUploader();
+
   setIsUploading(isUploading);
 
-  const handleAddFile = event => {
+  const handleAddFile = async event => {
     const files = selectFiles({
       previousAttachmentsCount: attachments.length,
       config,
@@ -183,7 +186,7 @@ const Attachments = (
             }
           />
         ))}
-        {pendingAttachments.map(attachment => (
+        {queuedFiles.map(attachment => (
           <AttachmentProgress
             {...{ attachment, removeUploadingFile, uppy }}
             key={attachment.id}
