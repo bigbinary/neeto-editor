@@ -36,7 +36,11 @@ const useFileUploadStore = create(
       return findBy(({ status }) => status === "queued", files);
     },
 
-    clearQueue: () => set({ files: [] }),
+    removeFilesFromQueue: uploadedFiles => {
+      const { files } = get();
+
+      set({ files: files.filter(({ id }) => !uploadedFiles.includes(id)) });
+    },
   }))
 );
 
