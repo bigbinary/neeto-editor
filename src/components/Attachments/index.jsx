@@ -18,7 +18,7 @@ import useFileUploader from "hooks/useFileUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import { buildFileUploadConfig, selectFiles } from "./utils";
+import { stopEvent, buildFileUploadConfig, selectFiles } from "./utils";
 
 const Preview = lazy(() => import("./Preview"));
 
@@ -78,13 +78,23 @@ const Attachments = (
 
   useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
 
+  const uploadDroppedFiles = async event => {
+    const files = selectFiles({
+      previousAttachmentsCount: attachments.length,
+      config: fileUploadConfig,
+      files: Array.from(event.dataTransfer.files),
+    });
+    addFiles(files);
+    const uploadedFiles = await uploadFiles();
+    isNotEmpty(uploadedFiles) && onChange([...attachments, ...uploadedFiles]);
+  };
+
   useEffect(() => {
     const dropZone = dragDropRef.current;
     let isDragging = false;
 
     const handleDragOver = event => {
-      event.preventDefault();
-      event.stopPropagation();
+      stopEvent(event);
       if (!isDragging) {
         isDragging = true;
         dropZone.classList.add("uppy-is-drag-over");
@@ -92,27 +102,16 @@ const Attachments = (
     };
 
     const handleDragLeave = event => {
-      event.preventDefault();
-      event.stopPropagation();
-      if (!isDragging) {
-        dropZone.classList.remove("uppy-is-drag-over");
-      }
+      stopEvent(event);
+      !isDragging && dropZone.classList.remove("uppy-is-drag-over");
     };
 
-    const handleDrop = async event => {
-      event.preventDefault();
-      event.stopPropagation();
+    const handleDrop = event => {
+      stopEvent(event);
       isDragging = false;
       dropZone.classList.remove("uppy-is-drag-over");
 
-      const files = selectFiles({
-        previousAttachmentsCount: attachments.length,
-        config: fileUploadConfig,
-        files: Array.from(event.dataTransfer.files),
-      });
-      addFiles(files);
-      const uploadedFiles = await uploadFiles();
-      isNotEmpty(uploadedFiles) && onChange([...attachments, ...uploadedFiles]);
+      uploadDroppedFiles(event);
     };
 
     if (dropZone) {
