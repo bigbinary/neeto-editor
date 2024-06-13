@@ -28,7 +28,7 @@ const useFileUploadStore = create(
     removeFile: fileId =>
       set(state => ({ files: removeById(fileId, state.files) })),
 
-    setUploading: status => set({ isUploading: status }),
+    setIsUploading: status => set({ isUploading: status }),
 
     getNextQueuedFile: () => {
       const { files } = get();

@@ -9,7 +9,7 @@ import React, {
 
 import DropTarget from "@uppy/drop-target";
 import classnames from "classnames";
-import { isPresent, removeById, noop } from "neetocist";
+import { isPresent, noop } from "neetocist";
 import { Button, Toastr } from "neetoui";
 import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
@@ -19,7 +19,12 @@ import useUppyUploader from "hooks/useUppyUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import { buildUppyConfig, handleDrop, selectFiles } from "./utils";
+import {
+  buildFileUploadConfig,
+  buildUppyConfig,
+  handleDrop,
+  selectFiles,
+} from "./utils";
 
 const Preview = lazy(() => import("./Preview"));
 
@@ -48,7 +53,9 @@ const Attachments = (
     uppyConfig: buildUppyConfig(config),
   });
 
-  const { addFiles, uploadFiles, queuedFiles, cancelUpload } = useFileUploader();
+  const { addFiles, uploadFiles, queuedFiles, cancelUpload } = useFileUploader({
+    config: buildFileUploadConfig(config),
+  });
 
   setIsUploading(isUploading);
 

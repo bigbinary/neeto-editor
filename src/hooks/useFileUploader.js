@@ -3,9 +3,11 @@ import { isNotPresent } from "neetocist";
 import useFileUploadStore from "src/stores/useFileUploadStore";
 import DirectUpload from "utils/DirectUpload";
 
+import { shouldAddFile } from "./utils/fileUploader";
+
 let uploadControllers = {};
 
-const useFileUploader = () => {
+const useFileUploader = ({ config }) => {
   const {
     addFiles: addFilesToStore,
     isUploading,
@@ -75,7 +77,7 @@ const useFileUploader = () => {
   };
 
   const addFiles = files => {
-    const filesToAdd = files.map(file => ({
+    const filesToAdd = files.filter(shouldAddFile(config)).map(file => ({
       id: `${file.name}-${file.size}-${Date.now()}`, // To refactor before the final PR.
       data: file,
       filename: file.name,
