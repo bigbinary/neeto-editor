@@ -35,7 +35,8 @@
       "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize, anyCase}}.",
       "imageSizeIsShouldBeLess": "Image size should be less than {{limit}} MB",
       "urlRequired": "URL is required",
-      "textRequired": "Text is required"
+      "textRequired": "Text is required",
+      "uploadFileFailed": "Failed to upload an attachment"
     },
     "menu": {
       "attachments": "Attachments",
