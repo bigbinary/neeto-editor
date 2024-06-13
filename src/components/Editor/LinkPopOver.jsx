@@ -90,7 +90,10 @@ const LinkPopOver = ({ editor }) => {
     const linkMark = state.schema.marks.link.create(attrs);
     const linkTextWithMark = state.schema.text(textContent, [linkMark]);
 
-    const tr = state.tr.replaceWith(from, to, linkTextWithMark);
+    let tr = state.tr;
+    tr = tr.delete(from, to);
+    tr = tr.insert(from, linkTextWithMark);
+
     dispatch(tr);
 
     setIsEditing(false);
