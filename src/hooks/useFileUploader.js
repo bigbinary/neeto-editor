@@ -1,4 +1,4 @@
-import { hyphenate, isNot, isNotPresent } from "neetocist";
+import { noop, hyphenate, isNot, isNotPresent } from "neetocist";
 import { Toastr } from "neetoui";
 import { omit, pluck } from "ramda";
 import { useTranslation } from "react-i18next";
@@ -11,7 +11,7 @@ import { shouldAddFile } from "./utils/fileUploader";
 
 let uploadControllers = {};
 
-const useFileUploader = ({ config, setIsUploadingOnHost }) => {
+const useFileUploader = ({ config, setIsUploadingOnHost = noop }) => {
   const { t } = useTranslation();
 
   const {

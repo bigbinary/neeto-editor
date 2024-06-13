@@ -1,12 +1,11 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 
-import DropTarget from "@uppy/drop-target";
 import { ImageUpload } from "neetoicons";
-import { Toastr, Typography } from "neetoui";
-import { concat, isEmpty, isNil } from "ramda";
+import { Typography } from "neetoui";
+import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
 
-import useUppyUploader from "hooks/useUppyUploader";
+import useFileUploader from "hooks/useFileUploader";
 
 import {
   ALLOWED_IMAGE_TYPES,
@@ -25,9 +24,7 @@ const LocalUploader = ({
 }) => {
   const { t } = useTranslation();
 
-  const [pendingUploads, setPendingUploads] = useState([]);
-
-  const uppyConfig = useMemo(
+  const uploadConfig = useMemo(
     () => (isImage ? DEFAULT_IMAGE_UPPY_CONFIG : DEFAULT_VIDEO_UPPY_CONFIG),
     []
   );
@@ -35,80 +32,71 @@ const LocalUploader = ({
   const fileInputRef = useRef(null);
   const dropTargetRef = useRef(null);
 
-  const { uppy, isUploading } = useUppyUploader({ uppyConfig });
+  const { addFiles, uploadFiles, queuedFiles, cancelUpload, isUploading } =
+    useFileUploader({
+      config: uploadConfig,
+      setIsUploadingOnHost: setIsUploading,
+    });
 
   setIsUploading(isUploading);
 
-  const handleAddFile = ({ target: { files } }) => {
-    Array.from(files).forEach(file => {
-      try {
-        uppy.addFile({
-          name: file.name,
-          type: file.type,
-          data: file,
-        });
-      } catch (error) {
-        if (error.message !== t("neetoEditor.error.onBeforeFileAddedReturn")) {
-          Toastr.error(t("neetoEditor.error.cannotAddFiles"));
-        }
-      }
-    });
-
-    afterAddingFiles();
-  };
-
-  const afterAddingFiles = () => {
-    const newlyAddedFiles = uppy.getFiles().map(file => ({
-      id: file.id,
-      filename: file.name,
-      signedId: "awaiting",
-      url: "",
-      progress: 0,
-    }));
-    if (isEmpty(newlyAddedFiles)) {
-      uppy.reset();
-
-      return;
-    }
-    setPendingUploads(concat(newlyAddedFiles));
-    handleUpload();
-  };
-
-  const handleUpload = async () => {
-    try {
-      const response = await uppy.upload();
-
-      if (isNil(response)) return;
-      const uploadedFiles = response.successful.map(file => ({
-        filename: file.name,
-        signedId: file.response.data?.signed_id || file.response.signed_id,
-        url: file.response.data?.blob_url || file.response.blob_url,
-      }));
-
-      setPendingUploads([]);
-      uploadedFiles.forEach(insertMediaToEditor);
-    } catch (error) {
-      Toastr.error(error);
-    } finally {
-      uppy.reset();
-      onClose();
-    }
+  const handleAddFile = async ({ target: { files } }) => {
+    addFiles(Array.from(files));
+    const uploadedFiles = await uploadFiles();
+    uploadedFiles.forEach(insertMediaToEditor);
+    onClose();
   };
 
   useEffect(() => {
-    uppy.use(DropTarget, {
-      target: dropTargetRef?.current,
-      onDrop: afterAddingFiles,
-    });
+    const dropZone = dropTargetRef?.current;
+    let isDragging = false;
+
+    const handleDragOver = event => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!isDragging) {
+        isDragging = true;
+        dropZone.classList.add("uppy-is-drag-over");
+      }
+    };
+
+    const handleDragLeave = event => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (!isDragging) {
+        dropZone.classList.remove("uppy-is-drag-over");
+      }
+    };
+
+    const handleDrop = async event => {
+      event.preventDefault();
+      event.stopPropagation();
+      isDragging = false;
+      dropZone.classList.remove("uppy-is-drag-over");
+
+      const files = Array.from(event.dataTransfer.files);
+      addFiles(files);
+      const uploadedFiles = await uploadFiles();
+      uploadedFiles.forEach(insertMediaToEditor);
+      onClose();
+    };
+
+    if (dropZone) {
+      dropZone.addEventListener("dragover", handleDragOver);
+      dropZone.addEventListener("dragleave", handleDragLeave);
+      dropZone.addEventListener("drop", handleDrop);
+    }
 
     return () => {
-      const instance = uppy.getPlugin("DropTarget");
-      instance && uppy.removePlugin(instance);
+      if (!dropZone) return;
+      dropZone.removeEventListener("dragover", handleDragOver);
+      dropZone.removeEventListener("dragleave", handleDragLeave);
+      dropZone.removeEventListener("drop", handleDrop);
     };
-  }, []);
+  }, [dropTargetRef]);
 
-  return !isEmpty(pendingUploads) || isUploading ? (
-    <Progress {...{ pendingUploads, setPendingUploads, uppy }} />
+  return !isEmpty(queuedFiles) || isUploading ? (
+    <Progress {...{ cancelUpload, queuedFiles }} />
   ) : (
     <div
       className="ne-media-uploader__dnd"
@@ -136,7 +124,7 @@ const LocalUploader = ({
       </Typography>
       <Typography style="body3">
         {t("neetoEditor.localUploader.maxFileSize", {
-          entity: convertToFileSize(uppyConfig.restrictions.maxFileSize),
+          entity: convertToFileSize(uploadConfig.restrictions.maxFileSize),
         })}
       </Typography>
     </div>
