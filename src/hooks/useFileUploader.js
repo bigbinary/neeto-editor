@@ -55,7 +55,6 @@ const useFileUploader = ({ config, setIsUploadingOnHost = noop }) => {
         contentType: data.content_type ?? response.content_type,
       };
     } catch (error) {
-      updateFileStatus(file.id, FILE_UPLOAD_STATUS.ERROR);
       // eslint-disable-next-line no-console
       console.error("Failed to upload attachment", error);
       Toastr.error(t("neetoEditor.error.uploadFileFailed"));
