@@ -3,6 +3,8 @@ import { isNotPresent } from "neetocist";
 import useFileUploadStore from "src/stores/useFileUploadStore";
 import DirectUpload from "utils/DirectUpload";
 
+let uploadControllers = {};
+
 const useFileUploader = () => {
   const {
     addFiles: addFilesToStore,
@@ -10,8 +12,10 @@ const useFileUploader = () => {
     getNextQueuedFile,
     updateFileStatus,
     clearQueue,
-    setUploading,
+    setIsUploading,
     updateFileUploadProgress,
+    files,
+    removeFile,
   } = useFileUploadStore.pick();
 
   const handleUploadProgress = (xhr, file) => {
@@ -25,10 +29,12 @@ const useFileUploader = () => {
   const uploadFile = async file => {
 
     const upload = new DirectUpload({
-      file: file.file,
+      file: file.data,
       url: "http://spinkart.lvh.me:9005/api/direct_uploads",
       progress: xhr => handleUploadProgress(xhr, file),
     });
+
+    uploadControllers[file.id] = upload;
 
     try {
       const blob = await upload.create();
@@ -55,6 +61,7 @@ const useFileUploader = () => {
       handleUploadFiles(),
     ]);
     clearQueue();
+    uploadControllers = {};
 
     return [uploadedFile, ...remainingUploadedFiles];
   };
@@ -80,6 +87,12 @@ const useFileUploader = () => {
     addFilesToStore(filesToAdd);
   };
 
+  const cancelUpload = fileId => {
+    uploadControllers[fileId].abort();
+    removeFile(fileId);
+  };
+
+  return { addFiles, uploadFiles, queuedFiles: files, cancelUpload };
 };
 
 export default useFileUploader;

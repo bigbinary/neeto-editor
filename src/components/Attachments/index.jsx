@@ -48,7 +48,7 @@ const Attachments = (
     uppyConfig: buildUppyConfig(config),
   });
 
-  const { addFiles, uploadFiles, queuedFiles } = useFileUploader();
+  const { addFiles, uploadFiles, queuedFiles, cancelUpload } = useFileUploader();
 
   setIsUploading(isUploading);
 
@@ -136,10 +136,6 @@ const Attachments = (
     );
   };
 
-  const removeUploadingFile = id => {
-    setPendingAttachments(prevState => removeById(id, prevState));
-  };
-
   const handleUploadAttachments = () => attachmentInputRef.current.click();
 
   const handleFileInputClick = event => {
@@ -153,7 +149,6 @@ const Attachments = (
   useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
 
   useEffect(() => {
-    uppy.on("upload-progress", handleUploadProgress);
     if (dragDropRef?.current) {
       uppy.use(DropTarget, { target: dragDropRef.current, onDrop });
     }
@@ -163,7 +158,6 @@ const Attachments = (
       if (instance) {
         uppy.removePlugin(instance);
       }
-      uppy.off("upload-progress", handleUploadProgress);
     };
   }, [attachments]);
 
@@ -188,7 +182,7 @@ const Attachments = (
         ))}
         {queuedFiles.map(attachment => (
           <AttachmentProgress
-            {...{ attachment, removeUploadingFile, uppy }}
+            {...{ attachment, cancelUpload }}
             key={attachment.id}
           />
         ))}
