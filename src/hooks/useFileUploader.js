@@ -3,6 +3,7 @@ import { isNotPresent } from "neetocist";
 import useFileUploadStore from "src/stores/useFileUploadStore";
 import DirectUpload from "utils/DirectUpload";
 
+import { FILE_UPLOAD_STATUS } from "./constants/fileUploader";
 import { shouldAddFile } from "./utils/fileUploader";
 
 let uploadControllers = {};
@@ -39,12 +40,8 @@ const useFileUploader = ({ config }) => {
     uploadControllers[file.id] = upload;
 
     try {
-      const blob = await upload.create();
-      await updateFileStatus(file.id, "uploaded");
-
-      return file;
-    } catch {
-      await updateFileStatus(file.id, "uploaded-error");
+      updateFileStatus(file.id, FILE_UPLOAD_STATUS.UPLOADED);
+      updateFileStatus(file.id, FILE_UPLOAD_STATUS.ERROR);
     }
   };
 
@@ -57,7 +54,7 @@ const useFileUploader = ({ config }) => {
       return [];
     }
 
-    updateFileStatus(queuedFile.id, "uploading");
+    updateFileStatus(queuedFile.id, FILE_UPLOAD_STATUS.UPLOADING);
     const [uploadedFile, remainingUploadedFiles] = await Promise.all([
       uploadFile(queuedFile),
       handleUploadFiles(),
@@ -84,7 +81,7 @@ const useFileUploader = ({ config }) => {
       signedId: "awaiting",
       url: "",
       type: file.type,
-      status: "queued", // To refactor before the final PR.
+      status: FILE_UPLOAD_STATUS.QUEUED,
     }));
     addFilesToStore(filesToAdd);
   };
