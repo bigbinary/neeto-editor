@@ -40,7 +40,7 @@ const LocalUploader = ({
   setIsUploading(isUploading);
 
   const handleAddFile = async ({ target: { files } }) => {
-    addFiles(Array.from(files));
+    addFiles(files);
     const uploadedFiles = await uploadFiles();
     uploadedFiles.forEach(insertMediaToEditor);
     onClose();

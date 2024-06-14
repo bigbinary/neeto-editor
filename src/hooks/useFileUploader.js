@@ -7,11 +7,15 @@ import useFileUploadStore from "src/stores/useFileUploadStore";
 import DirectUpload from "utils/DirectUpload";
 
 import { FILE_UPLOAD_STATUS } from "./constants/fileUploader";
-import { shouldAddFile } from "./utils/fileUploader";
+import { selectFiles } from "./utils/fileUploader";
 
 let uploadControllers = {};
 
-const useFileUploader = ({ config, setIsUploadingOnHost = noop }) => {
+const useFileUploader = ({
+  config,
+  attachments: previousAttachments = [],
+  setIsUploadingOnHost = noop,
+}) => {
   const { t } = useTranslation();
 
   const {
@@ -95,8 +99,12 @@ const useFileUploader = ({ config, setIsUploadingOnHost = noop }) => {
     return handleUploadFiles();
   };
 
-  const addFiles = files => {
-    const filesToAdd = files.filter(shouldAddFile(config)).map(file => ({
+  const addFiles = addedFiles => {
+    const selectedFiles = selectFiles({
+      previousAttachmentsCount: previousAttachments.length,
+      config,
+      files: Array.from(addedFiles),
+    }).map(file => ({
       id: hyphenate(`${file.name.toLowerCase()}-${Date.now()}`),
       data: file,
       filename: file.name,
@@ -105,7 +113,7 @@ const useFileUploader = ({ config, setIsUploadingOnHost = noop }) => {
       type: file.type,
       status: FILE_UPLOAD_STATUS.QUEUED,
     }));
-    addFilesToStore(filesToAdd);
+    addFilesToStore(selectedFiles);
   };
 
   const cancelUpload = fileId => {
