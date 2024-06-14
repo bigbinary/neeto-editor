@@ -18,7 +18,7 @@ import useFileUploader from "hooks/useFileUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import { stopEvent, buildFileUploadConfig, selectFiles } from "./utils";
+import { stopEvent, buildFileUploadConfig } from "./utils";
 
 const Preview = lazy(() => import("./Preview"));
 
@@ -51,16 +51,11 @@ const Attachments = (
     useFileUploader({
       config: fileUploadConfig,
       setIsUploadingOnHost: setIsUploading,
+      attachments,
     });
 
   const handleAddFile = async event => {
-    const files = selectFiles({
-      previousAttachmentsCount: attachments.length,
-      config: fileUploadConfig,
-      files: event.target.files,
-    });
-
-    addFiles(files);
+    addFiles(event.target.files);
     const uploadedFiles = await uploadFiles();
     isNotEmpty(uploadedFiles) && onChange([...attachments, ...uploadedFiles]);
     attachmentInputRef.current.value = null;
@@ -79,12 +74,7 @@ const Attachments = (
   useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
 
   const uploadDroppedFiles = async event => {
-    const files = selectFiles({
-      previousAttachmentsCount: attachments.length,
-      config: fileUploadConfig,
-      files: Array.from(event.dataTransfer.files),
-    });
-    addFiles(files);
+    addFiles(event.dataTransfer.files);
     const uploadedFiles = await uploadFiles();
     isNotEmpty(uploadedFiles) && onChange([...attachments, ...uploadedFiles]);
   };
@@ -97,19 +87,19 @@ const Attachments = (
       stopEvent(event);
       if (!isDragging) {
         isDragging = true;
-        dropZone.classList.add("uppy-is-drag-over");
+        dropZone.classList.add("is-dragging-over-files");
       }
     };
 
     const handleDragLeave = event => {
       stopEvent(event);
-      !isDragging && dropZone.classList.remove("uppy-is-drag-over");
+      !isDragging && dropZone.classList.remove("is-dragging-over-files");
     };
 
     const handleDrop = event => {
       stopEvent(event);
       isDragging = false;
-      dropZone.classList.remove("uppy-is-drag-over");
+      dropZone.classList.remove("is-dragging-over-files");
 
       uploadDroppedFiles(event);
     };

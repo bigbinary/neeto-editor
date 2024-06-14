@@ -177,7 +177,7 @@
   position: relative;
 }
 
-.ne-attachments__wrapper.uppy-is-drag-over::after {
+.ne-attachments__wrapper.is-dragging-over-files::after {
   position: absolute;
   inset: 7px;
   border-radius: 5px;

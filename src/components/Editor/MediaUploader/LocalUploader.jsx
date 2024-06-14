@@ -55,7 +55,7 @@ const LocalUploader = ({
       event.stopPropagation();
       if (!isDragging) {
         isDragging = true;
-        dropZone.classList.add("uppy-is-drag-over");
+        dropZone.classList.add("is-dragging-over-files");
       }
     };
 
@@ -63,7 +63,7 @@ const LocalUploader = ({
       event.preventDefault();
       event.stopPropagation();
       if (!isDragging) {
-        dropZone.classList.remove("uppy-is-drag-over");
+        dropZone.classList.remove("is-dragging-over-files");
       }
     };
 
@@ -71,7 +71,7 @@ const LocalUploader = ({
       event.preventDefault();
       event.stopPropagation();
       isDragging = false;
-      dropZone.classList.remove("uppy-is-drag-over");
+      dropZone.classList.remove("is-dragging-over-files");
 
       const files = Array.from(event.dataTransfer.files);
       addFiles(files);
