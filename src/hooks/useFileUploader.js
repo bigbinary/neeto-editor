@@ -117,7 +117,7 @@ const useFileUploader = ({
   };
 
   const cancelUpload = fileId => {
-    uploadControllers[fileId].abort();
+    uploadControllers[fileId]?.abort?.();
     removeFile(fileId);
   };
 
