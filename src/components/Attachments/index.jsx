@@ -116,7 +116,7 @@ const Attachments = (
       dropZone.removeEventListener("dragleave", handleDragLeave);
       dropZone.removeEventListener("drop", handleDrop);
     };
-  }, [dragDropRef]);
+  }, [dragDropRef, attachments]);
 
   return (
     <div className={classnames("ne-attachments", { [className]: className })}>
