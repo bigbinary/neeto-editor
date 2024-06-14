@@ -24,6 +24,14 @@ const peerDependencies = Object.keys(packageJson.peerDependencies);
 
 const formats = ["esm", "cjs"];
 
+const input = {
+  editor: "./src/components/Editor",
+  editorContent: "./src/components/EditorContent",
+  menu: "./src/components/Editor/Menu",
+  formikEditor: "./src/components/Editor/FormikEditor",
+  attachments: "./src/components/Attachments"
+}
+
 const cleanerTargets = ["./dist/", "index.cjs.js", "index.js", "index.cjs.js.map", "index.js.map"];
 
 const plugins = [
@@ -57,8 +65,8 @@ const config = args => {
     const output = formats.map(format => ({
       assetFileNames: "[name][extname]",
       dir: path.join(destination),
-      entryFileNames: format === "esm" ? "index.js" : "index.cjs.js",
-      chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/chunk-[hash].cjs.js",
+      entryFileNames: format === "esm" ? "dist/[name].js" : "dist/cjs/[name].cjs.js",
+      chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/cjs/chunk-[hash].cjs.js",
       format,
       name: "NeetoEditor",
       sourcemap: true,
@@ -66,7 +74,7 @@ const config = args => {
 
   return [
     {
-      input: "./src/index.js",
+      input,
       external: peerDependencies,
       output,
       plugins: [
