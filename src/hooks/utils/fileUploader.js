@@ -92,7 +92,7 @@ export const selectFiles = ({ previousAttachmentsCount, config, files }) => {
     }
 
     if (isUnsupportedFile) unSupportedFilesCount += 1;
-    else largeFilesCount += 1;
+    else if (!canAdd) largeFilesCount += 1;
 
     return false;
   });
