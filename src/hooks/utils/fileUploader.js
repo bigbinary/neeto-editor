@@ -4,24 +4,68 @@ import { Toastr } from "neetoui";
 
 import { convertToFileSize } from "components/Editor/MediaUploader/utils";
 
-export const shouldAddFile = config => file => {
-  const { maxFileSize } = config.restrictions;
+const getFileExtension = filename => {
+  if (!filename) return "";
+  const parts = filename.split(".");
 
-  if (isPresent(maxFileSize) && file.size > maxFileSize) {
-    Toastr.error(
-      t("neetoEditor.error.fileIsTooLarge", {
-        maxFileSize: convertToFileSize(maxFileSize),
-      })
-    );
+  return parts.length > 1 ? `.${parts.pop()}` : "";
+};
 
-    return false;
+const showWarningToastr = ({
+  selectedFiles,
+  initialFiles,
+  config,
+  largeFilesCount,
+  unSupportedFilesCount,
+}) => {
+  const { maxNumberOfFiles, maxFileSize } = config.restrictions;
+
+  if (unSupportedFilesCount > 0 || largeFilesCount > 0) {
+    if (unSupportedFilesCount > 0) {
+      Toastr.error(t("neetoEditor.error.fileNotAllowed"));
+    }
+
+    if (largeFilesCount > 0) {
+      Toastr.error(
+        t("neetoEditor.error.fileIsTooLarge", {
+          maxFileSize: convertToFileSize(maxFileSize),
+        })
+      );
+    }
+
+    return;
   }
 
-  return true;
+  if (selectedFiles.length < initialFiles.length) {
+    Toastr.warning(
+      t("neetoEditor.attachments.maxNumberOfFiles", {
+        entity: maxNumberOfFiles,
+      })
+    );
+  }
+};
+
+export const shouldAddFile = config => file => {
+  const { maxFileSize, allowedFileTypes } = config.restrictions;
+
+  if (isPresent(maxFileSize) && file.size > maxFileSize) {
+    return { canAdd: false };
+  }
+
+  if (isPresent(allowedFileTypes)) {
+    const fileExtension = getFileExtension(file.name);
+    const canAdd = allowedFileTypes.includes(fileExtension);
+
+    return { canAdd, isUnsupportedFile: !canAdd };
+  }
+
+  return { canAdd: true };
 };
 
 export const selectFiles = ({ previousAttachmentsCount, config, files }) => {
-  let addedFilesCount = 0;
+  let addedFilesCount = 0,
+    largeFilesCount = 0,
+    unSupportedFilesCount = 0;
   const fallbackMaxNumberOfFiles = previousAttachmentsCount + files.length;
   const { maxNumberOfFiles = fallbackMaxNumberOfFiles } = config.restrictions;
   const canAddFile = shouldAddFile(config);
@@ -39,23 +83,27 @@ export const selectFiles = ({ previousAttachmentsCount, config, files }) => {
   }
 
   const selectedFiles = files.filter(file => {
-    const canAdd = canAddFile(file);
+    const { canAdd, isUnsupportedFile } = canAddFile(file);
+
     if (canAdd && addedFilesCount + 1 <= remainingAttachments) {
       addedFilesCount += 1;
 
       return true;
     }
 
+    if (isUnsupportedFile) unSupportedFilesCount += 1;
+    else largeFilesCount += 1;
+
     return false;
   });
 
-  if (selectedFiles.length < files.length) {
-    Toastr.warning(
-      t("neetoEditor.attachments.maxNumberOfFiles", {
-        entity: maxNumberOfFiles,
-      })
-    );
-  }
+  showWarningToastr({
+    selectedFiles,
+    initialFiles: files,
+    config,
+    unSupportedFilesCount,
+    largeFilesCount,
+  });
 
   return selectedFiles;
 };
