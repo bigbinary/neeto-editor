@@ -25,11 +25,12 @@ const peerDependencies = Object.keys(packageJson.peerDependencies);
 const formats = ["esm", "cjs"];
 
 const input = {
-  editor: "./src/components/Editor",
-  editorContent: "./src/components/EditorContent",
-  menu: "./src/components/Editor/Menu",
-  formikEditor: "./src/components/Editor/FormikEditor",
-  attachments: "./src/components/Attachments"
+  Editor: "./src/components/Editor",
+  EditorContent: "./src/components/EditorContent",
+  Menu: "./src/components/Editor/Menu",
+  FormikEditor: "./src/components/Editor/FormikEditor",
+  Attachments: "./src/components/Attachments",
+  utils: "./src/utils",
 }
 
 const cleanerTargets = ["./dist/", "index.cjs.js", "index.js", "index.cjs.js.map", "index.js.map"];
