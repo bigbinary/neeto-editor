@@ -32,11 +32,7 @@ const showWarningToastr = ({
         })
       );
     }
-
-    return;
-  }
-
-  if (selectedFiles.length < initialFiles.length) {
+  } else if (selectedFiles.length < initialFiles.length) {
     Toastr.warning(
       t("neetoEditor.attachments.maxNumberOfFiles", {
         entity: maxNumberOfFiles,

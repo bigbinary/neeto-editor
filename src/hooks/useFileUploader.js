@@ -1,3 +1,5 @@
+// eslint-disable-next-line @bigbinary/neeto/no-axios-import-outside-apis, @bigbinary/neeto/use-snake-case-for-api-connector-filename
+import axios from "axios";
 import { noop, hyphenate, isNot, isNotPresent } from "neetocist";
 import { Toastr } from "neetoui";
 import { omit, pluck } from "ramda";
@@ -59,9 +61,11 @@ const useFileUploader = ({
         contentType: data.content_type ?? response.content_type,
       };
     } catch (error) {
+      if (!axios.isCancel(error)) {
+        Toastr.error(t("neetoEditor.error.uploadFileFailed"));
+      }
       // eslint-disable-next-line no-console
       console.error("Failed to upload attachment", error);
-      Toastr.error(t("neetoEditor.error.uploadFileFailed"));
       removeFile(file.id);
 
       return null;
