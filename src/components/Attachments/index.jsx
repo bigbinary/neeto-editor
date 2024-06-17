@@ -1,6 +1,5 @@
 import React, {
   useRef,
-  useEffect,
   useState,
   useImperativeHandle,
   lazy,
@@ -14,11 +13,12 @@ import { Button, Toastr } from "neetoui";
 import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
 
+import useDropFiles from "hooks/useDropFiles";
 import useFileUploader from "hooks/useFileUploader";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
-import { stopEvent, buildFileUploadConfig } from "./utils";
+import { buildFileUploadConfig } from "./utils";
 
 const Preview = lazy(() => import("./Preview"));
 
@@ -73,50 +73,17 @@ const Attachments = (
 
   useImperativeHandle(ref, () => ({ handleUploadAttachments }), []);
 
-  const uploadDroppedFiles = async event => {
-    addFiles(event.dataTransfer.files);
+  const handleFilesDrop = async files => {
+    addFiles(files);
     const uploadedFiles = await uploadFiles();
     isNotEmpty(uploadedFiles) && onChange([...attachments, ...uploadedFiles]);
   };
 
-  useEffect(() => {
-    const dropZone = dragDropRef.current;
-    let isDragging = false;
-
-    const handleDragOver = event => {
-      stopEvent(event);
-      if (!isDragging) {
-        isDragging = true;
-        dropZone.classList.add("is-dragging-over-files");
-      }
-    };
-
-    const handleDragLeave = event => {
-      stopEvent(event);
-      !isDragging && dropZone.classList.remove("is-dragging-over-files");
-    };
-
-    const handleDrop = event => {
-      stopEvent(event);
-      isDragging = false;
-      dropZone.classList.remove("is-dragging-over-files");
-
-      uploadDroppedFiles(event);
-    };
-
-    if (dropZone) {
-      dropZone.addEventListener("dragover", handleDragOver);
-      dropZone.addEventListener("dragleave", handleDragLeave);
-      dropZone.addEventListener("drop", handleDrop);
-    }
-
-    return () => {
-      if (!dropZone) return;
-      dropZone.removeEventListener("dragover", handleDragOver);
-      dropZone.removeEventListener("dragleave", handleDragLeave);
-      dropZone.removeEventListener("drop", handleDrop);
-    };
-  }, [dragDropRef, attachments]);
+  useDropFiles({
+    dropTargetRef: dragDropRef,
+    attachments,
+    onDrop: handleFilesDrop,
+  });
 
   return (
     <div className={classnames("ne-attachments", { [className]: className })}>

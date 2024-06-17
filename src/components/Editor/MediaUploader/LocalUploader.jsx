@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 
 import { ImageUpload } from "neetoicons";
 import { Typography } from "neetoui";
 import { isEmpty } from "ramda";
 import { useTranslation } from "react-i18next";
 
+import useDropFiles from "hooks/useDropFiles";
 import useFileUploader from "hooks/useFileUploader";
 
 import {
@@ -37,6 +38,15 @@ const LocalUploader = ({
       setIsUploadingOnHost: setIsUploading,
     });
 
+  const handleFilesDrop = async files => {
+    addFiles(files);
+    const uploadedFiles = await uploadFiles();
+    uploadedFiles.forEach(insertMediaToEditor);
+    onClose();
+  };
+
+  useDropFiles({ dropTargetRef, onDrop: handleFilesDrop });
+
   setIsUploading(isUploading);
 
   const handleAddFile = async ({ target: { files } }) => {
@@ -45,54 +55,6 @@ const LocalUploader = ({
     uploadedFiles.forEach(insertMediaToEditor);
     onClose();
   };
-
-  useEffect(() => {
-    const dropZone = dropTargetRef?.current;
-    let isDragging = false;
-
-    const handleDragOver = event => {
-      event.preventDefault();
-      event.stopPropagation();
-      if (!isDragging) {
-        isDragging = true;
-        dropZone.classList.add("is-dragging-over-files");
-      }
-    };
-
-    const handleDragLeave = event => {
-      event.preventDefault();
-      event.stopPropagation();
-      if (!isDragging) {
-        dropZone.classList.remove("is-dragging-over-files");
-      }
-    };
-
-    const handleDrop = async event => {
-      event.preventDefault();
-      event.stopPropagation();
-      isDragging = false;
-      dropZone.classList.remove("is-dragging-over-files");
-
-      const files = Array.from(event.dataTransfer.files);
-      addFiles(files);
-      const uploadedFiles = await uploadFiles();
-      uploadedFiles.forEach(insertMediaToEditor);
-      onClose();
-    };
-
-    if (dropZone) {
-      dropZone.addEventListener("dragover", handleDragOver);
-      dropZone.addEventListener("dragleave", handleDragLeave);
-      dropZone.addEventListener("drop", handleDrop);
-    }
-
-    return () => {
-      if (!dropZone) return;
-      dropZone.removeEventListener("dragover", handleDragOver);
-      dropZone.removeEventListener("dragleave", handleDragLeave);
-      dropZone.removeEventListener("drop", handleDrop);
-    };
-  }, [dropTargetRef]);
 
   return !isEmpty(queuedFiles) || isUploading ? (
     <Progress {...{ cancelUpload, queuedFiles }} />

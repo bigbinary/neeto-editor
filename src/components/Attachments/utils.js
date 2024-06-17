@@ -53,8 +53,3 @@ export const checkPreviewAvailability = contentType =>
     contentType === "application/vnd.ms-excel" ||
     contentType ===
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-
-export const stopEvent = event => {
-  event.preventDefault();
-  event.stopPropagation();
-};
