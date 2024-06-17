@@ -4,12 +4,11 @@ import { Close } from "neetoicons";
 import { Button, Typography } from "neetoui";
 import { FileIcon } from "react-file-icon";
 
-const AttachmentProgress = ({ attachment, uppy, removeUploadingFile }) => {
-  const progressPercentage = `${attachment.progress}%`;
+const AttachmentProgress = ({ attachment, cancelUpload }) => {
+  const progressPercentage = `${attachment.progress ?? 0}%`;
 
   const handleCancel = () => {
-    uppy.removeFile(attachment.id);
-    removeUploadingFile(attachment.id);
+    cancelUpload(attachment.id);
   };
 
   return (
