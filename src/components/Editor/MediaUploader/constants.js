@@ -10,8 +10,6 @@ export const ALLOWED_IMAGE_TYPES = [".jpg", ".jpeg", ".png", ".gif"];
 export const ALLOWED_VIDEO_TYPES = [".mp4", ".mov", ".avi", ".mkv"];
 
 export const DEFAULT_IMAGE_UPLOAD_CONFIG = {
-  autoProceed: false,
-  allowMultipleUploads: true,
   directUploadEndpoint: DIRECT_UPLOAD_ENDPOINT,
   restrictions: {
     maxNumberOfFiles: 5,
@@ -21,8 +19,6 @@ export const DEFAULT_IMAGE_UPLOAD_CONFIG = {
 };
 
 export const DEFAULT_VIDEO_UPLOAD_CONFIG = {
-  autoProceed: false,
-  allowMultipleUploads: true,
   directUploadEndpoint: DIRECT_UPLOAD_ENDPOINT,
   restrictions: {
     maxNumberOfFiles: 5,
