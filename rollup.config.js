@@ -78,7 +78,7 @@ const config = args => {
       external: peerDependencies,
       output,
       plugins: [
-        cleaner({ targets: ["./dist/"]; }),
+        cleaner({ targets: ["./dist/"] }),
         ...plugins,
         args.app && copy({
           targets: [
