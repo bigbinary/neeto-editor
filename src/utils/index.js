@@ -12,14 +12,11 @@ import {
 } from "utils/common";
 
 export {
-  // editor utils
   removeEmptyTags,
   isEditorEmpty,
   isEditorContentWithinLimit,
-  // common utils
   isEditorOverlaysActive,
   isEmojiSuggestionsMenuActive,
   transformEditorContent,
-  // other utils
   substituteVariables,
 };
