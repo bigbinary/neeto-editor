@@ -71,6 +71,7 @@ const config = args => {
       format,
       name: "NeetoEditor",
       sourcemap: true,
+      exports: "auto",
     }));
 
   return [
