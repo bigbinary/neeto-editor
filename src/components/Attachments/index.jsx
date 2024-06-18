@@ -15,6 +15,7 @@ import { concat, isEmpty, isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import useUppyUploader from "hooks/useUppyUploader";
+import "src/styles/components/attachments.scss";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";

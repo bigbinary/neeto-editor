@@ -6,6 +6,8 @@ import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
 import { isNil, not } from "ramda";
 import { createRoot } from "react-dom/client";
 
+import "src/styles/editor/editor-content.scss";
+
 import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
 import ImagePreview from "./ImagePreview";
 import { highlightCode, substituteVariables } from "./utils";

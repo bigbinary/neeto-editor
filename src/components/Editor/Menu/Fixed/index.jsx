@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 
 import EmbedOption from "components/Editor/CustomExtensions/Embeds";
 import MediaUploader from "components/Editor/MediaUploader";
+import "src/styles/editor/menu.scss";
 
 import EmojiOption from "./EmojiOption";
 import FontSizeOption from "./FontSizeOption";
