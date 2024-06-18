@@ -1,6 +1,7 @@
 import React from "react";
 
 import classNames from "classnames";
+import { t } from "i18next";
 import { Avatar, Dropdown, Typography } from "neetoui";
 import { isEmpty } from "ramda";
 
@@ -85,7 +86,9 @@ export class MentionList extends React.Component {
     if (isEmpty(items)) {
       return (
         <div className="neeto-editor-mentions__wrapper">
-          <p className="neeto-editor-mentions__item">No Results</p>
+          <p className="neeto-editor-mentions__item">
+            {t("neetoEditor.error.noResults")}
+          </p>
         </div>
       );
     }
