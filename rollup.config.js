@@ -33,8 +33,6 @@ const input = {
   utils: "./src/utils",
 }
 
-const cleanerTargets = ["./dist/", "index.cjs.js", "index.js", "index.cjs.js.map", "index.js.map"];
-
 const plugins = [
   peerDepsExternal(),
   alias({ entries: aliasEntries }),
@@ -80,7 +78,7 @@ const config = args => {
       external: peerDependencies,
       output,
       plugins: [
-        cleaner({ targets: cleanerTargets }),
+        cleaner({ targets: ["./dist/"]; }),
         ...plugins,
         args.app && copy({
           targets: [
