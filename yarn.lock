@@ -3627,13 +3627,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-bold/-/extension-bold-2.3.0.tgz#a499d2934bea5578e3a76e065af617caf15f7043"
   integrity sha512-SzkbJibHXFNU7TRaAebTtwbXUEhGZ8+MhlBn12aQ4QhdjNtFpQwKXQPyYeDyZGcyiOFgtFTb+WIfCGm8ZX0Fpw==
 
-"@tiptap/extension-bubble-menu@2.0.0-beta.199":
-  version "2.0.0-beta.199"
-  resolved "https://registry.yarnpkg.com/@tiptap/extension-bubble-menu/-/extension-bubble-menu-2.0.0-beta.199.tgz#23a01c4c57f5af2197299d836e18ffe498fd8d67"
-  integrity sha512-T3K8xoDbX6J62lhIUpclQoW/1XFt7yfI5DCoxtVWUeKaF+pG6kdsB3CPG5C/+AQVlz2jSIJmQuPf8RQFpQs+yg==
+"@tiptap/extension-bubble-menu@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-bubble-menu/-/extension-bubble-menu-2.4.0.tgz#a079329318fc21407f9a3c9c3da6ef72cb0b4ab6"
+  integrity sha512-s99HmttUtpW3rScWq8rqk4+CGCwergNZbHLTkF6Rp6TSboMwfp+rwL5Q/JkcAG9KGLso1vGyXKbt1xHOvm8zMw==
   dependencies:
-    prosemirror-state "^1.4.1"
-    prosemirror-view "^1.28.2"
     tippy.js "^6.3.7"
 
 "@tiptap/extension-bubble-menu@^2.0.0-beta.199":
