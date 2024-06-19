@@ -39,11 +39,8 @@ const LinkPopOver = ({ editor }) => {
     setArrowPosition(arrowPosition);
   };
 
-  const handleUnlink = editor
-    .chain()
-    .focus()
-    .extendMarkRange("link")
-    .unsetLink().run;
+  const handleUnlink = () =>
+    editor.chain().focus().extendMarkRange("link").unsetLink().run();
 
   const removePopover = () => {
     setIsEditing(false);
