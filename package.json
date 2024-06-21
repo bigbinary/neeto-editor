@@ -22,6 +22,11 @@
     "yarn": ">=1.22"
   },
   "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./types.d.ts"
+    },
     "./*": {
       "import": "./dist/*.js",
       "require": "./dist/cjs/*.js",

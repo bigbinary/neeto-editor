@@ -25,6 +25,7 @@ const peerDependencies = Object.keys(packageJson.peerDependencies);
 const formats = ["esm", "cjs"];
 
 const input = {
+  index: "./src/index.js",
   Editor: "./src/components/Editor",
   EditorContent: "./src/components/EditorContent",
   Menu: "./src/components/Editor/Menu",
@@ -61,16 +62,16 @@ const config = args => {
   const destination = args.app
     ? path.resolve(__dirname, args.app, "node_modules", packageJson.name)
     : __dirname;
-    const output = formats.map(format => ({
-      assetFileNames: "[name][extname]",
-      dir: path.join(destination),
-      entryFileNames: format === "esm" ? "dist/[name].js" : "dist/cjs/[name].cjs.js",
-      chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/cjs/chunk-[hash].cjs.js",
-      format,
-      name: "NeetoEditor",
-      sourcemap: true,
-      exports: "auto",
-    }));
+  const output = formats.map(format => ({
+    assetFileNames: "[name][extname]",
+    dir: path.join(destination),
+    entryFileNames: format === "esm" ? "dist/[name].js" : "dist/cjs/[name].cjs.js",
+    chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/cjs/chunk-[hash].cjs.js",
+    format,
+    name: "NeetoEditor",
+    sourcemap: true,
+    exports: "auto",
+  }));
 
   return [
     {
