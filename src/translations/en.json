@@ -37,7 +37,8 @@
       "urlRequired": "URL is required",
       "textRequired": "Text is required",
       "uploadFileFailed": "Failed to upload an attachment",
-      "fileNotAllowed": "The selected file type is not allowed"
+      "fileNotAllowed": "The selected file type is not allowed",
+      "noResults": "No results"
     },
     "menu": {
       "attachments": "Attachments",
