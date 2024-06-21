@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 
 import useDropFiles from "hooks/useDropFiles";
 import useFileUploader from "hooks/useFileUploader";
+import "src/styles/components/attachments.scss";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";

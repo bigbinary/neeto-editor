@@ -9,6 +9,7 @@ import { EditorView } from "prosemirror-view";
 
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import useEditorWarnings from "hooks/useEditorWarnings";
+import "src/styles/editor/index.scss";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";

@@ -24,7 +24,15 @@ const peerDependencies = Object.keys(packageJson.peerDependencies);
 
 const formats = ["esm", "cjs"];
 
-const cleanerTargets = ["./dist/", "index.cjs.js", "index.js", "index.cjs.js.map", "index.js.map"];
+const input = {
+  index: "./src/index.js",
+  Editor: "./src/components/Editor",
+  EditorContent: "./src/components/EditorContent",
+  Menu: "./src/components/Editor/Menu",
+  FormikEditor: "./src/components/Editor/FormikEditor",
+  Attachments: "./src/components/Attachments",
+  utils: "./src/utils",
+}
 
 const plugins = [
   peerDepsExternal(),
@@ -54,23 +62,24 @@ const config = args => {
   const destination = args.app
     ? path.resolve(__dirname, args.app, "node_modules", packageJson.name)
     : __dirname;
-    const output = formats.map(format => ({
-      assetFileNames: "[name][extname]",
-      dir: path.join(destination),
-      entryFileNames: format === "esm" ? "index.js" : "index.cjs.js",
-      chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/chunk-[hash].cjs.js",
-      format,
-      name: "NeetoEditor",
-      sourcemap: true,
-    }));
+  const output = formats.map(format => ({
+    assetFileNames: "[name][extname]",
+    dir: path.join(destination),
+    entryFileNames: format === "esm" ? "dist/[name].js" : "dist/cjs/[name].cjs.js",
+    chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/cjs/chunk-[hash].cjs.js",
+    format,
+    name: "NeetoEditor",
+    sourcemap: true,
+    exports: "auto",
+  }));
 
   return [
     {
-      input: "./src/index.js",
+      input,
       external: peerDependencies,
       output,
       plugins: [
-        cleaner({ targets: cleanerTargets }),
+        cleaner({ targets: ["./dist/"] }),
         ...plugins,
         args.app && copy({
           targets: [
