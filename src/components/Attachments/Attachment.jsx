@@ -31,6 +31,7 @@ const Attachment = ({
   onChange,
   setSelectedAttachment,
   isLoading,
+  allowDelete,
 }) => {
   const { t } = useTranslation();
 
@@ -69,6 +70,8 @@ const Attachment = ({
   };
 
   const handleDelete = async () => {
+    if (!allowDelete) return;
+
     setIsDeleting(true);
     try {
       const { signedId } = attachment;
@@ -82,7 +85,7 @@ const Attachment = ({
   const handlers = {
     [ATTACHMENT_OPTIONS.DOWNLOAD]: handleDownload,
     [ATTACHMENT_OPTIONS.RENAME]: handleRename,
-    [ATTACHMENT_OPTIONS.DELETE]: handleDelete,
+    ...(allowDelete && { [ATTACHMENT_OPTIONS.DELETE]: handleDelete }),
   };
 
   const onMenuItemClick = ({ key, handler }) => {

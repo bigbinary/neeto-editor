@@ -33,6 +33,7 @@ const Attachments = (
     dragDropRef = null,
     config = {},
     setIsUploading = noop,
+    allowDelete = true,
   },
   ref
 ) => {
@@ -171,6 +172,7 @@ const Attachments = (
         {attachments.map(attachment => (
           <Attachment
             {...{
+              allowDelete,
               attachment,
               attachments,
               disabled,
