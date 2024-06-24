@@ -1,9 +1,8 @@
 import { globalProps } from "neetocommons/initializers";
 
-import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
-
-export const DEFAULT_FILE_UPLOAD_CONFIG = {
-  directUploadEndpoint: DIRECT_UPLOAD_ENDPOINT,
+export const DEFAULT_UPPY_CONFIG = {
+  autoProceed: false,
+  allowMultipleUploads: false,
   restrictions: {
     maxFileSize: globalProps.endUserUploadedFileSizeLimitInMb * 1024 * 1024,
   },
