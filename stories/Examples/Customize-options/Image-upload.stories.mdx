@@ -34,8 +34,8 @@ from the backend.
 Rails provides a `ActiveStorage::DirectUploadsController` to handle direct
 upload to the storage service. You will need to override the `create` action of
 the controller and return the `blob_url` of the uploaded file. Pass the route to
-the `create` action as the `directUploadEndpoint` in the `config` prop. For the below example,
-`directUploadEndpoint` is "/api/direct_uploads".
+the `create` action as the `uploadEndpoint` prop. For the below example,
+`uploadEndpoint` is "/api/direct_uploads".
 
 ```rb
 class Api::DirectUploadsController < ActiveStorage::DirectUploadsController
@@ -104,9 +104,9 @@ The default configuration for uploads is:
 
 ```json
 {
-  directUploadEndpoint: "/api/direct_uploads"
+  autoProceed: true,
+  allowMultipleUploads: false,
   restrictions: {
-    maxNumberOfFiles: 5,
     maxFileSize: globalProps.endUserUploadedFileSizeLimitInMb,
     allowedFileTypes: [".jpg", ".jpeg", ".png", ".gif"]],
   },
