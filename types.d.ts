@@ -143,6 +143,7 @@ interface AttachmentsProps {
   disabled?: boolean;
   className?: string;
   showToastr?: boolean;
+  allowDelete?: boolean;
 }
 
 export function Editor(props: EditorProps): JSX.Element;
