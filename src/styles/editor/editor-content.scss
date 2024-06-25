@@ -370,3 +370,8 @@
 .neeto-editor__image--right {
   justify-content: flex-end;
 }
+
+.selected-text {
+  padding: 2px 0px;
+  background-color: rgb(var(--neeto-ui-gray-300));
+}

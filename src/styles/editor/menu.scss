@@ -4,6 +4,7 @@
   border-bottom: none;
   background-color: rgb(var(--neeto-ui-white));
   position: relative;
+  display: flex;
 
   &--independant {
     border-radius: unset;
@@ -56,22 +57,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    overflow: auto;
+    flex-grow: 1;
     width: 100%;
-    padding: 0;
+    padding: 0 2px;
     border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
-
-    &--collapsible {
-      display: flex;
-      flex-grow: 1;
-      align-items: center;
-
-      &--fade {
-        button.neeto-editor-fixed-menu__item {
-          animation: fade-in 0.3s ease-in;
-        }
-      }
-    }
 
     &__button-group {
       display: flex;
@@ -194,6 +183,7 @@
   flex-direction: row;
   gap: 8px;
   padding: 8px !important;
+  min-width: 210px;
 
   input {
     max-width: 60px !important;

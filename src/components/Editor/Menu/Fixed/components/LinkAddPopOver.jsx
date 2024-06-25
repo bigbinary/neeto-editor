@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { validateAndFormatUrl } from "components/Editor/utils";
 import { URL_REGEXP } from "src/common/constants";
 
-import { getCursorPos } from "./utils";
+import { getLinkPopoverPosition, getCursorPos } from "../utils";
 
 const LinkAddPopOver = ({
   isAddLinkActive,
@@ -30,7 +30,7 @@ const LinkAddPopOver = ({
   );
   const [arrowPosition, setArrowPosition] = useState({ top: 0, left: 0 });
 
-  const popOverRef = useRef(null);
+  const popoverRef = useRef(null);
 
   const { t } = useTranslation();
 
@@ -86,32 +86,15 @@ const LinkAddPopOver = ({
   };
 
   const updatePopoverPosition = () => {
-    if (!popOverRef.current) return;
-    const newPos = editor.view.coordsAtPos(editor.view.state.selection.$to.pos);
-
-    setArrowPosition({
-      top: `${newPos.top + 20}px`,
-      left: `${newPos.left - 10}px`,
-    });
-
-    const popoverRect = popOverRef.current?.getBoundingClientRect();
-
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-
-    const maxLeft = screenWidth - popoverRect.width;
-    const maxTop = screenHeight - popoverRect.height - 50;
-
-    const adjustedLeft = newPos?.left ? Math.min(newPos.left - 50, maxLeft) : 0;
-    const adjustedTop = newPos?.top ? Math.min(newPos.top - 22, maxTop) : 0;
-
-    setPopoverPosition({
-      top: `${adjustedTop}px`,
-      left: `${adjustedLeft}px`,
-    });
+    const { arrowPosition, popoverPosition } = getLinkPopoverPosition(
+      editor,
+      popoverRef
+    );
+    setPopoverPosition(popoverPosition);
+    setArrowPosition(arrowPosition);
   };
 
-  useOnClickOutside(popOverRef, removePopover);
+  useOnClickOutside(popoverRef, removePopover);
 
   useEffect(() => {
     if (editor && isAddLinkActive) {
@@ -130,13 +113,13 @@ const LinkAddPopOver = ({
     ? createPortal(
         <>
           <div
-            className="ne-link-arrow"
+            className="ne-link-arrow fade-in"
             style={{ top: arrowPosition.top, left: arrowPosition.left }}
           />
           <div
-            className="ne-link-popover"
+            className="ne-link-popover fade-in"
             id="ne-link-add-popover"
-            ref={popOverRef}
+            ref={popoverRef}
             style={popoverStyle}
           >
             <Input

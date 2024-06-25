@@ -3,11 +3,11 @@ import React, { useRef } from "react";
 import { Dropdown, Typography } from "neetoui";
 import { last } from "ramda";
 
-import { FONT_SIZE_OPTIONS } from "./constants";
+import { FONT_SIZE_OPTIONS } from "../constants";
 
 const { Menu, MenuItem } = Dropdown;
 
-const FontSizeOption = ({ editor, tooltipContent }) => {
+const FontSizeOption = ({ editor, tooltipContent, label }) => {
   const dropdownRef = useRef(null);
 
   const isActive = level => editor.isActive("heading", { level });
@@ -31,7 +31,7 @@ const FontSizeOption = ({ editor, tooltipContent }) => {
         ref: dropdownRef,
         onKeyDown: event =>
           event.key === "ArrowDown" && dropdownRef.current?.click(),
-        tooltipProps: { content: tooltipContent, position: "bottom" },
+        tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
         style: "text",
         size: "small",
         className:
