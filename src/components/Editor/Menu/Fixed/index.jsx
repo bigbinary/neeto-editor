@@ -46,6 +46,7 @@ const Fixed = ({
   const [moreMenuItems, setMoreMenuItems] = useState([]);
 
   const menuRef = useRef(null);
+  const menuContainerRef = useRef(null);
 
   const { t } = useTranslation();
 
@@ -110,13 +111,18 @@ const Fixed = ({
   }, [menuGroups]);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
     handleResize();
 
+    const menuContainer = menuContainerRef.current;
+    const resizeObserver = new ResizeObserver(handleResize);
+    if (menuContainer) {
+      resizeObserver.observe(menuContainer);
+    }
+
     return () => {
-      window.removeEventListener("resize", handleResize);
+      if (menuContainer) resizeObserver.unobserve(menuContainer);
     };
-  }, [handleResize, menuGroups]);
+  }, [menuContainerRef, handleResize, menuGroups]);
 
   if (!editor) return null;
 
@@ -133,7 +139,7 @@ const Fixed = ({
 
   return (
     <div
-      ref={menuRef}
+      ref={menuContainerRef}
       className={classNames("neeto-editor-fixed-menu", {
         "neeto-editor-fixed-menu--independant": isIndependant,
         [className]: className,
