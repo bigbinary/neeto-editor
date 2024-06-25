@@ -1,12 +1,69 @@
+import i18n from "i18next";
 import { Toastr } from "neetoui";
 import { mergeRight } from "ramda";
 
 import fileDownloadApi from "apis/file_download";
 
-import { DEFAULT_FILE_UPLOAD_CONFIG } from "./constants";
+import { DEFAULT_UPPY_CONFIG } from "./constants";
 
-export const buildFileUploadConfig = config =>
-  mergeRight(DEFAULT_FILE_UPLOAD_CONFIG, config);
+const { t } = i18n;
+
+export const buildUppyConfig = restrictions =>
+  mergeRight(DEFAULT_UPPY_CONFIG, { restrictions });
+
+export const selectFiles = ({ previousAttachmentsCount, config, files }) => {
+  const { maxNumberOfFiles } = config;
+
+  if (maxNumberOfFiles) {
+    const remainingAttachments = maxNumberOfFiles - previousAttachmentsCount;
+
+    if (remainingAttachments <= 0) {
+      Toastr.warning(
+        t("neetoEditor.attachments.maxNumberOfFiles", {
+          entity: maxNumberOfFiles,
+        })
+      );
+
+      return [];
+    }
+
+    const selectedFiles = Array.from(files).slice(0, remainingAttachments);
+
+    if (selectedFiles.length < files.length) {
+      Toastr.warning(
+        t("neetoEditor.attachments.maxNumberOfFiles", {
+          entity: maxNumberOfFiles,
+        })
+      );
+    }
+
+    return selectedFiles;
+  }
+
+  return Array.from(files);
+};
+
+export const handleDrop = ({ uppy, config, previousAttachmentsCount }) => {
+  const { maxNumberOfFiles } = config;
+
+  if (maxNumberOfFiles) {
+    const files = uppy.getFiles();
+    const totalAttachments = files.length + previousAttachmentsCount;
+
+    if (totalAttachments > maxNumberOfFiles) {
+      Toastr.warning(
+        t("neetoEditor.attachments.maxNumberOfFiles", {
+          entity: maxNumberOfFiles,
+        })
+      );
+      uppy.reset();
+
+      return false;
+    }
+  }
+
+  return true;
+};
 
 export const downloadFile = async (fileUrl, filename) => {
   try {

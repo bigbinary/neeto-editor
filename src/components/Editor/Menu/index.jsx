@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { assoc, isEmpty, not } from "ramda";
 
+import "src/styles/editor/menu.scss";
+
 import BubbleMenu from "./Bubble";
 import FixedMenu from "./Fixed";
 import HeadlessMenu from "./Headless";

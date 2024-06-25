@@ -104,3 +104,12 @@
 .ne_variable-tag {
   border-radius: 6px !important;
 }
+
+.neeto-editor-mentions {
+  &__wrapper {
+    padding: 4px 0px;
+  }
+  &__item {
+    padding: 8px 12px;
+  }
+}

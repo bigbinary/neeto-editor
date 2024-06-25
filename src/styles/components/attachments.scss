@@ -47,7 +47,6 @@
       opacity: 0.5;
       justify-content: space-between;
       width: 76%;
-      gap: 4px;
 
       p {
         white-space: nowrap;
@@ -59,7 +58,6 @@
 
       p:nth-child(2) {
         width: fit-content;
-        flex-shrink: 0;
       }
 
       &-icon {
@@ -177,7 +175,7 @@
   position: relative;
 }
 
-.ne-attachments__wrapper.is-dragging-over-files::after {
+.ne-attachments__wrapper.uppy-is-drag-over::after {
   position: absolute;
   inset: 7px;
   border-radius: 5px;
