@@ -30,6 +30,10 @@ export const ATTACHMENTS_TABLE_ROWS = [
     "showToastr",
     "Boolean to show/hide toastr when an attachment is deleted/renamed, default value is true.",
   ],
+  [
+    "allowDelete",
+    "Boolean to show/hide the 'Delete' option in the triple-dot menu of each attachment. The default value is true.",
+  ],
 ];
 
 export const attachments = [

@@ -15,6 +15,7 @@ import { useTranslation } from "react-i18next";
 
 import useDropFiles from "hooks/useDropFiles";
 import useFileUploader from "hooks/useFileUploader";
+import "src/styles/components/attachments.scss";
 
 import Attachment from "./Attachment";
 import AttachmentProgress from "./AttachmentProgress";
@@ -32,6 +33,7 @@ const Attachments = (
     dragDropRef = null,
     config = {},
     setIsUploading = noop,
+    allowDelete = true,
   },
   ref
 ) => {
@@ -91,6 +93,7 @@ const Attachments = (
         {attachments.map(attachment => (
           <Attachment
             {...{
+              allowDelete,
               attachment,
               attachments,
               disabled,

@@ -1,0 +1,18 @@
+@import "./commands";
+@import "./editor-content";
+@import "./editor";
+@import "./media-uploader";
+@import "./image-preview";
+@import "./emoji";
+@import "./table";
+@import "./link-popover";
+
+.ProseMirror {
+  overflow-y: auto;
+  height: 100%;
+  white-space: break-spaces;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}

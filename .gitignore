@@ -12,7 +12,9 @@
 /build
 /dist/editor-stats.html
 /dist/*.js
+/dist/cjs/*.js
 /dist/*.map
+/dist/cjs/*.map
 /dist/editor-output.js
 /dist/editor-output.js.map
 /dist/codeBlockHighlight.js.map
@@ -29,6 +31,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /editor-content.js
-/index.*
-/formik.js
 storybook-static
