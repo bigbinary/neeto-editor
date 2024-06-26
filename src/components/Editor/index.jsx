@@ -41,12 +41,10 @@ const Editor = (
     menuClassName,
     attachmentsClassName,
     isMenuIndependent = false,
-    isMenuCollapsible = false,
     defaults = DEFAULT_EDITOR_OPTIONS,
     editorSecrets = {},
     error = null,
     extensions = [],
-    hideSlashCommands = false,
     initialValue = "",
     isCharacterCountActive = false,
     keyboardShortcuts = [],
@@ -80,7 +78,6 @@ const Editor = (
     addons.includes(EDITOR_OPTIONS.VIDEO_UPLOAD);
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
-  const isSlashCommandsActive = !hideSlashCommands;
   const isPlaceholderActive = !!placeholder;
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
   const [mediaUploader, setMediaUploader] = useState({
@@ -101,13 +98,9 @@ const Editor = (
     extensions,
     mentions,
     variables,
-    isSlashCommandsActive,
     options: [...defaults, ...addons],
-    addonCommands,
     onSubmit,
     keyboardShortcuts,
-    setMediaUploader,
-    setIsEmbedModalOpen,
     isVideoEmbedActive,
     openImageInNewTab,
     openLinkInNewTab,
@@ -115,7 +108,6 @@ const Editor = (
   useEditorWarnings({ initialValue });
 
   const editorClasses = classnames("neeto-editor", {
-    "slash-active": isSlashCommandsActive && !isPlaceholderActive,
     "fixed-menu-active border": isFixedMenuActive,
     "bubble-menu-active": isBubbleMenuActive,
     "placeholder-active": isPlaceholderActive,
@@ -197,7 +189,6 @@ const Editor = (
               defaults,
               editor,
               editorSecrets,
-              isMenuCollapsible,
               mentions,
               menuType,
               openLinkInNewTab,

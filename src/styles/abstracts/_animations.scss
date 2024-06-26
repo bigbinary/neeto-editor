@@ -55,3 +55,8 @@
     transform: rotate(360deg);
   }
 }
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 100ms ease-in-out forwards;
+}

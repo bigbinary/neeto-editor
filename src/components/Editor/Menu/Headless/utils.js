@@ -24,7 +24,7 @@ import { assoc } from "ramda";
 
 const { t } = i18n;
 
-export const createMenuOptions = ({
+const createMenuOptions = ({
   editor,
   tooltips,
   setMediaUploader,

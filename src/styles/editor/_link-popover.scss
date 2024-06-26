@@ -4,9 +4,9 @@
   background-color: #fff;
   color: #333;
   padding: 10px 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  border: 1px solid var(--neeto-ui-popover-light-theme-border-color);
+  box-shadow: var(--neeto-ui-tooltip-light-theme-box-shadow);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
 
   &__url-input{
@@ -35,13 +35,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-right: 8px;
+    font-weight: var(--neeto-ui-font-medium);
+    font-size: var(--neeto-ui-text-sm);
   }
 }
 
 .ne-link-arrow {
   z-index: 99999;
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   border-style: solid;

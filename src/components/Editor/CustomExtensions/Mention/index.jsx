@@ -4,9 +4,17 @@ import { Email } from "neetoicons";
 import { Avatar, Dropdown, Typography } from "neetoui";
 import { isEmpty } from "ramda";
 
-const Mentions = ({ editor, mentions, tooltipContent }) => {
-  const { Menu, MenuItem } = Dropdown;
+import SecondaryMenuTarget from "components/Editor/Menu/Fixed/components/SecondaryMenuTarget";
 
+const { Menu, MenuItem } = Dropdown;
+
+const Mentions = ({
+  editor,
+  mentions,
+  tooltipContent,
+  isSecondaryMenu = false,
+  label,
+}) => {
   if (isEmpty(mentions)) return null;
 
   return (
@@ -14,11 +22,16 @@ const Mentions = ({ editor, mentions, tooltipContent }) => {
       buttonStyle="text"
       data-cy="neeto-editor-mention-option"
       icon={Email}
+      position={isSecondaryMenu ? "left-start" : "bottom-start"}
       strategy="fixed"
       buttonProps={{
-        tooltipProps: { content: tooltipContent, position: "bottom" },
+        tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
         className: "neeto-editor-fixed-menu__item",
       }}
+      customTarget={
+        isSecondaryMenu && <SecondaryMenuTarget {...{ label }} icon={Email} />
+      }
+      onClick={e => isSecondaryMenu && e.stopPropagation()}
     >
       <Menu>
         {mentions.map(({ key, name, imageUrl }) => (
