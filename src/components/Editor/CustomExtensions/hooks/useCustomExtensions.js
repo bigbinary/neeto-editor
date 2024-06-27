@@ -26,6 +26,7 @@ import Link from "../Link/ExtensionConfig";
 import Mention, { createMentionSuggestions } from "../Mention/ExtensionConfig";
 import Placeholder from "../Placeholder/ExtensionConfig";
 import SelectionDecoration from "../SelectionDecoration/ExtensionConfig";
+import SlashCommands from "../SlashCommands/ExtensionConfig";
 import SpecialMentions from "../SpecialMentions/ExtensionConfig";
 import Table from "../Table/ExtensionConfig";
 import Variable from "../Variable/ExtensionConfig";
@@ -36,10 +37,14 @@ const useCustomExtensions = ({
   extensions,
   mentions,
   variables,
+  isSlashCommandsActive,
   options,
+  addonCommands,
   onSubmit,
   keyboardShortcuts,
   isVideoEmbedActive,
+  setMediaUploader,
+  setIsEmbedModalOpen,
   openImageInNewTab,
   openLinkInNewTab,
 }) => {
@@ -93,6 +98,17 @@ const useCustomExtensions = ({
 
   if (options.includes(EDITOR_OPTIONS.TEXT_COLOR)) {
     customExtensions.push(Color);
+  }
+
+  if (isSlashCommandsActive) {
+    customExtensions.push(
+      SlashCommands.configure({
+        options,
+        addonCommands,
+        setMediaUploader,
+        setIsEmbedModalOpen,
+      })
+    );
   }
 
   if (!isEmpty(mentions)) {
