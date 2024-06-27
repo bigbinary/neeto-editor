@@ -45,7 +45,6 @@ const Editor = (
     editorSecrets = {},
     error = null,
     extensions = [],
-    hideSlashCommands = true,
     initialValue = "",
     isCharacterCountActive = false,
     keyboardShortcuts = [],
@@ -79,7 +78,7 @@ const Editor = (
     addons.includes(EDITOR_OPTIONS.VIDEO_UPLOAD);
   const isFixedMenuActive = menuType === "fixed";
   const isBubbleMenuActive = menuType === "bubble";
-  const isSlashCommandsActive = !hideSlashCommands || isBubbleMenuActive;
+  const isSlashCommandsActive = isBubbleMenuActive;
   const isPlaceholderActive = !!placeholder;
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
   const [mediaUploader, setMediaUploader] = useState({
