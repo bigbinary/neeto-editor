@@ -56,6 +56,11 @@ export const EDITOR_PROPS = [
     "true",
   ],
   [
+    "hideSlashCommands",
+    "Accepts a boolean value. When true, the Slash Commands menu will be hidden.",
+    "true",
+  ],
+  [
     "defaults",
     "Accepts an array of strings, each corresponding to the name of a default option.",
     `["h1", "h2", "h3", "h4", "h5", "h6"]`,

@@ -101,6 +101,7 @@ interface EditorProps {
   label?: string;
   required?: boolean;
   autoFocus?: boolean;
+  hideSlashCommands?: boolean;
   defaults?: string[];
   addons?: string[];
   addonCommands?: Command[];
