@@ -18,6 +18,7 @@ import packageJson from "./package.json";
 
 const commonResolve = require("@bigbinary/neeto-commons-frontend/configs/nanos/webpack/resolve.js");
 const projectResolve = require("./resolves.js");
+const postCssPlugin = require("./rollup-config/postcss.config.js")
 
 const { alias: aliasEntries } = mergeDeepLeft(projectResolve, commonResolve);
 const peerDependencies = Object.keys(packageJson.peerDependencies);
@@ -110,6 +111,24 @@ const config = args => {
           minimize: true,
         }),
       ],
+    },
+    {
+      input: "./src/styles/editor-output-pdf-email.scss",
+      output: {
+        dir: `${__dirname}/dist`,
+        format: "esm",
+        sourcemap: true,
+        assetFileNames: "[name][extname]",
+      },
+      plugins: [
+        postCssPlugin,
+        styles({
+          extensions: [".css", ".scss", ".min.css"],
+          mode: ["extract", "editor-content.min.css"],
+          minimize: true,
+        }),
+      ],
+      extract: true,
     },
     {
       input: "./src/components/EditorContent/codeBlockHighlight.js",
