@@ -9,10 +9,14 @@ const linkInputRule = config => {
   return new InputRule({
     find: config.find,
     handler(props) {
-      const { tr } = props.state;
-
-      defaultMarkInputRule.handler(props);
-      tr.setMeta("preventAutolink", true);
+      try {
+        const { tr } = props.state;
+        defaultMarkInputRule.handler(props);
+        tr.setMeta("preventAutolink", true);
+      } catch (error) {
+        // https://app.honeybadger.io/projects/94805/faults/108936285
+        if (!(error instanceof RangeError)) throw error;
+      }
     },
   });
 };
