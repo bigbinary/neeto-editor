@@ -21,13 +21,13 @@ const EmojiOption = ({
     dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
     icon={Smiley}
     isOpen={isActive}
-    label="emoji"
     position={isSecondaryMenu ? "left-start" : "bottom-start"}
     strategy="fixed"
     buttonProps={{
       tabIndex: -1,
       tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
       className: "neeto-editor-fixed-menu__item",
+      "data-cy": "neeto-editor-fixed-menu-emoji-option",
     }}
     customTarget={
       isSecondaryMenu && <SecondaryMenuTarget {...{ label }} icon={Smiley} />
