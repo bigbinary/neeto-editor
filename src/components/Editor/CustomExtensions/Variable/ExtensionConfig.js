@@ -4,7 +4,6 @@ import { PluginKey } from "prosemirror-state";
 const VariablePluginKey = new PluginKey("variables");
 const Variable = Node.create({
   name: "variable",
-
   addOptions() {
     return {
       HTMLAttributes: { class: "neeto-editor-variable" },
@@ -18,36 +17,26 @@ const Variable = Node.create({
       suggestion: {},
     };
   },
-
   group: "inline",
-
   inline: true,
-
   selectable: false,
-
   atom: true,
-
   addAttributes() {
     return {
       id: {
         default: null,
         parseHTML: element => element.getAttribute("data-id"),
         renderHTML: attributes => {
-          if (!attributes.id) {
-            return {};
-          }
+          if (!attributes.id) return {};
 
           return { "data-id": attributes.id };
         },
       },
-
       label: {
         default: null,
         parseHTML: element => element.getAttribute("data-label"),
         renderHTML: attributes => {
-          if (!attributes.label) {
-            return {};
-          }
+          if (!attributes.label) return {};
 
           return { "data-label": attributes.label };
         },
