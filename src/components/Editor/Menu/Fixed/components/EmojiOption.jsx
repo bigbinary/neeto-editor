@@ -21,6 +21,7 @@ const EmojiOption = ({
     dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
     icon={Smiley}
     isOpen={isActive}
+    label="emoji"
     position={isSecondaryMenu ? "left-start" : "bottom-start"}
     strategy="fixed"
     buttonProps={{
