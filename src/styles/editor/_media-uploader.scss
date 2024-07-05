@@ -61,7 +61,7 @@
     cursor: pointer;
   }
 
-  .ne-media-uploader__dnd.uppy-is-drag-over {
+    .ne-media-uploader__dnd.is-dragging-over-files {
     background-color: rgba(var(--neeto-ui-gray-300), 0.5);
     border: 3px dashed rgb(var(--neeto-ui-gray-500));
     color: rgb(var(--neeto-ui-gray-600));
