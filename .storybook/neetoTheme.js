@@ -1,20 +1,21 @@
-import { create } from "@storybook/theming/create";
+import { create } from "@storybook/theming";
 import neetoLogo from "./neetoLogo.svg";
 
 export default create({
   base: "dark",
 
-  colorPrimary: "#0048fd",
-  colorSecondary: "#0048fd",
+  colorPrimary: "#008068",
+  colorSecondary: "#008068",
 
   // UI
-  appBg: "#1b1b1b",
+  appBg: "#000000",
   appContentBg: "#1e202e",
   appBorderColor: "#121212",
   appBorderRadius: 12,
 
   // Typography
-  fontBase: '"Open Sans", sans-serif',
+  fontBase:
+    'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
   fontCode: "monospace",
 
   // Text colors

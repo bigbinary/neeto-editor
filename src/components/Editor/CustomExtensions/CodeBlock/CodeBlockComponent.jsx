@@ -27,9 +27,10 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   };
 
   useEffect(() => {
-    isNil(node.attrs?.language) && updateAttributes({ language: "plaintext" });
-    node.attrs?.language === "javascriptreact" &&
-      updateAttributes({ language: "javascript" });
+    if (isNil(node.attrs?.language)) {
+      // https://github.com/bigbinary/neeto-kb-web/issues/6429
+      setTimeout(() => updateAttributes({ language: "plaintext" }), 0);
+    }
   }, []);
 
   return (
