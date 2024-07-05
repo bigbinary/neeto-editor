@@ -293,10 +293,20 @@
       line-height: 20px;
       width: 60px;
       height: 24px;
+      padding: 3px 5px;
 
       &::placeholder {
         color: rgba(var(--neeto-ui-white, 0.4));
       }
+    }
+
+    &__menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+    &__input-label {
+      color: white;
     }
 
     &__buttons {
@@ -344,17 +354,6 @@
         border-bottom-left-radius: var(--neeto-ui-rounded);
         border-bottom-right-radius: var(--neeto-ui-rounded);
       }
-    }
-  }
-
-  &__table {
-    &__menu-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px
-    }
-    &__input-label {
-      color: white;
     }
   }
 }
