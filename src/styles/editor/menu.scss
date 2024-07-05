@@ -301,7 +301,7 @@
 
     &__buttons {
       display: flex;
-      align-items: center;
+      align-self: flex-end;
       justify-content: space-between;
       gap: 4px;
     }
@@ -346,10 +346,28 @@
       }
     }
   }
+
+  &__table {
+    &__menu-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+    &__input-label {
+      color: white;
+    }
+  }
 }
 
 .neeto-editor-bubble-menu-animate-shake {
   animation: 1s linear infinite alternate both shake;
+}
+
+.neeto-editor-table-menu {
+  &__button {
+    display: flex;
+    align-items: flex-end;
+  }
 }
 
 .neeto-editor__image-menu {
