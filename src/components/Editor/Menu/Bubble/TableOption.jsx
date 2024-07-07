@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { withEventTargetValue } from "neetocommons/utils";
 import { Check, Close } from "neetoicons";
-import { Button } from "neetoui";
+import { Button, Label } from "neetoui";
 import { useTranslation } from "react-i18next";
 
 const TableOption = ({ editor, handleClose }) => {
@@ -24,23 +24,33 @@ const TableOption = ({ editor, handleClose }) => {
 
   return (
     <div className="neeto-editor-bubble-menu__table">
-      <input
-        autoFocus
-        data-cy="neeto-editor-fixed-menu-table-option-input"
-        min="1"
-        placeholder={t("neetoEditor.placeholders.rows")}
-        type="number"
-        value={rows}
-        onChange={withEventTargetValue(setRows)}
-      />
-      <input
-        data-cy="neeto-editor-bubble-menu-table-option-input"
-        min="1"
-        placeholder={t("neetoEditor.placeholders.columns")}
-        type="number"
-        value={columns}
-        onChange={withEventTargetValue(setColumns)}
-      />
+      <div className="neeto-editor-bubble-menu__table__menu-item">
+        <Label className="neeto-editor-bubble-menu__table__input-label">
+          {t("neetoEditor.menu.rows")}
+        </Label>
+        <input
+          autoFocus
+          data-cy="neeto-editor-fixed-menu-table-option-input"
+          min="1"
+          placeholder={t("neetoEditor.placeholders.rows")}
+          type="number"
+          value={rows}
+          onChange={withEventTargetValue(setRows)}
+        />
+      </div>
+      <div className="neeto-editor-bubble-menu__table__menu-item">
+        <Label className="neeto-editor-bubble-menu__table__input-label">
+          {t("neetoEditor.menu.columns")}
+        </Label>
+        <input
+          data-cy="neeto-editor-bubble-menu-table-option-input"
+          min="1"
+          placeholder={t("neetoEditor.placeholders.columns")}
+          type="number"
+          value={columns}
+          onChange={withEventTargetValue(setColumns)}
+        />
+      </div>
       <div className="neeto-editor-bubble-menu__table__buttons">
         <Button
           data-cy="neeto-editor-bubble-menu-table-option-create-button"

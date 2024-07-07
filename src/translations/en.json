@@ -106,7 +106,9 @@
       "pasteUnformatted": "Paste Unformatted",
       "pasteUnformattedDescription": "Paste by removing all styles.",
       "tableDescription": "Add a table.",
-      "noResults": "No results"
+      "noResults": "No results",
+      "rows": "Rows",
+      "columns": "Columns"
     },
     "placeholders": {
       "columns": "Enter columns",
