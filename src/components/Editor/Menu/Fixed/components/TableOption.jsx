@@ -65,6 +65,7 @@ const TableOption = ({
         <Input
           autoFocus
           data-cy="neeto-editor-fixed-menu-table-option-input"
+          label={t("neetoEditor.menu.rows")}
           min="1"
           placeholder={t("neetoEditor.placeholders.rows")}
           size="small"
@@ -74,6 +75,7 @@ const TableOption = ({
         />
         <Input
           data-cy="neeto-editor-fixed-menu-table-option-input"
+          label={t("neetoEditor.menu.columns")}
           min="1"
           placeholder={t("neetoEditor.placeholders.rows")}
           size="small"
@@ -81,12 +83,15 @@ const TableOption = ({
           value={columns}
           onChange={withEventTargetValue(setColumns)}
         />
-        <Button
-          data-cy="neeto-editor-fixed-menu-table-option-create-button"
-          label={t("neetoEditor.common.create")}
-          size="small"
-          onClick={handleSubmit}
-        />
+        <div className="neeto-editor-table-menu__button">
+          <Button
+            className="mt-auto"
+            data-cy="neeto-editor-fixed-menu-table-option-create-button"
+            label={t("neetoEditor.common.create")}
+            size="small"
+            onClick={handleSubmit}
+          />
+        </div>
       </Menu>
     </Dropdown>
   );
