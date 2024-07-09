@@ -49,7 +49,6 @@ const createMenuOptions = ({
           editor.chain().focus().undo().run()
         ),
         isEnabled: options.includes(EDITOR_OPTIONS.UNDO),
-        disabled: !editor.can().undo(),
         optionName: EDITOR_OPTIONS.UNDO,
         label: tooltips.undo ?? t("neetoEditor.menu.undo"),
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -60,7 +59,6 @@ const createMenuOptions = ({
           editor.chain().focus().redo().run()
         ),
         isEnabled: options.includes(EDITOR_OPTIONS.REDO),
-        disabled: !editor.can().redo(),
         optionName: EDITOR_OPTIONS.REDO,
         label: tooltips.redo ?? t("neetoEditor.menu.redo"),
         type: MENU_ELEMENT_TYPES.BUTTON,
