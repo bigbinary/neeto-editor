@@ -7,7 +7,7 @@ import useEditorStore from "src/stores/useEditorStore";
 
 import { isMarkActive } from "./utils";
 
-import { FONT_SIZE_OPTIONS } from "../Fixed/constants";
+import { FONT_SIZE_OPTIONS } from "../constants";
 
 const useEditorState = ({ editor }) => {
   const { setMarksState } = useEditorStore.pick();

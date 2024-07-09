@@ -4,14 +4,14 @@ import { Dropdown, Typography } from "neetoui";
 
 import useEditorStore from "src/stores/useEditorStore";
 
-import { FONT_SIZE_OPTIONS } from "../constants";
+import { FONT_SIZE_OPTIONS } from "../../constants";
 
 const { Menu, MenuItem } = Dropdown;
 
 const FontSizeOption = ({ runEditorCommand, tooltipContent, label }) => {
   const dropdownRef = useRef(null);
 
-  const { heading: activeOption } = useEditorStore.pick("marksState");
+  const { fontSizeOption: activeOption } = useEditorStore.pick("marksState");
 
   const handleClick = level =>
     level
