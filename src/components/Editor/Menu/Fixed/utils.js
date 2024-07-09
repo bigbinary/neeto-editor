@@ -27,7 +27,6 @@ import { MENU_ELEMENT_WIDTHS, MENU_ELEMENT_TYPES } from "./constants";
 
 const createMenuOptions = ({
   tooltips,
-  editor,
   setMediaUploader,
   attachmentProps,
   setIsEmbedModalOpen,
@@ -75,6 +74,7 @@ const createMenuOptions = ({
         label: tooltips.fontSize ?? t("neetoEditor.menu.fontSize"),
         isEnabled: isNotEmpty(fontSizeOptions),
         optionName: "fontSizeOptions",
+        runEditorCommand,
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
