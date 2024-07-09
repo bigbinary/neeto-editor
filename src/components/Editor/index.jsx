@@ -4,6 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
 import { EDITOR_OPTIONS } from "common/constants";
 import { noop, slugify } from "neetocist";
+import { useFuncDebounce } from "neetocommons/react-utils";
 import { Label } from "neetoui";
 import { EditorView } from "prosemirror-view";
 
@@ -96,6 +97,11 @@ const Editor = (
     isDisabled: isAttachmentsUploading,
   };
 
+  const debouncedOnChangeHandler = useFuncDebounce(
+    ({ editor }) => onChange(editor.getHTML()),
+    500
+  );
+
   const customExtensions = useCustomExtensions({
     placeholder,
     extensions,
@@ -148,7 +154,7 @@ const Editor = (
     },
     parseOptions: { preserveWhitespace: true },
     onCreate: ({ editor }) => !autoFocus && setInitialPosition(editor),
-    onUpdate: ({ editor }) => onChange(editor.getHTML()),
+    onUpdate: debouncedOnChangeHandler,
     onFocus,
     onBlur,
   });
