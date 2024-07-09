@@ -263,9 +263,23 @@ const createMenuOptions = ({
   ];
 };
 
+export const buildOptionsFromAddonCommands = ({ commands, runEditorCommand }) =>
+  commands.map(option => ({
+    ...option,
+    type: MENU_ELEMENT_TYPES.BUTTON,
+    command: runEditorCommand(editor =>
+      option.command?.({
+        editor,
+        range: {
+          from: editor.state?.selection?.to,
+          to: editor.state?.selection.to,
+        },
+      })
+    ),
+  }));
+
 export const buildMenuOptions = ({
   tooltips,
-  editor,
   options,
   setMediaUploader,
   attachmentProps,
@@ -277,16 +291,13 @@ export const buildMenuOptions = ({
   isEmojiPickerActive,
   runEditorCommand,
 }) => {
-  if (!editor) return [];
-
   const addonCommandOptions = buildOptionsFromAddonCommands({
-    editor,
     commands: addonCommands,
+    runEditorCommand,
   });
 
   const menuOptions = createMenuOptions({
     tooltips,
-    editor,
     setMediaUploader,
     attachmentProps,
     setIsEmbedModalOpen,
@@ -300,17 +311,6 @@ export const buildMenuOptions = ({
   });
 
   return menuOptions.map(option => option.filter(prop("isEnabled")));
-};
-
-export const buildOptionsFromAddonCommands = ({ editor, commands }) => {
-  const { to } = editor.state.selection;
-
-  return commands.map(option => ({
-    ...option,
-    type: MENU_ELEMENT_TYPES.BUTTON,
-    active: option.active?.({ editor }),
-    command: () => option.command?.({ editor, range: { from: to, to } }),
-  }));
 };
 
 export const getCursorPos = (editor, to) => editor?.view.coordsAtPos(to);
