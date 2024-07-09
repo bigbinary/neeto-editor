@@ -98,7 +98,7 @@ const Fixed = ({
         setIsEmojiPickerActive,
         isEmojiPickerActive,
       }),
-    [editor, isEmojiPickerActive, mentions]
+    [isEmojiPickerActive, mentions]
   );
 
   const handleResize = useCallback(() => {
@@ -109,7 +109,7 @@ const Fixed = ({
     );
     setMenuItems(visibleMenuGroups);
     setMoreMenuItems(invisibleMenuGroups);
-  }, [menuGroups]);
+  }, [setMenuItems, menuGroups, menuRef.current]);
 
   useEffect(() => {
     handleResize();
@@ -123,7 +123,7 @@ const Fixed = ({
     return () => {
       if (menuContainer) resizeObserver.unobserve(menuContainer);
     };
-  }, [menuContainerRef, handleResize, menuGroups]);
+  }, [menuContainerRef.current, handleResize, menuGroups]);
 
   if (!editor) return null;
 
