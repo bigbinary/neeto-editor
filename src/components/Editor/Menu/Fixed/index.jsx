@@ -38,6 +38,7 @@ const Fixed = ({
   setIsEmojiPickerActive,
   children,
   openLinkInNewTab,
+  runEditorCommand,
 }) => {
   const [focusedButtonIndex, setFocusedButtonIndex] = useState(0);
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
@@ -86,7 +87,7 @@ const Fixed = ({
     () =>
       buildMenuOptions({
         tooltips,
-        editor,
+        runEditorCommand,
         options,
         setMediaUploader,
         attachmentProps,

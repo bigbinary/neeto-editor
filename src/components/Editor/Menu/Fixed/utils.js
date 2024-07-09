@@ -37,6 +37,7 @@ const createMenuOptions = ({
   addonCommandOptions,
   setIsEmojiPickerActive,
   isEmojiPickerActive,
+  runEditorCommand,
 }) => {
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
 
@@ -45,7 +46,9 @@ const createMenuOptions = ({
     [
       {
         icon: Undo,
-        command: () => editor.chain().focus().undo().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().undo().run()
+        ),
         isEnabled: options.includes(EDITOR_OPTIONS.UNDO),
         disabled: !editor.can().undo(),
         optionName: EDITOR_OPTIONS.UNDO,
@@ -54,7 +57,9 @@ const createMenuOptions = ({
       },
       {
         icon: Redo,
-        command: () => editor.chain().focus().redo().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().redo().run()
+        ),
         isEnabled: options.includes(EDITOR_OPTIONS.REDO),
         disabled: !editor.can().redo(),
         optionName: EDITOR_OPTIONS.REDO,
@@ -75,7 +80,9 @@ const createMenuOptions = ({
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: TextBold,
         isEnabled: options.includes(EDITOR_OPTIONS.BOLD),
-        command: () => editor.chain().focus().toggleBold().run(),
+        command: runEditorCommand(editor =>
+          editor?.chain().focus().toggleBold().run()
+        ),
         optionName: EDITOR_OPTIONS.BOLD,
         label: tooltips.bold ?? t("neetoEditor.menu.bold"),
       },
@@ -83,7 +90,9 @@ const createMenuOptions = ({
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: TextItalic,
         isEnabled: options.includes(EDITOR_OPTIONS.ITALIC),
-        command: () => editor.chain().focus().toggleItalic().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleItalic().run()
+        ),
         optionName: EDITOR_OPTIONS.ITALIC,
         label: tooltips.italic ?? t("neetoEditor.menu.italic"),
       },
@@ -91,7 +100,9 @@ const createMenuOptions = ({
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Underline,
         isEnabled: options.includes(EDITOR_OPTIONS.UNDERLINE),
-        command: () => editor.chain().focus().toggleUnderline().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleUnderline().run()
+        ),
         optionName: EDITOR_OPTIONS.UNDERLINE,
         label: tooltips.underline ?? t("neetoEditor.menu.underline"),
       },
@@ -107,7 +118,9 @@ const createMenuOptions = ({
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: TextCross,
         isEnabled: options.includes(EDITOR_OPTIONS.STRIKETHROUGH),
-        command: () => editor.chain().focus().toggleStrike().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleStrike().run()
+        ),
         optionName: EDITOR_OPTIONS.STRIKETHROUGH,
         label: tooltips.strike ?? t("neetoEditor.menu.strike"),
       },
@@ -115,7 +128,9 @@ const createMenuOptions = ({
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Highlight,
         isEnabled: options.includes(EDITOR_OPTIONS.HIGHLIGHT),
-        command: () => editor.chain().focus().toggleHighlight().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleHighlight().run()
+        ),
         optionName: EDITOR_OPTIONS.HIGHLIGHT,
         label: tooltips.highlight ?? t("neetoEditor.menu.highlight"),
       },
@@ -125,7 +140,9 @@ const createMenuOptions = ({
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: ListDot,
-        command: () => editor.chain().focus().toggleBulletList().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleBulletList().run()
+        ),
         isEnabled: options.includes(EDITOR_OPTIONS.LIST_BULLETS),
         optionName: "bulletList",
         highlight: true,
@@ -134,7 +151,9 @@ const createMenuOptions = ({
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: ListNumber,
-        command: () => editor.chain().focus().toggleOrderedList().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleOrderedList().run()
+        ),
         isEnabled: options.includes(EDITOR_OPTIONS.LIST_ORDERED),
         optionName: "orderedList",
         highlight: true,
@@ -146,7 +165,9 @@ const createMenuOptions = ({
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Quote,
-        command: () => editor.chain().focus().toggleBlockquote().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleBlockquote().run()
+        ),
         isEnabled: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
         optionName: "blockquote",
         highlight: true,
@@ -155,7 +176,9 @@ const createMenuOptions = ({
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Code,
-        command: () => editor.chain().focus().toggleCode().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleCode().run()
+        ),
         isEnabled: options.includes(EDITOR_OPTIONS.CODE),
         optionName: EDITOR_OPTIONS.CODE,
         label: tooltips.code ?? t("neetoEditor.menu.code"),
@@ -163,7 +186,9 @@ const createMenuOptions = ({
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
         icon: CodeBlock,
-        command: () => editor.chain().focus().toggleCodeBlock().run(),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleCodeBlock().run()
+        ),
         isEnabled: options.includes(EDITOR_OPTIONS.CODE_BLOCK),
         optionName: "codeBlock",
         label: tooltips.codeBlock ?? t("neetoEditor.menu.codeBlock"),
@@ -252,6 +277,7 @@ export const buildMenuOptions = ({
   addonCommands,
   setIsEmojiPickerActive,
   isEmojiPickerActive,
+  runEditorCommand,
 }) => {
   if (!editor) return [];
 
@@ -272,6 +298,7 @@ export const buildMenuOptions = ({
     addonCommandOptions,
     setIsEmojiPickerActive,
     isEmojiPickerActive,
+    runEditorCommand,
   });
 
   return menuOptions.map(option => option.filter(prop("isEnabled")));
