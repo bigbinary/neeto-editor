@@ -35,6 +35,9 @@ const useEditorState = ({ editor }) => {
 
       activeMarks["fontSizeOption"] = activeFontSizeOption;
 
+      const isBlockQuoteActive = editor.isActive("blockquote");
+      activeMarks["blockquote"] = { isActive: isBlockQuoteActive };
+
       const undoOptionState = { disabled: !editor.can().undo() };
       const redoOptionState = { disabled: !editor.can().redo() };
       activeMarks[EDITOR_OPTIONS.UNDO] = undoOptionState;
