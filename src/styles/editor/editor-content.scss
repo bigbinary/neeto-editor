@@ -198,7 +198,7 @@
 
   // Link
   a[href] {
-    color: rgb(var(--neeto-ui-primary-800));
+    color: rgb(var(--neeto-ui-accent-800));
     font-weight: 500;
   }
 
@@ -238,11 +238,11 @@
   }
 
   [data-type="mention"] {
-    color: rgb(var(--neeto-ui-primary-800));
+    color: rgb(var(--neeto-ui-accent-800));
   }
 
   [data-type="special-mention"] {
-    color: rgb(var(--neeto-ui-primary-800));
+    color: rgb(var(--neeto-ui-accent-800));
   }
 
   table {
