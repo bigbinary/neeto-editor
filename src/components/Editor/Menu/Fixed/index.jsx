@@ -19,6 +19,7 @@ import MediaUploader from "components/Editor/MediaUploader";
 import LinkAddPopOver from "./components/LinkAddPopOver";
 import MoreMenu from "./components/MoreMenu";
 import { MENU_ELEMENTS } from "./constants";
+import useEditorState from "./hooks/useEditorState";
 import { reGroupMenuItems, buildMenuOptions } from "./utils";
 
 const Fixed = ({
@@ -38,7 +39,6 @@ const Fixed = ({
   setIsEmojiPickerActive,
   children,
   openLinkInNewTab,
-  runEditorCommand,
 }) => {
   const [focusedButtonIndex, setFocusedButtonIndex] = useState(0);
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
@@ -46,10 +46,23 @@ const Fixed = ({
   const [menuItems, setMenuItems] = useState([]);
   const [moreMenuItems, setMoreMenuItems] = useState([]);
 
+  useEditorState({ editor });
+
+  const editorRef = useRef(editor);
+
+  useEffect(() => {
+    editorRef.current = editor;
+  }, [editor]);
+
   const menuRef = useRef(null);
   const menuContainerRef = useRef(null);
 
   const { t } = useTranslation();
+
+  const runEditorCommand = useCallback(
+    command => () => command(editorRef.current),
+    []
+  );
 
   const handleArrowNavigation = event => {
     if (event.key === "ArrowRight") {

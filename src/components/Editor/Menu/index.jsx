@@ -1,17 +1,10 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { assoc, isEmpty, not } from "ramda";
 
 import "src/styles/editor/menu.scss";
 
 import { MENU_COMPONENTS } from "./constants";
-import useEditorState from "./hooks/useEditorState";
 
 import { DEFAULT_EDITOR_OPTIONS } from "../constants";
 
@@ -25,25 +18,11 @@ const Menu = props => {
   const {
     menuType = "fixed",
     addons = [],
-    editor,
     options = [],
     editorSecrets = {},
     attachmentProps,
     defaults = DEFAULT_EDITOR_OPTIONS,
   } = props;
-
-  useEditorState({ editor });
-
-  const editorRef = useRef(editor);
-
-  useEffect(() => {
-    editorRef.current = editor;
-  }, [editor]);
-
-  const runEditorCommand = useCallback(
-    command => () => command(editorRef.current),
-    []
-  );
 
   const MenuComponent = useMemo(() => MENU_COMPONENTS[menuType], [menuType]);
   const menuOptions = isEmpty(options) ? [...defaults, ...addons] : options;
@@ -79,7 +58,6 @@ const Menu = props => {
         attachmentProps,
         isEmojiPickerActive,
         mediaUploader,
-        runEditorCommand,
         setIsEmojiPickerActive,
         setMediaUploader,
       }}
