@@ -27,22 +27,26 @@ const useEditorState = ({ editor }) => {
         };
       });
 
-      const isActive = level => editor.isActive("heading", { level });
-
       const activeFontSizeOption =
-        FONT_SIZE_OPTIONS.find(({ value }) => isActive(value)) ||
-        last(FONT_SIZE_OPTIONS);
-
-      activeMarks["fontSizeOption"] = activeFontSizeOption;
-
+        FONT_SIZE_OPTIONS.find(({ value: level }) =>
+          editor.isActive("heading", { level })
+        ) || last(FONT_SIZE_OPTIONS);
+      const isBulletListActive = editor.isActive("bulletList");
+      const isOrderedListActive = editor.isActive("orderedList");
+      const isCodeBlockActive = editor.isActive("codeBlock");
+      const isMentionsActive = editor.isActive("mentions");
       const isBlockQuoteActive = editor.isActive("blockquote");
-      activeMarks["blockquote"] = { isActive: isBlockQuoteActive };
-
       const undoOptionState = { disabled: !editor.can().undo() };
       const redoOptionState = { disabled: !editor.can().redo() };
+
+      activeMarks["bulletList"] = { isActive: isBulletListActive };
+      activeMarks["orderedList"] = { isActive: isOrderedListActive };
+      activeMarks["codeBlock"] = { isActive: isCodeBlockActive };
+      activeMarks["mentions"] = { isActive: isMentionsActive };
+      activeMarks["fontSizeOption"] = activeFontSizeOption;
+      activeMarks["blockquote"] = { isActive: isBlockQuoteActive };
       activeMarks[EDITOR_OPTIONS.UNDO] = undoOptionState;
       activeMarks[EDITOR_OPTIONS.REDO] = redoOptionState;
-
       setMarksState(activeMarks);
     },
     [setMarksState]
