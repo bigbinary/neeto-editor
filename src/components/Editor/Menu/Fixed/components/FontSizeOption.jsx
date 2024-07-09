@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { memo, useRef } from "react";
 
 import { Dropdown, Typography } from "neetoui";
 import { last } from "ramda";
@@ -55,4 +55,4 @@ const FontSizeOption = ({ editor, tooltipContent, label }) => {
   );
 };
 
-export default FontSizeOption;
+export default memo(FontSizeOption);

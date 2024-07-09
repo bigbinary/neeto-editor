@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Button } from "neetoui";
 
@@ -25,4 +25,4 @@ const MenuButton = ({
   />
 );
 
-export default MenuButton;
+export default memo(MenuButton);

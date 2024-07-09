@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Smiley } from "neetoicons";
 import { Dropdown } from "neetoui";
@@ -42,4 +42,4 @@ const EmojiOption = ({
   </Dropdown>
 );
 
-export default EmojiOption;
+export default memo(EmojiOption);

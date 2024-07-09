@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 
 import { useOnClickOutside } from "neetocommons/react-utils";
 import { withEventTargetValue } from "neetocommons/utils";
@@ -113,4 +113,4 @@ const TextColorOption = ({
   );
 };
 
-export default TextColorOption;
+export default memo(TextColorOption);
