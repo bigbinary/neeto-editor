@@ -13,6 +13,7 @@ const Progress = withT(({ t, queuedFiles, cancelUpload }) => (
           <Button
             data-cy="neeto-editor-image-upload-cancel-button"
             icon={Close}
+            iconSize={18}
             size="small"
             style="text"
             onClick={() => cancelUpload(id)}
