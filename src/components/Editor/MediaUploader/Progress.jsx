@@ -2,6 +2,7 @@ import React from "react";
 
 import { withT } from "neetocommons/react-utils";
 import { Close } from "neetoicons";
+import { Button, Tooltip, Typography } from "neetoui";
 
 import FileIcon from "../../Common/FileIcon";
 
@@ -34,7 +35,10 @@ const Progress = withT(({ t, queuedFiles, cancelUpload }) => (
               style={{ width: `${progress}%` }}
             />
           </div>
-          <Typography style="body3">{filename}</Typography>
+          <Tooltip content={filename} position="top">
+            <Typography style="body3">{filename}</Typography>
+          </Tooltip>
+        </div>
       </div>
     ))}
   </div>
