@@ -8,7 +8,7 @@ import FileIcon from "../../Common/FileIcon";
 
 const Progress = withT(({ t, queuedFiles, cancelUpload }) => (
   <div className="ne-media-uploader__wrapper">
-    {queuedFiles.map(({ id, filename, progress }) => (
+    {queuedFiles.map(({ id, filename, progress = 0 }) => (
       <div className="ne-media-uploader__media" key={id}>
         <div className="ne-media-uploader__media__cancel-button-wrapper">
           <Button
