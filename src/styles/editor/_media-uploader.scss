@@ -83,10 +83,10 @@
       border: 1px solid rgb(var(--neeto-ui-gray-200));
       background-color: rgb(var(--neeto-ui-white));
       width: 105px;
-      height: 130px;
       align-self: start;
       margin-top: auto;
       margin-bottom: auto;
+      gap: 10px;
 
       &__cancel-button-wrapper {
         position: absolute;
