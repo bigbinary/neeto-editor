@@ -130,15 +130,9 @@
         &-bar {
           display: flex;
           height: 4px;
-          align-items: center;
-          justify-content: flex-start;
           animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
           border-radius: var(--neeto-ui-rounded-sm);
-          font-weight: 500px;
           background-color: rgb(var(--neeto-ui-primary-600));
-          font-size: 12px;
-          color: rgb(var(--neeto-ui-primary-100));
-          line-height: 1;
           transition: var(--neeto-ui-transition);
         }
       }
