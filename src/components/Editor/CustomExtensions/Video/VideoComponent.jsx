@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
+import { isNotPresent } from "neetocist";
 import { isEmpty, mergeRight } from "ramda";
 import { Resizable } from "re-resizable";
 
@@ -52,6 +53,8 @@ const VideoComponent = ({
     );
     editor.commands.focus();
   };
+
+  if (isNotPresent(src)) return null;
 
   return (
     <NodeViewWrapper
