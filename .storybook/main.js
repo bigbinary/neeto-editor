@@ -35,6 +35,7 @@ module.exports = {
         },
       },
     },
+    "storybook-addon-live-examples"
   ],
 
   webpackFinal: async config => {

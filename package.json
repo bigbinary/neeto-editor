@@ -171,6 +171,7 @@
     "sass": "1.69.5",
     "sass-loader": "13.0.2",
     "storybook": "^7.5.3",
+    "storybook-addon-live-examples": "^2.0.2",
     "storybook-dark-mode": "^3.0.1",
     "style-loader": "3.3.1",
     "tailwindcss": "3.4.1",
