@@ -1,4 +1,4 @@
-.ne-media-uploader-modal{
+.ne-media-uploader-modal {
   @media screen and (max-width: 767px) {
     width: 95vw !important;
   }
@@ -10,7 +10,7 @@
   min-height: 184px;
   width: 100%;
 
-  .neeto-ui-tab__wrapper{
+  .neeto-ui-tab__wrapper {
     padding: 0 16px;
   }
 
@@ -61,7 +61,7 @@
     cursor: pointer;
   }
 
-    .ne-media-uploader__dnd.is-dragging-over-files {
+  .ne-media-uploader__dnd.is-dragging-over-files {
     background-color: rgba(var(--neeto-ui-gray-300), 0.5);
     border: 3px dashed rgb(var(--neeto-ui-gray-500));
     color: rgb(var(--neeto-ui-gray-600));
@@ -92,10 +92,6 @@
         position: absolute;
         top: 4px;
         right: 4px;
-
-        button {
-          padding: 4px 2px;
-        }
       }
 
       &__info {
@@ -106,12 +102,12 @@
         gap: 4px;
         margin-top: 4px;
 
-      &__icon {
-        width: 45px;
-        margin-top: 12px;
-      }
+        &__icon {
+          width: 45px;
+          margin-top: 12px;
+        }
 
-      p {
+        p {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -244,7 +240,7 @@
   }
 }
 
-.ne-embed-modal-wrapper{
+.ne-embed-modal-wrapper {
   @media screen and (max-width: 767px) {
     width: 95vw !important;
   }
