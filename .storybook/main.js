@@ -3,6 +3,7 @@ const commonResolve = require("@bigbinary/neeto-commons-frontend/configs/nanos/w
 const projectResolve = require("../resolves.js");
 const { mergeDeepLeft } = require("ramda");
 const remarkGfm = require("remark-gfm");
+const { patchWebpackConfig } = require('storybook-addon-live-examples/dist/cjs/utils');
 
 const { alias } = mergeDeepLeft(projectResolve, commonResolve);
 
@@ -63,6 +64,8 @@ module.exports = {
     });
 
     config.resolve.extensions.push(".svg");
+
+    patchWebpackConfig(config);
 
     return config;
   },
