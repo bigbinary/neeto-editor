@@ -19,8 +19,9 @@ import { Trans, useTranslation } from "react-i18next";
 import directUploadsApi from "apis/direct_uploads";
 
 import { ATTACHMENT_OPTIONS } from "./constants";
-import FileIcon from "./FileIcon";
 import { downloadFile } from "./utils";
+
+import FileIcon from "../Common/FileIcon";
 
 const { Menu, MenuItem } = Dropdown;
 
@@ -155,7 +156,10 @@ const Attachment = ({
               className="ne-attachments__preview-wrapper"
               onClick={() => setSelectedAttachment(attachment)}
             >
-              <FileIcon fileName={attachment.filename} />
+              <FileIcon
+                className="ne-attachments__preview-wrapper__icon"
+                fileName={attachment.filename}
+              />
               <Tooltip content={attachment.filename} position="top">
                 <Typography style="body2">{attachment.filename}</Typography>
               </Tooltip>
