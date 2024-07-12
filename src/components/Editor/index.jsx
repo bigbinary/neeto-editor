@@ -99,7 +99,7 @@ const Editor = (
 
   const debouncedOnChangeHandler = useFuncDebounce(
     ({ editor }) => onChange(editor.getHTML()),
-    500
+    100
   );
 
   const customExtensions = useCustomExtensions({
