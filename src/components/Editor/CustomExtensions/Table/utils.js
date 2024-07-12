@@ -1,67 +1,48 @@
 import { t } from "i18next";
-
-export const getRenderContainer = (editor, nodeType) => {
-  const elements = document.querySelectorAll(".has-focus");
-  const elementCount = elements.length;
-  const innermostNode = elements[elementCount - 1];
-  const element = innermostNode;
-
-  if (
-    (element &&
-      element.getAttribute("data-type") &&
-      element.getAttribute("data-type") === nodeType) ||
-    (element && element.classList && element.classList.contains(nodeType))
-  ) {
-    return element;
-  }
-
-  const node = editor?.view.domAtPos(editor?.state?.selection?.from).node;
-  let container = node;
-
-  if (!container.tagName) {
-    container = node.parentElement;
-  }
-  while (
-    container &&
-    !(
-      container.tagName &&
-      container.tagName.toLowerCase() === nodeType.toLowerCase()
-    ) &&
-    !container.classList.contains(nodeType)
-  ) {
-    container = container.parentElement;
-  }
-
-  return container;
-};
+import {
+  TextBold,
+  TextItalic,
+  Delete,
+  TextCross,
+  Highlight,
+  Merge,
+  Header,
+} from "neetoicons";
 
 export const tableActions = ({ editor }) => [
   {
     label: t("neetoEditor.table.deleteRow"),
     command: () => editor.chain().focus().deleteRow().run(),
+    icon: TextBold,
   },
   {
     label: t("neetoEditor.table.deleteColumn"),
     command: () => editor.chain().focus().deleteColumn().run(),
+    icon: TextItalic,
   },
   {
     label: t("neetoEditor.table.delete"),
     command: () => editor.commands.deleteTable(),
+    icon: Delete,
   },
   {
     label: t("neetoEditor.table.insertRow"),
     command: () => editor.commands.addRowAfter(),
+    icon: TextCross,
   },
   {
     label: t("neetoEditor.table.insertColumn"),
     command: () => editor.commands.addColumnAfter(),
+    icon: Highlight,
   },
   {
     label: t("neetoEditor.table.mergeSplit"),
     command: () => editor.chain().focus().mergeOrSplit().run(),
+    icon: Merge,
   },
   {
     label: t("neetoEditor.table.toggleHeaderRow"),
     command: () => editor.chain().focus().toggleHeaderRow().run(),
+    icon: Header,
   },
 ];

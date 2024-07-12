@@ -4,9 +4,7 @@ import { BubbleMenu } from "@tiptap/react";
 import { Button, Dropdown } from "neetoui";
 import { sticky } from "tippy.js";
 
-import { getRenderContainer, tableActions } from "./utils";
-
-const { Menu } = Dropdown;
+import { tableActions } from "./utils";
 
 const TableActionMenu = ({ editor }) => {
   const getReferenceClientRect = useCallback(() => {
@@ -26,7 +24,8 @@ const TableActionMenu = ({ editor }) => {
       {...{ editor, shouldShow }}
       className="neeto-editor-bubble-menu"
       tippyOptions={{
-        offset: [145, 8],
+        arrow: false,
+        offset: [65, 8],
         zIndex: 99999,
         theme: "neeto-editor-bubble-menu",
         popperOptions: {
@@ -37,20 +36,17 @@ const TableActionMenu = ({ editor }) => {
         sticky: "popper",
       }}
     >
-      <Dropdown
-        buttonSize="small"
-        buttonStyle="text"
-        label="Options"
-        position="auto"
-        strategy="fixed"
-        onClose={() => editor?.commands.focus()}
-      >
-        <Menu className="neeto-editor-bubble-menu__table__options">
-          {tableActions({ editor }).map(({ label, command }) => (
-            <Button key={label} {...{ label }} style="text" onClick={command} />
-          ))}
-        </Menu>
-      </Dropdown>
+      {tableActions({ editor }).map(({ icon, label, command }) => (
+        <Button
+          {...{ icon }}
+          iconSize={18}
+          key={label}
+          size="small"
+          style="text"
+          tooltipProps={{ content: label, position: "top", delay: [500] }}
+          onClick={command}
+        />
+      ))}
     </BubbleMenu>
   );
 };
