@@ -1373,9 +1373,9 @@
     regenerator-runtime "^0.14.0"
 
 "@babel/runtime@^7.20.13", "@babel/runtime@^7.22.15":
-  version "7.24.7"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.24.7.tgz#f4f0d5530e8dbdf59b3451b9b3e594b6ba082e12"
-  integrity sha512-UwgBRMjJP+xv857DCngvqXI3Iq6J4v0wXmwc6sapg+zyhbwmQX67LUEFrkK5tbyJ30jGuG3ZvWpBiB9LCy1kWw==
+  version "7.24.8"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.24.8.tgz#5d958c3827b13cc6d05e038c07fb2e5e3420d82e"
+  integrity sha512-5F7SDGs1T72ZczbRwbGO9lQi0NLjQxzl6i4lJxLxfW9U5UluCSyEJeniWvnhl3/euNiqQVbo8zruhsDfid0esA==
   dependencies:
     regenerator-runtime "^0.14.0"
 
@@ -14305,10 +14305,10 @@ store2@^2.14.2:
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.14.3.tgz#24077d7ba110711864e4f691d2af941ec533deb5"
   integrity sha512-4QcZ+yx7nzEFiV4BMLnr/pRa5HYzNITX2ri0Zh6sT9EyQHbBHacC6YigllUPU9X3D0f/22QCgfokpKs52YRrUg==
 
-storybook-addon-live-examples@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/storybook-addon-live-examples/-/storybook-addon-live-examples-2.0.2.tgz#a8fe81cec7fa1f3a8b0f9fc96462655bd70c863f"
-  integrity sha512-RyEjqN7A6XLDid8atMGqYyr4xbaC8FVrASe8mG3qa39SQLsKtRtbeFy1UcWUbWyXDbcGjjAwROePa8mRv82/lg==
+storybook-addon-live-examples@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/storybook-addon-live-examples/-/storybook-addon-live-examples-2.0.3.tgz#733080fee0ff7da877c7ce7594102b9461f3f07b"
+  integrity sha512-bMOEJTp7fepsT9nyP11tG81iCWmTDQnrDXWoVc4KKzXP9djBA6dHThFk3lZ5oA+al4jX9SWytYHskts44mp9HA==
   dependencies:
     "@alfalab/core-components" ">=35.1.0"
     "@alfalab/icons-glyph" "^2.66.0"
