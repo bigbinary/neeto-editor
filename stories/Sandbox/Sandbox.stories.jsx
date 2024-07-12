@@ -47,7 +47,7 @@ const EditorSandbox = () => (
 );
 
 export default {
-  title: "Editor sandbox",
+  title: "Sandbox",
   parameters: { docs: { page: Playground } },
 };
 
