@@ -19,6 +19,7 @@ import MediaUploader from "components/Editor/MediaUploader";
 import LinkAddPopOver from "./components/LinkAddPopOver";
 import MoreMenu from "./components/MoreMenu";
 import { MENU_ELEMENTS } from "./constants";
+import useEditorState from "./hooks/useEditorState";
 import { reGroupMenuItems, buildMenuOptions } from "./utils";
 
 const Fixed = ({
@@ -45,10 +46,23 @@ const Fixed = ({
   const [menuItems, setMenuItems] = useState([]);
   const [moreMenuItems, setMoreMenuItems] = useState([]);
 
+  useEditorState({ editor });
+
+  const editorRef = useRef(editor);
+
+  useEffect(() => {
+    editorRef.current = editor;
+  }, [editor]);
+
   const menuRef = useRef(null);
   const menuContainerRef = useRef(null);
 
   const { t } = useTranslation();
+
+  const runEditorCommand = useCallback(
+    command => () => command(editorRef.current),
+    []
+  );
 
   const handleArrowNavigation = event => {
     if (event.key === "ArrowRight") {
@@ -86,7 +100,7 @@ const Fixed = ({
     () =>
       buildMenuOptions({
         tooltips,
-        editor,
+        runEditorCommand,
         options,
         setMediaUploader,
         attachmentProps,
@@ -97,7 +111,7 @@ const Fixed = ({
         setIsEmojiPickerActive,
         isEmojiPickerActive,
       }),
-    [editor, isEmojiPickerActive, mentions]
+    [isEmojiPickerActive, mentions]
   );
 
   const handleResize = useCallback(() => {
@@ -108,7 +122,7 @@ const Fixed = ({
     );
     setMenuItems(visibleMenuGroups);
     setMoreMenuItems(invisibleMenuGroups);
-  }, [menuGroups]);
+  }, [setMenuItems, menuGroups, menuRef.current]);
 
   useEffect(() => {
     handleResize();
@@ -122,7 +136,7 @@ const Fixed = ({
     return () => {
       if (menuContainer) resizeObserver.unobserve(menuContainer);
     };
-  }, [menuContainerRef, handleResize, menuGroups]);
+  }, [menuContainerRef.current, handleResize, menuGroups]);
 
   if (!editor) return null;
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 
 import { withEventTargetValue } from "neetocommons/utils";
 import { Column } from "neetoicons";
@@ -97,4 +97,4 @@ const TableOption = ({
   );
 };
 
-export default TableOption;
+export default memo(TableOption);

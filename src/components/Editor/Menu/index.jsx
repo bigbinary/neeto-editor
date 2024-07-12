@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { assoc, isEmpty, not } from "ramda";
 
 import "src/styles/editor/menu.scss";
 
-import BubbleMenu from "./Bubble";
-import FixedMenu from "./Fixed";
-import HeadlessMenu from "./Headless";
+import { MENU_COMPONENTS } from "./constants";
 
 import { DEFAULT_EDITOR_OPTIONS } from "../constants";
 
@@ -26,14 +24,7 @@ const Menu = props => {
     defaults = DEFAULT_EDITOR_OPTIONS,
   } = props;
 
-  const menuComponent = {
-    fixed: FixedMenu,
-    bubble: BubbleMenu,
-    headless: HeadlessMenu,
-    none: () => <div />,
-  };
-
-  const MenuComponent = menuComponent[menuType];
+  const MenuComponent = useMemo(() => MENU_COMPONENTS[menuType], [menuType]);
   const menuOptions = isEmpty(options) ? [...defaults, ...addons] : options;
 
   useEffect(() => {

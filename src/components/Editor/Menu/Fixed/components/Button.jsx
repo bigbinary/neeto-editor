@@ -1,7 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Button } from "neetoui";
 
+import useEditorStore from "src/stores/useEditorStore";
 import { generateFocusProps } from "utils/focusHighlighter";
 
 const MenuButton = ({
@@ -9,20 +10,26 @@ const MenuButton = ({
   command,
   optionName,
   highlight,
-  disabled,
+  disabled: isButtonDisabled = false,
   label,
-  editor,
-}) => (
-  <Button
-    {...{ disabled, icon }}
-    className="neeto-editor-fixed-menu__item"
-    data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
-    style={editor.isActive(optionName) ? "secondary" : "text"}
-    tabIndex="-1"
-    tooltipProps={{ content: label, position: "bottom" }}
-    onClick={command}
-    {...generateFocusProps(highlight)}
-  />
-);
+}) => {
+  const { isActive, disabled = isButtonDisabled } = useEditorStore.pick([
+    "marksState",
+    optionName,
+  ]);
 
-export default MenuButton;
+  return (
+    <Button
+      {...{ disabled, icon }}
+      className="neeto-editor-fixed-menu__item"
+      data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
+      style={isActive ? "secondary" : "text"}
+      tabIndex="-1"
+      tooltipProps={{ content: label, position: "bottom" }}
+      onClick={command}
+      {...generateFocusProps(highlight)}
+    />
+  );
+};
+
+export default memo(MenuButton);

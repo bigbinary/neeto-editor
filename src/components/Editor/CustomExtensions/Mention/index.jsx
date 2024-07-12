@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import { Email } from "neetoicons";
 import { Avatar, Dropdown, Typography } from "neetoui";
@@ -49,4 +49,4 @@ const Mentions = ({
   );
 };
 
-export default Mentions;
+export default memo(Mentions);
