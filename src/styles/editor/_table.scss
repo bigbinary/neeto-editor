@@ -30,7 +30,7 @@
 
   &__wrapper {
     display: flex;
-    gap: 4px;
+    gap: 2px;
   }
 
   &__add-row,
@@ -43,11 +43,14 @@
     transition: var(--neeto-ui-transition);
     visibility: hidden;
     cursor: pointer;
+    opacity: 0;
+    transition: var(--neeto-ui-transition);
 
     p {
-      color: rgb(var(--neeto-ui-black));
-      font-size: var(--neeto-ui-text-xs);
+      color: rgb(var(--neeto-ui-gray-500));
+      font-size: var(--neeto-ui-text-base);
       line-height: 12px;
+      font-weight: var(	--neeto-ui-font-light);
     }
 
     &:hover {
@@ -59,17 +62,18 @@
     .neeto-editor-table__add-row,
     .neeto-editor-table__add-column {
       visibility: visible;
+      opacity: 1;
     }
   }
 
   &__add-row {
-    margin: 4px 20px 4px 0;
-    height: 16px;
+    margin: 2px 16px 2px 0;
+    padding: 2px 0px;
   }
 
   &__add-column {
     flex-direction: column;
-    width: 16px;
+    padding: 0px 2px;
   }
 }
 
