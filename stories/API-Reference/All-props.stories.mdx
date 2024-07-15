@@ -1,10 +1,11 @@
-import { Meta, Story, ArgsTable } from "@storybook/addon-docs";
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
 import { EDITOR_PROPS } from "./constants";
 import { buildArgValues } from "../utils";
 import { Editor } from "../../src";
+import { AllPropsTable } from "./Tables";
 
 <Meta
-  title="API Reference/All Props"
+  title="API-Reference/AllProps"
   component={Editor}
   parameters={{
     layout: "padded",
@@ -18,15 +19,14 @@ import { Editor } from "../../src";
   argTypes={buildArgValues(EDITOR_PROPS)}
 />
 
-# **Props**
-
-<Story name="All Props">
-  <Editor autoFocus />
-</Story>
-
+# **All Props**
 <div id="hide-controls-column">
-  <ArgsTable story="All Props" />
+  <AllPropsTable />
 </div>
+
+<Canvas>
+  <Editor autoFocus />
+</Canvas>
 
 # **FormikEditor Props**
 

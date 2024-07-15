@@ -13,6 +13,7 @@ export const EDITOR_COMMANDS_TABLE_ROWS = [
 ];
 
 export const EDITOR_METHODS_TABLE_COLUMNS = ["Method", "Description"];
+export const ALL_PROPS_TABLE_COLUMNS = ["Name", "Description", "Default"];
 
 export const EDITOR_METHODS_TABLE_ROWS = [
   ["getHTML()", "Returns the editor content as a valid HTML string."],
