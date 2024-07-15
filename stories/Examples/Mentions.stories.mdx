@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../src";
 
 <Meta
@@ -26,21 +26,19 @@ special-mentions with `@@` character. The avatar image in the mention suggestion
 list is enabled by providing a truthy value to the `showImageInMention` prop.
 
 <Canvas>
-  <Story name="Mentions">
-    <Editor
-      mentions={[
-        {
-          name: "Oliver Smith",
-          key: "oliver-smith",
-          imageUrl: "https://i.pravatar.cc/300",
-        },
-        {
-          name: "Eve Smith",
-          key: "eve-smith",
-          imageUrl: "https://i.pravatar.cc/300",
-        },
-      ]}
-      showImageInMention
-    />
-  </Story>
+  <Editor
+    mentions={[
+      {
+        name: "Oliver Smith",
+        key: "oliver-smith",
+        imageUrl: "https://i.pravatar.cc/300",
+      },
+      {
+        name: "Eve Smith",
+        key: "eve-smith",
+        imageUrl: "https://i.pravatar.cc/300",
+      },
+    ]}
+    showImageInMention
+  />
 </Canvas>

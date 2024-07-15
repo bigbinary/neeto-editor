@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../src";
 
 <Meta
@@ -24,11 +24,9 @@ The insert table icon in the menu allows the user to quickly add a new table to 
 The settings icon that appears when a table is in focus allows the user to access a variety of table commands. When the user selects a command from the dropdown menu, the table is updated to reflect the chosen action.
 
 <Canvas>
-  <Story name="Table">
-    <Editor
-      addons={[
-        "table",
-      ]}
-    />
-  </Story>
+  <Editor
+    addons={[
+      "table",
+    ]}
+  />
 </Canvas>
