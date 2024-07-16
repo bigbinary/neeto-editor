@@ -10,11 +10,11 @@ const TableActionMenu = ({ editor }) => {
   const getReferenceClientRect = useCallback(() => {
     if (!editor) return new DOMRect(0, 0, 0, 0);
 
-    const { state: { selection: { $anchor: anchor } = {} } = {} } = editor;
-    const node = editor.view.domAtPos(anchor.pos).node;
-    const element = node.nodeType === 3 ? node.parentElement : node;
+    const { $anchor: anchor } = editor.state?.selection ?? {};
+    const node = editor.view.domAtPos(anchor?.pos)?.node;
+    const element = node?.nodeType === 3 ? node?.parentElement : node;
 
-    return element.getBoundingClientRect() || new DOMRect(0, 0, 0, 0);
+    return element?.getBoundingClientRect() || new DOMRect(0, 0, 0, 0);
   }, [editor]);
 
   const shouldShow = useCallback(() => editor?.isActive("table"), [editor]);
