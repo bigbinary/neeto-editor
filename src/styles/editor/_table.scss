@@ -47,10 +47,10 @@
     transition: var(--neeto-ui-transition);
 
     p {
-      color: rgb(var(--neeto-ui-gray-500));
-      font-size: var(--neeto-ui-text-base);
-      line-height: 12px !important;
-      font-weight: var(	--neeto-ui-font-light);
+      color: rgb(var(--neeto-ui-gray-500)) !important;
+      font-size: var(--neeto-ui-text-base) !important;
+      line-height: 16px !important;
+      font-weight: var(	--neeto-ui-font-light) !important;
     }
 
     &:hover {
@@ -67,13 +67,13 @@
   }
 
   &__add-row {
-    margin: 2px 16px 2px 0;
-    padding: 2px 0px;
+    margin: 2px 20px 2px 0;
+    padding: 0px 0px 2px;
   }
 
   &__add-column {
     flex-direction: column;
-    padding: 0px 2px;
+    padding: 0px 4px;
   }
 }
 
