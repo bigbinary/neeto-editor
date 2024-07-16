@@ -49,7 +49,7 @@
     p {
       color: rgb(var(--neeto-ui-gray-500));
       font-size: var(--neeto-ui-text-base);
-      line-height: 12px;
+      line-height: 12px !important;
       font-weight: var(	--neeto-ui-font-light);
     }
 
