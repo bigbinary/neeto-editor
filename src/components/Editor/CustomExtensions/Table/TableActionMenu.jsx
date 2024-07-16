@@ -49,20 +49,6 @@ const TableActionMenu = ({ editor }) => {
           onClick={command}
         />
       ))}
-      {/* <Dropdown
-        buttonSize="small"
-        buttonStyle="text"
-        label="Options"
-        position="auto"
-        strategy="fixed"
-        onClose={() => editor?.commands.focus()}
-      >
-        <Menu className="neeto-editor-bubble-menu__table__options">
-          {tableActions({ editor }).map(({ label, command }) => (
-            <Button key={label} {...{ label }} style="text" onClick={command} />
-          ))}
-        </Menu>
-      </Dropdown> */}
     </BubbleMenu>
   );
 };
