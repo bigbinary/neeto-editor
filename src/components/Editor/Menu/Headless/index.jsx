@@ -1,14 +1,12 @@
 import React from "react";
 
 import classnames from "classnames";
-
 import { EDITOR_OPTIONS } from "common/constants";
+
 import MediaUploader from "components/Editor/MediaUploader";
 
 import Option from "./Option";
-import { buildMenuOptions } from "./utils";
-
-import { buildOptionsFromAddonCommands } from "../Fixed/utils";
+import { buildOptionsFromAddonCommands, buildMenuOptions } from "./utils";
 
 const Headless = ({
   editor,

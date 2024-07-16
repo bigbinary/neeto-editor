@@ -1,24 +1,26 @@
-import React, { useRef } from "react";
+import React, { memo, useRef } from "react";
 
 import { Dropdown, Typography } from "neetoui";
-import { last } from "ramda";
 
-import { FONT_SIZE_OPTIONS } from "../constants";
+import useEditorStore from "src/stores/useEditorStore";
+
+import { FONT_SIZE_OPTIONS } from "../../constants";
 
 const { Menu, MenuItem } = Dropdown;
 
-const FontSizeOption = ({ editor, tooltipContent, label }) => {
+const FontSizeOption = ({ runEditorCommand, tooltipContent, label }) => {
   const dropdownRef = useRef(null);
 
-  const isActive = level => editor.isActive("heading", { level });
-  const activeOption =
-    FONT_SIZE_OPTIONS.find(({ value }) => isActive(value)) ||
-    last(FONT_SIZE_OPTIONS);
+  const { fontSizeOption: activeOption } = useEditorStore.pick("marksState");
 
   const handleClick = level =>
     level
-      ? editor.chain().focus().toggleHeading({ level }).run()
-      : editor.chain().focus().setNode("paragraph").run();
+      ? runEditorCommand(editor =>
+          editor.chain().focus().toggleHeading({ level }).run()
+        )()
+      : runEditorCommand(editor =>
+          editor.chain().focus().setNode("paragraph").run()
+        )();
 
   return (
     <Dropdown
@@ -38,9 +40,7 @@ const FontSizeOption = ({ editor, tooltipContent, label }) => {
           "neeto-editor-fixed-menu__item neeto-editor-font-size__wrapper",
       }}
     >
-      <Menu
-        onKeyDown={event => event.key === "Escape" && editor.commands?.focus()}
-      >
+      <Menu>
         {FONT_SIZE_OPTIONS.map(({ label, value, key }) => (
           <MenuItem.Button
             data-cy={`neeto-editor-fixed-menu-font-size-option-${key}`}
@@ -55,4 +55,4 @@ const FontSizeOption = ({ editor, tooltipContent, label }) => {
   );
 };
 
-export default FontSizeOption;
+export default memo(FontSizeOption);
