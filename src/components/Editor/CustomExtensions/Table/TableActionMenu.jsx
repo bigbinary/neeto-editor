@@ -27,7 +27,7 @@ const TableActionMenu = ({ editor }) => {
       className="neeto-editor-bubble-menu"
       tippyOptions={{
         arrow: false,
-        offset: [65, 8],
+        offset: [10, 10],
         zIndex: 99999,
         theme: "neeto-editor-bubble-menu",
         popperOptions: {
