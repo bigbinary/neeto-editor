@@ -10,7 +10,7 @@ import "./sandbox.scss";
 const editorSandboxExample = `
 <Editor
   showImageInMention
-  variables={[{ value: "VariableA", label: "Variable A" }]}
+  variables={[{ label: "Email", key: "email" }]}
   addons={["highlight"]}
   mentions={[
     {
