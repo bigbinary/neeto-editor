@@ -11,29 +11,28 @@ import {
 
 export const tableActions = ({ editor }) => [
   {
-    label: t("neetoEditor.table.deleteRow"),
-    command: () => editor.chain().focus().deleteRow().run(),
-    icon: DeleteRow,
-  },
-  {
-    label: t("neetoEditor.table.deleteColumn"),
-    command: () => editor.chain().focus().deleteColumn().run(),
-    icon: DeleteColumn,
-  },
-  {
-    label: t("neetoEditor.table.delete"),
-    command: () => editor.commands.deleteTable(),
-    icon: DeleteTable,
-  },
-  {
     label: t("neetoEditor.table.insertRow"),
     command: () => editor.commands.addRowAfter(),
     icon: InsertRow,
+    isVisible: true,
   },
   {
     label: t("neetoEditor.table.insertColumn"),
     command: () => editor.commands.addColumnAfter(),
     icon: InsertColumn,
+    isVisible: true,
+  },
+  {
+    label: t("neetoEditor.table.deleteRow"),
+    command: () => editor.chain().focus().deleteRow().run(),
+    icon: DeleteRow,
+    isVisible: true,
+  },
+  {
+    label: t("neetoEditor.table.deleteColumn"),
+    command: () => editor.chain().focus().deleteColumn().run(),
+    icon: DeleteColumn,
+    isVisible: true,
   },
   {
     label: t("neetoEditor.table.mergeSplit"),
@@ -46,5 +45,10 @@ export const tableActions = ({ editor }) => [
     icon: ToggleHeaderRow,
     isVisible: editor.isActive("tableHeader"),
   },
+  {
+    label: t("neetoEditor.table.delete"),
+    command: () => editor.commands.deleteTable(),
+    icon: DeleteTable,
+    isVisible: true,
   },
 ];
