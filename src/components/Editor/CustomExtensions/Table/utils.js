@@ -14,14 +14,17 @@ import { CellSelection } from "prosemirror-tables";
 const shouldShowMergeCellToggler = selection => {
   if (isNotPresent(selection)) return false;
 
+  if (selection instanceof CellSelection) return true;
+
   let depth = selection.$from.depth;
 
   while (depth > 0) {
     const node = selection.$from.node(depth);
-    if (node && node.type?.spec?.tableRole === "cell") {
+    const nodeRoleInTable = node?.type?.spec?.tableRole;
+    if (nodeRoleInTable === "cell" || nodeRoleInTable === "header_cell") {
       const { colspan, rowspan } = node.attrs;
 
-      return selection instanceof CellSelection || colspan > 1 || rowspan > 1;
+      return colspan > 1 || rowspan > 1;
     }
     depth -= 1;
   }
