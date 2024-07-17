@@ -44,5 +44,7 @@ export const tableActions = ({ editor }) => [
     label: t("neetoEditor.table.toggleHeaderRow"),
     command: () => editor.chain().focus().toggleHeaderRow().run(),
     icon: ToggleHeaderRow,
+    isVisible: editor.isActive("tableHeader"),
+  },
   },
 ];
