@@ -40,8 +40,8 @@ const TableActionMenu = ({ editor }) => {
     >
       {shouldShow &&
         tableActions({ editor }).map(
-          ({ icon, label, command, isVisible }) =>
-            isVisible && (
+          ({ icon, label, command, isHidden }) =>
+            !isHidden && (
               <Button
                 {...{ icon }}
                 iconSize={18}
