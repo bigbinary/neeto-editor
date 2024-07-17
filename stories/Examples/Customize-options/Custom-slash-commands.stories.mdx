@@ -1,5 +1,5 @@
 import { CannedResponses } from "@bigbinary/neeto-icons";
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 
 import Table from "../../components/Table";
 import {
@@ -42,33 +42,33 @@ the command as you execute them. It can be used to implement complex features
 like canned response as well.
 
 <Canvas>
-  <Story name="Custom slash commands">
-    <Editor
-      addonCommands={[
-        {
-          title: "Canned Responses",
-          tooltip: "Canned Responses",
-          Icon: CannedResponses,
-          description: "Select a canned response",
-          optionName: "canned-responses",
-          items: [
-            {
-              title: "Feedback",
-              description: "Thank you for your feedback.",
-              command: ({ editor, range }) => {
-                editor.commands.setContent("Thank you for your feedback.");
-              },
+  <Editor
+    hideSlashCommands={false}
+    menuType="bubble"
+    addonCommands={[
+      {
+        title: "Canned Responses",
+        tooltip: "Canned Responses",
+        Icon: CannedResponses,
+        description: "Select a canned response",
+        optionName: "canned-responses",
+        items: [
+          {
+            title: "Feedback",
+            description: "Thank you for your feedback.",
+            command: ({ editor, range }) => {
+              editor.commands.setContent("Thank you for your feedback.");
             },
-            {
-              title: "Thanks",
-              description: "We are hapy to help you.",
-              command: ({ editor, range }) => {
-                editor.commands.setContent("We are happy to help you.");
-              },
+          },
+          {
+            title: "Thanks",
+            description: "We are hapy to help you.",
+            command: ({ editor, range }) => {
+              editor.commands.setContent("We are happy to help you.");
             },
-          ],
-        },
-      ]}
-    />
-  </Story>
+          },
+        ],
+      },
+    ]}
+  />
 </Canvas>

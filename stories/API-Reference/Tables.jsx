@@ -7,6 +7,8 @@ import {
   EDITOR_COMMANDS_TABLE_ROWS,
   UTILITIES,
   UTILITIES_TABLE_COLUMNS,
+  ALL_PROPS_TABLE_COLUMNS,
+  EDITOR_PROPS,
 } from "./constants";
 
 import Table from "../components/Table";
@@ -26,4 +28,8 @@ export const CommandsTable = () => (
 
 export const UtilitesTable = () => (
   <Table columns={UTILITIES_TABLE_COLUMNS} rows={UTILITIES} />
+);
+
+export const AllPropsTable = () => (
+  <Table columns={ALL_PROPS_TABLE_COLUMNS} rows={EDITOR_PROPS} />
 );

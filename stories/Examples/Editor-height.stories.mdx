@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../src";
 
 <Meta
@@ -21,7 +21,5 @@ neetoEditor can be configured to provided a custom initial height using the
 uses the `strategy` prop to control whether the height is `fixed` or `flexible`.
 
 <Canvas>
-  <Story name="Editor height">
-    <Editor rows={3} heightStrategy="flexible" />
-  </Story>
+  <Editor rows={3} heightStrategy="flexible" />
 </Canvas>

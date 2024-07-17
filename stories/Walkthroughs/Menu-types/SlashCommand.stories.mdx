@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../../src";
 
 import Bubble from "../../assets/slash-command.mp4";
@@ -27,7 +27,5 @@ this menu and appears when user types `/` at start of new line.
 #### **Example**
 
 <Canvas>
-  <Story name="Slash Command">
-    <Editor rows={40} menuType="bubble" heightStrategy="flexible" />
-  </Story>
+  <Editor rows={40} menuType="bubble" heightStrategy="flexible" hideSlashCommands={false} />
 </Canvas>

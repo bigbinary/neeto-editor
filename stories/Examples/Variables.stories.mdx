@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../src";
 import Variables from "../assets/variables.png";
 import VariablesDemo from "./VariablesDemo";
@@ -24,35 +24,33 @@ menu. Alternatively, the available variable options can be displayed by
 typing`{{` within the editor.
 
 <Canvas>
-  <Story name="Variables">
-    <Editor
-      variables={[
-        {
-          category: "ticket",
-          label: "Ticket",
-          variables: [
-            { label: "ID", key: "id" },
-            { label: "Number", key: "number" },
-            { label: "Category", key: "category" },
-            { label: "Status", key: "status" },
-            { label: "Customer URL/Link", key: "customer_url" },
-            { label: "Latest Comment", key: "latest_comment" },
-            { label: "Updated at", key: "updatedt_at" },
-          ],
-        },
-        { label: "Subdomain", key: "subdomain" },
-        {
-          category: "organisation",
-          label: "Organisation",
-          variables: [
-            { label: "ID", key: "id" },
-            { label: "Name", key: "name" },
-            { label: "Slug", key: "slug" },
-          ],
-        },
-      ]}
-    />
-  </Story>
+  <Editor
+    variables={[
+      {
+        category: "ticket",
+        label: "Ticket",
+        variables: [
+          { label: "ID", key: "id" },
+          { label: "Number", key: "number" },
+          { label: "Category", key: "category" },
+          { label: "Status", key: "status" },
+          { label: "Customer URL/Link", key: "customer_url" },
+          { label: "Latest Comment", key: "latest_comment" },
+          { label: "Updated at", key: "updatedt_at" },
+        ],
+      },
+      { label: "Subdomain", key: "subdomain" },
+      {
+        category: "organisation",
+        label: "Organisation",
+        variables: [
+          { label: "ID", key: "id" },
+          { label: "Name", key: "name" },
+          { label: "Slug", key: "slug" },
+        ],
+      },
+    ]}
+  />
 </Canvas>
 
 ### **Usage**

@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../src";
 
 <Meta
@@ -21,7 +21,5 @@ neetoEditor can be configured to show the character count. This can be enabled
 by passing a truthy value to the `isCharacterCountActive` prop.
 
 <Canvas>
-  <Story name="Character count">
-    <Editor isCharacterCountActive />
-  </Story>
+  <Editor isCharacterCountActive />
 </Canvas>

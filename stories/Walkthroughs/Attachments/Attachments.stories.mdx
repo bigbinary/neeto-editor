@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../../src";
 import { Button } from "neetoui";
 import { attachments, setAttachments } from "./constants";
@@ -69,28 +69,22 @@ The attachments prop is an array of objects with the following structure:
 ```
 
 <Canvas>
-  <Story name="Default">
-    <Attachments attachments={[]} onChange={() => {}} />
-  </Story>
+  <Attachments attachments={[]} onChange={() => {}} />
 </Canvas>
 
 ### **With previous Attachments**
 
 <Canvas>
-  <Story name="With previous Attachments">
-    <Attachments attachments={attachments} onChange={setAttachments} />
-  </Story>
+  <Attachments attachments={attachments} onChange={setAttachments} />
 </Canvas>
 
 ### **With options disabled**
 
 <Canvas>
-  <Story name="With options disabled">
-    <Attachments
-      attachments={attachments}
-      onChange={setAttachments}
-      isIndependent={false}
-      disabled
-    />
-  </Story>
+  <Attachments
+    attachments={attachments}
+    onChange={setAttachments}
+    isIndependent={false}
+    disabled
+  />
 </Canvas>

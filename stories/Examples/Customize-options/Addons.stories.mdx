@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../../src";
 import {
   EDITOR_ADDONS_TABLE_COLUMNS,
@@ -25,26 +25,24 @@ Additional options can be enabled by passing an array of strings to the `addons`
 prop. Customize default options
 
 <Canvas>
-  <Story name="Addons">
-    <Editor
-      addons={[
-        "highlight",
-        "emoji",
-        "code-block",
-        "block-quote",
-        "image-upload",
-        "image-upload-unsplash",
-        "video-upload",
-        "video-embed",
-        "paste-unformatted",
-        "undo",
-        "redo",
-        "attachments",
-        "table",
-        "text-color",
-      ]}
-    />
-  </Story>
+  <Editor
+    addons={[
+      "highlight",
+      "emoji",
+      "code-block",
+      "block-quote",
+      "image-upload",
+      "image-upload-unsplash",
+      "video-upload",
+      "video-embed",
+      "paste-unformatted",
+      "undo",
+      "redo",
+      "attachments",
+      "table",
+      "text-color",
+    ]}
+  />
 </Canvas>
 
 #### **Available addons**
