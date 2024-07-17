@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../src";
 import {
   EDITOR_SHORTCUTS_TABLE_COLUMNS,
@@ -51,15 +51,13 @@ default behavior of the key combination. Keyboard shortcuts are now only
 supported in the rich-text mode.
 
 <Canvas>
-  <Story name="Keyboard shortcuts">
-    <Editor
-      onSubmit={content => console.log(content)}
-      keyboardShortcuts={{
-        "Shift-Enter": ({ editor }) => {
-          alert(editor.getHTML());
-          return true;
-        },
-      }}
-    />
-  </Story>
+  <Editor
+    onSubmit={content => console.log(content)}
+    keyboardShortcuts={{
+      "Shift-Enter": ({ editor }) => {
+        alert(editor.getHTML());
+        return true;
+      },
+    }}
+  />
 </Canvas>

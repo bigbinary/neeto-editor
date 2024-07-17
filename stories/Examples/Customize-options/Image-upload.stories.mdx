@@ -1,4 +1,4 @@
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Canvas } from "@storybook/addon-docs";
 import { Editor } from "../../../src";
 
 <Meta
@@ -21,9 +21,7 @@ addon to the list of addons. All the images are uploaded using a pre-signed URL
 from the backend.
 
 <Canvas>
-  <Story name="Image upload">
-    <Editor addons={["image-upload"]} />
-  </Story>
+  <Editor addons={["image-upload"]} />
 </Canvas>
 
 > Similar to image upload, video upload can be enabled by adding the

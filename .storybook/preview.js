@@ -1,6 +1,8 @@
 import "../src/index.scss";
 import "./style.scss";
 import { themes } from "@storybook/theming";
+import { addons } from "@storybook/manager-api";
+import { LIVE_EXAMPLES_ADDON_ID } from "storybook-addon-live-examples";
 import initializeApplication from "neetocommons/initializers";
 import en from "../src/translations/en.json";
 import neetoTheme from "./neetoTheme";
@@ -8,6 +10,10 @@ import neetoTheme from "./neetoTheme";
 initializeApplication({
   skip: { axios: true, globalProps: true, logger: true },
   translationResources: { en: { translation: en } },
+});
+
+addons.setConfig({
+  [LIVE_EXAMPLES_ADDON_ID]: {},
 });
 
 export const parameters = {

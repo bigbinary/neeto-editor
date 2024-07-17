@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-editor",
-  "version": "1.39.1",
+  "version": "1.39.2",
   "types": "./types.d.ts",
   "description": "neetoEditor is the library that drives the rich text experience in all neeto products built at BigBinary",
   "keywords": [
@@ -171,6 +171,7 @@
     "sass": "1.69.5",
     "sass-loader": "13.0.2",
     "storybook": "^7.5.3",
+    "storybook-addon-live-examples": "2.0.3",
     "storybook-dark-mode": "^3.0.1",
     "style-loader": "3.3.1",
     "tailwindcss": "3.4.1",
