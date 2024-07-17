@@ -38,17 +38,25 @@ const TableActionMenu = ({ editor }) => {
         sticky: "popper",
       }}
     >
-      {tableActions({ editor }).map(({ icon, label, command }) => (
-        <Button
-          {...{ icon }}
-          iconSize={18}
-          key={label}
-          size="small"
-          style="text"
-          tooltipProps={{ content: label, position: "top", delay: [500] }}
-          onClick={command}
-        />
-      ))}
+      {shouldShow &&
+        tableActions({ editor }).map(
+          ({ icon, label, command, isVisible }) =>
+            isVisible && (
+              <Button
+                {...{ icon }}
+                iconSize={18}
+                key={label}
+                size="small"
+                style="text"
+                tooltipProps={{
+                  content: label,
+                  position: "top",
+                  delay: [500],
+                }}
+                onClick={command}
+              />
+            )
+        )}
     </BubbleMenu>
   );
 };
