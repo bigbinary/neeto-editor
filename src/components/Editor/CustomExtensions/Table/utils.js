@@ -1,4 +1,5 @@
 import { t } from "i18next";
+import { isNotPresent } from "neetocist";
 import {
   DeleteRow,
   DeleteColumn,
@@ -8,6 +9,25 @@ import {
   MergeSplit,
   ToggleHeaderRow,
 } from "neetoicons";
+import { CellSelection } from "prosemirror-tables";
+
+const shouldShowMergeCellToggler = selection => {
+  if (isNotPresent(selection)) return false;
+
+  let depth = selection.$from.depth;
+
+  while (depth > 0) {
+    const node = selection.$from.node(depth);
+    if (node && node.type?.spec?.tableRole === "cell") {
+      const { colspan, rowspan } = node.attrs;
+
+      return selection instanceof CellSelection || colspan > 1 || rowspan > 1;
+    }
+    depth -= 1;
+  }
+
+  return false;
+};
 
 export const tableActions = ({ editor }) => [
   {
@@ -38,6 +58,7 @@ export const tableActions = ({ editor }) => [
     label: t("neetoEditor.table.mergeSplit"),
     command: () => editor.chain().focus().mergeOrSplit().run(),
     icon: MergeSplit,
+    isVisible: shouldShowMergeCellToggler(editor.state?.selection),
   },
   {
     label: t("neetoEditor.table.toggleHeaderRow"),
