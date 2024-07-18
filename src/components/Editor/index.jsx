@@ -72,7 +72,7 @@ const Editor = (
 ) => {
   const [isAttachmentsUploading, setIsAttachmentsUploading] = useState(false);
 
-  const dragDropRef = useRef(null);
+  const wrapperRef = useRef(null);
   const isAttachmentsActive = addons.includes(EDITOR_OPTIONS.ATTACHMENTS);
   const isVideoEmbedActive = addons.includes(EDITOR_OPTIONS.VIDEO_EMBED);
   const isMediaUploaderActive =
@@ -174,7 +174,7 @@ const Editor = (
 
   return (
     <div
-      ref={dragDropRef}
+      ref={wrapperRef}
       className={classnames({
         [className]: className,
         "ne-attachments__wrapper": isAttachmentsActive,
@@ -227,8 +227,9 @@ const Editor = (
           )}
           {isAttachmentsActive && (
             <Attachments
-              {...{ attachments, dragDropRef }}
+              {...{ attachments }}
               config={attachmentsConfig}
+              dragDropRef={wrapperRef}
               isIndependent={false}
               ref={addAttachmentsRef}
               setIsUploading={setIsAttachmentsUploading}
@@ -239,7 +240,7 @@ const Editor = (
             />
           )}
           {editor?.isActive("link") && <LinkPopOver {...{ editor }} />}
-          <TableActionMenu {...{ editor }} appendTo={dragDropRef} />
+          <TableActionMenu {...{ editor }} appendTo={wrapperRef} />
         </CharacterCountWrapper>
       </ErrorWrapper>
     </div>

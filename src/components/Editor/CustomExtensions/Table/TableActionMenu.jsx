@@ -1,20 +1,20 @@
 import React, { useCallback } from "react";
 
 import { BubbleMenu } from "@tiptap/react";
-import { Button, Dropdown } from "neetoui";
+import { Button } from "neetoui";
 import { sticky } from "tippy.js";
 
-import { getRenderContainer, tableActions } from "./utils";
-
-const { Menu } = Dropdown;
+import { tableActions } from "./utils";
 
 const TableActionMenu = ({ editor }) => {
   const getReferenceClientRect = useCallback(() => {
-    const renderContainer = getRenderContainer(editor, "table");
-    const rect =
-      renderContainer?.getBoundingClientRect() || new DOMRect(0, 0, 0, 0);
+    if (!editor) return new DOMRect(0, 0, 0, 0);
 
-    return rect;
+    const { $anchor: anchor } = editor.state?.selection ?? {};
+    const node = editor.view.domAtPos(anchor?.pos)?.node;
+    const element = node?.nodeType === 3 ? node?.parentElement : node;
+
+    return element?.getBoundingClientRect() || new DOMRect(0, 0, 0, 0);
   }, [editor]);
 
   const shouldShow = useCallback(() => editor?.isActive("table"), [editor]);
@@ -26,7 +26,8 @@ const TableActionMenu = ({ editor }) => {
       {...{ editor, shouldShow }}
       className="neeto-editor-bubble-menu"
       tippyOptions={{
-        offset: [145, 8],
+        arrow: false,
+        offset: [10, 10],
         zIndex: 99999,
         theme: "neeto-editor-bubble-menu",
         popperOptions: {
@@ -37,20 +38,25 @@ const TableActionMenu = ({ editor }) => {
         sticky: "popper",
       }}
     >
-      <Dropdown
-        buttonSize="small"
-        buttonStyle="text"
-        label="Options"
-        position="auto"
-        strategy="fixed"
-        onClose={() => editor?.commands.focus()}
-      >
-        <Menu className="neeto-editor-bubble-menu__table__options">
-          {tableActions({ editor }).map(({ label, command }) => (
-            <Button key={label} {...{ label }} style="text" onClick={command} />
-          ))}
-        </Menu>
-      </Dropdown>
+      {shouldShow &&
+        tableActions({ editor }).map(
+          ({ icon, label, command, isHidden }) =>
+            !isHidden && (
+              <Button
+                {...{ icon }}
+                iconSize={18}
+                key={label}
+                size="small"
+                style="text"
+                tooltipProps={{
+                  content: label,
+                  position: "top",
+                  delay: [500],
+                }}
+                onClick={command}
+              />
+            )
+        )}
     </BubbleMenu>
   );
 };
