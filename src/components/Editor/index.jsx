@@ -190,10 +190,7 @@ const Editor = (
         </Label>
       )}
       <ErrorWrapper {...{ error }} className={errorWrapperClassName}>
-        <CharacterCountWrapper
-          {...{ editor }}
-          isActive={isCharacterCountActive}
-        >
+        <>
           <Menu
             {...{
               addonCommands,
@@ -241,7 +238,11 @@ const Editor = (
           )}
           {editor?.isActive("link") && <LinkPopOver {...{ editor }} />}
           <TableActionMenu {...{ editor }} appendTo={wrapperRef} />
-        </CharacterCountWrapper>
+          <CharacterCountWrapper
+            {...{ editor }}
+            isActive={isCharacterCountActive}
+          />
+        </>
       </ErrorWrapper>
     </div>
   );
