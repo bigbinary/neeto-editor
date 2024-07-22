@@ -24,6 +24,8 @@ module.exports = postcss({
         "--neeto-ui-gray-600": "52, 64, 84",
         "--neeto-ui-gray-500": "135, 146, 157",
         "--neeto-ui-white": "255, 255, 255",
+        "--neeto-ui-font-medium": 500,
+        "--neeto-ui-accent-800": "9, 90, 186",
       },
     }),
   ],
