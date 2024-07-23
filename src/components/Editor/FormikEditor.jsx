@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, memo } from "react";
 
 import { FastField } from "formik";
 import { noop } from "neetocist";
@@ -20,9 +20,9 @@ const FormikEditor = (
   <FastField {...{ attachments, mentions, name, shouldUpdate, variables }}>
     {({ field, form, meta }) => (
       <Editor
+        {...{ attachments, mentions, name, ref, variables }}
         error={meta.touched ? meta.error : ""}
         initialValue={field.value}
-        {...{ attachments, mentions, name, ref, variables }}
         onBlur={() => form.setFieldTouched(name, true)}
         onChange={value => {
           form.setFieldValue(name, value);
@@ -34,4 +34,6 @@ const FormikEditor = (
   </FastField>
 );
 
-export default forwardRef(FormikEditor);
+FormikEditor.displayName = "FormikNeetoEditor";
+
+export default memo(forwardRef(FormikEditor));

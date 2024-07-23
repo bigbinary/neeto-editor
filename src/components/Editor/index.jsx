@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useState, useRef } from "react";
+import React, { useImperativeHandle, useState, useRef, memo } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
@@ -190,10 +190,7 @@ const Editor = (
         </Label>
       )}
       <ErrorWrapper {...{ error }} className={errorWrapperClassName}>
-        <CharacterCountWrapper
-          {...{ editor }}
-          isActive={isCharacterCountActive}
-        >
+        <>
           <Menu
             {...{
               addonCommands,
@@ -241,10 +238,16 @@ const Editor = (
           )}
           {editor?.isActive("link") && <LinkPopOver {...{ editor }} />}
           <TableActionMenu {...{ editor }} appendTo={wrapperRef} />
-        </CharacterCountWrapper>
+          <CharacterCountWrapper
+            {...{ editor }}
+            isActive={isCharacterCountActive}
+          />
+        </>
       </ErrorWrapper>
     </div>
   );
 };
 
-export default React.forwardRef(Editor);
+Editor.displayName = "NeetoEditor";
+
+export default memo(React.forwardRef(Editor));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 import classnames from "classnames";
 import { isNotPresent } from "neetocist";
@@ -41,4 +41,4 @@ const ErrorWrapper = ({ error, children, className }) => {
   );
 };
 
-export default ErrorWrapper;
+export default memo(ErrorWrapper);

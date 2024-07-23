@@ -5,6 +5,7 @@ import React, {
   lazy,
   Suspense,
   useMemo,
+  memo,
 } from "react";
 
 import classnames from "classnames";
@@ -152,4 +153,6 @@ const Attachments = (
   );
 };
 
-export default React.forwardRef(Attachments);
+Attachments.displayName = "NeetoEditorAttachments";
+
+export default memo(React.forwardRef(Attachments));

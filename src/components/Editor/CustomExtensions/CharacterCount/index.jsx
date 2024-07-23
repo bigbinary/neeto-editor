@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 const CharacterCountWrapper = ({ editor, isActive, children }) => {
   if (!isActive || !editor) return children;
@@ -16,4 +16,4 @@ const CharacterCountWrapper = ({ editor, isActive, children }) => {
   );
 };
 
-export default CharacterCountWrapper;
+export default memo(CharacterCountWrapper);
