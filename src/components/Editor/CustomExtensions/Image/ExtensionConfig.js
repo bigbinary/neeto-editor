@@ -148,6 +148,30 @@ export default Node.create({
     };
   },
 
+  addKeyboardShortcuts() {
+    return {
+      Enter: () => {
+        const head = this.editor.state.selection.$head;
+
+        if (head.node().type.name === "image") {
+          this.editor
+            .chain()
+            .insertContentAt(head.after(), {
+              type: "paragraph",
+              content: "",
+            })
+            .focus()
+            .run();
+
+          return true;
+        }
+
+        // Fallback to TipTap's default behavior
+        return false;
+      },
+    };
+  },
+
   addProseMirrorPlugins() {
     return [
       new Plugin({
