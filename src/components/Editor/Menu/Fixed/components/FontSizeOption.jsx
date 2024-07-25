@@ -25,12 +25,12 @@ const FontSizeOption = ({ runEditorCommand, tooltipContent, label }) => {
   return (
     <Dropdown
       autoWidth
-      data-cy="neeto-editor-fixed-menu-font-size-option"
       label={activeOption?.label}
       placement="bottom-start"
       strategy="fixed"
       buttonProps={{
         ref: dropdownRef,
+        "data-cy": "neeto-editor-fixed-menu-font-size-option",
         onKeyDown: event =>
           event.key === "ArrowDown" && dropdownRef.current?.click(),
         tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
