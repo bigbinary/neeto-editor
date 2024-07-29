@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState, useEffect } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
@@ -21,6 +21,7 @@ const ImageComponent = ({
 
   const [captionWidth, setCaptionWidth] = useState(figwidth || 0);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [isInView, setIsInView] = useState(false);
 
   const figureRef = useRef(null);
 
@@ -57,49 +58,75 @@ const ImageComponent = ({
     editor.commands.focus();
   };
 
+  useEffect(() => {
+    const figureReference = figureRef.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.1, root: null, rootMargin: "100px 0px 100px 0px" }
+    );
+
+    if (figureReference) {
+      observer.observe(figureReference);
+    }
+
+    return () => {
+      if (figureReference) {
+        observer.unobserve(figureReference);
+      }
+    };
+  }, []);
+
   if (isNotPresent(src)) return null;
 
   return (
     <NodeViewWrapper
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
       data-cy="neeto-editor-image-wrapper"
+      style={{ minWidth: width, minHeight: height }}
     >
       <figure ref={figureRef}>
-        <Menu {...{ align, deleteNode, editor, updateAttributes }} />
-        {src ? (
-          <Resizable
-            lockAspectRatio
-            className="neeto-editor__image"
-            minWidth="100px"
-            size={{ height, width }}
-            onResizeStop={handleResizeStop}
-            onResize={(_event, _direction, ref) =>
-              setCaptionWidth(ref.offsetWidth)
-            }
-          >
-            <img
-              {...{ ...node.attrs, src }}
-              alt={caption}
-              onClick={e => {
-                e.stopPropagation();
-                setPreviewUrl(src);
-              }}
+        {isInView && (
+          <>
+            <Menu {...{ align, deleteNode, editor, updateAttributes }} />
+            {src ? (
+              <Resizable
+                lockAspectRatio
+                className="neeto-editor__image"
+                minWidth="100px"
+                size={{ height, width }}
+                onResizeStop={handleResizeStop}
+                onResize={(_event, _direction, ref) =>
+                  setCaptionWidth(ref.offsetWidth)
+                }
+              >
+                <img
+                  {...{ ...node.attrs, src }}
+                  alt={caption}
+                  onClick={e => {
+                    e.stopPropagation();
+                    setPreviewUrl(src);
+                  }}
+                />
+              </Resizable>
+            ) : (
+              <div className="neeto-editor__image-placeholder">
+                <Spinner />
+              </div>
+            )}
+            <NodeViewContent
+              as="figcaption"
+              className={classNames({ "is-empty": isEmpty(caption) })}
+              style={{ width: `${captionWidth}px` }}
             />
-          </Resizable>
-        ) : (
-          <div className="neeto-editor__image-placeholder">
-            <Spinner />
-          </div>
+          </>
         )}
-        <NodeViewContent
-          as="figcaption"
-          className={classNames({ "is-empty": isEmpty(caption) })}
-          style={{ width: `${captionWidth}px` }}
-        />
       </figure>
       <ImagePreviewModal {...{ previewUrl, setPreviewUrl }} />
     </NodeViewWrapper>
   );
 };
 
-export default ImageComponent;
+export default memo(ImageComponent);
