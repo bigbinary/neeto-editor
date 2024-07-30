@@ -9,6 +9,7 @@ import { isEmpty } from "ramda";
 import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import DirectUpload from "utils/DirectUpload";
 
+import { IMAGE_PLACEHOLDER } from "./constants";
 import ImageComponent from "./ImageComponent";
 import { deleteNode, updateAttributes } from "./utils";
 
@@ -164,7 +165,7 @@ export default Node.create({
         dom.style.minHeight = `${dom.offsetHeight}px`;
         reactRenderer.destroy();
         reactRenderer = null;
-        dom.innerHTML = "";
+        dom.appendChild(IMAGE_PLACEHOLDER);
       };
 
       const observer = new IntersectionObserver(
