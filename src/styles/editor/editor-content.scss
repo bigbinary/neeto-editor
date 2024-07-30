@@ -297,16 +297,19 @@
 
   .neeto-editor__image {
     display: inline-block;
+    border: 2px solid rgb(var(--neeto-ui-gray-300));
+    border-radius: var(--neeto-ui-rounded-lg);
+    padding: 4px;
+    min-height: 52px;
 
     img,
     video {
       display: inline-block;
       width: 100%;
       height: auto;
-      border: 2px solid rgb(var(--neeto-ui-gray-300));
-      border-radius: var(--neeto-ui-rounded-lg);
-      padding: 4px;
-      min-height: 52px;
+      &.hidden {
+        display: none;
+      }
     }
 
     img {
