@@ -1,5 +1,5 @@
 import { mergeAttributes, Node } from "@tiptap/core";
-import { ReactNodeViewRenderer, ReactRenderer } from "@tiptap/react";
+import { ReactRenderer } from "@tiptap/react";
 import { t } from "i18next";
 import { globalProps } from "neetocommons/initializers";
 import { Toastr } from "neetoui";
@@ -130,13 +130,11 @@ export default Node.create({
     ];
   },
 
-  _addNodeView() {
-    return ReactNodeViewRenderer(ImageComponent);
-  },
-
   addNodeView() {
     return ({ editor, node, getPos }) => {
       const dom = document.createElement("div");
+      dom.style.minWidth = `${node.attrs.figwidth}px`;
+      dom.style.minHeight = `${node.attrs.figheight || 200}px`;
       dom.classList.add("image-component-node-view");
 
       let reactRenderer;
@@ -162,6 +160,8 @@ export default Node.create({
 
       const destroyReactComponent = () => {
         if (!reactRenderer) return;
+        dom.style.minWidth = `${dom.offsetWidth}px`;
+        dom.style.minHeight = `${dom.offsetHeight}px`;
         reactRenderer.destroy();
         reactRenderer = null;
         dom.innerHTML = "";
