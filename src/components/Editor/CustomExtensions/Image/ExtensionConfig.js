@@ -134,8 +134,21 @@ export default Node.create({
   addNodeView() {
     return ({ editor, node, getPos }) => {
       const dom = document.createElement("div");
-      dom.style.minWidth = `${node.attrs.figwidth}px`;
-      dom.style.minHeight = `${node.attrs.figheight || 200}px`;
+      const { src, figwidth, figheight } = node.attrs;
+
+      const onImageLoad = ({ target: img }) => {
+        const aspectRatio = img.height / img.width;
+        const height = parseInt(figwidth * aspectRatio);
+        dom.style.minWidth = `${figwidth}px`;
+        dom.style.minHeight = `${height}px`;
+      };
+
+      const image = new Image();
+      image.src = src;
+      image.onload = onImageLoad;
+
+      dom.style.minWidth = `${figwidth}px`;
+      dom.style.minHeight = `${figheight || 100}px`;
       dom.classList.add("image-component-node-view");
 
       let reactRenderer;
