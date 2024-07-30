@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState, useEffect } from "react";
+import React, { memo, useRef, useState } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
@@ -21,12 +21,6 @@ const ImageComponent = ({
 
   const [captionWidth, setCaptionWidth] = useState(figwidth || 0);
   const [previewUrl, setPreviewUrl] = useState(null);
-  const [isInView, setIsInView] = useState(true);
-  const [imageDimensions, setImageDimensions] = useState({
-    width: figwidth,
-    height: figheight === "auto" ? figwidth : figheight,
-  });
-
   const figureRef = useRef(null);
 
   const { view } = editor;
@@ -62,33 +56,6 @@ const ImageComponent = ({
     editor.commands.focus();
   };
 
-  const onImageLoad = ({ target: img }) => {
-    const aspectRatio = img.height / img.width;
-    const imageHeight = parseInt(width * aspectRatio);
-    setImageDimensions({ height: imageHeight, width });
-  };
-
-  useEffect(() => {
-    const figureReference = figureRef.current;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
-      { threshold: 0.1, root: null, rootMargin: "100px 0px 100px 0px" }
-    );
-
-    if (figureReference) {
-      observer.observe(figureReference);
-    }
-
-    return () => {
-      if (figureReference) {
-        observer.unobserve(figureReference);
-      }
-    };
-  }, []);
-
   if (isNotPresent(src)) return null;
 
   return (
@@ -96,47 +63,38 @@ const ImageComponent = ({
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
       data-cy="neeto-editor-image-wrapper"
     >
-      <figure
-        ref={figureRef}
-        style={{
-          minWidth: `${imageDimensions.width ?? 0}px`,
-          minHeight: `${imageDimensions.height ?? 0}px`,
-        }}
-      >
-          <>
-            <Menu {...{ align, deleteNode, editor, updateAttributes }} />
-            {src ? (
-              <Resizable
-                lockAspectRatio
-                className="neeto-editor__image"
-                minWidth="100px"
-                size={{ height, width }}
-                onResizeStop={handleResizeStop}
-                onResize={(_event, _direction, ref) =>
-                  setCaptionWidth(ref.offsetWidth)
-                }
-              >
-                <img
-                  {...{ ...node.attrs, src }}
-                  alt={caption}
-                  onClick={e => {
-                    e.stopPropagation();
-                    setPreviewUrl(src);
-                  }}
-                />
-              </Resizable>
-            ) : (
-              <div className="neeto-editor__image-placeholder">
-                <Spinner />
-              </div>
-            )}
-            <NodeViewContent
-              as="figcaption"
-              className={classNames({ "is-empty": isEmpty(caption) })}
-              style={{ width: `${captionWidth}px` }}
+      <figure ref={figureRef}>
+        <Menu {...{ align, deleteNode, editor, updateAttributes }} />
+        {src ? (
+          <Resizable
+            lockAspectRatio
+            className="neeto-editor__image"
+            minWidth="100px"
+            size={{ height, width }}
+            onResizeStop={handleResizeStop}
+            onResize={(_event, _direction, ref) =>
+              setCaptionWidth(ref.offsetWidth)
+            }
+          >
+            <img
+              {...{ ...node.attrs, src }}
+              alt={caption}
+              onClick={e => {
+                e.stopPropagation();
+                setPreviewUrl(src);
+              }}
             />
-          </>
+          </Resizable>
+        ) : (
+          <div className="neeto-editor__image-placeholder">
+            <Spinner />
+          </div>
         )}
+        <NodeViewContent
+          as="figcaption"
+          className={classNames({ "is-empty": isEmpty(caption) })}
+          style={{ width: `${captionWidth}px` }}
+        />
       </figure>
       <ImagePreviewModal {...{ previewUrl, setPreviewUrl }} />
     </NodeViewWrapper>
