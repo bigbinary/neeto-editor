@@ -285,7 +285,7 @@ export const buildMenuOptions = ({
   attachmentProps,
   setIsEmbedModalOpen,
   setIsAddLinkActive,
-  mentions,
+  mentions = [],
   addonCommands,
   setIsEmojiPickerActive,
   isEmojiPickerActive,
