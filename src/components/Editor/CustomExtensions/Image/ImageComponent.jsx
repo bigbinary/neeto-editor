@@ -21,7 +21,11 @@ const ImageComponent = ({
 
   const [captionWidth, setCaptionWidth] = useState(figwidth || 0);
   const [previewUrl, setPreviewUrl] = useState(null);
-  const [isInView, setIsInView] = useState(false);
+  const [isInView, setIsInView] = useState(true);
+  const [imageDimensions, setImageDimensions] = useState({
+    width: figwidth,
+    height: figheight === "auto" ? figwidth : figheight,
+  });
 
   const figureRef = useRef(null);
 
@@ -58,6 +62,12 @@ const ImageComponent = ({
     editor.commands.focus();
   };
 
+  const onImageLoad = ({ target: img }) => {
+    const aspectRatio = img.height / img.width;
+    const imageHeight = parseInt(width * aspectRatio);
+    setImageDimensions({ height: imageHeight, width });
+  };
+
   useEffect(() => {
     const figureReference = figureRef.current;
 
@@ -85,10 +95,14 @@ const ImageComponent = ({
     <NodeViewWrapper
       className={`neeto-editor__image-wrapper neeto-editor__image--${align}`}
       data-cy="neeto-editor-image-wrapper"
-      style={{ minWidth: width, minHeight: height }}
     >
-      <figure ref={figureRef}>
-        {isInView && (
+      <figure
+        ref={figureRef}
+        style={{
+          minWidth: `${imageDimensions.width ?? 0}px`,
+          minHeight: `${imageDimensions.height ?? 0}px`,
+        }}
+      >
           <>
             <Menu {...{ align, deleteNode, editor, updateAttributes }} />
             {src ? (
