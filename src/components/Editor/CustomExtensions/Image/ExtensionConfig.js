@@ -1,5 +1,5 @@
 import { mergeAttributes, Node } from "@tiptap/core";
-import { ReactNodeViewRenderer } from "@tiptap/react";
+import { ReactNodeViewRenderer, ReactRenderer } from "@tiptap/react";
 import { t } from "i18next";
 import { globalProps } from "neetocommons/initializers";
 import { Toastr } from "neetoui";
@@ -10,6 +10,7 @@ import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import DirectUpload from "utils/DirectUpload";
 
 import ImageComponent from "./ImageComponent";
+import { deleteNode, updateAttributes } from "./utils";
 
 const upload = async (file, url) => {
   if (file.size <= globalProps.endUserUploadedFileSizeLimitInMb * 1024 * 1024) {
@@ -129,8 +130,79 @@ export default Node.create({
     ];
   },
 
-  addNodeView() {
+  _addNodeView() {
     return ReactNodeViewRenderer(ImageComponent);
+  },
+
+  addNodeView() {
+    return ({ editor, node, getPos }) => {
+      const dom = document.createElement("div");
+      dom.classList.add("image-component-node-view");
+
+      let reactRenderer;
+
+      const renderReactComponent = () => {
+        if (reactRenderer) return;
+
+        reactRenderer = new ReactRenderer(ImageComponent, {
+          editor,
+          node,
+          extension: this,
+          props: {
+            node,
+            editor,
+            getPos,
+            updateAttributes: attrs => updateAttributes(attrs, editor, getPos),
+            deleteNode: () => deleteNode(editor, getPos, node),
+          },
+        });
+        dom.innerHTML = "";
+        dom.appendChild(reactRenderer.element);
+      };
+
+      const destroyReactComponent = () => {
+        if (!reactRenderer) return;
+        reactRenderer.destroy();
+        reactRenderer = null;
+        dom.innerHTML = "";
+      };
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              renderReactComponent();
+            } else {
+              destroyReactComponent();
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "200px 0px 200px" }
+      );
+
+      observer.observe(dom);
+
+      return {
+        dom,
+        update(updatedNode) {
+          if (reactRenderer) {
+            reactRenderer.updateProps({
+              node: updatedNode.toJSON(),
+              updateAttributes: attrs =>
+                updateAttributes(attrs, editor, getPos),
+            });
+          }
+
+          return true;
+        },
+        destroy() {
+          if (observer) {
+            observer.disconnect();
+          }
+          destroyReactComponent();
+        },
+      };
+    };
   },
 
   addCommands() {
