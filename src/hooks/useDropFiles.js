@@ -3,11 +3,13 @@ import { useEffect } from "react";
 const useDropFiles = ({ dropTargetRef, attachments = [], onDrop }) => {
   useEffect(() => {
     const dropZone = dropTargetRef?.current;
-    let isDragging = false;
+    let isDragging = false,
+      timeout;
 
     const handleDragOver = event => {
       event.preventDefault();
       event.stopPropagation();
+      timeout && clearTimeout(timeout);
       if (!isDragging) {
         isDragging = true;
         dropZone.classList.add("is-dragging-over-files");
@@ -17,8 +19,11 @@ const useDropFiles = ({ dropTargetRef, attachments = [], onDrop }) => {
     const handleDragLeave = event => {
       event.preventDefault();
       event.stopPropagation();
-      if (!isDragging) {
-        dropZone.classList.remove("is-dragging-over-files");
+      if (isDragging) {
+        timeout = setTimeout(() => {
+          isDragging = false;
+          dropZone.classList.remove("is-dragging-over-files");
+        }, 0);
       }
     };
 
@@ -33,8 +38,8 @@ const useDropFiles = ({ dropTargetRef, attachments = [], onDrop }) => {
     };
 
     if (dropZone) {
-      dropZone.addEventListener("dragover", handleDragOver);
       dropZone.addEventListener("dragleave", handleDragLeave);
+      dropZone.addEventListener("dragover", handleDragOver);
       dropZone.addEventListener("drop", handleDrop);
     }
 
