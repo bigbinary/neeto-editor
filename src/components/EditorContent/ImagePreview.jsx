@@ -5,9 +5,12 @@ import { useOnClickOutside } from "neetocommons/react-utils";
 import { Close } from "neetoicons";
 import { Button, Spinner } from "neetoui";
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 
 const ImagePreview = ({ imagePreviewDetails, setImagePreviewDetails }) => {
   const [isLoading, setIsLoading] = useState(true);
+
+  const { t } = useTranslation();
 
   const imagePreviewRef = useRef(null);
 
@@ -46,7 +49,7 @@ const ImagePreview = ({ imagePreviewDetails, setImagePreviewDetails }) => {
         })}
       >
         <img
-          alt="Image Preview"
+          alt={t("neetoEditor.editorContent.imagePreviewAltText")}
           ref={imagePreviewRef}
           src={imagePreviewDetails.src}
           onLoad={() => setIsLoading(false)}
