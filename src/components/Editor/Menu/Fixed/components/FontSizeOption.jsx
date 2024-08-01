@@ -1,6 +1,7 @@
 import React, { memo, useRef } from "react";
 
 import { Dropdown, Typography } from "neetoui";
+import { last } from "ramda";
 
 import useEditorStore from "src/stores/useEditorStore";
 
@@ -11,7 +12,9 @@ const { Menu, MenuItem } = Dropdown;
 const FontSizeOption = ({ runEditorCommand, tooltipContent, label }) => {
   const dropdownRef = useRef(null);
 
-  const { fontSizeOption: activeOption } = useEditorStore.pick("marksState");
+  const lastOption = last(FONT_SIZE_OPTIONS);
+  const { fontSizeOption: activeOption = lastOption } =
+    useEditorStore.pick("marksState");
 
   const handleClick = level =>
     level

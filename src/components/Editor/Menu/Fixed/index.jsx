@@ -25,7 +25,7 @@ import { reGroupMenuItems, buildMenuOptions } from "./utils";
 const Fixed = ({
   editor,
   options,
-  mentions = [],
+  mentions,
   variables = [],
   setMediaUploader,
   mediaUploader,
