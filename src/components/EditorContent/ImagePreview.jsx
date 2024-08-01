@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import classnames from "classnames";
 import { useOnClickOutside } from "neetocommons/react-utils";
 import { Close } from "neetoicons";
 import { Button, Spinner } from "neetoui";
@@ -29,19 +30,23 @@ const ImagePreview = ({ imagePreviewUrl, setImagePreviewUrl }) => {
 
   return createPortal(
     <div className="image-preview-wrapper">
-      <div className="close-button">
-        <Button
-          icon={Close}
-          style="secondary"
-          onClick={() => setImagePreviewUrl(null)}
-        />
-      </div>
       {isLoading && <Spinner className="spinner" />}
+      {!isLoading && (
+        <div className="close-button">
+          <Button
+            icon={Close}
+            style="secondary"
+            onClick={() => setImagePreviewUrl(null)}
+          />
+        </div>
+      )}
       <img
         alt="Image Preview"
-        className="image-preview"
         ref={imagePreviewRef}
         src={imagePreviewUrl}
+        className={classnames("image-preview", {
+          "image-loaded": !isLoading,
+        })}
         onLoad={() => setIsLoading(false)}
       />
     </div>,
