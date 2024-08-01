@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import DOMPurify from "dompurify";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
-import { isNil, not } from "ramda";
+import { isNil } from "ramda";
 import { createRoot } from "react-dom/client";
 
 import "src/styles/editor/editor-content.scss";
@@ -49,11 +49,9 @@ const EditorContent = ({
       const link = figureTag.querySelector("a");
       if (isNil(image) || isNil(link)) return;
 
-      if (not(window.getComputedStyle(link).pointerEvents === "none")) {
-        return;
-      }
       figureTag.style.cursor = "pointer";
-      figureTag.addEventListener("click", () => {
+      figureTag.addEventListener("click", event => {
+        event.preventDefault();
         setImagePreviewUrl(image.src);
       });
     });
