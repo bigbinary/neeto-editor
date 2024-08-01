@@ -182,14 +182,12 @@ export default Node.create({
       };
 
       const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              renderReactComponent();
-            } else {
-              destroyReactComponent();
-            }
-          });
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            renderReactComponent();
+          } else {
+            destroyReactComponent();
+          }
         },
         { threshold: 0.1, rootMargin: "200px 0px 200px" }
       );
