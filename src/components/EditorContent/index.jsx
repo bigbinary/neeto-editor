@@ -18,7 +18,7 @@ const EditorContent = ({
   className,
   ...otherProps
 }) => {
-  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+  const [imagePreviewDetails, setImagePreviewDetails] = useState(null);
   const editorContentRef = useRef(null);
 
   const htmlContent = substituteVariables(highlightCode(content), variables);
@@ -56,7 +56,8 @@ const EditorContent = ({
 
       figureTag.addEventListener("click", event => {
         event.preventDefault();
-        setImagePreviewUrl(image.src);
+        const caption = figureTag.querySelector("figcaption").innerText;
+        setImagePreviewDetails({ src: image.src, caption });
       });
     });
   };
@@ -79,8 +80,8 @@ const EditorContent = ({
         }}
         {...otherProps}
       />
-      {imagePreviewUrl && (
-        <ImagePreview {...{ imagePreviewUrl, setImagePreviewUrl }} />
+      {imagePreviewDetails && (
+        <ImagePreview {...{ imagePreviewDetails, setImagePreviewDetails }} />
       )}
     </>
   );

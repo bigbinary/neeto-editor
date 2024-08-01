@@ -1,4 +1,4 @@
-.image-preview-wrapper {
+.ne-image-preview-wrapper {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,13 +10,21 @@
   align-items: center;
   z-index: 999999;
 
-  img {
+  .ne-image-preview {
     opacity: 0;
     transition: opacity 100ms ease-in-out;
+    background: rgb(var(--neeto-ui-white));
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    max-width: 60vw;
     &.image-loaded {
-      border: 10px solid rgb(var(--neeto-ui-gray-100));
+      padding: 10px;
       border-radius: 10px;
       opacity: 1;
+    }
+    &__caption {
+      line-height: 1.5;
     }
   }
 

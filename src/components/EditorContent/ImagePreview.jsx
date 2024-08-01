@@ -6,49 +6,57 @@ import { Close } from "neetoicons";
 import { Button, Spinner } from "neetoui";
 import { createPortal } from "react-dom";
 
-const ImagePreview = ({ imagePreviewUrl, setImagePreviewUrl }) => {
+const ImagePreview = ({ imagePreviewDetails, setImagePreviewDetails }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const imagePreviewRef = useRef(null);
 
-  useOnClickOutside(imagePreviewRef, () => setImagePreviewUrl(null), {
+  useOnClickOutside(imagePreviewRef, () => setImagePreviewDetails(null), {
     enabled: true,
   });
 
   useEffect(() => {
     document.addEventListener(
       "keydown",
-      e => e.key === "Escape" && setImagePreviewUrl(null)
+      e => e.key === "Escape" && setImagePreviewDetails(null)
     );
 
     return () =>
       document.removeEventListener(
         "keydown",
-        e => e.key === "Escape" && setImagePreviewUrl(null)
+        e => e.key === "Escape" && setImagePreviewDetails(null)
       );
   }, []);
 
   return createPortal(
-    <div className="image-preview-wrapper">
+    <div className="ne-image-preview-wrapper">
       {isLoading && <Spinner className="spinner" />}
       {!isLoading && (
         <div className="close-button">
           <Button
             icon={Close}
             style="secondary"
-            onClick={() => setImagePreviewUrl(null)}
+            onClick={() => setImagePreviewDetails(null)}
           />
         </div>
       )}
-      <img
-        alt="Image Preview"
-        ref={imagePreviewRef}
-        src={imagePreviewUrl}
-        className={classnames("image-preview", {
+      <div
+        className={classnames("ne-image-preview", {
           "image-loaded": !isLoading,
         })}
-        onLoad={() => setIsLoading(false)}
-      />
+      >
+        <img
+          alt="Image Preview"
+          ref={imagePreviewRef}
+          src={imagePreviewDetails.src}
+          onLoad={() => setIsLoading(false)}
+        />
+        {imagePreviewDetails && (
+          <p className="ne-image-preview__caption">
+            {imagePreviewDetails.caption}
+          </p>
+        )}
+      </div>
     </div>,
     document.body
   );
