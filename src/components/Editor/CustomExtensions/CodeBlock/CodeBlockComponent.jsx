@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
 import { Down } from "neetoicons";
@@ -14,6 +14,8 @@ const { Menu, MenuItem } = Dropdown;
 const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [keyword, setKeyword] = useState("");
+
+  const ref = useRef();
 
   const { t } = useTranslation();
 
@@ -50,6 +52,12 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
       setTimeout(() => updateAttributes({ language: "plaintext" }), 0);
     }
   }, []);
+
+  const handleContentMount = node => {
+    if (ref.current) {
+      ref.current.style.minHeight = `${node?.offsetHeight}px`;
+    }
+  };
 
   return (
     <div {...{ ref }}>
