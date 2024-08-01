@@ -26,7 +26,7 @@ const EditorContent = ({
 
   const injectCopyButtonToCodeBlocks = () => {
     const preTags = editorContentRef.current?.querySelectorAll(
-      ".neeto-editor-content pre"
+      `.${EDITOR_CONTENT_CLASSNAME} pre`
     );
 
     preTags.forEach(preTag => {
@@ -42,14 +42,18 @@ const EditorContent = ({
       );
       preTag.appendChild(button);
     });
+  };
 
-    const figureTags = editorContentRef.current?.querySelectorAll("figure");
+  const bindImageClickListener = () => {
+    const figureTags = editorContentRef.current?.querySelectorAll(
+      `.${EDITOR_CONTENT_CLASSNAME} figure`
+    );
+
     figureTags.forEach(figureTag => {
       const image = figureTag.querySelector("img");
       const link = figureTag.querySelector("a");
       if (isNil(image) || isNil(link)) return;
 
-      figureTag.style.cursor = "pointer";
       figureTag.addEventListener("click", event => {
         event.preventDefault();
         setImagePreviewUrl(image.src);
@@ -59,6 +63,7 @@ const EditorContent = ({
 
   useEffect(() => {
     injectCopyButtonToCodeBlocks();
+    bindImageClickListener();
   }, [content]);
 
   return (
