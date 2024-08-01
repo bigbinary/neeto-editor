@@ -36,7 +36,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1, rootMargin: "200px 0px 200px" }
+      { threshold: 0.1, rootMargin: "100px 0px 100px" }
     );
 
     if (container) setTimeout(() => observer.observe(container), 0);
@@ -54,65 +54,63 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   }, []);
 
   const handleContentMount = node => {
-    if (ref.current) {
-      ref.current.style.minHeight = `${node?.offsetHeight}px`;
+    if (ref.current && node?.offsetHeight) {
+      ref.current.style.minHeight = `${node.offsetHeight}px`;
     }
   };
 
   return (
-    <div {...{ ref }}>
-      {isVisible && (
-        <NodeViewWrapper data-cy="neeto-editor-code-block">
-          <div>
-            <pre ref={handleContentMount}>
-              <div
-                className="neeto-editor-codeblock-options"
-                contentEditable={false}
+    <NodeViewWrapper data-cy="neeto-editor-code-block">
+      <div {...{ ref }}>
+        {isVisible && (
+          <pre ref={handleContentMount}>
+            <div
+              className="neeto-editor-codeblock-options"
+              contentEditable={false}
+            >
+              <Dropdown
+                appendTo={() => document.body}
+                buttonSize="small"
+                buttonStyle="secondary"
+                icon={Down}
+                label={node.attrs?.language || t("neetoEditor.common.auto")}
+                strategy="fixed"
+                zIndex={99999}
               >
-                <Dropdown
-                  appendTo={() => document.body}
-                  buttonSize="small"
-                  buttonStyle="secondary"
-                  icon={Down}
-                  label={node.attrs?.language || t("neetoEditor.common.auto")}
-                  strategy="fixed"
-                  zIndex={99999}
-                >
-                  <Input
-                    autoFocus
-                    className="neeto-editor-codeblock-options__input"
-                    placeholder={t("neetoEditor.placeholders.searchLanguages")}
-                    size="small"
-                    value={keyword}
-                    onChange={e => setKeyword(e.target.value)}
-                    onClick={e => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                    }}
-                  />
-                  <Menu className="neeto-editor-codeblock-options__menu">
-                    {filteredAndSortedLanguageList.map(language => (
-                      <MenuItem.Button
-                        key={language}
-                        onClick={() => handleLanguageSelect(language)}
-                      >
-                        {language || t("neetoEditor.common.auto")}
-                      </MenuItem.Button>
-                    ))}
-                  </Menu>
-                </Dropdown>
-                <CopyToClipboardButton
+                <Input
+                  autoFocus
+                  className="neeto-editor-codeblock-options__input"
+                  placeholder={t("neetoEditor.placeholders.searchLanguages")}
                   size="small"
-                  style="secondary"
-                  value={node?.content?.content[0]?.text}
+                  value={keyword}
+                  onChange={e => setKeyword(e.target.value)}
+                  onClick={e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
                 />
-              </div>
-              <NodeViewContent as="code" />
-            </pre>
-          </div>
-        </NodeViewWrapper>
-      )}
-    </div>
+                <Menu className="neeto-editor-codeblock-options__menu">
+                  {filteredAndSortedLanguageList.map(language => (
+                    <MenuItem.Button
+                      key={language}
+                      onClick={() => handleLanguageSelect(language)}
+                    >
+                      {language || t("neetoEditor.common.auto")}
+                    </MenuItem.Button>
+                  ))}
+                </Menu>
+              </Dropdown>
+              <CopyToClipboardButton
+                size="small"
+                style="secondary"
+                value={node?.content?.content[0]?.text}
+              />
+            </div>
+            <NodeViewContent as="code" />
+          </pre>
+        )}
+      </div>
+    </NodeViewWrapper>
   );
 };
 
