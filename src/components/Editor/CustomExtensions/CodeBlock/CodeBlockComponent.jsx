@@ -12,6 +12,7 @@ import { SORTED_LANGUAGE_LIST } from "./constants";
 const { Menu, MenuItem } = Dropdown;
 
 const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
+  const [isVisible, setIsVisible] = useState(true);
   const [keyword, setKeyword] = useState("");
 
   const { t } = useTranslation();
@@ -25,6 +26,23 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     setKeyword("");
     editor?.commands?.focus();
   };
+
+  useEffect(() => {
+    const container = ref.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1, rootMargin: "200px 0px 200px" }
+    );
+
+    if (container) setTimeout(() => observer.observe(container), 0);
+
+    return () => {
+      if (container) observer.unobserve(container);
+    };
+  }, []);
 
   useEffect(() => {
     if (isNil(node.attrs?.language)) {
