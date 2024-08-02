@@ -33,7 +33,7 @@ const ImagePreview = ({ imagePreviewDetails, setImagePreviewDetails }) => {
 
   return createPortal(
     <div className="ne-image-preview-wrapper">
-      {isLoading && <Spinner className="spinner" />}
+      {isLoading && <Spinner className="ne-image-preview-wrapper__spinner" />}
       {!isLoading && (
         <div className="close-button">
           <Button
