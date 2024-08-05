@@ -142,6 +142,9 @@
       "completed": "Completed",
       "uploadImage": "Upload image",
       "uploadVideo": "Upload video"
+    },
+    "editorContent": {
+      "imagePreviewAltText": "Image Preview"
     }
   }
 }
