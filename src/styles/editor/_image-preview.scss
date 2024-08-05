@@ -1,6 +1,8 @@
 .image-preview-neeto-ui-modal {
   background-color: transparent !important;
   backdrop-filter: none !important;
+  height: auto !important;
+  margin: auto 0px;
 
   &__close-btn {
     float: right;
