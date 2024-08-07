@@ -9,9 +9,16 @@ import { isEmpty } from "ramda";
 import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import DirectUpload from "utils/DirectUpload";
 
-import { IMAGE_PLACEHOLDER } from "./constants";
 import ImageComponent from "./ImageComponent";
-import { deleteNode, updateAttributes } from "./utils";
+import {
+  appendImageContainerToDom,
+  createImageContainerDom,
+  deleteNode,
+  destroyReactComponent,
+  fetchImage,
+  handleImageLoad,
+  updateAttributes,
+} from "./utils";
 
 const upload = async (file, url) => {
   if (file.size <= globalProps.endUserUploadedFileSizeLimitInMb * 1024 * 1024) {
@@ -133,25 +140,14 @@ export default Node.create({
 
   addNodeView() {
     return ({ editor, node, getPos }) => {
-      const dom = document.createElement("div");
       const { src, figwidth, figheight } = node.attrs;
-
-      const onImageLoad = ({ target: img }) => {
-        const aspectRatio = img.height / img.width;
-        const height = parseInt(figwidth * aspectRatio);
-        dom.style.minWidth = `${figwidth}px`;
-        dom.style.minHeight = `${height}px`;
-      };
-
-      const image = new Image();
-      image.src = src;
-      image.onload = onImageLoad;
-
-      dom.style.minWidth = `${figwidth}px`;
-      dom.style.minHeight = `${figheight || 100}px`;
-      dom.classList.add("image-component-node-view");
-
       let reactRenderer;
+
+      const dom = createImageContainerDom({ figwidth, figheight });
+      const onImageLoad = ({ target: image }) => {
+        handleImageLoad({ figwidth, image, dom });
+      };
+      fetchImage({ src, onImageLoad });
 
       const renderReactComponent = () => {
         if (reactRenderer) return;
@@ -168,28 +164,36 @@ export default Node.create({
             deleteNode: () => deleteNode(editor, getPos, node),
           },
         });
-        dom.innerHTML = "";
-        dom.appendChild(reactRenderer.element);
+        appendImageContainerToDom({ dom, reactRenderer });
       };
 
-      const destroyReactComponent = () => {
-        if (!reactRenderer) return;
-        dom.style.minWidth = `${dom.offsetWidth}px`;
-        dom.style.minHeight = `${dom.offsetHeight}px`;
-        reactRenderer.destroy();
-        reactRenderer = null;
-        dom.appendChild(IMAGE_PLACEHOLDER);
+      const insertImageComponent = entry => {
+        renderReactComponent();
+        entry.target.style.visibility = "visible";
+      };
+
+      const removeImageComponent = entry => {
+        destroyReactComponent({ reactRenderer, dom });
+        entry.target.style.visibility = "hidden";
       };
 
       const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            renderReactComponent();
-          } else {
-            destroyReactComponent();
-          }
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              insertImageComponent();
+            } else {
+              const rect = entry.boundingClientRect;
+              if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                removeImageComponent(entry);
+                reactRenderer = null;
+              } else if (rect.top < window.innerHeight + 200) {
+                insertImageComponent();
+              }
+            }
+          });
         },
-        { threshold: 0.1, rootMargin: "200px 0px 200px" }
+        { threshold: 0.1, rootMargin: "200px 0px 200px 0px" }
       );
 
       observer.observe(dom);
@@ -211,7 +215,8 @@ export default Node.create({
           if (observer) {
             observer.disconnect();
           }
-          destroyReactComponent();
+          destroyReactComponent({ reactRenderer, dom });
+          reactRenderer = null;
         },
       };
     };
