@@ -1,5 +1,4 @@
 import { mergeAttributes, Node } from "@tiptap/core";
-import { ReactRenderer } from "@tiptap/react";
 import { t } from "i18next";
 import { globalProps } from "neetocommons/initializers";
 import { Toastr } from "neetoui";
@@ -9,16 +8,7 @@ import { isEmpty } from "ramda";
 import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import DirectUpload from "utils/DirectUpload";
 
-import ImageComponent from "./ImageComponent";
-import {
-  appendImageContainerToDom,
-  createImageContainerDom,
-  deleteNode,
-  destroyReactComponent,
-  fetchImage,
-  handleImageLoad,
-  updateAttributes,
-} from "./utils";
+import { LazyLoadImage } from "./LazyLoadImage";
 
 const upload = async (file, url) => {
   if (file.size <= globalProps.endUserUploadedFileSizeLimitInMb * 1024 * 1024) {
@@ -140,84 +130,17 @@ export default Node.create({
 
   addNodeView() {
     return ({ editor, node, getPos }) => {
-      const { src, figwidth, figheight } = node.attrs;
-      let reactRenderer;
-
-      const dom = createImageContainerDom({ figwidth, figheight });
-      const onImageLoad = ({ target: image }) => {
-        handleImageLoad({ figwidth, image, dom });
-      };
-      fetchImage({ src, onImageLoad });
-
-      const renderReactComponent = () => {
-        if (reactRenderer) return;
-
-        reactRenderer = new ReactRenderer(ImageComponent, {
-          editor,
-          node,
-          extension: this,
-          props: {
-            node,
-            editor,
-            getPos,
-            updateAttributes: attrs => updateAttributes(attrs, editor, getPos),
-            deleteNode: () => deleteNode(editor, getPos, node),
-          },
-        });
-        appendImageContainerToDom({ dom, reactRenderer });
-      };
-
-      const insertImageComponent = entry => {
-        renderReactComponent();
-        entry.target.style.visibility = "visible";
-      };
-
-      const removeImageComponent = entry => {
-        destroyReactComponent({ reactRenderer, dom });
-        entry.target.style.visibility = "hidden";
-      };
-
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              insertImageComponent();
-            } else {
-              const rect = entry.boundingClientRect;
-              if (rect.bottom < 0 || rect.top > window.innerHeight) {
-                removeImageComponent(entry);
-                reactRenderer = null;
-              } else if (rect.top < window.innerHeight + 200) {
-                insertImageComponent();
-              }
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: "200px 0px 200px 0px" }
-      );
-
-      observer.observe(dom);
+      const view = new LazyLoadImage({
+        editor,
+        node,
+        getPos,
+        extension: this,
+      });
 
       return {
-        dom,
-        update(updatedNode) {
-          if (reactRenderer) {
-            reactRenderer.updateProps({
-              node: updatedNode.toJSON(),
-              updateAttributes: attrs =>
-                updateAttributes(attrs, editor, getPos),
-            });
-          }
-
-          return true;
-        },
-        destroy() {
-          if (observer) {
-            observer.disconnect();
-          }
-          destroyReactComponent({ reactRenderer, dom });
-          reactRenderer = null;
-        },
+        dom: view.dom,
+        update: view.update.bind(view),
+        destroy: view.destroy.bind(view),
       };
     };
   },
