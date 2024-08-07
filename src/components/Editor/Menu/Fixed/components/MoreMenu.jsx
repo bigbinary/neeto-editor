@@ -1,5 +1,3 @@
-import React from "react";
-
 import { MenuHorizontal } from "neetoicons";
 import { Dropdown } from "neetoui";
 

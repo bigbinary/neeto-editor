@@ -1,4 +1,5 @@
-import React, {
+import {
+  forwardRef,
   useRef,
   useState,
   useImperativeHandle,
@@ -155,4 +156,4 @@ const Attachments = (
 
 Attachments.displayName = "NeetoEditorAttachments";
 
-export default memo(React.forwardRef(Attachments));
+export default memo(forwardRef(Attachments));

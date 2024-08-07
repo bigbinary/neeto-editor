@@ -1,4 +1,4 @@
-import React, { memo, useRef } from "react";
+import { memo, useRef } from "react";
 
 import { Dropdown, Typography } from "neetoui";
 import { last } from "ramda";

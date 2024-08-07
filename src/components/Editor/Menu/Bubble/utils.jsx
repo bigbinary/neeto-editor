@@ -1,5 +1,3 @@
-import React from "react";
-
 import { t } from "i18next";
 import {
   Quote,

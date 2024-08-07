@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { removeBy } from "neetocist";
 import { withEventTargetValue } from "neetocommons/utils";

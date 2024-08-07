@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Smiley } from "neetoicons";
 
 import EmojiPicker from "components/Editor/CustomExtensions/Emoji/EmojiPicker/EmojiPickerMenu";
