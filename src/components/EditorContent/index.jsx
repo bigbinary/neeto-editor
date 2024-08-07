@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 import DOMPurify from "dompurify";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
-import { isNil, not } from "ramda";
+import { isNil } from "ramda";
 import { createRoot } from "react-dom/client";
 
 import "src/styles/editor/editor-content.scss";
@@ -18,7 +18,7 @@ const EditorContent = ({
   className,
   ...otherProps
 }) => {
-  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+  const [imagePreviewDetails, setImagePreviewDetails] = useState(null);
   const editorContentRef = useRef(null);
 
   const htmlContent = substituteVariables(highlightCode(content), variables);
@@ -26,7 +26,7 @@ const EditorContent = ({
 
   const injectCopyButtonToCodeBlocks = () => {
     const preTags = editorContentRef.current?.querySelectorAll(
-      ".neeto-editor-content pre"
+      `.${EDITOR_CONTENT_CLASSNAME} pre`
     );
 
     preTags.forEach(preTag => {
@@ -42,25 +42,29 @@ const EditorContent = ({
       );
       preTag.appendChild(button);
     });
+  };
 
-    const figureTags = editorContentRef.current?.querySelectorAll("figure");
+  const bindImageClickListener = () => {
+    const figureTags = editorContentRef.current?.querySelectorAll(
+      `.${EDITOR_CONTENT_CLASSNAME} figure`
+    );
+
     figureTags.forEach(figureTag => {
       const image = figureTag.querySelector("img");
       const link = figureTag.querySelector("a");
       if (isNil(image) || isNil(link)) return;
 
-      if (not(window.getComputedStyle(link).pointerEvents === "none")) {
-        return;
-      }
-      figureTag.style.cursor = "pointer";
-      figureTag.addEventListener("click", () => {
-        setImagePreviewUrl(image.src);
+      figureTag.addEventListener("click", event => {
+        event.preventDefault();
+        const caption = figureTag.querySelector("figcaption").innerText;
+        setImagePreviewDetails({ src: image.src, caption });
       });
     });
   };
 
   useEffect(() => {
     injectCopyButtonToCodeBlocks();
+    bindImageClickListener();
   }, [content]);
 
   return (
@@ -76,8 +80,8 @@ const EditorContent = ({
         }}
         {...otherProps}
       />
-      {imagePreviewUrl && (
-        <ImagePreview {...{ imagePreviewUrl, setImagePreviewUrl }} />
+      {imagePreviewDetails && (
+        <ImagePreview {...{ imagePreviewDetails, setImagePreviewDetails }} />
       )}
     </>
   );

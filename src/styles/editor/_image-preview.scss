@@ -1,36 +1,8 @@
-.image-preview-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(var(--neeto-ui-gray-800), 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999999;
-
-  .close-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  }
-
-  .image-preview {
-    max-width: 70%;
-    max-height: 70%;
-  }
-
-  .spinner {
-    i {
-      background-color: rgb(var(--neeto-ui-gray-300));
-    }
-  }
-}
-
 .image-preview-neeto-ui-modal {
   background-color: transparent !important;
   backdrop-filter: none !important;
+  height: auto !important;
+  margin: auto 0px;
 
   &__close-btn {
     float: right;
