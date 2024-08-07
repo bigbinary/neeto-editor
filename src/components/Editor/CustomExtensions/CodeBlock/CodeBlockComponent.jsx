@@ -8,6 +8,7 @@ import { isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
+import { handleCodeBlockVisibility } from "./utils";
 
 const { Menu, MenuItem } = Dropdown;
 
@@ -33,10 +34,10 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     const container = ref.current;
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+      entries => {
+        handleCodeBlockVisibility({ entries, setIsVisible });
       },
-      { threshold: 0.1, rootMargin: "100px 0px 100px" }
+      { threshold: 0.1, rootMargin: "200px 0px 200px" }
     );
 
     if (container) setTimeout(() => observer.observe(container), 0);
