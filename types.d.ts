@@ -126,6 +126,7 @@ interface EditorProps {
   children?: ReactNode;
   openImageInNewTab?: boolean;
   openLinkInNewTab?: boolean;
+  enableReactNodeViewOptimization?: boolean;
   [otherProps: string]: any;
 }
 

@@ -203,6 +203,11 @@ export const EDITOR_PROPS = [
     "Accepts a boolean value. When set to 'false', it prevents links from opening in new tabs for preview.",
     "true",
   ],
+  [
+    "enableReactNodeViewOptimization",
+    "Improvises the editor performance by removing the images and code block components from the UI if they are out of the view port.",
+    "true",
+  ],
 ];
 
 export const UTILITIES_TABLE_COLUMNS = ["Name", "Arguments", "Description"];
