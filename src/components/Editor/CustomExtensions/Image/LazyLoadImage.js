@@ -45,7 +45,7 @@ class LazyLoadImage {
         entries.forEach(this.handleIntersection.bind(this));
       },
       {
-        rootMargin: "-10% 0% -10% 0%",
+        rootMargin: "10% 0% 10% 0%",
         root: document.getElementById("neeto-editor-wrapper"),
       }
     );

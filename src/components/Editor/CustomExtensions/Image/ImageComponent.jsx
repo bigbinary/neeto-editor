@@ -26,7 +26,7 @@ const ImageComponent = ({
   const { view } = editor;
   let height = figheight;
   let width = figwidth;
-  const caption = node?.content?.content[0]?.text || "";
+  const caption = node?.content?.content?.[0]?.text || "";
 
   const editorElement = figureRef.current?.closest(".neeto-editor");
   const maxImageWidth = editorElement?.offsetWidth - 50;
