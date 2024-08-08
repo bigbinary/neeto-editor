@@ -1,5 +1,3 @@
-import React from "react";
-
 import { NodeViewWrapper } from "@tiptap/react";
 import { mergeRight } from "ramda";
 import { Resizable } from "re-resizable";

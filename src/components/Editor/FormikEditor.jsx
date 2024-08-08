@@ -1,4 +1,4 @@
-import React, { forwardRef, memo } from "react";
+import { forwardRef, memo } from "react";
 
 import { FastField } from "formik";
 import { noop } from "neetocist";

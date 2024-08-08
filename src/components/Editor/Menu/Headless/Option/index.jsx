@@ -1,8 +1,6 @@
-import React from "react";
-
-import { hyphenate } from "neetocist";
-
+import classnames from "classnames";
 import { EDITOR_OPTIONS } from "common/constants";
+import { hyphenate } from "neetocist";
 
 import Emoji from "./Emoji";
 import Button from "./UI/Button";
@@ -28,10 +26,13 @@ const Option = ({
 
   return (
     <Button
-      className={isActive ? "ne-headless-btn--active" : ""}
       {...{ disabled }}
       data-cy={hyphenate(optionName)}
       icon={Icon}
+      className={classnames({
+        "ne-headless-btn--active": isActive,
+        "": !isActive,
+      })}
       tooltipProps={{
         content: tooltip,
         delay: [500],

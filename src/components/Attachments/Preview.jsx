@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { findIndexBy, truncate } from "neetocist";
 import { Left, Right } from "neetoicons";

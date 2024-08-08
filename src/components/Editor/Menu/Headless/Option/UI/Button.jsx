@@ -1,5 +1,3 @@
-import React from "react";
-
 import classnames from "classnames";
 import { noop } from "neetocist";
 import { Tooltip } from "neetoui";

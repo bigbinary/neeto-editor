@@ -1,5 +1,3 @@
-import React from "react";
-
 import { withT } from "neetocommons/react-utils";
 import { Close } from "neetoicons";
 import { Button, Tooltip, Typography } from "neetoui";

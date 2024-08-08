@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { withEventTargetValue } from "neetocommons/utils";
 import { Button, Input, Modal, Typography } from "neetoui";

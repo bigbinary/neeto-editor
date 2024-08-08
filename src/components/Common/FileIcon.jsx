@@ -1,5 +1,3 @@
-import React from "react";
-
 import { FileIcon, defaultStyles } from "react-file-icon";
 
 const File = ({ fileName, className }) => {

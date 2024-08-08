@@ -6,6 +6,7 @@ module.exports = mergeDeepLeft(
     extends: defaultConfigurations.extends,
     rules: {
       "import/extensions": "off",
+      "react/react-in-jsx-scope": "off",
     },
   },
   defaultConfigurations

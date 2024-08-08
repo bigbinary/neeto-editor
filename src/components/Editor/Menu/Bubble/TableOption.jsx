@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { withEventTargetValue } from "neetocommons/utils";
 import { Check, Close } from "neetoicons";

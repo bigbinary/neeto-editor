@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useOnClickOutside } from "neetocommons/react-utils";
 import { withEventTargetValue } from "neetocommons/utils";

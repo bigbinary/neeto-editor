@@ -1,5 +1,3 @@
-import React from "react";
-
 import { hyphenate } from "neetocist";
 import { Dropdown } from "neetoui";
 

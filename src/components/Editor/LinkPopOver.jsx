@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { getMarkRange, getMarkType } from "@tiptap/react";
 import { useOnClickOutside } from "neetocommons/react-utils";
