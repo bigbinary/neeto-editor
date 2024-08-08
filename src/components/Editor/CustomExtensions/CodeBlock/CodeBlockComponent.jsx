@@ -5,7 +5,6 @@ import { noop } from "neetocist";
 import { Down } from "neetoicons";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
 import { Dropdown, Input } from "neetoui";
-import { isNil } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
@@ -52,13 +51,6 @@ const CodeBlockComponent = ({ node, editor, updateAttributes, extension }) => {
     return () => {
       if (container && shouldSetObserver) observer.unobserve(container);
     };
-  }, []);
-
-  useEffect(() => {
-    if (isNil(node.attrs?.language)) {
-      // https://github.com/bigbinary/neeto-kb-web/issues/6429
-      setTimeout(() => updateAttributes({ language: "plaintext" }), 0);
-    }
   }, []);
 
   const handleContentMount = node => {
