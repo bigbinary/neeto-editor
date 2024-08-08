@@ -37,7 +37,10 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
       entries => {
         handleCodeBlockVisibility({ entries, setIsVisible });
       },
-      { threshold: 0.1, rootMargin: "200px 0px 200px" }
+      {
+        rootMargin: "-10% 0% -10% 0%",
+        root: document.getElementById("neeto-editor-wrapper"),
+      }
     );
 
     if (container) setTimeout(() => observer.observe(container), 0);

@@ -44,7 +44,10 @@ class LazyLoadImage {
       entries => {
         entries.forEach(this.handleIntersection.bind(this));
       },
-      { threshold: 0, rootMargin: "200px 0px 200px 0px" }
+      {
+        rootMargin: "-10% 0% -10% 0%",
+        root: document.getElementById("neeto-editor-wrapper"),
+      }
     );
     this.observer.observe(this.dom);
   }
@@ -53,12 +56,7 @@ class LazyLoadImage {
     if (entry.isIntersecting) {
       this.insertImageComponent(entry);
     } else {
-      const rect = entry.boundingClientRect;
-      if (rect.bottom < 0 || rect.top > window.innerHeight) {
-        this.removeImageComponent(entry);
-      } else if (rect.top < window.innerHeight + 200) {
-        this.insertImageComponent(entry);
-      }
+      this.removeImageComponent(entry);
     }
   }
 
