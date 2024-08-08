@@ -1,6 +1,6 @@
 import React, { useImperativeHandle, useState, useRef, memo } from "react";
 
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditor, EditorContent, useEditorState } from "@tiptap/react";
 import classnames from "classnames";
 import { EDITOR_OPTIONS } from "common/constants";
 import { noop, slugify } from "neetocist";
@@ -143,6 +143,8 @@ const Editor = (
     extensions: customExtensions,
     content: initialValue,
     injectCSS: false,
+    immediatelyRender: false,
+    shouldRerenderOnTransaction: false,
     autofocus: autoFocus && "end",
     editorProps: {
       attributes: {
@@ -159,6 +161,14 @@ const Editor = (
     onUpdate: debouncedOnChangeHandler,
     onFocus,
     onBlur,
+  });
+
+  useEditorState({
+    editor,
+    selector: () => ({
+      isMediaUploaderActive,
+      isLinkActive: editor?.isActive("link"),
+    }),
   });
 
   /* Make editor object available to the parent */
