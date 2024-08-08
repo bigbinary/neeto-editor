@@ -1,5 +1,3 @@
-import React from "react";
-
 import { EDITOR_OPTIONS } from "common/constants";
 import { Link, Column } from "neetoicons";
 import { Dropdown } from "neetoui";

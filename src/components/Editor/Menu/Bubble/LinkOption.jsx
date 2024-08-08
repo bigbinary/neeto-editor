@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { URL_REGEXP } from "common/constants";
 import { isNotPresent } from "neetocist";

@@ -1,5 +1,3 @@
-import React from "react";
-
 const CharacterCountWrapper = ({ editor, isActive, children }) => {
   if (!isActive || !editor) return children;
 

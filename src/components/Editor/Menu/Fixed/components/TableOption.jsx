@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import { memo, useState } from "react";
 
 import { withEventTargetValue } from "neetocommons/utils";
 import { Column } from "neetoicons";

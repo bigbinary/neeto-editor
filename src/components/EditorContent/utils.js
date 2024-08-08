@@ -1,4 +1,4 @@
-import React from "react";
+import { createElement } from "react";
 
 import hljs from "highlight.js/lib/common";
 import { lowlight } from "lowlight";
@@ -21,7 +21,7 @@ const buildReactElementFromAST = element => {
       ? element.children.map(buildReactElementFromAST)
       : null;
 
-    return React.createElement(element.tagName, element.properties, children);
+    return createElement(element.tagName, element.properties, children);
   }
 
   return element.value;

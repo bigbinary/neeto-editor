@@ -1,5 +1,3 @@
-import React from "react";
-
 import { hyphenate } from "neetocist";
 
 import { EDITOR_OPTIONS } from "common/constants";

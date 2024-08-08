@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
 import { Down } from "neetoicons";

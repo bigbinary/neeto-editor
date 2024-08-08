@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useState, useRef, memo } from "react";
+import { forwardRef, useImperativeHandle, useState, useRef, memo } from "react";
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import classnames from "classnames";
@@ -250,4 +250,4 @@ const Editor = (
 
 Editor.displayName = "NeetoEditor";
 
-export default memo(React.forwardRef(Editor));
+export default memo(forwardRef(Editor));

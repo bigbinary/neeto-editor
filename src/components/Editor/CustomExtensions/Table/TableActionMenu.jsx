@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 
 import { BubbleMenu } from "@tiptap/react";
 import { Button } from "neetoui";

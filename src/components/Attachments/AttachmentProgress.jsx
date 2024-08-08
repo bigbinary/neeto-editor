@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Close } from "neetoicons";
 import { Button, Typography } from "neetoui";
 import { FileIcon } from "react-file-icon";

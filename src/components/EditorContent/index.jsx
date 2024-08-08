@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 
 import classnames from "classnames";
 import DOMPurify from "dompurify";
@@ -87,4 +87,4 @@ const EditorContent = ({
   );
 };
 
-export default React.memo(EditorContent);
+export default memo(EditorContent);
