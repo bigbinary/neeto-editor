@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
 import classNames from "classnames";
@@ -101,4 +101,4 @@ const ImageComponent = ({
   );
 };
 
-export default memo(ImageComponent);
+export default ImageComponent;
