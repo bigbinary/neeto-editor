@@ -66,6 +66,7 @@ const Editor = (
     children,
     openImageInNewTab = true,
     openLinkInNewTab = true,
+    enableReactNodeViewOptimization = false,
     ...otherProps
   },
   ref
@@ -117,6 +118,7 @@ const Editor = (
     setIsEmbedModalOpen,
     openImageInNewTab,
     openLinkInNewTab,
+    enableReactNodeViewOptimization,
   });
   useEditorWarnings({ initialValue });
 

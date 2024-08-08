@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
+import { noop } from "neetocist";
 import { Down } from "neetoicons";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
 import { Dropdown, Input } from "neetoui";
@@ -12,7 +13,7 @@ import { handleCodeBlockVisibility } from "./utils";
 
 const { Menu, MenuItem } = Dropdown;
 
-const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
+const CodeBlockComponent = ({ node, editor, updateAttributes, extension }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [keyword, setKeyword] = useState("");
 
@@ -32,6 +33,9 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
 
   useEffect(() => {
     const container = ref.current;
+    const shouldSetObserver =
+      extension.options?.enableReactNodeViewOptimization;
+    if (!shouldSetObserver) return noop;
 
     const observer = new IntersectionObserver(
       entries => {
@@ -46,7 +50,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     if (container) setTimeout(() => observer.observe(container), 0);
 
     return () => {
-      if (container) observer.unobserve(container);
+      if (container && shouldSetObserver) observer.unobserve(container);
     };
   }, []);
 

@@ -1,4 +1,5 @@
 import { mergeAttributes, Node } from "@tiptap/core";
+import { ReactNodeViewRenderer } from "@tiptap/react";
 import { t } from "i18next";
 import { globalProps } from "neetocommons/initializers";
 import { Toastr } from "neetoui";
@@ -8,6 +9,7 @@ import { isEmpty } from "ramda";
 import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import DirectUpload from "utils/DirectUpload";
 
+import ImageComponent from "./ImageComponent";
 import { LazyLoadImage } from "./LazyLoadImage";
 
 const upload = async (file, url) => {
@@ -129,20 +131,24 @@ export default Node.create({
   },
 
   addNodeView() {
-    return ({ editor, node, getPos }) => {
-      const view = new LazyLoadImage({
-        editor,
-        node,
-        getPos,
-        extension: this,
-      });
+    if (this.options.enableReactNodeViewOptimization) {
+      return ({ editor, node, getPos }) => {
+        const view = new LazyLoadImage({
+          editor,
+          node,
+          getPos,
+          extension: this,
+        });
 
-      return {
-        dom: view.dom,
-        update: view.update.bind(view),
-        destroy: view.destroy.bind(view),
+        return {
+          dom: view.dom,
+          update: view.update.bind(view),
+          destroy: view.destroy.bind(view),
+        };
       };
-    };
+    }
+
+    return ReactNodeViewRenderer(ImageComponent);
   },
 
   addCommands() {
