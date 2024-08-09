@@ -8,7 +8,7 @@ import en from "../src/translations/en.json";
 import neetoTheme from "./neetoTheme";
 
 initializeApplication({
-  skip: { axios: true, globalProps: true, logger: true },
+  skip: { axios: true, globalProps: false, mixpanel: true, logger: true },
   translationResources: { en: { translation: en } },
 });
 

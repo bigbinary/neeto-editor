@@ -47,11 +47,12 @@ const useCustomExtensions = ({
   setIsEmbedModalOpen,
   openImageInNewTab,
   openLinkInNewTab,
+  enableReactNodeViewOptimization,
 }) => {
   let customExtensions = [
     CharacterCount,
     Code,
-    CodeBlock,
+    CodeBlock.configure({ enableReactNodeViewOptimization }),
     CustomCommands,
     Document,
     EmojiSuggestion,
@@ -62,7 +63,10 @@ const useCustomExtensions = ({
     Focus.configure({ mode: "shallowest" }),
     Highlight,
     VideoExtension,
-    ImageExtension.configure({ openImageInNewTab }),
+    ImageExtension.configure({
+      openImageInNewTab,
+      enableReactNodeViewOptimization,
+    }),
     Link.configure({
       HTMLAttributes: { target: openLinkInNewTab ? "_blank" : null },
     }),

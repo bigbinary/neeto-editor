@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 import classNames from "classnames";
+import { URL_REGEXP } from "common/constants";
 import { Button, Input } from "neetoui";
 import { useTranslation } from "react-i18next";
-
-import { URL_REGEXP } from "common/constants";
 
 const URLForm = ({
   buttonLabel = "Submit",
@@ -31,9 +30,9 @@ const URLForm = ({
       })}
     >
       <Input
+        {...{ error, placeholder }}
         autoFocus
         data-cy="neeto-editor-media-upload-url-input"
-        {...{ error, placeholder }}
         name="url"
         value={urlString}
         onChange={({ target: { value } }) => setUrlString(value)}

@@ -11,10 +11,9 @@ const hideOnEsc = {
   defaultValue: true,
   fn({ hide, props: { hideOnEsc, onClose } }) {
     function onKeyDown(event) {
-      if (event.key.toLowerCase() === "escape" && hideOnEsc) {
-        onClose();
-        hide();
-      }
+      if (!(event.key.toLowerCase() === "escape" && hideOnEsc)) return;
+      onClose();
+      hide();
     }
 
     return {
@@ -42,6 +41,7 @@ const Dropdown = ({
 
   return (
     <Tippy
+      {...{ onClose }}
       hideOnEsc
       interactive
       animation={false}
@@ -63,7 +63,6 @@ const Dropdown = ({
         mounted && <div className="ne-headless-dropdown__popup">{children}</div>
       }
       onClickOutside={onClose}
-      {...{ onClose }}
       onHidden={() => setMounted(false)}
       onMount={() => setMounted(true)}
       {...otherProps}

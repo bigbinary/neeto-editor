@@ -8,4 +8,4 @@ export default CodeBlockLowlight.extend({
   addNodeView() {
     return ReactNodeViewRenderer(CodeBlockComponent);
   },
-}).configure({ lowlight });
+}).configure({ lowlight, defaultLanguage: "plaintext" });

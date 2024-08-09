@@ -96,10 +96,10 @@ const UnsplashImagePicker = ({ onSubmit, unsplashApiKey }) => {
       {!error && (
         <div className="neeto-editor-unsplash-container">
           <MasonryInfiniteScroller
+            {...{ hasMore, loadMore }}
             pack
             position
             className="neeto-editor-unsplash-gallery"
-            {...{ hasMore, loadMore }}
             loader={Loader}
             ref={masonryRef}
             style={{ width: "100%" }}

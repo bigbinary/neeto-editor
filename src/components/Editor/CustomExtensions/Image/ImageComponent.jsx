@@ -21,13 +21,12 @@ const ImageComponent = ({
 
   const [captionWidth, setCaptionWidth] = useState(figwidth || 0);
   const [previewUrl, setPreviewUrl] = useState(null);
-
   const figureRef = useRef(null);
 
   const { view } = editor;
   let height = figheight;
   let width = figwidth;
-  const caption = node?.content?.content[0]?.text || "";
+  const caption = node?.content?.content?.[0]?.text || "";
 
   const editorElement = figureRef.current?.closest(".neeto-editor");
   const maxImageWidth = editorElement?.offsetWidth - 50;
