@@ -12,6 +12,14 @@
 
     .neeto-editor-fixed-menu__wrapper {
       border-bottom: 0 !important;
+
+      button.neeto-editor-fixed-menu__item {
+        .neeto-ui-btn__icon {
+          path {
+            stroke-width: 1.8px;
+          }
+        }
+      }
     }
   }
 
@@ -36,7 +44,7 @@
       color: rgb(var(--neeto-ui-black));
 
       path {
-        stroke-width: 1.8px;
+        stroke-width: 1.5px;
       }
     }
 
@@ -303,7 +311,7 @@
     &__menu-item {
       display: flex;
       flex-direction: column;
-      gap: 4px
+      gap: 4px;
     }
     &__input-label {
       color: white;
