@@ -27,12 +27,9 @@ const Option = ({
   return (
     <Button
       {...{ disabled }}
+      className={classnames({ "ne-headless-btn--active": isActive })}
       data-cy={hyphenate(optionName)}
       icon={Icon}
-      className={classnames({
-        "ne-headless-btn--active": isActive,
-        "": !isActive,
-      })}
       tooltipProps={{
         content: tooltip,
         delay: [500],

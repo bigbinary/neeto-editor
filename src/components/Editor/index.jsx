@@ -250,12 +250,7 @@ const Editor = (
           )}
           {editor?.isActive("link") && <LinkPopOver {...{ editor }} />}
           <TableActionMenu {...{ editor }} appendTo={wrapperRef} />
-          {isCharacterCountActive && (
-            <CharacterCountWrapper
-              {...{ editor }}
-              isActive={isCharacterCountActive}
-            />
-          )}
+          {isCharacterCountActive && <CharacterCountWrapper {...{ editor }} />}
         </>
       </ErrorWrapper>
     </div>
