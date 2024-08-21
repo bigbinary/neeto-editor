@@ -86,11 +86,8 @@ Add the following line to the `<head></head>` tag of your HTML file.
 Add the following line to your .erb file. We have added extra CSS to fix a few issues that's found in the
 PDF generation plugins of Ruby on Rails.
 
-```html
-<link
-  href="https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor@1.41.1/dist/editor-output-pdf-email.css"
-  rel="stylesheet"
-/>
+```erb
+<%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/editor-output-pdf-email.css", media: "all" %>
 ```
 
 Use the above CDN link to include the styles in your project. Add the class
