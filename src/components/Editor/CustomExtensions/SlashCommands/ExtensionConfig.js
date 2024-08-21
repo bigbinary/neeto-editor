@@ -1,7 +1,7 @@
 import { Extension } from "@tiptap/core";
+import { PluginKey } from "@tiptap/pm/state";
 import { ReactRenderer } from "@tiptap/react";
 import Suggestion from "@tiptap/suggestion";
-import { PluginKey } from "prosemirror-state";
 import { isEmpty } from "ramda";
 import tippy from "tippy.js";
 

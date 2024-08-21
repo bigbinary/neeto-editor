@@ -1,7 +1,7 @@
 import { mergeAttributes } from "@tiptap/core";
 import Mention from "@tiptap/extension-mention";
+import { PluginKey } from "@tiptap/pm/state";
 import { ReactRenderer } from "@tiptap/react";
-import { PluginKey } from "prosemirror-state";
 import tippy from "tippy.js";
 
 import { MentionList } from "../Mention/MentionList";

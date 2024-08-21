@@ -1,3 +1,4 @@
+import { CellSelection } from "@tiptap/pm/tables";
 import { t } from "i18next";
 import { isNotPresent } from "neetocist";
 import {
@@ -9,7 +10,6 @@ import {
   MergeSplit,
   ToggleHeaderRow,
 } from "neetoicons";
-import { CellSelection } from "prosemirror-tables";
 
 const shouldShowMergeCellToggler = selection => {
   if (isNotPresent(selection)) return false;
