@@ -9,15 +9,8 @@
 /coverage
 
 # production
-/build
-/dist/editor-stats.html
-/dist/*.js
-/dist/cjs/*.js
-/dist/*.map
-/dist/cjs/*.map
-/dist/editor-output.js
-/dist/editor-output.js.map
-/dist/codeBlockHighlight.js.map
+/storybook-static
+/dist
 
 # misc
 .DS_Store
@@ -29,6 +22,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-/editor-content.js
-storybook-static
