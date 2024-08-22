@@ -77,13 +77,7 @@ const config = args => {
   return [
     {
       input,
-      external: [
-        ...peerDependencies,
-        '@tiptap/pm/model',
-        '@tiptap/pm/state',
-        '@tiptap/pm/view',
-        '@tiptap/pm/tables'
-      ],
+      external: peerDependencies,
       output,
       plugins: [
         cleaner({ targets: ["./dist/"] }),
