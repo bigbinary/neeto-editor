@@ -1,5 +1,7 @@
 import CharacterCount from "@tiptap/extension-character-count";
 import Code from "@tiptap/extension-code";
+import Collaboration from "@tiptap/extension-collaboration";
+import CollaborationCursor from "@tiptap/extension-collaboration-cursor";
 import Color from "@tiptap/extension-color";
 import Document from "@tiptap/extension-document";
 import Focus from "@tiptap/extension-focus";
@@ -48,6 +50,7 @@ const useCustomExtensions = ({
   openImageInNewTab,
   openLinkInNewTab,
   enableReactNodeViewOptimization,
+  collaborationProvider,
 }) => {
   let customExtensions = [
     CharacterCount,
@@ -125,6 +128,18 @@ const useCustomExtensions = ({
 
   if (!isEmpty(variables)) {
     customExtensions.push(Variable);
+  }
+
+  if (collaborationProvider) {
+    customExtensions.push(
+      Collaboration.configure({ document: collaborationProvider.document })
+    );
+
+    customExtensions.push(
+      CollaborationCursor.configure({
+        provider: collaborationProvider,
+      })
+    );
   }
 
   customExtensions = customExtensions.concat(extensions);

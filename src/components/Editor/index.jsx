@@ -66,6 +66,7 @@ const Editor = (
     children,
     openImageInNewTab = true,
     openLinkInNewTab = true,
+    collaborationProvider = null,
     enableReactNodeViewOptimization = false,
     ...otherProps
   },
@@ -119,6 +120,7 @@ const Editor = (
     openImageInNewTab,
     openLinkInNewTab,
     enableReactNodeViewOptimization,
+    collaborationProvider,
   });
   useEditorWarnings({ initialValue });
 
