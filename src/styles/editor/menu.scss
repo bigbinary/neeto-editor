@@ -1,5 +1,5 @@
 .neeto-editor-fixed-menu {
-  border: thin solid rgb(var(--neeto-ui-gray-300));
+  border: thin solid rgb(var(--neeto-ui-gray-400));
   border-radius: var(--neeto-ui-rounded) var(--neeto-ui-rounded) 0px 0px;
   border-bottom: none;
   background-color: rgb(var(--neeto-ui-white));
@@ -8,7 +8,7 @@
 
   &--independant {
     border-radius: unset;
-    border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
+    border-bottom: thin solid rgb(var(--neeto-ui-gray-400));
 
     .neeto-editor-fixed-menu__wrapper {
       border-bottom: 0 !important;
@@ -68,7 +68,7 @@
     flex-grow: 1;
     width: 100%;
     padding: 0 2px;
-    border-bottom: thin solid rgb(var(--neeto-ui-gray-300));
+    border-bottom: thin solid rgb(var(--neeto-ui-gray-400));
 
     &__button-group {
       display: flex;
@@ -313,6 +313,7 @@
       flex-direction: column;
       gap: 4px;
     }
+
     &__input-label {
       color: white;
     }

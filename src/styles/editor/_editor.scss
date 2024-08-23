@@ -36,7 +36,7 @@
   }
 
   &.fixed-menu-active {
-    border: thin solid rgb(var(--neeto-ui-gray-300));
+    border: thin solid rgb(var(--neeto-ui-gray-400));
     border-top: none;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -109,6 +109,7 @@
   &__wrapper {
     padding: 4px 0px;
   }
+
   &__item {
     padding: 8px 12px;
   }
