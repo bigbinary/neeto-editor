@@ -208,6 +208,11 @@ export const EDITOR_PROPS = [
     "Improvises the editor performance by removing the images and code block components from the UI if they are out of the view port.",
     "true",
   ],
+  [
+    "collaborationProvider",
+    "Provider to enable collaborative editing in the editor.",
+    "null",
+  ],
 ];
 
 export const UTILITIES_TABLE_COLUMNS = ["Name", "Arguments", "Description"];
