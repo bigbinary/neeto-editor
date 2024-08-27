@@ -76,9 +76,18 @@ Add the following line to the `<head></head>` tag of your HTML file.
 
 ```html
 <link
-  href="https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@main/dist/editor-content.min.css"
+  href="https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/editor-content.min.css"
   rel="stylesheet"
 />
+```
+
+#### **Use editor content in PDF or email generation logics**
+
+Add the following line to your .erb file. We have added extra CSS to fix a few issues that's found in the
+PDF generation plugins of Ruby on Rails.
+
+```erb
+<%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/editor-output-pdf-email.css", media: "all" %>
 ```
 
 Use the above CDN link to include the styles in your project. Add the class
@@ -97,6 +106,6 @@ file.
 <script
   defer
   type="text/javascript"
-  src="https://cdn.jsdelivr.net/gh/bigbinary/neeto-editor@main/dist/codeBlockHighlight.js"
+  src="https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/codeBlockHighlight.js"
 ></script>
 ```
