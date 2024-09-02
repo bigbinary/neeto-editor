@@ -81,6 +81,7 @@ const useCustomExtensions = ({
       blockquote: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
       orderedList: options.includes(EDITOR_OPTIONS.LIST_ORDERED),
       bulletList: options.includes(EDITOR_OPTIONS.LIST_BULLETS),
+      history: !collaborationProvider,
     }),
     TextStyle,
     Underline,
@@ -132,7 +133,9 @@ const useCustomExtensions = ({
 
   if (collaborationProvider) {
     customExtensions.push(
-      Collaboration.configure({ document: collaborationProvider.document })
+      Collaboration.configure({
+        document: collaborationProvider.document,
+      })
     );
 
     customExtensions.push(
