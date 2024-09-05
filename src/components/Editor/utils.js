@@ -1,6 +1,6 @@
+import { Slice, Fragment, Node } from "@tiptap/pm/model";
+import { Selection } from "@tiptap/pm/state";
 import { isNotEmpty } from "neetocist";
-import { Slice, Fragment, Node } from "prosemirror-model";
-import { Selection } from "prosemirror-state";
 
 import { URL_REGEXP } from "src/common/constants";
 
@@ -47,13 +47,10 @@ export const setInitialPosition = editor => {
   view.dispatch(transaction);
 };
 
-export const isEditorOverlaysActive = () => {
-  const active = document.querySelector(
+export const isEditorOverlaysActive = () =>
+  document.querySelector(
     ".ne-media-uploader,.ne-embed-modal,.tippy-content,.ne-link-popover"
   );
-
-  return active;
-};
 
 export const validateAndFormatUrl = url => {
   if (!URL_REGEXP.test(url)) {

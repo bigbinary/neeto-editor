@@ -1,12 +1,12 @@
 import { forwardRef, useImperativeHandle, useState, useRef, memo } from "react";
 
+import { EditorView } from "@tiptap/pm/view";
 import { useEditor, EditorContent, useEditorState } from "@tiptap/react";
 import classnames from "classnames";
 import { EDITOR_OPTIONS } from "common/constants";
 import { noop, slugify } from "neetocist";
 import { useFuncDebounce } from "neetocommons/react-utils";
 import { Label } from "neetoui";
-import { EditorView } from "prosemirror-view";
 
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import useEditorWarnings from "hooks/useEditorWarnings";
@@ -66,6 +66,7 @@ const Editor = (
     children,
     openImageInNewTab = true,
     openLinkInNewTab = true,
+    collaborationProvider = null,
     enableReactNodeViewOptimization = false,
     ...otherProps
   },
@@ -119,6 +120,7 @@ const Editor = (
     openImageInNewTab,
     openLinkInNewTab,
     enableReactNodeViewOptimization,
+    collaborationProvider,
   });
   useEditorWarnings({ initialValue });
 

@@ -1,6 +1,6 @@
 import Document from "@tiptap/extension-document";
-import { Plugin, PluginKey } from "prosemirror-state";
-import { Decoration, DecorationSet } from "prosemirror-view";
+import { Plugin, PluginKey } from "@tiptap/pm/state";
+import { Decoration, DecorationSet } from "@tiptap/pm/view";
 
 export default Document.extend({
   name: "selectionDecorator",

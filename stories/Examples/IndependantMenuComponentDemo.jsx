@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 
-import { Editor, Menu } from "../../src";
+import { Editor, Menu } from "src";
 
 const IndependantMenuComponent = () => {
   const [editor, setEditor] = useState(null);
@@ -10,7 +10,7 @@ const IndependantMenuComponent = () => {
 
   return (
     <div className="space-y-4">
-      <Menu editor={editor} />
+      <Menu {...{ editor }} />
       <h2>Other components</h2>
       <Editor
         autoFocus

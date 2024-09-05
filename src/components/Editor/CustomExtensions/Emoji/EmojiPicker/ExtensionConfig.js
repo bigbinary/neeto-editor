@@ -1,7 +1,7 @@
 import { Node } from "@tiptap/core";
+import { PluginKey } from "@tiptap/pm/state";
 import { ReactRenderer } from "@tiptap/react";
 import Suggestion from "@tiptap/suggestion";
-import { PluginKey } from "prosemirror-state";
 import tippy from "tippy.js";
 
 import EmojiPickerMenu from "./EmojiPickerMenu";

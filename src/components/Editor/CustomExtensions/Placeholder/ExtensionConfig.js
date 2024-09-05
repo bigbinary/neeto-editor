@@ -1,7 +1,7 @@
 import { Extension } from "@tiptap/core";
+import { Plugin } from "@tiptap/pm/state";
+import { Decoration, DecorationSet } from "@tiptap/pm/view";
 import { t } from "i18next";
-import { Plugin } from "prosemirror-state";
-import { Decoration, DecorationSet } from "prosemirror-view";
 
 const Placeholder = Extension.create({
   name: "placeholder",

@@ -1,7 +1,6 @@
 import { Node, mergeAttributes, PasteRule } from "@tiptap/core";
+import { TextSelection } from "@tiptap/pm/state";
 import { ReactNodeViewRenderer } from "@tiptap/react";
-import { TextSelection } from "prosemirror-state";
-
 import { COMBINED_REGEX } from "common/constants";
 
 import EmbedComponent from "./EmbedComponent";
