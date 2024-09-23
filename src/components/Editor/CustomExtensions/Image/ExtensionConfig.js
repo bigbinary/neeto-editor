@@ -86,6 +86,7 @@ export default Node.create({
 
   renderHTML({ node, HTMLAttributes }) {
     const { align, src, figheight, figwidth } = node.attrs;
+
     const openImageInNewTab = this.options.openImageInNewTab;
 
     const wrapperDivAttrs = {
@@ -196,18 +197,45 @@ export default Node.create({
 
               event.preventDefault();
 
+              let currentPos = pos;
+
               images.forEach(async image => {
                 try {
+                  const id = Math.random().toString(36).substring(7);
+                  const imageNode = schema.nodes.image.create({
+                    id,
+                    src: "",
+                    alt: t("neetoEditor.attachments.uploading"),
+                  });
+
+                  const tr = view.state.tr.insert(currentPos, imageNode);
+                  view.dispatch(tr);
+                  currentPos += 1;
+
                   const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
                   if (url) {
-                    const id = Math.random().toString(36).substring(7);
-                    const node = schema.nodes.image.create({ id, src: url });
-                    const transaction = view.state.tr.insert(pos, node);
-                    view.dispatch(transaction);
+                    const { tr } = view.state;
+                    const node = tr.doc.nodeAt(currentPos);
+                    if (node && node.type.name === "image") {
+                      tr.setNodeMarkup(currentPos, null, {
+                        ...node.attrs,
+                        alt: null,
+                        src: url,
+                      });
+                      view.dispatch(tr);
+                    }
                   }
                 } catch (error) {
                   // eslint-disable-next-line no-console
                   console.error("Failed to insert the image", error);
+                  const { tr } = view.state;
+                  const node = tr.doc.nodeAt(currentPos);
+                  if (node && node.type.name === "image") {
+                    tr.delete(currentPos, currentPos + node.nodeSize);
+                    view.dispatch(tr);
+                  }
+
+                  Toastr.error(t("neetoEditor.error.imageUploadFailed"));
                 }
               });
             },
