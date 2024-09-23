@@ -25,7 +25,8 @@
       "maxNumberOfFiles": "You can only attach {{entity}} files",
       "nameEmpty": "Filename cannot be empty",
       "noPreview": "There is no preview available, click to <span>download</span>.",
-      "oneAttachmentAllowed": "Only one attachment is allowed"
+      "oneAttachmentAllowed": "Only one attachment is allowed",
+      "uploading": "Uploading"
     },
     "error": {
       "invalidUrl": "Please enter a valid URL",
@@ -38,7 +39,8 @@
       "textRequired": "Text is required",
       "uploadFileFailed": "Failed to upload an attachment",
       "fileNotAllowed": "The selected file type is not allowed",
-      "noResults": "No results"
+      "noResults": "No results",
+      "imageUploadFailed": "Image upload failed, please try again!"
     },
     "menu": {
       "attachments": "Attachments",
