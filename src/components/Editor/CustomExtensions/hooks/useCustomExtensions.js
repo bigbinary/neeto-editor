@@ -134,7 +134,7 @@ const useCustomExtensions = ({
   if (collaborationProvider) {
     customExtensions.push(
       Collaboration.configure({
-        document: collaborationProvider.document,
+        document: collaborationProvider.document ?? collaborationProvider.doc,
       })
     );
 
