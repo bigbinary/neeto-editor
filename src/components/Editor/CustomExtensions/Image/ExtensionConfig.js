@@ -197,7 +197,7 @@ export default Node.create({
 
               event.preventDefault();
 
-              let currentPos = pos;
+              const currentPos = pos;
 
               images.forEach(async image => {
                 let emptyImageNode;
@@ -213,7 +213,6 @@ export default Node.create({
                     .insert(currentPos, emptyImageNode)
                     .setMeta("addToHistory", false);
                   view.dispatch(tr);
-                  currentPos += 1;
 
                   const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
                   if (url) {
@@ -227,7 +226,7 @@ export default Node.create({
                       src: url,
                       alt: "",
                     });
-                    const tr = view.state.tr.insert(currentPos, imageNode);
+                    const tr = view.state.tr.insert(currentPos + 1, imageNode);
                     view.dispatch(tr);
                   }
                 } catch (error) {
