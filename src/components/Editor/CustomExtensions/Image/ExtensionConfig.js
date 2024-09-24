@@ -200,40 +200,43 @@ export default Node.create({
               let currentPos = pos;
 
               images.forEach(async image => {
+                let emptyImageNode;
                 try {
                   const id = Math.random().toString(36).substring(7);
-                  const imageNode = schema.nodes.image.create({
+                  emptyImageNode = schema.nodes.image.create({
                     id,
                     src: "",
                     alt: t("neetoEditor.attachments.uploading"),
                   });
 
-                  const tr = view.state.tr.insert(currentPos, imageNode);
+                  const tr = view.state.tr.insert(currentPos, emptyImageNode);
                   view.dispatch(tr);
                   currentPos += 1;
 
                   const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
                   if (url) {
-                    const { tr } = view.state;
-                    const node = tr.doc.nodeAt(currentPos);
-                    if (node && node.type.name === "image") {
-                      tr.setNodeMarkup(currentPos, null, {
-                        ...node.attrs,
-                        alt: null,
-                        src: url,
-                      });
-                      view.dispatch(tr);
-                    }
+                    const removeEmptyNodeTransaction = view.state.tr.delete(
+                      currentPos,
+                      currentPos + emptyImageNode.nodeSize
+                    );
+                    view.dispatch(removeEmptyNodeTransaction);
+
+                    const imageNode = schema.nodes.image.create({
+                      id,
+                      src: url,
+                      alt: "",
+                    });
+                    const tr = view.state.tr.insert(currentPos, imageNode);
+                    view.dispatch(tr);
                   }
                 } catch (error) {
                   // eslint-disable-next-line no-console
                   console.error("Failed to insert the image", error);
-                  const { tr } = view.state;
-                  const node = tr.doc.nodeAt(currentPos);
-                  if (node && node.type.name === "image") {
-                    tr.delete(currentPos, currentPos + node.nodeSize);
-                    view.dispatch(tr);
-                  }
+                  const tr = view.state.tr.delete(
+                    currentPos,
+                    currentPos + emptyImageNode.nodeSize
+                  );
+                  view.dispatch(tr);
 
                   Toastr.error(t("neetoEditor.error.imageUploadFailed"));
                 }
