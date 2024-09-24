@@ -213,16 +213,17 @@ export default Node.create({
                     .insert(currentPos, emptyImageNode)
                     .setMeta("addToHistory", false);
                   view.dispatch(tr);
-                  currentPos += 1;
 
                   const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
                   if (url) {
                     const updateTr = view.state.tr.setNodeMarkup(
-                      currentPos,
+                      currentPos + 1,
                       null,
                       { id, src: url, alt: "" }
                     );
                     view.dispatch(updateTr);
+
+                    currentPos += emptyImageNode.nodeSize;
                   }
                 } catch (error) {
                   // eslint-disable-next-line no-console
