@@ -197,7 +197,7 @@ export default Node.create({
 
               event.preventDefault();
 
-              const currentPos = pos;
+              let currentPos = pos;
 
               images.forEach(async image => {
                 let emptyImageNode;
@@ -213,21 +213,16 @@ export default Node.create({
                     .insert(currentPos, emptyImageNode)
                     .setMeta("addToHistory", false);
                   view.dispatch(tr);
+                  currentPos += 1;
 
                   const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
                   if (url) {
-                    const removeEmptyNodeTransaction = view.state.tr
-                      .delete(currentPos, currentPos + emptyImageNode.nodeSize)
-                      .setMeta("addToHistory", false);
-                    view.dispatch(removeEmptyNodeTransaction);
-
-                    const imageNode = schema.nodes.image.create({
-                      id,
-                      src: url,
-                      alt: "",
-                    });
-                    const tr = view.state.tr.insert(currentPos + 1, imageNode);
-                    view.dispatch(tr);
+                    const updateTr = view.state.tr.setNodeMarkup(
+                      currentPos,
+                      null,
+                      { id, src: url, alt: "" }
+                    );
+                    view.dispatch(updateTr);
                   }
                 } catch (error) {
                   // eslint-disable-next-line no-console
