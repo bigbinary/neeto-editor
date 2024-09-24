@@ -209,16 +209,17 @@ export default Node.create({
                     alt: t("neetoEditor.attachments.uploading"),
                   });
 
-                  const tr = view.state.tr.insert(currentPos, emptyImageNode);
+                  const tr = view.state.tr
+                    .insert(currentPos, emptyImageNode)
+                    .setMeta("addToHistory", false);
                   view.dispatch(tr);
                   currentPos += 1;
 
                   const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
                   if (url) {
-                    const removeEmptyNodeTransaction = view.state.tr.delete(
-                      currentPos,
-                      currentPos + emptyImageNode.nodeSize
-                    );
+                    const removeEmptyNodeTransaction = view.state.tr
+                      .delete(currentPos, currentPos + emptyImageNode.nodeSize)
+                      .setMeta("addToHistory", false);
                     view.dispatch(removeEmptyNodeTransaction);
 
                     const imageNode = schema.nodes.image.create({
@@ -232,10 +233,9 @@ export default Node.create({
                 } catch (error) {
                   // eslint-disable-next-line no-console
                   console.error("Failed to insert the image", error);
-                  const tr = view.state.tr.delete(
-                    currentPos,
-                    currentPos + emptyImageNode.nodeSize
-                  );
+                  const tr = view.state.tr
+                    .delete(currentPos, currentPos + emptyImageNode.nodeSize)
+                    .setMeta("addToHistory", false);
                   view.dispatch(tr);
 
                   Toastr.error(t("neetoEditor.error.imageUploadFailed"));
