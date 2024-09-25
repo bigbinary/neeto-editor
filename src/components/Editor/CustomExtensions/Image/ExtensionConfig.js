@@ -103,23 +103,24 @@ export default Node.create({
 
     const captionAttrs = { style: `width:${figwidth}px;` };
 
+    let imageNode = [];
+    if (src) {
+      imageNode = [
+        "img",
+        mergeAttributes(HTMLAttributes, {
+          draggable: false,
+          contenteditable: false,
+        }),
+      ];
+    }
+
     return [
       "div",
       wrapperDivAttrs,
       [
         "figure",
         this.options.HTMLAttributes,
-        [
-          "a",
-          wrapperLinkAttrs,
-          [
-            "img",
-            mergeAttributes(HTMLAttributes, {
-              draggable: false,
-              contenteditable: false,
-            }),
-          ],
-        ],
+        ["a", wrapperLinkAttrs, imageNode],
         ["figcaption", captionAttrs, 0],
       ],
     ];
