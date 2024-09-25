@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
 import { Down } from "neetoicons";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
-import { Dropdown, Input } from "neetoui";
+import { Dropdown, Input, Button } from "neetoui";
+import { union } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
@@ -12,7 +13,7 @@ const { Menu, MenuItem } = Dropdown;
 
 const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   const [keyword, setKeyword] = useState("");
-
+  const [showHighlightButton, setShowHighlightButton] = useState(false);
   const ref = useRef();
 
   const { t } = useTranslation();
@@ -33,6 +34,12 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     }
   };
 
+  const handleSelectionChange = useCallback(() => {
+    const { from, to } = editor.state.selection;
+    const isCodeBlockSelected = editor.isActive("codeBlock");
+    setShowHighlightButton(isCodeBlockSelected && from !== to);
+  }, [editor]);
+
   useEffect(() => {
     editor.on("selectionUpdate", handleSelectionChange);
 
@@ -41,6 +48,33 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     };
   }, [editor, handleSelectionChange]);
 
+  const handleHighlight = () => {
+    const { from, to } = editor.state.selection;
+    const $from = editor.state.doc.resolve(from);
+
+    const codeBlock = $from.node($from.depth);
+    const codeBlockStart = $from.start($from.depth);
+
+    const textBeforeSelection = codeBlock.textBetween(0, from - codeBlockStart);
+    const startLine = textBeforeSelection.split("\n").length;
+    const selectedText = codeBlock.textBetween(
+      from - codeBlockStart,
+      to - codeBlockStart
+    );
+    const selectedLines = selectedText.split("\n");
+
+    const newHighlightedLines = selectedLines.map(
+      (_, index) => startLine + index
+    );
+    const currentHighlightedLines = codeBlock.attrs.highlightedLines || [];
+
+    const highlightedLines = union(
+      currentHighlightedLines,
+      newHighlightedLines
+    );
+
+    editor.commands.updateAttributes(codeBlock.type, { highlightedLines });
+  };
 
   return (
     <NodeViewWrapper data-cy="neeto-editor-code-block">
@@ -92,6 +126,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
                 label="Highlight"
                 size="small"
                 style="secondary"
+                onClick={handleHighlight}
               />
             )}
           </div>
