@@ -8,6 +8,7 @@ import { union } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
+import { codeBlockHighlightKey } from "./plugins";
 
 const { Menu, MenuItem } = Dropdown;
 
@@ -74,6 +75,8 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     );
 
     editor.commands.updateAttributes(codeBlock.type, { highlightedLines });
+    // Trigger the plugin to update decorations
+    editor.view.dispatch(editor.state.tr.setMeta(codeBlockHighlightKey, true));
   };
 
   return (
