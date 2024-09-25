@@ -9,6 +9,7 @@ import { isEmpty } from "ramda";
 import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import DirectUpload from "utils/DirectUpload";
 
+import { LARGE_IMAGE_ERROR } from "./constants";
 import ImageComponent from "./ImageComponent";
 
 const upload = async (file, url) => {
@@ -19,13 +20,7 @@ const upload = async (file, url) => {
     return response.data?.blob_url || response.blob_url;
   }
 
-  Toastr.error(
-    t("neetoEditor.error.imageSizeIsShouldBeLess", {
-      limit: globalProps.endUserUploadedFileSizeLimitInMb,
-    })
-  );
-
-  return "";
+  throw new Error(LARGE_IMAGE_ERROR);
 };
 
 export default Node.create({
@@ -233,7 +228,15 @@ export default Node.create({
                     .setMeta("addToHistory", false);
                   view.dispatch(tr);
 
-                  Toastr.error(t("neetoEditor.error.imageUploadFailed"));
+                  if (error.message === LARGE_IMAGE_ERROR) {
+                    Toastr.error(
+                      t("neetoEditor.error.imageSizeIsShouldBeLess", {
+                        limit: globalProps.endUserUploadedFileSizeLimitInMb,
+                      })
+                    );
+                  } else {
+                    Toastr.error(t("neetoEditor.error.imageUploadFailed"));
+                  }
                 }
               });
             },
