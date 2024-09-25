@@ -33,6 +33,15 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     }
   };
 
+  useEffect(() => {
+    editor.on("selectionUpdate", handleSelectionChange);
+
+    return () => {
+      editor.off("selectionUpdate", handleSelectionChange);
+    };
+  }, [editor, handleSelectionChange]);
+
+
   return (
     <NodeViewWrapper data-cy="neeto-editor-code-block">
       <div {...{ ref }}>
@@ -78,6 +87,13 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
               style="secondary"
               value={node?.content?.content[0]?.text}
             />
+            {showHighlightButton && (
+              <Button
+                label="Highlight"
+                size="small"
+                style="secondary"
+              />
+            )}
           </div>
           <NodeViewContent as="code" />
         </pre>
