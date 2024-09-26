@@ -352,6 +352,10 @@
 
   color: unset !important;
   font-weight: normal !important;
+
+  &:has(img:not([src])) {
+    display: none;
+  }
 }
 
 .neeto-editor-content {

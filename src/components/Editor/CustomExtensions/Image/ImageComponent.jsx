@@ -17,7 +17,7 @@ const ImageComponent = ({
   updateAttributes,
   deleteNode,
 }) => {
-  const { src, figheight, figwidth, align } = node.attrs;
+  const { src, figheight, figwidth, align, alt } = node.attrs;
 
   const [captionWidth, setCaptionWidth] = useState(figwidth || 0);
   const [previewUrl, setPreviewUrl] = useState(null);
@@ -56,7 +56,7 @@ const ImageComponent = ({
     editor.commands.focus();
   };
 
-  if (isNotPresent(src)) return null;
+  if (isNotPresent(src) && isNotPresent(alt)) return null;
 
   return (
     <NodeViewWrapper

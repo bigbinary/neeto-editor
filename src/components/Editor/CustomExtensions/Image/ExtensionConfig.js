@@ -9,6 +9,7 @@ import { isEmpty } from "ramda";
 import { DIRECT_UPLOAD_ENDPOINT } from "src/common/constants";
 import DirectUpload from "utils/DirectUpload";
 
+import { LARGE_IMAGE_ERROR } from "./constants";
 import ImageComponent from "./ImageComponent";
 
 const upload = async (file, url) => {
@@ -19,13 +20,7 @@ const upload = async (file, url) => {
     return response.data?.blob_url || response.blob_url;
   }
 
-  Toastr.error(
-    t("neetoEditor.error.imageSizeIsShouldBeLess", {
-      limit: globalProps.endUserUploadedFileSizeLimitInMb,
-    })
-  );
-
-  return "";
+  throw new Error(LARGE_IMAGE_ERROR);
 };
 
 export default Node.create({
@@ -86,6 +81,7 @@ export default Node.create({
 
   renderHTML({ node, HTMLAttributes }) {
     const { align, src, figheight, figwidth } = node.attrs;
+
     const openImageInNewTab = this.options.openImageInNewTab;
 
     const wrapperDivAttrs = {
@@ -107,23 +103,24 @@ export default Node.create({
 
     const captionAttrs = { style: `width:${figwidth}px;` };
 
+    let imageNode = [];
+    if (src) {
+      imageNode = [
+        "img",
+        mergeAttributes(HTMLAttributes, {
+          draggable: false,
+          contenteditable: false,
+        }),
+      ];
+    }
+
     return [
       "div",
       wrapperDivAttrs,
       [
         "figure",
         this.options.HTMLAttributes,
-        [
-          "a",
-          wrapperLinkAttrs,
-          [
-            "img",
-            mergeAttributes(HTMLAttributes, {
-              draggable: false,
-              contenteditable: false,
-            }),
-          ],
-        ],
+        ["a", wrapperLinkAttrs, imageNode],
         ["figcaption", captionAttrs, 0],
       ],
     ];
@@ -196,25 +193,51 @@ export default Node.create({
 
               event.preventDefault();
 
+              let currentPos = pos;
+
               images.forEach(async image => {
-                const id = Math.random().toString(36).substring(7);
-                const node = schema.nodes.image.create({ id });
-                const transaction = view.state.tr.insert(pos, node);
-                view.dispatch(transaction);
+                let emptyImageNode;
                 try {
+                  const id = Math.random().toString(36).substring(7);
+                  emptyImageNode = schema.nodes.image.create({
+                    id,
+                    src: "",
+                    alt: t("neetoEditor.attachments.uploading"),
+                  });
+
+                  const tr = view.state.tr
+                    .insert(currentPos, emptyImageNode)
+                    .setMeta("addToHistory", false);
+                  view.dispatch(tr);
+
                   const url = await upload(image, DIRECT_UPLOAD_ENDPOINT);
-                  url &&
-                    view.state.doc.descendants((node, pos) => {
-                      if (!(node.attrs.id === id)) return;
-                      const transaction = view.state.tr.setNodeMarkup(
-                        pos,
-                        null,
-                        { src: url }
-                      );
-                      view.dispatch(transaction);
-                    });
-                } catch {
-                  view.dispatch(view.state.tr.delete(pos, pos + 1));
+                  if (url) {
+                    const updateTr = view.state.tr.setNodeMarkup(
+                      currentPos + 1,
+                      null,
+                      { id, src: url, alt: "" }
+                    );
+                    view.dispatch(updateTr);
+
+                    currentPos += emptyImageNode.nodeSize;
+                  }
+                } catch (error) {
+                  // eslint-disable-next-line no-console
+                  console.error("Failed to insert the image", error);
+                  const tr = view.state.tr
+                    .delete(currentPos, currentPos + emptyImageNode.nodeSize)
+                    .setMeta("addToHistory", false);
+                  view.dispatch(tr);
+
+                  if (error.message === LARGE_IMAGE_ERROR) {
+                    Toastr.error(
+                      t("neetoEditor.error.imageSizeIsShouldBeLess", {
+                        limit: globalProps.endUserUploadedFileSizeLimitInMb,
+                      })
+                    );
+                  } else {
+                    Toastr.error(t("neetoEditor.error.imageUploadFailed"));
+                  }
                 }
               });
             },
