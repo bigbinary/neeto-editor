@@ -49,7 +49,7 @@ export default Node.create({
       },
 
       align: {
-        default: "center",
+        default: "left",
         parseHTML: element => element.getAttribute("align"),
       },
     };
