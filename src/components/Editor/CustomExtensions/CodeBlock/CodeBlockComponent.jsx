@@ -1,10 +1,10 @@
 import React, { useRef, useState, useCallback, useEffect } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
-import { Down } from "neetoicons";
+import { Down, Highlight } from "neetoicons";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
 import { Dropdown, Input, Button } from "neetoui";
-import { union } from "ramda";
+import { difference, intersection, union } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
@@ -68,15 +68,25 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     );
     const selectedLines = selectedText.split("\n");
 
-    const newHighlightedLines = selectedLines.map(
-      (_, index) => startLine + index
-    );
+    const newSelectedLines = selectedLines.map((_, index) => startLine + index);
     const currentHighlightedLines = codeBlock.attrs.highlightedLines || [];
 
-    const highlightedLines = union(
+    // Check the overlap between new selection and current highlights
+    const overlapLines = intersection(
       currentHighlightedLines,
-      newHighlightedLines
+      newSelectedLines
     );
+
+    let highlightedLines;
+
+    if (overlapLines.length === newSelectedLines.length) {
+      // If the new selection is entirely within currently highlighted lines,
+      // remove the highlight from the selected lines
+      highlightedLines = difference(currentHighlightedLines, newSelectedLines);
+    } else {
+      // Add unhighlighted lines in the new selection to the highlight list
+      highlightedLines = union(currentHighlightedLines, newSelectedLines);
+    }
 
     editor.commands.updateAttributes(codeBlock.type, { highlightedLines });
     // Trigger the plugin to update decorations
@@ -130,7 +140,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
             />
             {showHighlightButton && (
               <Button
-                label="Highlight"
+                icon={Highlight}
                 size="small"
                 style="secondary"
                 onClick={handleHighlight}
