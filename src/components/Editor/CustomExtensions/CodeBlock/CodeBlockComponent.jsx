@@ -143,6 +143,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
                 icon={Highlight}
                 size="small"
                 style="secondary"
+                tooltipProps={{ content: t("neetoEditor.menu.highlight") }}
                 onClick={handleHighlight}
               />
             )}
