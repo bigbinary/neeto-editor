@@ -49,6 +49,10 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     };
   }, [editor, handleSelectionChange]);
 
+  useEffect(() => {
+    editor.view.dispatch(editor.state.tr.setMeta(codeBlockHighlightKey, true));
+  }, []);
+
   const handleHighlight = () => {
     const { from, to } = editor.state.selection;
     const $from = editor.state.doc.resolve(from);
