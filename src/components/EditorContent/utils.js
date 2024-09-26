@@ -27,11 +27,53 @@ const buildReactElementFromAST = element => {
   return element.value;
 };
 
+function highlightLinesCode(code, options) {
+  function highlightLinesCodeWithoutNumbers() {
+    code.innerHTML = code.innerHTML.replace(
+      /([ \S]*\n|[ \S]*$)/gm,
+      match => `<div class="highlight-line">${match}</div>`
+    );
+
+    if (options === undefined) {
+      return;
+    }
+
+    const paddingLeft = parseInt(window.getComputedStyle(code).paddingLeft);
+    const paddingRight = parseInt(window.getComputedStyle(code).paddingRight);
+
+    const lines = code.getElementsByClassName("highlight-line");
+    const scroll_width = code.scrollWidth;
+    // eslint-disable-next-line @bigbinary/neeto/use-array-methods
+    for (const option of options) {
+      for (let j = option.start; j <= option.end; ++j) {
+        lines[j].style.backgroundColor = option.color;
+        lines[j].style.minWidth = `${
+          scroll_width - paddingLeft - paddingRight
+        }px`;
+      }
+    }
+  }
+
+  highlightLinesCodeWithoutNumbers();
+}
+
+export const highlightLinesElement = (code, options, has_numbers) => {
+  // eslint-disable-next-line @bigbinary/neeto/use-array-methods
+  for (const option of options) {
+    --option.start;
+    --option.end;
+  }
+  highlightLinesCode(code, options, has_numbers);
+};
+
 export const highlightCode = content => {
   lowlight.highlightAuto("");
   let highlightedAST = {};
 
   return content.replace(CODE_BLOCK_REGEX, (_, language, code) => {
+    const regex = /data-highlighted-lines="([^"]*)"/;
+    const match = content.match(regex);
+
     if (language && LANGUAGE_LIST.includes(language)) {
       highlightedAST = lowlight.highlight(language, transformCode(code));
     } else {
@@ -45,7 +87,30 @@ export const highlightCode = content => {
       buildReactElementFromAST
     );
 
-    return `<pre><code>${renderToString(highlightedNode)}</code></pre>`;
+    return `<pre data-highlighted-lines=${
+      match?.[1] ?? ""
+    }><code>${renderToString(highlightedNode)}</code></pre>`;
+  });
+};
+
+export const applyLineHighlighting = editorContent => {
+  const codeTags = editorContent?.querySelectorAll("pre code");
+
+  codeTags.forEach(codeTag => {
+    const highlightedLines = codeTag
+      .closest("pre")
+      .getAttribute("data-highlighted-lines");
+    if (highlightedLines) {
+      const linesToHighlight = highlightedLines.split(",")?.map(Number);
+
+      const highlightLinesOptions = linesToHighlight.map(line => ({
+        start: line,
+        end: line,
+        color: "rgba(255, 255, 0, 0.2)",
+      }));
+
+      highlightLinesElement(codeTag, highlightLinesOptions);
+    }
   });
 };
 

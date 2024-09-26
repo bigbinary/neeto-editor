@@ -10,7 +10,11 @@ import "src/styles/editor/editor-content.scss";
 
 import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
 import ImagePreview from "./ImagePreview";
-import { highlightCode, substituteVariables } from "./utils";
+import {
+  highlightCode,
+  substituteVariables,
+  applyLineHighlighting,
+} from "./utils";
 
 const EditorContent = ({
   content = "",
@@ -65,6 +69,7 @@ const EditorContent = ({
   useEffect(() => {
     injectCopyButtonToCodeBlocks();
     bindImageClickListener();
+    applyLineHighlighting(editorContentRef.current);
   }, [content]);
 
   return (

@@ -8,7 +8,7 @@ export const SANITIZE_OPTIONS = {
 };
 
 export const CODE_BLOCK_REGEX =
-  /<pre><code(?:\s+class="language-([^"]*)")?>([\S\s]*?)<\/code><\/pre>/gim;
+  /<pre(?:\s+[^>]+)?><code(?:\s+class="language-([^"]*)")?>([\S\s]*?)<\/code><\/pre>/gim;
 
 export const VARIABLE_SPAN_REGEX =
   /<span data-variable="" [^>]*data-label="([^"]+)">{{([^}]+)}}<\/span>/g;
