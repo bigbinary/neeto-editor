@@ -82,6 +82,8 @@ export default Node.create({
   renderHTML({ node, HTMLAttributes }) {
     const { align, src, figheight, figwidth } = node.attrs;
 
+    if (!src) return ["span"];
+
     const openImageInNewTab = this.options.openImageInNewTab;
 
     const wrapperDivAttrs = {
@@ -103,24 +105,23 @@ export default Node.create({
 
     const captionAttrs = { style: `width:${figwidth}px;` };
 
-    let imageNode = [];
-    if (src) {
-      imageNode = [
-        "img",
-        mergeAttributes(HTMLAttributes, {
-          draggable: false,
-          contenteditable: false,
-        }),
-      ];
-    }
-
     return [
       "div",
       wrapperDivAttrs,
       [
         "figure",
         this.options.HTMLAttributes,
-        ["a", wrapperLinkAttrs, imageNode],
+        [
+          "a",
+          wrapperLinkAttrs,
+          [
+            "img",
+            mergeAttributes(HTMLAttributes, {
+              draggable: false,
+              contenteditable: false,
+            }),
+          ],
+        ],
         ["figcaption", captionAttrs, 0],
       ],
     ];
