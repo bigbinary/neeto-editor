@@ -62,11 +62,17 @@ export class MentionList extends React.Component {
     this.selectItem(selectedIndex);
   };
 
+  tabHandler = () => {
+    const { selectedIndex } = this.state;
+    this.selectItem(selectedIndex);
+  };
+
   onKeyDown = ({ event }) => {
     const keyDownHandlers = {
       ArrowUp: this.upHandler,
       ArrowDown: this.downHandler,
       Enter: this.enterHandler,
+      Tab: this.tabHandler,
     };
 
     if (Object.prototype.hasOwnProperty.call(keyDownHandlers, event.key)) {
