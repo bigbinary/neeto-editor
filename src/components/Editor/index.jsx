@@ -37,6 +37,7 @@ const Editor = (
     autoFocus = false,
     className,
     contentClassName,
+    contentWrapperClassName,
     errorWrapperClassName,
     contentAttributes = {},
     menuClassName,
@@ -223,7 +224,10 @@ const Editor = (
             isIndependant={isMenuIndependent}
           />
           {children}
-          <EditorContent {...{ editor, ...otherProps }} />
+          <EditorContent
+            className={contentWrapperClassName}
+            {...{ editor, ...otherProps }}
+          />
           {isMediaUploaderActive && (
             <MediaUploader
               {...{ editor, mediaUploader }}

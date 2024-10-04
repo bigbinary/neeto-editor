@@ -87,6 +87,11 @@ export const EDITOR_PROPS = [
     `"neeto-editor-content"`,
   ],
   [
+    "contentWrapperClassName",
+    "Accepts a string value. Can be used to customise the editor container styles.",
+    `"neeto-editor-content-container"`,
+  ],
+  [
     "contentAttributes",
     "Accepts an object. Can be used to add additional attributes to the editor content.",
     `{ "data-gramm": false }`,

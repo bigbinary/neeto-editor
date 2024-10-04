@@ -107,6 +107,7 @@ interface EditorProps {
   addonCommands?: Command[];
   className?: string;
   contentClassName?: string;
+  contentWrapperClassName?: string;
   contentAttributes?: { [key: string]: string };
   onChange?: (htmlContent: string) => void;
   onFocus?: EditorFocus;
