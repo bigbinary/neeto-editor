@@ -1,5 +1,8 @@
 import { Node, mergeAttributes } from "@tiptap/core";
 import { PluginKey } from "@tiptap/pm/state";
+import { ReactNodeViewRenderer } from "@tiptap/react";
+
+import VariableComponent from "./VariableComponent";
 
 const VariablePluginKey = new PluginKey("variables");
 const Variable = Node.create({
@@ -10,7 +13,7 @@ const Variable = Node.create({
       charOpen: "{{",
       charClose: "}}",
       renderLabel({ options, node }) {
-        return `${options.charOpen}${node.attrs.label || node.attrs.id}${
+        return `${options.charOpen}${node.attrs.id || node.attrs.label}${
           options.charClose
         }`;
       },
@@ -62,6 +65,10 @@ const Variable = Node.create({
 
   renderText({ node }) {
     return this.options.renderLabel({ options: this.options, node });
+  },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(VariableComponent);
   },
 
   addCommands() {
