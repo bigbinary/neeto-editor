@@ -3,43 +3,40 @@ import BulletList from "@tiptap/extension-bullet-list";
 export default BulletList.extend({
   addKeyboardShortcuts() {
     return {
-      // This will handle the backspace press in both bulletList and orderedList.
       Backspace: () =>
-        this.editor.commands.command(({ state, tr, dispatch }) => {
+        this.editor.commands.command(({ state, commands }) => {
           const { $from, empty } = state.selection;
-          const inList =
-            this.editor.isActive("bulletList") ||
-            this.editor.isActive("orderedList");
 
-          if (empty && inList && $from.parent.type.name === "paragraph") {
-            const isTrailingParagraph = $from.parent.content.size === 0;
+          if (empty) {
+            const isInParagraph = $from.parent.type.name === "paragraph";
+            const isEmptyParagraph = $from.parent.content.size === 0;
+            const isInListItem =
+              $from.node($from.depth - 1).type.name === "listItem";
 
-            const $list = $from.node($from.depth - 2);
-            const $listItem = $from.node($from.depth - 1);
+            if (isInParagraph && isEmptyParagraph) {
+              if (isInListItem) {
+                const $listItem = $from.node($from.depth - 1);
+                const currentIndex = $from.index($from.depth - 1);
 
-            const isInListItem = $listItem.type.name === "listItem";
-            const isLastParagraphInListItem =
-              $from.index($from.depth - 1) === $listItem.childCount - 1;
+                if (currentIndex === $listItem.childCount - 1) {
+                  commands.liftEmptyBlock();
 
-            // Check for list items above and below
-            const currentItemIndex = $from.index($from.depth - 2);
-            const hasListItemsAbove = currentItemIndex > 0;
-            const hasListItemsBelow = currentItemIndex < $list.childCount - 1;
+                  return true;
+                }
 
-            if (
-              isTrailingParagraph &&
-              isInListItem &&
-              isLastParagraphInListItem &&
-              !hasListItemsBelow &&
-              hasListItemsAbove
-            ) {
-              if (dispatch) {
-                const range = $from.blockRange($from);
-                if (range) {
-                  tr.lift(range, 0);
-                  dispatch(tr);
+                const nextNode = $listItem.child(currentIndex + 1);
+
+                if (
+                  nextNode.type.name === "bulletList" ||
+                  nextNode.type.name === "orderedList"
+                ) {
+                  commands.joinBackward();
+
+                  return true;
                 }
               }
+
+              commands.deleteCurrentNode();
 
               return true;
             }
