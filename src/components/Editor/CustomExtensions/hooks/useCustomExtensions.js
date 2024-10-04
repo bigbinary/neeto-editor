@@ -16,6 +16,7 @@ import { EDITOR_OPTIONS } from "common/constants";
 import { isEmpty } from "ramda";
 
 import HighlightInternal from "../BackgroundColor/ExtensionConfig";
+import BulletList from "../BulletList/ExtensionConfig";
 import CodeBlock from "../CodeBlock/ExtensionConfig";
 import CustomCommands from "../CustomCommands/ExtensionConfig";
 import Embeds from "../Embeds/ExtensionConfig";
@@ -78,9 +79,9 @@ const useCustomExtensions = ({
       document: false,
       codeBlock: false,
       code: false,
+      bulletList: false,
       blockquote: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
       orderedList: options.includes(EDITOR_OPTIONS.LIST_ORDERED),
-      bulletList: options.includes(EDITOR_OPTIONS.LIST_BULLETS),
       history: !collaborationProvider,
     }),
     TextStyle,
@@ -106,6 +107,10 @@ const useCustomExtensions = ({
 
   if (options.includes(EDITOR_OPTIONS.TEXT_COLOR)) {
     customExtensions.push(Color);
+  }
+
+  if (options.includes(EDITOR_OPTIONS.LIST_BULLETS)) {
+    customExtensions.push(BulletList);
   }
 
   if (isSlashCommandsActive) {
