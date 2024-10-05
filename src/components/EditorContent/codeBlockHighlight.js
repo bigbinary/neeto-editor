@@ -11,11 +11,13 @@ function applyLineHighlighting(codeElement) {
   const highlightedLines = preElement.getAttribute("data-highlighted-lines");
   if (highlightedLines) {
     const linesToHighlight = highlightedLines.split(",").map(Number);
-    const highlightLinesOptions = linesToHighlight.map(line => ({
-      start: line,
-      end: line,
-      color: "rgba(255, 255, 0, 0.2)",
-    }));
+    const highlightLinesOptions = linesToHighlight
+      .filter(line => line > 0)
+      .map(line => ({
+        start: line,
+        end: line,
+        color: "rgba(255, 255, 0, 0.2)",
+      }));
     hljs.highlightLinesElement(codeElement, highlightLinesOptions);
   }
 }
