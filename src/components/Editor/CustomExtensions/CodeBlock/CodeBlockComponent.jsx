@@ -1,18 +1,20 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 
 import { NodeViewWrapper, NodeViewContent } from "@tiptap/react";
-import { Down } from "neetoicons";
+import { Down, Highlight } from "neetoicons";
 import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
-import { Dropdown, Input } from "neetoui";
+import { Dropdown, Input, Button } from "neetoui";
+import { difference, intersection, union } from "ramda";
 import { useTranslation } from "react-i18next";
 
 import { SORTED_LANGUAGE_LIST } from "./constants";
+import { codeBlockHighlightKey } from "./plugins";
 
 const { Menu, MenuItem } = Dropdown;
 
 const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   const [keyword, setKeyword] = useState("");
-
+  const [showHighlightButton, setShowHighlightButton] = useState(false);
   const ref = useRef();
 
   const { t } = useTranslation();
@@ -33,8 +35,69 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
     }
   };
 
+  const handleSelectionChange = useCallback(() => {
+    const { from, to } = editor.state.selection;
+    const isCodeBlockSelected = editor.isActive("codeBlock");
+    setShowHighlightButton(isCodeBlockSelected && from !== to);
+  }, [editor]);
+
+  useEffect(() => {
+    editor.on("selectionUpdate", handleSelectionChange);
+
+    return () => {
+      editor.off("selectionUpdate", handleSelectionChange);
+    };
+  }, [editor, handleSelectionChange]);
+
+  useEffect(() => {
+    editor.view.dispatch(editor.state.tr.setMeta(codeBlockHighlightKey, true));
+  }, []);
+
+  const handleHighlight = () => {
+    const { from, to } = editor.state.selection;
+    const $from = editor.state.doc.resolve(from);
+
+    const codeBlock = $from.node($from.depth);
+    const codeBlockStart = $from.start($from.depth);
+
+    const textBeforeSelection = codeBlock.textBetween(0, from - codeBlockStart);
+    const startLine = textBeforeSelection.split("\n").length;
+    const selectedText = codeBlock.textBetween(
+      from - codeBlockStart,
+      to - codeBlockStart
+    );
+    const selectedLines = selectedText.split("\n");
+
+    const newSelectedLines = selectedLines.map((_, index) => startLine + index);
+    const currentHighlightedLines = codeBlock.attrs.highlightedLines || [];
+
+    // Check the overlap between new selection and current highlights
+    const overlapLines = intersection(
+      currentHighlightedLines,
+      newSelectedLines
+    );
+
+    let highlightedLines;
+
+    if (overlapLines.length === newSelectedLines.length) {
+      // If the new selection is entirely within currently highlighted lines,
+      // remove the highlight from the selected lines
+      highlightedLines = difference(currentHighlightedLines, newSelectedLines);
+    } else {
+      // Add unhighlighted lines in the new selection to the highlight list
+      highlightedLines = union(currentHighlightedLines, newSelectedLines);
+    }
+
+    editor.commands.updateAttributes(codeBlock.type, { highlightedLines });
+    // Trigger the plugin to update decorations
+    editor.view.dispatch(editor.state.tr.setMeta(codeBlockHighlightKey, true));
+  };
+
   return (
-    <NodeViewWrapper data-cy="neeto-editor-code-block">
+    <NodeViewWrapper
+      className="ne-codeblock-nodeview-wrapper"
+      data-cy="neeto-editor-code-block"
+    >
       <div {...{ ref }}>
         <pre ref={handleContentMount}>
           <div
@@ -78,6 +141,15 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
               style="secondary"
               value={node?.content?.content[0]?.text}
             />
+            {showHighlightButton && (
+              <Button
+                icon={Highlight}
+                size="small"
+                style="secondary"
+                tooltipProps={{ content: t("neetoEditor.menu.highlight") }}
+                onClick={handleHighlight}
+              />
+            )}
           </div>
           <NodeViewContent as="code" />
         </pre>

@@ -1,0 +1,10 @@
+.ne-codeblock-nodeview-wrapper {
+  .highlighted-line {
+    background-color: rgba(255, 255, 0, 0.2);
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+}

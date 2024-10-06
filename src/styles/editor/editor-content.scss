@@ -152,6 +152,24 @@
         margin: 4px 4px;
       }
     }
+
+    .highlight-line {
+      position: relative;
+      &:before {
+        left: -12px;
+      }
+      &:after {
+        right: -12px;
+      }
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        width: 12px;
+        height: 25px;
+        background-color: inherit;
+      }
+    }
   }
 
   pre > code {
