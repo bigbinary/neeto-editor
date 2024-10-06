@@ -27,43 +27,39 @@ const buildReactElementFromAST = element => {
   return element.value;
 };
 
-function highlightLinesCode(code, options) {
-  function highlightLinesCodeWithoutNumbers() {
-    code.innerHTML = code.innerHTML.replace(
-      /([ \S]*\n|[ \S]*$)/gm,
-      match => `<div class="highlight-line">${match}</div>`
-    );
+const highlightLinesCode = (code, options) => {
+  code.innerHTML = code.innerHTML.replace(
+    /([ \S]*\n|[ \S]*$)/gm,
+    match => `<div class="highlight-line">${match}</div>`
+  );
 
-    if (options === undefined) {
-      return;
-    }
-
-    const paddingLeft = parseInt(window.getComputedStyle(code).paddingLeft);
-    const paddingRight = parseInt(window.getComputedStyle(code).paddingRight);
-
-    const lines = code.getElementsByClassName("highlight-line");
-    const scroll_width = code.scrollWidth;
-    // eslint-disable-next-line @bigbinary/neeto/use-array-methods
-    for (const option of options) {
-      for (let j = option.start; j <= option.end; ++j) {
-        lines[j].style.backgroundColor = option.color;
-        lines[j].style.minWidth = `${
-          scroll_width - paddingLeft - paddingRight
-        }px`;
-      }
-    }
+  if (options === undefined) {
+    return;
   }
 
-  highlightLinesCodeWithoutNumbers();
-}
+  const paddingLeft = parseInt(window.getComputedStyle(code).paddingLeft);
+  const paddingRight = parseInt(window.getComputedStyle(code).paddingRight);
 
-export const highlightLinesElement = (code, options, has_numbers) => {
+  const lines = code.getElementsByClassName("highlight-line");
+  const scroll_width = code.scrollWidth;
+  // eslint-disable-next-line @bigbinary/neeto/use-array-methods
+  for (const option of options) {
+    for (let j = option.start; j <= option.end; ++j) {
+      lines[j].style.backgroundColor = option.color;
+      lines[j].style.minWidth = `${
+        scroll_width - paddingLeft - paddingRight
+      }px`;
+    }
+  }
+};
+
+export const highlightLinesElement = (code, options) => {
   // eslint-disable-next-line @bigbinary/neeto/use-array-methods
   for (const option of options) {
     --option.start;
     --option.end;
   }
-  highlightLinesCode(code, options, has_numbers);
+  highlightLinesCode(code, options);
 };
 
 export const highlightCode = content => {
