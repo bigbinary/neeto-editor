@@ -168,7 +168,7 @@
     "react-router-dom": "5.3.4",
     "react-toastify": "8.2.0",
     "remark-gfm": "4.0.0",
-    "rollup": "2.79.1",
+    "rollup": "^4.24.0",
     "rollup-plugin-analyzer": "4.0.0",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-copy": "^3.5.0",
@@ -239,7 +239,7 @@
   },
   "scripts": {
     "build": "storybook build",
-    "bundle": "NODE_ENV=production rollup -c rollup.config.js",
+    "bundle": "NODE_ENV=production rollup --bundleConfigAsCjs -c rollup.config.js",
     "prepare": "husky install",
     "serve": "node .storybook/express",
     "storybook": "storybook dev -p 6006"
