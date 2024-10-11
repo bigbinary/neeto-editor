@@ -125,7 +125,7 @@ const Preview = ({
     >
       <Modal.Header className="ne-attachments-preview__header">
         <div className="ne-attachments-preview__header__fileinfo">
-          <Typography style="h3">{truncate(filename, 25)}</Typography>
+          <Typography style="h4">{truncate(filename, 25)}</Typography>
           <Typography style="body2">{convertToFileSize(size)}</Typography>
         </div>
         <Button
@@ -136,12 +136,18 @@ const Preview = ({
         />
       </Modal.Header>
       <Modal.Body className="ne-attachments-preview__body">
-        <Left
+        <Button
           className="ne-attachments-preview__body-left"
+          icon={Left}
+          size="large"
+          style="tertiary"
           onClick={handleLeftArrowClick}
         />
-        <Right
+        <Button
           className="ne-attachments-preview__body-right"
+          icon={Right}
+          size="large"
+          style="tertiary"
           onClick={handleRightArrowClick}
         />
         {setPreview()}
