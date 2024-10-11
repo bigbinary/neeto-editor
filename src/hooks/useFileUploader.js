@@ -1,4 +1,7 @@
-// eslint-disable-next-line @bigbinary/neeto/no-axios-import-outside-apis, @bigbinary/neeto/use-snake-case-for-api-connector-filename
+// eslint-disable-next-line @bigbinary/neeto/use-snake-case-for-api-connector-filename
+import { useRef } from "react";
+
+// eslint-disable-next-line @bigbinary/neeto/no-axios-import-outside-apis,
 import axios from "axios";
 import { noop, hyphenate, isNot, isNotPresent } from "neetocist";
 import { Toastr } from "neetoui";
@@ -9,6 +12,7 @@ import useFileUploadStore from "src/stores/useFileUploadStore";
 import DirectUpload from "utils/DirectUpload";
 
 import { FILE_UPLOAD_STATUS } from "./constants/fileUploader";
+import { getRandomString } from "./utils";
 import { selectFiles } from "./utils/fileUploader";
 
 let uploadControllers = {};
@@ -18,26 +22,27 @@ const useFileUploader = ({
   attachments: previousAttachments = [],
   setIsUploadingOnHost = noop,
 }) => {
+  const contextIdRef = useRef(getRandomString());
   const { t } = useTranslation();
 
+  const { current: contextId } = contextIdRef;
   const {
     addFiles: addFilesToStore,
-    isUploading,
     getNextQueuedFile,
     updateFileStatus,
     removeFilesFromQueue,
     setIsUploading,
     updateFileUploadProgress,
-    files,
     removeFile,
   } = useFileUploadStore.pick();
+  const { files = [], isUploading } = useFileUploadStore.pick([contextId]);
 
   const handleUploadProgress = (xhr, file) => {
     if (!xhr.event.lengthComputable) return;
     const bytesUploaded = xhr.loaded;
     const bytesTotal = xhr.total;
     const progress = Math.round((bytesUploaded / bytesTotal) * 100);
-    updateFileUploadProgress(file.id, progress);
+    updateFileUploadProgress(contextId, file.id, progress);
   };
 
   const uploadFile = async file => {
@@ -51,7 +56,7 @@ const useFileUploader = ({
 
     try {
       const { data = {}, ...response } = await upload.create();
-      updateFileStatus(file.id, FILE_UPLOAD_STATUS.UPLOADED);
+      updateFileStatus(contextId, file.id, FILE_UPLOAD_STATUS.UPLOADED);
 
       return {
         id: file.id,
@@ -66,23 +71,24 @@ const useFileUploader = ({
       }
       // eslint-disable-next-line no-console
       console.error("Failed to upload attachment", error);
-      removeFile(file.id);
+      removeFile(contextId, file.id);
 
       return null;
     }
   };
 
   const handleUploadFiles = async () => {
-    const queuedFile = getNextQueuedFile();
+    const queuedFile = getNextQueuedFile(contextId);
 
     if (isNotPresent(queuedFile)) {
-      setIsUploading(false);
+      setIsUploading(contextId, false);
       setIsUploadingOnHost(false);
 
       return [];
     }
 
-    updateFileStatus(queuedFile.id, FILE_UPLOAD_STATUS.UPLOADING);
+    updateFileStatus(contextId, queuedFile.id, FILE_UPLOAD_STATUS.UPLOADING);
+
     const [uploadedFile, remainingUploadedFiles] = await Promise.all([
       uploadFile(queuedFile),
       handleUploadFiles(),
@@ -90,14 +96,14 @@ const useFileUploader = ({
 
     const uploadedFiles = [uploadedFile, ...remainingUploadedFiles];
     const uploadedFileIds = pluck("id", uploadedFiles);
-    removeFilesFromQueue(uploadedFileIds);
+    removeFilesFromQueue(contextId, uploadedFileIds);
     uploadControllers = omit(uploadedFileIds, uploadControllers);
 
     return uploadedFiles.filter(isNot(null));
   };
 
   const uploadFiles = () => {
-    setIsUploading(true);
+    setIsUploading(contextId, true);
     setIsUploadingOnHost(true);
 
     return handleUploadFiles();
@@ -117,12 +123,13 @@ const useFileUploader = ({
       type: file.type,
       status: FILE_UPLOAD_STATUS.QUEUED,
     }));
-    addFilesToStore(selectedFiles);
+
+    addFilesToStore(contextId, selectedFiles);
   };
 
   const cancelUpload = fileId => {
     uploadControllers[fileId]?.abort?.();
-    removeFile(fileId);
+    removeFile(contextId, fileId);
   };
 
   return {
