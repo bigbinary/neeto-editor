@@ -5,41 +5,70 @@ import { create } from "zustand";
 /** @type {import("neetocommons/react-utils").ZustandStoreHook} */
 const useFileUploadStore = create(
   withImmutableActions((set, get) => ({
-    files: [],
-    isUploading: false,
+    // {[contextId]: { files: File[], isUploading: boolean }}
 
-    addFiles: newFiles =>
-      set(state => ({ files: [...state.files, ...newFiles] })),
-
-    updateFileStatus: (fileId, status) =>
+    addFiles: (contextId, newFiles) =>
       set(state => ({
-        files: state.files.map(file =>
-          file.id === fileId ? { ...file, status } : file
-        ),
+        [contextId]: {
+          ...state[contextId],
+          files: [...(state[contextId]?.["files"] || []), ...newFiles],
+        },
       })),
 
-    updateFileUploadProgress: (fileId, progress) =>
+    updateFileStatus: (contextId, fileId, status) =>
       set(state => ({
-        files: state.files.map(file =>
-          file.id === fileId ? { ...file, progress } : file
-        ),
+        [contextId]: {
+          ...state[contextId],
+          files: state[contextId]?.["files"]?.map(file =>
+            file.id === fileId ? { ...file, status } : file
+          ),
+        },
       })),
 
-    removeFile: fileId =>
-      set(state => ({ files: removeById(fileId, state.files) })),
+    updateFileUploadProgress: (contextId, fileId, progress) =>
+      set(state => ({
+        [contextId]: {
+          ...state[contextId],
+          files:
+            state[contextId]?.["files"]?.map(file =>
+              file.id === fileId ? { ...file, progress } : file
+            ) || [],
+        },
+      })),
 
-    setIsUploading: status => set({ isUploading: status }),
+    removeFile: (contextId, fileId) =>
+      set(state => ({
+        [contextId]: {
+          ...state[contextId],
+          files: removeById(fileId, state[contextId]?.["files"] || []),
+        },
+      })),
 
-    getNextQueuedFile: () => {
-      const { files } = get();
+    setIsUploading: (contextId, status) =>
+      set(state => ({
+        [contextId]: {
+          ...(state[contextId] ?? []),
+          isUploading: status,
+        },
+      })),
+
+    getNextQueuedFile: contextId => {
+      const { files } = get()[contextId];
 
       return findBy(({ status }) => status === "queued", files);
     },
 
-    removeFilesFromQueue: uploadedFiles => {
-      const { files } = get();
+    removeFilesFromQueue: (contextId, uploadedFiles) => {
+      const data = get()[contextId];
 
-      set({ files: files.filter(({ id }) => !uploadedFiles.includes(id)) });
+      set({
+        [contextId]: {
+          ...data,
+          files: (data["files"] || []).filter(
+            ({ id }) => !uploadedFiles.includes(id)
+          ),
+        },
+      });
     },
   }))
 );
