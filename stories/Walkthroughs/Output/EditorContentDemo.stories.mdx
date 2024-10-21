@@ -1,0 +1,27 @@
+import { Meta } from "@storybook/addon-docs";
+import {
+  EDITOR_PROP_TABLE_COLUMNS,
+  EDITOR_CONTENT_PROP_TABLE_ROWS,
+} from "../../constants";
+import Table from "../../components/Table";
+
+import EditorContentDemo from "./EditorContentDemo";
+
+<Meta
+  title="Walkthroughs/Output/EditorContent demo"
+  parameters={{
+    layout: "padded",
+    viewMode: "docs",
+    previewTabs: {
+      canvas: {
+        hidden: true,
+      },
+    },
+  }}
+/>
+
+# EditorContent demo
+
+To update the preview content, make use of the editor below. The changes will be instantly updated in the preview.
+
+<EditorContentDemo />
