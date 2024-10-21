@@ -55,10 +55,12 @@ const useEditorState = ({ editor }) => {
 
     editor.on("selectionUpdate", handleSelectionUpdate);
     editor.on("update", handleSelectionUpdate);
+    editor.on("transaction", handleSelectionUpdate);
 
     return () => {
       editor.off("selectionUpdate", handleSelectionUpdate);
       editor.off("update", handleSelectionUpdate);
+      editor.off("transaction", handleSelectionUpdate);
     };
   }, [editor, handleSelectionUpdate]);
 };
