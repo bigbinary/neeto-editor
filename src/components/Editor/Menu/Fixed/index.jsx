@@ -140,9 +140,17 @@ const Fixed = ({
     options.includes(EDITOR_OPTIONS.VIDEO_UPLOAD);
 
   const handleVariableClick = item => {
-    const { category, key, label } = item;
+    const { category, categoryLabel, key, label } = item;
     const variableName = category ? `${category}.${key}` : key;
-    editor.chain().focus().setVariable({ id: variableName, label }).run();
+    const variableLabel = category
+      ? `${categoryLabel || category}:${label}`
+      : label;
+
+    editor
+      .chain()
+      .focus()
+      .setVariable({ id: variableName, label: variableLabel })
+      .run();
   };
 
   return (
