@@ -61,3 +61,5 @@ export const COMBINED_REGEX = new RegExp(
   ]).join("|"),
   "g"
 );
+
+export const EDITOR_SIZES = { MEDIUM: "medium", LARGE: "large" };

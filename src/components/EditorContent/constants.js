@@ -1,6 +1,6 @@
 import { lowlight } from "lowlight";
 
-export const EDITOR_CONTENT_CLASSNAME = "neeto-editor-content";
+export const EDITOR_CONTENT_CLASS_NAME = "neeto-editor-content";
 
 export const SANITIZE_OPTIONS = {
   ADD_TAGS: ["iframe"],

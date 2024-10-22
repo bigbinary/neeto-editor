@@ -128,6 +128,7 @@ interface EditorProps {
   openImageInNewTab?: boolean;
   openLinkInNewTab?: boolean;
   enableReactNodeViewOptimization?: boolean;
+  size?: "large" | "medium";
   [otherProps: string]: any;
 }
 
@@ -158,6 +159,7 @@ export function EditorContent(props: {
   content?: string;
   className?: string;
   variables?: (VariableCategory | Variable)[];
+  size?: "large" | "medium";
   [otherProps: string]: any;
 }): JSX.Element;
 

@@ -3,7 +3,7 @@ import { forwardRef, useImperativeHandle, useState, useRef, memo } from "react";
 import { EditorView } from "@tiptap/pm/view";
 import { useEditor, EditorContent, useEditorState } from "@tiptap/react";
 import classnames from "classnames";
-import { EDITOR_OPTIONS } from "common/constants";
+import { EDITOR_OPTIONS, EDITOR_SIZES } from "common/constants";
 import { noop, slugify } from "neetocist";
 import { useFuncDebounce } from "neetocommons/react-utils";
 import { Label } from "neetoui";
@@ -69,6 +69,7 @@ const Editor = (
     openLinkInNewTab = true,
     collaborationProvider = null,
     enableReactNodeViewOptimization = false,
+    size = EDITOR_SIZES.MEDIUM,
     ...otherProps
   },
   ref
@@ -130,6 +131,8 @@ const Editor = (
     "bubble-menu-active": isBubbleMenuActive,
     "placeholder-active": isPlaceholderActive,
     "attachments-active": isAttachmentsActive,
+    "neeto-editor--size-large": size === EDITOR_SIZES.LARGE,
+    "neeto-editor--size-medium": size === EDITOR_SIZES.MEDIUM,
     [contentClassName]: contentClassName,
   });
 
