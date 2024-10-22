@@ -7,6 +7,8 @@
 }
 
 .neeto-editor {
+  @extend .neeto-editor-content;
+
   max-width: 100% !important;
   border-radius: var(--neeto-ui-rounded);
   white-space: pre-wrap;
@@ -79,8 +81,6 @@
     line-height: 1;
     padding: 4px;
   }
-
-  @extend .neeto-editor-content;
 }
 
 .neeto-editor-character-count {

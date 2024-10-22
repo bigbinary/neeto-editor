@@ -1,9 +1,104 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/github.min.css");
 
+:root {
+  --neeto-editor-white: 255, 255, 255;
+  --neeto-editor-black: 12, 17, 29;
+  --neeto-editor-gray-800: 16, 24, 40;
+  --neeto-editor-gray-700: 29, 41, 57;
+  --neeto-editor-gray-600: 52, 64, 84;
+  --neeto-editor-gray-500: 135, 146, 157;
+  --neeto-editor-gray-400: 194, 200, 204;
+  --neeto-editor-gray-300: 216, 220, 222;
+  --neeto-editor-gray-200: 233, 235, 237;
+  --neeto-editor-gray-100: 246, 247, 248;
+  --neeto-editor-gray-50: 250, 250, 250;
+  --neeto-editor-primary-800: 0, 102, 83;
+  --neeto-editor-primary-600: 0, 122, 100;
+  --neeto-editor-primary-500: 0, 128, 104;
+  --neeto-editor-primary-100: 225, 243, 238;
+  --neeto-editor-primary-50: 240, 249, 247;
+  --neeto-editor-accent-800: 9, 90, 186;
+  --neeto-editor-accent-600: 13, 102, 208;
+  --neeto-editor-accent-500: 20, 115, 230;
+  --neeto-editor-accent-100: 230, 244, 255;
+  --neeto-editor-accent-50: 239, 248, 255;
+  --neeto-editor-success-800: 1, 121, 93;
+  --neeto-editor-success-600: 1, 141, 109;
+  --neeto-editor-success-500: 2, 162, 124;
+  --neeto-editor-success-100: 235, 255, 250;
+  --neeto-editor-error-800: 187, 18, 26;
+  --neeto-editor-error-600: 201, 37, 45;
+  --neeto-editor-error-500: 215, 55, 63;
+  --neeto-editor-error-100: 254, 236, 240;
+  --neeto-editor-info-800: 9, 90, 186;
+  --neeto-editor-info-600: 13, 102, 208;
+  --neeto-editor-info-500: 20, 115, 230;
+  --neeto-editor-info-100: 226, 242, 255;
+  --neeto-editor-warning-800: 189, 100, 13;
+  --neeto-editor-warning-600: 203, 111, 16;
+  --neeto-editor-warning-500: 218, 123, 17;
+  --neeto-editor-warning-100: 251, 242, 225;
+  --neeto-editor-pastel-silver: 232, 233, 237;
+  --neeto-editor-pastel-red: 255, 229, 229;
+  --neeto-editor-pastel-yellow: 254, 243, 197;
+  --neeto-editor-pastel-green: 211, 249, 232;
+  --neeto-editor-pastel-blue: 236, 244, 255;
+  --neeto-editor-pastel-purple: 238, 235, 255;
+  --neeto-editor-pastel-pink: 253, 226, 241;
+  --neeto-editor-rounded-none: 0;
+  --neeto-editor-rounded-sm: 3px;
+  --neeto-editor-rounded: 5px;
+  --neeto-editor-rounded-md: 6px;
+  --neeto-editor-rounded-lg: 8px;
+  --neeto-editor-rounded-xl: 12px;
+  --neeto-editor-rounded-full: 999px;
+  --neeto-editor-font-thin: 100;
+  --neeto-editor-font-extralight: 200;
+  --neeto-editor-font-light: 300;
+  --neeto-editor-font-normal: 400;
+  --neeto-editor-font-medium: 500;
+  --neeto-editor-font-semibold: 600;
+  --neeto-editor-font-bold: 700;
+  --neeto-editor-font-extrabold: 800;
+  --neeto-editor-font-black: 900;
+  --neeto-editor-content-h1-font-size: 2rem;
+  --neeto-editor-content-h2-font-size: 1.5rem;
+  --neeto-editor-content-h3-font-size: 1.25rem;
+  --neeto-editor-content-h4-font-size: 1rem;
+  --neeto-editor-content-h5-font-size: 0.875rem;
+  --neeto-editor-content-h6-font-size: 0.75rem;
+  --neeto-editor-content-h1-margin: 2rem 0 0.25rem;
+  --neeto-editor-content-h2-margin: 1.5rem 0 0.25rem;
+  --neeto-editor-content-h3-margin: 1rem 0 0.25rem;
+  --neeto-editor-content-h4-margin: 0.75rem 0 0.25rem;
+  --neeto-editor-content-h5-margin: 0.75rem 0 0.25rem;
+  --neeto-editor-content-h6-margin: 0.75rem 0 0.25rem;
+  --neeto-editor-content-heading-font-weight: 600;
+  --neeto-editor-content-heading-font-weight-bold: bold;
+  --neeto-editor-content-heading-color: 54, 55, 55, 1;
+  --neeto-editor-content-paragraph-font-size: 1rem;
+  --neeto-editor-content-paragraph-font-weight: 400;
+  --neeto-editor-content-paragraph-color: 54, 55, 55, 1;
+  --neeto-editor-content-paragraph-line-height: 1.6;
+
+  @media only screen and (max-width: 720px) {
+    --neeto-editor-content-h1-font-size: 1.375rem;
+    --neeto-editor-content-h2-font-size: 1.25rem;
+    --neeto-editor-content-h3-font-size: 1.125rem;
+    --neeto-editor-content-h4-font-size: 1rem;
+  }
+}
+
 .neeto-editor-content {
   white-space: pre-wrap;
   word-break: break-word;
   tab-size: 2;
+
+  // Sizing
+
+  &--size-large {
+    --neeto-editor-content-paragraph-font-size: 1.125rem;
+  }
 
   // Headers
   h1,
@@ -12,75 +107,51 @@
   h4,
   h5,
   h6 {
-    color: rgb(var(--neeto-ui-black));
-    font-weight: var(--neeto-ui-font-semibold);
+    color: rgba(var(--neeto-editor-content-heading-color));
+    font-weight: var(--neeto-editor-content-heading-font-weight);
 
     strong {
-      font-weight: var(--neeto-ui-font-semibold) !important;
+      font-weight: var(--neeto-editor-content-heading-font-weight-bold) !important;
     }
   }
 
   h1 {
-    font-size: var(--neeto-ui-text-h1);
-    margin: 2rem 0 0.25rem;
+    font-size: var(--neeto-editor-content-h1-font-size);
+    margin: var(--neeto-editor-content-h1-margin);
   }
 
   h2 {
-    font-size: var(--neeto-ui-text-h2);
-    margin: 1.5rem 0 0.25rem;
+    font-size: var(--neeto-editor-content-h2-font-size);
+    margin: var(--neeto-editor-content-h2-margin);
   }
 
   h3 {
-    font-size: var(--neeto-ui-text-h3);
-    margin: 1rem 0 0.25rem;
+    font-size: var(--neeto-editor-content-h3-font-size);
+    margin: var(--neeto-editor-content-h3-margin);
   }
 
   h4 {
-    font-size: var(--neeto-ui-text-h4);
-    margin: 0.75rem 0 0.25rem;
+    font-size: var(--neeto-editor-content-h4-font-size);
+    margin: var(--neeto-editor-content-h4-margin);
   }
 
   h5 {
-    font-size: var(--neeto-ui-text-h5);
-    margin: 0.75rem 0 0.25rem;
+    font-size: var(--neeto-editor-content-h5-font-size);
+    margin: var(--neeto-editor-content-h5-margin);
   }
+
   h6 {
-    font-size: var(--neeto-ui-text-h6);
-    margin: 0.75rem 0 0.25rem;
-  }
-
-  @media only screen and (max-width: 720px) {
-    h1 {
-      font-size: 22px;
-    }
-
-    h2 {
-      font-size: 20px;
-    }
-
-    h3 {
-      font-size: 18px;
-    }
-
-    h4 {
-      font-size: 16px;
-    }
-
-    h5 {
-      font-size: 14px;
-    }
-
-    h6 {
-      font-size: 12px;
-    }
+    font-size: var(--neeto-editor-content-h6-font-size);
+    margin: var(--neeto-editor-content-h6-margin);
   }
 
   // Paragraph
   p {
-    font-size: var(--neeto-ui-text-body1);
-    font-weight: var(--neeto-ui-font-normal);
-    line-height: var(--neeto-ui-leading-normal);
-    color: rgb(var(--neeto-ui-black));
+    font-size: var(--neeto-editor-content-paragraph-font-size);
+    font-weight: var(--neeto-editor-content-paragraph-font-weight);
+    line-height: var(--neeto-editor-content-paragraph-line-height);
+    color: rgba(var(--neeto-editor-content-paragraph-color));
+    margin: 0;
 
     &:empty::after {
       content: "\00a0";
@@ -91,24 +162,24 @@
     }
 
     strong {
-      font-weight: var(--neeto-ui-font-semibold) !important;
+      font-weight: 600 !important;
     }
   }
 
   // Div
   div {
-    font-size: var(--neeto-ui-text-body1);
-    font-weight: var(--neeto-ui-font-normal);
-    line-height: var(--neeto-ui-leading-normal);
-    color: rgb(var(--neeto-ui-black));
+    font-size: var(--neeto-editor-content-paragraph-font-size);
+    font-weight: var(--neeto-editor-content-paragraph-font-weight);
+    line-height: var(--neeto-editor-content-paragraph-line-height);
+    color: rgba(var(--neeto-editor-content-paragraph-color));
   }
 
   // Code
   code {
     padding: 0.2em 0.4em;
-    font-size: 14px;
-    border-radius: var(--neeto-ui-rounded-sm);
-    background-color: rgb(var(--neeto-ui-gray-100));
+    font-size: 0.875rem;
+    border-radius: var(--neeto-editor-rounded-sm);
+    background-color: rgb(var(--neeto-editor-gray-100));
     font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono",
       Courier, monospace;
   }
@@ -127,11 +198,11 @@
     position: relative;
     background-color: #f7f6f3;
     overflow-x: auto;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.5;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    border-radius: var(--neeto-ui-rounded-sm);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--neeto-editor-rounded-sm);
     padding: 32px 12px 12px 12px;
 
     .neeto-editor-codeblock-options {
@@ -155,13 +226,17 @@
 
     .highlight-line {
       position: relative;
+
       &:before {
         left: -12px;
       }
+
       &:after {
         right: -12px;
       }
-      &:before, &:after {
+
+      &:before,
+      &:after {
         content: "";
         position: absolute;
         top: 0px;
@@ -172,7 +247,7 @@
     }
   }
 
-  pre > code {
+  pre>code {
     background-color: transparent;
     border-width: 0;
     border-radius: 0;
@@ -187,18 +262,19 @@
 
   // Blockquote
   blockquote {
-    font-weight: var(--neeto-ui-font-medium);
-    color: rgb(var(--neeto-ui-black));
+    font-weight: var(--neeto-editor-font-medium);
+    color: rgb(var(--neeto-editor-black));
     border-left-width: 4px;
     border-left-color: #e5e7eb;
-    quotes: "\201C""\201D""\2018""\2019";
+    quotes: "\201C" "\201D" "\2018" "\2019";
     margin: 8px 0;
     padding-left: 12px;
 
-    & > p::before {
+    &>p::before {
       content: "" !important;
     }
-    & > p::after {
+
+    &>p::after {
       content: "" !important;
     }
   }
@@ -207,29 +283,31 @@
   ol {
     list-style: revert;
     padding-left: 28px;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
+
+    li {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
 
     li::before {
-      background-color: rgb(var(--neeto-ui-black));
+      background-color: rgb(var(--neeto-editor-black));
     }
   }
 
   // Link
   a[href] {
-    color: rgb(var(--neeto-ui-accent-800));
+    color: rgb(var(--neeto-editor-accent-800));
     font-weight: 500;
   }
 
   // Embed
   .neeto-editor__video-wrapper {
     display: flex;
-    margin: 16px 0px;
+    margin: 1rem 0px;
 
     .neeto-editor__video-iframe {
       display: inline-block;
-      border: 2px solid rgb(var(--neeto-ui-gray-300));
-      border-radius: var(--neeto-ui-rounded-lg);
-      padding: 4px;
 
       iframe {
         height: 100%;
@@ -251,31 +329,31 @@
   }
 
   mark {
-    border-radius: var(--neeto-ui-rounded-sm);
+    border-radius: var(--neeto-editor-rounded-sm);
     padding: 0px;
   }
 
   [data-type="mention"] {
-    color: rgb(var(--neeto-ui-accent-800));
+    color: rgb(var(--neeto-editor-accent-800));
   }
 
   [data-type="special-mention"] {
-    color: rgb(var(--neeto-ui-accent-800));
+    color: rgb(var(--neeto-editor-accent-800));
   }
 
   table {
     overflow: hidden;
-    border: 1px solid rgba(var(--neeto-ui-gray-300));
+    border: 1px solid rgba(var(--neeto-editor-gray-300));
     border-collapse: separate;
-    border-radius: var(--neeto-ui-rounded-sm);
+    border-radius: var(--neeto-editor-rounded-sm);
     border-spacing: 0;
     table-layout: fixed;
     min-width: 300px;
 
     th,
     td {
-      border-left: 1px solid rgba(var(--neeto-ui-gray-300));
-      border-top: 1px solid rgba(var(--neeto-ui-gray-300));
+      border-left: 1px solid rgba(var(--neeto-editor-gray-300));
+      border-top: 1px solid rgba(var(--neeto-editor-gray-300));
       padding: 8px 12px;
       position: relative;
     }
@@ -286,12 +364,12 @@
     }
 
     th {
-      background: rgb(var(--neeto-ui-gray-100));
+      background: rgb(var(--neeto-editor-gray-100));
       border-top: none;
     }
 
     td {
-      background: rgb(var(--neeto-ui-white));
+      background: rgb(var(--neeto-editor-white));
     }
   }
 }
@@ -301,7 +379,7 @@
 }
 
 .neeto-editor__image-wrapper {
-  margin: 16px 0;
+  margin: 1rem 0;
   display: flex;
   text-decoration: none;
   padding-left: 3px;
@@ -315,9 +393,6 @@
 
   .neeto-editor__image {
     display: inline-block;
-    border: 2px solid rgb(var(--neeto-ui-gray-300));
-    border-radius: var(--neeto-ui-rounded-lg);
-    padding: 4px;
     min-height: 52px;
 
     img,
@@ -325,6 +400,7 @@
       display: inline-block;
       width: 100%;
       height: auto;
+
       &.hidden {
         display: none;
       }
@@ -347,10 +423,10 @@
 
   figcaption div {
     text-align: center;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.4;
-    font-weight: var(--neeto-ui-font-normal);
-    color: rgb(var(--neeto-ui-gray-600));
+    font-weight: var(--neeto-editor-font-normal);
+    color: rgb(var(--neeto-editor-gray-600));
 
     a {
       display: inline-block;
@@ -364,7 +440,7 @@
       position: absolute;
       inset: 0;
       content: "Add a caption";
-      color: rgb(var(--neeto-ui-gray-500));
+      color: rgb(var(--neeto-editor-gray-500));
     }
   }
 
@@ -379,7 +455,7 @@
 .neeto-editor-content {
   figcaption {
     text-align: center;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.4;
     font-weight: normal;
     color: #6b7280;
@@ -400,7 +476,7 @@
 
 .selected-text {
   padding: 2px 0px;
-  background-color: rgb(var(--neeto-ui-gray-300));
+  background-color: rgb(var(--neeto-editor-gray-300));
 }
 
 .ne-image-preview-wrapper {
@@ -409,7 +485,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(var(--neeto-ui-gray-800), 0.5);
+  background: rgba(var(--neeto-editor-gray-800), 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -418,19 +494,21 @@
   .ne-image-preview {
     opacity: 0;
     transition: opacity 100ms ease-in-out;
-    background: rgb(var(--neeto-ui-white));
+    background: rgb(var(--neeto-editor-white));
     display: flex;
     gap: 10px;
     flex-direction: column;
     max-width: 60vw;
+
     &.image-loaded {
       padding: 10px;
       border-radius: 10px;
       opacity: 1;
     }
+
     &__caption {
       line-height: 1.5;
-      color: rgb(var(--neeto-ui-gray-800));
+      color: rgb(var(--neeto-editor-gray-800));
     }
   }
 
@@ -447,8 +525,9 @@
 
   &__spinner {
     position: absolute;
+
     i {
-      background-color: rgb(var(--neeto-ui-gray-300));
+      background-color: rgb(var(--neeto-editor-gray-300));
     }
   }
 }
