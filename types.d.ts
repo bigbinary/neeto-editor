@@ -128,6 +128,7 @@ interface EditorProps {
   openImageInNewTab?: boolean;
   openLinkInNewTab?: boolean;
   enableReactNodeViewOptimization?: boolean;
+  size?: "large" | "medium";
   [otherProps: string]: any;
 }
 
