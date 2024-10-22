@@ -308,9 +308,6 @@
 
     .neeto-editor__video-iframe {
       display: inline-block;
-      border: 2px solid rgb(var(--neeto-editor-gray-300));
-      border-radius: var(--neeto-editor-rounded-lg);
-      padding: 4px;
 
       iframe {
         height: 100%;
