@@ -1,4 +1,5 @@
 import { NodeViewWrapper } from "@tiptap/react";
+import { Tooltip } from "neetoui";
 
 import { MAX_VARIABLE_NAME_DISPLAY_LENGTH } from "./constants";
 
@@ -16,8 +17,10 @@ const VariableComponent = ({ node, extension }) => {
       data-variable=""
     >
       {extension.options.charOpen}
-      {variableName?.substr(0, MAX_VARIABLE_NAME_DISPLAY_LENGTH)?.trim()}
-      {shouldTruncate && "..."}
+      <Tooltip content={variableName} disabled={!shouldTruncate} position="top">
+        {variableName?.substr(0, MAX_VARIABLE_NAME_DISPLAY_LENGTH)?.trim()}
+        {shouldTruncate && "..."}
+      </Tooltip>
       {extension.options.charClose}
     </NodeViewWrapper>
   );
