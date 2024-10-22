@@ -159,6 +159,7 @@ export function EditorContent(props: {
   content?: string;
   className?: string;
   variables?: (VariableCategory | Variable)[];
+  size?: "large" | "medium";
   [otherProps: string]: any;
 }): JSX.Element;
 

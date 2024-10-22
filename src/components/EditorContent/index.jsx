@@ -6,9 +6,10 @@ import CopyToClipboardButton from "neetomolecules/CopyToClipboardButton";
 import { isNil } from "ramda";
 import { createRoot } from "react-dom/client";
 
+import { EDITOR_SIZES } from "src/common/constants";
 import "src/styles/editor/editor-content.scss";
 
-import { EDITOR_CONTENT_CLASSNAME, SANITIZE_OPTIONS } from "./constants";
+import { EDITOR_CONTENT_CLASS_NAME, SANITIZE_OPTIONS } from "./constants";
 import ImagePreview from "./ImagePreview";
 import {
   highlightCode,
@@ -20,6 +21,7 @@ const EditorContent = ({
   content = "",
   variables = [],
   className,
+  size = EDITOR_SIZES.MEDIUM,
   ...otherProps
 }) => {
   const [imagePreviewDetails, setImagePreviewDetails] = useState(null);
@@ -30,7 +32,7 @@ const EditorContent = ({
 
   const injectCopyButtonToCodeBlocks = () => {
     const preTags = editorContentRef.current?.querySelectorAll(
-      `.${EDITOR_CONTENT_CLASSNAME} pre`
+      `.${EDITOR_CONTENT_CLASS_NAME} pre`
     );
 
     preTags.forEach(preTag => {
@@ -50,7 +52,7 @@ const EditorContent = ({
 
   const bindImageClickListener = () => {
     const figureTags = editorContentRef.current?.querySelectorAll(
-      `.${EDITOR_CONTENT_CLASSNAME} figure`
+      `.${EDITOR_CONTENT_CLASS_NAME} figure`
     );
 
     figureTags.forEach(figureTag => {
@@ -77,8 +79,9 @@ const EditorContent = ({
       <div
         data-cy="neeto-editor-content"
         ref={editorContentRef}
-        className={classnames(EDITOR_CONTENT_CLASSNAME, {
+        className={classnames(EDITOR_CONTENT_CLASS_NAME, {
           [className]: className,
+          [`${EDITOR_CONTENT_CLASS_NAME}--size-${size}`]: true,
         })}
         dangerouslySetInnerHTML={{
           __html: sanitize(htmlContent, SANITIZE_OPTIONS),
