@@ -10,11 +10,11 @@
   @extend .neeto-editor-content;
 
   max-width: 100% !important;
-  border-radius: var(--neeto-editor-rounded);
+  border-radius: var(--neeto-ui-rounded);
   white-space: pre-wrap;
   padding: 16px;
-  color: rgb(var(--neeto-editor-black));
-  background-color: rgb(var(--neeto-editor-white));
+  color: rgb(var(--neeto-ui-black));
+  background-color: rgb(var(--neeto-ui-white));
 
   &:focus {
     outline: none;
@@ -26,9 +26,9 @@
 
   [data-variable] {
     display: inline-flex;
-    color: rgb(var(--neeto-editor-gray-600));
-    background-color: rgb(var(--neeto-editor-gray-200));
-    border-radius: var(--neeto-editor-rounded-sm);
+    color: rgb(var(--neeto-ui-gray-600));
+    background-color: rgb(var(--neeto-ui-gray-200));
+    border-radius: var(--neeto-ui-rounded-sm);
     line-height: 1;
     padding: 4px 6px;
   }
@@ -38,7 +38,7 @@
   }
 
   &.fixed-menu-active {
-    border: thin solid rgb(var(--neeto-editor-gray-400));
+    border: thin solid rgb(var(--neeto-ui-gray-400));
     border-top: none;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -65,7 +65,7 @@
   }
 
   .ProseMirror-selectednode {
-    outline: 3px solid rgb(var(--neeto-editor-pastel-blue));
+    outline: 3px solid rgb(var(--neeto-ui-pastel-blue));
   }
 
   .has-focus {
@@ -75,9 +75,9 @@
 
   [data-variable] {
     display: inline-flex;
-    color: rgb(var(--neeto-editor-gray-800));
-    background-color: rgb(var(--neeto-editor-gray-200));
-    border-radius: var(--neeto-editor-rounded-sm);
+    color: rgb(var(--neeto-ui-gray-800));
+    background-color: rgb(var(--neeto-ui-gray-200));
+    border-radius: var(--neeto-ui-rounded-sm);
     line-height: 1;
     padding: 4px;
   }
@@ -85,21 +85,21 @@
 
 .neeto-editor-character-count {
   padding: 4px;
-  color: rgb(var(--neeto-editor-gray-600));
+  color: rgb(var(--neeto-ui-gray-600));
   font-size: 12px;
   text-align: right;
   width: 100%;
 }
 
 .neeto-editor-error {
-  color: rgb(var(--neeto-editor-error-500));
+  color: rgb(var(--neeto-ui-error-500));
   border-width: 1px;
-  border-color: rgb(var(--neeto-editor-error-500));
-  border-radius: var(--neeto-editor-rounded);
+  border-color: rgb(var(--neeto-ui-error-500));
+  border-radius: var(--neeto-ui-rounded);
 }
 
 .neeto-editor-error:focus-within {
-  border-color: rgb(var(--neeto-editor-error-600));
+  border-color: rgb(var(--neeto-ui-error-600));
 }
 
 .ne_variable-tag {
