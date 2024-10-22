@@ -94,6 +94,12 @@
   word-break: break-word;
   tab-size: 2;
 
+  // Sizing
+
+  &--size-large {
+    --neeto-editor-content-paragraph-font-size: 1.125rem;
+  }
+
   // Headers
   h1,
   h2,
@@ -390,9 +396,6 @@
 
   .neeto-editor__image {
     display: inline-block;
-    border: 2px solid rgb(var(--neeto-editor-gray-300));
-    border-radius: var(--neeto-editor-rounded-lg);
-    padding: 4px;
     min-height: 52px;
 
     img,
