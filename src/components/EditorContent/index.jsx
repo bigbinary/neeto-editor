@@ -12,9 +12,9 @@ import "src/styles/editor/editor-content.scss";
 import { EDITOR_CONTENT_CLASS_NAME, SANITIZE_OPTIONS } from "./constants";
 import ImagePreview from "./ImagePreview";
 import {
-  highlightCode,
   substituteVariables,
   applyLineHighlighting,
+  applySyntaxHighlighting,
 } from "./utils";
 
 const EditorContent = ({
@@ -27,7 +27,10 @@ const EditorContent = ({
   const [imagePreviewDetails, setImagePreviewDetails] = useState(null);
   const editorContentRef = useRef(null);
 
-  const htmlContent = substituteVariables(highlightCode(content), variables);
+  const htmlContent = substituteVariables(
+    applySyntaxHighlighting(content),
+    variables
+  );
   const sanitize = DOMPurify.sanitize;
 
   const injectCopyButtonToCodeBlocks = () => {

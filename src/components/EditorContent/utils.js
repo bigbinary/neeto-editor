@@ -62,7 +62,7 @@ export const highlightLinesElement = (code, options) => {
   highlightLinesCode(code, options);
 };
 
-export const highlightCode = content => {
+export const applySyntaxHighlighting = content => {
   lowlight.highlightAuto("");
   let highlightedAST = {};
 
@@ -97,7 +97,10 @@ export const applyLineHighlighting = editorContent => {
       .closest("pre")
       .getAttribute("data-highlighted-lines");
     if (highlightedLines) {
-      const linesToHighlight = highlightedLines.split(",")?.map(Number);
+      const linesToHighlight = highlightedLines
+        .split(",")
+        ?.filter(Boolean)
+        .map(Number);
 
       const highlightLinesOptions = linesToHighlight.map(line => ({
         start: line,
