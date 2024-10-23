@@ -145,6 +145,28 @@
     margin: var(--neeto-editor-content-h6-margin);
   }
 
+  // header anchor tags
+  .header-wrapper-link {
+    position: relative;
+    h1, h2, h3, h4, h5, h6 {
+      cursor: pointer;
+    }
+
+    svg {
+      position: absolute;
+      left: -25px;
+      top: 0px;
+      bottom: 0px;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 150ms ease-in;
+    }
+    &:hover svg{
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
   // Paragraph
   p {
     font-size: var(--neeto-editor-content-paragraph-font-size);

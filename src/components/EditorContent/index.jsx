@@ -9,12 +9,17 @@ import { createRoot } from "react-dom/client";
 import { EDITOR_SIZES } from "src/common/constants";
 import "src/styles/editor/editor-content.scss";
 
-import { EDITOR_CONTENT_CLASS_NAME, SANITIZE_OPTIONS } from "./constants";
+import {
+  EDITOR_CONTENT_CLASS_NAME,
+  EDITOR_CONTENT_DEFAULT_CONFIGURATION,
+  SANITIZE_OPTIONS,
+} from "./constants";
 import ImagePreview from "./ImagePreview";
 import {
   substituteVariables,
   applyLineHighlighting,
   applySyntaxHighlighting,
+  makeHeadingsNavigable,
 } from "./utils";
 
 const EditorContent = ({
@@ -22,6 +27,7 @@ const EditorContent = ({
   variables = [],
   className,
   size = EDITOR_SIZES.MEDIUM,
+  configuration = EDITOR_CONTENT_DEFAULT_CONFIGURATION,
   ...otherProps
 }) => {
   const [imagePreviewDetails, setImagePreviewDetails] = useState(null);
@@ -75,6 +81,8 @@ const EditorContent = ({
     injectCopyButtonToCodeBlocks();
     bindImageClickListener();
     applyLineHighlighting(editorContentRef.current);
+    configuration.navigableHeader &&
+      makeHeadingsNavigable(editorContentRef.current);
   }, [content]);
 
   return (
