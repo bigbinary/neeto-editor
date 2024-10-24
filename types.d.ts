@@ -149,6 +149,10 @@ interface AttachmentsProps {
   allowDelete?: boolean;
 }
 
+type EditorContentConfigType = {
+  navigableHeader?: boolean;
+}
+
 export function Editor(props: EditorProps): JSX.Element;
 
 export function FormikEditor(props: FormikEditorProps): JSX.Element;
@@ -160,6 +164,7 @@ export function EditorContent(props: {
   className?: string;
   variables?: (VariableCategory | Variable)[];
   size?: "large" | "medium";
+  configuration?: EditorContentConfigType;
   [otherProps: string]: any;
 }): JSX.Element;
 
