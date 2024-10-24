@@ -19,8 +19,8 @@ import {
   substituteVariables,
   applyLineHighlighting,
   applySyntaxHighlighting,
-  makeHeadingsNavigable,
 } from "./utils";
+import { makeHeadingsNavigable } from "./utils/headers";
 
 const EditorContent = ({
   content = "",
