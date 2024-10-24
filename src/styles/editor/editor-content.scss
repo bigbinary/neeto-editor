@@ -155,8 +155,7 @@
     svg {
       position: absolute;
       left: -25px;
-      top: 0px;
-      bottom: 0px;
+      bottom: 10px;
       visibility: hidden;
       opacity: 0;
       transition: opacity 150ms ease-in;
@@ -218,14 +217,15 @@
 
   pre {
     position: relative;
-    background-color: #f7f6f3;
+    background-color: #f7f6f3 !important;
     overflow-x: auto;
     font-size: 0.875rem;
     line-height: 1.5;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    border-radius: var(--neeto-editor-rounded-sm);
-    padding: 32px 12px 12px 12px;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: var(--neeto-editor-rounded-sm) !important;
+    padding: 32px 12px 12px 12px !important;
+    font-family: inherit  !important;
 
     .neeto-editor-codeblock-options {
       display: flex;
