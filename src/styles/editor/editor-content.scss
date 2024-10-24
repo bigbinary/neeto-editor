@@ -217,15 +217,14 @@
 
   pre {
     position: relative;
-    background-color: #f7f6f3 !important;
+    background-color: #f7f6f3;
     overflow-x: auto;
     font-size: 0.875rem;
     line-height: 1.5;
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
-    border-radius: var(--neeto-editor-rounded-sm) !important;
-    padding: 32px 12px 12px 12px !important;
-    font-family: inherit  !important;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--neeto-editor-rounded-sm);
+    padding: 32px 12px 12px 12px;
 
     .neeto-editor-codeblock-options {
       display: flex;

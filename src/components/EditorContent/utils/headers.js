@@ -32,7 +32,7 @@ export const makeHeadingsNavigable = editorContentNode => {
 
   headerTags.forEach(heading => {
     const headingId = convertTextToId(heading.textContent);
-    heading.setAttribute("id", headingId); // Add id to heading for anchor linking
+    heading.setAttribute("id", headingId);
 
     const anchor = document.createElement("a");
     anchor.setAttribute("href", `#${headingId}`);
