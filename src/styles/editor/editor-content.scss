@@ -152,16 +152,17 @@
       cursor: pointer;
     }
 
-    svg {
+    span {
       position: absolute;
       left: -25px;
       height: 100%;
-      visibility: hidden;
-      opacity: 0;
+      width: 25px;
+      display: flex;
+      align-items: center;
       transition: opacity 150ms ease-in;
+      opacity: 0;
     }
-    &:hover svg{
-      visibility: visible;
+    &:hover span{
       opacity: 1;
     }
   }
