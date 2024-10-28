@@ -150,6 +150,7 @@
     position: relative;
     h1, h2, h3, h4, h5, h6 {
       cursor: pointer;
+      transition: color ease-in 150ms;
     }
 
     .header-link-icon-wrapper {
@@ -160,8 +161,10 @@
       display: flex;
       align-items: center;
       opacity: 0;
+      transition: opacity ease-in 150ms;
       svg {
-        fill: rgb(var(--neeto-editor-accent-800));
+        transition: fill ease-in 150ms;
+        fill: rgb(var(--neeto-editor-primary-800));
       }
     }
     &:hover{
@@ -170,6 +173,9 @@
       }
       .header-link-icon-wrapper {
         opacity: 1;
+      }
+      svg {
+        fill: rgb(var(--neeto-editor-accent-800));
       }
     }
   }
