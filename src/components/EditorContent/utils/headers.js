@@ -1,6 +1,7 @@
 const buildLinkSVG = () => {
   const svgNS = "http://www.w3.org/2000/svg";
 
+  const svgWrapper = document.createElement("span");
   const svg = document.createElementNS(svgNS, "svg");
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("height", "20");
@@ -14,8 +15,9 @@ const buildLinkSVG = () => {
   );
 
   svg.appendChild(path);
+  svgWrapper.appendChild(svg);
 
-  return svg;
+  return svgWrapper;
 };
 
 const convertTextToId = text =>
