@@ -14,3 +14,7 @@ export const VARIABLE_SPAN_REGEX =
   /<span data-variable="" [^>]*data-label="([^"]+)">{{([^}]+)}}<\/span>/g;
 
 export const LANGUAGE_LIST = [...lowlight.listLanguages(), "html"];
+
+export const EDITOR_CONTENT_DEFAULT_CONFIGURATION = {
+  navigableHeader: false,
+};

@@ -140,6 +140,16 @@ const config = args => {
       },
       plugins,
     },
+    {
+      input: "./src/components/EditorContent/navigableHeadings.js",
+      output: {
+        dir: `${__dirname}/dist`,
+        format: "cjs",
+        sourcemap: true,
+        assetFileNames: "[name][extname]",
+      },
+      plugins,
+    },
   ]
 }
 

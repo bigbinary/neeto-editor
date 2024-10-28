@@ -40,6 +40,11 @@ export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
     "Accepts an array of objects which cotains value to be substituted for the variables.",
     `[{key: "name", value: "John"}]`,
   ],
+  [
+    "configuration",
+    "Accepts an object, navigableHeader can be set to true or false in the configuration, default value is false.",
+    `{navigableHeader: true}`,
+  ],
 ];
 
 export const EDITOR_SHORTCUTS_TABLE_COLUMNS = [
