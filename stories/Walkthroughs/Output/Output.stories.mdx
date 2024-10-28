@@ -111,3 +111,14 @@ file.
   src="https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/codeBlockHighlight.js"
 ></script>
 ```
+
+#### Make headings navigable in NextJS websites
+
+Add the following lines to the SSG/SSR pages. The pages need not be converted to client side rendering for this to work.
+
+```js
+<Script
+  src="https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/codeBlockHighlight.js"
+  strategy="beforeInteractive"
+/>
+```
