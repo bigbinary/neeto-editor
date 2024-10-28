@@ -2,6 +2,7 @@ const buildLinkSVG = () => {
   const svgNS = "http://www.w3.org/2000/svg";
 
   const svgWrapper = document.createElement("span");
+  svgWrapper.classList.add("header-link-icon-wrapper");
   const svg = document.createElementNS(svgNS, "svg");
   svg.setAttribute("aria-hidden", "true");
   svg.setAttribute("height", "20");

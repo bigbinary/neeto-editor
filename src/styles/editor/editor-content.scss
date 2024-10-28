@@ -152,18 +152,25 @@
       cursor: pointer;
     }
 
-    span {
+    .header-link-icon-wrapper {
       position: absolute;
       left: -25px;
       height: 100%;
       width: 25px;
       display: flex;
       align-items: center;
-      transition: opacity 150ms ease-in;
       opacity: 0;
+      svg {
+        fill: rgb(var(--neeto-editor-accent-800));
+      }
     }
-    &:hover span{
-      opacity: 1;
+    &:hover{
+      h1, h2, h3, h4, h5, h6 {
+        color: rgb(var(--neeto-editor-accent-800));
+      }
+      .header-link-icon-wrapper {
+        opacity: 1;
+      }
     }
   }
 
