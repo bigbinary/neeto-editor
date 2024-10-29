@@ -14,8 +14,8 @@ export default CodeBlockLowlight.extend({
         parseHTML: element =>
           element.dataset.highlightedLines
             ?.split(",")
-            .filter(Boolean)
-            .map(Number) || [],
+            .map(Number)
+            .filter(Boolean) || [],
         renderHTML: attributes => ({
           "data-highlighted-lines":
             attributes.highlightedLines?.join(",") ?? "",
