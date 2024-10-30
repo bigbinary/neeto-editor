@@ -99,8 +99,8 @@ export const applyLineHighlighting = editorContent => {
     if (highlightedLines) {
       const linesToHighlight = highlightedLines
         .split(",")
-        ?.filter(Boolean)
-        .map(Number);
+        .map(Number)
+        .filter(Boolean);
 
       const highlightLinesOptions = linesToHighlight.map(line => ({
         start: line,
