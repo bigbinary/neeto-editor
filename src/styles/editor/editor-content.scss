@@ -95,9 +95,11 @@
   tab-size: 2;
 
   // Sizing
-
   &--size-large {
     --neeto-editor-content-paragraph-font-size: 1.125rem;
+  }
+  &--size-small {
+    --neeto-editor-content-paragraph-font-size: 0.8rem;
   }
 
   // Headers

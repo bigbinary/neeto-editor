@@ -9,6 +9,14 @@
 .neeto-editor {
   @extend .neeto-editor-content;
 
+  // Sizing
+  &--size-large {
+    --neeto-editor-content-paragraph-font-size: 1.125rem;
+  }
+  &--size-small {
+    --neeto-editor-content-paragraph-font-size: 0.8rem;
+  }
+
   max-width: 100% !important;
   border-radius: var(--neeto-ui-rounded);
   white-space: pre-wrap;
