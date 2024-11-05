@@ -98,9 +98,6 @@
   &--size-large {
     --neeto-editor-content-paragraph-font-size: 1.125rem;
   }
-  &--size-small {
-    --neeto-editor-content-paragraph-font-size: 0.8rem;
-  }
 
   // Headers
   h1,
@@ -150,7 +147,13 @@
   // header anchor tags
   .header-wrapper-link {
     position: relative;
-    h1, h2, h3, h4, h5, h6 {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       cursor: pointer;
       transition: color ease-in 150ms;
     }
@@ -164,18 +167,28 @@
       align-items: center;
       opacity: 0;
       transition: opacity ease-in 150ms;
+
       svg {
         transition: fill ease-in 150ms;
         fill: rgb(var(--neeto-editor-primary-800));
       }
     }
-    &:hover{
-      h1, h2, h3, h4, h5, h6 {
+
+    &:hover {
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         color: rgb(var(--neeto-editor-accent-800));
       }
+
       .header-link-icon-wrapper {
         opacity: 1;
       }
+
       svg {
         fill: rgb(var(--neeto-editor-accent-800));
       }
@@ -214,11 +227,15 @@
   // Code
   code {
     padding: 0.2em 0.4em;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     border-radius: var(--neeto-editor-rounded-sm);
     background-color: rgb(var(--neeto-editor-gray-100));
     font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono",
       Courier, monospace;
+
+    * {
+      font-size: inherit !important;
+    }
   }
 
   h1 code,
@@ -235,8 +252,8 @@
     position: relative;
     background-color: #f7f6f3;
     overflow-x: auto;
-    font-size: 0.8rem;
-    line-height: 1.45;
+    font-size: 0.875rem;
+    line-height: 1.5;
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: var(--neeto-editor-rounded-sm);
