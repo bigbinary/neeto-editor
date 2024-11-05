@@ -95,7 +95,6 @@
   tab-size: 2;
 
   // Sizing
-
   &--size-large {
     --neeto-editor-content-paragraph-font-size: 1.125rem;
   }
@@ -148,7 +147,13 @@
   // header anchor tags
   .header-wrapper-link {
     position: relative;
-    h1, h2, h3, h4, h5, h6 {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       cursor: pointer;
       transition: color ease-in 150ms;
     }
@@ -162,18 +167,28 @@
       align-items: center;
       opacity: 0;
       transition: opacity ease-in 150ms;
+
       svg {
         transition: fill ease-in 150ms;
         fill: rgb(var(--neeto-editor-primary-800));
       }
     }
-    &:hover{
-      h1, h2, h3, h4, h5, h6 {
+
+    &:hover {
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         color: rgb(var(--neeto-editor-accent-800));
       }
+
       .header-link-icon-wrapper {
         opacity: 1;
       }
+
       svg {
         fill: rgb(var(--neeto-editor-accent-800));
       }
@@ -217,6 +232,10 @@
     background-color: rgb(var(--neeto-editor-gray-100));
     font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono",
       Courier, monospace;
+
+    * {
+      font-size: inherit !important;
+    }
   }
 
   h1 code,
@@ -238,7 +257,7 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: var(--neeto-editor-rounded-sm);
-    padding: 32px 12px 12px 12px;
+    padding: 12px;
 
     .neeto-editor-codeblock-options {
       display: flex;
