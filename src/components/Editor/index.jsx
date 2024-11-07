@@ -131,9 +131,9 @@ const Editor = (
     "bubble-menu-active": isBubbleMenuActive,
     "placeholder-active": isPlaceholderActive,
     "attachments-active": isAttachmentsActive,
-    "neeto-editor--size-large": size === EDITOR_SIZES.LARGE,
-    "neeto-editor--size-medium": size === EDITOR_SIZES.MEDIUM,
-    "neeto-editor--size-small": size === EDITOR_SIZES.SMALL,
+    "neeto-editor-size--large": size === EDITOR_SIZES.LARGE,
+    "neeto-editor-size--medium": size === EDITOR_SIZES.MEDIUM,
+    "neeto-editor-size--small": size === EDITOR_SIZES.SMALL,
     [contentClassName]: contentClassName,
   });
 

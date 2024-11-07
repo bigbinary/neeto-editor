@@ -61,32 +61,31 @@
   --neeto-editor-font-bold: 700;
   --neeto-editor-font-extrabold: 800;
   --neeto-editor-font-black: 900;
-  --neeto-editor-content-h1-font-size: 2rem;
-  --neeto-editor-content-h2-font-size: 1.5rem;
-  --neeto-editor-content-h3-font-size: 1.25rem;
-  --neeto-editor-content-h4-font-size: 1rem;
-  --neeto-editor-content-h5-font-size: 0.875rem;
-  --neeto-editor-content-h6-font-size: 0.75rem;
-  --neeto-editor-content-h1-margin: 2rem 0 0.25rem;
+  --neeto-editor-content-h1-margin: 1.5rem 0 0.25rem;
   --neeto-editor-content-h2-margin: 1.5rem 0 0.25rem;
-  --neeto-editor-content-h3-margin: 1rem 0 0.25rem;
-  --neeto-editor-content-h4-margin: 0.75rem 0 0.25rem;
-  --neeto-editor-content-h5-margin: 0.75rem 0 0.25rem;
-  --neeto-editor-content-h6-margin: 0.75rem 0 0.25rem;
+  --neeto-editor-content-h3-margin: 1.5rem 0 0.25rem;
+  --neeto-editor-content-h4-margin: 1.5rem 0 0.25rem;
+  --neeto-editor-content-h5-margin: 1.5rem 0 0.25rem;
+  --neeto-editor-content-h6-margin: 1.5rem 0 0.25rem;
   --neeto-editor-content-heading-font-weight: 600;
   --neeto-editor-content-heading-font-weight-bold: bold;
-  --neeto-editor-content-heading-color: 54, 55, 55, 1;
-  --neeto-editor-content-paragraph-font-size: 1rem;
-  --neeto-editor-content-paragraph-font-weight: 400;
+  --neeto-editor-content-heading-color: 12, 17, 29, 1;
   --neeto-editor-content-paragraph-color: 54, 55, 55, 1;
+  --neeto-editor-content-paragraph-font-weight: 400;
   --neeto-editor-content-paragraph-line-height: 1.6;
-
-  @media only screen and (max-width: 720px) {
-    --neeto-editor-content-h1-font-size: 1.375rem;
-    --neeto-editor-content-h2-font-size: 1.25rem;
-    --neeto-editor-content-h3-font-size: 1.125rem;
-    --neeto-editor-content-h4-font-size: 1rem;
-  }
+  --neeto-editor-content-list-left-padding: 2rem;
+  --neeto-editor-content-list-margin-bottom: 1rem;
+  --neeto-editor-content-list-item-margin-bottom: 0.5rem;
+  --neeto-editor-content-list-item-margin-top: 0.5rem;
+  --neeto-editor-content-code-font-size: 85%;
+  --neeto-editor-content-code-background-color: 246, 248, 250, 1;
+  --neeto-editor-content-code-color: 31, 35, 40, 1;
+  --neeto-editor-content-code-padding: 0.2em 0.4em;
+  --neeto-editor-content-blockquote-color: 89, 99, 110, 1;
+  --neeto-editor-content-blockquote-border-color: 209, 217, 224, 1;
+  --neeto-editor-content-blockquote-border-left-width: 4px;
+  --neeto-editor-content-blockquote-margin-bottom: 1rem;
+  --neeto-editor-content-blockquote-padding-left: 12px;
 }
 
 .neeto-editor-content {
@@ -100,8 +99,56 @@
   }
 
   // Sizing
-  &--size-large {
+  &.neeto-editor-size--small {
+    --neeto-editor-content-heading-color: 31, 35, 40, 1;
+    --neeto-editor-content-paragraph-color: 31, 35, 40, 1;
+    --neeto-editor-content-h1-font-size: 1.75rem;
+    --neeto-editor-content-h2-font-size: 1.3125rem;
+    --neeto-editor-content-h3-font-size: 1.09375rem;
+    --neeto-editor-content-h4-font-size: 0.875rem;
+    --neeto-editor-content-h5-font-size: 0.765625rem;
+    --neeto-editor-content-h6-font-size: 0.74375rem;
+    --neeto-editor-content-paragraph-font-size: 0.875rem;
+    --neeto-editor-content-paragraph-line-height: 1.5;
+    --neeto-editor-content-list-left-padding: 1.5rem;
+    --neeto-editor-content-list-item-margin-bottom: 0.25rem;
+    --neeto-editor-content-list-item-margin-top: 0.25rem;
+  }
+
+  &.neeto-editor-size--medium {
+    --neeto-editor-content-h1-font-size: 2rem;
+    --neeto-editor-content-h2-font-size: 1.5rem;
+    --neeto-editor-content-h3-font-size: 1.25rem;
+    --neeto-editor-content-h4-font-size: 1rem;
+    --neeto-editor-content-h5-font-size: 0.875rem;
+    --neeto-editor-content-h6-font-size: 0.75rem;
+    --neeto-editor-content-paragraph-font-size: 1rem;
+
+    @media only screen and (max-width: 767px) {
+      --neeto-editor-content-h1-font-size: 1.375rem;
+      --neeto-editor-content-h2-font-size: 1.25rem;
+      --neeto-editor-content-h3-font-size: 1.125rem;
+    }
+  }
+
+  &.neeto-editor-size--large {
+    --neeto-editor-content-h1-font-size: 2.375rem;
+    --neeto-editor-content-h2-font-size: 1.93rem;
+    --neeto-editor-content-h3-font-size: 1.633rem;
+    --neeto-editor-content-h4-font-size: 1.336rem;
+    --neeto-editor-content-h5-font-size: 0.986rem;
+    --neeto-editor-content-h6-font-size: 0.796rem;
     --neeto-editor-content-paragraph-font-size: 1.125rem;
+
+    @media only screen and (max-width: 767px) {
+      --neeto-editor-content-h1-font-size: 2.125rem;
+      --neeto-editor-content-h2-font-size: 1.7266rem;
+      --neeto-editor-content-h3-font-size: 1.4609rem;
+      --neeto-editor-content-h4-font-size: 1.1953rem;
+      --neeto-editor-content-h5-font-size: 0.875rem;
+      --neeto-editor-content-h6-font-size: 0.75rem;
+      --neeto-editor-content-paragraph-font-size: 1rem;
+    }
   }
 
   // Headers
@@ -231,10 +278,12 @@
 
   // Code
   code {
-    padding: 0.2em 0.4em;
-    font-size: 0.875rem;
+    padding: var(--neeto-editor-content-code-padding);
+    font-size: var(--neeto-editor-content-code-font-size);
     border-radius: var(--neeto-editor-rounded-sm);
-    background-color: rgb(var(--neeto-editor-gray-100));
+    color: rgba(var(--neeto-editor-content-code-color));
+    background-color: rgba(var(--neeto-editor-content-code-background-color));
+    border-color: rgba(var(--neeto-editor-content-code-background-color));
     font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono",
       Courier, monospace;
 
@@ -250,19 +299,25 @@
   h5 code,
   h6 code,
   p code {
-    font-size: inherit;
+    font-size: var(--neeto-editor-content-code-font-size);
   }
 
   pre {
     position: relative;
-    background-color: #f7f6f3;
+    color: rgba(var(--neeto-editor-content-code-color));
+    background-color: rgba(var(--neeto-editor-content-code-background-color));
+    border-color: rgba(var(--neeto-editor-content-code-background-color));
     overflow-x: auto;
-    font-size: 0.875rem;
+    font-size: var(--neeto-editor-content-code-font-size);
     line-height: 1.5;
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: var(--neeto-editor-rounded-sm);
     padding: 12px;
+
+    div {
+      color: rgba(var(--neeto-editor-content-code-color));
+    }
 
     .neeto-editor-codeblock-options {
       display: flex;
@@ -322,12 +377,17 @@
   // Blockquote
   blockquote {
     font-weight: var(--neeto-editor-font-medium);
-    color: rgb(var(--neeto-editor-black));
-    border-left-width: 4px;
-    border-left-color: #e5e7eb;
+    color: rgba(var(--neeto-editor-content-blockquote-color));
+    border-left-width: var(--neeto-editor-content-blockquote-border-left-width);
+    border-left-color: rgba(var(--neeto-editor-content-blockquote-border-color));
     quotes: "\201C" "\201D" "\2018" "\2019";
-    margin: 8px 0;
-    padding-left: 12px;
+    margin-bottom: var(--neeto-editor-content-blockquote-margin-bottom);
+    padding-left: var(--neeto-editor-content-blockquote-padding-left);
+
+    div,
+    p {
+      color: inherit;
+    }
 
     &>p::before {
       content: "" !important;
@@ -341,23 +401,27 @@
   ul,
   ol {
     list-style: revert;
-    padding-left: 28px;
-    margin-bottom: 1rem;
+    padding-left: var(--neeto-editor-content-list-left-padding);
+    margin-bottom: var(--neeto-editor-content-list-margin-bottom);
 
     li {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-top: var(--neeto-editor-content-list-item-margin-top);
+      margin-bottom: var(--neeto-editor-content-list-item-margin-bottom);
+      font-size: var(--neeto-editor-content-paragraph-font-size);
+      font-weight: var(--neeto-editor-content-paragraph-font-weight);
+      line-height: var(--neeto-editor-content-paragraph-line-height);
+      color: rgba(var(--neeto-editor-content-paragraph-color));
     }
 
     li::before {
-      background-color: rgb(var(--neeto-editor-black));
+      background-color: rgba(var(--neeto-editor-content-paragraph-color));
     }
   }
 
   // Link
   a[href] {
     color: rgb(var(--neeto-editor-accent-800));
-    font-weight: 500;
+    font-weight: inherit;
   }
 
   // Embed

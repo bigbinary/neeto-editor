@@ -92,7 +92,7 @@ const EditorContent = ({
         ref={editorContentRef}
         className={classnames(EDITOR_CONTENT_CLASS_NAME, {
           [className]: className,
-          [`${EDITOR_CONTENT_CLASS_NAME}--size-${size}`]: true,
+          [`neeto-editor-size--${size}`]: true,
         })}
         dangerouslySetInnerHTML={{
           __html: sanitize(htmlContent, SANITIZE_OPTIONS),
