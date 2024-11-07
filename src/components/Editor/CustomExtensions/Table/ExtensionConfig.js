@@ -24,7 +24,11 @@ const Table = TiptapTable.extend({
       }
     );
 
-    return ["table", {}, ["colgroup", ...colgroups], ["tbody", 0]];
+    return [
+      "div",
+      { class: "table-responsive" },
+      ["table", {}, ["colgroup", ...colgroups], ["tbody", 0]],
+    ];
   },
 
   addKeyboardShortcuts() {

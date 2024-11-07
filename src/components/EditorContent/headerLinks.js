@@ -1,7 +1,7 @@
-import { makeHeadingsNavigable } from "./utils/headers";
+import { buildHeaderLinks } from "./utils/headers";
 
 document.addEventListener("DOMContentLoaded", () => {
   const editorContent = document.querySelector(".neeto-editor-content");
 
-  if (editorContent) makeHeadingsNavigable(editorContent);
+  if (editorContent) buildHeaderLinks(editorContent);
 });

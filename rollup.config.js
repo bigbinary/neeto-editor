@@ -141,7 +141,7 @@ const config = args => {
       plugins,
     },
     {
-      input: "./src/components/EditorContent/navigableHeadings.js",
+      input: "./src/components/EditorContent/headerLinks.js",
       output: {
         dir: `${__dirname}/dist`,
         format: "cjs",

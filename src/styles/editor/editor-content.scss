@@ -86,6 +86,11 @@
   word-break: break-word;
   tab-size: 2;
 
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   // Sizing
   &.neeto-editor-size--small {
     --neeto-editor-content-paragraph-color: 31, 35, 40, 1;
