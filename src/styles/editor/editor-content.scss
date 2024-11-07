@@ -402,7 +402,7 @@
     }
 
     li::before {
-      background-color: rgb(var(--neeto-editor-black));
+      background-color: rgba(var(--neeto-editor-content-paragraph-color));
     }
   }
 
