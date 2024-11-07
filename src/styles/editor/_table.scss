@@ -1,9 +1,12 @@
 .neeto-editor-table {
-  display: relative;
+  position: relative;
   width: fit-content;
   margin: 8px 0 0;
+  max-width: 100%;
+  overflow-x: auto;
 
   table {
+
     th,
     td {
       p {
@@ -31,6 +34,8 @@
   &__wrapper {
     display: flex;
     gap: 2px;
+    max-width: 100%;
+    overflow-x: auto;
   }
 
   &__add-row,
@@ -50,7 +55,7 @@
       color: rgb(var(--neeto-ui-gray-500)) !important;
       font-size: var(--neeto-ui-text-base) !important;
       line-height: 16px !important;
-      font-weight: var(	--neeto-ui-font-light) !important;
+      font-weight: var(--neeto-ui-font-light) !important;
     }
 
     &:hover {
@@ -59,6 +64,7 @@
   }
 
   &:hover {
+
     .neeto-editor-table__add-row,
     .neeto-editor-table__add-column {
       visibility: visible;

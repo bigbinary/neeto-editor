@@ -94,6 +94,11 @@
   word-break: break-word;
   tab-size: 2;
 
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   // Sizing
   &--size-large {
     --neeto-editor-content-paragraph-font-size: 1.125rem;
