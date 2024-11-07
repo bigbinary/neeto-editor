@@ -16,5 +16,5 @@ export const VARIABLE_SPAN_REGEX =
 export const LANGUAGE_LIST = [...lowlight.listLanguages(), "html"];
 
 export const EDITOR_CONTENT_DEFAULT_CONFIGURATION = {
-  navigableHeader: false,
+  enableHeaderLinks: false,
 };

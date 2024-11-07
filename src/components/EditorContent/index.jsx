@@ -20,7 +20,7 @@ import {
   applyLineHighlighting,
   applySyntaxHighlighting,
 } from "./utils";
-import { makeHeadingsNavigable } from "./utils/headers";
+import { buildHeaderLinks } from "./utils/headers";
 
 const EditorContent = ({
   content = "",
@@ -81,8 +81,8 @@ const EditorContent = ({
     injectCopyButtonToCodeBlocks();
     bindImageClickListener();
     applyLineHighlighting(editorContentRef.current);
-    configuration.navigableHeader &&
-      makeHeadingsNavigable(editorContentRef.current);
+    configuration.enableHeaderLinks &&
+      buildHeaderLinks(editorContentRef.current);
   }, [content]);
 
   return (
