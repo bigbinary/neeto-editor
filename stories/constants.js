@@ -42,8 +42,8 @@ export const EDITOR_CONTENT_PROP_TABLE_ROWS = [
   ],
   [
     "configuration",
-    "Accepts an object, navigableHeader can be set to true or false in the configuration, default value is false.",
-    `{navigableHeader: true}`,
+    "Accepts an object, enableHeaderLinks can be set to true or false in the configuration, default value is false.",
+    `{enableHeaderLinks: true}`,
   ],
 ];
 

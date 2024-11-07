@@ -19,7 +19,7 @@ const EditorContentDemo = () => {
         <EditorContent
           {...{ content }}
           className="neeto-ui-p-4"
-          configuration={{ navigableHeader: true }}
+          configuration={{ enableHeaderLinks: true }}
         />
       </div>
       <div>

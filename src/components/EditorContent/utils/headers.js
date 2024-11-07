@@ -28,13 +28,20 @@ const convertTextToId = text =>
     .replace(/[^a-z0-9\s]/g, "")
     .replace(/\s+/g, "-");
 
-export const makeHeadingsNavigable = editorContentNode => {
+export const buildHeaderLinks = editorContentNode => {
   const headerTags = editorContentNode.querySelectorAll(
     "h1, h2, h3, h4, h5, h6"
   );
+  const usedIds = new Map();
 
   headerTags.forEach(heading => {
-    const headingId = convertTextToId(heading.textContent);
+    let headingId = convertTextToId(heading.textContent);
+    if (usedIds.has(headingId)) {
+      const count = usedIds.get(headingId);
+      usedIds.set(headingId, count + 1);
+      headingId = `${headingId}-${count}`;
+    } else usedIds.set(headingId, 1);
+
     heading.setAttribute("id", headingId);
 
     const anchor = document.createElement("a");
