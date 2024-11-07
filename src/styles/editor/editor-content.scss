@@ -69,11 +69,11 @@
   --neeto-editor-content-h6-margin: 1.5rem 0 0.25rem;
   --neeto-editor-content-heading-font-weight: 600;
   --neeto-editor-content-heading-font-weight-bold: bold;
-  --neeto-editor-content-heading-color: 54, 55, 55, 1;
-  --neeto-editor-content-paragraph-font-weight: 400;
+  --neeto-editor-content-heading-color: 12, 17, 29, 1;
   --neeto-editor-content-paragraph-color: 54, 55, 55, 1;
-  --neeto-editor-content-paragraph-line-height: 1.5;
-  --neeto-editor-content-list-left-padding: 1.5rem;
+  --neeto-editor-content-paragraph-font-weight: 400;
+  --neeto-editor-content-paragraph-line-height: 1.6;
+  --neeto-editor-content-list-left-padding: 2rem;
   --neeto-editor-content-list-margin-bottom: 1rem;
   --neeto-editor-content-list-item-margin-bottom: 0.5rem;
   --neeto-editor-content-list-item-margin-top: 0.5rem;
@@ -100,6 +100,7 @@
 
   // Sizing
   &.neeto-editor-size--small {
+    --neeto-editor-content-heading-color: 31, 35, 40, 1;
     --neeto-editor-content-paragraph-color: 31, 35, 40, 1;
     --neeto-editor-content-h1-font-size: 1.75rem;
     --neeto-editor-content-h2-font-size: 1.3125rem;
@@ -108,6 +109,8 @@
     --neeto-editor-content-h5-font-size: 0.765625rem;
     --neeto-editor-content-h6-font-size: 0.74375rem;
     --neeto-editor-content-paragraph-font-size: 0.875rem;
+    --neeto-editor-content-paragraph-line-height: 1.5;
+    --neeto-editor-content-list-left-padding: 1.5rem;
     --neeto-editor-content-list-item-margin-bottom: 0.25rem;
     --neeto-editor-content-list-item-margin-top: 0.25rem;
   }
@@ -129,14 +132,23 @@
   }
 
   &.neeto-editor-size--large {
-    --neeto-editor-content-h1-font-size: 2rem;
-    --neeto-editor-content-h2-font-size: 1.5rem;
-    --neeto-editor-content-h3-font-size: 1.25rem;
-    --neeto-editor-content-h4-font-size: 1rem;
-    --neeto-editor-content-h5-font-size: 0.875rem;
-    --neeto-editor-content-h6-font-size: 0.75rem;
-    --neeto-editor-content-paragraph-font-size: 1rem;
-    --neeto-editor-content-paragraph-line-height: 1.6;
+    --neeto-editor-content-h1-font-size: 2.375rem;
+    --neeto-editor-content-h2-font-size: 1.93rem;
+    --neeto-editor-content-h3-font-size: 1.633rem;
+    --neeto-editor-content-h4-font-size: 1.336rem;
+    --neeto-editor-content-h5-font-size: 0.986rem;
+    --neeto-editor-content-h6-font-size: 0.796rem;
+    --neeto-editor-content-paragraph-font-size: 1.125rem;
+
+    @media only screen and (max-width: 767px) {
+      --neeto-editor-content-h1-font-size: 2.125rem;
+      --neeto-editor-content-h2-font-size: 1.7266rem;
+      --neeto-editor-content-h3-font-size: 1.4609rem;
+      --neeto-editor-content-h4-font-size: 1.1953rem;
+      --neeto-editor-content-h5-font-size: 0.875rem;
+      --neeto-editor-content-h6-font-size: 0.75rem;
+      --neeto-editor-content-paragraph-font-size: 1rem;
+    }
   }
 
   // Headers
