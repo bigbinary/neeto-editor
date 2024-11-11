@@ -26,7 +26,7 @@ const EditorContent = ({
   content = "",
   variables = [],
   className,
-  size = EDITOR_SIZES.MEDIUM,
+  size = EDITOR_SIZES.SMALL,
   configuration = EDITOR_CONTENT_DEFAULT_CONFIGURATION,
   ...otherProps
 }) => {
