@@ -69,7 +69,7 @@ const Editor = (
     openLinkInNewTab = true,
     collaborationProvider = null,
     enableReactNodeViewOptimization = false,
-    size = EDITOR_SIZES.MEDIUM,
+    size = EDITOR_SIZES.SMALL,
     ...otherProps
   },
   ref
