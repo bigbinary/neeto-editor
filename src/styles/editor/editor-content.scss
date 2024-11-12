@@ -431,10 +431,13 @@
 
     .neeto-editor__video-iframe {
       display: inline-block;
+      vertical-align: top;
+      max-width: 100%;
+      height: auto !important;
 
       iframe {
-        height: 100%;
         width: 100%;
+        aspect-ratio: 16 / 9;
       }
     }
   }
@@ -510,6 +513,7 @@
   figure {
     position: relative;
     display: inline-block;
+    vertical-align: top;
     max-width: 100%;
     overflow: hidden;
   }
@@ -519,7 +523,7 @@
     min-height: 52px;
     max-width: 100%;
     height: auto !important;
-    vertical-align: top !important;
+    vertical-align: top;
 
     img,
     video {
