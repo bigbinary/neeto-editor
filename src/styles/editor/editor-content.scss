@@ -518,14 +518,13 @@
     display: inline-block;
     min-height: 52px;
     max-width: 100%;
-
-    @media only screen and (max-width: 767px) {
-      height: auto !important;
-    }
+    height: auto !important;
+    vertical-align: top !important;
 
     img,
     video {
       display: inline-block;
+      vertical-align: top !important;
       width: 100%;
       height: auto;
 
