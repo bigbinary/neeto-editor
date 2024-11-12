@@ -517,6 +517,11 @@
   .neeto-editor__image {
     display: inline-block;
     min-height: 52px;
+    max-width: 100%;
+
+    @media only screen and (max-width: 767px) {
+      height: auto !important;
+    }
 
     img,
     video {
@@ -582,6 +587,7 @@
     line-height: 1.4;
     font-weight: normal;
     color: #6b7280;
+    max-width: 100%;
   }
 }
 
