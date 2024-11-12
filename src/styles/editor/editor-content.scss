@@ -93,6 +93,10 @@
   word-break: break-word;
   tab-size: 2;
 
+  hr {
+    margin: 0.5rem 0;
+  }
+
   .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
