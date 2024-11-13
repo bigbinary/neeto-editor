@@ -93,6 +93,10 @@
   word-break: break-word;
   tab-size: 2;
 
+  hr {
+    margin: 0.5rem 0;
+  }
+
   .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -431,10 +435,13 @@
 
     .neeto-editor__video-iframe {
       display: inline-block;
+      vertical-align: top;
+      max-width: 100%;
+      height: auto !important;
 
       iframe {
-        height: 100%;
         width: 100%;
+        aspect-ratio: 16 / 9;
       }
     }
   }
@@ -510,6 +517,7 @@
   figure {
     position: relative;
     display: inline-block;
+    vertical-align: top;
     max-width: 100%;
     overflow: hidden;
   }
@@ -517,10 +525,14 @@
   .neeto-editor__image {
     display: inline-block;
     min-height: 52px;
+    max-width: 100%;
+    height: auto !important;
+    vertical-align: top;
 
     img,
     video {
       display: inline-block;
+      vertical-align: top !important;
       width: 100%;
       height: auto;
 
@@ -582,6 +594,7 @@
     line-height: 1.4;
     font-weight: normal;
     color: #6b7280;
+    max-width: 100%;
   }
 }
 
