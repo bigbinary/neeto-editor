@@ -355,18 +355,18 @@
     counter-reset: line-number;
     .highlight-line {
       position: relative;
-      padding-left: 35px;
+      padding-left: 45px;
       &::before {
         color: #000;
         content: counter(line-number);
         counter-increment: line-number;
         font-weight: 700;
+        left: 0;
         margin-right: 5px;
-        position: absolute;
-        width: 30px;
-        text-align: right;
         padding-right: 5px;
-        left: 0px;
+        position: absolute;
+        text-align: right;
+        width: 40px;
       }
       &:last-child::before {
         content: "";
