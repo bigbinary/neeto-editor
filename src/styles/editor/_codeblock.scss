@@ -1,10 +1,28 @@
 .ne-codeblock-nodeview-wrapper {
-  .highlighted-line {
-    background-color: rgba(255, 255, 0, 0.2);
+  pre {
+    padding-left: 45px;
+  }
+  .line {
     position: absolute;
     left: 0;
     right: 0;
     z-index: 0;
     pointer-events: none;
+
+    &.highlighted-line {
+      background-color: rgba(255, 255, 0, 0.2);
+    }
+
+    &::before {
+      color: #000;
+      content: attr(data-linenumber);
+      font-weight: 700;
+      margin-right: 5px;
+      position: absolute;
+      width: 30px;
+      text-align: right;
+      padding-right: 5px;
+      left: 0px;
+    }
   }
 }

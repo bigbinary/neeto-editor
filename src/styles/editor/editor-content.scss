@@ -317,7 +317,17 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: var(--neeto-editor-rounded-sm);
-    padding: 12px;
+    padding: 32px 12px 12px 0px;
+    position: relative;
+    &::before {
+      background: rgba(0, 0, 0, .1);
+      bottom: 0;
+      content: "";
+      top: 0;
+      width: 40px;
+      position: absolute;
+      left: 0px;
+    }
 
     div {
       color: rgba(var(--neeto-editor-content-code-color));
@@ -342,26 +352,31 @@
       }
     }
 
+    counter-reset: line-number;
     .highlight-line {
       position: relative;
-
-      &:before {
-        left: -12px;
-      }
-
-      &:after {
-        right: -12px;
-      }
-
-      &:before,
-      &:after {
-        content: "";
+      padding-left: 35px;
+      &::before {
+        color: #000;
+        content: counter(line-number);
+        counter-increment: line-number;
+        font-weight: 700;
+        margin-right: 5px;
         position: absolute;
-        top: 0px;
-        width: 12px;
-        height: 25px;
-        background-color: inherit;
+        width: 30px;
+        text-align: right;
+        padding-right: 5px;
+        left: 0px;
       }
+      &:last-child::before {
+        content: "";
+      }
+    }
+
+    .copy-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
     }
   }
 
