@@ -4,16 +4,15 @@ import { Decoration, DecorationSet } from "prosemirror-view";
 
 const codeBlockHighlightKey = new PluginKey("codeBlockHighlight");
 
-function createLineDecoration(from, lineNumber, shouldHighlight = false) {
+function createLineDecoration(from, lineNumber) {
   return Decoration.widget(from, view => {
     const line = document.createElement("div");
-    line.className = "line";
-    shouldHighlight && line.classList.add("highlighted-line");
-    line.setAttribute("data-linenumber", lineNumber.toString());
+    line.className = "highlighted-line";
+    line.setAttribute("data-line-number", lineNumber.toString());
 
     // Set the height of the highlight to match the line height
     const lineElement = view.domAtPos(from).node;
-    if (lineElement) {
+    if (lineElement instanceof Element) {
       const lineHeight = window.getComputedStyle(lineElement).lineHeight;
       line.style.height = lineHeight;
     }
@@ -53,13 +52,9 @@ const codeBlockHighlightPlugin = new Plugin({
           const lineRanges = getLineRanges(node, pos);
 
           lineRanges.forEach(({ from, lineNumber }) => {
-            decorations.push(
-              createLineDecoration(
-                from,
-                lineNumber,
-                highlightedLines.includes(lineNumber)
-              )
-            );
+            if (highlightedLines.includes(lineNumber)) {
+              decorations.push(createLineDecoration(from, lineNumber));
+            }
           });
         });
 
