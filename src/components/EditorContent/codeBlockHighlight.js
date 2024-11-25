@@ -4,6 +4,14 @@ import hljs from "highlight.js/lib/common";
 const highlightLinesScriptCDNPath =
   "//cdn.jsdelivr.net/gh/TRSasasusu/highlightjs-highlight-lines.js@1.2.0/highlightjs-highlight-lines.min.js";
 
+const getHighlightLine = (preNode, codeNode) => {
+  const highlightedLines =
+    preNode.getAttribute("data-highlighted-lines") ??
+    codeNode.getAttribute("data-highlighted-lines");
+
+  return highlightedLines.split(",")?.map(Number) ?? [0];
+};
+
 const copyToClipboard = text => {
   try {
     if (navigator.clipboard && window.isSecureContext) {
@@ -53,8 +61,7 @@ function applyCodeblockDecorations(codeElement) {
   addCopyToClipboardButton(codeElement);
   const preElement = codeElement.closest("pre");
 
-  const highlightedLines = preElement.getAttribute("data-highlighted-lines");
-  const linesToHighlight = highlightedLines?.split(",")?.map(Number) ?? [0];
+  const linesToHighlight = getHighlightLine(preElement, codeElement);
   const highlightLinesOptions = linesToHighlight
     .filter(line => line > 0)
     .map(line => ({
