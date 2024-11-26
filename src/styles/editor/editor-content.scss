@@ -166,7 +166,9 @@
     font-weight: var(--neeto-editor-content-heading-font-weight);
 
     strong {
-      font-weight: var(--neeto-editor-content-heading-font-weight-bold) !important;
+      font-weight: var(
+        --neeto-editor-content-heading-font-weight-bold
+      ) !important;
     }
   }
 
@@ -231,7 +233,6 @@
     }
 
     &:hover {
-
       h1,
       h2,
       h3,
@@ -341,31 +342,9 @@
         margin: 4px 4px;
       }
     }
-
-    .highlight-line {
-      position: relative;
-
-      &:before {
-        left: -12px;
-      }
-
-      &:after {
-        right: -12px;
-      }
-
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        top: 0px;
-        width: 12px;
-        height: 25px;
-        background-color: inherit;
-      }
-    }
   }
 
-  pre>code {
+  pre > code {
     background-color: transparent;
     border-width: 0;
     border-radius: 0;
@@ -373,7 +352,6 @@
     font-weight: 400;
     color: inherit;
     font-size: inherit;
-    font-family: inherit;
     line-height: inherit;
     white-space: pre-wrap;
   }
@@ -383,8 +361,10 @@
     font-weight: var(--neeto-editor-font-medium);
     color: rgba(var(--neeto-editor-content-blockquote-color));
     border-left-width: var(--neeto-editor-content-blockquote-border-left-width);
-    border-left-color: rgba(var(--neeto-editor-content-blockquote-border-color));
-    quotes: "\201C" "\201D" "\2018" "\2019";
+    border-left-color: rgba(
+      var(--neeto-editor-content-blockquote-border-color)
+    );
+    quotes: "\201C""\201D""\2018""\2019";
     margin-bottom: var(--neeto-editor-content-blockquote-margin-bottom);
     padding-left: var(--neeto-editor-content-blockquote-padding-left);
 
@@ -393,11 +373,11 @@
       color: inherit;
     }
 
-    &>p::before {
+    & > p::before {
       content: "" !important;
     }
 
-    &>p::after {
+    & > p::after {
       content: "" !important;
     }
   }
