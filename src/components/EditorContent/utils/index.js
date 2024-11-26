@@ -27,12 +27,14 @@ const buildReactElementFromAST = element => {
   return element.value;
 };
 
-const highlightLinesCode = (code, options) => {
-  code.innerHTML = code.innerHTML.replace(
+const splitCodeBlockIntoLines = codeBlock => {
+  codeBlock.innerHTML = codeBlock.innerHTML.replace(
     /([ \S]*\n|[ \S]*$)/gm,
     match => `<div class="highlight-line">${match}</div>`
   );
+};
 
+const highlightLinesCode = (code, options) => {
   if (options === undefined) {
     return;
   }
@@ -93,9 +95,12 @@ export const applyLineHighlighting = editorContent => {
   const codeTags = editorContent?.querySelectorAll("pre code");
 
   codeTags.forEach(codeTag => {
+    splitCodeBlockIntoLines(codeTag);
+
     const highlightedLines = codeTag
       .closest("pre")
       .getAttribute("data-highlighted-lines");
+
     if (highlightedLines) {
       const linesToHighlight = highlightedLines
         .split(",")

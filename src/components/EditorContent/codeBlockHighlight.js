@@ -4,12 +4,12 @@ import hljs from "highlight.js/lib/common";
 const highlightLinesScriptCDNPath =
   "//cdn.jsdelivr.net/gh/TRSasasusu/highlightjs-highlight-lines.js@1.2.0/highlightjs-highlight-lines.min.js";
 
-const getHighlightLine = (preNode, codeNode) => {
+const getHighlightedLines = (preNode, codeNode) => {
   const highlightedLines =
-    preNode.getAttribute("data-highlighted-lines") ??
-    codeNode.getAttribute("data-highlighted-lines");
+    preNode?.getAttribute("data-highlighted-lines") ??
+    codeNode?.getAttribute("data-highlighted-lines");
 
-  return highlightedLines.split(",")?.map(Number) ?? [0];
+  return highlightedLines?.split(",")?.map(Number) ?? [0];
 };
 
 const copyToClipboard = text => {
@@ -46,7 +46,7 @@ const addCopyToClipboardButton = codeElement => {
   copyButton.innerText = "Copy";
 
   copyButton.addEventListener("click", () => {
-    copyToClipboard(codeElement.innerText);
+    copyToClipboard(codeElement.textContent?.trim());
     copyButton.innerText = "Copied";
     setTimeout(() => {
       copyButton.innerText = "Copy";
@@ -57,11 +57,11 @@ const addCopyToClipboardButton = codeElement => {
 };
 
 function applyCodeblockDecorations(codeElement) {
+  const preElement = codeElement.closest("pre");
   hljs.highlightElement(codeElement);
   addCopyToClipboardButton(codeElement);
-  const preElement = codeElement.closest("pre");
 
-  const linesToHighlight = getHighlightLine(preElement, codeElement);
+  const linesToHighlight = getHighlightedLines(preElement, codeElement);
   const highlightLinesOptions = linesToHighlight
     .filter(line => line > 0)
     .map(line => ({
