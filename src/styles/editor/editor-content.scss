@@ -166,7 +166,9 @@
     font-weight: var(--neeto-editor-content-heading-font-weight);
 
     strong {
-      font-weight: var(--neeto-editor-content-heading-font-weight-bold) !important;
+      font-weight: var(
+        --neeto-editor-content-heading-font-weight-bold
+      ) !important;
     }
   }
 
@@ -231,7 +233,6 @@
     }
 
     &:hover {
-
       h1,
       h2,
       h3,
@@ -365,7 +366,7 @@
     }
   }
 
-  pre>code {
+  pre > code {
     background-color: transparent;
     border-width: 0;
     border-radius: 0;
@@ -383,8 +384,10 @@
     font-weight: var(--neeto-editor-font-medium);
     color: rgba(var(--neeto-editor-content-blockquote-color));
     border-left-width: var(--neeto-editor-content-blockquote-border-left-width);
-    border-left-color: rgba(var(--neeto-editor-content-blockquote-border-color));
-    quotes: "\201C" "\201D" "\2018" "\2019";
+    border-left-color: rgba(
+      var(--neeto-editor-content-blockquote-border-color)
+    );
+    quotes: "\201C""\201D""\2018""\2019";
     margin-bottom: var(--neeto-editor-content-blockquote-margin-bottom);
     padding-left: var(--neeto-editor-content-blockquote-padding-left);
 
@@ -393,11 +396,11 @@
       color: inherit;
     }
 
-    &>p::before {
+    & > p::before {
       content: "" !important;
     }
 
-    &>p::after {
+    & > p::after {
       content: "" !important;
     }
   }
@@ -520,6 +523,7 @@
     vertical-align: top;
     max-width: 100%;
     overflow: hidden;
+    margin: 0;
   }
 
   .neeto-editor__image {
