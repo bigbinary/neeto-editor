@@ -79,13 +79,14 @@
   --neeto-editor-content-list-item-margin-top: 0.5rem;
   --neeto-editor-content-code-font-size: 85%;
   --neeto-editor-content-code-background-color: 246, 248, 250, 1;
+  --neeto-editor-content-code-line-number-color: 89, 99, 110, 1;
   --neeto-editor-content-code-color: 31, 35, 40, 1;
   --neeto-editor-content-code-padding: 0.2em 0.4em;
   --neeto-editor-content-blockquote-color: 89, 99, 110, 1;
   --neeto-editor-content-blockquote-border-color: 209, 217, 224, 1;
   --neeto-editor-content-blockquote-border-left-width: 4px;
   --neeto-editor-content-blockquote-margin-bottom: 1rem;
-  --neeto-editor-content-blockquote-padding-left: 12px;
+  --neeto-editor-content-blockquote-padding-left: 0.75rem;
 }
 
 .neeto-editor-content {
@@ -216,9 +217,9 @@
 
     .header-link-icon-wrapper {
       position: absolute;
-      left: -25px;
+      left: -1.5625rem;
       height: 100%;
-      width: 25px;
+      width: 1.5625rem;
       display: flex;
       align-items: center;
       opacity: 0;
@@ -311,23 +312,14 @@
     color: rgba(var(--neeto-editor-content-code-color));
     background-color: rgba(var(--neeto-editor-content-code-background-color));
     border-color: rgba(var(--neeto-editor-content-code-background-color));
-    overflow-x: auto;
-    font-size: var(--neeto-editor-content-code-font-size);
+    max-width: 100%;
+    font-size: var(--neeto-editor-content-paragraph-font-size);
     line-height: 1.5;
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: var(--neeto-editor-rounded-sm);
-    padding: 32px 12px 12px 0px;
+    padding: 0;
     position: relative;
-    &::before {
-      background: rgba(0, 0, 0, .1);
-      bottom: 0;
-      content: "";
-      top: 0;
-      width: 40px;
-      position: absolute;
-      left: 0px;
-    }
 
     div {
       color: rgba(var(--neeto-editor-content-code-color));
@@ -336,38 +328,45 @@
     .neeto-editor-codeblock-options {
       display: flex;
       position: absolute;
-      gap: 4px;
+      gap: 0.25rem;
       align-items: center;
-      top: 4px;
-      right: 4px;
+      top: 0.25rem;
+      right: 0.25rem;
 
       &__menu {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 0.25rem;
       }
 
       &__input {
-        margin: 4px 4px;
+        margin: 0.25rem 0.25rem;
       }
     }
 
     counter-reset: line-number;
+
     .highlight-line {
       position: relative;
-      padding-left: 45px;
+      padding-left: 3.125rem;
+
       &::before {
-        color: #000;
+        color: rgba(var(--neeto-editor-content-code-line-number-color));
         content: counter(line-number);
         counter-increment: line-number;
-        font-weight: 700;
-        left: 0;
-        margin-right: 5px;
-        padding-right: 5px;
+        font-size: 85%;
+        font-weight: 400;
         position: absolute;
-        text-align: right;
-        width: 40px;
+        left: 0;
+        padding-left: 0.625rem;
+        padding-right: 1rem;
+        width: 3.125rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
       }
+
       &:last-child::before {
         content: "";
       }
@@ -381,16 +380,18 @@
   }
 
   pre>code {
+    font-size: var(--neeto-editor-content-code-font-size);
     background-color: transparent;
     border-width: 0;
     border-radius: 0;
-    padding: 0;
     font-weight: 400;
     color: inherit;
-    font-size: inherit;
-    font-family: inherit;
     line-height: inherit;
-    white-space: pre-wrap;
+    white-space: pre !important;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    padding: 2rem 0.75rem 0.75rem 0px;
   }
 
   // Blockquote
@@ -535,6 +536,7 @@
     vertical-align: top;
     max-width: 100%;
     overflow: hidden;
+    margin: 0;
   }
 
   .neeto-editor__image {
