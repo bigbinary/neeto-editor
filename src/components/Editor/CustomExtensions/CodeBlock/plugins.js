@@ -12,7 +12,7 @@ function createLineDecoration(from, lineNumber) {
 
     // Set the height of the highlight to match the line height
     const lineElement = view.domAtPos(from).node;
-    if (lineElement) {
+    if (lineElement instanceof Element) {
       const lineHeight = window.getComputedStyle(lineElement).lineHeight;
       line.style.height = lineHeight;
     }
@@ -46,7 +46,8 @@ const codeBlockHighlightPlugin = new Plugin({
       if (tr.getMeta(codeBlockHighlightKey)) {
         const decorations = [];
         tr.doc.descendants((node, pos) => {
-          if (!(node.type.name === "codeBlock")) return;
+          if (node.type.name !== "codeBlock") return;
+
           const highlightedLines = node.attrs.highlightedLines || [];
           const lineRanges = getLineRanges(node, pos);
 
