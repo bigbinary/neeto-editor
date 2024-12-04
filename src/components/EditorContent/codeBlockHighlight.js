@@ -2,7 +2,7 @@
 import hljs from "highlight.js/lib/common";
 
 const highlightLinesScriptCDNPath =
-  "//cdn.jsdelivr.net/gh/TRSasasusu/highlightjs-highlight-lines.js@1.2.0/highlightjs-highlight-lines.min.js";
+  "https://cdn.jsdelivr.net/gh/TRSasasusu/highlightjs-highlight-lines.js@1.2.0/highlightjs-highlight-lines.min.js";
 
 const getHighlightedLines = (preNode, codeNode) => {
   const highlightedLines =
@@ -72,7 +72,7 @@ function applyCodeblockDecorations(codeElement) {
   hljs.highlightLinesElement(codeElement, highlightLinesOptions);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+const fetchHighlightLinesScript = () => {
   const script = document.createElement("script");
   script.src = highlightLinesScriptCDNPath;
   script.async = true;
@@ -80,4 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
   script.addEventListener("load", () => {
     document.querySelectorAll("pre code").forEach(applyCodeblockDecorations);
   });
-});
+};
+
+(function () {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", fetchHighlightLinesScript);
+  } else fetchHighlightLinesScript();
+})();
