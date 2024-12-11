@@ -112,6 +112,13 @@ file.
 ></script>
 ```
 
+This script exposes the helper function `applyCodeblockDecorations` via the window object. You can use it to apply syntax highlighting.
+```react
+useEffect(() => {
+  window.neetoEditor?.applyCodeblockDecorations?.()
+}, [])
+```
+
 #### Make headings navigable in NextJS websites
 
 Add the following lines to the SSG/SSR pages. The pages need not be converted to client side rendering for this to work.
@@ -121,4 +128,11 @@ Add the following lines to the SSG/SSR pages. The pages need not be converted to
   src="https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/codeBlockHighlight.js"
   strategy="beforeInteractive"
 />
+```
+
+This script exposes the helper function `applyHeaderDecorations` via the window object. You can use it to make the headers navigable.
+```react
+useEffect(() => {
+  window.neetoEditor?.applyHeaderDecorations?.()
+}, [])
 ```

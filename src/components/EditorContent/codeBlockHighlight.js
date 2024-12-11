@@ -56,34 +56,45 @@ const addCopyToClipboardButton = codeElement => {
   codeElement.parentNode.appendChild(copyButton);
 };
 
-function applyCodeblockDecorations(codeElement) {
-  const preElement = codeElement.closest("pre");
-  hljs.highlightElement(codeElement);
-  addCopyToClipboardButton(codeElement);
+const applyDecorations = () => {
+  document.querySelectorAll("pre code").forEach(codeElement => {
+    const preElement = codeElement.closest("pre");
+    hljs.highlightElement(codeElement);
+    addCopyToClipboardButton(codeElement);
 
-  const linesToHighlight = getHighlightedLines(preElement, codeElement);
-  const highlightLinesOptions = linesToHighlight
-    .filter(line => line > 0)
-    .map(line => ({
-      start: line,
-      end: line,
-      color: "rgba(255, 255, 0, 0.2)",
-    }));
-  hljs.highlightLinesElement(codeElement, highlightLinesOptions);
-}
+    const linesToHighlight = getHighlightedLines(preElement, codeElement);
+    const highlightLinesOptions = linesToHighlight
+      .filter(line => line > 0)
+      .map(line => ({
+        start: line,
+        end: line,
+        color: "rgba(255, 255, 0, 0.2)",
+      }));
+    hljs.highlightLinesElement(codeElement, highlightLinesOptions);
+  });
+};
 
-const fetchHighlightLinesScript = () => {
+const checkContextAndApplyDecorations = () => {
+  // Don't have to load the script if the `hljs.highlightLinesElement` is in the context.
+  if (hljs.highlightLinesElement) return applyDecorations();
+
   const script = document.createElement("script");
   script.src = highlightLinesScriptCDNPath;
   script.async = true;
   document.head.appendChild(script);
-  script.addEventListener("load", () => {
-    document.querySelectorAll("pre code").forEach(applyCodeblockDecorations);
-  });
+
+  return script.addEventListener("load", applyDecorations);
 };
 
-(function () {
+(() => {
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", fetchHighlightLinesScript);
-  } else fetchHighlightLinesScript();
+    document.addEventListener(
+      "DOMContentLoaded",
+      checkContextAndApplyDecorations
+    );
+  } else checkContextAndApplyDecorations();
+
+  window.neetoEditor = window.neetoEditor ?? {};
+  window.neetoEditor.applyCodeblockDecorations =
+    checkContextAndApplyDecorations;
 })();
