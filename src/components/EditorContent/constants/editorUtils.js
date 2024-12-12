@@ -10,7 +10,7 @@ export const IMAGE_PREVIEW_CONTAINER_TEMPLATE = `
 `;
 
 export const IMAGE_PREVIEW_CONTENT_TEMPLATE = `
-  <div class="ne-image-preview image-loaded" id="neImagePreviewContentContainer">
+  <div class="ne-image-preview" id="neImagePreviewContentContainer">
     <img
       alt="{{imageCaption}}"
       src="{{imageSource}}"

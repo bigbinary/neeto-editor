@@ -1,4 +1,4 @@
-import { IMAGE_PREVIEW_CONTENT_TEMPLATE } from "../constants/imagePreview";
+import { IMAGE_PREVIEW_CONTENT_TEMPLATE } from "../constants/editorUtils";
 
 export const getImageDetails = event => {
   const imageElement = event.target.querySelector("IMG");

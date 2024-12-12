@@ -58,6 +58,10 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
         "click",
         this.stopImageClickPropagation.bind(this)
       );
+
+      this.imagePreview
+        ?.querySelector("img")
+        .addEventListener("load", this.setImageLoadedClass.bind(this));
     }
 
     mountContainerAndAttachEvents() {
@@ -94,9 +98,17 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
         "click",
         this.stopImageClickPropagation.bind(this)
       );
+
+      this.imagePreview
+        ?.querySelector("img")
+        .removeEventListener("load", this.setImageLoadedClass.bind(this));
       this.imagePreview?.remove();
       this.imagePreview = null;
       this.imagePreviewContainer.classList.remove("active");
+    }
+
+    setImageLoadedClass() {
+      this.imagePreview?.classList.add("image-loaded");
     }
 
     handleKeyDown(event) {
@@ -117,6 +129,8 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
       document
         .getElementById(this.imagePreviewCloseButtonId)
         .removeEventListener("click", this.closeImagePreview.bind(this));
+
+      this.this.imagePreviewContainer.remove();
     }
   }
 
