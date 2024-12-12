@@ -2,8 +2,8 @@
 import {
   IMG_TAGS,
   IMAGE_PREVIEW_CONTAINER_TEMPLATE,
-} from "./constants/imagePreview";
-import { getImageDetails, getPreviewHtml } from "./utils/imagePreview";
+} from "./constants/editorUtils";
+import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
 
 (() => {
   if (window.neetoEditor?.utils) return;
