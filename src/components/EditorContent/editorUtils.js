@@ -25,7 +25,7 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
     }
 
     destroy() {
-      this.removeClickListeners();
+      this.removeEventListeners();
       this.imagePreviewContainer?.remove();
     }
 
@@ -94,6 +94,7 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
     }
 
     closeImagePreview() {
+      this.imagePreviewContainer.classList.remove("active");
       this.imagePreview?.removeEventListener(
         "click",
         this.stopImageClickPropagation.bind(this)
@@ -104,7 +105,6 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
         .removeEventListener("load", this.setImageLoadedClass.bind(this));
       this.imagePreview?.remove();
       this.imagePreview = null;
-      this.imagePreviewContainer.classList.remove("active");
     }
 
     setImageLoadedClass() {
@@ -115,7 +115,7 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
       if (event.key === "Escape") this.closeImagePreview();
     }
 
-    removeClickListeners() {
+    removeEventListeners() {
       this.editorContentContainer.removeEventListener(
         "click",
         this.handleClickEvents.bind(this)
@@ -129,8 +129,6 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
       document
         .getElementById(this.imagePreviewCloseButtonId)
         .removeEventListener("click", this.closeImagePreview.bind(this));
-
-      this.this.imagePreviewContainer.remove();
     }
   }
 
