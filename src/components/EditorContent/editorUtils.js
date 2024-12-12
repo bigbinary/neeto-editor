@@ -1,5 +1,9 @@
 /* eslint-disable @bigbinary/neeto/file-name-and-export-name-standards */
-import { IMG_TAGS, IMAGE_PREVIEW_TEMPLATE } from "./constants/imagePreview";
+import {
+  IMAGE_PREVIEW_CONTENT_TEMPLATE,
+  IMG_TAGS,
+  IMAGE_PREVIEW_CONTAINER_TEMPLATE,
+} from "./constants/imagePreview";
 
 (() => {
   if (window.neetoEditor?.utils) return;
@@ -23,6 +27,7 @@ import { IMG_TAGS, IMAGE_PREVIEW_TEMPLATE } from "./constants/imagePreview";
 
     destroy() {
       this.removeClickListeners();
+      this.imagePreviewContainer?.remove();
     }
 
     bindClickListeners() {
@@ -35,10 +40,7 @@ import { IMG_TAGS, IMAGE_PREVIEW_TEMPLATE } from "./constants/imagePreview";
     handleClickEvents(e) {
       const { tagName } = e.target;
 
-      if (IMG_TAGS.includes(tagName)) {
-        this.showImagePreview(e);
-        this.bindImagePreviewEventListeners();
-      }
+      if (IMG_TAGS.includes(tagName)) this.showImagePreview(e);
     }
 
     showImagePreview(e) {
@@ -47,21 +49,29 @@ import { IMG_TAGS, IMAGE_PREVIEW_TEMPLATE } from "./constants/imagePreview";
       const imageUrl = imageElement.getAttribute("src");
       const caption = captionElement.textContent?.trim?.();
 
-      if (!this.imagePreviewContainer) this.appendImagePreviewContainer();
+      if (!this.imagePreviewContainer) {
+        this.appendImagePreviewContainer();
+        this.bindImagePreviewEventListeners();
+      }
 
-      this.imagePreviewContainer.innerHTML = IMAGE_PREVIEW_TEMPLATE.replaceAll(
-        "{{imageCaption}}",
-        caption
-      ).replace("{{imageSource}}", imageUrl);
+      this.imagePreviewWrapper.innerHTML +=
+        IMAGE_PREVIEW_CONTENT_TEMPLATE.replaceAll(
+          "{{imageCaption}}",
+          caption
+        ).replace("{{imageSource}}", imageUrl);
+      this.imagePreviewWrapper.classList.add("active");
     }
 
     appendImagePreviewContainer() {
       const imagePreviewContainer = document.createElement("div");
       imagePreviewContainer.setAttribute("id", this.imagePreviewContainerId);
-      document.body.appendChild(imagePreviewContainer);
+      imagePreviewContainer.innerHTML = IMAGE_PREVIEW_CONTAINER_TEMPLATE;
 
-      document.addEventListener("keyup", this.handleKeyDown.bind(this));
+      document.body.appendChild(imagePreviewContainer);
       this.imagePreviewContainer = imagePreviewContainer;
+      this.imagePreviewWrapper = imagePreviewContainer.querySelector(
+        `#${this.imagePreviewId}`
+      );
     }
 
     bindImagePreviewEventListeners() {
@@ -72,18 +82,15 @@ import { IMG_TAGS, IMAGE_PREVIEW_TEMPLATE } from "./constants/imagePreview";
       document
         .getElementById(this.imagePreviewId)
         .addEventListener("click", this.closeImagePreview.bind(this));
+
+      document.addEventListener("keyup", this.handleKeyDown.bind(this));
     }
 
     closeImagePreview() {
-      document
-        .getElementById(this.imagePreviewCloseButtonId)
-        ?.removeEventListener("click", this.closeImagePreview.bind(this));
-
-      document
-        .getElementById(this.imagePreviewId)
-        ?.removeEventListener("click", this.closeImagePreview.bind(this));
-
-      this.imagePreviewContainer?.replaceChildren();
+      this.imagePreviewWrapper.classList.remove("active");
+      this.imagePreviewContainer
+        ?.querySelector(`#${this.imagePreviewImageContainerId}`)
+        .remove();
     }
 
     handleKeyDown(event) {
@@ -97,6 +104,13 @@ import { IMG_TAGS, IMAGE_PREVIEW_TEMPLATE } from "./constants/imagePreview";
       );
 
       document.removeEventListener("keyup", this.handleKeyDown.bind(this));
+      document
+        .getElementById(this.imagePreviewCloseButtonId)
+        .removeEventListener("click", this.closeImagePreview.bind(this));
+
+      document
+        .getElementById(this.imagePreviewId)
+        .removeEventListener("click", this.closeImagePreview.bind(this));
     }
   }
 

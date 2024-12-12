@@ -1,4 +1,4 @@
-export const IMAGE_PREVIEW_TEMPLATE = `
+export const IMAGE_PREVIEW_CONTAINER_TEMPLATE = `
   <div class="ne-image-preview-wrapper" id="neImagePreviewWrapper">
     <div class="close-button">
       <button id="neImagePreviewCloseButton">
@@ -7,15 +7,19 @@ export const IMAGE_PREVIEW_TEMPLATE = `
         </svg>
       </button>
     </div>
-    <div class="ne-image-preview image-loaded" id="neImagePreviewImageContainer">
-      <img
-        alt="{{imageCaption}}"
-        src="{{imageSource}}"
-      />
-      <p class="ne-image-preview__caption">
-        {{imageCaption}}
-      </p>
-    </div>
+    <!-- append the IMAGE_PREVIEW_CONTENT_TEMPLATE here -->
+  </div>
+`;
+
+export const IMAGE_PREVIEW_CONTENT_TEMPLATE = `
+  <div class="ne-image-preview image-loaded" id="neImagePreviewImageContainer">
+    <img
+      alt="{{imageCaption}}"
+      src="{{imageSource}}"
+    />
+    <p class="ne-image-preview__caption">
+      {{imageCaption}}
+    </p>
   </div>
 `;
 
