@@ -60,6 +60,14 @@ import {
           caption
         ).replace("{{imageSource}}", imageUrl);
       this.imagePreviewWrapper.classList.add("active");
+      this.imagePreview = this.imagePreviewWrapper?.querySelector(
+        `#${this.imagePreviewImageContainerId}`
+      );
+
+      this.imagePreview?.addEventListener(
+        "click",
+        this.stopImageClickPropagation.bind(this)
+      );
     }
 
     appendImagePreviewContainer() {
@@ -86,11 +94,18 @@ import {
       document.addEventListener("keyup", this.handleKeyDown.bind(this));
     }
 
+    stopImageClickPropagation(event) {
+      event.stopPropagation();
+    }
+
     closeImagePreview() {
+      this.imagePreview?.removeEventListener(
+        "click",
+        this.stopImageClickPropagation.bind(this)
+      );
+      this.imagePreview?.remove();
+      this.imagePreview = null;
       this.imagePreviewWrapper.classList.remove("active");
-      this.imagePreviewContainer
-        ?.querySelector(`#${this.imagePreviewImageContainerId}`)
-        .remove();
     }
 
     handleKeyDown(event) {
