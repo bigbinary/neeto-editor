@@ -126,7 +126,7 @@ Add the following lines to the SSG/SSR pages. The pages need not be converted to
 ```js
 <Script
   src="https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/codeBlockHighlight.js"
-  strategy="beforeInteractive"
+  strategy="afterInteractive"
 />
 ```
 
@@ -134,5 +134,30 @@ This script exposes the helper function `applyHeaderDecorations` via the window 
 ```react
 useEffect(() => {
   window.neetoEditor?.applyHeaderDecorations?.()
+}, [])
+```
+
+#### Image preview
+
+Add the following lines to the SSG/SSR pages. The pages need not be converted to client side rendering for this to work.
+
+```js
+<Script
+  src="https://cdn.jsdelivr.net/npm/@bigbinary/neeto-editor/dist/editorUtils.js"
+  strategy="afterInteractive"
+/>
+```
+
+This script adds necessary event listeners to the images in the editor content and previews them when the user clicks on it.
+The script initiates on load, you can also make use of the `init` function as below. The script exposes a `destroy` function which
+can be used to clean up when the component is unmounted.
+
+```react
+useEffect(() => {
+  window.neetoEditor?.utils?.init?.()
+
+  return () => {
+    window.neetoEditor?.utils?.destroy?.()
+  }
 }, [])
 ```
