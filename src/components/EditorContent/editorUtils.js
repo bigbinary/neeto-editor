@@ -1,9 +1,9 @@
 /* eslint-disable @bigbinary/neeto/file-name-and-export-name-standards */
 import {
-  IMAGE_PREVIEW_CONTENT_TEMPLATE,
   IMG_TAGS,
   IMAGE_PREVIEW_CONTAINER_TEMPLATE,
 } from "./constants/imagePreview";
+import { getImageDetails, getPreviewHtml } from "./utils/imagePreview";
 
 (() => {
   if (window.neetoEditor?.utils) return;
@@ -42,23 +42,14 @@ import {
       if (IMG_TAGS.includes(tagName)) this.showImagePreview(e);
     }
 
-    showImagePreview(e) {
-      const imageElement = e.target.querySelector("IMG");
-      const captionElement = e.target.querySelector("FIGCAPTION");
-      const imageUrl = imageElement.getAttribute("src");
-      const caption = captionElement.textContent?.trim?.();
+    showImagePreview(event) {
+      const { imageUrl, caption } = getImageDetails(event);
 
-      if (!this.imagePreviewContainer) {
-        this.appendImagePreviewContainer();
-        this.bindImagePreviewEventListeners();
-      }
+      if (!this.imagePreviewContainer) this.mountContainerAndAttachEvents();
 
-      this.imagePreviewContainer.innerHTML +=
-        IMAGE_PREVIEW_CONTENT_TEMPLATE.replaceAll(
-          "{{imageCaption}}",
-          caption
-        ).replace("{{imageSource}}", imageUrl);
+      this.imagePreviewContainer.innerHTML += getPreviewHtml(imageUrl, caption);
       this.imagePreviewContainer.classList.add("active");
+
       this.imagePreview = this.imagePreviewContainer?.querySelector(
         `#${this.imagePreviewContentContainerId}`
       );
@@ -69,7 +60,7 @@ import {
       );
     }
 
-    appendImagePreviewContainer() {
+    mountContainerAndAttachEvents() {
       const imagePreviewContainer = document.createElement("div");
       imagePreviewContainer.setAttribute("id", this.imagePreviewContainerId);
       imagePreviewContainer.setAttribute("class", "ne-image-preview-wrapper");
@@ -77,6 +68,8 @@ import {
 
       document.body.appendChild(imagePreviewContainer);
       this.imagePreviewContainer = imagePreviewContainer;
+
+      this.bindImagePreviewEventListeners();
     }
 
     bindImagePreviewEventListeners() {
