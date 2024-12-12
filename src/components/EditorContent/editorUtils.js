@@ -14,9 +14,8 @@ import {
     }
 
     imagePreviewCloseButtonId = "neImagePreviewCloseButton";
-    imagePreviewId = "neImagePreviewWrapper";
     imagePreviewContainerId = "neImagePreviewContainer";
-    imagePreviewImageContainerId = "neImagePreviewImageContainer";
+    imagePreviewContentContainerId = "neImagePreviewContentContainer";
 
     init() {
       [this.editorContentContainer] = document.getElementsByClassName(
@@ -54,14 +53,14 @@ import {
         this.bindImagePreviewEventListeners();
       }
 
-      this.imagePreviewWrapper.innerHTML +=
+      this.imagePreviewContainer.innerHTML +=
         IMAGE_PREVIEW_CONTENT_TEMPLATE.replaceAll(
           "{{imageCaption}}",
           caption
         ).replace("{{imageSource}}", imageUrl);
-      this.imagePreviewWrapper.classList.add("active");
-      this.imagePreview = this.imagePreviewWrapper?.querySelector(
-        `#${this.imagePreviewImageContainerId}`
+      this.imagePreviewContainer.classList.add("active");
+      this.imagePreview = this.imagePreviewContainer?.querySelector(
+        `#${this.imagePreviewContentContainerId}`
       );
 
       this.imagePreview?.addEventListener(
@@ -73,13 +72,11 @@ import {
     appendImagePreviewContainer() {
       const imagePreviewContainer = document.createElement("div");
       imagePreviewContainer.setAttribute("id", this.imagePreviewContainerId);
+      imagePreviewContainer.setAttribute("class", "ne-image-preview-wrapper");
       imagePreviewContainer.innerHTML = IMAGE_PREVIEW_CONTAINER_TEMPLATE;
 
       document.body.appendChild(imagePreviewContainer);
       this.imagePreviewContainer = imagePreviewContainer;
-      this.imagePreviewWrapper = imagePreviewContainer.querySelector(
-        `#${this.imagePreviewId}`
-      );
     }
 
     bindImagePreviewEventListeners() {
@@ -87,9 +84,10 @@ import {
         .getElementById(this.imagePreviewCloseButtonId)
         .addEventListener("click", this.closeImagePreview.bind(this));
 
-      document
-        .getElementById(this.imagePreviewId)
-        .addEventListener("click", this.closeImagePreview.bind(this));
+      this.imagePreviewContainer.addEventListener(
+        "click",
+        this.closeImagePreview.bind(this)
+      );
 
       document.addEventListener("keyup", this.handleKeyDown.bind(this));
     }
@@ -105,7 +103,7 @@ import {
       );
       this.imagePreview?.remove();
       this.imagePreview = null;
-      this.imagePreviewWrapper.classList.remove("active");
+      this.imagePreviewContainer.classList.remove("active");
     }
 
     handleKeyDown(event) {
@@ -124,7 +122,7 @@ import {
         .removeEventListener("click", this.closeImagePreview.bind(this));
 
       document
-        .getElementById(this.imagePreviewId)
+        .getElementById(this.imagePreviewCloseButtonId)
         .removeEventListener("click", this.closeImagePreview.bind(this));
     }
   }
