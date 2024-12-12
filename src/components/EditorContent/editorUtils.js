@@ -27,6 +27,7 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
     destroy() {
       this.removeEventListeners();
       this.imagePreviewContainer?.remove();
+      this.imagePreviewContainer = null;
     }
 
     bindClickListeners() {
@@ -120,15 +121,10 @@ import { getImageDetails, getPreviewHtml } from "./utils/editorUtils";
         "click",
         this.handleClickEvents.bind(this)
       );
-
       document.removeEventListener("keyup", this.handleKeyDown.bind(this));
       document
         .getElementById(this.imagePreviewCloseButtonId)
-        .removeEventListener("click", this.closeImagePreview.bind(this));
-
-      document
-        .getElementById(this.imagePreviewCloseButtonId)
-        .removeEventListener("click", this.closeImagePreview.bind(this));
+        ?.removeEventListener("click", this.closeImagePreview.bind(this));
     }
   }
 
