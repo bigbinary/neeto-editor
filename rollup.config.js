@@ -150,6 +150,15 @@ const config = args => {
       },
       plugins,
     },
+    {
+      input: "./src/components/EditorContent/editorUtils.js",
+      output: {
+        dir: `${__dirname}/dist`,
+        format: "cjs",
+        sourcemap: false,
+        assetFileNames: "[name][extname]",
+      },
+    },
   ]
 }
 
