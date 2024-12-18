@@ -19,7 +19,6 @@ const Bubble = ({
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
-  children,
 }) => {
   const [isInvalidLink, setIsInvalidLink] = useState(false);
   const [isLinkOptionActive, setIsLinkOptionActive] = useState(false);
@@ -39,6 +38,7 @@ const Bubble = ({
   const noTextOptions = isNotPresent(
     textOptions.filter(option => bubbleMenuOptions.includes(option))
   );
+
   if (!editor || (!isImageNodeSelected && noTextOptions)) {
     return null;
   }
@@ -78,9 +78,7 @@ const Bubble = ({
             tooltips,
           }}
           options={textOptions}
-        >
-          {children}
-        </Options>
+        />
       </BubbleMenuTipTap>
     </div>
   );

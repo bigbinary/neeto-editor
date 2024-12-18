@@ -31,12 +31,11 @@ const Options = ({
   isEmojiPickerActive,
   setIsEmojiPickerActive,
   setIsEmbedModalOpen,
-  children,
 }) => {
   const { t } = useTranslation();
   const { Menu, MenuItem } = Dropdown;
 
-  const dropdownOptions = getTextMenuDropdownOptions({ editor });
+  const dropdownOptions = getTextMenuDropdownOptions({ editor, options });
   const nodeType = getNodeType(dropdownOptions);
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isTextColorOptionActive = options.includes(EDITOR_OPTIONS.TEXT_COLOR);
@@ -137,7 +136,6 @@ const Options = ({
         {...{ editor, mentions }}
         tooltipContent={tooltips.mention || t("neetoEditor.menu.mention")}
       />
-      {children}
     </>
   );
 };
