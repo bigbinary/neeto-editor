@@ -21,6 +21,7 @@ import {
 import { Button } from "neetoui";
 import { assoc, fromPairs, not, prop } from "ramda";
 
+import { EDITOR_OPTIONS } from "src/common/constants";
 import { generateFocusProps } from "utils/focusHighlighter";
 
 export const createMenuOptions = ({
@@ -190,41 +191,51 @@ export const buildBubbleMenuOptions = ({
   );
 };
 
-export const getTextMenuDropdownOptions = ({ editor }) => [
-  {
-    optionName: "Heading 1",
-    active: editor.isActive("heading", { level: 1 }),
-    command: () =>
-      editor.chain().focus().setNode("heading", { level: 1 }).run(),
-  },
-  {
-    optionName: "Heading 2",
-    active: editor.isActive("heading", { level: 2 }),
-    command: () =>
-      editor.chain().focus().setNode("heading", { level: 2 }).run(),
-  },
-  {
-    optionName: "Heading 3",
-    active: editor.isActive("heading", { level: 3 }),
-    command: () =>
-      editor.chain().focus().setNode("heading", { level: 3 }).run(),
-  },
-  {
-    optionName: "Ordered List",
-    active: editor.isActive("orderedList"),
-    command: () => editor.chain().focus().toggleOrderedList().run(),
-  },
-  {
-    optionName: "Bulleted List",
-    active: editor.isActive("bulletList"),
-    command: () => editor.chain().focus().toggleBulletList().run(),
-  },
-  {
-    optionName: "Text",
-    active: editor.isActive("paragraph"),
-    command: () => editor.chain().focus().setNode("paragraph").run(),
-  },
-];
+export const getTextMenuDropdownOptions = ({ editor, options }) => {
+  const textOptions = {
+    [EDITOR_OPTIONS.H1]: {
+      optionName: "Heading 1",
+      active: editor.isActive("heading", { level: 1 }),
+      command: () =>
+        editor.chain().focus().setNode("heading", { level: 1 }).run(),
+    },
+    [EDITOR_OPTIONS.H2]: {
+      optionName: "Heading 2",
+      active: editor.isActive("heading", { level: 2 }),
+      command: () =>
+        editor.chain().focus().setNode("heading", { level: 2 }).run(),
+    },
+    [EDITOR_OPTIONS.H3]: {
+      optionName: "Heading 3",
+      active: editor.isActive("heading", { level: 3 }),
+      command: () =>
+        editor.chain().focus().setNode("heading", { level: 3 }).run(),
+    },
+    [EDITOR_OPTIONS.LIST_ORDERED]: {
+      optionName: "Ordered List",
+      active: editor.isActive("orderedList"),
+      command: () => editor.chain().focus().toggleOrderedList().run(),
+    },
+    [EDITOR_OPTIONS.LIST_BULLETS]: {
+      optionName: "Bulleted List",
+      active: editor.isActive("bulletList"),
+      command: () => editor.chain().focus().toggleBulletList().run(),
+    },
+    [EDITOR_OPTIONS.PARAGRAPH]: {
+      optionName: "Text",
+      active: editor.isActive("paragraph"),
+      command: () => editor.chain().focus().setNode("paragraph").run(),
+    },
+  };
+
+  const result = [];
+  options.forEach(option => {
+    if (!textOptions[option]) return;
+    result.push(textOptions[option]);
+  });
+
+  return result;
+};
 
 export const getNodeType = options =>
   options.find(prop("active"))?.optionName || "Text";

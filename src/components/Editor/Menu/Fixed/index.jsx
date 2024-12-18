@@ -31,7 +31,6 @@ const Fixed = ({
   attachmentProps,
   isEmojiPickerActive,
   setIsEmojiPickerActive,
-  children,
   openLinkInNewTab,
 }) => {
   const [focusedButtonIndex, setFocusedButtonIndex] = useState(0);
@@ -180,7 +179,6 @@ const Fixed = ({
         {isNotEmpty(moreMenuItems) && (
           <MoreMenu {...{ editor }} groups={moreMenuItems} />
         )}
-        {children}
       </div>
       {!isEmpty(variables) && (
         <div

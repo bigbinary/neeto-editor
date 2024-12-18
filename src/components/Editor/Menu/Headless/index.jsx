@@ -14,7 +14,6 @@ const Headless = ({
   mediaUploader,
   unsplashApiKey,
   addonCommands = [],
-  children,
   className,
   attachmentProps,
   isEmojiPickerActive,
@@ -51,7 +50,6 @@ const Headless = ({
       {allOptions.map(option => (
         <Option {...{ editor }} key={option.optionName} {...option} />
       ))}
-      {children}
       {isMediaUploaderActive && (
         <MediaUploader
           {...{ editor, mediaUploader, unsplashApiKey }}
