@@ -87,6 +87,8 @@
   --neeto-editor-content-blockquote-border-left-width: 4px;
   --neeto-editor-content-blockquote-margin-bottom: 1rem;
   --neeto-editor-content-blockquote-padding-left: 0.75rem;
+  --neeto-editor-content-image-border-color: 228, 228, 231;
+  --neeto-editor-content-image-border-radius: 8px;
 }
 
 .neeto-editor-content {
@@ -561,6 +563,10 @@
 
     img {
       cursor: zoom-in;
+      border-style: solid;
+      border-width: 1px;
+      border-color: rgba(var(--neeto-editor-content-image-border-color));
+      border-radius: var(--neeto-editor-content-image-border-radius);
     }
   }
 
