@@ -124,7 +124,10 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
                 {LINE_NUMBER_OPTIONS.map(({ label, value }) => (
                   <MenuItem.Button
                     key={label}
-                    onClick={() => setShowLineNumbers(value)}
+                    onClick={() => {
+                      setShowLineNumbers(value);
+                      updateAttributes({ linenumbers: value });
+                    }}
                   >
                     {label}
                   </MenuItem.Button>
@@ -134,7 +137,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
             <Dropdown
               appendTo={() => document.body}
               buttonSize="small"
-              buttonStyle="text"
+              buttonStyle="tertiary"
               icon={Down}
               label={node.attrs?.language || t("neetoEditor.common.auto")}
               strategy="fixed"
