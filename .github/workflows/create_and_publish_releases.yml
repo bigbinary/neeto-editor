@@ -25,7 +25,7 @@ jobs:
       - name: Setup NodeJS LTS version
         uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - name: Setup the project
         run: yarn install
@@ -79,3 +79,14 @@ jobs:
         with:
           access: "public"
           token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Set AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload public assets to CDN
+        run: |
+          yarn upload
