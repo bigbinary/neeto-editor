@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-editor",
-  "version": "1.43.36",
+  "version": "1.44.37",
   "types": "./types.d.ts",
   "description": "neetoEditor is the library that drives the rich text experience in all neeto products built at BigBinary",
   "keywords": [
@@ -56,6 +56,7 @@
     "@bigbinary/neeto-icons": "1.19.2",
     "@bigbinary/neeto-molecules": "3.3.13",
     "@bigbinary/neetoui": "7.0.1",
+    "@bigbinary/s3-uploader": "https://github.com/bigbinary/s3-uploader",
     "@faker-js/faker": "8.2.0",
     "@hocuspocus/provider": "^2.13.5",
     "@honeybadger-io/js": "6.5.3",
@@ -242,7 +243,8 @@
     "bundle": "NODE_ENV=production rollup --bundleConfigAsCjs -c rollup.config.js",
     "prepare": "husky install",
     "serve": "node .storybook/express",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "upload": "node scripts/publish"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json}": [
