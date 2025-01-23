@@ -5,9 +5,7 @@ dotEnv.config({ path: ".env" });
 
 const getS3UploaderConfig = () => ({
   bucket: "neeto-editor-production",
-  destination: "neeto-editor",
-  distribution: "TODO",
-  distributionPath: "/neeto-editor*",
+  distribution: "E3IFTI8KVD6OKE",
   fileProperties: {
     "*": { CacheControl: "no-cache" },
   },
