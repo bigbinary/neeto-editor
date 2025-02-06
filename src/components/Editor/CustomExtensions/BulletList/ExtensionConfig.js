@@ -45,7 +45,13 @@ export default BulletList.extend({
             return commands.deleteCurrentNode();
           }
 
-          return commands.joinBackward();
+          // Check if the current node and previous node are compatible for join
+          const prevListItem = $from.node($from.depth - 2);
+          if (prevListItem && isListNode(prevListItem)) {
+            return commands.joinBackward();
+          }
+
+          return commands.deleteCurrentNode();
         }),
     };
   },
