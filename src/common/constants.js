@@ -52,15 +52,49 @@ export const LOOM_URL_REGEXP =
 export const NEETO_RECORD_URL_REGEXP =
   /((?:http|https):\/\/)?(www\.)?[a-zA-Z0-9-]+\.(neetorecord\.com)\/(watch)\/([0-9a-f]{20})/;
 
+export const SUPA_DEMO_URL_REGEXP =
+  /((?:http|https):\/\/)?(www\.)?app\.(supademo\.com)\/(demo|embed)\/([0-9a-z]+)/;
+
 export const COMBINED_REGEX = new RegExp(
   pluck("source", [
     YOUTUBE_URL_REGEXP,
     VIMEO_URL_REGEXP,
     LOOM_URL_REGEXP,
     NEETO_RECORD_URL_REGEXP,
+    SUPA_DEMO_URL_REGEXP,
   ]).join("|"),
   "g"
 );
+
+export const URL_VALIDATORS = {
+  youtube: url => {
+    const match = url.match(YOUTUBE_URL_REGEXP);
+
+    return match && `https://www.youtube.com/embed/${match[5]}`;
+  },
+  vimeo: url => {
+    const match = url.match(VIMEO_URL_REGEXP);
+
+    return match && `https://player.vimeo.com/video/${match[4]}?h=${match[5]}`;
+  },
+  loom: url => {
+    const match = url.match(LOOM_URL_REGEXP);
+
+    return (
+      match && `https://www.loom.com/embed/${match[4]}?t=${match[5] || ""}`
+    );
+  },
+  neetoRecord: url => {
+    const match = url.match(NEETO_RECORD_URL_REGEXP);
+
+    return match && url.replace("watch", "embeds");
+  },
+  supademo: url => {
+    const match = url.match(SUPA_DEMO_URL_REGEXP);
+
+    return match && `https://app.supademo.com/embed/${match[5]}?embed_v=2`;
+  },
+};
 
 export const EDITOR_SIZES = {
   MEDIUM: "medium",
