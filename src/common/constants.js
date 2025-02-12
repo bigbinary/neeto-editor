@@ -52,12 +52,16 @@ export const LOOM_URL_REGEXP =
 export const NEETO_RECORD_URL_REGEXP =
   /((?:http|https):\/\/)?(www\.)?[a-zA-Z0-9-]+\.(neetorecord\.com)\/(watch)\/([0-9a-f]{20})/;
 
+export const SUPA_DEMO_URL_REGEXP =
+  /((?:http|https):\/\/)?(www\.)?app\.(supademo\.com)\/(demo|embed)\/([0-9a-z]+)/;
+
 export const COMBINED_REGEX = new RegExp(
   pluck("source", [
     YOUTUBE_URL_REGEXP,
     VIMEO_URL_REGEXP,
     LOOM_URL_REGEXP,
     NEETO_RECORD_URL_REGEXP,
+    SUPA_DEMO_URL_REGEXP,
   ]).join("|"),
   "g"
 );
