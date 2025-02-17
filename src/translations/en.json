@@ -30,7 +30,7 @@
     },
     "error": {
       "invalidUrl": "Please enter a valid URL",
-      "invalidEmbedUrl": "Supported sources: NeetoRecord, YouTube, Vimeo, Loom.",
+      "invalidEmbedUrl": "Supported sources: NeetoRecord, YouTube, Vimeo, Loom, Supademo.",
       "cannotAddFiles": "Cannot add files",
       "onBeforeFileAddedReturn": "Cannot add the file because onBeforeFileAdded returned false.",
       "fileIsTooLarge": "File size is too large. Max size is {{maxFileSize, anyCase}}.",
@@ -103,7 +103,7 @@
       "emojiDescription": "Add an emoji.",
       "divider": "Divider",
       "dividerDescription": "Add an horizontal line to separate sections.",
-      "embed": "Embed Youtube/Loom/Vimeo",
+      "embed": "Embed Youtube/Loom/Vimeo/Supademo",
       "embedDescription": "Embed a video from major services.",
       "pasteUnformatted": "Paste Unformatted",
       "pasteUnformattedDescription": "Paste by removing all styles.",
