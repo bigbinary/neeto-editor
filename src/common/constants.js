@@ -53,7 +53,7 @@ export const NEETO_RECORD_URL_REGEXP =
   /((?:http|https):\/\/)?(www\.)?[a-zA-Z0-9-]+\.(neetorecord\.com)\/(watch)\/([0-9a-f]{20})/;
 
 export const SUPA_DEMO_URL_REGEXP =
-  /((?:http|https):\/\/)?(www\.)?app\.(supademo\.com)\/(demo|embed)\/([0-9a-z]+)/;
+  /((?:http|https):\/\/)?(www\.)?([a-zA-Z0-9-]+)\.([a-zA-Z0-9-]+\.[a-zA-Z0-9-]+)\/(demo|embed)\/([0-9a-z]+)/;
 
 export const COMBINED_REGEX = new RegExp(
   pluck("source", [
@@ -92,7 +92,9 @@ export const URL_VALIDATORS = {
   supademo: url => {
     const match = url.match(SUPA_DEMO_URL_REGEXP);
 
-    return match && `https://app.supademo.com/embed/${match[5]}?embed_v=2`;
+    return (
+      match && `https://${match[3]}.${match[4]}/embed/${match[6]}?embed_v=2`
+    );
   },
 };
 
