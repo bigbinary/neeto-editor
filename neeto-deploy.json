@@ -1,7 +1,7 @@
 {
   "name": "neeto-editor",
   "scripts": {},
-  "stack": "heroku-20",
+  "stack": "heroku-22",
   "env": {
     "YARN_PRODUCTION": {
       "value": "true"
