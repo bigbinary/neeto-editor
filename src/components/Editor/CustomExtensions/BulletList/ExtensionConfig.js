@@ -7,6 +7,7 @@ function isListNode(node) {
 export default BulletList.extend({
   addKeyboardShortcuts() {
     return {
+      "Mod-Shift-8": () => this.editor.commands.toggleBulletList(),
       Backspace: () =>
         this.editor.commands.command(({ state, commands }) => {
           const { $from, empty } = state.selection;
