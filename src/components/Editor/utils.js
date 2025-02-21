@@ -72,3 +72,6 @@ export const transformEditorContent = content =>
 
 export const isEmojiSuggestionsMenuActive = () =>
   !!document.querySelector(".neeto-editor-emoji-suggestion");
+
+export const transformPastedHTML = content =>
+  content.replaceAll("<br />", "<p></p>");
