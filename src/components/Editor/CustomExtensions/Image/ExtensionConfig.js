@@ -182,9 +182,25 @@ export default Node.create({
                   $anchor: { pos },
                 },
               } = view.state;
+
+              // Microsoft Excel and a few other products might copy content as
+              // both `text/plain` and `text/html`. If `text/plain` exists,
+              // an early return will ensure that it fallbacks to tiptap's
+              // default paste behavior.
+              const text = event?.clipboardData?.getData("text/plain");
               const hasFiles = event.clipboardData?.files?.length;
 
               if (!hasFiles) return;
+
+              if (hasFiles && text) {
+                event.preventDefault();
+                const plainText =
+                  new DOMParser().parseFromString(text, "text/html").body
+                    .textContent ?? "";
+                view.pasteText(plainText);
+
+                return;
+              }
 
               const images = Array.from(event.clipboardData.files).filter(
                 file => /image/i.test(file.type)
