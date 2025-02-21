@@ -24,6 +24,7 @@ import {
   getEditorStyles,
   clipboardTextParser,
   setInitialPosition,
+  transformPastedHTML,
 } from "./utils";
 
 import Attachments from "../Attachments";
@@ -162,6 +163,7 @@ const Editor = (
         ...contentAttributes,
       },
       clipboardTextParser,
+      transformPastedHTML,
     },
     parseOptions: { preserveWhitespace: true },
     onCreate: ({ editor }) => !autoFocus && setInitialPosition(editor),
