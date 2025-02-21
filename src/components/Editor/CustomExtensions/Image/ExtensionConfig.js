@@ -193,7 +193,11 @@ export default Node.create({
               if (!hasFiles) return;
 
               if (hasFiles && text) {
-                view.pasteText(text);
+                event.preventDefault();
+                const plainText =
+                  new DOMParser().parseFromString(text, "text/html").body
+                    .textContent ?? "";
+                view.pasteText(plainText);
 
                 return;
               }
