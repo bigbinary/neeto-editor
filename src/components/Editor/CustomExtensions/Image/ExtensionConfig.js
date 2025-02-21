@@ -188,11 +188,15 @@ export default Node.create({
               // an early return will ensure that it fallbacks to tiptap's
               // default paste behavior.
               const text = event?.clipboardData?.getData("text/plain");
-              if (text) return;
-
               const hasFiles = event.clipboardData?.files?.length;
 
               if (!hasFiles) return;
+
+              if (hasFiles && text) {
+                view.pasteText(text);
+
+                return;
+              }
 
               const images = Array.from(event.clipboardData.files).filter(
                 file => /image/i.test(file.type)
