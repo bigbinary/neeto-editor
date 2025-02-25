@@ -170,9 +170,7 @@
     font-weight: var(--neeto-editor-content-heading-font-weight);
 
     strong {
-      font-weight: var(
-        --neeto-editor-content-heading-font-weight-bold
-      ) !important;
+      font-weight: var(--neeto-editor-content-heading-font-weight-bold) !important;
     }
   }
 
@@ -237,6 +235,7 @@
     }
 
     &:hover {
+
       h1,
       h2,
       h3,
@@ -399,7 +398,7 @@
     }
   }
 
-  pre > code {
+  pre>code {
     font-size: var(--neeto-editor-content-code-font-size);
     background-color: transparent;
     border-width: 0;
@@ -411,7 +410,11 @@
     display: block;
     width: 100%;
     overflow-x: auto;
-    padding: 0.75rem 0.75rem 0.75rem 0px;
+    padding: 0.75rem;
+  }
+
+  pre[data-linenumbers]>code {
+    padding-left: 0;
   }
 
   // Blockquote
@@ -419,10 +422,8 @@
     font-weight: var(--neeto-editor-font-medium);
     color: rgba(var(--neeto-editor-content-blockquote-color));
     border-left-width: var(--neeto-editor-content-blockquote-border-left-width);
-    border-left-color: rgba(
-      var(--neeto-editor-content-blockquote-border-color)
-    );
-    quotes: "\201C""\201D""\2018""\2019";
+    border-left-color: rgba(var(--neeto-editor-content-blockquote-border-color));
+    quotes: "\201C" "\201D" "\2018" "\2019";
     margin-bottom: var(--neeto-editor-content-blockquote-margin-bottom);
     padding-left: var(--neeto-editor-content-blockquote-padding-left);
 
@@ -431,11 +432,11 @@
       color: inherit;
     }
 
-    & > p::before {
+    &>p::before {
       content: "" !important;
     }
 
-    & > p::after {
+    &>p::after {
       content: "" !important;
     }
   }
