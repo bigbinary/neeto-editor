@@ -51,7 +51,7 @@ const EditorContent = ({
       root.render(
         <CopyToClipboardButton
           size="small"
-          style="text"
+          style="tertiary"
           value={preTag.textContent}
         />
       );

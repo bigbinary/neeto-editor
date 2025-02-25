@@ -107,7 +107,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
             <Dropdown
               appendTo={() => document.body}
               buttonSize="small"
-              buttonStyle="secondary"
+              buttonStyle="tertiary"
               icon={Down}
               label={node.attrs?.language || t("neetoEditor.common.auto")}
               strategy="fixed"
@@ -138,14 +138,14 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
             </Dropdown>
             <CopyToClipboardButton
               size="small"
-              style="secondary"
+              style="tertiary"
               value={node?.content?.content[0]?.text}
             />
             {showHighlightButton && (
               <Button
                 icon={Highlight}
                 size="small"
-                style="secondary"
+                style="tertiary"
                 tooltipProps={{ content: t("neetoEditor.menu.highlight") }}
                 onClick={handleHighlight}
               />
