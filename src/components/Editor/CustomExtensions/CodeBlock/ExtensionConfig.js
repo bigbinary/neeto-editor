@@ -22,11 +22,12 @@ export default CodeBlockLowlight.extend({
         }),
       },
       linenumbers: {
-        default: false,
-        parseHTML: element => element.getAttribute("data-linenumbers") || false,
-        renderHTML: attributes => ({
-          "data-linenumbers": attributes.linenumbers,
-        }),
+        default: "false",
+        parseHTML: element => element.dataset.linenumbers || "false",
+        renderHTML: attributes =>
+          attributes.linenumbers === "true"
+            ? { "data-linenumbers": "true" }
+            : {},
       },
     };
   },

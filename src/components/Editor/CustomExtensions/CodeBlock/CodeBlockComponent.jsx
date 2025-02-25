@@ -16,7 +16,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   const [keyword, setKeyword] = useState("");
   const [showHighlightButton, setShowHighlightButton] = useState(false);
   const [showLineNumbers, setShowLineNumbers] = useState(
-    !!node.attrs.linenumbers
+    node.attrs.linenumbers
   );
   const ref = useRef();
 
@@ -115,7 +115,7 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
               strategy="fixed"
               zIndex={99999}
               label={
-                showLineNumbers
+                showLineNumbers === "true"
                   ? LINE_NUMBER_OPTIONS[0].label
                   : LINE_NUMBER_OPTIONS[1].label
               }

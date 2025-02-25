@@ -7,6 +7,6 @@ export const SORTED_LANGUAGE_LIST = [
 ].sort();
 
 export const LINE_NUMBER_OPTIONS = [
-  { label: t("neetoEditor.codeblock.showLineNumbers"), value: true },
-  { label: t("neetoEditor.codeblock.hideLineNumbers"), value: false },
+  { label: t("neetoEditor.codeblock.showLineNumbers"), value: "true" },
+  { label: t("neetoEditor.codeblock.hideLineNumbers"), value: "false" },
 ];
