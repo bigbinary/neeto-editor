@@ -21,6 +21,14 @@ export default CodeBlockLowlight.extend({
             attributes.highlightedLines?.join(",") ?? "",
         }),
       },
+      linenumbers: {
+        default: "false",
+        parseHTML: element => element.dataset.linenumbers || "false",
+        renderHTML: attributes =>
+          attributes.linenumbers === "true"
+            ? { "data-linenumbers": "true" }
+            : {},
+      },
     };
   },
   addProseMirrorPlugins() {

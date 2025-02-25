@@ -370,31 +370,31 @@
     }
 
     counter-reset: line-number;
+  }
 
-    .highlight-line {
-      position: relative;
-      padding-left: 3.125rem;
+  pre[data-linenumbers] .highlight-line {
+    position: relative;
+    padding-left: 3.125rem;
 
-      &::before {
-        color: rgba(var(--neeto-editor-content-code-line-number-color));
-        content: counter(line-number);
-        counter-increment: line-number;
-        font-size: 85%;
-        font-weight: 400;
-        position: absolute;
-        left: 0;
-        padding-left: 0.625rem;
-        padding-right: 1rem;
-        width: 3.125rem;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-      }
+    &::before {
+      color: rgba(var(--neeto-editor-content-code-line-number-color));
+      content: counter(line-number);
+      counter-increment: line-number;
+      font-size: 85%;
+      font-weight: 400;
+      position: absolute;
+      left: 0;
+      padding-left: 0.625rem;
+      padding-right: 1rem;
+      width: 3.125rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
 
-      &:last-child::before {
-        content: "";
-      }
+    &:last-child::before {
+      content: "";
     }
   }
 
@@ -410,7 +410,11 @@
     display: block;
     width: 100%;
     overflow-x: auto;
-    padding: 0.75rem 0.75rem 0.75rem 0px;
+    padding: 0.75rem;
+  }
+
+  pre[data-linenumbers]>code {
+    padding-left: 0;
   }
 
   // Blockquote
