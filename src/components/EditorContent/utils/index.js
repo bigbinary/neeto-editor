@@ -64,13 +64,14 @@ export const highlightLinesElement = (code, options) => {
   highlightLinesCode(code, options);
 };
 
-export const applySyntaxHighlighting = content => {
+export const applySyntaxHighlightingAndLineNumbers = content => {
   lowlight.highlightAuto("");
   let highlightedAST = {};
 
   return content.replace(CODE_BLOCK_REGEX, (_, language, code) => {
-    const regex = /data-highlighted-lines="([^"]*)"/;
-    const match = content.match(regex);
+    const highlightRegex = /data-highlighted-lines="([^"]*)"/;
+    const linenumbersRegex = /data-linenumbers/;
+    const highlightMatch = content.match(highlightRegex);
 
     if (language && LANGUAGE_LIST.includes(language)) {
       highlightedAST = lowlight.highlight(language, transformCode(code));
@@ -85,9 +86,14 @@ export const applySyntaxHighlighting = content => {
       buildReactElementFromAST
     );
 
-    return `<pre data-highlighted-lines=${
-      match?.[1] ?? ""
-    }><code>${renderToString(highlightedNode)}</code></pre>`;
+    const dataHighlight = `data-highlighted-lines=${highlightMatch?.[1] ?? ""}`;
+    const dataLinenumbers = content.match(linenumbersRegex)
+      ? `data-linenumbers="true"`
+      : "";
+
+    return `<pre ${dataLinenumbers} ${dataHighlight}><code>${renderToString(
+      highlightedNode
+    )}</code></pre>`;
   });
 };
 

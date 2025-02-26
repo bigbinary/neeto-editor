@@ -7,7 +7,7 @@ import { Dropdown, Input, Button } from "neetoui";
 import { difference, intersection, union } from "ramda";
 import { useTranslation } from "react-i18next";
 
-import { SORTED_LANGUAGE_LIST } from "./constants";
+import { LINE_NUMBER_OPTIONS, SORTED_LANGUAGE_LIST } from "./constants";
 import { codeBlockHighlightKey } from "./plugins";
 
 const { Menu, MenuItem } = Dropdown;
@@ -15,6 +15,9 @@ const { Menu, MenuItem } = Dropdown;
 const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
   const [keyword, setKeyword] = useState("");
   const [showHighlightButton, setShowHighlightButton] = useState(false);
+  const [showLineNumbers, setShowLineNumbers] = useState(
+    node.attrs.linenumbers
+  );
   const ref = useRef();
 
   const { t } = useTranslation();
@@ -104,6 +107,33 @@ const CodeBlockComponent = ({ node, editor, updateAttributes }) => {
             className="neeto-editor-codeblock-options"
             contentEditable={false}
           >
+            <Dropdown
+              appendTo={() => document.body}
+              buttonSize="small"
+              buttonStyle="tertiary"
+              icon={Down}
+              strategy="fixed"
+              zIndex={99999}
+              label={
+                showLineNumbers === "true"
+                  ? LINE_NUMBER_OPTIONS[0].label
+                  : LINE_NUMBER_OPTIONS[1].label
+              }
+            >
+              <Menu className="neeto-editor-codeblock-options__menu">
+                {LINE_NUMBER_OPTIONS.map(({ label, value }) => (
+                  <MenuItem.Button
+                    key={label}
+                    onClick={() => {
+                      setShowLineNumbers(value);
+                      updateAttributes({ linenumbers: value });
+                    }}
+                  >
+                    {label}
+                  </MenuItem.Button>
+                ))}
+              </Menu>
+            </Dropdown>
             <Dropdown
               appendTo={() => document.body}
               buttonSize="small"

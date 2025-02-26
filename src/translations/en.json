@@ -147,6 +147,10 @@
     },
     "editorContent": {
       "imagePreviewAltText": "Image Preview"
+    },
+    "codeblock": {
+      "showLineNumbers": "Show line numbers",
+      "hideLineNumbers": "Hide line numbers"
     }
   }
 }
