@@ -15,6 +15,47 @@ import EditorWithOverlayManagerDemo from "./EditorWithOverlayManagerDemo";
   component={Editor}
 />
 
+# With overlay manager
+
+An overlay manager was introduced in neetoUI to handle faulty Webkit animations
+on focussed inputs. If neetoEditor is auto focussed within a neetoUI Pane or
+neetoUI Modal component, it is likely that you would face similar issues.
+Similar to neetoUI you need to use an initialFocusRef to make sure that the
+editor is properly focussed.
+
+```jsx
+import React, { useRef, useState } from "react";
+
+import { Button, Pane, Typography } from "@bigbinary/neetoui";
+
+import Editor from "@bigbinary/neeto-editor/Editor";
+
+const EditorWithOverlayManager = () => {
+  const [showPane, setShowPane] = useState(false);
+  const initialFocusRef = useRef(null);
+
+  return (
+    <>
+      <Button label="Show Pane" onClick={() => setShowPane(true)} />
+      <Pane
+        initialFocusRef={initialFocusRef}
+        isOpen={showPane}
+        onClose={() => setShowPane(false)}
+      >
+        <Pane.Header>
+          <Typography style="h2" weight="semibold">
+            Typography
+          </Typography>
+        </Pane.Header>
+        <Editor ref={initialFocusRef} />
+      </Pane>
+    </>
+  );
+};
+
+export default EditorWithOverlayManager;
+```
+
 <Canvas>
   <EditorWithOverlayManagerDemo />
 </Canvas>
