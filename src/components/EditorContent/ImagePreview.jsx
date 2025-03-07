@@ -19,17 +19,16 @@ const ImagePreview = ({ imagePreviewDetails, setImagePreviewDetails }) => {
   });
 
   useEffect(() => {
-    document.addEventListener(
-      "keydown",
-      e => e.key === "Escape" && setImagePreviewDetails(null)
-    );
+    if (!imagePreviewRef.current) return;
 
-    return () =>
-      document.removeEventListener(
-        "keydown",
-        e => e.key === "Escape" && setImagePreviewDetails(null)
-      );
+    imagePreviewRef.current.setAttribute("tabindex", "-1");
+    imagePreviewRef.current.focus();
   }, []);
+
+  const handleKeyDown = e => {
+    e.stopPropagation();
+    e.key === "Escape" && setImagePreviewDetails(null);
+  };
 
   return createPortal(
     <div className="ne-image-preview-wrapper active">
@@ -52,6 +51,7 @@ const ImagePreview = ({ imagePreviewDetails, setImagePreviewDetails }) => {
           alt={t("neetoEditor.editorContent.imagePreviewAltText")}
           ref={imagePreviewRef}
           src={imagePreviewDetails.src}
+          onKeyDown={handleKeyDown}
           onLoad={() => setIsLoading(false)}
         />
         {imagePreviewDetails && (
