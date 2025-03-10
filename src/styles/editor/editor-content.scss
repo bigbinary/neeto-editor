@@ -302,7 +302,7 @@
   --neeto-editor-pastel-purple: 171, 169, 183;
   --neeto-editor-pastel-pink: 181, 162, 174;
   --neeto-editor-content-heading-color: 224, 224, 224, 1;
-  --neeto-editor-content-paragraph-color: 54, 55, 55, 1;
+  --neeto-editor-content-paragraph-color: 224, 224, 224, 1;
   --neeto-editor-content-code-background-color: 21, 27, 35, 1;
   --neeto-editor-content-code-line-number-color: 89, 99, 110, 1;
   --neeto-editor-content-code-color: 240, 246, 252, 1;
@@ -332,6 +332,8 @@
 
   hr {
     margin: 0.5rem 0;
+    border-color: rgba(var(--neeto-editor-content-paragraph-color));
+    opacity: 0.2;
   }
 
   .table-responsive {
