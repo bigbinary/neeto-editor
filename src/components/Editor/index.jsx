@@ -11,6 +11,7 @@ import { Label } from "neetoui";
 import ErrorWrapper from "components/Common/ErrorWrapper";
 import useEditorWarnings from "hooks/useEditorWarnings";
 import "src/styles/editor/index.scss";
+import { removeEmptyTags } from "src/utils";
 
 import { DEFAULT_EDITOR_OPTIONS } from "./constants";
 import CharacterCountWrapper from "./CustomExtensions/CharacterCount";
@@ -107,6 +108,12 @@ const Editor = (
     100
   );
 
+  const handleBlur = props => {
+    const { editor } = props;
+    onChange(removeEmptyTags(editor.getHTML()));
+    onBlur(props);
+  };
+
   const customExtensions = useCustomExtensions({
     placeholder,
     extensions,
@@ -169,7 +176,7 @@ const Editor = (
     onCreate: ({ editor }) => !autoFocus && setInitialPosition(editor),
     onUpdate: debouncedOnChangeHandler,
     onFocus,
-    onBlur,
+    onBlur: handleBlur,
   });
 
   useEditorState({
