@@ -1,15 +1,15 @@
 .ne-link-popover {
   position: fixed;
   z-index: 99999;
-  background-color: #fff;
-  color: #333;
+  background-color: rgb(var(--neeto-ui-white));
+  color: rgb(var(--neeto-ui-gray-800));
   padding: 10px 16px;
   border-radius: 5px;
   border: 1px solid var(--neeto-ui-popover-light-theme-border-color);
   box-shadow: var(--neeto-ui-tooltip-light-theme-box-shadow);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
 
-  &__url-input{
+  &__url-input {
     margin: 8px 0;
   }
 
