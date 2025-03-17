@@ -54,6 +54,7 @@ const TableOption = ({
         tabIndex: -1,
         tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
         className: "neeto-editor-fixed-menu__item",
+        "data-cy": "neeto-editor-fixed-menu-table-option",
       }}
       customTarget={
         isSecondaryMenu && <SecondaryMenuTarget {...{ label }} icon={Column} />
