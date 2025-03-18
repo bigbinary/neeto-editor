@@ -8,6 +8,7 @@ import { createRoot } from "react-dom/client";
 
 import { EDITOR_SIZES } from "src/common/constants";
 import "src/styles/editor/editor-content.scss";
+import { removeEmptyTags } from "utils";
 
 import {
   EDITOR_CONTENT_CLASS_NAME,
@@ -34,7 +35,7 @@ const EditorContent = ({
   const editorContentRef = useRef(null);
 
   const htmlContent = substituteVariables(
-    applySyntaxHighlightingAndLineNumbers(content),
+    applySyntaxHighlightingAndLineNumbers(removeEmptyTags(content)),
     variables
   );
   const sanitize = DOMPurify.sanitize;
