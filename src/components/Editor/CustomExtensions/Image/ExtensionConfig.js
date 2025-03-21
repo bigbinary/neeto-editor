@@ -62,7 +62,7 @@ export default Node.create({
       },
 
       figwidth: {
-        default: 400,
+        default: 500,
         parseHTML: element =>
           element.querySelector("img")?.getAttribute("figwidth"),
       },
