@@ -110,9 +110,10 @@ const Editor = (
 
   const handleBlur = props => {
     const { editor } = props;
-    const trimmedContent = removeEmptyTags(editor.getHTML());
+    const content = editor.getHTML();
+    const trimmedContent = removeEmptyTags(content);
 
-    onChange(trimmedContent);
+    if (content !== trimmedContent) onChange(trimmedContent);
     onBlur(props);
   };
 
