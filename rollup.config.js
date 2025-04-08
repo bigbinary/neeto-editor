@@ -18,7 +18,7 @@ import packageJson from "./package.json";
 
 const commonResolve = require("@bigbinary/neeto-commons-frontend/configs/nanos/webpack/resolve.js");
 const projectResolve = require("./resolves.js");
-const postCssPlugin = require("./rollup-config/postcss.config.js")
+const postCssPlugin = require("./rollup-config/postcss.config.js");
 
 const { alias: aliasEntries } = mergeDeepLeft(projectResolve, commonResolve);
 const peerDependencies = Object.keys(packageJson.peerDependencies);
@@ -33,7 +33,8 @@ const input = {
   FormikEditor: "./src/components/Editor/FormikEditor",
   Attachments: "./src/components/Attachments",
   utils: "./src/utils",
-}
+  constants: "./src/constants",
+};
 
 const plugins = [
   peerDepsExternal(),
@@ -66,8 +67,12 @@ const config = args => {
   const output = formats.map(format => ({
     assetFileNames: "[name][extname]",
     dir: path.join(destination),
-    entryFileNames: format === "esm" ? "dist/[name].js" : "dist/cjs/[name].cjs.js",
-    chunkFileNames: format === "esm" ? "dist/chunk-[hash].js" : "dist/cjs/chunk-[hash].cjs.js",
+    entryFileNames:
+      format === "esm" ? "dist/[name].js" : "dist/cjs/[name].cjs.js",
+    chunkFileNames:
+      format === "esm"
+        ? "dist/chunk-[hash].js"
+        : "dist/cjs/chunk-[hash].cjs.js",
     format,
     name: "NeetoEditor",
     sourcemap: true,
@@ -82,7 +87,8 @@ const config = args => {
       plugins: [
         cleaner({ targets: ["./dist/"] }),
         ...plugins,
-        args.app && copy({
+        args.app &&
+        copy({
           targets: [
             { src: "package.json", dest: destination },
             { src: "types.d.ts", dest: destination },
@@ -159,7 +165,7 @@ const config = args => {
         assetFileNames: "[name][extname]",
       },
     },
-  ]
-}
+  ];
+};
 
 export default config;
