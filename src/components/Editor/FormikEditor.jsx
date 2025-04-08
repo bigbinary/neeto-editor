@@ -2,6 +2,7 @@ import { forwardRef, memo } from "react";
 
 import { FastField } from "formik";
 import { noop } from "neetocist";
+import { path } from "ramda";
 
 import Editor from ".";
 
@@ -25,9 +26,15 @@ const FormikEditor = (
     const prevFormikProps = prevProps.formik;
     const nextFormikProps = nextProps.formik;
 
+    const pathParts = name.split(".");
+    const prevError = path(pathParts, prevFormikProps.errors);
+    const nextError = path(pathParts, nextFormikProps.errors);
+    const prevTouched = path(pathParts, prevFormikProps.touched);
+    const nextTouched = path(pathParts, nextFormikProps.touched);
+
     return (
-      prevFormikProps.errors[name] !== nextFormikProps.errors[name] ||
-      prevFormikProps.touched[name] !== nextFormikProps.touched[name] ||
+      prevError !== nextError ||
+      prevTouched !== nextTouched ||
       Object.keys(nextProps).length !== Object.keys(prevProps).length ||
       prevFormikProps.isSubmitting !== nextFormikProps.isSubmitting ||
       Boolean(shouldUpdate?.(prevProps, nextProps))
