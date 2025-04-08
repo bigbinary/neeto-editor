@@ -15,6 +15,8 @@ import StarterKit from "@tiptap/starter-kit";
 import { EDITOR_OPTIONS } from "common/constants";
 import { isEmpty } from "ramda";
 
+import { buildLevelsFromOptions } from "components/Editor/utils";
+
 import HighlightInternal from "../BackgroundColor/ExtensionConfig";
 import BulletList from "../BulletList/ExtensionConfig";
 import CodeBlock from "../CodeBlock/ExtensionConfig";
@@ -83,6 +85,7 @@ const useCustomExtensions = ({
       blockquote: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
       orderedList: options.includes(EDITOR_OPTIONS.LIST_ORDERED),
       history: !collaborationProvider,
+      heading: { levels: buildLevelsFromOptions(options) },
     }),
     TextStyle,
     Underline,
