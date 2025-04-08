@@ -1,4 +1,7 @@
 /* eslint-disable @bigbinary/neeto/file-name-and-export-name-standards */
+import { EDITOR_OPTIONS } from "common/constants";
+
+import { DEFAULT_EDITOR_OPTIONS } from "components/Editor/constants";
 import {
   isEditorOverlaysActive,
   transformEditorContent,
@@ -31,4 +34,6 @@ export {
   isEditorOverlaysActive,
   isEmojiSuggestionsMenuActive,
   transformEditorContent,
+  EDITOR_OPTIONS,
+  DEFAULT_EDITOR_OPTIONS,
 };

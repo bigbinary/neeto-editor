@@ -172,7 +172,10 @@ const Fixed = ({
             if (!Component) return null;
 
             return (
-              <Component key={props.optionName} {...{ ...props, editor }} />
+              <Component
+                key={props.optionName}
+                {...{ ...props, editor, options }}
+              />
             );
           })
         )}

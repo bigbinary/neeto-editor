@@ -2,7 +2,7 @@ import { Slice, Fragment, Node } from "@tiptap/pm/model";
 import { Selection } from "@tiptap/pm/state";
 import { isNotEmpty } from "neetocist";
 
-import { URL_REGEXP } from "src/common/constants";
+import { EDITOR_OPTIONS, URL_REGEXP } from "src/common/constants";
 
 import {
   EDITOR_LINE_HEIGHT,
@@ -75,3 +75,18 @@ export const isEmojiSuggestionsMenuActive = () =>
 
 export const transformPastedHTML = content =>
   content.replaceAll("<br />", "<p></p>");
+
+export const buildLevelsFromOptions = options => {
+  const levels = {
+    [EDITOR_OPTIONS.H1]: 1,
+    [EDITOR_OPTIONS.H2]: 2,
+    [EDITOR_OPTIONS.H3]: 3,
+    [EDITOR_OPTIONS.H4]: 4,
+    [EDITOR_OPTIONS.H5]: 5,
+    [EDITOR_OPTIONS.H6]: 6,
+  };
+
+  return Object.entries(levels)
+    .filter(heading => options.includes(heading[0]))
+    .map(heading => heading[1]);
+};
