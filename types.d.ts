@@ -14,6 +14,7 @@ import { StarterKitOptions } from "@tiptap/starter-kit";
 import { PlaceholderOptions } from "@tiptap/extension-placeholder";
 import { CharacterCountOptions } from "@tiptap/extension-character-count";
 import Variables from "components/Editor/CustomExtensions/Variable/index";
+import { EDITOR_OPTIONS as EDITOR_OPTIONS_VALUES } from "common/constants"
 
 interface Command {
   title: string;
@@ -186,3 +187,6 @@ export function substituteVariables(
   highlightedContent: string,
   variables: (VariableCategory | Variable)[]
 ): string;
+
+export const DEFAULT_EDITOR_OPTIONS: string[];
+export const EDITOR_OPTIONS: typeof EDITOR_OPTIONS_VALUES;
