@@ -1,5 +1,6 @@
 import { memo, useRef } from "react";
 
+import { filterBy } from "neetocist";
 import { Dropdown, Typography } from "neetoui";
 import { last } from "ramda";
 
@@ -9,7 +10,12 @@ import { FONT_SIZE_OPTIONS } from "../../constants";
 
 const { Menu, MenuItem } = Dropdown;
 
-const FontSizeOption = ({ runEditorCommand, tooltipContent, label }) => {
+const FontSizeOption = ({
+  runEditorCommand,
+  tooltipContent,
+  label,
+  options = [],
+}) => {
   const dropdownRef = useRef(null);
 
   const lastOption = last(FONT_SIZE_OPTIONS);
@@ -24,6 +30,11 @@ const FontSizeOption = ({ runEditorCommand, tooltipContent, label }) => {
       : runEditorCommand(editor =>
           editor.chain().focus().setNode("paragraph").run()
         )();
+
+  const menuOptions = [
+    ...filterBy({ key: key => options.includes(key) }, FONT_SIZE_OPTIONS),
+    FONT_SIZE_OPTIONS.at(-1),
+  ];
 
   return (
     <Dropdown
@@ -44,7 +55,7 @@ const FontSizeOption = ({ runEditorCommand, tooltipContent, label }) => {
       }}
     >
       <Menu>
-        {FONT_SIZE_OPTIONS.map(({ label, value, key }) => (
+        {menuOptions.map(({ label, value, key }) => (
           <MenuItem.Button
             data-cy={`neeto-editor-fixed-menu-font-size-option-${key}`}
             key={value}
