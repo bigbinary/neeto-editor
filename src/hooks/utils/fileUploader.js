@@ -50,7 +50,12 @@ export const shouldAddFile = config => file => {
 
   if (isPresent(allowedFileTypes)) {
     const fileExtension = getFileExtension(file.name);
-    const canAdd = allowedFileTypes.includes(fileExtension);
+    const mimeType = file.type;
+
+    const extensionAllowed = allowedFileTypes.includes(fileExtension);
+    const mimeAllowed = allowedFileTypes.includes(mimeType);
+
+    const canAdd = extensionAllowed || mimeAllowed;
 
     return { canAdd, isUnsupportedFile: !canAdd };
   }
