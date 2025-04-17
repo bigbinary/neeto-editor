@@ -1,9 +1,6 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/github.min.css");
-
-
 .neeto-ui-theme--dark .hljs {
   color: #c9d1d9;
-  background: #0d1117
+  background: #0d1117;
 }
 
 .neeto-ui-theme--dark .hljs-doctag,
@@ -13,14 +10,14 @@
 .neeto-ui-theme--dark .hljs-template-variable,
 .neeto-ui-theme--dark .hljs-type,
 .neeto-ui-theme--dark .hljs-variable.language_ {
-  color: #ff7b72
+  color: #ff7b72;
 }
 
 .neeto-ui-theme--dark .hljs-title,
 .neeto-ui-theme--dark .hljs-title.class_,
 .neeto-ui-theme--dark .hljs-title.class_.inherited__,
 .neeto-ui-theme--dark .hljs-title.function_ {
-  color: #d2a8ff
+  color: #d2a8ff;
 }
 
 .neeto-ui-theme--dark .hljs-attr,
@@ -33,35 +30,35 @@
 .neeto-ui-theme--dark .hljs-selector-class,
 .neeto-ui-theme--dark .hljs-selector-id,
 .neeto-ui-theme--dark .hljs-variable {
-  color: #79c0ff
+  color: #79c0ff;
 }
 
 .neeto-ui-theme--dark .hljs-meta .hljs-string,
 .neeto-ui-theme--dark .hljs-regexp,
 .neeto-ui-theme--dark .hljs-string {
-  color: #a5d6ff
+  color: #a5d6ff;
 }
 
 .neeto-ui-theme--dark .hljs-built_in,
 .neeto-ui-theme--dark .hljs-symbol {
-  color: #ffa657
+  color: #ffa657;
 }
 
 .neeto-ui-theme--dark .hljs-code,
 .neeto-ui-theme--dark .hljs-comment,
 .neeto-ui-theme--dark .hljs-formula {
-  color: #8b949e
+  color: #8b949e;
 }
 
 .neeto-ui-theme--dark .hljs-name,
 .neeto-ui-theme--dark .hljs-quote,
 .neeto-ui-theme--dark .hljs-selector-pseudo,
 .neeto-ui-theme--dark .hljs-selector-tag {
-  color: #7ee787
+  color: #7ee787;
 }
 
 .neeto-ui-theme--dark .hljs-subst {
-  color: #c9d1d9
+  color: #c9d1d9;
 }
 
 .neeto-ui-theme--dark .hljs-section {
@@ -69,7 +66,7 @@
 }
 
 .neeto-ui-theme--dark .hljs-bullet {
-  color: #f2cc60
+  color: #f2cc60;
 }
 
 .neeto-ui-theme--dark .hljs-emphasis {
@@ -78,22 +75,22 @@
 
 .neeto-ui-theme--dark .hljs-strong {
   color: #c9d1d9;
-  font-weight: 700
+  font-weight: 700;
 }
 
 .neeto-ui-theme--dark .hljs-addition {
   color: #aff5b4;
-  background-color: #033a16
+  background-color: #033a16;
 }
 
 .neeto-ui-theme--dark .hljs-deletion {
   color: #ffdcd7;
-  background-color: #67060c
+  background-color: #67060c;
 }
 
 .neeto-ui-theme--light .hljs {
   color: #333;
-  background: #f8f8f8
+  background: #f8f8f8;
 }
 
 .neeto-ui-theme--light .hljs-comment,
@@ -112,12 +109,12 @@
 .neeto-ui-theme--light .hljs-tag .hljs-attr,
 .neeto-ui-theme--light .hljs-template-variable,
 .neeto-ui-theme--light .hljs-variable {
-  color: teal
+  color: teal;
 }
 
 .neeto-ui-theme--light .hljs-doctag,
 .neeto-ui-theme--light .hljs-string {
-  color: #d14
+  color: #d14;
 }
 
 .neeto-ui-theme--light .hljs-section,
@@ -139,17 +136,17 @@
 
 .neeto-ui-theme--light .hljs-link,
 .neeto-ui-theme--light .hljs-regexp {
-  color: #009926
+  color: #009926;
 }
 
 .neeto-ui-theme--light .hljs-bullet,
 .neeto-ui-theme--light .hljs-symbol {
-  color: #990073
+  color: #990073;
 }
 
 .neeto-ui-theme--light .hljs-built_in,
 .neeto-ui-theme--light .hljs-builtin-name {
-  color: #0086b3
+  color: #0086b3;
 }
 
 .neeto-ui-theme--light .hljs-meta {
@@ -157,11 +154,11 @@
 }
 
 .neeto-ui-theme--light .hljs-deletion {
-  background: #fdd
+  background: #fdd;
 }
 
 .neeto-ui-theme--light .hljs-addition {
-  background: #dfd
+  background: #dfd;
 }
 
 :root,
@@ -406,7 +403,9 @@
     font-weight: var(--neeto-editor-content-heading-font-weight);
 
     strong {
-      font-weight: var(--neeto-editor-content-heading-font-weight-bold) !important;
+      font-weight: var(
+        --neeto-editor-content-heading-font-weight-bold
+      ) !important;
     }
   }
 
@@ -471,7 +470,6 @@
     }
 
     &:hover {
-
       h1,
       h2,
       h3,
@@ -634,7 +632,7 @@
     }
   }
 
-  pre>code {
+  pre > code {
     font-size: var(--neeto-editor-content-code-font-size);
     background-color: transparent;
     border-width: 0;
@@ -649,7 +647,7 @@
     padding: 0.75rem;
   }
 
-  pre[data-linenumbers]>code {
+  pre[data-linenumbers] > code {
     padding-left: 0;
   }
 
@@ -658,8 +656,10 @@
     font-weight: var(--neeto-editor-font-medium);
     color: rgba(var(--neeto-editor-content-blockquote-color));
     border-left-width: var(--neeto-editor-content-blockquote-border-left-width);
-    border-left-color: rgba(var(--neeto-editor-content-blockquote-border-color));
-    quotes: "\201C" "\201D" "\2018" "\2019";
+    border-left-color: rgba(
+      var(--neeto-editor-content-blockquote-border-color)
+    );
+    quotes: "\201C""\201D""\2018""\2019";
     margin-bottom: var(--neeto-editor-content-blockquote-margin-bottom);
     padding-left: var(--neeto-editor-content-blockquote-padding-left);
 
@@ -668,11 +668,11 @@
       color: inherit;
     }
 
-    &>p::before {
+    & > p::before {
       content: "" !important;
     }
 
-    &>p::after {
+    & > p::after {
       content: "" !important;
     }
   }
