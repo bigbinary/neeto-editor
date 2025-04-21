@@ -35,6 +35,10 @@ export const buildHeaderLinks = editorContentNode => {
   const usedIds = new Map();
 
   headerTags.forEach(heading => {
+    if (heading.getAttribute('data-link') === 'false') {
+      return;
+    }
+
     let headingId = convertTextToId(heading.textContent);
     if (usedIds.has(headingId)) {
       const count = usedIds.get(headingId);
