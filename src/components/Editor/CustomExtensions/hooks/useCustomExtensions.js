@@ -27,6 +27,7 @@ import EmojiPicker from "../Emoji/EmojiPicker/ExtensionConfig";
 import EmojiSuggestion from "../Emoji/EmojiSuggestion/ExtensionConfig";
 import ImageExtension from "../Image/ExtensionConfig";
 import FigCaption from "../Image/FigCaption";
+import Italic from "../Italic/ExtensionConfig";
 import KeyboardShortcuts from "../KeyboardShortcuts/ExtensionConfig";
 import Link from "../Link/ExtensionConfig";
 import Mention, { createMentionSuggestions } from "../Mention/ExtensionConfig";
@@ -85,11 +86,13 @@ const useCustomExtensions = ({
       bulletList: false,
       blockquote: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
       orderedList: options.includes(EDITOR_OPTIONS.LIST_ORDERED),
+      italic: false,
       history: !collaborationProvider,
       heading: { levels: buildLevelsFromOptions(options) },
     }),
     TextStyle,
     Underline,
+    Italic,
     KeyboardShortcuts.configure({
       onSubmit,
       shortcuts: keyboardShortcuts,
