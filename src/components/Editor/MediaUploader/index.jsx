@@ -55,7 +55,7 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
     <Modal
       {...{ isOpen }}
       className="ne-media-uploader-modal"
-      closeButton={false}
+      closeButton={not(isUploading)}
       closeOnOutsideClick={not(isUploading)}
       onClose={handleClose}
     >
