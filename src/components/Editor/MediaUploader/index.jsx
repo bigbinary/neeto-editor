@@ -29,12 +29,12 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
   };
 
   const handleSubmit = url => {
-    insertMediaToEditor({ url });
+    insertMediaToEditor({ url, alt: "image" });
     handleClose();
   };
 
   const insertMediaToEditor = file => {
-    const { url, filename = "", caption = "" } = file;
+    const { url, filename = "image", caption = "" } = file;
     const mediaAttrs = { src: url, caption, alt: filename };
     const setMedia = mediaUploader.image
       ? editor.chain().setFigure(mediaAttrs)

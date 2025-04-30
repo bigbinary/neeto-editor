@@ -51,8 +51,9 @@ export default Node.create({
       },
 
       alt: {
-        default: "",
-        parseHTML: element => element.querySelector("img")?.getAttribute("alt"),
+        default: "image",
+        parseHTML: element =>
+          element.querySelector("img")?.getAttribute("alt") || "image",
       },
 
       figheight: {
@@ -232,7 +233,7 @@ export default Node.create({
                     const updateTr = view.state.tr.setNodeMarkup(
                       currentPos + 1,
                       null,
-                      { id, src: url, alt: "" }
+                      { id, src: url, alt: "image" }
                     );
                     view.dispatch(updateTr);
 
