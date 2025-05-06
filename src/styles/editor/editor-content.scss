@@ -440,8 +440,13 @@
   }
 
   // header anchor tags
-  .header-wrapper-link {
+  .header-wrapper {
     position: relative;
+
+    &__link {
+      position: absolute;
+      top: 50%;
+    }
 
     h1,
     h2,
@@ -470,15 +475,6 @@
     }
 
     &:hover {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        color: rgb(var(--neeto-editor-accent-800));
-      }
-
       .header-link-icon-wrapper {
         opacity: 1;
       }

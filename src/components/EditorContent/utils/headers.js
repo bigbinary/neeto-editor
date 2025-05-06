@@ -35,7 +35,7 @@ export const buildHeaderLinks = editorContentNode => {
   const usedIds = new Map();
 
   headerTags.forEach(heading => {
-    if (heading.getAttribute('data-link') === 'false') {
+    if (heading.getAttribute("data-link") === "false") {
       return;
     }
 
@@ -48,12 +48,16 @@ export const buildHeaderLinks = editorContentNode => {
 
     heading.setAttribute("id", headingId);
 
+    const wrapper = document.createElement("div");
     const anchor = document.createElement("a");
-    anchor.setAttribute("href", `#${headingId}`);
-    anchor.classList.add("header-wrapper-link");
-    anchor.appendChild(buildLinkSVG());
-    anchor.appendChild(heading.cloneNode(true));
 
-    heading.replaceWith(anchor);
+    wrapper.classList.add("header-wrapper");
+    anchor.setAttribute("href", `#${headingId}`);
+    anchor.classList.add("header-wrapper__link");
+    anchor.appendChild(buildLinkSVG());
+
+    wrapper.appendChild(heading.cloneNode(true));
+    wrapper.appendChild(anchor);
+    heading.replaceWith(wrapper);
   });
 };
