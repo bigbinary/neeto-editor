@@ -1,0 +1,8 @@
+---
+plan_slug: standard-2
+triggers:
+- event: branch
+  branch_name: main
+- event: pull_request
+commands:
+- checkout
