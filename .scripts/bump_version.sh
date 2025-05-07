@@ -10,7 +10,7 @@ install_gh() {
 bump_package() {
   echo "== Bump the NPM package version =="
   yarn install
-  yarn build
+  yarn bundle
   yarn config set version-tag-prefix "v"
   yarn version --"$VERSION_LABEL" --no-git-tag-version
   echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >~/.npmrc
