@@ -245,7 +245,7 @@
     "prepare": "husky install",
     "serve": "node .storybook/express",
     "storybook": "storybook dev -p 6006",
-    "upload": "node scripts/publish --env production"
+    "upload": "node .scripts/publish --env production"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json}": [
