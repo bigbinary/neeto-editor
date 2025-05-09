@@ -47,21 +47,21 @@ like canned response as well.
     menuType="bubble"
     addonCommands={[
       {
-        title: "Canned Responses",
+        label: "Canned Responses",
         tooltip: "Canned Responses",
-        Icon: CannedResponses,
+        icon: CannedResponses,
         description: "Select a canned response",
         optionName: "canned-responses",
         items: [
           {
-            title: "Feedback",
+            label: "Feedback",
             description: "Thank you for your feedback.",
             command: ({ editor, range }) => {
               editor.commands.setContent("Thank you for your feedback.");
             },
           },
           {
-            title: "Thanks",
+            label: "Thanks",
             description: "We are hapy to help you.",
             command: ({ editor, range }) => {
               editor.commands.setContent("We are happy to help you.");
