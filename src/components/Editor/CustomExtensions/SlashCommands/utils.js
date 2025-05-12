@@ -1,6 +1,5 @@
-import { assoc } from "ramda";
-
 import { EDITOR_OPTIONS } from "common/constants";
+import { assoc } from "ramda";
 
 import { MENU_ITEMS } from "./constants";
 
@@ -47,5 +46,11 @@ export const buildCommandItems = ({
     options.includes(optionName)
   );
 
-  return [...permittedCommandItems, ...addonCommands];
+  const adddonCommandItems = addonCommands.map(command => ({
+    ...command,
+    title: command.label,
+    Icon: command.icon,
+  }));
+
+  return [...permittedCommandItems, ...adddonCommandItems];
 };

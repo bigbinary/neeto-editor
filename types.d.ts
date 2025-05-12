@@ -17,8 +17,8 @@ import Variables from "components/Editor/CustomExtensions/Variable/index";
 import { EDITOR_OPTIONS as EDITOR_OPTIONS_VALUES } from "common/constants"
 
 interface Command {
-  title: string;
-  Icon: Function;
+  label: string;
+  icon: Function;
   description?: string;
   optionName: string;
   active?: ({ editor: TiptapEditor }) => boolean;
