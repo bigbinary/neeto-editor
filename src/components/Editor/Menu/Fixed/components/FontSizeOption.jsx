@@ -1,7 +1,8 @@
 import { memo, useRef } from "react";
 
 import { filterBy } from "neetocist";
-import { Dropdown, Typography } from "neetoui";
+import { Down } from "neetoicons";
+import { Dropdown } from "neetoui";
 import { last } from "ramda";
 
 import useEditorStore from "src/stores/useEditorStore";
@@ -39,10 +40,13 @@ const FontSizeOption = ({
   return (
     <Dropdown
       autoWidth
-      label={activeOption?.label}
       placement="bottom-start"
       strategy="fixed"
       buttonProps={{
+        icon: activeOption?.icon,
+        iconPosition: "left",
+        iconSize: 22,
+        label: <Down size={12} />,
         ref: dropdownRef,
         "data-cy": "neeto-editor-fixed-menu-font-size-option",
         onKeyDown: event =>
@@ -54,14 +58,16 @@ const FontSizeOption = ({
           "neeto-editor-fixed-menu__item neeto-editor-font-size__wrapper",
       }}
     >
-      <Menu>
-        {menuOptions.map(({ label, value, key }) => (
+      <Menu className="neeto-ui-flex neeto-ui-gap-1 neeto-editor-menu-font-size-options">
+        {menuOptions.map(({ label, icon: Icon, value, key }) => (
           <MenuItem.Button
+            className="neeto-editor-menu-font-size-options__item-btn"
             data-cy={`neeto-editor-fixed-menu-font-size-option-${key}`}
             key={value}
+            tooltipProps={{ content: label, position: "bottom" }}
             onClick={() => handleClick(value)}
           >
-            <Typography style={key}>{label}</Typography>
+            <Icon size={22} />
           </MenuItem.Button>
         ))}
       </Menu>
