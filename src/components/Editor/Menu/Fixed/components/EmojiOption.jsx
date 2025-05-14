@@ -18,7 +18,6 @@ const EmojiOption = ({
   <Dropdown
     buttonStyle="text"
     closeOnSelect={false}
-    dropdownProps={{ classNames: "neeto-editor-fixed-menu__emoji-dropdown" }}
     icon={Smiley}
     isOpen={isActive}
     position={isSecondaryMenu ? "left-start" : "bottom-start"}
@@ -32,6 +31,10 @@ const EmojiOption = ({
     customTarget={
       isSecondaryMenu && <SecondaryMenuTarget {...{ label }} icon={Smiley} />
     }
+    dropdownProps={{
+      classNames: "neeto-editor-fixed-menu__emoji-dropdown",
+      onClick: e => isSecondaryMenu && e.stopPropagation(),
+    }}
     onClose={() => setActive(false)}
     onClick={e => {
       setActive(active => !active);
