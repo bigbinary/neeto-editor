@@ -23,7 +23,11 @@ import { prop, not, assoc } from "ramda";
 
 import { EDITOR_OPTIONS } from "src/common/constants";
 
-import { MENU_ELEMENT_WIDTHS, MENU_ELEMENT_TYPES } from "./constants";
+import {
+  MENU_ELEMENT_WIDTHS,
+  MENU_ELEMENT_TYPES,
+  SHORTCUTS,
+} from "./constants.js";
 
 const createMenuOptions = ({
   tooltips,
@@ -391,3 +395,16 @@ export const getLinkPopoverPosition = (editor, popoverRef) => {
 
   return { arrowPosition, popoverPosition };
 };
+
+export function renderTooltipContent(label, optionName) {
+  const shortcut = SHORTCUTS[optionName];
+  if (!shortcut) return label;
+
+  const isMac = () =>
+    typeof window !== "undefined" &&
+    /Mac|iPod|iPhone|iPad/.test(window.navigator.userAgent);
+
+  const key = isMac() ? shortcut.mac : shortcut.win;
+
+  return `${label} (${key})`;
+}
