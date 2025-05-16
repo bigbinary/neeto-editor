@@ -1,3 +1,5 @@
+import { EDITOR_OPTIONS } from "src/common/constants";
+
 import MenuButton from "./components/Button";
 import EmojiOption from "./components/EmojiOption";
 import FontSizeOption from "./components/FontSizeOption";
@@ -25,6 +27,23 @@ export const MENU_TYPES = {
   MISC: "misc",
   EXTRAS: "extras",
   CUSTOM: "custom",
+};
+
+export const SHORTCUTS = {
+  [EDITOR_OPTIONS.BOLD]: { mac: "⌘B", win: "Ctrl+B" },
+  [EDITOR_OPTIONS.ITALIC]: { mac: "⌘I", win: "Ctrl+I" },
+  [EDITOR_OPTIONS.UNDERLINE]: { mac: "⌘U", win: "Ctrl+U" },
+  [EDITOR_OPTIONS.STRIKETHROUGH]: {
+    mac: "⌘⇧S or ⌘⇧X",
+    win: "Ctrl+Shift+S or Ctrl+Shift+X",
+  },
+  [EDITOR_OPTIONS.CODE]: { mac: "⌘E", win: "Ctrl+E" },
+  [EDITOR_OPTIONS.UNDO]: { mac: "⌘Z", win: "Ctrl+Z" },
+  [EDITOR_OPTIONS.REDO]: { mac: "⌘⇧Z", win: "Ctrl+Shift+Z" },
+  [EDITOR_OPTIONS.LINK]: { mac: "⌘K", win: "Ctrl+K" },
+  [EDITOR_OPTIONS.HIGHLIGHT]: { mac: "⌘⇧H", win: "Ctrl+Shift+H" },
+  bulletList: { mac: "⌘⇧8", win: "Ctrl+Shift+8" },
+  orderedList: { mac: "⌘⇧7", win: "Ctrl+Shift+7" },
 };
 
 export const MENU_ELEMENTS = {
