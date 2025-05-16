@@ -41,6 +41,7 @@ const createMenuOptions = ({
   setIsEmojiPickerActive,
   isEmojiPickerActive,
   runEditorCommand,
+  editor,
 }) => {
   const fontSizeOptions = options.filter(option => option.match(/^h[1-6]$/));
 
@@ -117,14 +118,14 @@ const createMenuOptions = ({
         label: tooltips.strike ?? t("neetoEditor.menu.strike"),
       },
       {
-        type: MENU_ELEMENT_TYPES.BUTTON,
+        type: MENU_ELEMENT_TYPES.HIGHLIGHT,
         icon: Highlight,
-        isEnabled: options.includes(EDITOR_OPTIONS.HIGHLIGHT),
-        command: runEditorCommand(editor =>
-          editor.chain().focus().toggleHighlight().run()
-        ),
-        optionName: EDITOR_OPTIONS.HIGHLIGHT,
         label: tooltips.highlight ?? t("neetoEditor.menu.highlight"),
+        isEnabled: options.includes(EDITOR_OPTIONS.HIGHLIGHT),
+        optionName: EDITOR_OPTIONS.HIGHLIGHT,
+        editor,
+        runEditorCommand,
+        tooltipContent: tooltips.highlight ?? t("neetoEditor.menu.highlight"),
       },
     ],
     // list
@@ -294,6 +295,7 @@ export const buildMenuOptions = ({
   setIsEmojiPickerActive,
   isEmojiPickerActive,
   runEditorCommand,
+  editor,
 }) => {
   const addonCommandOptions = buildOptionsFromAddonCommands({
     commands: addonCommands,
@@ -312,6 +314,7 @@ export const buildMenuOptions = ({
     setIsEmojiPickerActive,
     isEmojiPickerActive,
     runEditorCommand,
+    editor,
   });
 
   return menuOptions.map(option => option.filter(prop("isEnabled")));

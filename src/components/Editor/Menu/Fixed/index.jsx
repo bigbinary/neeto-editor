@@ -13,7 +13,6 @@ import MediaUploader from "components/Editor/MediaUploader";
 import LinkAddPopOver from "./components/LinkAddPopOver";
 import MoreMenu from "./components/MoreMenu";
 import { MENU_ELEMENTS } from "./constants";
-// import HighlightDropdown from "./HighlightDropdown";
 import useEditorState from "./hooks/useEditorState";
 import { reGroupMenuItems, buildMenuOptions } from "./utils";
 
@@ -104,6 +103,7 @@ const Fixed = ({
         addonCommands,
         setIsEmojiPickerActive,
         isEmojiPickerActive,
+        editor,
       }),
     [isEmojiPickerActive, mentions]
   );
@@ -180,7 +180,6 @@ const Fixed = ({
             );
           })
         )}
-        {/* <HighlightDropdown /> */}
         {isNotEmpty(moreMenuItems) && (
           <MoreMenu {...{ editor }} groups={moreMenuItems} />
         )}

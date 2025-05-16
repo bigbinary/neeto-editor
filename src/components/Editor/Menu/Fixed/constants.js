@@ -3,6 +3,7 @@ import { EDITOR_OPTIONS } from "src/common/constants";
 import MenuButton from "./components/Button";
 import EmojiOption from "./components/EmojiOption";
 import FontSizeOption from "./components/FontSizeOption";
+import HighlightDropdown from "./components/HighlightDropdown/index.jsx";
 import TableOption from "./components/TableOption";
 import TextColorOption from "./components/TextColorOption";
 
@@ -15,6 +16,7 @@ export const MENU_ELEMENT_TYPES = {
   TEXT_COLOR: "textColor",
   EMOJI: "emoji",
   MENTIONS: "mentions",
+  HIGHLIGHT: "highlight",
 };
 
 export const MENU_TYPES = {
@@ -51,6 +53,7 @@ export const MENU_ELEMENTS = {
   [MENU_ELEMENT_TYPES.TEXT_COLOR]: TextColorOption,
   [MENU_ELEMENT_TYPES.EMOJI]: EmojiOption,
   [MENU_ELEMENT_TYPES.MENTIONS]: Mentions,
+  [MENU_ELEMENT_TYPES.HIGHLIGHT]: HighlightDropdown,
 };
 
 export const MENU_ELEMENT_WIDTHS = {
@@ -60,4 +63,5 @@ export const MENU_ELEMENT_WIDTHS = {
   [MENU_ELEMENT_TYPES.TEXT_COLOR]: 36,
   [MENU_ELEMENT_TYPES.EMOJI]: 36,
   [MENU_ELEMENT_TYPES.MENTIONS]: 36,
+  [MENU_ELEMENT_TYPES.HIGHLIGHT]: 103,
 };

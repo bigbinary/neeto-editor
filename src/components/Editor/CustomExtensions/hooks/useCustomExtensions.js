@@ -113,7 +113,10 @@ const useCustomExtensions = ({
     );
   }
 
-  if (options.includes(EDITOR_OPTIONS.TEXT_COLOR)) {
+  if (
+    options.includes(EDITOR_OPTIONS.TEXT_COLOR) ||
+    options.includes(EDITOR_OPTIONS.HIGHLIGHT)
+  ) {
     customExtensions.push(Color);
   }
 
