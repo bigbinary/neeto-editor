@@ -104,6 +104,7 @@ const Fixed = ({
         addonCommands,
         setIsEmojiPickerActive,
         isEmojiPickerActive,
+        editor,
       }),
     [isEmojiPickerActive, mentions]
   );

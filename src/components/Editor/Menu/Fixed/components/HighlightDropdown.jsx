@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 import classNames from "classnames";
+import { Down } from "neetoicons";
 import { Typography, Dropdown } from "neetoui";
 
 const colors = {
@@ -58,21 +59,83 @@ const ColorDot = ({ colorVar, isSelected, onClick, isTextColor }) => {
   );
 };
 
-const HighlightDropdown = () => {
-  const [selectedColor, setSelectedColor] = useState(null);
+const HighlightDropdown = ({
+  editor,
+  icon: Icon,
+  label,
+  tooltipContent,
+  runEditorCommand,
+}) => {
+  const dropdownRef = useRef(null);
+  const textColor = editor.getAttributes("textStyle").color;
+  const backgroundColor = editor.getAttributes("textStyle").backgroundColor;
+
+  const handleBackgroundColorClick = colorVar => {
+    if (backgroundColor === `var(${colorVar})`) {
+      runEditorCommand(editor =>
+        editor
+          .chain()
+          .focus()
+          .setMark("textStyle", { backgroundColor: null })
+          .run()
+      )();
+    } else {
+      runEditorCommand(editor =>
+        editor
+          .chain()
+          .focus()
+          .setMark("textStyle", { backgroundColor: `var(${colorVar})` })
+          .run()
+      )();
+    }
+  };
+
+  const handleTextColorClick = colorVar => {
+    if (textColor === `var(${colorVar})`) {
+      editor.chain().focus().unsetColor().run();
+    } else {
+      editor.chain().focus().setColor(`var(${colorVar})`).run();
+    }
+  };
 
   const renderColorDots = (colorList, isTextColor = false) =>
     colorList.map((colorVar, idx) => (
       <ColorDot
         {...{ colorVar, isTextColor }}
-        isSelected={selectedColor === colorVar}
         key={idx}
-        onClick={() => setSelectedColor(colorVar)}
+        isSelected={
+          isTextColor
+            ? textColor === `var(${colorVar})`
+            : backgroundColor === `var(${colorVar})`
+        }
+        onClick={() =>
+          isTextColor
+            ? handleTextColorClick(colorVar)
+            : handleBackgroundColorClick(colorVar)
+        }
       />
     ));
 
   return (
-    <Dropdown>
+    <Dropdown
+      autoWidth
+      placement="bottom-start"
+      strategy="fixed"
+      buttonProps={{
+        icon: Icon,
+        iconPosition: "left",
+        iconSize: 20,
+        label: <Down size={12} />,
+        ref: dropdownRef,
+        "data-cy": "neeto-editor-fixed-menu-highlight-option",
+        onKeyDown: event =>
+          event.key === "ArrowDown" && dropdownRef.current?.click(),
+        tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
+        style: "text",
+        size: "small",
+        className: "neeto-editor-fixed-menu__item",
+      }}
+    >
       <Dropdown.Menu className="neeto-editor-highlight-dropdown">
         <div className="neeto-editor-highlight-dropdown__section">
           <Typography
