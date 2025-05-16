@@ -1,7 +1,7 @@
 import MenuButton from "./components/Button";
 import EmojiOption from "./components/EmojiOption";
 import FontSizeOption from "./components/FontSizeOption";
-import HighlightDropdown from "./components/HighlightDropdown.jsx";
+import HighlightDropdown from "./components/HighlightDropdown/index.jsx";
 import TableOption from "./components/TableOption";
 import TextColorOption from "./components/TextColorOption";
 

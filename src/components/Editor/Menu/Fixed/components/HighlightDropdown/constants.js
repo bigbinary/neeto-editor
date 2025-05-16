@@ -1,0 +1,27 @@
+export const COLORS = {
+  recent: ["--neeto-editor-highlight-bg-yellow-light"],
+  text: [
+    "--neeto-editor-highlight-text-1",
+    "--neeto-editor-highlight-text-2",
+    "--neeto-editor-highlight-text-3",
+    "--neeto-editor-highlight-text-4",
+    "--neeto-editor-highlight-text-5",
+    "--neeto-editor-highlight-text-6",
+    "--neeto-editor-highlight-text-7",
+    "--neeto-editor-highlight-text-8",
+    "--neeto-editor-highlight-text-9",
+    "--neeto-editor-highlight-text-10",
+  ],
+  background: [
+    "--neeto-editor-highlight-bg-1",
+    "--neeto-editor-highlight-bg-2",
+    "--neeto-editor-highlight-bg-3",
+    "--neeto-editor-highlight-bg-4",
+    "--neeto-editor-highlight-bg-5",
+    "--neeto-editor-highlight-bg-6",
+    "--neeto-editor-highlight-bg-7",
+    "--neeto-editor-highlight-bg-8",
+    "--neeto-editor-highlight-bg-9",
+    "--neeto-editor-highlight-bg-10",
+  ],
+};
