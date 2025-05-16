@@ -5,6 +5,8 @@ import { Button } from "neetoui";
 import useEditorStore from "src/stores/useEditorStore";
 import { generateFocusProps } from "utils/focusHighlighter";
 
+import { renderTooltipContent } from "../utils.js";
+
 const MenuButton = ({
   icon,
   command,
@@ -25,7 +27,10 @@ const MenuButton = ({
       data-cy={`neeto-editor-fixed-menu-${optionName}-option`}
       style={isActive ? "secondary" : "text"}
       tabIndex="-1"
-      tooltipProps={{ content: label, position: "bottom" }}
+      tooltipProps={{
+        content: renderTooltipContent(label, optionName),
+        position: "bottom",
+      }}
       onClick={command}
       {...generateFocusProps(highlight)}
     />

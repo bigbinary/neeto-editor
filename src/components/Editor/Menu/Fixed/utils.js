@@ -23,7 +23,11 @@ import { prop, not, assoc } from "ramda";
 
 import { EDITOR_OPTIONS } from "src/common/constants";
 
-import { MENU_ELEMENT_WIDTHS, MENU_ELEMENT_TYPES } from "./constants";
+import {
+  MENU_ELEMENT_WIDTHS,
+  MENU_ELEMENT_TYPES,
+  SHORTCUTS,
+} from "./constants.js";
 
 const createMenuOptions = ({
   tooltips,
@@ -96,16 +100,6 @@ const createMenuOptions = ({
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
-        icon: Underline,
-        isEnabled: options.includes(EDITOR_OPTIONS.UNDERLINE),
-        command: runEditorCommand(editor =>
-          editor.chain().focus().toggleUnderline().run()
-        ),
-        optionName: EDITOR_OPTIONS.UNDERLINE,
-        label: tooltips.underline ?? t("neetoEditor.menu.underline"),
-      },
-      {
-        type: MENU_ELEMENT_TYPES.BUTTON,
         icon: Link,
         isEnabled: options.includes(EDITOR_OPTIONS.LINK),
         command: () => setIsAddLinkActive(not),
@@ -171,26 +165,6 @@ const createMenuOptions = ({
         highlight: true,
         label: tooltips.blockQuote ?? t("neetoEditor.menu.blockQuote"),
       },
-      {
-        type: MENU_ELEMENT_TYPES.BUTTON,
-        icon: Code,
-        command: runEditorCommand(editor =>
-          editor.chain().focus().toggleCode().run()
-        ),
-        isEnabled: options.includes(EDITOR_OPTIONS.CODE),
-        optionName: EDITOR_OPTIONS.CODE,
-        label: tooltips.code ?? t("neetoEditor.menu.code"),
-      },
-      {
-        type: MENU_ELEMENT_TYPES.BUTTON,
-        icon: CodeBlock,
-        command: runEditorCommand(editor =>
-          editor.chain().focus().toggleCodeBlock().run()
-        ),
-        isEnabled: options.includes(EDITOR_OPTIONS.CODE_BLOCK),
-        optionName: "codeBlock",
-        label: tooltips.codeBlock ?? t("neetoEditor.menu.codeBlock"),
-      },
     ],
     // misc
     [
@@ -216,14 +190,6 @@ const createMenuOptions = ({
         isEnabled: options.includes(EDITOR_OPTIONS.IMAGE_UPLOAD),
         optionName: EDITOR_OPTIONS.IMAGE_UPLOAD,
         label: tooltips.imageUpload ?? t("neetoEditor.menu.imageUpload"),
-      },
-      {
-        type: MENU_ELEMENT_TYPES.BUTTON,
-        icon: Video,
-        command: () => setMediaUploader(assoc("video", true)),
-        isEnabled: options.includes(EDITOR_OPTIONS.VIDEO_UPLOAD),
-        optionName: EDITOR_OPTIONS.VIDEO_UPLOAD,
-        label: tooltips.videoUpload ?? t("neetoEditor.menu.videoUpload"),
       },
       {
         type: MENU_ELEMENT_TYPES.BUTTON,
@@ -256,6 +222,44 @@ const createMenuOptions = ({
         isEnabled: isNotEmpty(mentions),
         optionName: "mentions",
         mentions,
+      },
+      {
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: Code,
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleCode().run()
+        ),
+        isEnabled: options.includes(EDITOR_OPTIONS.CODE),
+        optionName: EDITOR_OPTIONS.CODE,
+        label: tooltips.code ?? t("neetoEditor.menu.code"),
+      },
+      {
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: CodeBlock,
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleCodeBlock().run()
+        ),
+        isEnabled: options.includes(EDITOR_OPTIONS.CODE_BLOCK),
+        optionName: "codeBlock",
+        label: tooltips.codeBlock ?? t("neetoEditor.menu.codeBlock"),
+      },
+      {
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: Video,
+        command: () => setMediaUploader(assoc("video", true)),
+        isEnabled: options.includes(EDITOR_OPTIONS.VIDEO_UPLOAD),
+        optionName: EDITOR_OPTIONS.VIDEO_UPLOAD,
+        label: tooltips.videoUpload ?? t("neetoEditor.menu.videoUpload"),
+      },
+      {
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: Underline,
+        isEnabled: options.includes(EDITOR_OPTIONS.UNDERLINE),
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleUnderline().run()
+        ),
+        optionName: EDITOR_OPTIONS.UNDERLINE,
+        label: tooltips.underline ?? t("neetoEditor.menu.underline"),
       },
     ],
     //addons
@@ -323,7 +327,6 @@ export const reGroupMenuItems = (menuRef, menuGroups) => {
   menuGroups.forEach((group, groupIndex) => {
     group.forEach((item, itemIndex) => {
       const width = MENU_ELEMENT_WIDTHS[item.type];
-
       if (totalWidth + width < toolbarWidth) {
         totalWidth += width;
         visibleMenuGroups[groupIndex] = visibleMenuGroups[groupIndex] ?? [];
@@ -392,3 +395,16 @@ export const getLinkPopoverPosition = (editor, popoverRef) => {
 
   return { arrowPosition, popoverPosition };
 };
+
+export function renderTooltipContent(label, optionName) {
+  const shortcut = SHORTCUTS[optionName];
+  if (!shortcut) return label;
+
+  const isMac = () =>
+    typeof window !== "undefined" &&
+    /Mac|iPod|iPhone|iPad/.test(window.navigator.userAgent);
+
+  const key = isMac() ? shortcut.mac : shortcut.win;
+
+  return `${label} (${key})`;
+}
