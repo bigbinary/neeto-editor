@@ -4,6 +4,7 @@ import { Down } from "neetoicons";
 import { Typography, Dropdown } from "neetoui";
 
 import ColorDot from "./ColorDot";
+import ColorDotIcon from "./ColorDotIcon";
 import { COLORS } from "./constants";
 
 const colorSections = [
@@ -13,7 +14,6 @@ const colorSections = [
 
 const HighlightDropdown = ({
   editor,
-  icon: Icon,
   label,
   tooltipContent,
   runEditorCommand,
@@ -72,7 +72,7 @@ const HighlightDropdown = ({
       placement="bottom-start"
       strategy="fixed"
       buttonProps={{
-        icon: Icon,
+        icon: () => <ColorDotIcon {...{ backgroundColor, textColor }} />,
         iconPosition: "left",
         iconSize: 20,
         label: <Down size={12} />,
