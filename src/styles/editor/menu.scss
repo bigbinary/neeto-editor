@@ -214,46 +214,75 @@
   padding-right: 4px !important;
 }
 
+.tippy-box[data-theme~=neeto-editor-bubble-menu-tippy-box] {
+  box-shadow: none !important;
+}
+
+.tippy-box[data-theme~=neeto-editor-bubble-menu-tippy-box] .tippy-content {
+  padding: 0 !important;
+}
+
 .neeto-editor-bubble-menu {
   position: relative;
   display: flex;
-  gap: 1px;
+  gap: 0;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   border-radius: var(--neeto-ui-rounded);
-  background: rgb(var(--neeto-ui-gray-800));
-  padding: 0 4px;
+  background: rgb(var(--neeto-ui-white));
+  padding: 0;
+  border: 1px solid rgb(var(--neeto-ui-gray-400));
+  overflow-x: auto;
 
-  button.neeto-ui-btn--style-text {
-    color: rgb(var(--neeto-ui-gray-200));
+  &>.neeto-editor-bubble-menu__item:first-child,
+  &>.neeto-editor-fixed-menu__item:first-child {
+    border-top-left-radius: var(--neeto-ui-rounded);
+    border-bottom-left-radius: var(--neeto-ui-rounded);
+  }
+
+  &>.neeto-editor-bubble-menu__item:last-child,
+  &>.neeto-editor-fixed-menu__item:last-child {
+    border-top-right-radius: var(--neeto-ui-rounded);
+    border-bottom-right-radius: var(--neeto-ui-rounded);
+  }
+
+  button.neeto-editor-bubble-menu__item,
+  button.neeto-editor-fixed-menu__item {
+    color: rgb(var(--neeto-ui-black)) !important;
     min-width: fit-content;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    --neeto-ui-btn-border-radius: 0;
+    --neeto-ui-btn-icon-size: 22px;
+    --neeto-ui-btn-padding-x: 0;
+    --neeto-ui-btn-padding-y: 0;
+    --neeto-ui-btn-focus-box-shadow: none;
+
+    .neeto-ui-btn__icon {
+      color: rgb(var(--neeto-ui-black));
+
+      path {
+        stroke-width: 1.5px;
+      }
+    }
 
     &:hover,
     &:active,
     &.active {
-      color: rgb(var(--neeto-ui-gray-200)) !important;
-      background-color: rgb(var(--neeto-ui-gray-600)) !important;
+      background-color: rgb(var(--neeto-ui-gray-100));
     }
   }
 
-  button.neeto-ui-btn--style-secondary {
-    min-width: fit-content;
-    background-color: rgb(var(--neeto-ui-gray-400));
-  }
+  button.neeto-editor-bubble-menu__item.neeto-ui-btn--style-secondary {
+    background-color: rgb(var(--neeto-ui-accent-100)) !important;
 
-  .neeto-ui-dropdown__popup {
-    background-color: rgb(var(--neeto-ui-gray-700));
-
-    &-menu-item-btn {
-      color: rgb(var(--neeto-ui-gray-200)) !important;
-      background-color: inherit !important;
-
-      &:hover,
-      &:active,
-      &.active {
-        background-color: rgb(var(--neeto-ui-gray-600)) !important;
-      }
+    .neeto-ui-btn__icon {
+      color: rgb(var(--neeto-ui-accent-800)) !important;
     }
   }
 
@@ -263,14 +292,21 @@
     align-items: center;
     justify-content: space-between;
     padding: 6px;
-    gap: 8px;
+    gap: 6px;
 
     .neeto-editor-bubble-menu-link__input {
       background-color: transparent;
       outline: none;
-      line-height: 20px;
+      height: 28px;
       width: 100%;
-      color: rgb(var(--neeto-ui-gray-200));
+      font-size: var(--neeto-ui-input-font-size);
+      transition: var(--neeto-ui-transition);
+      border-radius: var(--neeto-ui-input-border-radius);
+      border: var(--neeto-ui-input-border-width) solid var(--neeto-ui-input-border-color);
+      background-color: var(--neeto-ui-input-bg-color);
+      color: var(--neeto-ui-input-color);
+      outline: none;
+      line-height: 1.2;
 
       &::placeholder {
         color: rgba(var(--neeto-ui-white, 0.4));
@@ -291,32 +327,37 @@
   .neeto-editor-bubble-menu__table {
     max-width: 256px;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
     padding: 4px;
     gap: 6px;
 
     input {
-      background-color: rgba(var(--neeto-ui-gray-400), 0.2);
+      font-size: var(--neeto-ui-input-font-size);
+      transition: var(--neeto-ui-transition);
+      border-radius: var(--neeto-ui-input-border-radius);
+      border: var(--neeto-ui-input-border-width) solid var(--neeto-ui-input-border-color);
+      background-color: var(--neeto-ui-input-bg-color);
+      color: var(--neeto-ui-input-color);
       outline: none;
-      line-height: 20px;
+      line-height: 1.2;
       width: 60px;
-      height: 24px;
+      height: 28px;
       padding: 3px 5px;
 
       &::placeholder {
-        color: rgba(var(--neeto-ui-white, 0.4));
+        color: rgb(var(--neeto-ui-gray-500));
       }
     }
 
     &__menu-item {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
     }
 
     &__input-label {
-      color: white;
+      color: rgb(var(--neeto-ui-gray-800));
     }
 
     &__buttons {
