@@ -32,7 +32,6 @@ const TableOption = ({ editor, handleClose }) => {
           autoFocus
           data-cy="neeto-editor-fixed-menu-table-option-input"
           min="1"
-          placeholder={t("neetoEditor.placeholders.rows")}
           type="number"
           value={rows}
           onChange={withEventTargetValue(setRows)}
@@ -45,7 +44,6 @@ const TableOption = ({ editor, handleClose }) => {
         <input
           data-cy="neeto-editor-bubble-menu-table-option-input"
           min="1"
-          placeholder={t("neetoEditor.placeholders.columns")}
           type="number"
           value={columns}
           onChange={withEventTargetValue(setColumns)}
@@ -55,12 +53,14 @@ const TableOption = ({ editor, handleClose }) => {
         <Button
           data-cy="neeto-editor-bubble-menu-table-option-create-button"
           icon={Check}
+          size="small"
           style="secondary"
           onClick={handleSubmit}
         />
         <Button
           data-cy="neeto-editor-bubble-menu-table-option-create-button"
           icon={Close}
+          size="small"
           style="secondary"
           onClick={handleClose}
         />

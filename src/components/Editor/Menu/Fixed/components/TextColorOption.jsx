@@ -58,7 +58,7 @@ const TextColorOption = ({
       position={isSecondaryMenu ? "left-start" : "bottom-start"}
       buttonProps={{
         tabIndex: -1,
-        tooltipProps: { content: tooltipContent ?? label },
+        tooltipProps: { content: tooltipContent ?? label, position: "bottom" },
         className:
           "neeto-editor-fixed-menu__item neeto-editor-text-color-option",
       }}

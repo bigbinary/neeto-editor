@@ -1,12 +1,12 @@
 import { EDITOR_OPTIONS } from "common/constants";
-import { Link, Column } from "neetoicons";
+import { Link, Column, Down } from "neetoicons";
 import { Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
 
 import LinkOption from "./LinkOption";
 import TableOption from "./TableOption";
 import {
-  getNodeType,
+  getNodeIcon,
   getTextMenuDropdownOptions,
   renderOptionButton,
   buildBubbleMenuOptions,
@@ -36,7 +36,7 @@ const Options = ({
   const { Menu, MenuItem } = Dropdown;
 
   const dropdownOptions = getTextMenuDropdownOptions({ editor, options });
-  const nodeType = getNodeType(dropdownOptions);
+  const Icon = getNodeIcon(dropdownOptions);
   const isEmojiActive = options.includes(EDITOR_OPTIONS.EMOJI);
   const isTextColorOptionActive = options.includes(EDITOR_OPTIONS.TEXT_COLOR);
   const isLinkActive = options.includes(EDITOR_OPTIONS.LINK);
@@ -86,13 +86,29 @@ const Options = ({
       <Dropdown
         buttonSize="small"
         buttonStyle="text"
-        label={nodeType}
+        label={Icon}
         strategy="fixed"
+        buttonProps={{
+          icon: Icon,
+          iconPosition: "left",
+          iconSize: 22,
+          label: <Down size={12} />,
+          "data-cy": "neeto-editor-fixed-menu-font-size-option",
+          style: "text",
+          size: "small",
+          className:
+            "neeto-editor-bubble-menu__item neeto-editor-font-size__wrapper",
+        }}
       >
-        <Menu>
-          {dropdownOptions.map(({ optionName, command }) => (
-            <MenuItem.Button key={optionName} onClick={command}>
-              {optionName}
+        <Menu className="neeto-ui-flex neeto-ui-gap-1 neeto-editor-menu-font-size-options">
+          {dropdownOptions.map(({ optionName, command, icon: Icon }) => (
+            <MenuItem.Button
+              className="neeto-editor-menu-font-size-options__item-btn"
+              key={optionName}
+              tooltipProps={{ content: optionName, position: "bottom" }}
+              onClick={command}
+            >
+              <Icon size={22} />
             </MenuItem.Button>
           ))}
         </Menu>

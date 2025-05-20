@@ -57,7 +57,7 @@ const Bubble = ({
             setIsLinkOptionActive(false);
             setIsTableOptionActive(false);
           },
-          theme: "neeto-editor-bubble-menu",
+          theme: "light neeto-editor-bubble-menu-tippy-box",
           maxWidth: 500,
         }}
       >

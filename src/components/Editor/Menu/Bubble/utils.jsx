@@ -17,6 +17,10 @@ import {
   MediaVideo,
   Undo,
   Redo,
+  TextP,
+  TextH1,
+  TextH2,
+  TextH3,
 } from "neetoicons";
 import { Button } from "neetoui";
 import { assoc, fromPairs, not, prop } from "ramda";
@@ -195,34 +199,28 @@ export const getTextMenuDropdownOptions = ({ editor, options }) => {
   const textOptions = {
     [EDITOR_OPTIONS.H1]: {
       optionName: "Heading 1",
+      icon: TextH1,
       active: editor.isActive("heading", { level: 1 }),
       command: () =>
         editor.chain().focus().setNode("heading", { level: 1 }).run(),
     },
     [EDITOR_OPTIONS.H2]: {
       optionName: "Heading 2",
+      icon: TextH2,
       active: editor.isActive("heading", { level: 2 }),
       command: () =>
         editor.chain().focus().setNode("heading", { level: 2 }).run(),
     },
     [EDITOR_OPTIONS.H3]: {
       optionName: "Heading 3",
+      icon: TextH3,
       active: editor.isActive("heading", { level: 3 }),
       command: () =>
         editor.chain().focus().setNode("heading", { level: 3 }).run(),
     },
-    [EDITOR_OPTIONS.LIST_ORDERED]: {
-      optionName: "Ordered List",
-      active: editor.isActive("orderedList"),
-      command: () => editor.chain().focus().toggleOrderedList().run(),
-    },
-    [EDITOR_OPTIONS.LIST_BULLETS]: {
-      optionName: "Bulleted List",
-      active: editor.isActive("bulletList"),
-      command: () => editor.chain().focus().toggleBulletList().run(),
-    },
     [EDITOR_OPTIONS.PARAGRAPH]: {
       optionName: "Text",
+      icon: TextP,
       active: editor.isActive("paragraph"),
       command: () => editor.chain().focus().setNode("paragraph").run(),
     },
@@ -237,8 +235,8 @@ export const getTextMenuDropdownOptions = ({ editor, options }) => {
   return result;
 };
 
-export const getNodeType = options =>
-  options.find(prop("active"))?.optionName || "Text";
+export const getNodeIcon = options =>
+  options.find(prop("active"))?.icon || TextP;
 
 export const renderOptionButton = ({
   tooltip,
@@ -249,16 +247,16 @@ export const renderOptionButton = ({
   highlight,
 }) => (
   <Button
+    className="neeto-editor-bubble-menu__item"
     data-cy={`neeto-editor-bubble-menu-${optionName}-option`}
     icon={Icon}
     key={optionName}
-    size="small"
+    size="medium"
     style={active ? "secondary" : "text"}
     tooltipProps={{
       content: tooltip,
       position: "bottom",
       theme: "dark",
-      delay: [500],
     }}
     onClick={command}
     {...generateFocusProps(highlight)}
