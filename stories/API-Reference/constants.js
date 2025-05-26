@@ -255,4 +255,9 @@ export const UTILITIES = [
     "transformEditorContent(string)",
     "Modifies the editor's content by performing specific operations, such as replacing <img> tags with <figure> tags, removing empty <div> tags containing line breaks, and eliminating trailing line breaks.",
   ],
+  [
+    "replaceHTMLEntities",
+    "replaceHTMLEntities(string)",
+    "Replaces all the HTML character entities to their corresponding value.",
+  ],
 ];
