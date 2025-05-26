@@ -183,6 +183,8 @@ export function isEmojiSuggestionsMenuActive(): boolean;
 
 export function transformEditorContent(content: string): string;
 
+export function replaceHTMLEntities(content: string): string;
+
 export function substituteVariables(
   highlightedContent: string,
   variables: (VariableCategory | Variable)[]
