@@ -19,6 +19,7 @@ import ImagePreview from "./ImagePreview";
 import {
   substituteVariables,
   applyLineHighlighting,
+  replaceHTMLEntities,
   applySyntaxHighlightingAndLineNumbers,
 } from "./utils";
 import { buildHeaderLinks } from "./utils/headers";
@@ -35,7 +36,9 @@ const EditorContent = ({
   const editorContentRef = useRef(null);
 
   const htmlContent = substituteVariables(
-    applySyntaxHighlightingAndLineNumbers(removeEmptyTags(content)),
+    applySyntaxHighlightingAndLineNumbers(
+      replaceHTMLEntities(removeEmptyTags(content))
+    ),
     variables
   );
   const sanitize = DOMPurify.sanitize;
