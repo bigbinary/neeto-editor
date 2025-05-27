@@ -37,7 +37,14 @@ export default BulletList.extend({
           }
 
           if (currentIndex === 0) {
-            return commands.joinBackward();
+            const before = state.doc.resolve($from.before($from.depth));
+            const beforeNode = before.nodeBefore;
+
+            if (beforeNode && isListNode(beforeNode)) {
+              return commands.joinBackward();
+            }
+
+            return commands.deleteCurrentNode();
           }
 
           // Delete the empty paragraph node between the two lists.
