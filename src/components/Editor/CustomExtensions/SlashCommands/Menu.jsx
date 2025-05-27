@@ -106,7 +106,7 @@ class Menu extends React.Component {
           const nodeElement = (
             <MenuItem
               {...{ index, item }}
-              key={item.title}
+              key={item.optionName}
               selectItem={() => isLeafNode && this.selectItem(index)}
               selectedIndex={isCurrentMenuActive ? selectedIndex : -1}
               onHover={() => this.setState({ selectedIndex: index })}
@@ -118,7 +118,7 @@ class Menu extends React.Component {
           return (
             <Tippy
               interactive
-              key={item.title}
+              key={item.optionName}
               placement="right"
               visible={selectedIndex === index}
               content={
@@ -152,8 +152,8 @@ const MenuItem = forwardRef(
 
     return (
       <div
-        data-cy={`neeto-editor-command-list-item-${index}`}
         {...{ ref }}
+        data-cy={`neeto-editor-command-list-item-${index}`}
         className={classnames("neeto-editor-slash-commands__item", {
           active: index === selectedIndex,
         })}
