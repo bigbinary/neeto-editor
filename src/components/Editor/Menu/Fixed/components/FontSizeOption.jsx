@@ -34,7 +34,7 @@ const FontSizeOption = ({
 
   const menuOptions = [
     ...filterBy({ key: key => options.includes(key) }, FONT_SIZE_OPTIONS),
-    FONT_SIZE_OPTIONS.at(-1),
+    FONT_SIZE_OPTIONS[FONT_SIZE_OPTIONS.length - 1],
   ];
 
   return (
