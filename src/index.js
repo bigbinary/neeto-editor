@@ -19,7 +19,6 @@ import Editor from "./components/Editor";
 import FormikEditor from "./components/Editor/FormikEditor";
 import Menu from "./components/Editor/Menu";
 import EditorContent from "./components/EditorContent";
-import { replaceHTMLEntities } from "./components/EditorContent/utils";
 import "./index.scss";
 
 export {
@@ -35,7 +34,6 @@ export {
   isEditorOverlaysActive,
   isEmojiSuggestionsMenuActive,
   transformEditorContent,
-  replaceHTMLEntities,
   EDITOR_OPTIONS,
   DEFAULT_EDITOR_OPTIONS,
 };

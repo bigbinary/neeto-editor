@@ -141,9 +141,3 @@ export const substituteVariables = (highlightedContent, variables) =>
 
     return variable?.value ? variable.value : matchedSpan;
   });
-
-export const replaceHTMLEntities = text => {
-  const doc = new DOMParser().parseFromString(text, "text/html");
-
-  return doc.documentElement.textContent;
-};
