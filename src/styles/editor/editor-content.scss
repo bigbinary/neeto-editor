@@ -232,6 +232,7 @@
   --neeto-editor-content-heading-font-weight: 600;
   --neeto-editor-content-heading-font-weight-bold: bold;
   --neeto-editor-content-heading-color: 12, 17, 29, 1;
+  --neeto-editor-content-heading-line-height: 1.25;
   --neeto-editor-content-paragraph-color: 54, 55, 55, 1;
   --neeto-editor-content-paragraph-font-weight: 400;
   --neeto-editor-content-paragraph-line-height: 1.6;
@@ -497,6 +498,7 @@
     h5,
     h6 {
       transition: color ease-in 150ms;
+      line-height: var(--neeto-editor-content-heading-line-height);
     }
 
     .header-link-icon-wrapper {
