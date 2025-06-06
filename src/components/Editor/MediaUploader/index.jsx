@@ -45,8 +45,9 @@ const MediaUploader = ({ mediaUploader, onClose, editor, unsplashApiKey }) => {
       .command(({ tr, commands }) => {
         const { doc, selection } = tr;
         const position = doc.resolve(selection.to).end() + 1;
+        const safePosition = Math.min(position, doc.content.size);
 
-        return commands.insertContentAt(position, "<p></p>");
+        return commands.insertContentAt(safePosition, "<p></p>");
       })
       .run();
   };
