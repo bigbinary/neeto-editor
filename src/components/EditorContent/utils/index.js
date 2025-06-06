@@ -47,6 +47,7 @@ const highlightLinesCode = (code, options) => {
   // eslint-disable-next-line @bigbinary/neeto/use-array-methods
   for (const option of options) {
     for (let j = option.start; j <= option.end; ++j) {
+      if (j >= lines.length) return;
       lines[j].style.backgroundColor = option.color;
       lines[j].style.minWidth = `${
         scroll_width - paddingLeft - paddingRight
