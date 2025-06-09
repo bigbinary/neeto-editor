@@ -2,9 +2,12 @@ import { EDITOR_OPTIONS } from "common/constants";
 import { t } from "i18next";
 import { noop } from "neetocist";
 import {
-  Paragraph,
+  TextP,
   TextH1,
   TextH2,
+  TextH3,
+  TextH4,
+  TextH5,
   ListDot,
   ListNumber,
   Blockquote,
@@ -13,7 +16,6 @@ import {
   Smiley,
   Minus,
   Video,
-  Text,
   Notes,
   MediaVideo,
   Column,
@@ -24,14 +26,14 @@ export const MENU_ITEMS = [
     optionName: EDITOR_OPTIONS.PARAGRAPH,
     title: t("neetoEditor.menu.normalText"),
     description: t("neetoEditor.menu.normalTextDescription"),
-    Icon: Paragraph,
+    Icon: TextP,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode("paragraph").run();
     },
   },
   {
     optionName: EDITOR_OPTIONS.H1,
-    title: t("neetoEditor.menu.h1"),
+    title: t("neetoEditor.menu.heading1"),
     description: t("neetoEditor.menu.h1Description"),
     Icon: TextH1,
     command: ({ editor, range }) => {
@@ -45,7 +47,7 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H2,
-    title: t("neetoEditor.menu.h2"),
+    title: t("neetoEditor.menu.heading2"),
     description: t("neetoEditor.menu.h2Description"),
     Icon: TextH2,
     command: ({ editor, range }) => {
@@ -59,9 +61,9 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H3,
-    title: t("neetoEditor.menu.h3"),
+    title: t("neetoEditor.menu.heading3"),
     description: t("neetoEditor.menu.h3Description"),
-    Icon: Text,
+    Icon: TextH3,
     command: ({ editor, range }) => {
       editor
         .chain()
@@ -73,9 +75,9 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H4,
-    title: t("neetoEditor.menu.h4"),
+    title: t("neetoEditor.menu.heading4"),
     description: t("neetoEditor.menu.h4Description"),
-    Icon: Text,
+    Icon: TextH4,
     command: ({ editor, range }) => {
       editor
         .chain()
@@ -87,29 +89,15 @@ export const MENU_ITEMS = [
   },
   {
     optionName: EDITOR_OPTIONS.H5,
-    title: t("neetoEditor.menu.h5"),
+    title: t("neetoEditor.menu.heading5"),
     description: t("neetoEditor.menu.h5Description"),
-    Icon: Text,
+    Icon: TextH5,
     command: ({ editor, range }) => {
       editor
         .chain()
         .focus()
         .deleteRange(range)
         .setNode("heading", { level: 5 })
-        .run();
-    },
-  },
-  {
-    optionName: EDITOR_OPTIONS.H6,
-    title: t("neetoEditor.menu.h6"),
-    description: t("neetoEditor.menu.h6Description"),
-    Icon: Text,
-    command: ({ editor, range }) => {
-      editor
-        .chain()
-        .focus()
-        .deleteRange(range)
-        .setNode("heading", { level: 6 })
         .run();
     },
   },

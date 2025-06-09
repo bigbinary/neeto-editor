@@ -1,5 +1,13 @@
+.tippy-box[data-theme~=neeto-editor-slash-commands-tippy] {
+  border: 1px solid rgb(var(--neeto-ui-gray-400));
+
+  .tippy-content {
+    padding: 0 !important;
+  }
+}
+
 .neeto-editor-slash-commands__wrapper {
-  padding: 12px;
+  padding: 8px;
   overflow-y: auto;
   max-height: 384px;
   width: 256px;
@@ -18,26 +26,40 @@
     justify-content: flex-start;
     align-items: center;
     padding: 8px 12px;
-    gap: 12px;
+    gap: 8px;
     border-radius: var(--neeto-ui-rounded);
     transition: var(--neeto-ui-transition);
     cursor: pointer;
-    color: rgb(var(--neeto-ui-white));
+    color: rgb(var(--neeto-ui-gray-800));
+    box-shadow: none;
+    border: none;
+    outline: none;
 
     &:hover,
+    &:focus-visible,
     &.active {
-      background-color: rgb(var(--neeto-ui-gray-700));
+      color: rgb(var(--neeto-ui-black));
+      background-color: rgb(var(--neeto-ui-gray-200));
+      box-shadow: none;
+      border: none;
+      outline: none;
     }
 
     .neeto-editor-slash-commands__item-content {
-      h5 {
-        font-size: var(--neeto-ui-text-sm);
-        font-weight: var(--neeto-ui-font-semibold);
-        line-height: var(--neeto-ui-leading-normal);
+      text-align: left;
+
+      .neeto-editor-slash-commands__item-title {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.2;
+        text-align: left;
       }
-      p {
-        font-size: var(--neeto-ui-text-xs);
-        color: rgb(var(--neeto-ui-gray-300));
+
+      .neeto-editor-slash-commands__item-description {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.2;
+        text-align: left;
       }
     }
   }
@@ -45,6 +67,7 @@
 
 .tippy-box[data-theme~="neeto-editor-mentions-tooltip"] {
   border: 1px solid rgb(var(--neeto-ui-gray-400));
+
   .tippy-content {
     padding: 0;
     max-height: none;

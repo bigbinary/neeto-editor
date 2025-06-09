@@ -151,7 +151,7 @@ const MenuItem = forwardRef(
     const { Icon } = item;
 
     return (
-      <div
+      <button
         {...{ ref }}
         data-cy={`neeto-editor-command-list-item-${index}`}
         className={classnames("neeto-editor-slash-commands__item", {
@@ -161,15 +161,15 @@ const MenuItem = forwardRef(
         onMouseEnter={onHover}
       >
         {Icon && <Icon size={20} />}
-        <div className="neeto-editor-slash-commands__item-content">
-          <h5 data-cy="neeto-editor-command-list-item-block-heading">
+        <span className="neeto-editor-slash-commands__item-content">
+          <span
+            className="neeto-editor-slash-commands__item-title"
+            data-cy="neeto-editor-command-list-item-block-heading"
+          >
             {item.title}
-          </h5>
-          <p data-cy="neeto-editor-command-list-item-block-description">
-            {item.description}
-          </p>
-        </div>
-      </div>
+          </span>
+        </span>
+      </button>
     );
   }
 );

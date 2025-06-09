@@ -29,7 +29,7 @@ const TableActionMenu = ({ editor }) => {
         arrow: false,
         offset: [10, 10],
         zIndex: 99999,
-        theme: "neeto-editor-bubble-menu",
+        theme: "light neeto-editor-bubble-menu-tippy-box",
         popperOptions: {
           modifiers: [{ name: "flip", enabled: false }],
         },
@@ -44,6 +44,7 @@ const TableActionMenu = ({ editor }) => {
             !isHidden && (
               <Button
                 {...{ icon }}
+                className="neeto-editor-table-bubble-menu__item"
                 iconSize={18}
                 key={label}
                 size="small"
