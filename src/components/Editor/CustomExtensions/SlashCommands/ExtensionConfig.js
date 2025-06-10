@@ -83,7 +83,7 @@ export default {
                     arrow: false,
                     zIndex: 99999,
                     role: "dropdown",
-                    theme: "neeto-editor-slash-menu",
+                    theme: "light neeto-editor-slash-commands-tippy",
                   });
 
                   highlightFocussedNode();
