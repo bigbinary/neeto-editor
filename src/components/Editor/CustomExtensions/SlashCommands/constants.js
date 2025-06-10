@@ -19,6 +19,11 @@ import {
   Notes,
   MediaVideo,
   Column,
+  TextBold,
+  TextItalic,
+  Underline,
+  Link,
+  Attachment,
 } from "neetoicons";
 
 export const MENU_ITEMS = [
@@ -29,6 +34,33 @@ export const MENU_ITEMS = [
     Icon: TextP,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode("paragraph").run();
+    },
+  },
+  {
+    optionName: EDITOR_OPTIONS.BOLD,
+    title: t("neetoEditor.menu.bold"),
+    description: t("neetoEditor.menu.boldDescription"),
+    Icon: TextBold,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleBold().run();
+    },
+  },
+  {
+    optionName: EDITOR_OPTIONS.ITALIC,
+    title: t("neetoEditor.menu.italic"),
+    description: t("neetoEditor.menu.italicDescription"),
+    Icon: TextItalic,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleItalic().run();
+    },
+  },
+  {
+    optionName: EDITOR_OPTIONS.UNDERLINE,
+    title: t("neetoEditor.menu.underline"),
+    description: t("neetoEditor.menu.underlineDescription"),
+    Icon: Underline,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleUnderline().run();
     },
   },
   {
@@ -118,6 +150,20 @@ export const MENU_ITEMS = [
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleBulletList().run();
     },
+  },
+  {
+    optionName: EDITOR_OPTIONS.LINK,
+    title: t("neetoEditor.menu.link"),
+    description: t("neetoEditor.menu.linkDescription"),
+    Icon: Link,
+    command: noop,
+  },
+  {
+    optionName: EDITOR_OPTIONS.ATTACHMENTS,
+    title: t("neetoEditor.menu.file"),
+    description: t("neetoEditor.menu.attachmentsDescription"),
+    Icon: Attachment,
+    command: noop,
   },
   {
     optionName: EDITOR_OPTIONS.IMAGE_UPLOAD,

@@ -52,6 +52,8 @@ const useCustomExtensions = ({
   isVideoEmbedActive,
   setMediaUploader,
   setIsEmbedModalOpen,
+  setIsAddLinkActive,
+  attachmentProps,
   openImageInNewTab,
   openLinkInNewTab,
   enableReactNodeViewOptimization,
@@ -131,6 +133,8 @@ const useCustomExtensions = ({
         addonCommands,
         setMediaUploader,
         setIsEmbedModalOpen,
+        setIsAddLinkActive,
+        attachmentProps,
       })
     );
   }
