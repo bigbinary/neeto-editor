@@ -19,6 +19,7 @@ export const EDITOR_ADDONS_TABLE_ROWS = [
     "Embed videos from neetoRecord, YouTube, Loom, Vimeo, and Supademo.",
   ],
   ["text-color", "Change the color of the text."],
+  ["todo-list", "Add a to-do list with checkboxes."],
 ];
 
 export const EDITOR_PROP_TABLE_COLUMNS = [
@@ -64,6 +65,7 @@ export const EDITOR_SHORTCUTS_TABLE_ROWS = [
   ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
   ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
   ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
+  ["To-do List", "Ctrl + Shift + 9", "Cmd + Shift + 9"],
   ["Table", "Ctrl + Alt + T", "Cmd + Opt + T"],
   ["Highlight", "Ctrl + Shift + H", "Cmd + Shift + H"],
   ["Emoji", "Ctrl + Alt + E", "Cmd + Opt + E"],

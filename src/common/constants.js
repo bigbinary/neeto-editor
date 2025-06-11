@@ -22,6 +22,7 @@ export const EDITOR_OPTIONS = {
   CODE_BLOCK: "code-block",
   BLOCKQUOTE: "block-quote",
   ATTACHMENTS: "attachments",
+  TODO_LIST: "todo-list",
   UNDO: "undo",
   REDO: "redo",
   HIGHLIGHT: "highlight",

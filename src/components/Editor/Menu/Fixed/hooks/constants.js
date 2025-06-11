@@ -12,6 +12,7 @@ export const EDITOR_MARKS = [
   EDITOR_OPTIONS.HIGHLIGHT,
   "bulletList",
   "orderedList",
+  "todoList",
   "blockquote",
   EDITOR_OPTIONS.CODE,
   "codeBlock",
