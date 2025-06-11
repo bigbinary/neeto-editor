@@ -1,6 +1,6 @@
 {
   "name": "@bigbinary/neeto-editor",
-  "version": "1.47.8",
+  "version": "1.47.9",
   "types": "./types.d.ts",
   "description": "neetoEditor is the library that drives the rich text experience in all neeto products built at BigBinary",
   "keywords": [
@@ -97,6 +97,8 @@
     "@tiptap/extension-table-cell": "2.6.6",
     "@tiptap/extension-table-header": "2.6.6",
     "@tiptap/extension-table-row": "2.6.6",
+    "@tiptap/extension-task-item": "^2.14.0",
+    "@tiptap/extension-task-list": "^2.14.0",
     "@tiptap/extension-text-style": "2.6.6",
     "@tiptap/extension-underline": "2.6.6",
     "@tiptap/pm": "2.6.6",
@@ -186,8 +188,6 @@
     "style-loader": "3.3.1",
     "tailwindcss": "3.4.1",
     "tippy.js": "6.3.7",
-    "@tiptap/extension-task-item": "^2.14.0",
-    "@tiptap/extension-task-list": "^2.14.0",
     "util": "0.12.5",
     "webpack": "5.73.0",
     "webpack-cli": "4.10.0",
