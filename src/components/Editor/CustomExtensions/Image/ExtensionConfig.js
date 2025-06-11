@@ -215,8 +215,8 @@ export default Node.create({
 
               images.forEach(async image => {
                 let emptyImageNode;
+                const id = Math.random().toString(36).substring(7);
                 try {
-                  const id = Math.random().toString(36).substring(7);
                   emptyImageNode = schema.nodes.image.create({
                     id,
                     src: "",
@@ -242,9 +242,21 @@ export default Node.create({
                 } catch (error) {
                   // eslint-disable-next-line no-console
                   console.error("Failed to insert the image", error);
-                  const tr = view.state.tr
-                    .delete(currentPos, currentPos + emptyImageNode.nodeSize)
-                    .setMeta("addToHistory", false);
+
+                  const doc = view.state.doc;
+                  const tr = view.state.tr;
+                  doc.descendants((node, pos) => {
+                    if (node.type.name === "image" && node.attrs.id === id) {
+                      tr.delete(pos, pos + emptyImageNode.nodeSize).setMeta(
+                        "addToHistory",
+                        false
+                      );
+
+                      return false;
+                    }
+
+                    return true;
+                  });
                   view.dispatch(tr);
 
                   if (error.message === LARGE_IMAGE_ERROR) {
