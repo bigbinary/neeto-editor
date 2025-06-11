@@ -186,6 +186,8 @@
     "style-loader": "3.3.1",
     "tailwindcss": "3.4.1",
     "tippy.js": "6.3.7",
+    "@tiptap/extension-task-item": "^2.14.0",
+    "@tiptap/extension-task-list": "^2.14.0",
     "util": "0.12.5",
     "webpack": "5.73.0",
     "webpack-cli": "4.10.0",

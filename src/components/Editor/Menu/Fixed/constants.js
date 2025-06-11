@@ -44,6 +44,7 @@ export const SHORTCUTS = {
   [EDITOR_OPTIONS.HIGHLIGHT]: { mac: "⌘⇧H", win: "Ctrl+Shift+H" },
   bulletList: { mac: "⌘⇧8", win: "Ctrl+Shift+8" },
   orderedList: { mac: "⌘⇧7", win: "Ctrl+Shift+7" },
+  todoList: { mac: "⌘⇧9", win: "Ctrl+Shift+9" },
 };
 
 export const MENU_ELEMENTS = {
