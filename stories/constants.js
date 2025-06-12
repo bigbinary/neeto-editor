@@ -3,6 +3,7 @@ export const EDITOR_ADDONS_TABLE_COLUMNS = ["Prop", "Description"];
 export const EDITOR_ADDONS_TABLE_ROWS = [
   ["attachments", "Add attachments to the editor."],
   ["block-quote", "Highlight a block of text as a quote."],
+  ["callout", "Add highlighted information blocks with customizable types."],
   ["code-block", "Provide syntax highlighting for code snippets."],
   ["divider", "Add a horizontal line to separate different sections."],
   ["emoji", "Add emojis to your content using an emoji picker."],
@@ -62,6 +63,7 @@ export const EDITOR_SHORTCUTS_TABLE_ROWS = [
   ["Underline", "Ctrl + U", "Cmd + U"],
   ["Strikethrough", "Ctrl + Shift + X", "Cmd + Shift + X"],
   ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
+  ["Callout", "Ctrl + Shift + C", "Cmd + Shift + C"],
   ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
   ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
   ["Table", "Ctrl + Alt + T", "Cmd + Opt + T"],

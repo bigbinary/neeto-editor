@@ -21,6 +21,7 @@ export const EDITOR_OPTIONS = {
   // ADDON EDITOR OPTIONS
   CODE_BLOCK: "code-block",
   BLOCKQUOTE: "block-quote",
+  CALLOUT: "callout",
   ATTACHMENTS: "attachments",
   UNDO: "undo",
   REDO: "redo",

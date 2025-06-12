@@ -10,6 +10,7 @@ export const EDITOR_MARKS = [
   EDITOR_OPTIONS.LINK,
   EDITOR_OPTIONS.STRIKETHROUGH,
   EDITOR_OPTIONS.HIGHLIGHT,
+  EDITOR_OPTIONS.CALLOUT,
   "bulletList",
   "orderedList",
   "blockquote",

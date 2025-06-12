@@ -20,6 +20,7 @@ import { buildLevelsFromOptions } from "components/Editor/utils";
 
 import HighlightInternal from "../BackgroundColor/ExtensionConfig";
 import BulletList from "../BulletList/ExtensionConfig";
+import Callout from "../Callout/ExtensionConfig";
 import CodeBlock from "../CodeBlock/ExtensionConfig";
 import CustomCommands from "../CustomCommands/ExtensionConfig";
 import Embeds from "../Embeds/ExtensionConfig";
@@ -122,6 +123,10 @@ const useCustomExtensions = ({
 
   if (options.includes(EDITOR_OPTIONS.LIST_BULLETS)) {
     customExtensions.push(BulletList);
+  }
+
+  if (options.includes(EDITOR_OPTIONS.CALLOUT)) {
+    customExtensions.push(Callout);
   }
 
   if (isSlashCommandsActive) {
