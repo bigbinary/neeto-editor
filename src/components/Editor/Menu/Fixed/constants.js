@@ -44,7 +44,6 @@ export const SHORTCUTS = {
   [EDITOR_OPTIONS.REDO]: { mac: "⌘⇧Z", win: "Ctrl+Shift+Z" },
   [EDITOR_OPTIONS.LINK]: { mac: "⌘K", win: "Ctrl+K" },
   [EDITOR_OPTIONS.HIGHLIGHT]: { mac: "⌘⇧H", win: "Ctrl+Shift+H" },
-  [EDITOR_OPTIONS.CALLOUT]: { mac: "⌘⇧C", win: "Ctrl+Shift+C" },
   bulletList: { mac: "⌘⇧8", win: "Ctrl+Shift+8" },
   orderedList: { mac: "⌘⇧7", win: "Ctrl+Shift+7" },
   todoList: { mac: "⌘⇧9", win: "Ctrl+Shift+9" },

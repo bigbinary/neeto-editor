@@ -17,7 +17,6 @@ const CalloutDropdown = ({
   const { t } = useTranslation();
   const dropdownRef = useRef(null);
 
-  // Get current callout type if we're inside a callout
   const isInCallout = editor.isActive("callout");
   const currentCalloutAttrs = isInCallout
     ? editor.getAttributes("callout")
@@ -29,12 +28,10 @@ const CalloutDropdown = ({
 
   const handleCalloutTypeClick = calloutType => {
     if (isInCallout && currentCalloutAttrs?.type === calloutType.type) {
-      // If clicking the same type, exit the callout
       runEditorCommand(editor =>
         editor.chain().focus().lift("callout").run()
       )();
     } else if (isInCallout) {
-      // If in callout but different type, update the type
       runEditorCommand(editor =>
         editor
           .chain()
@@ -46,7 +43,6 @@ const CalloutDropdown = ({
           .run()
       )();
     } else {
-      // If not in callout, create a new one
       runEditorCommand(editor =>
         editor
           .chain()

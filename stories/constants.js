@@ -64,7 +64,6 @@ export const EDITOR_SHORTCUTS_TABLE_ROWS = [
   ["Underline", "Ctrl + U", "Cmd + U"],
   ["Strikethrough", "Ctrl + Shift + X", "Cmd + Shift + X"],
   ["Blockquote", "Ctrl + Shift + B", "Cmd + Shift + B"],
-  ["Callout", "Ctrl + Shift + C", "Cmd + Shift + C"],
   ["Bullet List", "Ctrl + Shift + 8", "Cmd + Shift + 8"],
   ["Ordered List", "Ctrl + Shift + 7", "Cmd + Shift + 7"],
   ["To-do List", "Ctrl + Shift + 9", "Cmd + Shift + 9"],
