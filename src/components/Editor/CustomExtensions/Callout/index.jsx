@@ -48,15 +48,14 @@ const CalloutOption = ({
           {t("neetoEditor.menu.selectCalloutType")}
         </div>
         {Object.entries(CALLOUT_TYPES).map(([typeKey, typeConfig]) => (
-          <button
+          <Button
             className="callout-type-menu-option"
             key={typeKey}
-            type="button"
             onClick={() => handleTypeSelect(typeKey)}
           >
             <span className="callout-type-emoji">{typeConfig.emoji}</span>
             <span className="callout-type-label">{typeConfig.label}</span>
-          </button>
+          </Button>
         ))}
       </div>
     </Dropdown>
