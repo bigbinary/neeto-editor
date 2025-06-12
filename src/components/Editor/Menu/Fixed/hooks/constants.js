@@ -13,6 +13,7 @@ export const EDITOR_MARKS = [
   EDITOR_OPTIONS.CALLOUT,
   "bulletList",
   "orderedList",
+  "todoList",
   "blockquote",
   EDITOR_OPTIONS.CODE,
   "codeBlock",

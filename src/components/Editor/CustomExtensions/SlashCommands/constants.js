@@ -10,6 +10,7 @@ import {
   TextH5,
   ListDot,
   ListNumber,
+  Checkbox,
   Blockquote,
   ImageUpload,
   CodeBlock,
@@ -117,6 +118,15 @@ export const MENU_ITEMS = [
     Icon: ListDot,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).toggleBulletList().run();
+    },
+  },
+  {
+    optionName: EDITOR_OPTIONS.TODO_LIST,
+    title: t("neetoEditor.menu.todoList"),
+    description: t("neetoEditor.menu.todoListDescription"),
+    Icon: Checkbox,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleTaskList().run();
     },
   },
   {

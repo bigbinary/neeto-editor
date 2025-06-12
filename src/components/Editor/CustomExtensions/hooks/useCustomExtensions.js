@@ -37,6 +37,10 @@ import SelectionDecoration from "../SelectionDecoration/ExtensionConfig";
 import SlashCommands from "../SlashCommands/ExtensionConfig";
 import SpecialMentions from "../SpecialMentions/ExtensionConfig";
 import Table from "../Table/ExtensionConfig";
+import {
+  TodoListExtension,
+  TodoItemExtension,
+} from "../TodoList/ExtensionConfig";
 import Variable from "../Variable/ExtensionConfig";
 import VideoExtension from "../Video/ExtensionConfig";
 
@@ -127,6 +131,11 @@ const useCustomExtensions = ({
 
   if (options.includes(EDITOR_OPTIONS.CALLOUT)) {
     customExtensions.push(Callout);
+  }
+
+  if (options.includes(EDITOR_OPTIONS.TODO_LIST)) {
+    customExtensions.push(TodoListExtension);
+    customExtensions.push(TodoItemExtension);
   }
 
   if (isSlashCommandsActive) {

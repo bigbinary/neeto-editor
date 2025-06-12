@@ -9,6 +9,7 @@ import {
   Code,
   ListDot,
   ListNumber,
+  Checkbox,
   ImageUpload,
   Quote,
   Undo,
@@ -151,6 +152,17 @@ const createMenuOptions = ({
         optionName: "orderedList",
         highlight: true,
         label: tooltips.orderedList ?? t("neetoEditor.menu.orderedList"),
+      },
+      {
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: Checkbox,
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleTaskList().run()
+        ),
+        isEnabled: options.includes(EDITOR_OPTIONS.TODO_LIST),
+        optionName: "todoList",
+        highlight: true,
+        label: tooltips.todoList ?? t("neetoEditor.menu.todoList"),
       },
     ],
     // block
