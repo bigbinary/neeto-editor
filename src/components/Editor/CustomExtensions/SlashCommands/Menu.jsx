@@ -120,6 +120,7 @@ class Menu extends React.Component {
               interactive
               key={item.optionName}
               placement="right"
+              theme="light neeto-editor-slash-commands-tippy"
               visible={selectedIndex === index}
               content={
                 <Menu
