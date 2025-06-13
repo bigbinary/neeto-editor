@@ -68,8 +68,6 @@ const useCustomExtensions = ({
     CodeBlock.configure({ enableReactNodeViewOptimization }),
     CustomCommands,
     Document,
-    EmojiSuggestion,
-    EmojiPicker,
     FigCaption,
     HighlightInternal,
     SelectionDecoration,
@@ -104,6 +102,8 @@ const useCustomExtensions = ({
       isBlockQuoteActive: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
     }),
     ListKeymap,
+    EmojiSuggestion,
+    EmojiPicker,
   ];
   if (isVideoEmbedActive) {
     customExtensions.push(Embeds);
