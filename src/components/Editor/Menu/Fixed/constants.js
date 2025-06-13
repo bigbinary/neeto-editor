@@ -1,6 +1,7 @@
 import { EDITOR_OPTIONS } from "src/common/constants";
 
 import MenuButton from "./components/Button";
+import CalloutDropdown from "./components/CalloutDropdown";
 import EmojiOption from "./components/EmojiOption";
 import FontSizeOption from "./components/FontSizeOption";
 import HighlightDropdown from "./components/HighlightDropdown/index.jsx";
@@ -11,6 +12,7 @@ import Mentions from "../../CustomExtensions/Mention";
 
 export const MENU_ELEMENT_TYPES = {
   BUTTON: "button",
+  CALLOUT: "callout",
   FONT_SIZE: "fontSize",
   TABLE: "table",
   TEXT_COLOR: "textColor",
@@ -49,6 +51,7 @@ export const SHORTCUTS = {
 
 export const MENU_ELEMENTS = {
   [MENU_ELEMENT_TYPES.BUTTON]: MenuButton,
+  [MENU_ELEMENT_TYPES.CALLOUT]: CalloutDropdown,
   [MENU_ELEMENT_TYPES.FONT_SIZE]: FontSizeOption,
   [MENU_ELEMENT_TYPES.TABLE]: TableOption,
   [MENU_ELEMENT_TYPES.TEXT_COLOR]: TextColorOption,
@@ -59,6 +62,7 @@ export const MENU_ELEMENTS = {
 
 export const MENU_ELEMENT_WIDTHS = {
   [MENU_ELEMENT_TYPES.BUTTON]: 36,
+  [MENU_ELEMENT_TYPES.CALLOUT]: 23,
   [MENU_ELEMENT_TYPES.FONT_SIZE]: 103,
   [MENU_ELEMENT_TYPES.TABLE]: 36,
   [MENU_ELEMENT_TYPES.TEXT_COLOR]: 36,

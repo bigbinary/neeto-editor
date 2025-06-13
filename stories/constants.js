@@ -3,6 +3,7 @@ export const EDITOR_ADDONS_TABLE_COLUMNS = ["Prop", "Description"];
 export const EDITOR_ADDONS_TABLE_ROWS = [
   ["attachments", "Add attachments to the editor."],
   ["block-quote", "Highlight a block of text as a quote."],
+  ["callout", "Add highlighted information blocks with customizable types."],
   ["code-block", "Provide syntax highlighting for code snippets."],
   ["divider", "Add a horizontal line to separate different sections."],
   ["emoji", "Add emojis to your content using an emoji picker."],

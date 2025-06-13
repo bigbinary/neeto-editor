@@ -178,6 +178,15 @@ const createMenuOptions = ({
         highlight: true,
         label: tooltips.blockQuote ?? t("neetoEditor.menu.blockQuote"),
       },
+      {
+        type: MENU_ELEMENT_TYPES.CALLOUT,
+        label: tooltips.callout ?? t("neetoEditor.menu.callout"),
+        isEnabled: options.includes(EDITOR_OPTIONS.CALLOUT),
+        optionName: EDITOR_OPTIONS.CALLOUT,
+        editor,
+        runEditorCommand,
+        tooltipContent: tooltips.callout ?? t("neetoEditor.menu.callout"),
+      },
     ],
     // misc
     [
