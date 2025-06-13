@@ -1,5 +1,4 @@
 import { Node, mergeAttributes } from "@tiptap/core";
-import { Plugin } from "@tiptap/pm/state";
 import { ReactNodeViewRenderer } from "@tiptap/react";
 
 import CalloutComponent from "./CalloutComponent";
@@ -7,21 +6,9 @@ import CalloutComponent from "./CalloutComponent";
 export default Node.create({
   name: "callout",
 
-  addOptions() {
-    return {
-      inline: false,
-      HTMLAttributes: {},
-      types: ["info", "warning", "error", "success"],
-    };
-  },
+  inline: false,
 
-  inline() {
-    return this.options.inline;
-  },
-
-  group() {
-    return this.options.inline ? "inline" : "block";
-  },
+  group: "block",
 
   content: "block+",
 
@@ -81,19 +68,31 @@ export default Node.create({
           const { type = "default", emoji = "💬" } = attributes;
 
           return chain()
-            .insertContent({
-              type: this.name,
-              attrs: { type, emoji },
-              content: [{ type: "paragraph", content: [] }],
+            .toggleWrap(this.name, { type, emoji })
+            .command(({ tr, state, dispatch }) => {
+              const { selection } = state;
+              const { $from } = selection;
+
+              const calloutNode = $from.node($from.depth - 1);
+
+              if (calloutNode?.type.name === "callout") {
+                const pos = $from.after($from.depth - 1);
+                const nextNode = state.doc.nodeAt(pos);
+
+                if (!nextNode || nextNode.type.name !== "paragraph") {
+                  tr.insert(pos, state.schema.nodes.paragraph.create());
+                }
+              }
+
+              if (dispatch) {
+                dispatch(tr);
+              }
+
+              return true;
             })
             .focus()
             .run();
         },
-
-      toggleCallout:
-        (attributes = {}) =>
-        ({ chain }) =>
-          chain().toggleWrap(this.name, attributes).run(),
     };
   },
 
@@ -160,52 +159,5 @@ export default Node.create({
         return false;
       },
     };
-  },
-
-  addProseMirrorPlugins() {
-    return [
-      new Plugin({
-        props: {
-          handleDOMEvents: {
-            click: (view, event) => {
-              const { state } = view;
-              const { schema } = state;
-              const target = event.target;
-
-              const clickedElement = target.closest(".neeto-editor__callout");
-
-              if (!clickedElement) {
-                const { $from } = state.selection;
-                const calloutNode = $from.node($from.depth - 1);
-
-                if (calloutNode?.type.name === "callout") {
-                  const pos = $from.after($from.depth - 1);
-
-                  const nextNode = state.doc.nodeAt(pos);
-                  if (!nextNode || nextNode.type.name !== "paragraph") {
-                    const tr = state.tr.insert(
-                      pos,
-                      schema.nodes.paragraph.create()
-                    );
-                    view.dispatch(tr);
-
-                    const newTr = view.state.tr.setSelection(
-                      view.state.selection.constructor.near(
-                        view.state.doc.resolve(pos + 1)
-                      )
-                    );
-                    view.dispatch(newTr);
-
-                    return true;
-                  }
-                }
-              }
-
-              return false;
-            },
-          },
-        },
-      }),
-    ];
   },
 });

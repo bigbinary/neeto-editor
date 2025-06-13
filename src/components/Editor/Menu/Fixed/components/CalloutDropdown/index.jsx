@@ -24,7 +24,7 @@ const CalloutDropdown = ({
 
   const currentType =
     CALLOUT_TYPES.find(type => type.type === currentCalloutAttrs?.type) ||
-    CALLOUT_TYPES[0]; // Default to first type
+    CALLOUT_TYPES[0];
 
   const handleCalloutTypeClick = calloutType => {
     if (isInCallout && currentCalloutAttrs?.type === calloutType.type) {

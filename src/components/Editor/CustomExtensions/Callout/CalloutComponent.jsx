@@ -5,10 +5,6 @@ import { Button } from "neetoui";
 const CalloutComponent = ({ node, deleteNode }) => {
   const { type, emoji } = node.attrs;
 
-  const handleDelete = () => {
-    deleteNode();
-  };
-
   return (
     <NodeViewWrapper
       className={`neeto-editor__callout neeto-editor__callout--${type} group`}
@@ -23,7 +19,7 @@ const CalloutComponent = ({ node, deleteNode }) => {
           icon={Close}
           size="small"
           style="text"
-          onClick={handleDelete}
+          onClick={deleteNode}
         />
       </div>
     </NodeViewWrapper>
