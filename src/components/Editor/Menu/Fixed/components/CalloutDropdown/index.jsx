@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 
+import { findBy } from "neetocist";
 import { Down } from "neetoicons";
 import { Typography, Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
@@ -18,29 +19,26 @@ const CalloutDropdown = ({ editor, label, tooltipContent }) => {
     : null;
 
   const currentType =
-    CALLOUT_TYPES.find(type => type.type === currentCalloutAttrs?.type) ||
+    findBy({ type: currentCalloutAttrs?.type }, CALLOUT_TYPES) ||
     CALLOUT_TYPES[0];
 
   const handleCalloutTypeClick = calloutType => {
-    if (isInCallout && currentCalloutAttrs?.type === calloutType.type) {
-      editor.chain().focus().lift("callout").run();
+    const editorChain = editor.chain().focus();
+    const isSameType =
+      isInCallout && currentCalloutAttrs?.type === calloutType.type;
+
+    if (isSameType) {
+      editorChain.lift("callout").run();
     } else if (isInCallout) {
-      editor
-        .chain()
-        .focus()
+      editorChain
         .updateAttributes("callout", {
           type: calloutType.type,
           emoji: calloutType.emoji,
         })
         .run();
     } else {
-      editor
-        .chain()
-        .focus()
-        .setCallout({
-          type: calloutType.type,
-          emoji: calloutType.emoji,
-        })
+      editorChain
+        .setCallout({ type: calloutType.type, emoji: calloutType.emoji })
         .run();
     }
   };
