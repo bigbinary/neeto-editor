@@ -20,6 +20,7 @@ import { buildLevelsFromOptions } from "components/Editor/utils";
 
 import HighlightInternal from "../BackgroundColor/ExtensionConfig";
 import BulletList from "../BulletList/ExtensionConfig";
+import Callout from "../Callout/ExtensionConfig";
 import CodeBlock from "../CodeBlock/ExtensionConfig";
 import CustomCommands from "../CustomCommands/ExtensionConfig";
 import Embeds from "../Embeds/ExtensionConfig";
@@ -36,6 +37,10 @@ import SelectionDecoration from "../SelectionDecoration/ExtensionConfig";
 import SlashCommands from "../SlashCommands/ExtensionConfig";
 import SpecialMentions from "../SpecialMentions/ExtensionConfig";
 import Table from "../Table/ExtensionConfig";
+import {
+  TodoListExtension,
+  TodoItemExtension,
+} from "../TodoList/ExtensionConfig";
 import Variable from "../Variable/ExtensionConfig";
 import VideoExtension from "../Video/ExtensionConfig";
 
@@ -65,8 +70,6 @@ const useCustomExtensions = ({
     CodeBlock.configure({ enableReactNodeViewOptimization }),
     CustomCommands,
     Document,
-    EmojiSuggestion,
-    EmojiPicker,
     FigCaption,
     HighlightInternal,
     SelectionDecoration,
@@ -101,6 +104,8 @@ const useCustomExtensions = ({
       isBlockQuoteActive: options.includes(EDITOR_OPTIONS.BLOCKQUOTE),
     }),
     ListKeymap,
+    EmojiSuggestion,
+    EmojiPicker,
   ];
   if (isVideoEmbedActive) {
     customExtensions.push(Embeds);
@@ -124,6 +129,15 @@ const useCustomExtensions = ({
 
   if (options.includes(EDITOR_OPTIONS.LIST_BULLETS)) {
     customExtensions.push(BulletList);
+  }
+
+  if (options.includes(EDITOR_OPTIONS.CALLOUT)) {
+    customExtensions.push(Callout);
+  }
+
+  if (options.includes(EDITOR_OPTIONS.TODO_LIST)) {
+    customExtensions.push(TodoListExtension);
+    customExtensions.push(TodoItemExtension);
   }
 
   if (isSlashCommandsActive) {

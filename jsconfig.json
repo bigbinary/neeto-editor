@@ -5,7 +5,7 @@
     "strictNullChecks": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       // Don't modify the below paths without consulting with neetoCompliance team

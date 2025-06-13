@@ -9,6 +9,7 @@ import {
   Code,
   ListDot,
   ListNumber,
+  Checkbox,
   ImageUpload,
   Quote,
   Undo,
@@ -152,6 +153,17 @@ const createMenuOptions = ({
         highlight: true,
         label: tooltips.orderedList ?? t("neetoEditor.menu.orderedList"),
       },
+      {
+        type: MENU_ELEMENT_TYPES.BUTTON,
+        icon: Checkbox,
+        command: runEditorCommand(editor =>
+          editor.chain().focus().toggleTaskList().run()
+        ),
+        isEnabled: options.includes(EDITOR_OPTIONS.TODO_LIST),
+        optionName: "todoList",
+        highlight: true,
+        label: tooltips.todoList ?? t("neetoEditor.menu.todoList"),
+      },
     ],
     // block
     [
@@ -165,6 +177,15 @@ const createMenuOptions = ({
         optionName: "blockquote",
         highlight: true,
         label: tooltips.blockQuote ?? t("neetoEditor.menu.blockQuote"),
+      },
+      {
+        type: MENU_ELEMENT_TYPES.CALLOUT,
+        label: tooltips.callout ?? t("neetoEditor.menu.callout"),
+        isEnabled: options.includes(EDITOR_OPTIONS.CALLOUT),
+        optionName: EDITOR_OPTIONS.CALLOUT,
+        editor,
+        runEditorCommand,
+        tooltipContent: tooltips.callout ?? t("neetoEditor.menu.callout"),
       },
     ],
     // misc
