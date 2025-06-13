@@ -8,12 +8,7 @@ import CalloutIcon from "./CalloutIcon";
 import CalloutTypeOption from "./CalloutTypeOption";
 import { CALLOUT_TYPES } from "./constants";
 
-const CalloutDropdown = ({
-  editor,
-  label,
-  tooltipContent,
-  runEditorCommand,
-}) => {
+const CalloutDropdown = ({ editor, label, tooltipContent }) => {
   const { t } = useTranslation();
   const dropdownRef = useRef(null);
 
@@ -28,31 +23,25 @@ const CalloutDropdown = ({
 
   const handleCalloutTypeClick = calloutType => {
     if (isInCallout && currentCalloutAttrs?.type === calloutType.type) {
-      runEditorCommand(editor =>
-        editor.chain().focus().lift("callout").run()
-      )();
+      editor.chain().focus().lift("callout").run();
     } else if (isInCallout) {
-      runEditorCommand(editor =>
-        editor
-          .chain()
-          .focus()
-          .updateAttributes("callout", {
-            type: calloutType.type,
-            emoji: calloutType.emoji,
-          })
-          .run()
-      )();
+      editor
+        .chain()
+        .focus()
+        .updateAttributes("callout", {
+          type: calloutType.type,
+          emoji: calloutType.emoji,
+        })
+        .run();
     } else {
-      runEditorCommand(editor =>
-        editor
-          .chain()
-          .focus()
-          .setCallout({
-            type: calloutType.type,
-            emoji: calloutType.emoji,
-          })
-          .run()
-      )();
+      editor
+        .chain()
+        .focus()
+        .setCallout({
+          type: calloutType.type,
+          emoji: calloutType.emoji,
+        })
+        .run();
     }
   };
 
