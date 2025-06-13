@@ -20,6 +20,7 @@ import {
   substituteVariables,
   applyLineHighlighting,
   applySyntaxHighlightingAndLineNumbers,
+  convertPlainTextToHtml,
 } from "./utils";
 import { buildHeaderLinks } from "./utils/headers";
 
@@ -34,9 +35,11 @@ const EditorContent = ({
   const [imagePreviewDetails, setImagePreviewDetails] = useState(null);
   const editorContentRef = useRef(null);
 
-  const htmlContent = substituteVariables(
-    applySyntaxHighlightingAndLineNumbers(removeEmptyTags(content)),
-    variables
+  const htmlContent = convertPlainTextToHtml(
+    substituteVariables(
+      applySyntaxHighlightingAndLineNumbers(removeEmptyTags(content)),
+      variables
+    )
   );
   const sanitize = DOMPurify.sanitize;
 
