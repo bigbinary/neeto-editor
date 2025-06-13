@@ -6,8 +6,8 @@ import { Typography, Dropdown } from "neetoui";
 import { useTranslation } from "react-i18next";
 
 import CalloutIcon from "./CalloutIcon";
-import CalloutTypeOption from "./CalloutTypeOption";
 import { CALLOUT_TYPES } from "./constants";
+import RenderCalloutOptions from "./RenderCalloutOptions";
 
 const CalloutDropdown = ({ editor, label, tooltipContent }) => {
   const { t } = useTranslation();
@@ -43,18 +43,6 @@ const CalloutDropdown = ({ editor, label, tooltipContent }) => {
     }
   };
 
-  const renderCalloutOptions = () =>
-    CALLOUT_TYPES.map((calloutType, idx) => (
-      <CalloutTypeOption
-        {...{ calloutType }}
-        key={idx}
-        isSelected={
-          isInCallout && currentCalloutAttrs?.type === calloutType.type
-        }
-        onClick={() => handleCalloutTypeClick(calloutType)}
-      />
-    ));
-
   return (
     <Dropdown
       autoWidth
@@ -87,7 +75,9 @@ const CalloutDropdown = ({ editor, label, tooltipContent }) => {
             {t("neetoEditor.menu.selectCalloutType")}
           </Typography>
           <div className="neeto-editor-callout-dropdown__options-grid">
-            {renderCalloutOptions()}
+            <RenderCalloutOptions
+              {...{ currentCalloutAttrs, handleCalloutTypeClick, isInCallout }}
+            />
           </div>
         </div>
       </Dropdown.Menu>
