@@ -259,6 +259,14 @@ export const MENU_ITEMS = [
     title: t("neetoEditor.menu.callout"),
     description: t("neetoEditor.menu.calloutDescription"),
     Icon: MessageSquare,
+    command: ({ editor, range }) => {
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setCallout({ type: "default", emoji: "💬" })
+        .run();
+    },
     items: [
       {
         optionName: `${EDITOR_OPTIONS.CALLOUT}_default`,
