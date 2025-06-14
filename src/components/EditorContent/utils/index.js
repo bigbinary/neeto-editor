@@ -144,7 +144,7 @@ export const substituteVariables = (highlightedContent, variables) =>
   });
 
 export const convertPlainTextToHtml = htmlString => {
-  if (/^<\/[a-z].*>/i.test(htmlString.trim())) return htmlString;
+  if (/^<[a-z].*>/i.test(htmlString.trim())) return htmlString;
 
   return htmlString
     .split("\n")
