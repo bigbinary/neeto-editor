@@ -73,8 +73,17 @@ export const transformEditorContent = content =>
 export const isEmojiSuggestionsMenuActive = () =>
   !!document.querySelector(".neeto-editor-emoji-suggestion");
 
-export const transformPastedHTML = content =>
-  content.replaceAll("<br />", "<p></p>");
+export const transformPastedHTML = content => {
+  const contentWithoutBr = content.replaceAll("<br />", "<p></p>");
+  const doc = new DOMParser().parseFromString(contentWithoutBr, "text/html");
+
+  doc.querySelectorAll("[style]").forEach(el => {
+    el.style.color = "";
+    el.style.backgroundColor = "";
+  });
+
+  return doc.body.innerHTML;
+};
 
 export const buildLevelsFromOptions = options => {
   const levels = {

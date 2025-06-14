@@ -142,3 +142,11 @@ export const substituteVariables = (highlightedContent, variables) =>
 
     return variable?.value ? variable.value : matchedSpan;
   });
+
+export const convertPlainTextToHtml = htmlString => {
+  if (/^<[a-z].*>/i.test(htmlString.trim())) return htmlString;
+
+  return htmlString
+    .split("\n")
+    .reduce((html, str) => `${html}<p>${str}</p>`, "");
+};
