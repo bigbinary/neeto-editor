@@ -24,11 +24,27 @@ const videoCommand =
     editor.chain().focus().deleteRange(range).run();
   };
 
+const linkCommand =
+  setIsAddLinkActive =>
+  ({ editor, range }) => {
+    setIsAddLinkActive(true);
+    editor.chain().focus().deleteRange(range).run();
+  };
+
+const attachmentCommand =
+  attachmentProps =>
+  ({ editor, range }) => {
+    attachmentProps?.handleUploadAttachments();
+    editor.chain().focus().deleteRange(range).run();
+  };
+
 export const buildCommandItems = ({
   options,
   addonCommands,
   setMediaUploader,
   setIsEmbedModalOpen,
+  setIsAddLinkActive,
+  attachmentProps,
 }) => {
   const commandItems = MENU_ITEMS.map(item => {
     if (item.optionName === EDITOR_OPTIONS.IMAGE_UPLOAD) {
@@ -37,6 +53,10 @@ export const buildCommandItems = ({
       return assoc("command", videoCommand(setMediaUploader), item);
     } else if (item.optionName === EDITOR_OPTIONS.VIDEO_EMBED) {
       return assoc("command", embedCommand(setIsEmbedModalOpen), item);
+    } else if (item.optionName === EDITOR_OPTIONS.LINK) {
+      return assoc("command", linkCommand(setIsAddLinkActive), item);
+    } else if (item.optionName === EDITOR_OPTIONS.ATTACHMENTS) {
+      return assoc("command", attachmentCommand(attachmentProps), item);
     }
 
     return item;

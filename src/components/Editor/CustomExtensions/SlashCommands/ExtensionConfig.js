@@ -22,12 +22,16 @@ export default {
     options,
     setMediaUploader,
     setIsEmbedModalOpen,
+    setIsAddLinkActive,
+    attachmentProps,
   }) => {
     const commandItems = buildCommandItems({
       options,
       addonCommands,
       setMediaUploader,
       setIsEmbedModalOpen,
+      setIsAddLinkActive,
+      attachmentProps,
     });
 
     return Extension.create({

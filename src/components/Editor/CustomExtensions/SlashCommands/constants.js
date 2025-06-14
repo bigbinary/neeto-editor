@@ -20,6 +20,12 @@ import {
   Notes,
   MediaVideo,
   Column,
+  TextBold,
+  TextItalic,
+  Underline,
+  Link,
+  Attachment,
+  MessageSquare,
 } from "neetoicons";
 
 export const MENU_ITEMS = [
@@ -30,6 +36,33 @@ export const MENU_ITEMS = [
     Icon: TextP,
     command: ({ editor, range }) => {
       editor.chain().focus().deleteRange(range).setNode("paragraph").run();
+    },
+  },
+  {
+    optionName: EDITOR_OPTIONS.BOLD,
+    title: t("neetoEditor.menu.bold"),
+    description: t("neetoEditor.menu.boldDescription"),
+    Icon: TextBold,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleBold().run();
+    },
+  },
+  {
+    optionName: EDITOR_OPTIONS.ITALIC,
+    title: t("neetoEditor.menu.italic"),
+    description: t("neetoEditor.menu.italicDescription"),
+    Icon: TextItalic,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleItalic().run();
+    },
+  },
+  {
+    optionName: EDITOR_OPTIONS.UNDERLINE,
+    title: t("neetoEditor.menu.underline"),
+    description: t("neetoEditor.menu.underlineDescription"),
+    Icon: Underline,
+    command: ({ editor, range }) => {
+      editor.chain().focus().deleteRange(range).toggleUnderline().run();
     },
   },
   {
@@ -121,6 +154,20 @@ export const MENU_ITEMS = [
     },
   },
   {
+    optionName: EDITOR_OPTIONS.LINK,
+    title: t("neetoEditor.menu.link"),
+    description: t("neetoEditor.menu.linkDescription"),
+    Icon: Link,
+    command: noop,
+  },
+  {
+    optionName: EDITOR_OPTIONS.ATTACHMENTS,
+    title: t("neetoEditor.menu.file"),
+    description: t("neetoEditor.menu.attachmentsDescription"),
+    Icon: Attachment,
+    command: noop,
+  },
+  {
     optionName: EDITOR_OPTIONS.TODO_LIST,
     title: t("neetoEditor.menu.todoList"),
     description: t("neetoEditor.menu.todoListDescription"),
@@ -206,6 +253,87 @@ export const MENU_ITEMS = [
         .deleteRange(range)
         .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
         .run(),
+  },
+  {
+    optionName: EDITOR_OPTIONS.CALLOUT,
+    title: t("neetoEditor.menu.callout"),
+    description: t("neetoEditor.menu.calloutDescription"),
+    Icon: MessageSquare,
+    command: ({ editor, range }) => {
+      editor
+        .chain()
+        .focus()
+        .deleteRange(range)
+        .setCallout({ type: "default", emoji: "💬" })
+        .run();
+    },
+    items: [
+      {
+        optionName: `${EDITOR_OPTIONS.CALLOUT}_default`,
+        title: t("neetoEditor.menu.calloutDefault"),
+        description: t("neetoEditor.menu.calloutDescription"),
+        command: ({ editor, range }) => {
+          editor
+            .chain()
+            .focus()
+            .deleteRange(range)
+            .setCallout({ type: "default", emoji: "💬" })
+            .run();
+        },
+      },
+      {
+        optionName: `${EDITOR_OPTIONS.CALLOUT}_info`,
+        title: t("neetoEditor.menu.calloutInfo"),
+        description: t("neetoEditor.menu.calloutDescription"),
+        command: ({ editor, range }) => {
+          editor
+            .chain()
+            .focus()
+            .deleteRange(range)
+            .setCallout({ type: "info", emoji: "ℹ️" })
+            .run();
+        },
+      },
+      {
+        optionName: `${EDITOR_OPTIONS.CALLOUT}_warning`,
+        title: t("neetoEditor.menu.calloutWarning"),
+        description: t("neetoEditor.menu.calloutDescription"),
+        command: ({ editor, range }) => {
+          editor
+            .chain()
+            .focus()
+            .deleteRange(range)
+            .setCallout({ type: "warning", emoji: "⚠️" })
+            .run();
+        },
+      },
+      {
+        optionName: `${EDITOR_OPTIONS.CALLOUT}_error`,
+        title: t("neetoEditor.menu.calloutError"),
+        description: t("neetoEditor.menu.calloutDescription"),
+        command: ({ editor, range }) => {
+          editor
+            .chain()
+            .focus()
+            .deleteRange(range)
+            .setCallout({ type: "error", emoji: "❌" })
+            .run();
+        },
+      },
+      {
+        optionName: `${EDITOR_OPTIONS.CALLOUT}_success`,
+        title: t("neetoEditor.menu.calloutSuccess"),
+        description: t("neetoEditor.menu.calloutDescription"),
+        command: ({ editor, range }) => {
+          editor
+            .chain()
+            .focus()
+            .deleteRange(range)
+            .setCallout({ type: "success", emoji: "✅" })
+            .run();
+        },
+      },
+    ],
   },
 ];
 

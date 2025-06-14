@@ -21,6 +21,7 @@ import TableActionMenu from "./CustomExtensions/Table/TableActionMenu";
 import LinkPopOver from "./LinkPopOver";
 import MediaUploader from "./MediaUploader";
 import Menu from "./Menu";
+import LinkAddPopOver from "./Menu/Fixed/components/LinkAddPopOver";
 import {
   getEditorStyles,
   clipboardTextParser,
@@ -49,7 +50,7 @@ const Editor = (
     editorSecrets = {},
     error = null,
     extensions = [],
-    hideSlashCommands = true,
+    hideSlashCommands = false,
     initialValue = "",
     isCharacterCountActive = false,
     keyboardShortcuts = [],
@@ -90,6 +91,7 @@ const Editor = (
     !hideSlashCommands || (isBubbleMenuActive && !hideSlashCommands);
   const isPlaceholderActive = !!placeholder;
   const [isEmbedModalOpen, setIsEmbedModalOpen] = useState(false);
+  const [isAddLinkActive, setIsAddLinkActive] = useState(false);
   const [mediaUploader, setMediaUploader] = useState({
     image: false,
     video: false,
@@ -130,6 +132,8 @@ const Editor = (
     isVideoEmbedActive,
     setMediaUploader,
     setIsEmbedModalOpen,
+    setIsAddLinkActive,
+    attachmentProps,
     openImageInNewTab,
     openLinkInNewTab,
     enableReactNodeViewOptimization,
@@ -271,6 +275,16 @@ const Editor = (
             />
           )}
           {editor?.isActive("link") && <LinkPopOver {...{ editor }} />}
+          {isAddLinkActive && (
+            <LinkAddPopOver
+              {...{
+                editor,
+                isAddLinkActive,
+                openLinkInNewTab,
+                setIsAddLinkActive,
+              }}
+            />
+          )}
           <TableActionMenu {...{ editor }} appendTo={wrapperRef} />
           {isCharacterCountActive && <CharacterCountWrapper {...{ editor }} />}
         </>

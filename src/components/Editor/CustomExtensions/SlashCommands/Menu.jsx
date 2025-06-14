@@ -57,8 +57,7 @@ class Menu extends React.Component {
     const { items, editor, range } = this.props;
     const selectedItem = items[index];
     const hasCommand = selectedItem && selectedItem.command;
-    const isLeafNode = isNotPresent(selectedItem.items);
-    if (hasCommand && isLeafNode) selectedItem.command({ editor, range });
+    if (hasCommand) selectedItem.command({ editor, range });
   };
 
   upHandler = () => {
@@ -107,7 +106,7 @@ class Menu extends React.Component {
             <MenuItem
               {...{ index, item }}
               key={item.optionName}
-              selectItem={() => isLeafNode && this.selectItem(index)}
+              selectItem={() => this.selectItem(index)}
               selectedIndex={isCurrentMenuActive ? selectedIndex : -1}
               onHover={() => this.setState({ selectedIndex: index })}
             />
@@ -120,6 +119,7 @@ class Menu extends React.Component {
               interactive
               key={item.optionName}
               placement="right"
+              theme="light neeto-editor-slash-commands-tippy"
               visible={selectedIndex === index}
               content={
                 <Menu
