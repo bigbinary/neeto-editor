@@ -1,5 +1,10 @@
 import { Node, mergeAttributes } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
+import { findBy } from "neetocist";
+import { Megaphone } from "neetoicons/misc";
+import ReactDOM from "react-dom/server";
+
+import { CALLOUT_TYPES } from "components/Editor/Menu/Fixed/components/CalloutDropdown/constants";
 
 import CalloutComponent from "./CalloutComponent";
 
@@ -23,34 +28,33 @@ export default Node.create({
         parseHTML: element => element.getAttribute("data-type") || "default",
         renderHTML: attributes => ({ "data-type": attributes.type }),
       },
-      emoji: {
-        default: "💬",
-        parseHTML: element => element.getAttribute("data-emoji") || "💬",
-        renderHTML: attributes => ({
-          "data-emoji": attributes.emoji,
-        }),
-      },
     };
   },
 
   parseHTML() {
-    return [{ tag: "div[data-type]", contentElement: ".callout-content" }];
+    return [{ tag: "div[data-emoji]", contentElement: ".callout-content" }];
   },
 
   renderHTML({ HTMLAttributes, node }) {
-    const { type, emoji } = node.attrs;
+    const { type } = node.attrs;
+    const Icon = findBy({ type }, CALLOUT_TYPES)?.icon || Megaphone;
+    // eslint-disable-next-line react/jsx-filename-extension
+    const svgString = ReactDOM.renderToStaticMarkup(<Icon />);
+
+    const svgContainer = document.createElement("div");
+    svgContainer.innerHTML = svgString;
+    const svgNode = svgContainer.firstChild;
 
     return [
       "div",
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         class: `neeto-editor__callout neeto-editor__callout--${type}`,
-        "data-type": type,
-        "data-emoji": emoji,
+        "data-emoji": type,
       }),
       [
         "div",
         { class: "callout-container" },
-        ["span", { class: "callout-emoji" }, emoji],
+        ["span", { class: "callout-emoji" }, svgNode],
         ["div", { class: "callout-content" }, 0],
       ],
     ];
@@ -65,10 +69,10 @@ export default Node.create({
       setCallout:
         (attributes = {}) =>
         ({ chain }) => {
-          const { type = "default", emoji = "💬" } = attributes;
+          const { type = "default" } = attributes;
 
           return chain()
-            .toggleWrap(this.name, { type, emoji })
+            .toggleWrap(this.name, { type })
             .command(({ tr, state, dispatch }) => {
               const { selection } = state;
               const { $from } = selection;

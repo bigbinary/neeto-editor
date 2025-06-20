@@ -1,26 +1,23 @@
 import { NodeViewContent, NodeViewWrapper } from "@tiptap/react";
-import { Close } from "neetoicons";
-import { Button } from "neetoui";
+import { findBy } from "neetocist";
+import { Megaphone } from "neetoicons/misc";
 
-const CalloutComponent = ({ node, deleteNode }) => {
-  const { type, emoji } = node.attrs;
+import { CALLOUT_TYPES } from "components/Editor/Menu/Fixed/components/CalloutDropdown/constants";
+
+const CalloutComponent = ({ node }) => {
+  const { type } = node.attrs;
+  const Icon = findBy({ type }, CALLOUT_TYPES)?.icon || Megaphone;
 
   return (
     <NodeViewWrapper
       className={`neeto-editor__callout neeto-editor__callout--${type} group`}
-      data-emoji={emoji}
-      data-type={type}
+      data-emoji={type}
     >
       <div className="callout-container">
-        <span className="callout-emoji">{emoji}</span>
+        <span className="callout-emoji">
+          <Icon />
+        </span>
         <NodeViewContent className="callout-content" />
-        <Button
-          className="callout-delete-button"
-          icon={Close}
-          size="small"
-          style="text"
-          onClick={deleteNode}
-        />
       </div>
     </NodeViewWrapper>
   );

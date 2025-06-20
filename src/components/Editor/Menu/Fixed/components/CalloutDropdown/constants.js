@@ -1,34 +1,35 @@
 import { t } from "i18next";
+import { Info, Warning, Danger, Megaphone, Success } from "neetoicons/misc";
 
 export const CALLOUT_TYPES = [
   {
     type: "default",
     label: t("neetoEditor.menu.calloutDefault"),
-    emoji: "💬",
+    icon: Megaphone,
     bgColor: "--neeto-editor-gray-100",
   },
   {
     type: "info",
     label: t("neetoEditor.menu.calloutInfo"),
-    emoji: "ℹ️",
+    icon: Info,
     bgColor: "--neeto-editor-info-100",
   },
   {
     type: "warning",
     label: t("neetoEditor.menu.calloutWarning"),
-    emoji: "⚠️",
+    icon: Warning,
     bgColor: "--neeto-editor-warning-100",
   },
   {
     type: "error",
     label: t("neetoEditor.menu.calloutError"),
-    emoji: "❌",
+    icon: Danger,
     bgColor: "--neeto-editor-error-100",
   },
   {
     type: "success",
     label: t("neetoEditor.menu.calloutSuccess"),
-    emoji: "✅",
+    icon: Success,
     bgColor: "--neeto-editor-success-100",
   },
 ];

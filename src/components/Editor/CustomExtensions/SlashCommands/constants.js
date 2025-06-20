@@ -264,7 +264,7 @@ export const MENU_ITEMS = [
         .chain()
         .focus()
         .deleteRange(range)
-        .setCallout({ type: "default", emoji: "💬" })
+        .setCallout({ type: "default" })
         .run();
     },
     items: [
@@ -277,7 +277,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "default", emoji: "💬" })
+            .setCallout({ type: "default" })
             .run();
         },
       },
@@ -290,7 +290,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "info", emoji: "ℹ️" })
+            .setCallout({ type: "info" })
             .run();
         },
       },
@@ -303,7 +303,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "warning", emoji: "⚠️" })
+            .setCallout({ type: "warning" })
             .run();
         },
       },
@@ -316,7 +316,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "error", emoji: "❌" })
+            .setCallout({ type: "error" })
             .run();
         },
       },
@@ -329,7 +329,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "success", emoji: "✅" })
+            .setCallout({ type: "success" })
             .run();
         },
       },
