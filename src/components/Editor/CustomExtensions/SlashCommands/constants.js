@@ -27,6 +27,7 @@ import {
   Attachment,
   MessageSquare,
 } from "neetoicons";
+import { Info, Warning, Danger, Megaphone, Success } from "neetoicons/misc";
 
 export const MENU_ITEMS = [
   {
@@ -264,7 +265,7 @@ export const MENU_ITEMS = [
         .chain()
         .focus()
         .deleteRange(range)
-        .setCallout({ type: "default", emoji: "💬" })
+        .setCallout({ type: "default", emoji: Megaphone })
         .run();
     },
     items: [
@@ -277,7 +278,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "default", emoji: "💬" })
+            .setCallout({ type: "default", emoji: Megaphone })
             .run();
         },
       },
@@ -290,7 +291,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "info", emoji: "ℹ️" })
+            .setCallout({ type: "info", emoji: Info })
             .run();
         },
       },
@@ -303,7 +304,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "warning", emoji: "⚠️" })
+            .setCallout({ type: "warning", emoji: Warning })
             .run();
         },
       },
@@ -316,7 +317,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "error", emoji: "❌" })
+            .setCallout({ type: "error", emoji: Danger })
             .run();
         },
       },
@@ -329,7 +330,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "success", emoji: "✅" })
+            .setCallout({ type: "success", emoji: Success })
             .run();
         },
       },

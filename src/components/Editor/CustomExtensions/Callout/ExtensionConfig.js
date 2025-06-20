@@ -24,8 +24,8 @@ export default Node.create({
         renderHTML: attributes => ({ "data-type": attributes.type }),
       },
       emoji: {
-        default: "💬",
-        parseHTML: element => element.getAttribute("data-emoji") || "💬",
+        default: "💡",
+        parseHTML: element => element.getAttribute("data-emoji") || "💡",
         renderHTML: attributes => ({
           "data-emoji": attributes.emoji,
         }),
@@ -65,7 +65,7 @@ export default Node.create({
       setCallout:
         (attributes = {}) =>
         ({ chain }) => {
-          const { type = "default", emoji = "💬" } = attributes;
+          const { type = "default", emoji = "💡" } = attributes;
 
           return chain()
             .toggleWrap(this.name, { type, emoji })
