@@ -5,31 +5,31 @@ export const CALLOUT_TYPES = [
   {
     type: "default",
     label: t("neetoEditor.menu.calloutDefault"),
-    emoji: Megaphone,
+    icon: Megaphone,
     bgColor: "--neeto-editor-gray-100",
   },
   {
     type: "info",
     label: t("neetoEditor.menu.calloutInfo"),
-    emoji: Info,
+    icon: Info,
     bgColor: "--neeto-editor-info-100",
   },
   {
     type: "warning",
     label: t("neetoEditor.menu.calloutWarning"),
-    emoji: Warning,
+    icon: Warning,
     bgColor: "--neeto-editor-warning-100",
   },
   {
     type: "error",
     label: t("neetoEditor.menu.calloutError"),
-    emoji: Danger,
+    icon: Danger,
     bgColor: "--neeto-editor-error-100",
   },
   {
     type: "success",
     label: t("neetoEditor.menu.calloutSuccess"),
-    emoji: Success,
+    icon: Success,
     bgColor: "--neeto-editor-success-100",
   },
 ];
