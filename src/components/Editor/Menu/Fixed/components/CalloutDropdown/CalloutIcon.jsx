@@ -1,10 +1,12 @@
 import { Flag } from "neetoicons";
 
 const CalloutIcon = ({ currentType }) => {
-  if (currentType?.emoji) {
+  if (currentType?.icon) {
+    const Icon = currentType.icon;
+
     return (
       <span className="neeto-editor-callout-dropdown__current-emoji">
-        {currentType.emoji}
+        <Icon />
       </span>
     );
   }
