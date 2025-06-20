@@ -27,7 +27,6 @@ import {
   Attachment,
   MessageSquare,
 } from "neetoicons";
-import { Megaphone } from "neetoicons/misc";
 
 export const MENU_ITEMS = [
   {
@@ -265,7 +264,7 @@ export const MENU_ITEMS = [
         .chain()
         .focus()
         .deleteRange(range)
-        .setCallout({ type: "default", emoji: Megaphone })
+        .setCallout({ type: "default" })
         .run();
     },
     items: [
