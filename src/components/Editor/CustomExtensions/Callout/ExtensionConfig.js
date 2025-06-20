@@ -1,5 +1,10 @@
 import { Node, mergeAttributes } from "@tiptap/core";
 import { ReactNodeViewRenderer } from "@tiptap/react";
+import { findBy } from "neetocist";
+import { Megaphone } from "neetoicons/misc";
+import ReactDOM from "react-dom/server";
+
+import { CALLOUT_TYPES } from "components/Editor/Menu/Fixed/components/CalloutDropdown/constants";
 
 import CalloutComponent from "./CalloutComponent";
 
@@ -32,6 +37,13 @@ export default Node.create({
 
   renderHTML({ HTMLAttributes, node }) {
     const { type } = node.attrs;
+    const Icon = findBy({ type }, CALLOUT_TYPES)?.icon || Megaphone;
+    // eslint-disable-next-line react/jsx-filename-extension
+    const svgString = ReactDOM.renderToStaticMarkup(<Icon />);
+
+    const svgContainer = document.createElement("div");
+    svgContainer.innerHTML = svgString;
+    const svgNode = svgContainer.firstChild;
 
     return [
       "div",
@@ -42,7 +54,7 @@ export default Node.create({
       [
         "div",
         { class: "callout-container" },
-        ["span", { class: "callout-emoji" }, type],
+        ["span", { class: "callout-emoji" }, svgNode],
         ["div", { class: "callout-content" }, 0],
       ],
     ];
