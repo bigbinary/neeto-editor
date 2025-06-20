@@ -137,7 +137,7 @@ const config = args => {
       extract: true,
     },
     {
-      input: "./src/components/EditorContent/codeBlockHighlight.js",
+      input: "./src/components/EditorContent/codeblockHighlight.js",
       output: {
         dir: `${__dirname}/dist`,
         format: "cjs",
