@@ -6,7 +6,7 @@ const CalloutIcon = ({ currentType }) => {
 
     return (
       <span className="neeto-editor-callout-dropdown__current-emoji">
-        <Icon />
+        <Icon size={22} />
       </span>
     );
   }
