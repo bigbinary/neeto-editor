@@ -8,19 +8,29 @@
     align-items: flex-start;
     display: flex;
 
-    > label {
+    >label {
       flex: 0 0 auto;
       margin-right: 0.5rem;
       user-select: none;
     }
 
-    > div {
+    >div {
       flex: 1 1 auto;
     }
   }
 
   input[type="checkbox"] {
     cursor: pointer;
+    color: rgb(var(--neeto-ui-primary-500));
+    border-color: rgb(var(--neeto-ui-gray-800));
+    border-radius: 0;
+    border-width: 1px;
+    position: relative;
+    top: -2px;
+
+    &:checked {
+      border-color: rgb(var(--neeto-ui-primary-500));
+    }
   }
 
   ul[data-type="todoList"] {
@@ -28,8 +38,8 @@
   }
 
   // Completed tasks
-  li[data-checked="true"] > div p {
+  li[data-checked="true"]>div p {
     text-decoration: line-through;
-    opacity: 0.6;
+    opacity: 0.65;
   }
 }
