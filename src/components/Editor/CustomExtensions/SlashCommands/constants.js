@@ -27,7 +27,7 @@ import {
   Attachment,
   MessageSquare,
 } from "neetoicons";
-import { Info, Warning, Danger, Megaphone, Success } from "neetoicons/misc";
+import { Megaphone } from "neetoicons/misc";
 
 export const MENU_ITEMS = [
   {
@@ -278,7 +278,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "default", emoji: Megaphone })
+            .setCallout({ type: "default" })
             .run();
         },
       },
@@ -291,7 +291,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "info", emoji: Info })
+            .setCallout({ type: "info" })
             .run();
         },
       },
@@ -304,7 +304,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "warning", emoji: Warning })
+            .setCallout({ type: "warning" })
             .run();
         },
       },
@@ -317,7 +317,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "error", emoji: Danger })
+            .setCallout({ type: "error" })
             .run();
         },
       },
@@ -330,7 +330,7 @@ export const MENU_ITEMS = [
             .chain()
             .focus()
             .deleteRange(range)
-            .setCallout({ type: "success", emoji: Success })
+            .setCallout({ type: "success" })
             .run();
         },
       },
